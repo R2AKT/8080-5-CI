@@ -1,3 +1,5 @@
+![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
+# 8080-5-CI
 Boot module. For connecting to the debugging board - https://github.com/R2AKT/Stepper.
 
 Allows you to read and write data from/to memory.
