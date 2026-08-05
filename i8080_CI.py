@@ -7,7 +7,8 @@ from PySide6.QtWidgets import (QApplication, QMainWindow, QWidget, QVBoxLayout,
                                QLineEdit, QTextEdit, QGroupBox, QMessageBox,
                                QTabWidget, QTableView, QHeaderView, QFileDialog,
                                QProgressBar, QSpinBox, QCheckBox, QScrollArea, QInputDialog,
-                               QToolTip, QStyle, QStatusBar)
+                               QToolTip, QStyle, QStatusBar, QDialog, QListWidget, QListWidgetItem, QMenu)
+
 from PySide6.QtCore import Qt, QTimer, QThread, QObject, Signal, QAbstractTableModel, QModelIndex, QEvent, QLocale, QSettings
 from PySide6.QtGui import QFont, QColor, QPainter, QPen, QBrush
 
@@ -19,7 +20,7 @@ LANGS = {
         "port": "Port:", "baud": "Baud:", "connect": "Connect", "disconnect": "Disconnect",
         "refresh": "Refresh", "tab_control": "Control", "tab_data": "Data", "tab_hex": "Hex Editor",
         "tab_disasm": "Disassembler", "tab_test": "Memory Test", "tab_io_seq": "IO Sequencer",
-        "log": "Log:", "bus_control": "Bus Control", "hold": "Hold Bus (HOLD)", "unhold": "Release Bus (UNHOLD)",
+        "log": "Log:", "bus_control": "Bus Control", "hold": "Hold Bus (HOLD)", "unhold": "Release Bus (UnHOLD)",
         "files": "Files (Intel HEX / BIN)", "save_dump": "Save Dump (.hex)", "load_fw": "Load Firmware (.hex/.bin)",
         "memory": "Memory (RAM/ROM) — read/write values", "io_port": "IO Port — read/write values",
         "addr_hex": "Address (HEX):", "port_hex": "Port (HEX):", "bits": "Bit width:",
@@ -51,14 +52,16 @@ LANGS = {
         "io_write_done": "IO write complete", "io_write_err": "IO write error at address",
         "test_mem": "Memory test", "pattern": "pattern", "test_done": "Test complete.",
         "write_fail": "Write failure at", "read_fail": "Read failure at",
-        "expected": "Expected", "got": "Got", "export": "Export",
+        "expected": "Expected", "got": "Got", "export": "Export", "search": "Search",
+        "goto_addr": "Goto Address", "fill_range": "Fill Range", "copy_addr": "Copy Address",
+        "copy_val": "Copy Value", "invert_byte": "Invert Byte", "disasm_from": "Disassemble from",
     },
     "ru": {
         "app_title": "i8080-5 Мастер Контроллер",
         "port": "Порт:", "baud": "Скорость:", "connect": "Подключиться", "disconnect": "Отключиться",
         "refresh": "Обновить", "tab_control": "Управление", "tab_data": "Данные", "tab_hex": "Hex Редактор",
         "tab_disasm": "Дизассемблер", "tab_test": "Тест Памяти", "tab_io_seq": "IO Секвенсор",
-        "log": "Журнал:", "bus_control": "Управление шиной", "hold": "Захватить шину (HOLD)", "unhold": "Освободить шину (UNHOLD)",
+        "log": "Журнал:", "bus_control": "Управление шиной", "hold": "Захватить шину (HOLD)", "unhold": "Освободить шину (UnHOLD)",
         "files": "Файлы (Intel HEX / BIN)", "save_dump": "Сохранить дамп (.hex)", "load_fw": "Загрузить прошивку (.hex/.bin)",
         "memory": "Память (RAM/ROM) — чтение/запись значений", "io_port": "Порт ввода-вывода (IO) — чтение/запись значений",
         "addr_hex": "Адрес (HEX):", "port_hex": "Порт (HEX):", "bits": "Разрядность (бит):",
@@ -90,7 +93,9 @@ LANGS = {
         "io_write_done": "Запись IO завершена", "io_write_err": "Ошибка записи IO на адресе",
         "test_mem": "Тест памяти", "pattern": "паттерном", "test_done": "Тест завершен.",
         "write_fail": "Сбой записи на", "read_fail": "Сбой чтения на",
-        "expected": "Ожидалось", "got": "Получено", "export": "Экспорт",
+        "expected": "Ожидалось", "got": "Получено", "export": "Экспорт", "search": "Поиск",
+        "goto_addr": "Перейти к адресу", "fill_range": "Заполнить диапазон", "copy_addr": "Копировать адрес",
+        "copy_val": "Копировать значение", "invert_byte": "Инвертировать байт", "disasm_from": "Дизассемблировать от",
     }
 }
 
@@ -140,7 +145,10 @@ ACK_MEM_WRITE_BYTE = 0x12; ACK_MEM_WRITE_BLOCK = 0x13
 ACK_IO_READ_BYTE = 0x20; ACK_IO_READ_BLOCK = 0x21
 ACK_IO_WRITE_BYTE = 0x22; ACK_IO_WRITE_BLOCK = 0x23
 ACK_ERROR = 0xFF
-
+CMD_GET_SIZE_SETUP = 0x40
+CMD_SET_POLARITY_SETUP = 0x41
+ACK_GET_SIZE_SETUP = 0x40
+ACK_SET_POLARITY_SETUP = 0x41
 # ==================== ПРОТОКОЛ SLIP ====================
 class SlipProtocol:
     @staticmethod
@@ -481,7 +489,8 @@ class HexModel(QAbstractTableModel):
 
 # ==================== КАСТОМНАЯ ТАБЛИЦА HEX-РЕДАКТОРА С ПОДСКАЗКАМИ ====================
 class HexTableView(QTableView):
-    statusUpdate = Signal(str, str, str)  # addr, data, mnemonic
+    statusUpdate = Signal(str, str, str)
+    gotoAddress = Signal(int)
     
     def __init__(self, disassembler, mem_data, parent=None):
         super().__init__(parent)
@@ -520,6 +529,184 @@ class HexTableView(QTableView):
                         self.statusUpdate.emit(f"0x{addr:04X}", f"0x{byte_val:02X}", mnemonic)
                         
         return super().event(event)
+        
+    def contextMenuEvent(self, event):
+        """Контекстное меню при правом клике"""
+        index = self.indexAt(event.pos())
+        if not index.isValid():
+            return
+            
+        menu = QMenu(self)
+        
+        # Определяем адрес ячейки
+        addr = None
+        if 1 <= index.column() <= 16:
+            model = self.model()
+            if model and hasattr(model, 'min_addr'):
+                row = index.row()
+                col = index.column()
+                addr = model.min_addr + (row * 16) + col - 1
+        
+        if addr is not None and addr in self.mem_data:
+            byte_val = self.mem_data[addr]
+            
+            # Копировать адрес
+            act_copy_addr = menu.addAction(f"Copy Address (0x{addr:04X})")
+            act_copy_addr.triggered.connect(lambda: self.copy_to_clipboard(f"{addr:04X}"))
+            
+            # Копировать значение
+            act_copy_val = menu.addAction(f"Copy Value (0x{byte_val:02X})")
+            act_copy_val.triggered.connect(lambda: self.copy_to_clipboard(f"{byte_val:02X}"))
+            
+            menu.addSeparator()
+            
+            # Инвертировать байт
+            act_invert = menu.addAction(f"Invert Byte (0x{~byte_val & 0xFF:02X})")
+            act_invert.triggered.connect(lambda: self.invert_byte(addr))
+            
+            # Заполнить диапазон
+            act_fill = menu.addAction("Fill Range...")
+            act_fill.triggered.connect(lambda: self.fill_range(addr))
+            
+            menu.addSeparator()
+            
+            # Дизассемблировать отсюда
+            act_disasm = menu.addAction(f"Disassemble from 0x{addr:04X}")
+            act_disasm.triggered.connect(lambda: self.disasm_from(addr))
+            
+            # Перейти к адресу
+            act_goto = menu.addAction("Goto Address...")
+            act_goto.triggered.connect(lambda: self.goto_dialog())
+            
+        menu.exec(event.globalPos())
+        
+    def copy_to_clipboard(self, text):
+        from PySide6.QtWidgets import QApplication
+        QApplication.clipboard().setText(text)
+        
+    def invert_byte(self, addr):
+        """Инвертирует байт по адресу"""
+        if addr in self.mem_data:
+            self.mem_data[addr] = ~self.mem_data[addr] & 0xFF
+            model = self.model()
+            if model:
+                model.update_data({addr: self.mem_data[addr]})
+                model.dataEdited.emit()
+                
+    def fill_range(self, start_addr):
+        """Заполняет диапазон значением"""
+        text, ok = QInputDialog.getText(self, "Fill Range", "Value (HEX):")
+        if not ok: return
+        try:
+            val = int(text, 16)
+        except ValueError:
+            return
+            
+        size, ok2 = QInputDialog.getInt(self, "Fill Range", "Size (Dec):", 16, 1, 4096)
+        if not ok2: return
+        
+        for i in range(size):
+            self.mem_data[start_addr + i] = val
+            
+        model = self.model()
+        if model:
+            model.update_data({start_addr + i: val for i in range(size)})
+            model.dataEdited.emit()
+            
+    def disasm_from(self, addr):
+        """Дизассемблировать от указанного адреса"""
+        self.parent().parent().parent().parent().disasm_from_address(addr)
+        
+    def goto_dialog(self):
+        """Диалог перехода к адресу"""
+        text, ok = QInputDialog.getText(self, "Goto Address", "Address (HEX):")
+        if not ok: return
+        try:
+            addr = int(text, 16)
+            self.gotoAddress.emit(addr)
+        except ValueError:
+            pass
+
+class SearchDialog(QDialog):
+    searchRequested = Signal(str, str)  # pattern, mode
+    
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self.setWindowTitle("Search Memory")
+        self.resize(400, 300)
+        self.init_ui()
+        
+    def init_ui(self):
+        layout = QVBoxLayout(self)
+        
+        # Поле ввода паттерна
+        input_layout = QHBoxLayout()
+        self.lbl_pattern = QLabel("Pattern:")
+        self.txt_pattern = QLineEdit()
+        self.txt_pattern.setPlaceholderText("C3 00 10 or HELLO")
+        input_layout.addWidget(self.lbl_pattern)
+        input_layout.addWidget(self.txt_pattern)
+        layout.addLayout(input_layout)
+        
+        # Режим поиска
+        mode_layout = QHBoxLayout()
+        self.lbl_mode = QLabel("Mode:")
+        self.cmb_mode = QComboBox()
+        self.cmb_mode.addItems(["HEX Bytes", "ASCII String", "HEX with Mask (??)"])
+        mode_layout.addWidget(self.lbl_mode)
+        mode_layout.addWidget(self.cmb_mode)
+        layout.addLayout(mode_layout)
+        
+        # Кнопки
+        btn_layout = QHBoxLayout()
+        self.btn_find = QPushButton("Find Next")
+        self.btn_find_all = QPushButton("Find All")
+        self.btn_close = QPushButton("Close")
+        self.btn_find.clicked.connect(self.on_find)
+        self.btn_find_all.clicked.connect(self.on_find_all)
+        self.btn_close.clicked.connect(self.close)
+        btn_layout.addWidget(self.btn_find)
+        btn_layout.addWidget(self.btn_find_all)
+        btn_layout.addWidget(self.btn_close)
+        layout.addLayout(btn_layout)
+        
+        # Результаты
+        self.lbl_results = QLabel("Results:")
+        layout.addWidget(self.lbl_results)
+        
+        self.results_list = QListWidget()
+        self.results_list.itemDoubleClicked.connect(self.on_result_double_click)
+        layout.addWidget(self.results_list)
+        
+    def on_find(self):
+        pattern = self.txt_pattern.text().strip()
+        mode = self.cmb_mode.currentText()
+        if pattern:
+            self.searchRequested.emit(pattern, mode)
+            
+    def on_find_all(self):
+        pattern = self.txt_pattern.text().strip()
+        mode = self.cmb_mode.currentText()
+        if pattern:
+            self.searchRequested.emit(pattern, mode)
+            
+    def on_result_double_click(self, item):
+        # Извлекаем адрес из текста элемента
+        text = item.text()
+        if ":" in text:
+            addr_str = text.split(":")[0].strip()
+            try:
+                addr = int(addr_str, 16)
+                self.parent().goto_address(addr)
+            except ValueError:
+                pass
+                
+    def show_results(self, results):
+        """Отображает результаты поиска"""
+        self.results_list.clear()
+        for addr, matched_bytes in results:
+            bytes_str = " ".join(f"{b:02X}" for b in matched_bytes)
+            self.results_list.addItem(QListWidgetItem(f"{addr:04X}: {bytes_str}"))
 
 # ==================== РАБОЧИЙ ПОТОК ====================
 class BusWorker(QObject):
@@ -527,13 +714,14 @@ class BusWorker(QObject):
     log = Signal(str)
     finished = Signal(dict)
     
-    def __init__(self, serial_port, task, params, lang="en"):
+    def __init__(self, serial_port, task, params, lang="en", max_block_size=128):
         super().__init__()
         self.ser = serial_port
         self.task = task
         self.params = params
         self.is_running = True
         self.lang = lang
+        self.max_block_size = max_block_size
 
     def stop(self):
         self.is_running = False
@@ -602,9 +790,9 @@ class BusWorker(QObject):
         self.log.emit(f"{self.tr('write_block')} 0x{start_addr:04X}...")
         addrs = sorted(mem_dict.keys())
         written = 0
-        for i in range(0, len(addrs), 128):
+        for i in range(0, len(addrs), self.max_block_size):
             if not self.is_running: break
-            chunk_addrs = addrs[i:i+128]
+            chunk_addrs = addrs[i:i+self.max_block_size]
             chunk_data = [mem_dict[a] for a in chunk_addrs]
             c_addr = chunk_addrs[0]
             c_size = len(chunk_data)
@@ -640,9 +828,9 @@ class BusWorker(QObject):
         self.log.emit(f"{self.tr('io_write_block')} 0x{start_addr:04X}...")
         addrs = sorted(mem_dict.keys())
         written = 0
-        for i in range(0, len(addrs), 128):
+        for i in range(0, len(addrs), self.max_block_size):
             if not self.is_running: break
-            chunk_addrs = addrs[i:i+128]
+            chunk_addrs = addrs[i:i+self.max_block_size]
             chunk_data = [mem_dict[a] for a in chunk_addrs]
             c_addr = chunk_addrs[0]
             c_size = len(chunk_data)
@@ -664,7 +852,7 @@ class BusWorker(QObject):
         self.log.emit(f"{self.tr('test_mem')} 0x{start:04X}-0x{end:04X} {self.tr('pattern')} '{pattern_name}'")
         
         errors = 0
-        chunk_size = 128
+        chunk_size = self.max_block_size
         
         def get_pattern(offset, length):
             if pattern_name == "Zero": return [0x00] * length
@@ -791,7 +979,15 @@ class MainWindow(QMainWindow):
         self.worker = None
         self.worker_thread = None
         self.pending_read = None
+        self.is_connected = False
+        self.bus_active = False
+        self.max_block_size = 128  # Будет обновлено после подключения
         
+        # === Очередь команд ===
+        self.command_queue = []
+        self.waiting_response = False
+        self.worker_active = False
+		
         self.init_ui()
         self.retranslate_ui()
         
@@ -840,6 +1036,8 @@ class MainWindow(QMainWindow):
         self.poll_timer = QTimer()
         self.poll_timer.timeout.connect(self.read_serial)
         
+        self.update_ui_state()
+        
     def tr(self, key):
         return LANGS.get(self.current_lang, LANGS["en"]).get(key, key)
         
@@ -856,8 +1054,8 @@ class MainWindow(QMainWindow):
         self.btn_refresh.clicked.connect(self.refresh_ports)
         
         self.baud_combo = QComboBox()
-        self.baud_combo.addItems(["9600", "57600", "115200", "230400"])
-        self.baud_combo.setCurrentText("115200")
+        self.baud_combo.addItems(["9600", "38400", "57600", "115200"])
+        self.baud_combo.setCurrentText("9600")
         
         self.btn_connect = QPushButton()
         self.btn_connect.clicked.connect(self.toggle_connection)
@@ -920,8 +1118,11 @@ class MainWindow(QMainWindow):
         bus_layout = QHBoxLayout()
         self.btn_hold = QPushButton()
         self.btn_unhold = QPushButton()
-        self.btn_hold.clicked.connect(lambda: self.send_command(bytes([CMD_HOLD])))
-        self.btn_unhold.clicked.connect(lambda: self.send_command(bytes([CMD_UNHOLD])))
+        #self.btn_hold.clicked.connect(lambda: self.send_command(bytes([CMD_HOLD])))
+        #self.btn_unhold.clicked.connect(lambda: self.send_command(bytes([CMD_UNHOLD])))
+        self.btn_hold.clicked.connect(self.on_hold_clicked)
+        self.btn_unhold.clicked.connect(self.on_unhold_clicked)
+        #
         bus_layout.addWidget(self.btn_hold)
         bus_layout.addWidget(self.btn_unhold)
         self.bus_group.setLayout(bus_layout)
@@ -1033,6 +1234,9 @@ class MainWindow(QMainWindow):
         ctrl_layout.addWidget(self.lbl_range)
         ctrl_layout.addStretch()
         ctrl_layout.addWidget(self.btn_read_block)
+        self.btn_search = QPushButton("Search")
+        self.btn_search.clicked.connect(self.show_search_dialog)
+        ctrl_layout.addWidget(self.btn_search)
         layout.addLayout(ctrl_layout)
         
         self.table = HexTableView(self.disassembler, self.mem_data)
@@ -1045,6 +1249,8 @@ class MainWindow(QMainWindow):
 		
         # Подключаем сигнал обновления статусной строки
         self.table.statusUpdate.connect(self.on_status_update)
+        
+        self.table.gotoAddress.connect(self.goto_address)
         
         self.tabs.addTab(tab, "")
         self.tab_hex = tab
@@ -1217,6 +1423,7 @@ class MainWindow(QMainWindow):
         # Вкладка "Hex Редактор"
         self.btn_read_block.setText(self.tr("read_block"))
         self.update_range_label()
+        self.btn_search.setText(self.tr("search"))
         
         # Вкладка "Дизассемблер"
         self.lbl_disasm_start.setText(self.tr("start"))
@@ -1252,12 +1459,29 @@ class MainWindow(QMainWindow):
 
     def toggle_connection(self):
         if self.serial_port and self.serial_port.is_open:
+            # === Отключение ===
+            # Очищаем очередь
+            self.command_queue.clear()
+            self.waiting_response = False
+            
+            if self.bus_active:
+                self.log("Releasing bus before disconnect...")
+                try:
+                    self.serial_port.write(SlipProtocol.encode(bytes([CMD_UNHOLD])))
+                    self.serial_port.flush()
+                    time.sleep(0.5)
+                except serial.SerialException:
+                    pass
+            
             self.serial_port.close()
             self.poll_timer.stop()
+            self.is_connected = False
+            self.bus_active = False
             self.btn_connect.setText(self.tr("connect"))
-            self.status_label_conn.setText(self.tr("disconnected"))  # ← Добавить
+            self.update_ui_state()
             self.log(self.tr("disconnected"))
         else:
+            # === Подключение ===
             port_name = self.port_combo.currentData()
             baud_rate = int(self.baud_combo.currentText())
             if not port_name:
@@ -1265,33 +1489,98 @@ class MainWindow(QMainWindow):
                 return
             try:
                 self.serial_port = serial.Serial(port_name, baud_rate, timeout=0.1, write_timeout=1.0)
+                self.serial_port.dtr = False
+                self.serial_port.rts = False
+                time.sleep(2)
+                self.serial_port.reset_input_buffer()
+                self.serial_port.reset_output_buffer()
+                
                 self.poll_timer.start(50)
+                self.is_connected = True
+                self.bus_active = False
                 self.btn_connect.setText(self.tr("disconnect"))
-                self.status_label_conn.setText(f"{self.tr('connected')} ({baud_rate})")  # ← Добавить
+                self.update_ui_state()
                 self.log(f"{self.tr('connected')} {port_name} ({baud_rate}).")
                 
-                self.log(self.tr("test_conn"))
+                # Отправляем команды через очередь (последовательно)
+                #self.log(self.tr("test_conn"))
                 self.send_command(bytes([CMD_NOP]))
+                
+                #self.log("Requesting max block size...")
+                self.send_command(bytes([CMD_GET_SIZE_SETUP]))
                 
             except serial.SerialException as e:
                 QMessageBox.critical(self, self.tr("err_connect"), f"{self.tr('err_open')} {port_name}:\n{e}")
                 self.serial_port = None
+                self.is_connected = False
+                self.update_ui_state()
             except Exception as e:
                 QMessageBox.critical(self, self.tr("error"), str(e))
-
+                self.is_connected = False
+                self.update_ui_state()
+				
     def log(self, msg):
         self.log_text.append(msg)
         self.log_text.verticalScrollBar().setValue(self.log_text.verticalScrollBar().maximum())
 
     def send_command(self, payload):
+        """Добавляет команду в очередь отправки"""
+        self.command_queue.append(payload)
+        self.process_command_queue()
+        
+    def process_command_queue(self):
+        """Обрабатывает очередь команд"""
+        if self.waiting_response or not self.command_queue or self.worker_active:
+            return
+            
         if not self.serial_port or not self.serial_port.is_open:
-            self.log(self.tr("err_not_open")); return
+            self.command_queue.clear()
+            return
+            
+        payload = self.command_queue.pop(0)
         try:
+            # Логируем команду при реальной отправке
+            cmd_name = self.get_command_name(payload[0] if payload else 0)
+            self.log(f"TX [{cmd_name}] -> {payload.hex(' ').upper()}")
+            
             self.serial_port.write(SlipProtocol.encode(payload))
-            self.log(f"TX -> {payload.hex(' ').upper()}")
+            self.serial_port.flush()
+            self.waiting_response = True
+            
+            QTimer.singleShot(2000, self.on_command_timeout)
         except serial.SerialException as e:
             self.log(f"{self.tr('err_send')} {e}")
-
+            self.waiting_response = False
+            self.process_command_queue()
+            
+    def get_command_name(self, cmd):
+        """Возвращает имя команды для лога"""
+        names = {
+            0x00: "NOP",
+            0x01: "HOLD",
+            0x02: "UNHOLD",
+            0x10: "MEM_R",
+            0x11: "MEM_R_BLK",
+            0x12: "MEM_W",
+            0x13: "MEM_W_BLK",
+            0x20: "IO_R",
+            0x21: "IO_R_BLK",
+            0x22: "IO_W",
+            0x23: "IO_W_BLK",
+            0x32: "EEPROM_W",
+            0x33: "EEPROM_W_BLK",
+            0x40: "GET_SIZE",
+            0x41: "SET_POLARITY",
+        }
+        return names.get(cmd, f"CMD_{cmd:02X}")
+            
+    def on_command_timeout(self):
+        """Таймаут ожидания ответа на команду"""
+        if self.waiting_response:
+            self.log("Command timeout!")
+            self.waiting_response = False
+            self.process_command_queue()
+    	
     def read_serial(self):
         if self.serial_port and self.serial_port.is_open and self.serial_port.in_waiting:
             try:
@@ -1310,10 +1599,48 @@ class MainWindow(QMainWindow):
     def process_response(self, data):
         if not data: return
         self.log(f"RX <- {data.hex(' ').upper()}")
+        
         cmd = data[0]
         
+        # Определяем, является ли ответ финальным
+        is_final = True
+        if cmd == CMD_HOLD and len(data) >= 2:
+            ack = data[1]
+            if ack in [0x00, 0x01]:  # AckHoldWaitLow, AckHoldWaitHigh
+                is_final = False
+        elif cmd == CMD_UNHOLD and len(data) >= 2:
+            ack = data[1]
+            if ack == 0xF1:  # AckWaitUnHold
+                is_final = False
+        
+        # === СНАЧАЛА обработка ответа ===
         if cmd == ACK_NOP:
             self.log(f"  [{self.tr('ok')}] {self.tr('conn_est')}")
+            
+        elif cmd == ACK_GET_SIZE_SETUP and len(data) >= 2:
+            self.max_block_size = data[1]
+            self.log(f"  [{self.tr('ok')}] Max block size: {self.max_block_size}")
+            
+        elif cmd == CMD_HOLD and len(data) >= 2:
+            ack = data[1]
+            if ack == 0x03:
+                self.bus_active = True
+                self.update_ui_state()
+                self.log(f"  [{self.tr('ok')}] Bus HOLD active.")
+            elif ack == 0x00:
+                self.log(f"  [WAIT] HLDA low...")
+            elif ack == 0x01:
+                self.log(f"  [WAIT] HLDA high...")
+                
+        elif cmd == CMD_UNHOLD and len(data) >= 2:
+            ack = data[1]
+            if ack == 0xF2:
+                self.bus_active = False
+                self.update_ui_state()
+                self.log(f"  [{self.tr('ok')}] Bus UNHOLD. CPU running.")
+            elif ack == 0xF1:
+                self.log(f"  [WAIT] HLDA high...")
+                
         elif cmd == ACK_MEM_READ_BYTE and len(data) >= 4:
             addr = (data[1] << 8) | data[2]
             self.mem_data[addr] = data[3]
@@ -1328,7 +1655,12 @@ class MainWindow(QMainWindow):
             self.log(f"  [{self.tr('ok')}] {self.tr('write_io')}.")
         elif cmd == ACK_ERROR:
             self.log(f"  [{self.tr('error')}] {self.tr('err_ack')}")
-
+        
+        # === ЗАТЕМ снимаем флаг и отправляем следующую команду ===
+        if is_final:
+            self.waiting_response = False
+            self.process_command_queue()
+			
     def update_range_label(self):
         if self.mem_data:
             mn = min(self.mem_data.keys()); mx = max(self.mem_data.keys())
@@ -1450,6 +1782,16 @@ class MainWindow(QMainWindow):
         
         self.log(f"{self.tr('loaded')} {len(loaded_mem)} {self.tr('bytes_from_file')}")
         
+        # Проверяем состояние перед записью
+        if not self.is_connected:
+            self.log("Device not connected. Firmware loaded to editor only.")
+            return
+            
+        if not self.bus_active:
+            self.log("Bus not active. Hold the bus before flashing.")
+            QMessageBox.information(self, "Info", "Hold the bus (HOLD) before flashing.")
+            return
+        
         if QMessageBox.question(self, self.tr("flash_q"), self.tr("flash_msg")) == QMessageBox.Yes:
             self.start_worker("write_block", (loaded_mem, min(loaded_mem.keys())))
 
@@ -1491,7 +1833,14 @@ class MainWindow(QMainWindow):
             QMessageBox.warning(self, self.tr("error"), self.tr("err_hex"))
             return
             
-        size, ok2 = QInputDialog.getInt(self, self.tr("len"), "Size (Dec):", 128, 1, 128)
+        size, ok2 = QInputDialog.getInt(
+            self, 
+            self.tr("len"), 
+            "Size (Dec):", 
+            self.max_block_size,  # ← Значение по умолчанию
+            1, 
+            self.max_block_size   # ← Максимальное значение
+        )
         if not ok2: return
         self.start_worker("read_block", (addr, size))
 
@@ -1536,10 +1885,23 @@ class MainWindow(QMainWindow):
 
     def start_worker(self, task, params):
         if not self.serial_port or not self.serial_port.is_open:
-            self.log(self.tr("err_not_open")); return
+            self.log(self.tr("err_not_open"))
+            QMessageBox.warning(self, self.tr("error"), self.tr("err_not_open"))
+            return
+            
+        bus_required = ["read_block", "write_block", "test_mem", 
+                        "read_io_block", "write_io_block", "run_io_sequence"]
+        if task in bus_required and not self.bus_active:
+            self.log("Bus not active! Hold the bus first.")
+            QMessageBox.warning(self, self.tr("error"), "Bus not active! Hold the bus first.")
+            return
+            
+        # Блокируем очередь на время работы worker
+        self.worker_active = True
             
         self.worker_thread = QThread()
-        self.worker = BusWorker(self.serial_port, task, params, self.current_lang)
+        self.worker = BusWorker(self.serial_port, task, params, 
+                                self.current_lang, self.max_block_size)
         self.worker.moveToThread(self.worker_thread)
         
         self.worker_thread.started.connect(self.worker.run)
@@ -1551,8 +1913,12 @@ class MainWindow(QMainWindow):
         self.worker_thread.finished.connect(self.worker_thread.deleteLater)
         
         self.worker_thread.start()
-
+		
     def on_worker_finished(self, result):
+        # Разблокируем очередь
+        self.worker_active = False
+        self.process_command_queue()
+        
         if isinstance(result, dict) and result:
             if self.pending_read:
                 addr = self.pending_read["addr"]
@@ -1585,7 +1951,7 @@ class MainWindow(QMainWindow):
                     self.auto_disasm()
         
         self.log(self.tr("thread_done"))
-            
+		
     def on_status_update(self, addr, data, mnemonic):
         """Обновление статусной строки при наведении на ячейку"""
         self.status_label_addr.setText(f"Адрес: {addr}")
@@ -1632,6 +1998,178 @@ class MainWindow(QMainWindow):
             
         except Exception as e:
             QMessageBox.critical(self, self.tr("error"), str(e))
+
+    def show_search_dialog(self):
+        """Показывает диалог поиска"""
+        if not hasattr(self, 'search_dialog'):
+            self.search_dialog = SearchDialog(self)
+            self.search_dialog.searchRequested.connect(self.perform_search)
+        self.search_dialog.show()
+        
+    def perform_search(self, pattern, mode):
+        """Выполняет поиск в памяти"""
+        results = []
+        
+        if mode == "HEX Bytes":
+            # Парсим HEX-паттерн
+            try:
+                pattern_bytes = bytes.fromhex(pattern.replace(" ", ""))
+            except ValueError:
+                QMessageBox.warning(self, self.tr("error"), "Invalid HEX pattern!")
+                return
+                
+            for addr in sorted(self.mem_data.keys()):
+                match = True
+                matched = []
+                for i, b in enumerate(pattern_bytes):
+                    if addr + i not in self.mem_data or self.mem_data[addr + i] != b:
+                        match = False
+                        break
+                    matched.append(b)
+                if match:
+                    results.append((addr, matched))
+                    
+        elif mode == "ASCII String":
+            # Ищем ASCII-строку
+            pattern_bytes = pattern.encode('ascii')
+            for addr in sorted(self.mem_data.keys()):
+                match = True
+                matched = []
+                for i, b in enumerate(pattern_bytes):
+                    if addr + i not in self.mem_data or self.mem_data[addr + i] != b:
+                        match = False
+                        break
+                    matched.append(b)
+                if match:
+                    results.append((addr, matched))
+                    
+        elif mode == "HEX with Mask (??)":
+            # Парсим паттерн с маской
+            parts = pattern.replace(" ", "").upper()
+            if len(parts) % 2 != 0:
+                QMessageBox.warning(self, self.tr("error"), "Invalid pattern length!")
+                return
+                
+            pattern_list = []
+            for i in range(0, len(parts), 2):
+                byte_str = parts[i:i+2]
+                if byte_str == "??":
+                    pattern_list.append(None)
+                else:
+                    try:
+                        pattern_list.append(int(byte_str, 16))
+                    except ValueError:
+                        QMessageBox.warning(self, self.tr("error"), f"Invalid byte: {byte_str}")
+                        return
+                        
+            for addr in sorted(self.mem_data.keys()):
+                match = True
+                matched = []
+                for i, pb in enumerate(pattern_list):
+                    if addr + i not in self.mem_data:
+                        match = False
+                        break
+                    if pb is not None and self.mem_data[addr + i] != pb:
+                        match = False
+                        break
+                    matched.append(self.mem_data[addr + i])
+                if match:
+                    results.append((addr, matched))
+                    
+        # Отображаем результаты
+        if hasattr(self, 'search_dialog'):
+            self.search_dialog.show_results(results)
+            
+        self.statusBar.showMessage(f"Found {len(results)} matches", 3000)
+        
+    def goto_address(self, addr):
+        """Переход к адресу в hex-редакторе"""
+        model = self.hex_model
+        if not model or not model.mem:
+            return
+            
+        # Вычисляем row и col
+        offset = addr - model.min_addr
+        if offset < 0:
+            return
+        row = offset // 16
+        col = (offset % 16) + 1  # +1 потому что колонка 0 - адрес
+        
+        index = model.index(row, col)
+        if index.isValid():
+            self.table.setCurrentIndex(index)
+            self.table.scrollTo(index, QTableView.PositionAtCenter)
+            self.tabs.setCurrentWidget(self.tab_hex)
+            
+    def disasm_from_address(self, addr):
+        """Дизассемблировать от указанного адреса"""
+        self.disasm_start.setText(f"{addr:04X}")
+        self.tabs.setCurrentWidget(self.tab_disasm)
+        self.run_disasm()
+        
+    def update_ui_state(self):
+        """Обновляет доступность кнопок в зависимости от состояния"""
+        connected = self.is_connected
+        active = self.bus_active
+        
+        # Управление шиной
+        self.btn_hold.setEnabled(connected and not active)
+        self.btn_unhold.setEnabled(connected and active)
+        
+        # Чтение/запись данных (требуют захвата шины)
+        self.btn_mem_read.setEnabled(connected and active)
+        self.btn_mem_write.setEnabled(connected and active)
+        self.btn_io_read.setEnabled(connected and active)
+        self.btn_io_write.setEnabled(connected and active)
+        
+        # Hex-редактор
+        self.btn_read_block.setEnabled(connected and active)
+        
+        # IO
+        self.btn_io_read_single.setEnabled(connected and active)
+        self.btn_io_write_single.setEnabled(connected and active)
+        self.btn_seq_run.setEnabled(connected and active)
+        
+        # Тест памяти
+        self.btn_test.setEnabled(connected and active)
+        
+        # Статусная строка
+        if not connected:
+            self.status_label_conn.setText(self.tr("disconnected"))
+        elif active:
+            self.status_label_conn.setText(f"{self.tr('connected')} | BUS ACTIVE")
+        else:
+            self.status_label_conn.setText(f"{self.tr('connected')} | BUS FREE")
+			
+    def closeEvent(self, event):
+        """Освобождение шины при закрытии программы"""
+        # Очищаем очередь
+        self.command_queue.clear()
+        self.waiting_response = False
+        
+        if self.serial_port and self.serial_port.is_open and self.bus_active:
+            self.log("Releasing bus before exit...")
+            try:
+                self.serial_port.write(SlipProtocol.encode(bytes([CMD_UNHOLD])))
+                self.serial_port.flush()
+                time.sleep(0.5)
+            except serial.SerialException:
+                pass
+                
+        if self.serial_port and self.serial_port.is_open:
+            self.serial_port.close()
+            
+        event.accept()
+		
+    def on_hold_clicked(self):
+        if not self.is_connected: return
+        self.send_command(bytes([CMD_HOLD]))
+        self.btn_hold.setEnabled(False)
+        
+    def on_unhold_clicked(self):
+        if not self.is_connected: return
+        self.send_command(bytes([CMD_UNHOLD]))
+        self.btn_unhold.setEnabled(False)
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

@@ -6,7 +6,7 @@
 #define _TFEND 0xDC
 #define _TFESC 0xDD
 ///
-#define MAX_DATA_SIZE 128 // Maximal data len = 128 byte
+#define MAX_DATA_SIZE 200 // Maximal data len = 200 byte
 ///
 #define latchOutPin 9 // Out shift registers latch 
 #define dataOutPin 8 // Data out to shift registers 
@@ -93,15 +93,18 @@ bool InvertCtrlBus = 0;
 void setup() {
   Disable_BUS_Ctrl(); // Disable BUS control
   //
-  Serial.begin (38400); // 9600/38400/115200;
-  Serial.println ("i8080-5 CI v.0.2.b. Copyright by Sergey Dorozhkin (aka R2AKT) 2024-2026.");
+  Serial.begin (9600); // 9600/38400/57600/115200;
+  //
+  #ifdef Debug
+    Serial.println ("i8080-5 CI v.0.2.b. Copyright by Sergey Dorozhkin (aka R2AKT) 2024-2026.");
+  #endif
   //
   Set_Internal_OutPin();
   Set_Internal_InPin();
   Set_CPUPin();
   //
   #ifdef Debug
-    Serial.println ("Set to 0x00 outputs (Address+Data");
+    Serial.println ("Set to 0x00 outputs (Address+Data)");
   #endif
   //
   #ifndef DirectPortManipulation
