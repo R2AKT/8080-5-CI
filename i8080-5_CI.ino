@@ -6,7 +6,7 @@
 #define _TFEND 0xDC
 #define _TFESC 0xDD
 ///
-#define MAX_DATA_SIZE 128 // Maximal data len = 128 byte (Total = 2*x[128*2] byte data array + 2*head)
+#define MAX_DATA_SIZE 128 // Maximal data len = 128 byte
 ///
 #define latchOutPin 9 // Out shift registers latch 
 #define dataOutPin 8 // Data out to shift registers 
@@ -34,8 +34,6 @@
 ///
 #define BusModeRead 0
 #define BusModeWrite 1
-//
-//#define InvertControlBus
 ////
 #define CmdNOP 0x00
 //
@@ -52,8 +50,6 @@
 #define CmdIOWriteByte 0x22
 #define CmdIOWriteBlock 0x23
 //
-//#define CmdEEPROMReadByte 0x30
-//#define CmdEEPROMReadBlock 0x31
 #define CmdEEPROMWriteByte 0x32
 #define CmdEEPROMWriteBlock 0x33
 ///
@@ -81,15 +77,24 @@
 #define AckEEPROMWriteByte 0x32
 #define AckEEPROMWriteBlock 0x33
 //
+#define CmdGetSizeSetup 0x40
+#define CmdSetPolaritySetup 0x41
+#define AckGetSizeSetup 0x40
+#define AckSetPolaritySetup 0x41
+//
 #define AckError 0xFF
 ////
 //#define Debug
+//#define InvertCtrlBusControlBus
+//#define DirectPortManipulation
+///
+bool InvertCtrlBus = 0;
 ///
 void setup() {
   Disable_BUS_Ctrl(); // Disable BUS control
   //
-  Serial.begin (115200); // 9600/115200;
-  Serial.println ("i8080-5 CI v.0.1.b. Copyright by Sergey Dorozhkin (aka R2AKT) 2024-2026.");
+  Serial.begin (38400); // 9600/38400/115200;
+  Serial.println ("i8080-5 CI v.0.2.b. Copyright by Sergey Dorozhkin (aka R2AKT) 2024-2026.");
   //
   Set_Internal_OutPin();
   Set_Internal_InPin();
@@ -98,17 +103,36 @@ void setup() {
   #ifdef Debug
     Serial.println ("Set to 0x00 outputs (Address+Data");
   #endif
-  shiftOut (dataOutPin, clockOutPin, bitOrder, 0x0); // Data
-  shiftOut (dataOutPin, clockOutPin, bitOrder, 0x0); // Data
-  shiftOut (dataOutPin, clockOutPin, bitOrder, 0x0); // Data
+  //
+  #ifndef DirectPortManipulation
+    shiftOut (dataOutPin, clockOutPin, bitOrder, 0x0); // Data
+    shiftOut (dataOutPin, clockOutPin, bitOrder, 0x0); // Data
+    shiftOut (dataOutPin, clockOutPin, bitOrder, 0x0); // Data
+  #else
+    fastShiftOut24 (0x0, 0x0, 0x0);
+  #endif
   //
   #ifdef Debug
     Serial.println ("Latch out data.");
   #endif
-  digitalWrite (latchOutPin, HIGH);
-  digitalWrite (latchOutPin, LOW);
+  //
+  #ifndef DirectPortManipulation
+    digitalWrite (latchOutPin, HIGH);
+    digitalWrite (latchOutPin, LOW);
+  #else
+    PORTB |= (1 << PB1);  // Установить HIGH
+    __asm__("nop\n\t");   // Задержка 1 такт (62.5 нс)
+    __asm__("nop\n\t");   // Задержка 1 такт
+    PORTB &= ~(1 << PB1); // Установить LOW
+  #endif
   //
   Enable_BUS_Ctrl (BusModeRead); // Enable BUS control, read mode
+  //
+  #ifdef InvertCtrlBusControlBus
+    InvertCtrlBus = 1;
+  #else
+    InvertCtrlBus = 0;
+  #endif
 }
 ///
 void loop() {
@@ -116,8 +140,8 @@ void loop() {
   bool Active = false;
   uint16_t StartAddr = 0;
   int16_t Rx_Len = 0;
-  uint8_t Rx_Buff[(MAX_DATA_SIZE*2)+3];
-  uint8_t Tx_Buff[(MAX_DATA_SIZE*2)+3];
+  uint8_t Rx_Buff[(MAX_DATA_SIZE+3)*2];
+  uint8_t Tx_Buff[(MAX_DATA_SIZE+3)*2];
   //
   Rx_Len = receive_packet (Rx_Buff, true, 100);
   ///
@@ -126,8 +150,36 @@ void loop() {
   } else {
     ///
     switch (Rx_Buff[0]) {
+      case CmdGetSizeSetup:
+        #ifdef Debug
+          Serial.println("'Get Block Size' command");
+        #endif
+        Tx_Buff[0] = AckGetSizeSetup;
+        Tx_Buff[1] = MAX_DATA_SIZE;
+        send_packet (Tx_Buff, 2);
+        break;
+      case CmdSetPolaritySetup:
+        if (Rx_Buff[1]) {
+        #ifdef Debug
+          Serial.println("'Set Control Bus Polarity' command - INVERT BUS!");
+        #endif
+          InvertCtrlBus = 1;
+        } else {
+          #ifdef Debug
+            Serial.println("'Set Control Bus Polarity' command - NORMAL BUS.");
+          #endif
+          InvertCtrlBus = 0;
+        }
+        //
+        Tx_Buff[0] = AckSetPolaritySetup;
+        send_packet (Tx_Buff, 1);
+        break;
       case CmdNOP:
+        #ifdef Debug
+          Serial.println("'NOP''command''");
+        #endif
         Tx_Buff[0] = CmdNOP;
+        send_packet (Tx_Buff, 1);
         break;
       case CmdHold:
         Enable_BUS_Ctrl (BusModeRead); // Enable BUS control, read mode
@@ -610,25 +662,36 @@ void loop() {
 /////
 void EEPROMWrite (uint8_t Data, uint16_t Address) {
   //Data write to shift registers
-  shiftOut (dataOutPin, clockOutPin, bitOrder, Data); // Data
-  shiftOut (dataOutPin, clockOutPin, bitOrder, (uint8_t)(Address>>8)&0xFF); // MSB address
-  shiftOut (dataOutPin, clockOutPin, bitOrder, (uint8_t)Address&0xFF); // LSB address
+  #ifndef DirectPortManipulation
+    shiftOut (dataOutPin, clockOutPin, bitOrder, Data); // Data
+    shiftOut (dataOutPin, clockOutPin, bitOrder, (uint8_t)(Address>>8)&0xFF); // MSB address
+    shiftOut (dataOutPin, clockOutPin, bitOrder, (uint8_t)Address&0xFF); // LSB address
+  #else
+    fastShiftOut24 (Data, (uint8_t)(Address>>8)&0xFF, (uint8_t)Address&0xFF);
+  #endif
   //
   #ifdef Debug
     Serial.println ("Latch out data.");
   #endif
-  digitalWrite (latchOutPin, HIGH);
-  digitalWrite (latchOutPin, LOW);
+  #ifndef DirectPortManipulation
+    digitalWrite (latchOutPin, HIGH);
+    digitalWrite (latchOutPin, LOW);
+  #else
+    PORTB |= (1 << PB1);  // Установить HIGH
+    __asm__("nop\n\t");   // Задержка 1 такт (62.5 нс)
+    __asm__("nop\n\t");   // Задержка 1 такт
+    PORTB &= ~(1 << PB1); // Установить LOW
+  #endif
   //
   #ifdef Debug
       Serial.println ("Set 'MemWR' pin to LOW.");
   #endif
   //
-  #ifndef InvertControlBus
+  if (!InvertCtrlBus) {
     digitalWrite (MemW_Pin, LOW);
-  #else
+  } else {
     digitalWrite (MemW_Pin, HIGH);
-  #endif
+  }
   //
   delay (1);
   //
@@ -636,11 +699,11 @@ void EEPROMWrite (uint8_t Data, uint16_t Address) {
     Serial.println ("Set 'MemWR' pin to HIGH.");
   #endif
   //
-  #ifndef InvertControlBus
+  if (!InvertCtrlBus) {
     digitalWrite (MemW_Pin, HIGH);
-  #else
+  } else {
     digitalWrite (MemW_Pin, LOW);
-  #endif
+  }
   //
   delay (2);
   //
@@ -648,67 +711,103 @@ void EEPROMWrite (uint8_t Data, uint16_t Address) {
 ///
 void MemWrite (uint8_t Data, uint16_t Address) {
   //Data write to shift registers
-  shiftOut (dataOutPin, clockOutPin, bitOrder, Data); // Data
-  shiftOut (dataOutPin, clockOutPin, bitOrder, (uint8_t)(Address>>8)&0xFF); // MSB address
-  shiftOut (dataOutPin, clockOutPin, bitOrder, (uint8_t)Address&0xFF); // LSB address
+  #ifndef DirectPortManipulation
+    shiftOut (dataOutPin, clockOutPin, bitOrder, Data); // Data
+    shiftOut (dataOutPin, clockOutPin, bitOrder, (uint8_t)(Address>>8)&0xFF); // MSB address
+    shiftOut (dataOutPin, clockOutPin, bitOrder, (uint8_t)Address&0xFF); // LSB address
+  #else
+    fastShiftOut24 (Data, (uint8_t)(Address>>8)&0xFF, (uint8_t)Address&0xFF);
+  #endif
   //
   #ifdef Debug
     Serial.println ("Latch out data.");
   #endif
-  digitalWrite (latchOutPin, HIGH);
-  digitalWrite (latchOutPin, LOW);
+  #ifndef DirectPortManipulation
+    digitalWrite (latchOutPin, HIGH);
+    digitalWrite (latchOutPin, LOW);
+  #else
+    PORTB |= (1 << PB1);  // Установить HIGH
+    __asm__("nop\n\t");   // Задержка 1 такт (62.5 нс)
+    __asm__("nop\n\t");   // Задержка 1 такт
+    PORTB &= ~(1 << PB1); // Установить LOW
+  #endif
   //
   #ifdef Debug
     Serial.println ("Set 'MemWR' pin to LOW.");
   #endif
   //
-  #ifndef InvertControlBus
+  if (!InvertCtrlBus) {
     digitalWrite (MemW_Pin, LOW);
-  #else
+  } else {
     digitalWrite (MemW_Pin, HIGH);
-  #endif
+  }
   //
   #ifdef Debug
     Serial.println ("Set 'MemWR' pin to HIGH.");
   #endif
   //
-  #ifndef InvertControlBus
+  if (!InvertCtrlBus) {
     digitalWrite (MemW_Pin, HIGH);
-  #else
+  } else {
     digitalWrite (MemW_Pin, LOW);
-  #endif
+  }
   //
 };
 //
 uint8_t MemRead (uint16_t Address) {
   //Data write to shift registers
-  shiftOut (dataOutPin, clockOutPin, bitOrder, 0x0); // Data
-  shiftOut (dataOutPin, clockOutPin, bitOrder, (uint8_t)(Address>>8)&0xFF); // MSB address
-  shiftOut (dataOutPin, clockOutPin, bitOrder, (uint8_t)Address&0xFF); // LSB address
+  #ifndef DirectPortManipulation
+    shiftOut (dataOutPin, clockOutPin, bitOrder, 0x0); // Data
+    shiftOut (dataOutPin, clockOutPin, bitOrder, (uint8_t)(Address>>8)&0xFF); // MSB address
+    shiftOut (dataOutPin, clockOutPin, bitOrder, (uint8_t)Address&0xFF); // LSB address
+  #else
+    fastShiftOut24 (0x0, (uint8_t)(Address>>8)&0xFF, (uint8_t)Address&0xFF);
+  #endif
   //
   #ifdef Debug
     Serial.println ("Latch out data.");
   #endif
-  digitalWrite (latchOutPin, HIGH);
-  digitalWrite (latchOutPin, LOW);
+  #ifndef DirectPortManipulation
+    digitalWrite (latchOutPin, HIGH);
+    digitalWrite (latchOutPin, LOW);
+  #else
+    PORTB |= (1 << PB1);  // Установить HIGH
+    __asm__("nop\n\t");   // Задержка 1 такт (62.5 нс)
+    __asm__("nop\n\t");   // Задержка 1 такт
+    PORTB &= ~(1 << PB1); // Установить LOW
+  #endif
   //
   #ifdef Debug
     Serial.println ("Set 'MemRD' pin to LOW.");
   #endif
   //
-  #ifndef InvertControlBus
+  if (!InvertCtrlBus) {
     digitalWrite (MemR_Pin, LOW); // toggle the MRDPin
-  #else
+  } else {
     digitalWrite (MemR_Pin, HIGH); // toggle the MRDPin
-  #endif
+  }
   //
   #ifdef Debug
     Serial.println ("Latch in data.");
   #endif
-  digitalWrite (latchInPin, LOW);
-  digitalWrite (latchInPin, HIGH);
   //
-  uint8_t IncomingValue = shiftIn (dataInPin, clockInPin, bitOrder);
+  #ifndef DirectPortManipulation
+    digitalWrite (latchInPin, LOW);
+    digitalWrite (latchInPin, HIGH);
+  #else
+    // Вместо digitalWrite(latchInPin, LOW/HIGH); (пин 2 -> PD2)
+    PORTD &= ~(1 << PD2); // LOW
+    __asm__("nop\n\t");   // Задержка 1 такт (62.5 нс)
+    __asm__("nop\n\t");   // Задержка 1 такт
+    PORTD |= (1 << PD2);  // HIGH
+  #endif
+  //
+  #ifndef DirectPortManipulation
+    uint8_t IncomingValue = shiftIn (dataInPin, clockInPin, bitOrder);
+  #else
+    uint8_t IncomingValue = fastShiftIn ();
+  #endif
+    //
   #ifdef Debug
     Serial.println (IncomingValue);
   #endif
@@ -717,78 +816,114 @@ uint8_t MemRead (uint16_t Address) {
     Serial.println ("Set 'MemRD' pin to HIGH.");
   #endif
   //
-  #ifndef InvertControlBus
+  if (!InvertCtrlBus) {
     digitalWrite (MemR_Pin, HIGH); // toggle the MRDPin
-  #else
+  } else {
     digitalWrite (MemR_Pin, LOW); // toggle the MRDPin
-  #endif
+  }
   //
   return IncomingValue;
 };
 //
 void IOWrite (uint8_t Data, uint16_t Address) {
-  //Data write to shift registers
-  shiftOut (dataOutPin, clockOutPin, bitOrder, Data); // Data
-  shiftOut (dataOutPin, clockOutPin, bitOrder, (uint8_t)(Address>>8)&0xFF); // MSB address
-  shiftOut (dataOutPin, clockOutPin, bitOrder, (uint8_t)Address&0xFF); // LSB address
+  // //Data write to shift registers
+  #ifndef DirectPortManipulation
+    shiftOut (dataOutPin, clockOutPin, bitOrder, Data); // Data
+    shiftOut (dataOutPin, clockOutPin, bitOrder, (uint8_t)(Address>>8)&0xFF); // MSB address
+    shiftOut (dataOutPin, clockOutPin, bitOrder, (uint8_t)Address&0xFF); // LSB address
+  #else
+    fastShiftOut24 (Data, (uint8_t)(Address>>8)&0xFF, (uint8_t)Address&0xFF);
+  #endif
   //
   #ifdef Debug
     Serial.println ("Latch out data.");
   #endif
-  digitalWrite (latchOutPin, HIGH);
-  digitalWrite (latchOutPin, LOW);
+  #ifndef DirectPortManipulation
+    digitalWrite (latchOutPin, HIGH);
+    digitalWrite (latchOutPin, LOW);
+  #else
+    PORTB |= (1 << PB1);  // Установить HIGH
+    __asm__("nop\n\t");   // Задержка 1 такт (62.5 нс)
+    __asm__("nop\n\t");   // Задержка 1 такт
+    PORTB &= ~(1 << PB1); // Установить LOW
+  #endif
   //
   #ifdef Debug
     Serial.println ("Set 'IOWR' pin to LOW.");
   #endif
   //
-  #ifndef InvertControlBus
+  if (!InvertCtrlBus) {
     digitalWrite (IOW_Pin, LOW); // toggle the IOWRPin
-  #else
+  } else {
     digitalWrite (IOW_Pin, HIGH); // toggle the IOWRPin 
-  #endif
+  }
   //
   #ifdef Debug
     Serial.println ("Set 'IOWR' pin to HIGH.");
   #endif
   //
-  #ifndef InvertControlBus
+  if (!InvertCtrlBus) {
     digitalWrite (IOW_Pin, HIGH); // toggle the IOWRPin
-  #else
+  } else {
     digitalWrite (IOW_Pin, LOW); // toggle the IOWRPin
-  #endif
+  }
   //
 };
 //
 uint8_t IORead (uint16_t Address) {
   //Data write to shift registers
-  shiftOut (dataOutPin, clockOutPin, bitOrder, 0x0); // Data
-  shiftOut (dataOutPin, clockOutPin, bitOrder, (uint8_t)(Address>>8)&0xFF); // MSB address
-  shiftOut (dataOutPin, clockOutPin, bitOrder, (uint8_t)Address&0xFF); // LSB address
+  #ifndef DirectPortManipulation
+    shiftOut (dataOutPin, clockOutPin, bitOrder, 0x0); // Data
+    shiftOut (dataOutPin, clockOutPin, bitOrder, (uint8_t)(Address>>8)&0xFF); // MSB address
+    shiftOut (dataOutPin, clockOutPin, bitOrder, (uint8_t)Address&0xFF); // LSB address
+  #else
+    fastShiftOut24 (0x0, (uint8_t)(Address>>8)&0xFF, (uint8_t)Address&0xFF);
+  #endif
   //
   #ifdef Debug
     Serial.println ("Latch out data.");
   #endif
-  digitalWrite (latchOutPin, HIGH);
-  digitalWrite (latchOutPin, LOW);
+  #ifndef DirectPortManipulation
+    digitalWrite (latchOutPin, HIGH);
+    digitalWrite (latchOutPin, LOW);
+  #else
+    PORTB |= (1 << PB1);  // Установить HIGH
+    __asm__("nop\n\t");   // Задержка 1 такт (62.5 нс)
+    __asm__("nop\n\t");   // Задержка 1 такт
+    PORTB &= ~(1 << PB1); // Установить LOW
+  #endif
   //
   #ifdef Debug
     Serial.println ("Set 'IORD' pin to LOW.");
   #endif
   //
-  #ifndef InvertControlBus
+  if (!InvertCtrlBus) {
     digitalWrite (IOR_Pin, LOW); // toggle the IORDPin
-  #else
+  } else {
     digitalWrite (IOR_Pin, HIGH); // toggle the IORDPin
-  #endif
+  }
   //
   #ifdef Debug
     Serial.println ("Latch in data.");
   #endif
-  digitalWrite (latchInPin, LOW);
-  digitalWrite (latchInPin, HIGH);
   //
-  uint8_t IncomingValue = shiftIn(dataInPin, clockInPin, bitOrder);
+  #ifndef DirectPortManipulation
+    digitalWrite (latchInPin, LOW);
+    digitalWrite (latchInPin, HIGH);
+  #else
+    // Вместо digitalWrite(latchInPin, LOW/HIGH); (пин 2 -> PD2)
+    PORTD &= ~(1 << PD2); // LOW
+    __asm__("nop\n\t");   // Задержка 1 такт (62.5 нс)
+    __asm__("nop\n\t");   // Задержка 1 такт
+    PORTD |= (1 << PD2);  // HIGH
+  #endif
+  //
+  #ifndef DirectPortManipulation
+    uint8_t IncomingValue = shiftIn(dataInPin, clockInPin, bitOrder);
+  #else
+    uint8_t IncomingValue = fastShiftIn ();
+  #endif
+  //
   #ifdef Debug
     Serial.println (IncomingValue);
   #endif
@@ -797,11 +932,11 @@ uint8_t IORead (uint16_t Address) {
     Serial.println ("Set 'IORD' pin to HIGH.");
   #endif
   //
-  #ifndef InvertControlBus
+  if (!InvertCtrlBus) {
     digitalWrite (IOR_Pin, HIGH); // toggle the IORDPin
-  #else
+  } else {
     digitalWrite (IOR_Pin, LOW); // toggle the IORDPin
-  #endif
+  }
   //
   return IncomingValue;
 };
@@ -819,21 +954,21 @@ void Enable_BUS_Ctrl (uint8_t BusMode) {
     Serial.println ("Set 'MemWR' pin to HIGH.");
   #endif
   //
-  #ifndef InvertControlBus
+  if (!InvertCtrlBus) {
     digitalWrite (MemW_Pin, HIGH);
-  #else
+  } else {
     digitalWrite (MemW_Pin, LOW);
-  #endif
+  }
   //
   #ifdef Debug
     Serial.println ("Set 'MemRD' pin to HIGH.");
   #endif
   //
-  #ifndef InvertControlBus
+  if (!InvertCtrlBus) {
     digitalWrite (MemR_Pin, HIGH);
-  #else
+  } else {
     digitalWrite (MemR_Pin, LOW);
-  #endif
+  }
   //
   #ifdef Debug
     Serial.println ("Set 'IO' pins to output...");
@@ -843,24 +978,24 @@ void Enable_BUS_Ctrl (uint8_t BusMode) {
   pinMode (IOR_Pin, OUTPUT);
   //
   #ifdef Debug
-    Serial.println ("Set 'IORD' pin to HIGH.");
+    Serial.println ("Set 'IOWR' pin to HIGH.");
   #endif
   //
-  #ifndef InvertControlBus
+  if (!InvertCtrlBus) {
     digitalWrite (IOW_Pin, HIGH);
-  #else
+  } else {
     digitalWrite (IOW_Pin, LOW);
-  #endif
+  }
   //
   #ifdef Debug
     Serial.println ("Set 'IORD' pin to HIGH.");
   #endif
   //
-  #ifndef InvertControlBus
+  if (!InvertCtrlBus) {
     digitalWrite (IOR_Pin, HIGH);
-  #else
+  } else {
     digitalWrite (IOR_Pin, LOW);
-  #endif
+  }
   ///
   #ifdef Debug
     Serial.println ("Enable address output.");
@@ -1040,15 +1175,13 @@ int16_t receive_packet (uint8_t *Buff, bool Blocking, uint16_t TimeOut) {
 int16_t send_packet (const uint8_t *Buff, const size_t size) {
 
 	int16_t RAW_Len = 0;
-	int16_t RAW_BuffSize = 0;
   //
   if (size > (MAX_DATA_SIZE + 4)*2) {
     // PHY_Error_Num = error_num_oversize;
     return -1;
   }
-  RAW_BuffSize = (size + 4) * 2;
   //
-	uint8_t *PHY_Exchange_Tx = new uint8_t [RAW_BuffSize];
+  uint8_t PHY_Exchange_Tx[(MAX_DATA_SIZE+3)*2] = {};
 	RAW_Len = ESCData (PHY_Exchange_Tx, Buff, size);
   //
 	Serial.write ((uint8_t)_FEND); // Frame 'Start'
@@ -1058,8 +1191,6 @@ int16_t send_packet (const uint8_t *Buff, const size_t size) {
 	Serial.write ((uint8_t)_FEND); // Frame 'End'
 	//
 	Serial.flush (); // Waits for the transmission to complete.
-	//
-	delete [] PHY_Exchange_Tx;
 	//
 	// PHY_Error_Num = error_num_no_error;
 	//
@@ -1085,15 +1216,74 @@ size_t ESCData (uint8_t *ESCBuff, const uint8_t *UnESCBuff, size_t size) {
 size_t DeESCData (uint8_t *DeESCBuff, const uint8_t *ESCBuff, size_t size) {
     size_t count = 0;
     for (size_t i = 0; i < size; i++) {
-        if ((ESCBuff[i] == _FESC) && (ESCBuff[i+1] == _TFEND)) {
-            DeESCBuff[count++] = _FEND;
-            i++;
-        } else if ((ESCBuff[i] == _FESC) && (ESCBuff[i+1] == _TFESC)) {
-            DeESCBuff[count++] = _FESC;
-            i++;
+        if (ESCBuff[i] == _FESC) {
+            if (i + 1 < size) { // Проверяем, есть ли следующий байт
+                if (ESCBuff[i+1] == _TFEND) {
+                    DeESCBuff[count++] = _FEND;
+                    i++;
+                } else if (ESCBuff[i+1] == _TFESC) {
+                    DeESCBuff[count++] = _FESC;
+                    i++;
+                } else {
+                    DeESCBuff[count++] = ESCBuff[i];
+                }
+            } else { // Пакет оборвался на _FESC
+              return 0;
+            }
         } else {
             DeESCBuff[count++] = ESCBuff[i];
         }
     }
     return count;
+}
+///
+// Отправка 3 байт (Data, AddrH, AddrL) с максимальной скоростью
+// bitOrder: MSBFIRST
+void fastShiftOut24(uint8_t data, uint8_t addrH, uint8_t addrL) {
+    uint32_t combined = ((uint32_t)data << 16) | ((uint32_t)addrH << 8) | addrL;
+    
+    // Сохраняем состояние портов, чтобы не затронуть другие пины
+    uint8_t oldSREG = SREG;
+    cli(); // Отключаем прерывания для точного тайминга
+    
+    for (int8_t i = 23; i >= 0; i--) {
+        // 1. Устанавливаем DATA (пин 8 -> PB0)
+        if ((combined >> i) & 1) {
+            PORTB |= (1 << PB0);  // HIGH
+        } else {
+            PORTB &= ~(1 << PB0); // LOW
+        }
+        
+        // 2. Тактовый импульс CLOCK (пин 5 -> PD5)
+        PORTD |= (1 << PD5);  // HIGH
+        __asm__("nop\n\t");   // Задержка 1 такт (62.5 нс)
+        __asm__("nop\n\t");   // Задержка 1 такт
+        PORTD &= ~(1 << PD5); // LOW
+    }
+    
+    SREG = oldSREG; // Восстанавливаем прерывания
+}
+///
+// Быстрое чтение байта (пины: Data=PD3, Clock=PD4)
+// bitOrder: MSBFIRST
+uint8_t fastShiftIn() {
+    uint8_t result = 0;
+    uint8_t oldSREG = SREG;
+    cli(); // Отключаем прерывания
+    
+    for (uint8_t i = 0; i < 8; i++) {
+        // Тактовый импульс (пин 4 -> PD4)
+        PORTD |= (1 << PD4);  // HIGH
+        
+        // Читаем DATA (пин 3 -> PD3)
+        // PIND - это регистр чтения состояния порта D
+        if (PIND & (1 << PD3)) {
+            result |= (1 << (7 - i)); // MSBFIRST
+        }
+        
+        PORTD &= ~(1 << PD4); // LOW
+    }
+    
+    SREG = oldSREG; // Восстанавливаем прерывания
+    return result;
 }
