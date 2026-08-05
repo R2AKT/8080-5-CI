@@ -7,10 +7,10 @@ Download module. To connect to the debugging board - https://github.com/R2AKT/St
 
  Allows you to read and write data from/to memory and I/O ports.
 
- The firmware for the Arduino Nano is attached (test version). Currently, there is no PC software available, and assistance is required in writing it (I am unable to handle modern IDEs).
+Firmware for Arduino Nano is included (test version). PC software for Windows and Linux is currently under development (initial stage).
  
 Модуль загрузки. Для подключения к плате отладки - https://github.com/R2AKT/Stepper.
 
 Позволяет считывать и записывать данные из/в памяти, портов ввода-вывода.
 
-Прошивка для Arduino Nano прилагается (тестовая версия). ПО для PC в настоящее время отсутствует, требуется помощь в написании (не получается совладать с современными IDE).
+Прошивка для Arduino Nano прилагается (тестовая версия). ПО для PC под Windows и Linux в настоящее время разрабатывается (начальная стадия).
