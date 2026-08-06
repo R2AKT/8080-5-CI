@@ -4,14 +4,13 @@ import serial
 import serial.tools.list_ports
 from PySide6.QtWidgets import (QApplication, QMainWindow, QWidget, QVBoxLayout, 
                                QHBoxLayout, QGridLayout, QPushButton, QComboBox, QLabel, 
-                               QLineEdit, QTextEdit, QGroupBox, QMessageBox,
+                               QLineEdit, QTextEdit, QGroupBox, QMessageBox, QTableWidget, QTableWidgetItem,
                                QTabWidget, QTableView, QHeaderView, QFileDialog,
                                QProgressBar, QSpinBox, QCheckBox, QScrollArea, QInputDialog,
                                QToolTip, QStyle, QStatusBar, QDialog, QListWidget, QListWidgetItem, QMenu)
 
 from PySide6.QtCore import Qt, QTimer, QThread, QObject, Signal, QAbstractTableModel, QModelIndex, QEvent, QLocale, QSettings
-from PySide6.QtGui import QFont, QColor, QPainter, QPen, QBrush
-
+from PySide6.QtGui import QFont, QColor, QPainter, QPen, QBrush, QShortcut, QKeySequence
 
 # ==================== ЛОКАЛИЗАЦИЯ И ТЕМЫ ====================
 LANGS = {
@@ -55,6 +54,14 @@ LANGS = {
         "expected": "Expected", "got": "Got", "export": "Export", "search": "Search",
         "goto_addr": "Goto Address", "fill_range": "Fill Range", "copy_addr": "Copy Address",
         "copy_val": "Copy Value", "invert_byte": "Invert Byte", "disasm_from": "Disassemble from",
+        "text_column": "Text", "addr_column": "Addr", "tab_compare": "Compare",
+        "load_compare": "Load File to Compare", "btn_compare": "Compare", "export_report": "Export Report",
+        "compare_addr": "Address", "compare_current": "Current", "compare_file": "File", "compare_status": "Status",
+        "status_changed": "Changed", "status_added": "Added in File", "status_removed": "Removed in File",
+        "no_compare_file": "No file loaded for comparison", "compare_loaded": "Loaded", 
+        "run_compare_first": "Run compare first!", "compare_found": "differences found",
+        "compare_complete": "Compare complete", "compare_exported": "Compare report exported to",
+        "load_compare_title": "Load File to Compare", "export_compare_title": "Export Compare Report",
     },
     "ru": {
         "app_title": "i8080-5 Мастер Контроллер",
@@ -96,6 +103,14 @@ LANGS = {
         "expected": "Ожидалось", "got": "Получено", "export": "Экспорт", "search": "Поиск",
         "goto_addr": "Перейти к адресу", "fill_range": "Заполнить диапазон", "copy_addr": "Копировать адрес",
         "copy_val": "Копировать значение", "invert_byte": "Инвертировать байт", "disasm_from": "Дизассемблировать от",
+        "text_column": "Текст", "addr_column": "Адрес", "tab_compare": "Сравнение",
+        "load_compare": "Загрузить файл для сравнения", "btn_compare": "Сравнить", "export_report": "Экспорт отчёта",
+        "compare_addr": "Адрес", "compare_current": "Текущий", "compare_file": "Файл", "compare_status": "Статус",
+        "status_changed": "Изменено", "status_added": "Добавлено в файле", "status_removed": "Удалено в файле",
+        "no_compare_file": "Файл для сравнения не загружен", "compare_loaded": "Загружено", 
+        "run_compare_first": "Сначала выполните сравнение!", "compare_found": "различий найдено",
+        "compare_complete": "Сравнение завершено", "compare_exported": "Отчёт о сравнении экспортирован в",
+        "load_compare_title": "Загрузить файл для сравнения", "export_compare_title": "Экспорт отчёта о сравнении",
     }
 }
 
@@ -235,7 +250,7 @@ class I8080Disassembler:
 
     def __init__(self):
         self.table = self._generate_table()
-
+        
     def _generate_table(self):
         t = {}
         for op in [0x08, 0x10, 0x18, 0x20, 0x28, 0x30, 0x38, 0xDD, 0xED, 0xFD]:
@@ -244,11 +259,26 @@ class I8080Disassembler:
         t[0xCB] = (1, "CALL*")
         
         t[0x00] = (1, "NOP"); t[0x76] = (1, "HLT")
+        
+        # LXI: 0x01, 0x11, 0x21, 0x31
         for i in range(4): t[0x01 + i*16] = (3, f"LXI {self.RP[i]},{{1:02X}}{{0:02X}}h")
+        
+        # DAD: 0x09, 0x19, 0x29, 0x39 ← ДОБАВЛЕНО
+        for i in range(4): t[0x09 + i*16] = (1, f"DAD {self.RP[i]}")
+        
+        # INX: 0x03, 0x13, 0x23, 0x33
         for i in range(4): t[0x03 + i*16] = (1, f"INX {self.RP[i]}")
+        
+        # DCX: 0x0B, 0x1B, 0x2B, 0x3B
         for i in range(4): t[0x0B + i*16] = (1, f"DCX {self.RP[i]}")
+        
+        # INR: 0x04, 0x0C, 0x14, 0x1C, 0x24, 0x2C, 0x34, 0x3C
         for i in range(8): t[0x04 + i*8] = (1, f"INR {self.REGS[i]}")
+        
+        # DCR: 0x05, 0x0D, 0x15, 0x1D, 0x25, 0x2D, 0x35, 0x3D
         for i in range(8): t[0x05 + i*8] = (1, f"DCR {self.REGS[i]}")
+        
+        # MVI: 0x06, 0x0E, 0x16, 0x1E, 0x26, 0x2E, 0x36, 0x3E
         for i in range(8): t[0x06 + i*8] = (2, f"MVI {self.REGS[i]},{{0:02X}}h")
         
         t[0x02] = (1, "STAX B"); t[0x12] = (1, "STAX D")
@@ -343,42 +373,184 @@ class I8080Disassembler:
 
 # ==================== КАСТОМНЫЙ ВИДЖЕТ ДИЗАССЕМБЛЕРА СО СТРЕЛКАМИ ====================
 class DisasmView(QWidget):
-    def __init__(self, parent=None):
+    def __init__(self, mem_data, parent=None):
         super().__init__(parent)
         self.lines = []
+        self.mem_data = mem_data
         self.line_height = 22
         self.addr_to_index = {}
-        self.setFont(QFont("Consolas", 10))
+        self.font_size = 10
+        self.setFont(QFont("Consolas", self.font_size))
         self.setMinimumWidth(700)
         self.arrow_margin = 30
+        self.is_dark_theme = False
+        self.setup_colors()
+        
+    def setup_colors(self):
+        """Настраивает цвета в зависимости от темы"""
+        if self.is_dark_theme:
+            # Тёмная тема
+            self.colors = {
+                "bg": QColor("#1e1e1e"),
+                "addr": QColor("#858585"),
+                "bytes": QColor("#6a6a6a"),
+                "jump": QColor("#569cd6"),      # Синий
+                "memory": QColor("#6bcf7f"),    # Зелёный
+                "io": QColor("#c586c0"),        # Фиолетовый
+                "control": QColor("#858585"),   # Серый
+                "register": QColor("#ce9178"),  # Оранжевый
+                "alu": QColor("#dcdcaa"),       # Жёлтый
+                "stack": QColor("#4ec9b0"),     # Бирюзовый
+                "undoc": QColor("#ff6b6b"),     # Красный
+                "comment": QColor("#569cd6"),   # Голубой
+                "text": QColor("#d4d4d4"),      # Основной текст
+            }
+        else:
+            # Светлая тема (яркие, контрастные цвета на белом фоне)
+            self.colors = {
+                "bg": QColor("#ffffff"),        # Белый фон
+                "addr": QColor("#808080"),      # Серый
+                "bytes": QColor("#666666"),     # Тёмно-серый
+                "jump": QColor("#0055cc"),      # Тёмно-синий
+                "memory": QColor("#007700"),    # Тёмно-зелёный
+                "io": QColor("#8800aa"),        # Фиолетовый
+                "control": QColor("#666666"),   # Серый
+                "register": QColor("#cc5500"),  # Тёмно-оранжевый
+                "alu": QColor("#886600"),       # Тёмно-жёлтый
+                "stack": QColor("#008888"),     # Тёмно-бирюзовый
+                "undoc": QColor("#cc0000"),     # Красный
+                "comment": QColor("#0055cc"),   # Голубой
+                "text": QColor("#000000"),      # Чёрный текст
+            }
+        
+    def set_theme(self, is_dark):
+        """Устанавливает тему"""
+        self.is_dark_theme = is_dark
+        self.setup_colors()
+        self.update()
         
     def set_lines(self, lines):
         self.lines = lines
         self.addr_to_index = {line[0]: i for i, line in enumerate(lines)}
         self.setFixedHeight(len(lines) * self.line_height + 10)
-        self.update()
+        self.repaint()
+        if self.parent():
+            self.parent().update()
+            
+    def get_instruction_color(self, asm):
+        """Возвращает цвет для команды в зависимости от её типа"""
+        parts = asm.split()
+        if not parts:
+            return self.colors["text"]
+            
+        mnemonic = parts[0].upper()
+        
+        # Недокументированные команды
+        if asm.endswith("*"):
+            return self.colors["undoc"]
+        
+        # Переходы: JMP, CALL, Jcc, Ccc, RST
+        if mnemonic in ["JMP", "CALL", "RST"]:
+            return self.colors["jump"]
+        if len(mnemonic) > 1:
+            suffix = mnemonic[1:]
+            if mnemonic[0] == 'J' and suffix in ["NZ", "Z", "NC", "C", "PO", "PE", "P", "M"]:
+                return self.colors["jump"]
+            if mnemonic[0] == 'C' and suffix in ["NZ", "Z", "NC", "C", "PO", "PE", "P", "M"]:
+                return self.colors["jump"]
+        
+        # Память
+        if mnemonic in ["LDA", "STA", "LHLD", "SHLD", "LDAX", "STAX", "XCHG", "XTHL"]:
+            return self.colors["memory"]
+        if mnemonic == "MOV" and len(parts) > 1 and "M" in parts[1]:
+            return self.colors["memory"]
+        
+        # Ввод-вывод
+        if mnemonic in ["IN", "OUT"]:
+            return self.colors["io"]
+        
+        # Управление
+        if mnemonic in ["NOP", "HLT", "DI", "EI", "RET", "PCHL", "SPHL"]:
+            return self.colors["control"]
+        
+        # Регистры и данные
+        if mnemonic in ["MVI", "LXI", "INR", "DCR", "MOV", "INX", "DCX"]:
+            return self.colors["register"]
+        
+        # Арифметика и логика (включая DAD)
+        if mnemonic in ["ADD", "ADC", "SUB", "SBB", "ANA", "XRA", "ORA", "CMP",
+                        "RLC", "RRC", "RAL", "RAR", "DAA", "CMA", "STC", "CMC",
+                        "ADI", "ACI", "SUI", "SBI", "ANI", "XRI", "ORI", "CPI",
+                        "DAD"]:
+            return self.colors["alu"]
+        
+        # Стек
+        if mnemonic in ["PUSH", "POP"]:
+            return self.colors["stack"]
+        
+        return self.colors["text"]
+        
+    def wheelEvent(self, event):
+        """Ctrl + колесо мыши для изменения размера шрифта"""
+        if event.modifiers() == Qt.ControlModifier:
+            delta = event.angleDelta().y()
+            if delta > 0:
+                self.font_size = min(self.font_size + 1, 36)
+            else:
+                self.font_size = max(self.font_size - 1, 8)
+                
+            self.setFont(QFont("Consolas", self.font_size))
+            self.line_height = self.font_size + 12
+            self.setFixedHeight(len(self.lines) * self.line_height + 10)
+            self.update()
+            event.accept()
+        else:
+            super().wheelEvent(event)
         
     def paintEvent(self, event):
         painter = QPainter(self)
         painter.setRenderHint(QPainter.Antialiasing)
         painter.setFont(self.font())
         
-        # Используем стандартный фон виджета вместо чёрного
-        painter.fillRect(self.rect(), self.palette().window())
+        # Фон (белый для светлой темы)
+        painter.fillRect(self.rect(), self.colors["bg"])
         
+        # Получаем ширину символа для выравнивания
+        font_metrics = painter.fontMetrics()
+        char_width = font_metrics.averageCharWidth()
+        
+        # Фиксированные позиции колонок
+        addr_x = self.arrow_margin + 10
+        bytes_x = addr_x + 6 * char_width
+        asm_x = bytes_x + 14 * char_width
+        
+        # Рисуем строки
         for i, (addr, size, asm, undoc, target) in enumerate(self.lines):
             y = i * self.line_height + self.line_height // 2 + 5
             
-            painter.setPen(self.palette().windowText().color())
-            painter.drawText(self.arrow_margin + 10, y, f"{addr:04X}")
+            # Адрес
+            painter.setPen(self.colors["addr"])
+            painter.drawText(addr_x, y, f"{addr:04X}")
             
+            # Байты
+            bytes_str = " ".join(f"{self.mem_data.get(addr+k, 0):02X}" for k in range(size))
+            painter.setPen(self.colors["bytes"])
+            painter.drawText(bytes_x, y, bytes_str)
+            
+            # Команда
             asm_text = f"{asm} {undoc}".strip()
-            painter.drawText(self.arrow_margin + 70, y, asm_text)
+            color = self.get_instruction_color(asm_text)
+            painter.setPen(color)
+            painter.drawText(asm_x, y, asm_text)
             
+            # Комментарий перехода
             if target is not None:
-                painter.setPen(QColor("#569cd6"))
-                painter.drawText(self.arrow_margin + 250, y, f"; -> {target:04X}h")
+                comment = f"; -> {target:04X}h"
+                comment_x = asm_x + len(asm_text) * char_width + 3 * char_width
+                painter.setPen(self.colors["comment"])
+                painter.drawText(comment_x, y, comment)
                 
+        # Рисуем стрелки переходов
         self.draw_arrows(painter)
         
     def draw_arrows(self, painter):
@@ -418,13 +590,14 @@ class DisasmView(QWidget):
 
 # ==================== МОДЕЛЬ ДАННЫХ HEX-РЕДАКТОРА ====================
 class HexModel(QAbstractTableModel):
-    dataEdited = Signal()  # Новый сигнал для уведомления об изменении
+    dataEdited = Signal()
     
     def __init__(self, mem_dict=None):
         super().__init__()
         self.mem = mem_dict if mem_dict is not None else {}
         self.min_addr = 0
         self.max_addr = 0
+        self.lang = "en"  # ← Добавлено для локализации заголовков
         self.update_range()
 
     def update_data(self, new_mem):
@@ -446,6 +619,17 @@ class HexModel(QAbstractTableModel):
 
     def columnCount(self, parent=QModelIndex()):
         return 18
+
+    def headerData(self, section, orientation, role=Qt.DisplayRole):
+        """Заголовки колонок"""
+        if orientation == Qt.Horizontal and role == Qt.DisplayRole:
+            if section == 0:
+                return LANGS.get(self.lang, LANGS['en']).get('addr_column', 'Addr')
+            elif 1 <= section <= 16:
+                return f"{section - 1:X}"  # 0, 1, 2, ... F
+            elif section == 17:
+                return LANGS.get(self.lang, LANGS['en']).get('text_column', 'Text')
+        return super().headerData(section, orientation, role)
 
     def data(self, index, role=Qt.DisplayRole):
         if not index.isValid(): return None
@@ -480,15 +664,19 @@ class HexModel(QAbstractTableModel):
                 val = int(value, 16)
                 if 0 <= val <= 255:
                     addr = self.min_addr + (index.row() * 16) + index.column() - 1
-                    self.mem[addr] = val
-                    self.dataChanged.emit(index, index, [Qt.DisplayRole])
-                    self.dataEdited.emit()  # Излучаем новый сигнал
+                    old_val = self.mem.get(addr, 0)
+                    if old_val != val:  # Только если значение изменилось
+                        self.mem[addr] = val
+                        self.last_edit = (addr, old_val, val)  # ← Сохраняем для undo
+                        self.dataChanged.emit(index, index, [Qt.DisplayRole])
+                        self.dataEdited.emit()
                     return True
             except ValueError: pass
         return False
 
 # ==================== КАСТОМНАЯ ТАБЛИЦА HEX-РЕДАКТОРА С ПОДСКАЗКАМИ ====================
 class HexTableView(QTableView):
+    editOperation = Signal(list)  # ← Добавлено: [(addr, old_val, new_val), ...]
     statusUpdate = Signal(str, str, str)
     gotoAddress = Signal(int)
     
@@ -587,11 +775,13 @@ class HexTableView(QTableView):
     def invert_byte(self, addr):
         """Инвертирует байт по адресу"""
         if addr in self.mem_data:
-            self.mem_data[addr] = ~self.mem_data[addr] & 0xFF
+            old_val = self.mem_data[addr]
+            new_val = ~old_val & 0xFF
+            self.mem_data[addr] = new_val
+            self.editOperation.emit([(addr, old_val, new_val)])  # ← Для undo
             model = self.model()
             if model:
-                model.update_data({addr: self.mem_data[addr]})
-                model.dataEdited.emit()
+                model.update_data({addr: new_val})
                 
     def fill_range(self, start_addr):
         """Заполняет диапазон значением"""
@@ -605,13 +795,17 @@ class HexTableView(QTableView):
         size, ok2 = QInputDialog.getInt(self, "Fill Range", "Size (Dec):", 16, 1, 4096)
         if not ok2: return
         
+        changes = []
         for i in range(size):
-            self.mem_data[start_addr + i] = val
+            addr = start_addr + i
+            old_val = self.mem_data.get(addr, 0)
+            self.mem_data[addr] = val
+            changes.append((addr, old_val, val))
             
+        self.editOperation.emit(changes)  # ← Для undo
         model = self.model()
         if model:
             model.update_data({start_addr + i: val for i in range(size)})
-            model.dataEdited.emit()
             
     def disasm_from(self, addr):
         """Дизассемблировать от указанного адреса"""
@@ -987,6 +1181,11 @@ class MainWindow(QMainWindow):
         self.command_queue = []
         self.waiting_response = False
         self.worker_active = False
+        
+        # === Undo/Redo ===
+        self.undo_stack = []
+        self.redo_stack = []
+        self.max_undo_depth = 100
 		
         self.init_ui()
         self.retranslate_ui()
@@ -1037,6 +1236,12 @@ class MainWindow(QMainWindow):
         self.poll_timer.timeout.connect(self.read_serial)
         
         self.update_ui_state()
+        
+        self.setup_shortcuts()
+		
+        # Применяем тему к дизассемблеру при запуске
+        is_dark = (self.current_theme == "Dark")
+        self.disasm_view.set_theme(is_dark)
         
     def tr(self, key):
         return LANGS.get(self.current_lang, LANGS["en"]).get(key, key)
@@ -1098,6 +1303,7 @@ class MainWindow(QMainWindow):
         self.create_tab_disasm()
         self.create_tab_test()
         self.create_tab_io_seq()
+        self.create_tab_compare()
         
         self.lbl_log = QLabel()
         main_layout.addWidget(self.lbl_log)
@@ -1231,26 +1437,37 @@ class MainWindow(QMainWindow):
         self.lbl_range = QLabel()
         self.btn_read_block = QPushButton()
         self.btn_read_block.clicked.connect(self.show_read_block_dialog)
+        self.btn_search = QPushButton()
+        self.btn_search.clicked.connect(self.show_search_dialog)
         ctrl_layout.addWidget(self.lbl_range)
         ctrl_layout.addStretch()
         ctrl_layout.addWidget(self.btn_read_block)
-        self.btn_search = QPushButton("Search")
-        self.btn_search.clicked.connect(self.show_search_dialog)
         ctrl_layout.addWidget(self.btn_search)
         layout.addLayout(ctrl_layout)
         
         self.table = HexTableView(self.disassembler, self.mem_data)
         self.table.setModel(self.hex_model)
-        self.table.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
+        
+        # === Размеры колонок ===
+        # Колонка 0 (Addr): по содержимому
         self.table.horizontalHeader().setSectionResizeMode(0, QHeaderView.ResizeToContents)
+        
+        # Колонки 1-16 (данные): узкие, фиксированные
+        for i in range(1, 17):
+            self.table.setColumnWidth(i, 32)
+            self.table.horizontalHeader().setSectionResizeMode(i, QHeaderView.Fixed)
+        
+        # Колонка 17 (ASCII/Текст): растягивается на оставшееся место
+        self.table.horizontalHeader().setSectionResizeMode(17, QHeaderView.Stretch)
+        
         self.table.verticalHeader().setVisible(False)
         self.table.setFont(QFont("Consolas", 10))
         layout.addWidget(self.table)
-		
-        # Подключаем сигнал обновления статусной строки
-        self.table.statusUpdate.connect(self.on_status_update)
         
+        # Подключаем сигналы
+        self.table.statusUpdate.connect(self.on_status_update)
         self.table.gotoAddress.connect(self.goto_address)
+        self.table.editOperation.connect(self.push_undo)
         
         self.tabs.addTab(tab, "")
         self.tab_hex = tab
@@ -1279,7 +1496,7 @@ class MainWindow(QMainWindow):
         ctrl_layout.addWidget(self.btn_export_disasm)
         layout.addLayout(ctrl_layout)
         
-        self.disasm_view = DisasmView()
+        self.disasm_view = DisasmView(self.mem_data)
         self.disasm_scroll = QScrollArea()
         self.disasm_scroll.setWidget(self.disasm_view)
         self.disasm_scroll.setWidgetResizable(True)
@@ -1375,6 +1592,10 @@ class MainWindow(QMainWindow):
         self.current_theme = "Light" if index == 0 else "Dark"
         self.settings.setValue("theme", self.current_theme)  # Сохраняем настройку
         QApplication.instance().setStyleSheet(THEMES[self.current_theme])
+
+        # Обновляем тему дизассемблера
+        is_dark = (self.current_theme == "Dark")
+        self.disasm_view.set_theme(is_dark)
         
     def retranslate_ui(self):
         self.setWindowTitle(self.tr("app_title"))
@@ -1448,6 +1669,31 @@ class MainWindow(QMainWindow):
         self.btn_seq_load.setText(self.tr("load_file"))
         self.btn_seq_run.setText(self.tr("run_seq"))
         
+        # Обновляем язык модели для заголовков колонок
+        self.hex_model.lang = self.current_lang
+        self.hex_model.layoutChanged.emit()
+		
+        self.tabs.setTabText(6, "Compare")  # Вкладка сравнения
+        self.btn_load_compare.setText("Load File to Compare")
+        self.btn_compare.setText("Compare")
+        self.btn_export_compare.setText("Export Report")
+        
+        # Вкладка сравнения
+        self.tabs.setTabText(6, self.tr("tab_compare"))
+        self.btn_load_compare.setText(self.tr("load_compare"))
+        self.btn_compare.setText(self.tr("btn_compare"))
+        self.btn_export_compare.setText(self.tr("export_report"))
+        self.lbl_compare_info.setText(self.tr("no_compare_file"))
+        
+        # Заголовки таблицы сравнения
+        self.compare_table.setHorizontalHeaderLabels([
+            self.tr("compare_addr"),
+            self.tr("compare_current"),
+            self.tr("compare_file"),
+            self.tr("compare_status")
+        ])
+        self.compare_table.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
+		
         # Лог
         self.lbl_log.setText(self.tr("log"))
 
@@ -1744,7 +1990,7 @@ class MainWindow(QMainWindow):
         if not self.mem_data:
             QMessageBox.warning(self, self.tr("err_empty"), self.tr("err_no_data"))
             return
-        path, _ = QFileDialog.getSaveFileName(self, self.tr("save_as"), "", "Intel HEX (*.hex);;Binary (*.bin)")
+        path, _ = QFileDialog.getSaveFileName(self, self.tr("save_as"), "", "Binary (*.bin);;Intel HEX (*.hex)")
         if path:
             if path.endswith(".hex"):
                 with open(path, "w") as f: f.write(IntelHex.generate(self.mem_data))
@@ -1755,7 +2001,7 @@ class MainWindow(QMainWindow):
             self.log(f"{self.tr('save_as')}: {path}")
 
     def load_and_flash(self):
-        path, _ = QFileDialog.getOpenFileName(self, self.tr("load_fw_title"), "", "Intel HEX (*.hex);;Binary (*.bin)")
+        path, _ = QFileDialog.getOpenFileName(self, self.tr("load_fw_title"), "", "Binary (*.bin);;Intel HEX (*.hex)")
         if not path: return
         
         loaded_mem = {}
@@ -1820,8 +2066,14 @@ class MainWindow(QMainWindow):
 
     def on_hex_data_changed(self):
         """Вызывается при изменении данных в hex-редакторе"""
-        if self.auto_disasm_check.isChecked():
-            self.disasm_timer.start(200)  # Дебаунс 200 мс
+        # Добавляем операцию в undo stack
+        if hasattr(self.hex_model, 'last_edit') and self.hex_model.last_edit:
+            addr, old_val, new_val = self.hex_model.last_edit
+            self.push_undo([(addr, old_val, new_val)])
+            self.hex_model.last_edit = None
+        
+        if self.auto_disasm_check.isChecked() and self.mem_data:
+            self.auto_disasm()
 
     # ==================== БЛОКИ, ТЕСТЫ, IO ====================
     def show_read_block_dialog(self):
@@ -2162,14 +2414,273 @@ class MainWindow(QMainWindow):
         event.accept()
 		
     def on_hold_clicked(self):
-        if not self.is_connected: return
+        if not self.is_connected: 
+            self.statusBar.showMessage("Not connected!", 2000)
+            return
+        if self.bus_active:
+            self.statusBar.showMessage("Bus already active!", 2000)
+            return
         self.send_command(bytes([CMD_HOLD]))
         self.btn_hold.setEnabled(False)
         
     def on_unhold_clicked(self):
-        if not self.is_connected: return
+        if not self.is_connected:
+            self.statusBar.showMessage("Not connected!", 2000)
+            return
+        if not self.bus_active:
+            self.statusBar.showMessage("Bus not active!", 2000)
+            return
         self.send_command(bytes([CMD_UNHOLD]))
         self.btn_unhold.setEnabled(False)
+
+    def setup_shortcuts(self):
+        """Настройка горячих клавиш"""
+        # Файл
+        QShortcut(QKeySequence("Ctrl+O"), self, self.load_and_flash)
+        QShortcut(QKeySequence("Ctrl+S"), self, self.save_dump)
+        QShortcut(QKeySequence("Ctrl+E"), self, self.export_disasm)
+        QShortcut(QKeySequence("Ctrl+Q"), self, self.close)
+        
+        # Поиск и навигация
+        QShortcut(QKeySequence("Ctrl+F"), self, self.show_search_dialog)
+        QShortcut(QKeySequence("Ctrl+G"), self, self.show_goto_dialog)
+        
+        # Дизассемблер
+        QShortcut(QKeySequence("Ctrl+D"), self, self.run_disasm)
+        
+        # Устройство
+        QShortcut(QKeySequence("Ctrl+H"), self, self.on_hold_clicked)
+        QShortcut(QKeySequence("Ctrl+U"), self, self.on_unhold_clicked)
+        
+        # Обновление
+        QShortcut(QKeySequence("F5"), self, self.refresh_all)
+		
+        # Undo/Redo
+        QShortcut(QKeySequence("Ctrl+Z"), self, self.undo)
+        QShortcut(QKeySequence("Ctrl+Y"), self, self.redo)
+        QShortcut(QKeySequence("Ctrl+Shift+Z"), self, self.redo)
+
+    def show_goto_dialog(self):
+        """Диалог перехода к адресу (Ctrl+G)"""
+        text, ok = QInputDialog.getText(self, self.tr("goto_addr"), "Address (HEX):")
+        if not ok: return
+        try:
+            addr = int(text, 16)
+            self.goto_address(addr)
+        except ValueError:
+            QMessageBox.warning(self, self.tr("error"), self.tr("err_hex"))
+            
+    def refresh_all(self):
+        """Обновление всех данных (F5)"""
+        self.hex_model.layoutChanged.emit()
+        if self.auto_disasm_check.isChecked():
+            self.auto_disasm()
+        self.update_range_label()
+        self.statusBar.showMessage("Refreshed", 2000)
+
+    def push_undo(self, changes):
+        """Добавляет операцию в стек undo"""
+        if not changes: return
+        self.undo_stack.append(changes)
+        if len(self.undo_stack) > self.max_undo_depth:
+            self.undo_stack.pop(0)
+        self.redo_stack.clear()  # Очищаем redo при новом изменении
+        self.statusBar.showMessage(f"Undo depth: {len(self.undo_stack)}", 2000)
+        
+    def undo(self):
+        """Отмена последнего изменения (Ctrl+Z)"""
+        if not self.undo_stack:
+            self.statusBar.showMessage("Nothing to undo", 2000)
+            return
+        changes = self.undo_stack.pop()
+        for addr, old_val, new_val in changes:
+            self.mem_data[addr] = old_val
+        self.redo_stack.append(changes)
+        self.hex_model.update_data(self.mem_data)
+        if self.auto_disasm_check.isChecked():
+            self.auto_disasm()
+        self.statusBar.showMessage(f"Undo: {len(changes)} bytes", 2000)
+        
+    def redo(self):
+        """Повтор последнего изменения (Ctrl+Y)"""
+        if not self.redo_stack:
+            self.statusBar.showMessage("Nothing to redo", 2000)
+            return
+        changes = self.redo_stack.pop()
+        for addr, old_val, new_val in changes:
+            self.mem_data[addr] = new_val
+        self.undo_stack.append(changes)
+        self.hex_model.update_data(self.mem_data)
+        if self.auto_disasm_check.isChecked():
+            self.auto_disasm()
+        self.statusBar.showMessage(f"Redo: {len(changes)} bytes", 2000)
+		
+    def create_tab_compare(self):
+        tab = QWidget()
+        layout = QVBoxLayout(tab)
+        
+        # Кнопки управления
+        ctrl_layout = QHBoxLayout()
+        self.btn_load_compare = QPushButton()
+        self.btn_load_compare.clicked.connect(self.load_compare_file)
+        self.btn_compare = QPushButton()
+        self.btn_compare.clicked.connect(self.run_compare)
+        self.btn_export_compare = QPushButton()
+        self.btn_export_compare.clicked.connect(self.export_compare_report)
+        ctrl_layout.addWidget(self.btn_load_compare)
+        ctrl_layout.addWidget(self.btn_compare)
+        ctrl_layout.addWidget(self.btn_export_compare)
+        ctrl_layout.addStretch()
+        layout.addLayout(ctrl_layout)
+        
+        # Информация о сравнении
+        self.lbl_compare_info = QLabel()
+        layout.addWidget(self.lbl_compare_info)
+        
+        # Таблица результатов
+        self.compare_table = QTableWidget()
+        self.compare_table.setColumnCount(4)
+        self.compare_table.setFont(QFont("Consolas", 10))
+        layout.addWidget(self.compare_table)
+        
+        self.compare_data = None
+        self.compare_results = []
+        
+        self.tabs.addTab(tab, "")
+        self.tab_compare = tab
+	
+    def load_compare_file(self):
+        """Загружает файл для сравнения"""
+        path, _ = QFileDialog.getOpenFileName(
+            self, self.tr("load_compare_title"), "", 
+            "Intel HEX (*.hex);;Binary (*.bin);;All Files (*)"
+        )
+        if not path: return
+        
+        loaded_mem = {}
+        if path.endswith(".hex"):
+            with open(path, "r") as f:
+                loaded_mem = IntelHex.parse(f.read())
+        else:
+            text, ok = QInputDialog.getText(self, self.tr("base_addr"), self.tr("base_addr_hint"))
+            if not ok: return
+            try:
+                base = int(text, 16)
+            except ValueError:
+                QMessageBox.warning(self, self.tr("error"), self.tr("err_hex"))
+                return
+            with open(path, "rb") as f:
+                data = f.read()
+                for i, b in enumerate(data):
+                    loaded_mem[base + i] = b
+                    
+        self.compare_data = loaded_mem
+        self.lbl_compare_info.setText(f"{self.tr('compare_loaded')}: {path} ({len(loaded_mem)} {self.tr('bytes')})")
+        self.log(f"Compare file loaded: {path} ({len(loaded_mem)} bytes)")
+        
+    def run_compare(self):
+        """Выполняет сравнение текущего дампа с загруженным файлом"""
+        if not self.compare_data:
+            QMessageBox.warning(self, self.tr("error"), self.tr("load_compare"))
+            return
+            
+        if not self.mem_data:
+            QMessageBox.warning(self, self.tr("error"), self.tr("err_no_data"))
+            return
+        
+        # Сравниваем
+        all_addrs = set(self.mem_data.keys()) | set(self.compare_data.keys())
+        self.compare_results = []
+        
+        for addr in sorted(all_addrs):
+            val_current = self.mem_data.get(addr)
+            val_file = self.compare_data.get(addr)
+            
+            if val_current is None:
+                status_key = "status_added"  # ← Ключ для перевода
+            elif val_file is None:
+                status_key = "status_removed"  # ← Ключ для перевода
+            elif val_current != val_file:
+                status_key = "status_changed"  # ← Ключ для перевода
+            else:
+                continue  # Одинаковые — пропускаем
+                
+            self.compare_results.append((addr, val_current, val_file, status_key))
+            
+        # Отображаем результаты
+        self.show_compare_results()
+        
+    def show_compare_results(self):
+        """Отображает результаты сравнения в таблице"""
+        self.compare_table.setRowCount(len(self.compare_results))
+        
+        for row, (addr, val_cur, val_file, status_key) in enumerate(self.compare_results):
+            # Адрес
+            item_addr = QTableWidgetItem(f"{addr:04X}")
+            self.compare_table.setItem(row, 0, item_addr)
+            
+            # Текущее значение
+            cur_str = f"{val_cur:02X}" if val_cur is not None else "--"
+            item_cur = QTableWidgetItem(cur_str)
+            self.compare_table.setItem(row, 1, item_cur)
+            
+            # Значение из файла
+            file_str = f"{val_file:02X}" if val_file is not None else "--"
+            item_file = QTableWidgetItem(file_str)
+            self.compare_table.setItem(row, 2, item_file)
+            
+            # Статус (переведённый)
+            status_text = self.tr(status_key)  # ← Переводим статус
+            item_status = QTableWidgetItem(status_text)
+            self.compare_table.setItem(row, 3, item_status)
+            
+            # Подсветка в зависимости от статуса
+            if status_key == "status_changed":
+                color = QColor("#fff3cd")  # Жёлтый
+            elif status_key == "status_added":
+                color = QColor("#d4edda")  # Зелёный
+            elif status_key == "status_removed":
+                color = QColor("#f8d7da")  # Красный
+            else:
+                color = None
+                
+            if color:
+                for col in range(4):
+                    item = self.compare_table.item(row, col)
+                    if item:
+                        item.setBackground(color)
+                        
+        self.statusBar.showMessage(
+            f"{self.tr('compare_complete')}: {len(self.compare_results)} {self.tr('compare_found')}", 
+            3000
+        )
+        self.log(f"Compare complete: {len(self.compare_results)} differences")
+        
+    def export_compare_report(self):
+        """Экспортирует отчёт о сравнении"""
+        if not self.compare_results:
+            QMessageBox.warning(self, self.tr("error"), self.tr("run_compare_first"))
+            return
+            
+        path, _ = QFileDialog.getSaveFileName(
+            self, self.tr("export_compare_title"), "", 
+            "Text Files (*.txt);;CSV Files (*.csv);;All Files (*)"
+        )
+        if not path: return
+        
+        try:
+            with open(path, 'w', encoding='utf-8') as f:
+                f.write(f"{self.tr('compare_addr')},{self.tr('compare_current')},"
+                        f"{self.tr('compare_file')},{self.tr('compare_status')}\n")
+                for addr, val_cur, val_file, status_key in self.compare_results:
+                    cur_str = f"{val_cur:02X}" if val_cur is not None else "--"
+                    file_str = f"{val_file:02X}" if val_file is not None else "--"
+                    status_text = self.tr(status_key)
+                    f.write(f"{addr:04X},{cur_str},{file_str},{status_text}\n")
+            self.log(f"{self.tr('compare_exported')}: {path}")
+            self.statusBar.showMessage(f"{self.tr('compare_exported')}: {path}", 3000)
+        except Exception as e:
+            QMessageBox.critical(self, self.tr("error"), str(e))
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
