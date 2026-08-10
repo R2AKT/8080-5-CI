@@ -9,8 +9,10 @@ from PySide6.QtWidgets import (QApplication, QMainWindow, QWidget, QVBoxLayout,
                                QProgressBar, QSpinBox, QCheckBox, QScrollArea, QInputDialog,
                                QToolTip, QStyle, QStatusBar, QDialog, QListWidget, QListWidgetItem, QMenu)
 
-from PySide6.QtCore import Qt, QTimer, QThread, QObject, Signal, QAbstractTableModel, QModelIndex, QEvent, QLocale, QSettings
+from PySide6.QtCore import Qt, QTimer, QThread, QObject, Signal, QAbstractTableModel, QModelIndex, QEvent, QLocale, QSettings, QRect
 from PySide6.QtGui import QFont, QColor, QPainter, QPen, QBrush, QShortcut, QKeySequence
+
+from i8080_emulator import I8080Emulator
 
 # === MCP Server (опционально) ===
 try:
@@ -72,6 +74,13 @@ LANGS = {
         "load_compare_title": "Load File to Compare", "export_compare_title": "Export Compare Report",
 		"tab_scripts": "Scripts", "run_script": "▶ Run Script", "load_script": "Load Script",
 		"save_script": "Save Script", "clear_output": "Clear Output", "script_output": "Output:",
+		# Эмулятор
+        "tab_emulator": "Emulator", "emulator_registers": "Registers", "emulator_flags": "Flags",
+        "emulator_stats": "Statistics", "emulator_control": "Control", "emulator_current_instr": "Current Instruction",
+        "emulator_breakpoints": "Breakpoints", "emulator_reset": "Reset", "emulator_set_pc": "Set PC...",
+        "emulator_step_into": "Step Into (F11)", "emulator_step_over": "Step Over (F10)",
+        "emulator_run": "▶ Run (F5)", "emulator_stop": "■ Stop", "emulator_add_bp": "Add",
+        "emulator_clear_bp": "Clear All", "end": "End:",
     },
     "ru": {
         "app_title": "i8080-5 CI",
@@ -123,6 +132,12 @@ LANGS = {
         "load_compare_title": "Загрузить файл для сравнения", "export_compare_title": "Экспорт отчёта о сравнении",
 		"tab_scripts": "Скрипты", "run_script": "▶ Выполнить скрипт", "load_script": "Загрузить скрипт",
 		"save_script": "Сохранить скрипт", "clear_output": "Очистить вывод", "script_output": "Вывод:",
+		# Эмулятор
+        "tab_emulator": "Эмулятор", "emulator_registers": "Регистры", "emulator_flags": "Флаги", "emulator_stats": "Статистика",
+        "emulator_control": "Управление", "emulator_current_instr": "Текущая инструкция", "emulator_breakpoints": "Точки останова",
+        "emulator_reset": "Сброс", "emulator_set_pc": "Установить PC...", "emulator_step_into": "Шаг с заходом (F11)",
+        "emulator_step_over": "Шаг без захода (F10)", "emulator_run": "▶ Запуск (F5)", "emulator_stop": "■ Стоп",
+        "emulator_add_bp": "Добавить", "emulator_clear_bp": "Очистить все", "end": "Конец:",
     }
 }
 
@@ -385,6 +400,8 @@ class I8080Disassembler:
 
 # ==================== КАСТОМНЫЙ ВИДЖЕТ ДИЗАССЕМБЛЕРА СО СТРЕЛКАМИ ====================
 class DisasmView(QWidget):
+    toggleBreakpoint = Signal(int)  # Сигнал для установки/удаления breakpoint
+    
     def __init__(self, mem_data, parent=None):
         super().__init__(parent)
         self.lines = []
@@ -397,6 +414,13 @@ class DisasmView(QWidget):
         self.arrow_margin = 30
         self.is_dark_theme = False
         self.setup_colors()
+        self.highlight_addr = None  # Адрес для подсветки (PC эмулятора)
+        self.breakpoints = set()  # Точки останова для отрисовки
+        
+    def set_highlight(self, addr):
+        """Установить подсветку строки (PC эмулятора)"""
+        self.highlight_addr = addr
+        self.update()
         
     def setup_colors(self):
         """Настраивает цвета в зависимости от темы"""
@@ -539,7 +563,30 @@ class DisasmView(QWidget):
         # Рисуем строки
         for i, (addr, size, asm, undoc, target) in enumerate(self.lines):
             y = i * self.line_height + self.line_height // 2 + 5
-            
+                   
+            # === Подсветка текущей инструкции (PC эмулятора) ===
+            if self.highlight_addr is not None and addr == self.highlight_addr:
+                # Жёлтый фон для текущей инструкции
+                highlight_rect = QRect(
+                    self.arrow_margin + 5,
+                    i * self.line_height + 2,
+                    self.width() - self.arrow_margin - 10,
+                    self.line_height - 4
+                )
+                painter.fillRect(highlight_rect, QColor("#fff3cd"))  # Светло-жёлтый
+                
+                # Стрелка слева
+                painter.setPen(QColor("#ff9800"))
+                painter.drawText(5, y, "►")
+                
+            # === Точки останова (красные кружки) ===
+            if addr in self.breakpoints:
+                bp_x = self.arrow_margin + 2
+                bp_y = i * self.line_height + self.line_height // 2
+                painter.setBrush(QColor("#f44336"))
+                painter.setPen(Qt.NoPen)
+                painter.drawEllipse(bp_x - 4, bp_y - 4, 8, 8)
+				
             # Адрес
             painter.setPen(self.colors["addr"])
             painter.drawText(addr_x, y, f"{addr:04X}")
@@ -599,6 +646,23 @@ class DisasmView(QWidget):
                 painter.setPen(Qt.NoPen)
                 painter.drawEllipse(x_offset - 2, y1 - 2, 4, 4)
                 painter.setPen(pen)
+				
+    def mouseDoubleClickEvent(self, event):
+        """Двойной клик — установить/удалить точку останова"""
+        y = event.position().y()
+        line_idx = int((y - 5) / self.line_height)
+        
+        if 0 <= line_idx < len(self.lines):
+            addr = self.lines[line_idx][0]
+            # Излучаем сигнал для MainWindow
+            self.toggleBreakpoint.emit(addr)
+        
+        super().mouseDoubleClickEvent(event)
+        
+    def set_breakpoints(self, breakpoints):
+        """Установить точки останова для отрисовки"""
+        self.breakpoints = breakpoints
+        self.update()
 
 # ==================== МОДЕЛЬ ДАННЫХ HEX-РЕДАКТОРА ====================
 class HexModel(QAbstractTableModel):
@@ -1482,33 +1546,12 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         
-        # === Загрузка настроек ===
+        # ============================================================
+        # 1. ЗАГРУЗКА НАСТРОЕК
+        # ============================================================
         self.settings = QSettings("8080-5 CI", "8080-5 CI application")
         saved_lang = self.settings.value("language", None)
         saved_theme = self.settings.value("theme", None)
-        
-        # === MCP Server (опционально) ===
-        self._automation_api = AutomationAPI(self)
-        self.mcp_server = None
-        if MCP_AVAILABLE:
-            try:
-                self.mcp_server = MCPServerManager(self, host="127.0.0.1", port=8000)
-            except Exception as e:
-                self.log(f"MCP Server initialization failed: {e}")
-        
-        # === Статусная строка ===
-        self.statusBar = self.statusBar()  # Создаёт статусную строку
-        self.status_label_addr = QLabel("Адрес: -")
-        self.status_label_data = QLabel("Данные: -")
-        self.status_label_mnem = QLabel("Мнемоника: -")
-        self.status_label_size = QLabel("Размер: 0 байт")
-        self.status_label_conn = QLabel("Отключено")
-        
-        self.statusBar.addWidget(self.status_label_conn)
-        self.statusBar.addPermanentWidget(self.status_label_size)
-        self.statusBar.addPermanentWidget(self.status_label_addr)
-        self.statusBar.addPermanentWidget(self.status_label_data)
-        self.statusBar.addPermanentWidget(self.status_label_mnem)
         
         # Определение языка: сохранённый -> системный -> английский
         if saved_lang in LANGS:
@@ -1522,7 +1565,9 @@ class MainWindow(QMainWindow):
         else:
             self.current_theme = "Light"
         
-        # === Инициализация данных ===
+        # ============================================================
+        # 2. ИНИЦИАЛИЗАЦИЯ ДАННЫХ (до создания UI)
+        # ============================================================
         self.serial_port = None
         self.rx_buffer = bytearray()
         self.mem_data = {}
@@ -1534,7 +1579,7 @@ class MainWindow(QMainWindow):
         self.pending_read = None
         self.is_connected = False
         self.bus_active = False
-        self.max_block_size = 128  # Будет обновлено после подключения
+        self.max_block_size = 128
         
         # === Очередь команд ===
         self.command_queue = []
@@ -1545,62 +1590,72 @@ class MainWindow(QMainWindow):
         self.undo_stack = []
         self.redo_stack = []
         self.max_undo_depth = 100
-		
-        self.init_ui()
-        self.retranslate_ui()
         
-        # Применяем тему при запуске
+        # ============================================================
+        # 3. ЭМУЛЯТОР i8080 (до init_ui, так как create_tab_emulator 
+        #    обращается к self.emulator)
+        # ============================================================
+        self.emulator = I8080Emulator(self.mem_data)
+        self.emulator.state_changed.connect(self.update_emulator_ui)
+        self.emulator.log_message.connect(self.log)
+        
+        # ============================================================
+        # 4. СОЗДАНИЕ UI
+        # ============================================================
+        self.init_ui()
+        
+        # ============================================================
+        # 5. СТАТУСНАЯ СТРОКА (после init_ui)
+        # ============================================================
+        self.statusBar = self.statusBar()
+        self.status_label_addr = QLabel("Адрес: -")
+        self.status_label_data = QLabel("Данные: -")
+        self.status_label_mnem = QLabel("Мнемоника: -")
+        self.status_label_size = QLabel("Размер: 0 байт")
+        self.status_label_conn = QLabel("Отключено")
+        
+        self.statusBar.addWidget(self.status_label_conn)
+        self.statusBar.addPermanentWidget(self.status_label_size)
+        self.statusBar.addPermanentWidget(self.status_label_addr)
+        self.statusBar.addPermanentWidget(self.status_label_data)
+        self.statusBar.addPermanentWidget(self.status_label_mnem)
+        
+        # ============================================================
+        # 6. MCP SERVER (после инициализации данных и UI)
+        # ============================================================
+        self._automation_api = AutomationAPI(self)
+        self.mcp_server = None
+        if MCP_AVAILABLE:
+            try:
+                self.mcp_server = MCPServerManager(self, host="127.0.0.1", port=8000)
+            except Exception as e:
+                self.log(f"MCP Server initialization failed: {e}")
+        
+        # ============================================================
+        # 7. ЛОКАЛИЗАЦИЯ И ТЕМА
+        # ============================================================
+        self.retranslate_ui()
         QApplication.instance().setStyleSheet(THEMES[self.current_theme])
         
+        # Применяем тему к дизассемблеру
+        is_dark = (self.current_theme == "Dark")
+        self.disasm_view.set_theme(is_dark)
+        
+        # ============================================================
+        # 8. ТАЙМЕРЫ
+        # ============================================================
         self.poll_timer = QTimer()
         self.poll_timer.timeout.connect(self.read_serial)
         
-        # === Инициализация данных ===
-        self.serial_port = None
-        self.rx_buffer = bytearray()
-        self.mem_data = {}
-        self.disassembler = I8080Disassembler()
-        self.hex_model = HexModel(self.mem_data)
-        
-        self.worker = None
-        self.worker_thread = None
-        self.pending_read = None
-        
-        self.init_ui()
-        self.retranslate_ui()
-        
-        # Применяем тему при запуске
-        QApplication.instance().setStyleSheet(THEMES[self.current_theme])
-        
-        self.poll_timer = QTimer()
-        self.poll_timer.timeout.connect(self.read_serial)
-        
-        self.serial_port = None
-        self.rx_buffer = bytearray()
-        self.mem_data = {}
-        self.disassembler = I8080Disassembler()
-        self.hex_model = HexModel(self.mem_data)
-        
-        self.worker = None
-        self.worker_thread = None
-        self.pending_read = None
         self.disasm_timer = QTimer()
         self.disasm_timer.setSingleShot(True)
         self.disasm_timer.timeout.connect(self.auto_disasm)
         
-        self.init_ui()
-        self.retranslate_ui()
-        
-        self.poll_timer = QTimer()
-        self.poll_timer.timeout.connect(self.read_serial)
-        
+        # ============================================================
+        # 9. ФИНАЛЬНАЯ НАСТРОЙКА
+        # ============================================================
         self.update_ui_state()
-        
         self.setup_shortcuts()
-		
-        # Применяем тему к дизассемблеру при запуске
-        is_dark = (self.current_theme == "Dark")
-        self.disasm_view.set_theme(is_dark)
         
     def tr(self, key):
         return LANGS.get(self.current_lang, LANGS["en"]).get(key, key)
@@ -1675,7 +1730,107 @@ class MainWindow(QMainWindow):
         
         # Подключаем сигнал изменения данных в hex-редакторе
         self.hex_model.dataEdited.connect(self.on_hex_data_changed)
-
+        
+        # Эмулятор
+        self.create_tab_emulator()
+        
+    def update_emulator_ui(self):
+        """Обновляет UI эмулятора"""
+        state = self.emulator.get_state()
+        
+        # Обновляем регистры
+        for reg in ['A', 'B', 'C', 'D', 'E', 'H', 'L']:
+            self.reg_labels[reg].setText(f"{state[reg]:02X}")
+        for reg in ['SP', 'PC', 'BC', 'DE', 'HL']:
+            self.reg_labels[reg].setText(f"{state[reg]:04X}")
+            
+        # Обновляем флаги
+        for flag in ['S', 'Z', 'AC', 'P', 'CY']:
+            val = 1 if state['flags'][flag] else 0
+            self.flag_labels[flag].setText(f"{flag}: {val}")
+            if val:
+                self.flag_labels[flag].setStyleSheet("color: red; font-weight: bold;")
+            else:
+                self.flag_labels[flag].setStyleSheet("color: black;")
+                
+        # Обновляем статистику
+        self.cycles_label.setText(f"Такты: {state['cycles']}")
+        status = "Остановлен" if state['halted'] else ("Выполняется" if state['running'] else "Готов")
+        self.halted_label.setText(f"Состояние: {status}")
+        
+        # Обновляем текущую инструкцию
+        pc = state['PC']
+        opcode = self.mem_data.get(pc, 0x00)
+        
+        # Получаем дизассемблированную команду
+        lines = self.disassembler.disassemble(self.mem_data, pc, 1)
+        if lines:
+            _, size, asm, undoc, target = lines[0]
+            bytes_str = " ".join(f"{self.mem_data.get(pc+i, 0):02X}" for i in range(size))
+            self.current_instr_label.setText(
+                f"Адрес: {pc:04X}\n"
+                f"Опкод: {bytes_str}\n"
+                f"Команда: {asm} {undoc}"
+            )
+        else:
+            self.current_instr_label.setText(f"Адрес: {pc:04X}\nОпкод: {opcode:02X}\nКоманда: --")
+            
+        # Подсвечиваем текущую строку в hex-редакторе
+        self.highlight_pc_in_hex(pc)
+        
+    def highlight_pc_in_hex(self, pc):
+        """Подсвечивает текущий PC в hex-редакторе"""
+        model = self.hex_model
+        if not model or not model.mem:
+            return
+            
+        offset = pc - model.min_addr
+        if offset < 0:
+            return
+        row = offset // 16
+        col = (offset % 16) + 1
+        
+        index = model.index(row, col)
+        if index.isValid():
+            self.table.scrollTo(index, QTableView.PositionAtCenter)
+            
+    def emulator_step(self):
+        """Пошаговое выполнение"""
+        self.emulator.step()
+        self.update_emulator_ui()
+        
+    def emulator_run(self):
+        """Выполнение до точки останова"""
+        cycles = self.emulator.run(max_cycles=10000)
+        self.log(f"Executed {cycles} cycles")
+        self.update_emulator_ui()
+        
+    def set_pc_dialog(self):
+        """Диалог установки PC"""
+        text, ok = QInputDialog.getText(self, "Set PC", "Address (HEX):")
+        if ok:
+            try:
+                addr = int(text, 16)
+                self.emulator.set_pc(addr)
+            except ValueError:
+                QMessageBox.warning(self, "Error", "Invalid address!")
+                
+    def add_breakpoint_dialog(self):
+        """Диалог добавления точки останова"""
+        text, ok = QInputDialog.getText(self, "Add Breakpoint", "Address (HEX):")
+        if ok:
+            try:
+                addr = int(text, 16)
+                self.emulator.add_breakpoint(addr)
+                self.bp_list.addItem(f"0x{addr:04X}")
+            except ValueError:
+                QMessageBox.warning(self, "Error", "Invalid address!")
+                
+    def clear_breakpoints(self):
+        """Очистить все точки останова"""
+        self.emulator.breakpoints.clear()
+        self.bp_list.clear()
+        
     def create_tab_control(self):
         tab = QWidget()
         layout = QVBoxLayout(tab)
@@ -1864,6 +2019,7 @@ class MainWindow(QMainWindow):
         self.disasm_scroll = QScrollArea()
         self.disasm_scroll.setWidget(self.disasm_view)
         self.disasm_scroll.setWidgetResizable(True)
+        self.disasm_view.toggleBreakpoint.connect(self.on_toggle_breakpoint)
         layout.addWidget(self.disasm_scroll)
         
         self.tabs.addTab(tab, "")
@@ -1964,23 +2120,35 @@ class MainWindow(QMainWindow):
     def retranslate_ui(self):
         self.setWindowTitle(self.tr("app_title"))
         
-        # Верхняя панель
+        # ============================================================
+        # ВЕРХНЯЯ ПАНЕЛЬ
+        # ============================================================
         self.lbl_port.setText(self.tr("port"))
         self.lbl_baud.setText(self.tr("baud"))
         self.btn_refresh.setText(self.tr("refresh"))
-        self.btn_connect.setText(self.tr("connect") if not (self.serial_port and self.serial_port.is_open) else self.tr("disconnect"))
+        self.btn_connect.setText(
+            self.tr("connect") if not (self.serial_port and self.serial_port.is_open) 
+            else self.tr("disconnect")
+        )
         self.lbl_lang.setText(self.tr("language"))
         self.lbl_theme.setText(self.tr("theme"))
         
-        # Вкладки
-        self.tabs.setTabText(0, self.tr("tab_control"))
-        self.tabs.setTabText(1, self.tr("tab_data"))
-        self.tabs.setTabText(2, self.tr("tab_hex"))
-        self.tabs.setTabText(3, self.tr("tab_disasm"))
-        self.tabs.setTabText(4, self.tr("tab_test"))
-        self.tabs.setTabText(5, self.tr("tab_io_seq"))
+        # ============================================================
+        # ВКЛАДКИ (в порядке создания)
+        # ============================================================
+        self.tabs.setTabText(0, self.tr("tab_control"))    # Управление
+        self.tabs.setTabText(1, self.tr("tab_data"))       # Данные
+        self.tabs.setTabText(2, self.tr("tab_hex"))        # Hex Редактор
+        self.tabs.setTabText(3, self.tr("tab_disasm"))     # Дизассемблер
+        self.tabs.setTabText(4, self.tr("tab_test"))       # Тест Памяти
+        self.tabs.setTabText(5, self.tr("tab_io_seq"))     # IO Секвенсор
+        self.tabs.setTabText(6, self.tr("tab_compare"))    # Сравнение
+        self.tabs.setTabText(7, self.tr("tab_scripts"))    # Скрипты
+        self.tabs.setTabText(8, self.tr("tab_emulator"))   # Эмулятор
         
-        # Вкладка "Управление"
+        # ============================================================
+        # ВКЛАДКА "УПРАВЛЕНИЕ"
+        # ============================================================
         self.bus_group.setTitle(self.tr("bus_control"))
         self.btn_hold.setText(self.tr("hold"))
         self.btn_unhold.setText(self.tr("unhold"))
@@ -1988,7 +2156,9 @@ class MainWindow(QMainWindow):
         self.btn_save.setText(self.tr("save_dump"))
         self.btn_load.setText(self.tr("load_fw"))
         
-        # Вкладка "Данные"
+        # ============================================================
+        # ВКЛАДКА "ДАННЫЕ"
+        # ============================================================
         self.mem_group.setTitle(self.tr("memory"))
         self.lbl_mem_addr.setText(self.tr("addr_hex"))
         self.lbl_mem_bits.setText(self.tr("bits"))
@@ -2005,25 +2175,33 @@ class MainWindow(QMainWindow):
         self.btn_io_read.setText(self.tr("read"))
         self.btn_io_write.setText(self.tr("write"))
         
-        # Вкладка "Hex Редактор"
+        # ============================================================
+        # ВКЛАДКА "HEX РЕДАКТОР"
+        # ============================================================
         self.btn_read_block.setText(self.tr("read_block"))
-        self.update_range_label()
         self.btn_search.setText(self.tr("search"))
+        self.update_range_label()
         
-        # Вкладка "Дизассемблер"
+        # ============================================================
+        # ВКЛАДКА "ДИЗАССЕМБЛЕР"
+        # ============================================================
         self.lbl_disasm_start.setText(self.tr("start"))
         self.lbl_disasm_len.setText(self.tr("len"))
         self.btn_disasm.setText(self.tr("disasm"))
         self.auto_disasm_check.setText(self.tr("auto_disasm"))
         self.btn_export_disasm.setText(self.tr("export"))
         
-        # Вкладка "Тест Памяти"
+        # ============================================================
+        # ВКЛАДКА "ТЕСТ ПАМЯТИ"
+        # ============================================================
         self.lbl_test_start.setText(self.tr("start"))
-        self.lbl_test_end.setText("End:")
+        self.lbl_test_end.setText(self.tr("end"))
         self.lbl_test_pattern.setText(self.tr("pattern"))
         self.btn_test.setText(self.tr("start_test"))
         
-        # Вкладка "IO Секвенсор"
+        # ============================================================
+        # ВКЛАДКА "IO СЕКВЕНСОР"
+        # ============================================================
         self.single_io_group.setTitle(self.tr("single_io"))
         self.lbl_io_seq_port.setText(self.tr("port_hex"))
         self.lbl_io_seq_data.setText(self.tr("value_hex"))
@@ -2033,17 +2211,9 @@ class MainWindow(QMainWindow):
         self.btn_seq_load.setText(self.tr("load_file"))
         self.btn_seq_run.setText(self.tr("run_seq"))
         
-        # Обновляем язык модели для заголовков колонок
-        self.hex_model.lang = self.current_lang
-        self.hex_model.layoutChanged.emit()
-		
-        self.tabs.setTabText(6, "Compare")  # Вкладка сравнения
-        self.btn_load_compare.setText("Load File to Compare")
-        self.btn_compare.setText("Compare")
-        self.btn_export_compare.setText("Export Report")
-        
-        # Вкладка сравнения
-        self.tabs.setTabText(6, self.tr("tab_compare"))
+        # ============================================================
+        # ВКЛАДКА "СРАВНЕНИЕ"
+        # ============================================================
         self.btn_load_compare.setText(self.tr("load_compare"))
         self.btn_compare.setText(self.tr("btn_compare"))
         self.btn_export_compare.setText(self.tr("export_report"))
@@ -2057,17 +2227,31 @@ class MainWindow(QMainWindow):
             self.tr("compare_status")
         ])
         self.compare_table.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
-		
-        # Вкладка скриптов
-        self.tabs.setTabText(7, "Scripts")
-        self.btn_run_script.setText("▶ Run Script")
-        self.btn_load_script.setText("Load Script")
-        self.btn_save_script.setText("Save Script")
-        self.btn_clear_output.setText("Clear Output")
-		
-		# Лог
+        
+        # ============================================================
+        # ВКЛАДКА "СКРИПТЫ"
+        # ============================================================
+        self.btn_run_script.setText(self.tr("run_script"))
+        self.btn_load_script.setText(self.tr("load_script"))
+        self.btn_save_script.setText(self.tr("save_script"))
+        self.btn_clear_output.setText(self.tr("clear_output"))
+        
+        # ============================================================
+        # ВКЛАДКА "ЭМУЛЯТОР"
+        # ============================================================
+        self.emulator_retranslate()
+        
+        # ============================================================
+        # ЛОГ
+        # ============================================================
         self.lbl_log.setText(self.tr("log"))
-
+        
+        # ============================================================
+        # ОБНОВЛЕНИЕ ЯЗЫКА МОДЕЛИ
+        # ============================================================
+        self.hex_model.lang = self.current_lang
+        self.hex_model.layoutChanged.emit()
+        
     # ==================== ЛОГИКА ====================
     def refresh_ports(self):
         self.port_combo.clear()
@@ -2842,6 +3026,13 @@ class MainWindow(QMainWindow):
         QShortcut(QKeySequence("Ctrl+Y"), self, self.redo)
         QShortcut(QKeySequence("Ctrl+Shift+Z"), self, self.redo)
 		
+        # Эмулятор (как в CodeWarrior)
+        QShortcut(QKeySequence("F5"), self, self.emulator_run)
+        QShortcut(QKeySequence("F10"), self, self.emulator_step_over)
+        QShortcut(QKeySequence("F11"), self, self.emulator_step_into)
+        QShortcut(QKeySequence("Shift+F5"), self, self.emulator_stop)
+        QShortcut(QKeySequence("Ctrl+F2"), self, self.emulator_reset)
+		
     def show_goto_dialog(self):
         """Диалог перехода к адресу (Ctrl+G)"""
         text, ok = QInputDialog.getText(self, self.tr("goto_addr"), "Address (HEX):")
@@ -3262,6 +3453,282 @@ class MainWindow(QMainWindow):
             self.mcp_server.start()
             self.btn_mcp.setText("MCP Server: ON")
 			
+    def create_tab_emulator(self):
+        """Создаёт вкладку эмулятора"""
+        tab = QWidget()
+        layout = QHBoxLayout(tab)
+        
+        # =============================================
+        # ЛЕВАЯ ЧАСТЬ: Регистры и флаги
+        # =============================================
+        left_layout = QVBoxLayout()
+        
+        # Регистры
+        self.reg_group = QGroupBox("Registers")
+        reg_layout = QGridLayout()
+        
+        self.reg_labels = {}
+        regs = ['A', 'B', 'C', 'D', 'E', 'H', 'L', 'SP', 'PC']
+        for i, reg in enumerate(regs):
+            reg_layout.addWidget(QLabel(f"{reg}:"), i, 0)
+            lbl = QLabel("0000" if reg in ['SP', 'PC'] else "00")
+            lbl.setFont(QFont("Consolas", 11))
+            lbl.setStyleSheet("background-color: #f0f0f0; padding: 3px; border: 1px solid #ccc;")
+            reg_layout.addWidget(lbl, i, 1)
+            self.reg_labels[reg] = lbl
+            
+        # Пары регистров
+        pairs = ['BC', 'DE', 'HL']
+        for i, pair in enumerate(pairs):
+            reg_layout.addWidget(QLabel(f"{pair}:"), i + len(regs), 0)
+            lbl = QLabel("0000")
+            lbl.setFont(QFont("Consolas", 11))
+            lbl.setStyleSheet("background-color: #f0f0f0; padding: 3px; border: 1px solid #ccc;")
+            reg_layout.addWidget(lbl, i + len(regs), 1)
+            self.reg_labels[pair] = lbl
+            
+        self.reg_group.setLayout(reg_layout)
+        left_layout.addWidget(self.reg_group)
+        
+        # Флаги
+        self.flags_group = QGroupBox("Flags")
+        flags_layout = QHBoxLayout()
+        
+        self.flag_labels = {}
+        flags = ['S', 'Z', 'AC', 'P', 'CY']
+        for flag in flags:
+            lbl = QLabel(f"{flag}: 0")
+            lbl.setFont(QFont("Consolas", 10))
+            flags_layout.addWidget(lbl)
+            self.flag_labels[flag] = lbl
+            
+        self.flags_group.setLayout(flags_layout)
+        left_layout.addWidget(self.flags_group)
+        
+        # Статистика
+        self.stats_group = QGroupBox("Statistics")
+        stats_layout = QVBoxLayout()
+        
+        self.cycles_label = QLabel("Cycles: 0")
+        self.halted_label = QLabel("State: Halted")
+        stats_layout.addWidget(self.cycles_label)
+        stats_layout.addWidget(self.halted_label)
+        
+        self.stats_group.setLayout(stats_layout)
+        left_layout.addWidget(self.stats_group)
+        
+        left_layout.addStretch()
+        
+        # =============================================
+        # ПРАВАЯ ЧАСТЬ: Управление
+        # =============================================
+        right_layout = QVBoxLayout()
+        
+        # Кнопки управления (все как self.атрибуты)
+        self.ctrl_group = QGroupBox("Control")
+        ctrl_layout = QVBoxLayout()
+        
+        # Ряд 1: Reset / Set PC
+        btn_row1 = QHBoxLayout()
+        self.btn_reset = QPushButton("Reset")
+        self.btn_reset.clicked.connect(self.emulator_reset)
+        self.btn_set_pc = QPushButton("Set PC...")
+        self.btn_set_pc.clicked.connect(self.set_pc_dialog)
+        btn_row1.addWidget(self.btn_reset)
+        btn_row1.addWidget(self.btn_set_pc)
+        ctrl_layout.addLayout(btn_row1)
+        
+        # Ряд 2: Step Into / Step Over
+        btn_row2 = QHBoxLayout()
+        self.btn_step_into = QPushButton("Step Into (F11)")
+        self.btn_step_into.clicked.connect(self.emulator_step_into)
+        self.btn_step_over = QPushButton("Step Over (F10)")
+        self.btn_step_over.clicked.connect(self.emulator_step_over)
+        btn_row2.addWidget(self.btn_step_into)
+        btn_row2.addWidget(self.btn_step_over)
+        ctrl_layout.addLayout(btn_row2)
+        
+        # Ряд 3: Run / Stop
+        btn_row3 = QHBoxLayout()
+        self.btn_run = QPushButton("▶ Run (F5)")
+        self.btn_run.clicked.connect(self.emulator_run)
+        self.btn_stop = QPushButton("■ Stop")
+        self.btn_stop.clicked.connect(self.emulator_stop)
+        btn_row3.addWidget(self.btn_run)
+        btn_row3.addWidget(self.btn_stop)
+        ctrl_layout.addLayout(btn_row3)
+        
+        self.ctrl_group.setLayout(ctrl_layout)
+        right_layout.addWidget(self.ctrl_group)
+        
+        # Текущая инструкция
+        self.current_instr_group = QGroupBox("Current Instruction")
+        instr_layout = QVBoxLayout()
+        
+        self.current_instr_label = QLabel("Address: 0000\nOpcode: --\nInstruction: --")
+        self.current_instr_label.setFont(QFont("Consolas", 10))
+        self.current_instr_label.setStyleSheet("background-color: #ffffd0; padding: 10px; border: 1px solid #ccc;")
+        instr_layout.addWidget(self.current_instr_label)
+        
+        self.current_instr_group.setLayout(instr_layout)
+        right_layout.addWidget(self.current_instr_group)
+        
+        # Точки останова
+        self.bp_group = QGroupBox("Breakpoints")
+        bp_layout = QVBoxLayout()
+        
+        bp_btn_layout = QHBoxLayout()
+        self.btn_add_bp = QPushButton("Add")
+        self.btn_add_bp.clicked.connect(self.add_breakpoint_dialog)
+        self.btn_clear_bp = QPushButton("Clear All")
+        self.btn_clear_bp.clicked.connect(self.clear_breakpoints)
+        bp_btn_layout.addWidget(self.btn_add_bp)
+        bp_btn_layout.addWidget(self.btn_clear_bp)
+        bp_layout.addLayout(bp_btn_layout)
+        
+        self.bp_list = QListWidget()
+        bp_layout.addWidget(self.bp_list)
+        
+        self.bp_group.setLayout(bp_layout)
+        right_layout.addWidget(self.bp_group)
+        
+        right_layout.addStretch()
+        
+        # =============================================
+        # СБОРКА
+        # =============================================
+        layout.addLayout(left_layout)
+        layout.addLayout(right_layout)
+        
+        self.tabs.addTab(tab, "")
+        self.tab_emulator = tab
+		
+    def emulator_reset(self):
+        """Сброс эмулятора"""
+        self.emulator.reset()
+        self.update_emulator_ui()
+        # Обновляем подсветку в дизассемблере
+        self.disasm_view.set_highlight(self.emulator.pc)
+        
+    def emulator_step_into(self):
+        """Step Into: одна инструкция, заходя в CALL"""
+        if self.emulator.halted:
+            self.statusBar.showMessage("CPU halted. Press Reset.", 3000)
+            return
+        self.emulator.step_into()
+        self.update_emulator_ui()
+        self.update_disasm_highlight()
+        
+    def emulator_step_over(self):
+        """Step Over: выполнить CALL как одну инструкцию"""
+        if self.emulator.halted:
+            self.statusBar.showMessage("CPU halted. Press Reset.", 3000)
+            return
+        self.emulator.step_over()
+        self.update_emulator_ui()
+        self.update_disasm_highlight()
+        
+    def emulator_run(self):
+        """Запуск с обновлением UI через QTimer"""
+        if self.emulator.halted:
+            self.statusBar.showMessage("CPU halted. Press Reset.", 3000)
+            return
+        
+        # Создаём таймер для периодического выполнения
+        if not hasattr(self, 'run_timer'):
+            self.run_timer = QTimer()
+            self.run_timer.timeout.connect(self._run_tick)
+        
+        self.emulator.running = True
+        self.run_timer.start(20)  # 20 мс между тиками (50 FPS)
+        
+    def _run_tick(self):
+        """Один тик выполнения (вызывается QTimer)"""
+        if not self.emulator.running or self.emulator.halted:
+            self.run_timer.stop()
+            self.emulator.running = False
+            self.update_emulator_ui()
+            self.update_disasm_highlight()
+            return
+        
+        # Проверяем точки останова
+        if self.emulator.pc in self.emulator.breakpoints:
+            self.run_timer.stop()
+            self.emulator.running = False
+            self.emulator.breakpoint_hit.emit(self.emulator.pc)
+            self.update_emulator_ui()
+            self.update_disasm_highlight()
+            return
+        
+        # Выполняем 10 инструкций за тик
+        for _ in range(10):
+            if not self.emulator.execute_instruction():
+                break
+            if self.emulator.pc in self.emulator.breakpoints:
+                break
+        
+        # Обновляем UI
+        self.update_emulator_ui()
+        self.update_disasm_highlight()
+        
+    def emulator_stop(self):
+        """Остановка выполнения"""
+        self.emulator.stop()
+        if hasattr(self, 'run_timer'):
+            self.run_timer.stop()
+        self.update_emulator_ui()
+        self.update_disasm_highlight()
+        sself.disasm_view.set_breakpoints(self.emulator.breakpoints)
+        
+    def update_disasm_highlight(self):
+        """Обновляет подсветку PC в окне дизассемблера"""
+        # Убеждаемся, что дизассемблер показывает актуальный код
+        if self.mem_data:
+            # Дизассемблируем текущую область
+            pc = self.emulator.pc
+            start_addr = max(0, pc - 32)
+            length = 128
+            
+            lines = self.disassembler.disassemble(self.mem_data, start_addr, length)
+            self.disasm_view.set_lines(lines)
+            self.disasm_view.set_highlight(pc)
+            
+            # Прокручиваем к текущей инструкции
+            if pc in self.disasm_view.addr_to_index:
+                idx = self.disasm_view.addr_to_index[pc]
+                scroll_y = idx * self.disasm_view.line_height
+                self.disasm_view.parent().verticalScrollBar().setValue(scroll_y - 100)
+		
+    def on_toggle_breakpoint(self, addr):
+        """Установка/удаление точки останова"""
+        if addr in self.emulator.breakpoints:
+            self.emulator.remove_breakpoint(addr)
+            self.log(f"Breakpoint removed: 0x{addr:04X}")
+        else:
+            self.emulator.add_breakpoint(addr)
+            self.log(f"Breakpoint set: 0x{addr:04X}")
+        self.disasm_view.update()
+		
+    def emulator_retranslate(self):
+        """Локализация элементов вкладки эмулятора"""
+        # Заголовки групп
+        self.reg_group.setTitle(self.tr("emulator_registers"))
+        self.flags_group.setTitle(self.tr("emulator_flags"))
+        self.stats_group.setTitle(self.tr("emulator_stats"))
+        self.ctrl_group.setTitle(self.tr("emulator_control"))
+        self.current_instr_group.setTitle(self.tr("emulator_current_instr"))
+        self.bp_group.setTitle(self.tr("emulator_breakpoints"))
+        
+        # Кнопки
+        self.btn_reset.setText(self.tr("emulator_reset"))
+        self.btn_set_pc.setText(self.tr("emulator_set_pc"))
+        self.btn_step_into.setText(self.tr("emulator_step_into"))
+        self.btn_step_over.setText(self.tr("emulator_step_over"))
+        self.btn_run.setText(self.tr("emulator_run"))
+        self.btn_stop.setText(self.tr("emulator_stop"))
+        self.btn_add_bp.setText(self.tr("emulator_add_bp"))
+        self.btn_clear_bp.setText(self.tr("emulator_clear_bp"))
+		
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     app.setStyle("Fusion")

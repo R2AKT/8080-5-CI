@@ -323,5 +323,5 @@ class MCPServerManager:
         if hasattr(self.mw, '_automation_api'):
             return self.mw._automation_api
         # Создаём новый, если нет
-        from i8080_controller_1 import AutomationAPI
+        from i8080_CI import AutomationAPI
         return AutomationAPI(self.mw)
