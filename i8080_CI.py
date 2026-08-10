@@ -12,10 +12,18 @@ from PySide6.QtWidgets import (QApplication, QMainWindow, QWidget, QVBoxLayout,
 from PySide6.QtCore import Qt, QTimer, QThread, QObject, Signal, QAbstractTableModel, QModelIndex, QEvent, QLocale, QSettings
 from PySide6.QtGui import QFont, QColor, QPainter, QPen, QBrush, QShortcut, QKeySequence
 
+# === MCP Server (опционально) ===
+try:
+    from mcp_server import MCPServerManager
+    MCP_AVAILABLE = True
+except ImportError as e:
+    MCP_AVAILABLE = False
+    print(f"MCP Server недоступен: {e}")
+	
 # ==================== ЛОКАЛИЗАЦИЯ И ТЕМЫ ====================
 LANGS = {
     "en": {
-        "app_title": "i8080-5 Master Controller",
+        "app_title": "i8080-5 CI",
         "port": "Port:", "baud": "Baud:", "connect": "Connect", "disconnect": "Disconnect",
         "refresh": "Refresh", "tab_control": "Control", "tab_data": "Data", "tab_hex": "Hex Editor",
         "tab_disasm": "Disassembler", "tab_test": "Memory Test", "tab_io_seq": "IO Sequencer",
@@ -66,7 +74,7 @@ LANGS = {
 		"save_script": "Save Script", "clear_output": "Clear Output", "script_output": "Output:",
     },
     "ru": {
-        "app_title": "i8080-5 Мастер Контроллер",
+        "app_title": "i8080-5 CI",
         "port": "Порт:", "baud": "Скорость:", "connect": "Подключиться", "disconnect": "Отключиться",
         "refresh": "Обновить", "tab_control": "Управление", "tab_data": "Данные", "tab_hex": "Hex Редактор",
         "tab_disasm": "Дизассемблер", "tab_test": "Тест Памяти", "tab_io_seq": "IO Секвенсор",
@@ -1479,6 +1487,15 @@ class MainWindow(QMainWindow):
         saved_lang = self.settings.value("language", None)
         saved_theme = self.settings.value("theme", None)
         
+        # === MCP Server (опционально) ===
+        self._automation_api = AutomationAPI(self)
+        self.mcp_server = None
+        if MCP_AVAILABLE:
+            try:
+                self.mcp_server = MCPServerManager(self, host="127.0.0.1", port=8000)
+            except Exception as e:
+                self.log(f"MCP Server initialization failed: {e}")
+        
         # === Статусная строка ===
         self.statusBar = self.statusBar()  # Создаёт статусную строку
         self.status_label_addr = QLabel("Адрес: -")
@@ -1691,6 +1708,10 @@ class MainWindow(QMainWindow):
         layout.addStretch()
         self.tabs.addTab(tab, "")
         self.tab_control = tab
+		
+        self.btn_mcp = QPushButton("MCP Server: OFF")
+        self.btn_mcp.clicked.connect(self.on_mcp_toggle)
+        layout.addWidget(self.btn_mcp)
 
     def create_tab_data(self):
         tab = QWidget()
@@ -2760,6 +2781,10 @@ class MainWindow(QMainWindow):
                 
         if self.serial_port and self.serial_port.is_open:
             self.serial_port.close()
+			
+        # Останавливаем MCP Server
+        if self.mcp_server is not None and self.mcp_server.running:
+            self.mcp_server.stop()
             
         event.accept()
 		
@@ -2782,8 +2807,15 @@ class MainWindow(QMainWindow):
             return
         self.send_command(bytes([CMD_UNHOLD]))
         self.btn_unhold.setEnabled(False)
-
-    def setup_shortcuts(self):
+        
+    def toggle_mcp_server(self):
+        """Включить/выключить MCP Server"""
+        if self.mcp_server.running:
+            self.mcp_server.stop()
+        else:
+            self.mcp_server.start()
+        
+    def setup_shortcuts(self):		
         """Настройка горячих клавиш"""
         # Файл
         QShortcut(QKeySequence("Ctrl+O"), self, self.load_and_flash)
@@ -2809,7 +2841,7 @@ class MainWindow(QMainWindow):
         QShortcut(QKeySequence("Ctrl+Z"), self, self.undo)
         QShortcut(QKeySequence("Ctrl+Y"), self, self.redo)
         QShortcut(QKeySequence("Ctrl+Shift+Z"), self, self.redo)
-
+		
     def show_goto_dialog(self):
         """Диалог перехода к адресу (Ctrl+G)"""
         text, ok = QInputDialog.getText(self, self.tr("goto_addr"), "Address (HEX):")
@@ -3217,7 +3249,19 @@ class MainWindow(QMainWindow):
         finally:
             # Запускаем poll_timer снова
             self.poll_timer.start(50)
-
+			
+    def on_mcp_toggle(self):
+        if not MCP_AVAILABLE or self.mcp_server is None:
+            QMessageBox.warning(self, "MCP", "MCP Server недоступен. Установите зависимости:\npip install mcp uvicorn starlette")
+            return
+            
+        if self.mcp_server.running:
+            self.mcp_server.stop()
+            self.btn_mcp.setText("MCP Server: OFF")
+        else:
+            self.mcp_server.start()
+            self.btn_mcp.setText("MCP Server: ON")
+			
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     app.setStyle("Fusion")
