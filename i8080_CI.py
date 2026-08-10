@@ -62,6 +62,8 @@ LANGS = {
         "run_compare_first": "Run compare first!", "compare_found": "differences found",
         "compare_complete": "Compare complete", "compare_exported": "Compare report exported to",
         "load_compare_title": "Load File to Compare", "export_compare_title": "Export Compare Report",
+		"tab_scripts": "Scripts", "run_script": "▶ Run Script", "load_script": "Load Script",
+		"save_script": "Save Script", "clear_output": "Clear Output", "script_output": "Output:",
     },
     "ru": {
         "app_title": "i8080-5 Мастер Контроллер",
@@ -111,6 +113,8 @@ LANGS = {
         "run_compare_first": "Сначала выполните сравнение!", "compare_found": "различий найдено",
         "compare_complete": "Сравнение завершено", "compare_exported": "Отчёт о сравнении экспортирован в",
         "load_compare_title": "Загрузить файл для сравнения", "export_compare_title": "Экспорт отчёта о сравнении",
+		"tab_scripts": "Скрипты", "run_script": "▶ Выполнить скрипт", "load_script": "Загрузить скрипт",
+		"save_script": "Сохранить скрипт", "clear_output": "Очистить вывод", "script_output": "Вывод:",
     }
 }
 
@@ -902,6 +906,344 @@ class SearchDialog(QDialog):
             bytes_str = " ".join(f"{b:02X}" for b in matched_bytes)
             self.results_list.addItem(QListWidgetItem(f"{addr:04X}: {bytes_str}"))
 
+class AutomationAPI:
+    """API для автоматизации работы с программой из скриптов
+    
+    Разделение методов:
+    - read_mem, write_mem, ... — работа с ЛОКАЛЬНЫМ образом
+    - dev_read_mem, dev_write_mem, ... — работа с УСТРОЙСТВОМ
+    - download, upload — синхронизация между устройством и локальным образом
+    """
+    
+    def __init__(self, main_window):
+        self.mw = main_window
+        
+    # =============================================
+    # ПРОВЕРКИ СОСТОЯНИЯ
+    # =============================================
+    def _check_connected(self):
+        """Проверяет подключение к устройству"""
+        if not self.mw.is_connected:
+            raise RuntimeError("Device not connected!")
+            
+    def _check_bus(self):
+        """Проверяет подключение и захват шины"""
+        self._check_connected()
+        if not self.mw.bus_active:
+            raise RuntimeError("Bus not active! Call hold_bus() and wait_bus() first.")
+        return True
+        
+    # =============================================
+    # УПРАВЛЕНИЕ ШИНОЙ
+    # =============================================
+    def hold_bus(self):
+        """Захватить шину. Возвращает True, если команда отправлена."""
+        self._check_connected()
+        if self.mw.bus_active:
+            return True
+        self.mw.send_command(bytes([CMD_HOLD]))
+        return True
+        
+    def unhold_bus(self):
+        """Освободить шину. Возвращает True, если команда отправлена."""
+        self._check_connected()
+        if not self.mw.bus_active:
+            return True
+        self.mw.send_command(bytes([CMD_UNHOLD]))
+        return True
+        
+    def wait_bus(self, timeout=5.0):
+        """Ждёт захвата шины. Возвращает True, если шина захвачена."""
+        start = time.time()
+        while time.time() - start < timeout:
+            if self.mw.bus_active:
+                return True
+            time.sleep(0.05)
+            QApplication.processEvents()
+        return False
+        
+    def wait_unhold(self, timeout=5.0):
+        """Ждёт освобождения шины. Возвращает True, если шина освобождена."""
+        start = time.time()
+        while time.time() - start < timeout:
+            if not self.mw.bus_active:
+                return True
+            time.sleep(0.05)
+            QApplication.processEvents()
+        return False
+        
+    # =============================================
+    # ЛОКАЛЬНАЯ ПАМЯТЬ (не требует подключения)
+    # =============================================
+    def read_mem(self, addr):
+        """Прочитать байт из локального образа"""
+        return self.mw.mem_data.get(addr, None)
+        
+    def write_mem(self, addr, val):
+        """Записать байт в локальный образ"""
+        self.mw.mem_data[addr] = val & 0xFF
+        self.mw.hex_model.update_data({addr: val & 0xFF})
+        
+    def read_block(self, addr, size):
+        """Прочитать блок из локального образа"""
+        return [self.mw.mem_data.get(addr + i, None) for i in range(size)]
+        
+    def write_block(self, addr, data):
+        """Записать блок в локальный образ"""
+        changes = {addr + i: data[i] & 0xFF for i in range(len(data))}
+        self.mw.mem_data.update(changes)
+        self.mw.hex_model.update_data(changes)
+        
+    def fill_mem(self, addr, size, val):
+        """Заполнить диапазон в локальном образе"""
+        changes = {addr + i: val & 0xFF for i in range(size)}
+        self.mw.mem_data.update(changes)
+        self.mw.hex_model.update_data(changes)
+        
+    # =============================================
+    # ПАМЯТЬ УСТРОЙСТВА (требует шину)
+    # =============================================
+    def dev_read_mem(self, addr):
+        """Прочитать байт из памяти УСТРОЙСТВА"""
+        self._check_bus()
+        payload = bytes([CMD_MEM_READ_BYTE, (addr >> 8) & 0xFF, addr & 0xFF])
+        resp = self.mw.sync_send_and_recv(payload)
+        if resp and resp[0] == ACK_MEM_READ_BYTE and len(resp) >= 4:
+            return resp[3]
+        return None
+        
+    def dev_write_mem(self, addr, val):
+        """Записать байт в память УСТРОЙСТВА"""
+        self._check_bus()
+        payload = bytes([CMD_MEM_WRITE_BYTE, (addr >> 8) & 0xFF, addr & 0xFF, val & 0xFF])
+        resp = self.mw.sync_send_and_recv(payload)
+        return resp is not None and resp[0] == ACK_MEM_WRITE_BYTE
+        
+    def dev_read_io(self, port):
+        """Прочитать из IO-порта УСТРОЙСТВА"""
+        self._check_bus()
+        payload = bytes([CMD_IO_READ_BYTE, (port >> 8) & 0xFF, port & 0xFF])
+        resp = self.mw.sync_send_and_recv(payload)
+        if resp and resp[0] == ACK_IO_READ_BYTE and len(resp) >= 4:
+            return resp[3]
+        return None
+        
+    def dev_write_io(self, port, val):
+        """Записать в IO-порт УСТРОЙСТВА"""
+        self._check_bus()
+        payload = bytes([CMD_IO_WRITE_BYTE, (port >> 8) & 0xFF, port & 0xFF, val & 0xFF])
+        resp = self.mw.sync_send_and_recv(payload)
+        return resp is not None and resp[0] == ACK_IO_WRITE_BYTE
+        
+    # =============================================
+    # СИНХРОНИЗАЦИЯ (устройство ↔ локальный образ)
+    # =============================================
+    def download(self, addr, size):
+        """Считать блок из УСТРОЙСТВА в локальный образ
+        
+        Возвращает список прочитанных байтов или None при ошибке.
+        """
+        self._check_bus()
+        
+        result = []
+        remaining = size
+        current_addr = addr
+        
+        while remaining > 0:
+            chunk_size = min(remaining, self.mw.max_block_size)
+            payload = bytes([CMD_MEM_READ_BLOCK, chunk_size & 0xFF, 
+                           (current_addr >> 8) & 0xFF, current_addr & 0xFF])
+            resp = self.mw.sync_send_and_recv(payload)
+            
+            if resp and resp[0] == ACK_MEM_READ_BLOCK:
+                for i in range(resp[1]):
+                    if 3 + i < len(resp):
+                        val = resp[3 + i]
+                        result.append(val)
+                        self.mw.mem_data[current_addr + i] = val
+            else:
+                self.mw.log(f"Download error at 0x{current_addr:04X}")
+                return None
+                
+            current_addr += chunk_size
+            remaining -= chunk_size
+            
+        # Обновляем hex-редактор
+        self.mw.hex_model.update_data(self.mw.mem_data)
+        self.mw.update_range_label()
+        if self.mw.auto_disasm_check.isChecked():
+            self.mw.auto_disasm()
+            
+        return result
+        
+    def upload(self, addr, size):
+        """Записать блок из локального образа в УСТРОЙСТВО
+        
+        Возвращает True при успехе.
+        """
+        self._check_bus()
+        
+        remaining = size
+        current_addr = addr
+        
+        while remaining > 0:
+            chunk_size = min(remaining, self.mw.max_block_size)
+            chunk_data = [self.mw.mem_data.get(current_addr + i, 0xFF) for i in range(chunk_size)]
+            
+            cmd = bytearray([CMD_MEM_WRITE_BLOCK, chunk_size & 0xFF,
+                           (current_addr >> 8) & 0xFF, current_addr & 0xFF])
+            cmd.extend(chunk_data)
+            
+            resp = self.mw.sync_send_and_recv(bytes(cmd))
+            if not resp or resp[0] != ACK_MEM_WRITE_BLOCK:
+                self.mw.log(f"Upload error at 0x{current_addr:04X}")
+                return False
+                
+            current_addr += chunk_size
+            remaining -= chunk_size
+            
+        return True
+        
+    def download_all(self, start=0x0000, end=0xFFFF):
+        """Считать всю память устройства в локальный образ"""
+        return self.download(start, end - start + 1)
+        
+    def upload_all(self):
+        """Записать весь локальный образ в память устройства"""
+        if not self.mw.mem_data:
+            return False
+        mn = min(self.mw.mem_data.keys())
+        mx = max(self.mw.mem_data.keys())
+        return self.upload(mn, mx - mn + 1)
+        
+    # =============================================
+    # ФАЙЛЫ
+    # =============================================
+    def load_file(self, path, base_addr=0):
+        """Загрузить файл в локальный образ"""
+        loaded_mem = {}
+        if path.endswith(".hex"):
+            with open(path, "r") as f:
+                loaded_mem = IntelHex.parse(f.read())
+        else:
+            with open(path, "rb") as f:
+                data = f.read()
+                for i, b in enumerate(data):
+                    loaded_mem[base_addr + i] = b
+                    
+        self.mw.mem_data.update(loaded_mem)
+        self.mw.hex_model.update_data(loaded_mem)
+        self.mw.update_range_label()
+        return len(loaded_mem)
+        
+    def save_file(self, path):
+        """Сохранить локальный образ в файл"""
+        if not self.mw.mem_data:
+            return False
+        if path.endswith(".hex"):
+            with open(path, "w") as f:
+                f.write(IntelHex.generate(self.mw.mem_data))
+        else:
+            mn, mx = min(self.mw.mem_data.keys()), max(self.mw.mem_data.keys())
+            with open(path, "wb") as f:
+                for i in range(mn, mx + 1):
+                    f.write(bytes([self.mw.mem_data.get(i, 0xFF)]))
+        return True
+        
+    # =============================================
+    # ДИЗАССЕМБЛЕР И ПОИСК (локально)
+    # =============================================
+    def disassemble(self, addr=None, length=None, show=False):
+        """Дизассемблировать локальный образ.
+        
+        Args:
+            addr: начальный адрес (по умолчанию — минимальный адрес в памяти)
+            length: длина (по умолчанию — вся память)
+            show: если True, обновляет окно дизассемблера в GUI
+        
+        Returns:
+            Список строк дизассемблированного кода.
+        """
+        if not self.mw.mem_data:
+            return []
+            
+        if addr is None:
+            addr = min(self.mw.mem_data.keys())
+        if length is None:
+            length = max(self.mw.mem_data.keys()) - addr + 1
+            
+        # Дизассемблируем
+        lines = self.mw.disassembler.disassemble(self.mw.mem_data, addr, length)
+        result = []
+        for line_addr, size, asm, undoc, target in lines:
+            bytes_str = " ".join(f"{self.mw.mem_data.get(line_addr+k, 0):02X}" for k in range(size))
+            result.append(f"{line_addr:04X}  {bytes_str:<12} {asm} {undoc}".strip())
+        
+        # Обновляем GUI, если запрошено
+        if show:
+            self.mw.disasm_start.setText(f"{addr:04X}")
+            self.mw.disasm_len.setText(f"{length:X}")
+            self.mw.disasm_view.set_lines(lines)
+            self.mw.tabs.setCurrentWidget(self.mw.tab_disasm)
+        
+        return result
+        
+    def search(self, pattern, mode="hex"):
+        """Поиск в локальном образе"""
+        results = []
+        if mode == "hex":
+            try:
+                pattern_bytes = bytes.fromhex(pattern.replace(" ", ""))
+            except ValueError:
+                return []
+            for addr in sorted(self.mw.mem_data.keys()):
+                match = True
+                for i, b in enumerate(pattern_bytes):
+                    if addr + i not in self.mw.mem_data or self.mw.mem_data[addr + i] != b:
+                        match = False
+                        break
+                if match:
+                    results.append(addr)
+        elif mode == "ascii":
+            pattern_bytes = pattern.encode('ascii')
+            for addr in sorted(self.mw.mem_data.keys()):
+                match = True
+                for i, b in enumerate(pattern_bytes):
+                    if addr + i not in self.mw.mem_data or self.mw.mem_data[addr + i] != b:
+                        match = False
+                        break
+                if match:
+                    results.append(addr)
+        return results
+        
+    def refresh(self):
+        """Принудительно обновить hex-редактор и дизассемблер в GUI"""
+        self.mw.hex_model.layoutChanged.emit()
+        self.mw.update_range_label()
+        # Обновляем дизассемблер, если включено автодизассемблирование
+        if self.mw.auto_disasm_check.isChecked() and self.mw.mem_data:
+            self.mw.auto_disasm()
+		
+    # =============================================
+    # УТИЛИТЫ
+    # =============================================
+    def log(self, msg):
+        """Вывод в журнал программы"""
+        self.mw.log(str(msg))
+        
+    def status(self):
+        """Текущее состояние программы"""
+        return {
+            "connected": self.mw.is_connected,
+            "bus_active": self.mw.bus_active,
+            "mem_size": len(self.mw.mem_data),
+            "max_block_size": self.mw.max_block_size,
+        }
+        
+    def goto(self, addr):
+        """Переход к адресу в hex-редакторе"""
+        self.mw.goto_address(addr)
+
 # ==================== РАБОЧИЙ ПОТОК ====================
 class BusWorker(QObject):
     progress = Signal(int)
@@ -1304,6 +1646,7 @@ class MainWindow(QMainWindow):
         self.create_tab_test()
         self.create_tab_io_seq()
         self.create_tab_compare()
+        self.create_tab_scripts()
         
         self.lbl_log = QLabel()
         main_layout.addWidget(self.lbl_log)
@@ -1694,7 +2037,14 @@ class MainWindow(QMainWindow):
         ])
         self.compare_table.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
 		
-        # Лог
+        # Вкладка скриптов
+        self.tabs.setTabText(7, "Scripts")
+        self.btn_run_script.setText("▶ Run Script")
+        self.btn_load_script.setText("Load Script")
+        self.btn_save_script.setText("Save Script")
+        self.btn_clear_output.setText("Clear Output")
+		
+		# Лог
         self.lbl_log.setText(self.tr("log"))
 
     # ==================== ЛОГИКА ====================
@@ -2681,6 +3031,192 @@ class MainWindow(QMainWindow):
             self.statusBar.showMessage(f"{self.tr('compare_exported')}: {path}", 3000)
         except Exception as e:
             QMessageBox.critical(self, self.tr("error"), str(e))
+
+    def create_tab_scripts(self):
+        tab = QWidget()
+        layout = QVBoxLayout(tab)
+        
+        # Кнопки управления
+        btn_layout = QHBoxLayout()
+        self.btn_run_script = QPushButton("▶ Run Script")
+        self.btn_run_script.clicked.connect(self.run_script)
+        self.btn_load_script = QPushButton("Load Script")
+        self.btn_load_script.clicked.connect(self.load_script_file)
+        self.btn_save_script = QPushButton("Save Script")
+        self.btn_save_script.clicked.connect(self.save_script_file)
+        self.btn_clear_output = QPushButton("Clear Output")
+        self.btn_clear_output.clicked.connect(lambda: self.script_output.clear())
+        btn_layout.addWidget(self.btn_run_script)
+        btn_layout.addWidget(self.btn_load_script)
+        btn_layout.addWidget(self.btn_save_script)
+        btn_layout.addWidget(self.btn_clear_output)
+        btn_layout.addStretch()
+        layout.addLayout(btn_layout)
+        
+        # Редактор кода
+        self.script_editor = QTextEdit()
+        self.script_editor.setFont(QFont("Consolas", 10))
+        self.script_editor.setPlaceholderText(
+            "# Example script:\n"
+            "# Fill memory with pattern\n"
+            "api.fill_mem(0x0000, 256, 0x55)\n"
+            "# Disassemble\n"
+            "for line in api.disassemble(0x0000, 16):\n"
+            "    print(line)\n"
+            "# Search\n"
+            "results = api.search('C3', 'hex')\n"
+            "print(f'Found {len(results)} JMP instructions')"
+        )
+        layout.addWidget(self.script_editor)
+        
+        # Разделитель
+        layout.addWidget(QLabel("Output:"))
+        
+        # Вывод
+        self.script_output = QTextEdit()
+        self.script_output.setReadOnly(True)
+        self.script_output.setMaximumHeight(200)
+        self.script_output.setFont(QFont("Consolas", 9))
+        layout.addWidget(self.script_output)
+        
+        self.tabs.addTab(tab, "")
+        self.tab_scripts = tab
+
+    def run_script(self):
+        """Выполняет скрипт из редактора"""
+        code = self.script_editor.toPlainText()
+        if not code.strip():
+            self.script_output.append("No code to run.")
+            return
+            
+        self.script_output.clear()
+        self.script_output.append("Running script...")
+        
+        # Создаём API
+        api = AutomationAPI(self)
+        
+        # Пространство имён для скрипта
+        namespace = {
+            'api': api,
+            # Локальная память
+            'read_mem': api.read_mem,
+            'write_mem': api.write_mem,
+            'read_block': api.read_block,
+            'write_block': api.write_block,
+            'fill_mem': api.fill_mem,
+            # Память устройства
+            'dev_read_mem': api.dev_read_mem,
+            'dev_write_mem': api.dev_write_mem,
+            'dev_read_io': api.dev_read_io,
+            'dev_write_io': api.dev_write_io,
+            # Синхронизация
+            'download': api.download,
+            'upload': api.upload,
+            'download_all': api.download_all,
+            'upload_all': api.upload_all,
+            # Шина
+            'hold_bus': api.hold_bus,
+            'unhold_bus': api.unhold_bus,
+            'wait_bus': api.wait_bus,
+            'wait_unhold': api.wait_unhold,
+            # Файлы
+            'load_file': api.load_file,
+            'save_file': api.save_file,
+            # Утилиты
+            'disassemble': api.disassemble,
+            'refresh': api.refresh,
+            'search': api.search,
+            'log': api.log,
+            'status': api.status,
+            'goto': api.goto,
+        }
+        
+        try:
+            # Перенаправляем stdout
+            import io
+            import sys
+            old_stdout = sys.stdout
+            sys.stdout = io.StringIO()
+            
+            # Выполняем код
+            exec(code, namespace)
+            
+            # Получаем вывод
+            output = sys.stdout.getvalue()
+            sys.stdout = old_stdout
+            
+            if output:
+                self.script_output.append(output.rstrip())
+            self.script_output.append("\n✓ Script completed successfully.")
+            self.statusBar.showMessage("Script completed", 3000)
+            
+        except Exception as e:
+            sys.stdout = old_stdout
+            self.script_output.append(f"\n✗ ERROR: {str(e)}")
+            import traceback
+            self.script_output.append(traceback.format_exc())
+            self.statusBar.showMessage("Script error!", 3000)
+            
+    def load_script_file(self):
+        """Загружает скрипт из файла"""
+        path, _ = QFileDialog.getOpenFileName(
+            self, "Load Script", "", 
+            "Python Scripts (*.py);;Text Files (*.txt);;All Files (*)"
+        )
+        if path:
+            try:
+                with open(path, 'r', encoding='utf-8') as f:
+                    self.script_editor.setPlainText(f.read())
+                self.statusBar.showMessage(f"Script loaded: {path}", 3000)
+            except Exception as e:
+                QMessageBox.critical(self, self.tr("error"), str(e))
+                
+    def save_script_file(self):
+        """Сохраняет скрипт в файл"""
+        path, _ = QFileDialog.getSaveFileName(
+            self, "Save Script", "", 
+            "Python Scripts (*.py);;Text Files (*.txt);;All Files (*)"
+        )
+        if path:
+            try:
+                with open(path, 'w', encoding='utf-8') as f:
+                    f.write(self.script_editor.toPlainText())
+                self.statusBar.showMessage(f"Script saved: {path}", 3000)
+            except Exception as e:
+                QMessageBox.critical(self, self.tr("error"), str(e))
+
+    def sync_send_and_recv(self, payload, timeout=2.0):
+        """Синхронная отправка команды и ожидание ответа"""
+        if not self.serial_port or not self.serial_port.is_open:
+            return None
+            
+        # Останавливаем poll_timer, чтобы избежать конфликта
+        self.poll_timer.stop()
+        
+        try:
+            self.serial_port.write(SlipProtocol.encode(payload))
+            self.serial_port.flush()
+            
+            buffer = bytearray()
+            start_time = time.time()
+            while time.time() - start_time < timeout:
+                QApplication.processEvents()  # Обрабатываем события UI
+                try:
+                    if self.serial_port.in_waiting:
+                        buffer.extend(self.serial_port.read(self.serial_port.in_waiting))
+                        if _FEND in buffer:
+                            end_idx = buffer.index(_FEND)
+                            if end_idx > 0:
+                                raw = buffer[:end_idx]
+                                self.serial_port.reset_input_buffer()
+                                return SlipProtocol.decode(raw)
+                except serial.SerialException:
+                    return None
+                time.sleep(0.01)
+            return None
+        finally:
+            # Запускаем poll_timer снова
+            self.poll_timer.start(50)
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
