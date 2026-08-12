@@ -67,28 +67,327 @@ class MCPServerManager:
         )
         
         # =============================================
+        # TOOLS: Управление эмулятором i8080
+        # =============================================
+        
+        def emu_reset() -> str:
+            """Сброс эмулятора i8080. Все регистры обнуляются, PC=0x0000, SP=0xFFFF."""
+            try:
+                if not hasattr(self.mw, 'emulator'):
+                    return "Emulator not initialized"
+                self.mw.emulator.reset()
+                self.mw.safe_call(self.mw.update_emulator_ui)
+                self.mw.safe_call(self.mw.update_emu_disasm_view)
+                return "Эмулятор сброшен. PC=0x0000"
+            except Exception as e:
+                return f"Error: {e}"
+        
+        def emu_step_into() -> str:
+            """Выполнить одну инструкцию эмулятора (Step Into). Заходит в CALL."""
+            try:
+                if not hasattr(self.mw, 'emulator'):
+                    return "Emulator not initialized"
+                if self.mw.emulator.halted:
+                    return "CPU halted. Use emu_reset first."
+                self.mw.emulator.step_into()
+                self.mw.safe_call(self.mw.update_emulator_ui)
+                self.mw.safe_call(self.mw.update_emu_disasm_view)
+                return f"Step Into. PC=0x{self.mw.emulator.pc:04X}, A=0x{self.mw.emulator.a:02X}"
+            except Exception as e:
+                return f"Error: {e}"
+        
+        def emu_step_over() -> str:
+            """Выполнить одну инструкцию эмулятора (Step Over). CALL выполняется целиком."""
+            try:
+                if not hasattr(self.mw, 'emulator'):
+                    return "Emulator not initialized"
+                if self.mw.emulator.halted:
+                    return "CPU halted. Use emu_reset first."
+                self.mw.emulator.step_over()
+                self.mw.safe_call(self.mw.update_emulator_ui)
+                self.mw.safe_call(self.mw.update_emu_disasm_view)
+                return f"Step Over. PC=0x{self.mw.emulator.pc:04X}, A=0x{self.mw.emulator.a:02X}"
+            except Exception as e:
+                return f"Error: {e}"
+        
+        def emu_run(max_instructions: int = 10000) -> str:
+            """Запустить эмулятор до точки останова, HLT или max_instructions."""
+            try:
+                if not hasattr(self.mw, 'emulator'):
+                    return "Emulator not initialized"
+                if self.mw.emulator.halted:
+                    return "CPU halted. Use emu_reset first."
+                steps = self.mw.emulator.run(max_instructions)
+                self.mw.safe_call(self.mw.update_emulator_ui)
+                self.mw.safe_call(self.mw.update_emu_disasm_view)
+                status = "halted" if self.mw.emulator.halted else "stopped"
+                return f"Executed {steps} instructions. Status: {status}. PC=0x{self.mw.emulator.pc:04X}"
+            except Exception as e:
+                return f"Error: {e}"
+        
+        def emu_run_to(addr: int) -> str:
+            """Выполнять до указанного адреса (Run to Cursor)."""
+            try:
+                if not hasattr(self.mw, 'emulator'):
+                    return "Emulator not initialized"
+                if self.mw.emulator.halted:
+                    return "CPU halted. Use emu_reset first."
+                steps = self.mw.emulator.run_to(addr)
+                self.mw.safe_call(self.mw.update_emulator_ui)
+                self.mw.safe_call(self.mw.update_emu_disasm_view)
+                return f"Executed {steps} instructions to 0x{addr:04X}. PC=0x{self.mw.emulator.pc:04X}"
+            except Exception as e:
+                return f"Error: {e}"
+        
+        def emu_stop() -> str:
+            """Остановить выполнение эмулятора."""
+            try:
+                if hasattr(self.mw, 'emulator'):
+                    self.mw.emulator.stop()
+                    self.mw.safe_call(self.mw.update_emulator_ui)
+                    return "Emulator stopped"
+                return "Emulator not initialized"
+            except Exception as e:
+                return f"Error: {e}"
+        
+        # =============================================
+        # TOOLS: Состояние эмулятора
+        # =============================================
+        
+        def emu_get_state() -> dict:
+            """Получить полное состояние эмулятора: регистры, флаги, PC, SP, такты."""
+            try:
+                if not hasattr(self.mw, 'emulator'):
+                    return {"error": "Emulator not initialized"}
+                state = self.mw.emulator.get_state()
+                state['flags'] = {k: int(v) for k, v in state['flags'].items()}
+                state['halted'] = int(state['halted'])
+                state['running'] = int(state['running'])
+                state['interrupts'] = int(state['interrupts'])
+                return state
+            except Exception as e:
+                return {"error": str(e)}
+        
+        def emu_get_reg(reg: str) -> str:
+            """Прочитать регистр эмулятора. reg: A,B,C,D,E,H,L,BC,DE,HL,SP,PC"""
+            try:
+                api = self._get_api()
+                val = api.emu_get_reg(reg)
+                return f"{reg.upper()} = 0x{val:X} ({val})"
+            except Exception as e:
+                return f"Error: {e}"
+        
+        def emu_set_reg(reg: str, val: int) -> str:
+            """Установить регистр эмулятора. reg: A,B,C,D,E,H,L,BC,DE,HL,SP,PC"""
+            try:
+                api = self._get_api()
+                result = api.emu_set_reg(reg, val)
+                self.mw.safe_call(self.mw.update_emulator_ui)
+                self.mw.safe_call(self.mw.update_emu_disasm_view)
+                return result
+            except Exception as e:
+                return f"Error: {e}"
+        
+        def emu_get_psw() -> str:
+            """Прочитать слово состояния процессора (PSW: A + флаги)."""
+            try:
+                api = self._get_api()
+                val = api.emu_get_psw()
+                return f"PSW = 0x{val:04X}"
+            except Exception as e:
+                return f"Error: {e}"
+        
+        def emu_set_psw(val: int) -> str:
+            """Установить слово состояния процессора (PSW: A + флаги)."""
+            try:
+                api = self._get_api()
+                result = api.emu_set_psw(val)
+                self.mw.safe_call(self.mw.update_emulator_ui)
+                return result
+            except Exception as e:
+                return f"Error: {e}"
+        
+        def emu_get_flags() -> dict:
+            """Прочитать флаги процессора: S, Z, AC, P, CY."""
+            try:
+                api = self._get_api()
+                flags = api.emu_get_flags()
+                return {k: int(v) for k, v in flags.items()}
+            except Exception as e:
+                return {"error": str(e)}
+        
+        def emu_set_flag(flag: str, val: bool) -> str:
+            """Установить флаг процессора. flag: S,Z,AC,P,CY"""
+            try:
+                api = self._get_api()
+                result = api.emu_set_flag(flag, val)
+                self.mw.safe_call(self.mw.update_emulator_ui)
+                return result
+            except Exception as e:
+                return f"Error: {e}"
+        
+        # =============================================
+        # TOOLS: Точки останова
+        # =============================================
+        
+        def emu_add_breakpoint(addr: int) -> str:
+            """Добавить точку останова по адресу."""
+            try:
+                if not hasattr(self.mw, 'emulator'):
+                    return "Emulator not initialized"
+                self.mw.emulator.add_breakpoint(addr)
+                if hasattr(self.mw, 'sync_breakpoints'):
+                    self.mw.safe_call(self.mw.sync_breakpoints)
+                return f"Breakpoint added at 0x{addr:04X}"
+            except Exception as e:
+                return f"Error: {e}"
+        
+        def emu_remove_breakpoint(addr: int) -> str:
+            """Удалить точку останова по адресу."""
+            try:
+                if not hasattr(self.mw, 'emulator'):
+                    return "Emulator not initialized"
+                self.mw.emulator.remove_breakpoint(addr)
+                if hasattr(self.mw, 'sync_breakpoints'):
+                    self.mw.safe_call(self.mw.sync_breakpoints)
+                return f"Breakpoint removed at 0x{addr:04X}"
+            except Exception as e:
+                return f"Error: {e}"
+        
+        def emu_list_breakpoints() -> list:
+            """Список всех точек останова."""
+            try:
+                if not hasattr(self.mw, 'emulator'):
+                    return []
+                return sorted([f"0x{addr:04X}" for addr in self.mw.emulator.breakpoints])
+            except Exception as e:
+                return [f"Error: {e}"]
+        
+        def emu_clear_breakpoints() -> str:
+            """Удалить все точки останова."""
+            try:
+                if not hasattr(self.mw, 'emulator'):
+                    return "Emulator not initialized"
+                self.mw.emulator.breakpoints.clear()
+                if hasattr(self.mw, 'sync_breakpoints'):
+                    self.mw.safe_call(self.mw.sync_breakpoints)
+                return "All breakpoints cleared"
+            except Exception as e:
+                return f"Error: {e}"
+        
+        # =============================================
+        # TOOLS: Анализ и трассировка
+        # =============================================
+        
+        def emu_disassemble(addr: int | None = None, length: int = 32) -> list:
+            """Дизассемблировать область памяти вокруг адреса (по умолчанию PC)."""
+            try:
+                if not hasattr(self.mw, 'emulator'):
+                    return ["Emulator not initialized"]
+                if addr is None:
+                    addr = self.mw.emulator.pc
+                start = max(0, addr - 8)
+                lines = self.mw.disassembler.disassemble(self.mw.mem_data, start, length)
+                result = []
+                for a, size, asm, undoc, target in lines:
+                    marker = "►" if a == self.mw.emulator.pc else " "
+                    bp = "●" if a in self.mw.emulator.breakpoints else " "
+                    result.append(f"{marker}{bp} {a:04X}  {asm}{undoc}")
+                return result
+            except Exception as e:
+                return [f"Error: {e}"]
+        
+        def emu_get_stack(depth: int = 8) -> list:
+            """Получить содержимое стека (верхние N значений)."""
+            try:
+                if not hasattr(self.mw, 'emulator'):
+                    return ["Emulator not initialized"]
+                emu = self.mw.emulator
+                result = []
+                for i in range(depth):
+                    addr = (emu.sp + i * 2) & 0xFFFF
+                    value = emu.read_word(addr)
+                    marker = " ← SP" if i == 0 else ""
+                    result.append(f"{addr:04X}: {value:04X}{marker}")
+                return result
+            except Exception as e:
+                return [f"Error: {e}"]
+        
+        def emu_trace(n: int = 10) -> list:
+            """Трассировка: выполнить N инструкций и вернуть лог с состоянием."""
+            try:
+                if not hasattr(self.mw, 'emulator'):
+                    return ["Emulator not initialized"]
+                if self.mw.emulator.halted:
+                    return ["CPU halted. Use emu_reset first."]
+                
+                emu = self.mw.emulator
+                trace = []
+                executed = 0
+                
+                for _ in range(n):
+                    if emu.halted:
+                        trace.append(f"[{emu.pc:04X}] HALTED")
+                        break
+                    
+                    lines = self.mw.disassembler.disassemble(self.mw.mem_data, emu.pc, 1)
+                    if lines:
+                        _, _, asm, undoc, _ = lines[0]
+                    else:
+                        asm = f"DB {emu.read_byte(emu.pc):02X}"
+                    
+                    trace.append(
+                        f"[{emu.pc:04X}] {asm:<15s} A={emu.a:02X} "
+                        f"BC={emu.get_reg_pair('BC'):04X} DE={emu.get_reg_pair('DE'):04X} "
+                        f"HL={emu.get_reg_pair('HL'):04X} SP={emu.sp:04X} "
+                        f"CY={int(emu.flag_cy)} Z={int(emu.flag_z)}"
+                    )
+                    
+                    if emu.pc in emu.breakpoints:
+                        trace.append(f"  → Breakpoint hit!")
+                        break
+                    
+                    if not emu.execute_instruction(silent=True):
+                        break
+                    executed += 1
+                
+                self.mw.safe_call(self.mw.update_emulator_ui)
+                self.mw.safe_call(self.mw.update_emu_disasm_view)
+                
+                trace.append(f"\nExecuted {executed} instructions. PC=0x{emu.pc:04X}")
+                return trace
+            except Exception as e:
+                import traceback
+                return [f"Error: {e}", traceback.format_exc()]
+        
+        def emu_get_io_ports() -> dict:
+            """Получить состояние всех IO-портов эмулятора."""
+            try:
+                if not hasattr(self.mw, 'emulator'):
+                    return {"error": "Emulator not initialized"}
+                return {f"0x{port:02X}": val for port, val in self.mw.emulator.io_ports.items()}
+            except Exception as e:
+                return {"error": str(e)}
+        
+        # =============================================
         # TOOLS: Управление шиной
         # =============================================
         
-        @mcp.tool()
         def hold_bus() -> bool:
             """Захватить шину i8080. Возвращает True если команда отправлена."""
             api = self._get_api()
             return api.hold_bus()
-            
-        @mcp.tool()
+        
         def unhold_bus() -> bool:
             """Освободить шину i8080. Возвращает True если команда отправлена."""
             api = self._get_api()
             return api.unhold_bus()
-            
-        @mcp.tool()
+        
         def wait_bus(timeout: float = 5.0) -> bool:
             """Ждать захвата шины. Возвращает True если шина захвачена."""
             api = self._get_api()
             return api.wait_bus(timeout)
-            
-        @mcp.tool()
+        
         def wait_unhold(timeout: float = 5.0) -> bool:
             """Ждать освобождения шины. Возвращает True если шина освобождена."""
             api = self._get_api()
@@ -98,33 +397,28 @@ class MCPServerManager:
         # TOOLS: Локальная память
         # =============================================
         
-        @mcp.tool()
         def read_mem(addr: int) -> int | None:
             """Прочитать байт из локального образа памяти"""
             api = self._get_api()
             return api.read_mem(addr)
-            
-        @mcp.tool()
+        
         def write_mem(addr: int, val: int) -> str:
             """Записать байт в локальный образ памяти"""
             api = self._get_api()
             api.write_mem(addr, val)
             return f"Written 0x{val:02X} to 0x{addr:04X}"
-            
-        @mcp.tool()
+        
         def read_block(addr: int, size: int) -> list[int | None]:
             """Прочитать блок из локального образа памяти"""
             api = self._get_api()
             return api.read_block(addr, size)
-            
-        @mcp.tool()
+        
         def write_block(addr: int, data: list[int]) -> str:
             """Записать блок в локальный образ памяти"""
             api = self._get_api()
             api.write_block(addr, data)
             return f"Written {len(data)} bytes to 0x{addr:04X}"
-            
-        @mcp.tool()
+        
         def fill_mem(addr: int, size: int, val: int) -> str:
             """Заполнить диапазон памяти значением"""
             api = self._get_api()
@@ -135,25 +429,21 @@ class MCPServerManager:
         # TOOLS: Память устройства
         # =============================================
         
-        @mcp.tool()
         def dev_read_mem(addr: int) -> int | None:
             """Прочитать байт из памяти УСТРОЙСТВА (требует шину)"""
             api = self._get_api()
             return api.dev_read_mem(addr)
-            
-        @mcp.tool()
+        
         def dev_write_mem(addr: int, val: int) -> bool:
             """Записать байт в память УСТРОЙСТВА (требует шину)"""
             api = self._get_api()
             return api.dev_write_mem(addr, val)
-            
-        @mcp.tool()
+        
         def dev_read_io(port: int) -> int | None:
             """Прочитать из IO-порта УСТРОЙСТВА (требует шину)"""
             api = self._get_api()
             return api.dev_read_io(port)
-            
-        @mcp.tool()
+        
         def dev_write_io(port: int, val: int) -> bool:
             """Записать в IO-порт УСТРОЙСТВА (требует шину)"""
             api = self._get_api()
@@ -163,13 +453,11 @@ class MCPServerManager:
         # TOOLS: Синхронизация
         # =============================================
         
-        @mcp.tool()
         def download(addr: int, size: int) -> list[int] | None:
             """Считать блок из УСТРОЙСТВА в локальный образ"""
             api = self._get_api()
             return api.download(addr, size)
-            
-        @mcp.tool()
+        
         def upload(addr: int, size: int) -> bool:
             """Записать блок из локального образа в УСТРОЙСТВО"""
             api = self._get_api()
@@ -179,13 +467,11 @@ class MCPServerManager:
         # TOOLS: Дизассемблирование и поиск
         # =============================================
         
-        @mcp.tool()
         def disassemble(addr: int | None = None, length: int | None = None, show: bool = False) -> list[str]:
             """Дизассемблировать локальный образ памяти"""
             api = self._get_api()
             return api.disassemble(addr, length, show)
-            
-        @mcp.tool()
+        
         def search(pattern: str, mode: str = "hex") -> list[int]:
             """Поиск в локальном образе памяти. mode: 'hex' или 'ascii'"""
             api = self._get_api()
@@ -195,13 +481,11 @@ class MCPServerManager:
         # TOOLS: Файлы
         # =============================================
         
-        @mcp.tool()
         def load_file(path: str, base_addr: int = 0) -> int:
             """Загрузить файл прошивки в локальный образ"""
             api = self._get_api()
             return api.load_file(path, base_addr)
-            
-        @mcp.tool()
+        
         def save_file(path: str) -> bool:
             """Сохранить локальный образ в файл"""
             api = self._get_api()
@@ -211,18 +495,63 @@ class MCPServerManager:
         # TOOLS: Утилиты
         # =============================================
         
-        @mcp.tool()
         def get_status() -> dict:
             """Получить текущее состояние программы"""
             api = self._get_api()
             return api.status()
-            
-        @mcp.tool()
+        
         def refresh() -> str:
             """Принудительно обновить hex-редактор и дизассемблер"""
             api = self._get_api()
             api.refresh()
             return "GUI refreshed"
+        
+        # =============================================
+        # РЕГИСТРАЦИЯ TOOLS (явная)
+        # =============================================
+        
+        mcp.tool()(emu_reset)
+        mcp.tool()(emu_step_into)
+        mcp.tool()(emu_step_over)
+        mcp.tool()(emu_run)
+        mcp.tool()(emu_run_to)
+        mcp.tool()(emu_stop)
+        mcp.tool()(emu_get_state)
+        mcp.tool()(emu_get_reg)
+        mcp.tool()(emu_set_reg)
+        mcp.tool()(emu_get_psw)
+        mcp.tool()(emu_set_psw)
+        mcp.tool()(emu_get_flags)
+        mcp.tool()(emu_set_flag)
+        mcp.tool()(emu_add_breakpoint)
+        mcp.tool()(emu_remove_breakpoint)
+        mcp.tool()(emu_list_breakpoints)
+        mcp.tool()(emu_clear_breakpoints)
+        mcp.tool()(emu_disassemble)
+        mcp.tool()(emu_get_stack)
+        mcp.tool()(emu_trace)
+        mcp.tool()(emu_get_io_ports)
+        mcp.tool()(hold_bus)
+        mcp.tool()(unhold_bus)
+        mcp.tool()(wait_bus)
+        mcp.tool()(wait_unhold)
+        mcp.tool()(read_mem)
+        mcp.tool()(write_mem)
+        mcp.tool()(read_block)
+        mcp.tool()(write_block)
+        mcp.tool()(fill_mem)
+        mcp.tool()(dev_read_mem)
+        mcp.tool()(dev_write_mem)
+        mcp.tool()(dev_read_io)
+        mcp.tool()(dev_write_io)
+        mcp.tool()(download)
+        mcp.tool()(upload)
+        mcp.tool()(disassemble)
+        mcp.tool()(search)
+        mcp.tool()(load_file)
+        mcp.tool()(save_file)
+        mcp.tool()(get_status)
+        mcp.tool()(refresh)
         
         # =============================================
         # RESOURCES
@@ -235,7 +564,7 @@ class MCPServerManager:
             for addr in sorted(self.mw.mem_data.keys()):
                 lines.append(f"{addr:04X}: {self.mw.mem_data[addr]:02X}")
             return "\n".join(lines) if lines else "Memory is empty"
-            
+        
         @mcp.resource("memory://disassembly")
         def get_disassembly() -> str:
             """Дизассемблированный код текущего образа памяти"""
@@ -244,12 +573,58 @@ class MCPServerManager:
             api = self._get_api()
             lines = api.disassemble()
             return "\n".join(lines)
-            
+        
         @mcp.resource("status://info")
         def get_status_info() -> str:
             """Информация о текущем состоянии программы"""
             api = self._get_api()
             return json.dumps(api.status(), indent=2)
+        
+        @mcp.resource("emulator://state")
+        def get_emulator_state() -> str:
+            """Текущее состояние эмулятора i8080"""
+            if not hasattr(self.mw, 'emulator'):
+                return "Emulator not initialized"
+            state = self.mw.emulator.get_state()
+            lines = [
+                f"Регистры:",
+                f"  A=0x{state['A']:02X}  B=0x{state['B']:02X}  C=0x{state['C']:02X}",
+                f"  D=0x{state['D']:02X}  E=0x{state['E']:02X}  H=0x{state['H']:02X}  L=0x{state['L']:02X}",
+                f"  BC=0x{state['BC']:04X}  DE=0x{state['DE']:04X}  HL=0x{state['HL']:04X}",
+                f"  SP=0x{state['SP']:04X}  PC=0x{state['PC']:04X}",
+                f"Флаги: S={int(state['flags']['S'])} Z={int(state['flags']['Z'])} "
+                f"AC={int(state['flags']['AC'])} P={int(state['flags']['P'])} CY={int(state['flags']['CY'])}",
+                f"Тактов: {state['cycles']}",
+                f"Состояние: {'HALTED' if state['halted'] else ('RUNNING' if state['running'] else 'READY')}"
+            ]
+            return "\n".join(lines)
+        
+        @mcp.resource("emulator://stack")
+        def get_emulator_stack() -> str:
+            """Содержимое стека эмулятора"""
+            if not hasattr(self.mw, 'emulator'):
+                return "Emulator not initialized"
+            emu = self.mw.emulator
+            lines = [f"Стек (SP=0x{emu.sp:04X}):"]
+            for i in range(10):
+                addr = (emu.sp + i * 2) & 0xFFFF
+                value = emu.read_word(addr)
+                marker = " ← вершина" if i == 0 else ""
+                lines.append(f"  {addr:04X}: 0x{value:04X}{marker}")
+            return "\n".join(lines)
+        
+        @mcp.resource("emulator://breakpoints")
+        def get_emulator_breakpoints() -> str:
+            """Список точек останова эмулятора"""
+            if not hasattr(self.mw, 'emulator'):
+                return "Emulator not initialized"
+            bps = sorted(self.mw.emulator.breakpoints)
+            if not bps:
+                return "Точек останова нет"
+            lines = ["Точки останова:"]
+            for addr in bps:
+                lines.append(f"  0x{addr:04X}")
+            return "\n".join(lines)
         
         # =============================================
         # PROMPTS
@@ -259,62 +634,121 @@ class MCPServerManager:
         def analyze_firmware(focus: str = "общий анализ") -> str:
             """Анализ прошивки i8080"""
             return f"""Проанализируй прошивку i8080, загруженную в программу.
-
 Фокус анализа: {focus}
-
 Используй доступные инструменты для:
-1. Чтения памяти устройства (download)
-2. Дизассемблирования кода (disassemble)
-3. Поиска инструкций (search)
-4. Анализа структуры программы
-
+Чтения памяти устройства (download)
+Дизассемблирования кода (disassemble)
+Поиска инструкций (search)
+Анализа структуры программы
 Предоставь подробный отчёт о:
-- Структуре программы
-- Найденных подпрограммах
-- Точках входа
-- Потенциальных проблемах"""
-            
+Структуре программы
+Найденных подпрограммах
+Точках входа
+Потенциальных проблемах"""
+        
         @mcp.prompt()
         def find_bugs() -> str:
             """Поиск потенциальных багов в коде i8080"""
             return """Проанализируй код i8080 на предмет потенциальных багов.
-
 Проверь:
-1. Бесконечные циклы без выхода
-2. Обращения к несуществующим адресам памяти
-3. Некорректные команды (недокументированные опкоды)
-4. Проблемы со стеком (PUSH без POP, переполнение стека)
-5. Незавершённые подпрограммы (CALL без RET)
-
+Бесконечные циклы без выхода
+Обращения к несуществующим адресам памяти
+Некорректные команды (недокументированные опкоды)
+Проблемы со стеком (PUSH без POP, переполнение стека)
+Незавершённые подпрограммы (CALL без RET)
 Используй инструменты disassemble и search для анализа."""
-            
+        
         @mcp.prompt()
         def create_test_program(description: str) -> str:
             """Создание тестовой программы для i8080"""
             return f"""Создай тестовую программу для i8080, которая:
-
 {description}
-
 Требования:
-- Используй только стандартные команды i8080
-- Программа должна начинаться с адреса 0x0000
-- Добавь комментарии к каждой команде
-- Заверши программу командой HLT или бесконечным циклом
-
+Используй только стандартные команды i8080
+Программа должна начинаться с адреса 0x0000
+Добавь комментарии к каждой команде
+Заверши программу командой HLT или бесконечным циклом
 После создания:
-1. Запиши программу в память (write_block)
-2. Дизассемблируй для проверки (disassemble)
-3. Покажи результат пользователю"""
-            
+Запиши программу в память (write_block)
+Дизассемблируй для проверки (disassemble)
+Покажи результат пользователю"""
+        
         @mcp.prompt()
         def explain_code(addr: str, length: str) -> str:
             """Объяснение дизассемблированного кода"""
             return f"""Объясни код i8080, начиная с адреса 0x{addr}, длиной {length} байт.
-
-1. Сначала дизассемблируй код (disassemble)
-2. Объясни каждую инструкцию
-3. Опиши общее назначение этого участка кода
-4. Укажи на особенности или потенциальные проблемы"""
+Сначала дизассемблируй код (disassemble)
+Объясни каждую инструкцию
+Опиши общее назначение этого участка кода
+Укажи на особенности или потенциальные проблемы"""
+        
+        @mcp.prompt()
+        def debug_program(description: str = "общая отладка") -> str:
+            """Комплексная отладка программы i8080"""
+            return f"""Проведи комплексную отладку программы i8080.
+Фокус: {description}
+План действий:
+Получи текущее состояние эмулятора (emu_get_state)
+Дизассемблируй программу вокруг PC (emu_disassemble)
+Проверь точки останова (emu_list_breakpoints)
+Выполни трассировку нескольких инструкций (emu_trace с n=10)
+Проанализируй стек (emu_get_stack)
+На основе анализа:
+Определи, что делает программа
+Найди потенциальные ошибки (бесконечные циклы, неверные переходы, проблемы со стеком)
+Предложи исправления
+При необходимости установи точки останова для проверки гипотез"""
+        
+        @mcp.prompt()
+        def find_infinite_loop() -> str:
+            """Поиск бесконечного цикла в программе"""
+            return """Найди бесконечный цикл в программе i8080.
+Алгоритм:
+Сбрось эмулятор (emu_reset)
+Выполни трассировку 100 инструкций (emu_trace с n=100)
+Проанализируй лог: ищи повторяющиеся значения PC
+Если PC повторяется более 3 раз — это цикл
+Дизассемблируй область цикла (emu_disassemble)
+Определи: это бесконечный цикл (JMP на себя) или конечный (с условием выхода)?
+Если цикл бесконечный и нежелательный — предложи исправление
+Дополнительно проверь:
+Есть ли условие выхода из цикла (JZ, JNZ, JC, JNC и т.д.)
+Изменяется ли переменная цикла (регистр или память)
+Корректны ли флаги после операций сравнения"""
+        
+        @mcp.prompt()
+        def explain_instruction() -> str:
+            """Объяснение текущей инструкции и её контекста"""
+            return """Объясни текущую инструкцию эмулятора i8080.
+Шаги:
+Получи состояние (emu_get_state) для текущего PC
+Дизассемблируй 5 инструкций вокруг PC (emu_disassemble)
+Для текущей инструкции объясни:
+Что она делает (семантика)
+Какие регистры/флаги изменяет
+Сколько тактов занимает
+Возможные побочные эффекты
+Объясни контекст: что было до и что будет после
+Если это CALL/RET — объясни работу со стеком
+Если это условный переход — объясни условие и вероятный исход"""
+        
+        @mcp.prompt()
+        def trace_execution(num_steps: str = "20") -> str:
+            """Подробная трассировка выполнения программы"""
+            return f"""Выполни подробную трассировку программы i8080 на {num_steps} шагов.
+План:
+Получи начальное состояние (emu_get_state)
+Выполни трассировку (emu_trace с n={num_steps})
+Для каждого шага проанализируй:
+Какая инструкция выполнена
+Как изменились регистры
+Как изменились флаги
+Был ли переход и куда
+В конце подведи итог:
+Что сделала программа за эти шаги
+Есть ли аномалии (неожиданные переходы, неверные значения)
+Рекомендации по дальнейшей отладке
+Если обнаружена точка останова — сообщи об этом и предложи продолжить или остановиться."""
         
         return mcp
         

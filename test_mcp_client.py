@@ -80,6 +80,48 @@ async def main():
                 result = await session.call_tool("disassemble", {"addr": 0, "length": 7})
                 for content in result.content:
                     print(f"  Дизассемблирование:\n{content.text}")
+					
+			    # === Тест: Tools эмулятора ===
+                print("\n🔧 Тест инструментов эмулятора:")
+                
+                # Сброс
+                result = await session.call_tool("emu_reset", {})
+                for content in result.content:
+                    print(f"  Reset: {content.text}")
+                
+                # Состояние
+                result = await session.call_tool("emu_get_state", {})
+                for content in result.content:
+                    print(f"  State: {content.text[:100]}...")
+                
+                # Установка регистра
+                result = await session.call_tool("emu_set_reg", {"reg": "A", "val": 0x55})
+                for content in result.content:
+                    print(f"  Set A: {content.text}")
+                
+                # Чтение регистра
+                result = await session.call_tool("emu_get_reg", {"reg": "A"})
+                for content in result.content:
+                    print(f"  Get A: {content.text}")
+                
+                # Точки останова
+                result = await session.call_tool("emu_add_breakpoint", {"addr": 0x0005})
+                for content in result.content:
+                    print(f"  Add BP: {content.text}")
+                
+                result = await session.call_tool("emu_list_breakpoints", {})
+                for content in result.content:
+                    print(f"  List BPs: {content.text}")
+                
+                # Трассировка
+                result = await session.call_tool("emu_trace", {"n": 5})
+                for content in result.content:
+                    print(f"  Trace:\n{content.text}")
+                
+                # Очистка
+                result = await session.call_tool("emu_clear_breakpoints", {})
+                for content in result.content:
+                    print(f"  Clear BPs: {content.text}")
                 
                 print("\n✅ Все тесты завершены успешно!")
                 

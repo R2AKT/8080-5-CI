@@ -225,15 +225,21 @@ class I8080Emulator(QObject):
         self.set_flags(result)
         # A не изменяется!
 		
-    def execute_instruction(self):
-        """Выполнить одну инструкцию"""
+    def execute_instruction(self, silent=False):
+        """
+        Выполнить одну инструкцию.
+        
+        Args:
+            silent: если True, не эмитить сигналы (для внутренних циклов)
+        """
         if self.halted:
             return False
-            
+        
         if self.pc in self.breakpoints:
-            self.breakpoint_hit.emit(self.pc)
+            if not silent:
+                self.breakpoint_hit.emit(self.pc)
             return False
-            
+        
         opcode = self.read_byte(self.pc)
         pc_start = self.pc
         self.pc = (self.pc + 1) & 0xFFFF
@@ -241,7 +247,9 @@ class I8080Emulator(QObject):
         self._execute_opcode(opcode)
         
         self.cycles += self._get_cycles(opcode)
-        self.state_changed.emit()
+        
+        if not silent:
+            self.state_changed.emit()
         
         return True
         
@@ -834,40 +842,54 @@ class I8080Emulator(QObject):
         return opcode in call_opcodes
     
     def step_into(self):
-        """Step Into (F11): выполнить одну инструкцию, заходя в CALL"""
-        return self.step()
-    
-    def step_over(self):
-        """Step Over (F10): выполнить CALL как одну инструкцию"""
+        """Step Into (F11): одна инструкция, игнорируя breakpoint на текущем PC"""
         if self.halted:
             return False
         
-        # Если текущая инструкция CALL — выполняем до RET
+        current_pc = self.pc
+        had_bp = current_pc in self.breakpoints
+        
+        # Временно удаляем breakpoint на текущем PC
+        if had_bp:
+            self.breakpoints.discard(current_pc)
+        
+        result = self.execute_instruction()
+        
+        # Восстанавливаем breakpoint
+        if had_bp:
+            self.breakpoints.add(current_pc)
+        
+        return result
+        
+    def step_over(self):
+        if self.halted:
+            return False
+        
         if self.is_call_instruction(self.pc):
-            # Адрес после CALL (PC + 3)
             return_addr = (self.pc + 3) & 0xFFFF
-            
-            # Устанавливаем временную точку останова
             temp_bp = return_addr
             self.breakpoints.add(temp_bp)
             
-            # Выполняем до точки останова или HLT
             max_steps = 100000
             steps = 0
+            hit_user_bp = False
+            
             while steps < max_steps and not self.halted:
                 if self.pc == temp_bp:
                     break
-                if not self.execute_instruction():
+                # Проверяем пользовательские breakpoints (кроме временного)
+                if self.pc in self.breakpoints and self.pc != temp_bp:
+                    hit_user_bp = True
+                    self.breakpoint_hit.emit(self.pc)
+                    break
+                if not self.execute_instruction(silent=True):
                     break
                 steps += 1
             
-            # Удаляем временную точку останова
             self.breakpoints.discard(temp_bp)
-            
             self.state_changed.emit()
             return True
         else:
-            # Не CALL — обычный шаг
             return self.step()
     
     def run_to(self, target_addr):
@@ -882,14 +904,24 @@ class I8080Emulator(QObject):
             if self.pc in self.breakpoints:
                 self.breakpoint_hit.emit(self.pc)
                 break
-            if not self.execute_instruction():
+            # === ТИХИЙ РЕЖИМ ===
+            if not self.execute_instruction(silent=True):
                 break
             steps += 1
         
         self.running = False
-        self.state_changed.emit()
+        self.state_changed.emit()  # Одно обновление в конце
         return steps
 		
+    def set_pc_to_memory_start(self):
+        """Установить PC на минимальный адрес загруженной памяти"""
+        if self.memory:
+            min_addr = min(self.memory.keys())
+            self.pc = min_addr & 0xFFFF
+            self.state_changed.emit()
+            self.log_message.emit(f"PC set to memory start: 0x{self.pc:04X}")
+            return self.pc
+        return None
 # ============================================================
 # АВТОМАТИЧЕСКИЕ ТЕСТЫ (запуск: python i8080_emulator.py)
 # ============================================================
