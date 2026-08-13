@@ -7,8 +7,8 @@ from PySide6.QtWidgets import (QApplication, QMainWindow, QWidget, QVBoxLayout,
                                QLineEdit, QTextEdit, QGroupBox, QMessageBox, QTableWidget, QTableWidgetItem,
                                QTabWidget, QTableView, QHeaderView, QFileDialog,
                                QProgressBar, QSpinBox, QCheckBox, QScrollArea, QInputDialog,
-                               QToolTip, QStyle, QStatusBar, QDialog, QListWidget, QListWidgetItem, QMenu, QSplitter)
-
+                               QToolTip, QStyle, QStatusBar, QDialog, QListWidget, QListWidgetItem, QMenu, QSplitter,
+							   QFormLayout, QStackedWidget)
 from PySide6.QtCore import Qt, QTimer, QThread, QObject, Signal, QAbstractTableModel, QModelIndex, QEvent, QLocale, QSettings, QRect
 from PySide6.QtGui import QFont, QColor, QPainter, QPen, QBrush, QShortcut, QKeySequence
 
@@ -401,6 +401,11 @@ class I8080Disassembler:
 # ==================== КАСТОМНЫЙ ВИДЖЕТ ДИЗАССЕМБЛЕРА СО СТРЕЛКАМИ ====================
 class DisasmView(QWidget):
     toggleBreakpoint = Signal(int)  # Сигнал для установки/удаления breakpoint
+    cursorChanged = Signal(int)             # Одинарный клик по строке
+    runToCursorRequested = Signal(int)      # Контекстное меню: Run to Cursor
+    runFromHereRequested = Signal(int)      # Контекстное меню: Run from Here
+    jumpToCursorRequested = Signal(int)     # Контекстное меню: Jump to Cursor
+    setConditionalBreakpointRequested = Signal(int)  # ИТЕРАЦИЯ C
     
     def __init__(self, mem_data, parent=None):
         super().__init__(parent)
@@ -415,7 +420,18 @@ class DisasmView(QWidget):
         self.is_dark_theme = False
         self.setup_colors()
         self.highlight_addr = None  # Адрес для подсветки (PC эмулятора)
+        
+        # === ИТЕРАЦИЯ B: Интерактивный режим (курсор + контекстное меню) ===
+        self.interactive = False       # По умолчанию выключено
+        self.cursor_addr = None        # Адрес курсора Run to Cursor
+        
         self.breakpoints = set()  # Точки останова для отрисовки
+        self.bp_conditions = {}  # ← ИТЕРАЦИЯ C: условия для отрисовки
+        
+    def set_bp_conditions(self, conditions):
+        """Установить условия BP для отрисовки"""
+        self.bp_conditions = conditions
+        self.update()
         
     def set_highlight(self, addr):
         """Установить подсветку строки (PC эмулятора)"""
@@ -563,6 +579,24 @@ class DisasmView(QWidget):
         # Рисуем строки
         for i, (addr, size, asm, undoc, target) in enumerate(self.lines):
             y = i * self.line_height + self.line_height // 2 + 5
+            
+            # === ИТЕРАЦИЯ B: Отрисовка курсора (зелёная стрелка ▷) ===
+            if self.interactive and self.cursor_addr is not None and addr == self.cursor_addr:
+                # Зелёная стрелка слева от адреса
+                painter.setPen(QColor("#4CAF50"))  # Зелёный
+                cursor_font = QFont("Consolas", 10, QFont.Bold)
+                painter.setFont(cursor_font)
+                painter.drawText(5, y, "▷")
+                
+                # Лёгкая зелёная подсветка строки (если нет PC-подсветки)
+                if self.highlight_addr != addr:
+                    cursor_rect = QRect(
+                        self.arrow_margin + 5,
+                        i * self.line_height + 2,
+                        self.width() - self.arrow_margin - 10,
+                        self.line_height - 4
+                    )
+                    painter.fillRect(cursor_rect, QColor("#E8F5E9"))  # Бледно-зелёный
                    
             # === Подсветка текущей инструкции (PC эмулятора) ===
             if self.highlight_addr is not None and addr == self.highlight_addr:
@@ -579,11 +613,20 @@ class DisasmView(QWidget):
                 painter.setPen(QColor("#ff9800"))
                 painter.drawText(5, y, "►")
                 
-            # === Точки останова (красные кружки) ===
+            # === Точки останова (красные/оранжевые кружки) ===
             if addr in self.breakpoints:
                 bp_x = self.arrow_margin + 2
                 bp_y = i * self.line_height + self.line_height // 2
-                painter.setBrush(QColor("#f44336"))
+                # Проверяем, условная ли это BP
+                is_conditional = (
+                    hasattr(self, 'bp_conditions') and 
+                    addr in self.bp_conditions and 
+                    self.bp_conditions[addr]
+                )
+                if is_conditional:
+                    painter.setBrush(QColor("#ff9800"))  # Оранжевый для условных
+                else:
+                    painter.setBrush(QColor("#f44336"))  # Красный для обычных
                 painter.setPen(Qt.NoPen)
                 painter.drawEllipse(bp_x - 4, bp_y - 4, 8, 8)
 				
@@ -648,13 +691,17 @@ class DisasmView(QWidget):
                 painter.setPen(pen)
 				
     def mouseDoubleClickEvent(self, event):
-        """Двойной клик — установить/удалить точку останова"""
+        """Двойной ЛЕВЫЙ клик — установить/удалить точку останова"""
+        # === Обрабатываем только левую кнопку ===
+        if event.button() != Qt.LeftButton:
+            super().mouseDoubleClickEvent(event)
+            return
+        
         y = event.position().y()
         line_idx = int((y - 5) / self.line_height)
         
         if 0 <= line_idx < len(self.lines):
             addr = self.lines[line_idx][0]
-            # Излучаем сигнал для MainWindow
             self.toggleBreakpoint.emit(addr)
         
         super().mouseDoubleClickEvent(event)
@@ -663,7 +710,77 @@ class DisasmView(QWidget):
         """Установить точки останова для отрисовки"""
         self.breakpoints = breakpoints
         self.update()
-
+        
+    def set_interactive(self, enabled):
+        """Включает/выключает интерактивный режим (курсор + меню)"""
+        self.interactive = enabled
+        
+    def set_cursor(self, addr):
+        """Установить курсор Run to Cursor"""
+        self.cursor_addr = addr
+        self.update()
+        
+    def get_line_addr_at(self, y):
+        """Возвращает адрес строки по Y-координате мыши"""
+        if not hasattr(self, 'lines') or not self.lines:
+            return None
+        line_idx = int((y - 5) / self.line_height)
+        if 0 <= line_idx < len(self.lines):
+            return self.lines[line_idx][0]
+        return None
+        
+    def mousePressEvent(self, event):
+        """Одинарный ЛЕВЫЙ клик — установка курсора"""
+        if self.interactive and event.button() == Qt.LeftButton:
+            addr = self.get_line_addr_at(event.position().y())
+            if addr is not None:
+                self.cursor_addr = addr
+                self.cursorChanged.emit(addr)
+                self.update()
+            # НЕ вызываем super() для левого клика в интерактивном режиме,
+            # чтобы избежать конфликта с mouseDoubleClickEvent
+            event.accept()
+            return
+        super().mousePressEvent(event)
+        
+    def contextMenuEvent(self, event):
+        """Контекстное меню (только в интерактивном режиме)"""
+        if not self.interactive:
+            super().contextMenuEvent(event)
+            return
+        
+        # === ИСПРАВЛЕНО: pos() вместо position() ===
+        addr = self.get_line_addr_at(event.pos().y())
+        
+        if addr is None:
+            super().contextMenuEvent(event)
+            return
+        
+        # Обновляем курсор на clicked строку
+        self.cursor_addr = addr
+        self.update()
+        
+        menu = QMenu(self)
+        act_run_to = menu.addAction(f"▶ Run to Cursor (0x{addr:04X})  [Ctrl+F10]")
+        act_run_from = menu.addAction(f"⤳ Run from Here (0x{addr:04X})")
+        act_jump = menu.addAction(f"⇢ Jump to Cursor (0x{addr:04X})")
+        menu.addSeparator()
+        act_toggle_bp = menu.addAction(f"● Toggle Breakpoint (0x{addr:04X})")
+        act_cond_bp = menu.addAction(f"◉ Set Conditional BP... (0x{addr:04X})")
+        
+        selected = menu.exec(event.globalPos())
+        
+        if selected == act_run_to:
+            self.runToCursorRequested.emit(addr)
+        elif selected == act_run_from:
+            self.runFromHereRequested.emit(addr)
+        elif selected == act_jump:
+            self.jumpToCursorRequested.emit(addr)
+        elif selected == act_toggle_bp:
+            self.toggleBreakpoint.emit(addr)
+        elif selected == act_cond_bp:
+            self.setConditionalBreakpointRequested.emit(addr)
+            
 # ==================== МОДЕЛЬ ДАННЫХ HEX-РЕДАКТОРА ====================
 class HexModel(QAbstractTableModel):
     dataEdited = Signal()
@@ -1682,6 +1799,296 @@ class BusWorker(QObject):
         self.log.emit(self.tr('io_seq_done'))
         self.finished.emit({})
 
+# ==================== WATCH ОКНО ====================
+class WatchModel(QAbstractTableModel):
+    """Модель для Watch-окна (наблюдение за памятью и регистрами)"""
+    
+    # Форматы отображения
+    FORMATS = ["hex", "dec", "signed", "bin", "ascii"]
+    
+    # Типы наблюдения
+    TYPE_MEM_BYTE = "mem_byte"
+    TYPE_MEM_WORD = "mem_word"
+    TYPE_REG = "reg"
+    
+    def __init__(self, emulator, parent=None):
+        super().__init__(parent)
+        self.emulator = emulator
+        self.items = []  # Список элементов наблюдения
+        self.prev_values = {}  # Предыдущие значения для подсветки
+        
+    # =============================================
+    # УПРАВЛЕНИЕ ЭЛЕМЕНТАМИ
+    # =============================================
+    
+    def add_watch(self, name, watch_type, target, fmt="hex"):
+        """Добавить элемент наблюдения"""
+        item = {
+            "name": name,
+            "type": watch_type,
+            "target": target,
+            "format": fmt
+        }
+        self.beginInsertRows(QModelIndex(), len(self.items), len(self.items))
+        self.items.append(item)
+        self.endInsertRows()
+        
+    def remove_watch(self, row):
+        """Удалить элемент наблюдения"""
+        if 0 <= row < len(self.items):
+            self.beginRemoveRows(QModelIndex(), row, row)
+            self.items.pop(row)
+            self.endRemoveRows()
+            
+    def clear(self):
+        """Очистить все элементы"""
+        self.beginResetModel()
+        self.items.clear()
+        self.prev_values.clear()
+        self.endResetModel()
+        
+    # =============================================
+    # ПОЛУЧЕНИЕ И ФОРМАТИРОВАНИЕ ЗНАЧЕНИЙ
+    # =============================================
+    
+    def get_value(self, item):
+        """Получить текущее значение элемента"""
+        try:
+            if item["type"] == self.TYPE_MEM_BYTE:
+                return self.emulator.read_byte(item["target"])
+            elif item["type"] == self.TYPE_MEM_WORD:
+                return self.emulator.read_word(item["target"])
+            elif item["type"] == self.TYPE_REG:
+                reg = item["target"].upper()
+                if reg in ['A', 'B', 'C', 'D', 'E', 'H', 'L']:
+                    return self.emulator.get_reg(reg)
+                elif reg == 'BC': return self.emulator.get_reg_pair('BC')
+                elif reg == 'DE': return self.emulator.get_reg_pair('DE')
+                elif reg == 'HL': return self.emulator.get_reg_pair('HL')
+                elif reg == 'SP': return self.emulator.sp
+                elif reg == 'PC': return self.emulator.pc
+                elif reg == 'FLAGS':
+                    return (int(self.emulator.flag_s) << 7) | \
+                           (int(self.emulator.flag_z) << 6) | \
+                           (int(self.emulator.flag_ac) << 4) | \
+                           (int(self.emulator.flag_p) << 2) | \
+                           int(self.emulator.flag_cy)
+        except Exception:
+            return 0
+        return 0
+        
+    def format_value(self, value, fmt, is_word=False):
+        """Форматировать значение"""
+        try:
+            if fmt == "hex":
+                return f"{value:04X}" if is_word else f"{value:02X}"
+            elif fmt == "dec":
+                return str(value)
+            elif fmt == "signed":
+                if is_word:
+                    if value >= 0x8000:
+                        return str(value - 0x10000)
+                else:
+                    if value >= 0x80:
+                        return str(value - 0x100)
+                return str(value)
+            elif fmt == "bin":
+                return f"{value:016b}" if is_word else f"{value:08b}"
+            elif fmt == "ascii":
+                if is_word:
+                    chars = []
+                    for i in range(2):
+                        b = (value >> (i * 8)) & 0xFF
+                        chars.append(chr(b) if 32 <= b < 127 else '.')
+                    return ''.join(chars)
+                else:
+                    return chr(value) if 32 <= value < 127 else '.'
+        except Exception:
+            return "?"
+        return str(value)
+        
+    def get_display_value(self, item):
+        """Получить отформатированное значение"""
+        value = self.get_value(item)
+        is_word = item["type"] == self.TYPE_MEM_WORD or \
+                  (item["type"] == self.TYPE_REG and item["target"].upper() in ['BC', 'DE', 'HL', 'SP', 'PC'])
+        return self.format_value(value, item["format"], is_word)
+        
+    # =============================================
+    # СОХРАНЕНИЕ/ЗАГРУЗКА ПРЕСЕТА
+    # =============================================
+    
+    def save_preset(self, filepath):
+        """Сохранить пресет в JSON файл"""
+        data = {
+            "version": 1,
+            "watches": [
+                {
+                    "name": item["name"],
+                    "type": item["type"],
+                    "target": item["target"],
+                    "format": item["format"]
+                }
+                for item in self.items
+            ]
+        }
+        try:
+            with open(filepath, 'w', encoding='utf-8') as f:
+                json.dump(data, f, indent=2, ensure_ascii=False)
+            return True
+        except Exception:
+            return False
+            
+    def load_preset(self, filepath):
+        """Загрузить пресет из JSON файла"""
+        try:
+            with open(filepath, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+            
+            self.beginResetModel()
+            self.items.clear()
+            self.prev_values.clear()
+            
+            for watch in data.get("watches", []):
+                self.items.append({
+                    "name": watch.get("name", "watch"),
+                    "type": watch.get("type", self.TYPE_MEM_BYTE),
+                    "target": watch.get("target", 0),
+                    "format": watch.get("format", "hex")
+                })
+            
+            self.endResetModel()
+            return True
+        except Exception:
+            return False
+            
+    # =============================================
+    # ОБНОВЛЕНИЕ
+    # =============================================
+    
+    def save_prev_values(self):
+        """Сохранить текущие значения для подсветки изменений"""
+        self.prev_values = {}
+        for i, item in enumerate(self.items):
+            key = f"{item['type']}_{item['target']}"
+            self.prev_values[key] = self.get_value(item)
+            
+    def refresh(self):
+        """Обновить данные модели"""
+        if self.items:
+            self.dataChanged.emit(
+                self.index(0, 0),
+                self.index(len(self.items) - 1, 3)
+            )
+    
+    # =============================================
+    # QAbstractTableModel INTERFACE
+    # =============================================
+    
+    def rowCount(self, parent=None):
+        return len(self.items)
+        
+    def columnCount(self, parent=None):
+        return 4  # Имя | Адрес/Регистр | Значение | Формат
+        
+    def headerData(self, section, orientation, role=Qt.DisplayRole):
+        if role == Qt.DisplayRole and orientation == Qt.Horizontal:
+            headers = ["Имя", "Адрес/Рег", "Значение", "Формат"]
+            return headers[section]
+        return None
+        
+    def data(self, index, role=Qt.DisplayRole):
+        if not index.isValid():
+            return None
+        row, col = index.row(), index.column()
+        if row >= len(self.items):
+            return None
+            
+        item = self.items[row]
+        
+        if role == Qt.DisplayRole:
+            if col == 0:
+                return item["name"]
+            elif col == 1:
+                if item["type"] == self.TYPE_REG:
+                    return item["target"].upper()
+                return f"0x{item['target']:04X}"
+            elif col == 2:
+                return self.get_display_value(item)
+            elif col == 3:
+                return item["format"]
+                
+        elif role == Qt.BackgroundRole:
+            # Подсветка изменённых значений
+            if col == 2:
+                current = self.get_value(item)
+                key = f"{item['type']}_{item['target']}"
+                if key in self.prev_values and self.prev_values[key] != current:
+                    return QColor("#ffcccc")  # Красный фон
+                    
+        elif role == Qt.TextAlignmentRole:
+            if col in [1, 2]:
+                return Qt.AlignCenter
+                
+        return None
+
+class BreakpointModel(QAbstractTableModel):
+    """Модель для панели точек останова"""
+    
+    def __init__(self, emulator, parent=None):
+        super().__init__(parent)
+        self.emulator = emulator
+    
+    def get_bp_list(self):
+        """Отсортированный список адресов BP"""
+        return sorted(self.emulator.breakpoints)
+    
+    def refresh(self):
+        """Полный сброс модели для пересчёта строк"""
+        self.beginResetModel()
+        self.endResetModel()
+    
+    # QAbstractTableModel interface
+    def rowCount(self, parent=None):
+        return len(self.emulator.breakpoints)
+    
+    def columnCount(self, parent=None):
+        return 4  # Адрес | Условие | Вкл | Срабатываний
+    
+    def headerData(self, section, orientation, role=Qt.DisplayRole):
+        if role == Qt.DisplayRole and orientation == Qt.Horizontal:
+            headers = ["Адрес", "Условие", "Вкл", "Сраб."]
+            return headers[section]
+        return None
+    
+    def data(self, index, role=Qt.DisplayRole):
+        if not index.isValid():
+            return None
+        bps = self.get_bp_list()
+        row, col = index.row(), index.column()
+        if row >= len(bps):
+            return None
+        addr = bps[row]
+        
+        if role == Qt.DisplayRole:
+            if col == 0:
+                return f"0x{addr:04X}"
+            elif col == 1:
+                return self.emulator.get_bp_condition(addr) or "—"
+            elif col == 2:
+                return "✓" if self.emulator.bp_enabled.get(addr, True) else "✗"
+            elif col == 3:
+                return str(self.emulator.bp_hit_count.get(addr, 0))
+        elif role == Qt.ForegroundRole:
+            if not self.emulator.bp_enabled.get(addr, True):
+                return QColor("#999999")
+            if col == 1 and self.emulator.get_bp_condition(addr):
+                return QColor("#0066cc")
+        elif role == Qt.TextAlignmentRole:
+            if col in [0, 2, 3]:
+                return Qt.AlignCenter
+        return None
+
 # ==================== ГЛАВНОЕ ОКНО ====================
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -1807,6 +2214,9 @@ class MainWindow(QMainWindow):
         if hasattr(self, 'update_emu_disasm_view'):
             self.update_emu_disasm_view()
             
+        # === ИТЕРАЦИЯ B: Цель для Run to Cursor ===
+        self.run_target_addr = None
+        
     def tr(self, key):
         return LANGS.get(self.current_lang, LANGS["en"]).get(key, key)
         
@@ -1885,37 +2295,27 @@ class MainWindow(QMainWindow):
         self.create_tab_emulator()
         
     def update_emulator_ui(self):
-        """Обновляет UI эмулятора с подсветкой изменений регистров"""
+        """Обновляет UI эмулятора с подсветкой изменений"""
         state = self.emulator.get_state()
         
         # === РЕГИСТРЫ С ПОДСВЕТКОЙ ИЗМЕНЕНИЙ ===
         current_values = {}
-        
-        # Одиночные регистры
         for reg in ['A', 'B', 'C', 'D', 'E', 'H', 'L']:
             current_values[reg] = state[reg]
-        # Пары и специальные регистры
         for reg in ['SP', 'PC', 'BC', 'DE', 'HL']:
             current_values[reg] = state[reg]
         
-        # Применяем значения и подсветку
         for reg, value in current_values.items():
             lbl = self.reg_labels[reg]
-            
-            # Формат отображения
             if reg in ['A', 'B', 'C', 'D', 'E', 'H', 'L']:
                 lbl.setText(f"{value:02X}")
             else:
                 lbl.setText(f"{value:04X}")
             
-            # Подсветка при изменении (красный фон)
             if reg in self.prev_reg_values and self.prev_reg_values[reg] != value:
-                lbl.setStyleSheet("background-color: #ffcccc; padding: 3px; border: 1px solid #cc0000; font-weight: bold;")
+                lbl.setStyleSheet("background-color: #ffcccc; padding: 2px; border: 1px solid #cc0000; font-weight: bold;")
             else:
-                lbl.setStyleSheet("background-color: #f0f0f0; padding: 3px; border: 1px solid #ccc;")
-        
-        # Сохраняем текущие значения для следующего сравнения
-        self.prev_reg_values = current_values.copy()
+                lbl.setStyleSheet("background-color: #f0f0f0; padding: 2px; border: 1px solid #ccc;")
         
         # === ФЛАГИ ===
         for flag in ['S', 'Z', 'AC', 'P', 'CY']:
@@ -1934,49 +2334,88 @@ class MainWindow(QMainWindow):
         status = "Остановлен (HLT)" if state['halted'] else ("Выполняется" if state['running'] else "Готов")
         self.state_label.setText(f"Состояние: {status}")
         
-        # === ОБНОВЛЕНИЕ ДИЗАССЕМБЛЕРА В ЭМУЛЯТОРЕ ===
-        self.update_emu_disasm_view()
-    
+        # === WATCH-ОКНО ===
+        if hasattr(self, 'watch_model'):
+            self.watch_model.refresh()
+        
+        # === ДИЗАССЕМБЛЕР ===
+        #self.update_emu_disasm_view()
+        self.update_emu_disasm_cursor()  # ← ЧАСТИЧНОЕ обновление (быстро)
+        
     def update_stack_view(self):
-        """Обновляет панель стека"""
-        self.stack_list.clear()
+        """Обновляет панель стека БЕЗ пересоздания элементов"""
         sp = self.emulator.sp
         
-        # Показываем 8 верхних значений стека
         for i in range(8):
             addr = (sp + i * 2) & 0xFFFF
             value = self.emulator.read_word(addr)
             
             if i == 0:
-                # Вершина стека — выделяем
-                item = QListWidgetItem(f"► {addr:04X}: {value:04X}  ← SP")
+                text = f"► {addr:04X}: {value:04X}  ← SP"
+            else:
+                text = f"  {addr:04X}: {value:04X}"
+            
+            # Обновляем существующий элемент или создаём новый
+            if i < self.stack_list.count():
+                item = self.stack_list.item(i)
+                item.setText(text)
+            else:
+                item = QListWidgetItem(text)
+                self.stack_list.addItem(item)
+            
+            # Стиль для вершины стека
+            if i == 0:
                 item.setForeground(QColor("#cc0000"))
                 font = item.font()
                 font.setBold(True)
                 item.setFont(font)
             else:
-                item = QListWidgetItem(f"  {addr:04X}: {value:04X}")
-            
-            self.stack_list.addItem(item)
+                item.setForeground(QColor("#000000"))
+                font = item.font()
+                font.setBold(False)
+                item.setFont(font)
     
     def update_emu_disasm_view(self):
-        """Обновляет встроенный дизассемблер во вкладке эмулятора"""
+        """ПОЛНОЕ обновление: дизассемблирование всей программы."""
+        if not hasattr(self, 'emu_disasm_view'):
+            return
         if not self.mem_data:
             return
         
         pc = self.emulator.pc
-        # Дизассемблируем область вокруг PC
-        start_addr = max(0, pc - 32)
-        length = 128
+        min_addr = min(self.mem_data.keys())
+        max_mem_addr = max(self.mem_data.keys())
+        end_addr = max(max_mem_addr, pc) + 16
+        length = end_addr - min_addr
         
-        lines = self.disassembler.disassemble(self.mem_data, start_addr, length)
+        lines = self.disassembler.disassemble(self.mem_data, min_addr, length)
         self.emu_disasm_view.set_lines(lines)
         self.emu_disasm_view.set_highlight(pc)
         
         if hasattr(self.emu_disasm_view, 'set_breakpoints'):
             self.emu_disasm_view.set_breakpoints(self.emulator.breakpoints)
         
-        # Прокрутка к текущей инструкции
+        self._scroll_emu_disasm_to_pc()
+        
+    def update_emu_disasm_cursor(self):
+        """ЧАСТИЧНОЕ обновление: только подсветка PC и прокрутка.
+        Если строки пустые — автоматически делает полное обновление."""
+        if not hasattr(self, 'emu_disasm_view'):
+            return
+        
+        # === ЗАЩИТА: если строки пустые, нужно полное обновление ===
+        if not self.emu_disasm_view.lines:
+            self.update_emu_disasm_view()
+            return
+        
+        pc = self.emulator.pc
+        self.emu_disasm_view.set_highlight(pc)
+        self._scroll_emu_disasm_to_pc()
+        self.emu_disasm_view.update()
+        
+    def _scroll_emu_disasm_to_pc(self):
+        """Прокрутка встроенного дизассемблера к текущему PC"""
+        pc = self.emulator.pc
         if hasattr(self.emu_disasm_view, 'addr_to_index') and pc in self.emu_disasm_view.addr_to_index:
             idx = self.emu_disasm_view.addr_to_index[pc]
             scroll_y = idx * self.emu_disasm_view.line_height
@@ -2005,10 +2444,24 @@ class MainWindow(QMainWindow):
         self.update_emulator_ui()
         
     def emulator_run(self):
-        """Выполнение до точки останова"""
-        cycles = self.emulator.run(max_cycles=10000)
-        self.log(f"Executed {cycles} cycles")
-        self.update_emulator_ui()
+        """Запуск эмулятора (F5)"""
+        if self.emulator.halted:
+            self.statusBar.showMessage("CPU halted. Press Reset (Ctrl+F2).", 3000)
+            return
+        self.run_target_addr = None
+        
+        # === Если PC на breakpoint, обходим его (выполняем одну инструкцию) ===
+        if self.emulator.pc in self.emulator.breakpoints:
+            self._save_watch_prev_values()
+            self._save_reg_prev_values()
+            self.emulator.step_into()  # step_into обходит BP на текущем PC
+        
+        self.emulator.running = True
+        if not hasattr(self, 'run_timer'):
+            self.run_timer = QTimer()
+            self.run_timer.timeout.connect(self._run_tick)
+        self.run_timer.start(20)
+        self.statusBar.showMessage("Running...", 0)
         
     def set_pc_dialog(self):
         """Диалог установки PC"""
@@ -2027,16 +2480,15 @@ class MainWindow(QMainWindow):
             try:
                 addr = int(text, 16)
                 self.emulator.add_breakpoint(addr)
-                self.sync_breakpoints()  # ← Синхронизация
-                self.bp_list.addItem(f"0x{addr:04X}")
+                self.sync_breakpoints()
+                self.log(f"Breakpoint set: 0x{addr:04X}")
             except ValueError:
                 QMessageBox.warning(self, "Error", "Invalid address!")
-                
+               
     def clear_breakpoints(self):
         """Очистить все точки останова"""
-        self.emulator.breakpoints.clear()
-        self.sync_breakpoints()  # ← Синхронизация
-        self.bp_list.clear()
+        self.emulator.clear_all_breakpoints()
+        self.sync_breakpoints()
         
     def create_tab_control(self):
         tab = QWidget()
@@ -2788,7 +3240,7 @@ class MainWindow(QMainWindow):
         # === Устанавливаем PC на начало загруженного образа ===
         if hasattr(self, 'emulator') and self.emulator:
             self.emulator.set_pc_to_memory_start()
-            self.update_disasm_highlight()
+            self.update_emu_disasm_view()  # ← ПОЛНОЕ обновление (дизассемблирует код)
             
         if self.auto_disasm_check.isChecked():
             self.auto_disasm()
@@ -3244,6 +3696,7 @@ class MainWindow(QMainWindow):
         QShortcut(QKeySequence("F11"), self, self.emulator_step_into)
         QShortcut(QKeySequence("Shift+F5"), self, self.emulator_stop)
         QShortcut(QKeySequence("Ctrl+F2"), self, self.emulator_reset)
+        QShortcut(QKeySequence("Ctrl+F10"), self, self.emulator_run_to_cursor)
 		
     def show_goto_dialog(self):
         """Диалог перехода к адресу (Ctrl+G)"""
@@ -3666,36 +4119,38 @@ class MainWindow(QMainWindow):
             self.btn_mcp.setText("MCP Server: ON")
 			
     def create_tab_emulator(self):
-        """Создаёт вкладку эмулятора — полноценный отладчик"""
+        """Создаёт вкладку эмулятора — трёхколоночный отладчик"""
         tab = QWidget()
         main_layout = QVBoxLayout(tab)
         
         # =============================================
-        # ВЕРХНЯЯ ЧАСТЬ: Splitter (дизассемблер + регистры)
+        # ЧЕТЫРЁХКОЛОНОЧНЫЙ SPLITTER
         # =============================================
         self.emu_splitter = QSplitter(Qt.Horizontal)
         
-        # === ЛЕВАЯ ПАНЕЛЬ: Встроенный дизассемблер ===
+        # === КОЛОНКА 1: Дизассемблер ===
         left_panel = QWidget()
         left_layout = QVBoxLayout(left_panel)
         left_layout.setContentsMargins(0, 0, 0, 0)
         
-        disasm_label = QLabel("Код (дизассемблер):")
+        disasm_label = QLabel("Код:")
         disasm_label.setFont(QFont("Segoe UI", 9, QFont.Bold))
         left_layout.addWidget(disasm_label)
         
-        # Создаём НОВЫЙ экземпляр DisasmView для эмулятора
         self.emu_disasm_view = DisasmView(self.mem_data)
-        self.emu_disasm_view.set_lines([])  # Пустой список строк
+        self.emu_disasm_view.set_lines([])
         self.emu_disasm_view.set_highlight(None)
         if hasattr(self.emu_disasm_view, 'set_breakpoints'):
             self.emu_disasm_view.set_breakpoints(set())
         
-        # Двойной клик — установка/удаление точки останова
-        if hasattr(self.emu_disasm_view, 'toggleBreakpoint'):
-            self.emu_disasm_view.toggleBreakpoint.connect(self.on_toggle_breakpoint)
+        # === ИТЕРАЦИЯ B: Интерактивный режим ===
+        self.emu_disasm_view.set_interactive(True)
+        self.emu_disasm_view.toggleBreakpoint.connect(self.on_toggle_breakpoint)  # ← ОДНО подключение
+        self.emu_disasm_view.cursorChanged.connect(self.on_emu_cursor_changed)
+        self.emu_disasm_view.runToCursorRequested.connect(self.emulator_run_to_cursor)
+        self.emu_disasm_view.runFromHereRequested.connect(self.emulator_run_from_here)
+        self.emu_disasm_view.jumpToCursorRequested.connect(self.emulator_jump_to_cursor)
         
-        # Оборачиваем в QScrollArea для прокрутки
         self.emu_disasm_scroll = QScrollArea()
         self.emu_disasm_scroll.setWidget(self.emu_disasm_view)
         self.emu_disasm_scroll.setWidgetResizable(True)
@@ -3703,40 +4158,152 @@ class MainWindow(QMainWindow):
         
         self.emu_splitter.addWidget(left_panel)
         
-        # === ПРАВАЯ ПАНЕЛЬ: Регистры + Флаги + Стек ===
+        # === КОЛОНКА 2: BP ===
+        self.emu_disasm_view.setConditionalBreakpointRequested.connect(self.on_set_conditional_bp)
+        
+        # === КОЛОНКА 3: WATCH ===
+        middle_panel = QWidget()
+        middle_layout = QVBoxLayout(middle_panel)
+        middle_layout.setContentsMargins(0, 0, 0, 0)
+        
+        self.watch_group = QGroupBox("Watch")
+        watch_layout = QVBoxLayout()
+        
+        # Кнопки управления Watch
+        watch_btn_layout1 = QHBoxLayout()
+        self.btn_watch_add = QPushButton("+")
+        self.btn_watch_add.setToolTip("Добавить элемент наблюдения")
+        self.btn_watch_add.clicked.connect(self.watch_add_dialog)
+        self.btn_watch_del = QPushButton("-")
+        self.btn_watch_del.setToolTip("Удалить выбранный элемент")
+        self.btn_watch_del.clicked.connect(self.watch_delete)
+        self.btn_watch_clear = QPushButton("✕")
+        self.btn_watch_clear.setToolTip("Очистить все")
+        self.btn_watch_clear.clicked.connect(self.watch_clear)
+        watch_btn_layout1.addWidget(self.btn_watch_add)
+        watch_btn_layout1.addWidget(self.btn_watch_del)
+        watch_btn_layout1.addWidget(self.btn_watch_clear)
+        watch_layout.addLayout(watch_btn_layout1)
+        
+        # Кнопки пресетов
+        watch_btn_layout2 = QHBoxLayout()
+        self.btn_watch_save_preset = QPushButton("💾")
+        self.btn_watch_save_preset.setToolTip("Сохранить пресет")
+        self.btn_watch_save_preset.clicked.connect(self.watch_save_preset)
+        self.btn_watch_load_preset = QPushButton("📂")
+        self.btn_watch_load_preset.setToolTip("Загрузить пресет")
+        self.btn_watch_load_preset.clicked.connect(self.watch_load_preset)
+        watch_btn_layout2.addWidget(self.btn_watch_save_preset)
+        watch_btn_layout2.addWidget(self.btn_watch_load_preset)
+        watch_layout.addLayout(watch_btn_layout2)
+        
+        # Таблица Watch
+        self.watch_model = WatchModel(self.emulator)
+        self.watch_table = QTableView()
+        self.watch_table.setModel(self.watch_model)
+        self.watch_table.setSelectionBehavior(QTableView.SelectRows)
+        self.watch_table.setSelectionMode(QTableView.SingleSelection)
+        self.watch_table.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
+        watch_layout.addWidget(self.watch_table)
+        
+        self.watch_group.setLayout(watch_layout)
+        middle_layout.addWidget(self.watch_group)
+        
+        self.emu_splitter.addWidget(middle_panel)
+        
+        # Кнопки управления BP
+        # === КОЛОНКА 3: BREAKPOINTS (ИТЕРАЦИЯ C) ===
+        bp_panel = QWidget()
+        bp_layout = QVBoxLayout(bp_panel)
+        bp_layout.setContentsMargins(0, 0, 0, 0)
+        
+        self.bp_group = QGroupBox("Breakpoints")
+        bp_group_layout = QVBoxLayout()
+        
+        # Кнопки управления BP
+        bp_btn_layout = QHBoxLayout()
+        self.btn_bp_add = QPushButton("+")
+        self.btn_bp_add.setToolTip("Добавить точку останова")
+        self.btn_bp_add.clicked.connect(self.bp_add_dialog)
+        self.btn_bp_cond = QPushButton("±")
+        self.btn_bp_cond.setToolTip("Редактировать условие")
+        self.btn_bp_cond.clicked.connect(self.bp_edit_condition)
+        self.btn_bp_toggle = QPushButton("⏻")
+        self.btn_bp_toggle.setToolTip("Включить/выключить")
+        self.btn_bp_toggle.clicked.connect(self.bp_toggle_enabled)
+        self.btn_bp_del = QPushButton("-")
+        self.btn_bp_del.setToolTip("Удалить выбранную")
+        self.btn_bp_del.clicked.connect(self.bp_delete)
+        self.btn_bp_clear = QPushButton("✕")
+        self.btn_bp_clear.setToolTip("Очистить все")
+        self.btn_bp_clear.clicked.connect(self.clear_breakpoints)
+        bp_btn_layout.addWidget(self.btn_bp_add)
+        bp_btn_layout.addWidget(self.btn_bp_cond)
+        bp_btn_layout.addWidget(self.btn_bp_toggle)
+        bp_btn_layout.addWidget(self.btn_bp_del)
+        bp_btn_layout.addWidget(self.btn_bp_clear)
+        bp_group_layout.addLayout(bp_btn_layout)
+        
+        # Кнопки пресетов BP
+        bp_preset_layout = QHBoxLayout()
+        self.btn_bp_save_preset = QPushButton("💾")
+        self.btn_bp_save_preset.setToolTip("Сохранить пресет BP")
+        self.btn_bp_save_preset.clicked.connect(self.bp_save_preset)
+        self.btn_bp_load_preset = QPushButton("📂")
+        self.btn_bp_load_preset.setToolTip("Загрузить пресет BP")
+        self.btn_bp_load_preset.clicked.connect(self.bp_load_preset)
+        bp_preset_layout.addWidget(self.btn_bp_save_preset)
+        bp_preset_layout.addWidget(self.btn_bp_load_preset)
+        bp_group_layout.addLayout(bp_preset_layout)
+     
+        # Таблица BP
+        self.bp_model = BreakpointModel(self.emulator)
+        self.bp_table = QTableView()
+        self.bp_table.setModel(self.bp_model)
+        self.bp_table.setSelectionBehavior(QTableView.SelectRows)
+        self.bp_table.setSelectionMode(QTableView.SingleSelection)
+        self.bp_table.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
+        self.bp_table.doubleClicked.connect(self.bp_edit_condition)
+        bp_group_layout.addWidget(self.bp_table)
+        
+        self.bp_group.setLayout(bp_group_layout)
+        bp_layout.addWidget(self.bp_group)
+        
+        self.emu_splitter.addWidget(bp_panel)
+        
+        # === КОЛОНКА 4: Регистры + Флаги + Стек + Статистика ===
         right_panel = QWidget()
         right_layout = QVBoxLayout(right_panel)
         right_layout.setContentsMargins(0, 0, 0, 0)
         
-        # === РЕГИСТРЫ ===
+        # Регистры
         self.reg_group = QGroupBox("Регистры")
         reg_layout = QGridLayout()
-        reg_layout.setSpacing(2)  # ← Минимальные отступы
+        reg_layout.setSpacing(2)
         
         self.reg_labels = {}
         regs = ['A', 'B', 'C', 'D', 'E', 'H', 'L', 'SP', 'PC']
         for i, reg in enumerate(regs):
             lbl_name = QLabel(f"{reg}:")
-            lbl_name.setFont(QFont("Consolas", 10))  # ← Вернуть к 10
+            lbl_name.setFont(QFont("Consolas", 10))
             reg_layout.addWidget(lbl_name, i, 0)
             
             lbl_val = QLabel("0000" if reg in ['SP', 'PC'] else "00")
-            lbl_val.setFont(QFont("Consolas", 9))    # ← Оставить как есть
+            lbl_val.setFont(QFont("Consolas", 9))
             lbl_val.setMinimumWidth(50)
             lbl_val.setAlignment(Qt.AlignCenter)
             lbl_val.setStyleSheet("background-color: #f0f0f0; padding: 2px; border: 1px solid #ccc;")
             reg_layout.addWidget(lbl_val, i, 1)
             self.reg_labels[reg] = lbl_val
             
-        # Пары регистров
         pairs = ['BC', 'DE', 'HL']
         for i, pair in enumerate(pairs):
             lbl_name = QLabel(f"{pair}:")
-            lbl_name.setFont(QFont("Consolas", 10))  # ← Вернуть к 10
+            lbl_name.setFont(QFont("Consolas", 10))
             reg_layout.addWidget(lbl_name, i + len(regs), 0)
             
             lbl_val = QLabel("0000")
-            lbl_val.setFont(QFont("Consolas", 9))    # ← Оставить как есть
+            lbl_val.setFont(QFont("Consolas", 9))
             lbl_val.setMinimumWidth(50)
             lbl_val.setAlignment(Qt.AlignCenter)
             lbl_val.setStyleSheet("background-color: #f0f0f0; padding: 2px; border: 1px solid #ccc;")
@@ -3746,10 +4313,9 @@ class MainWindow(QMainWindow):
         self.reg_group.setLayout(reg_layout)
         right_layout.addWidget(self.reg_group)
         
-        # Сохраняем предыдущие значения регистров для подсветки изменений
         self.prev_reg_values = {}
         
-        # === ФЛАГИ ===
+        # Флаги
         self.flags_group = QGroupBox("Флаги")
         flags_layout = QHBoxLayout()
         flags_layout.setSpacing(5)
@@ -3758,26 +4324,26 @@ class MainWindow(QMainWindow):
         flags = ['S', 'Z', 'AC', 'P', 'CY']
         for flag in flags:
             lbl = QLabel(f"{flag}: 0")
-            lbl.setFont(QFont("Consolas", 10))
+            lbl.setFont(QFont("Consolas", 8))
             flags_layout.addWidget(lbl)
             self.flag_labels[flag] = lbl
             
         self.flags_group.setLayout(flags_layout)
         right_layout.addWidget(self.flags_group)
         
-        # --- Стек ---
+        # Стек
         self.stack_group = QGroupBox("Стек")
         stack_layout = QVBoxLayout()
         
         self.stack_list = QListWidget()
-        self.stack_list.setFont(QFont("Consolas", 10))
-        self.stack_list.setMaximumHeight(150)
+        self.stack_list.setFont(QFont("Consolas", 9))
+        self.stack_list.setMaximumHeight(120)
         stack_layout.addWidget(self.stack_list)
         
         self.stack_group.setLayout(stack_layout)
         right_layout.addWidget(self.stack_group)
         
-        # --- Статистика ---
+        # Статистика
         self.stats_group = QGroupBox("Статистика")
         stats_layout = QVBoxLayout()
         
@@ -3793,13 +4359,13 @@ class MainWindow(QMainWindow):
         
         self.emu_splitter.addWidget(right_panel)
         
-        # Устанавливаем пропорции: 60% дизассемблер, 40% регистры
-        self.emu_splitter.setSizes([600, 400])
+        # === КОЛОНКИ ОКНА ЭМУЛЯЦИИ ===
+        self.emu_splitter.setSizes([300, 200, 200, 200])
         
         main_layout.addWidget(self.emu_splitter)
         
         # =============================================
-        # НИЖНЯЯ ЧАСТЬ: Панель управления
+        # НИЖНЯЯ ПАНЕЛЬ УПРАВЛЕНИЯ
         # =============================================
         ctrl_panel = QWidget()
         ctrl_layout = QHBoxLayout(ctrl_panel)
@@ -3813,7 +4379,7 @@ class MainWindow(QMainWindow):
         self.btn_set_pc.clicked.connect(self.set_pc_dialog)
         ctrl_layout.addWidget(self.btn_set_pc)
         
-        ctrl_layout.addSpacing(20)
+        ctrl_layout.addSpacing(10)
         
         self.btn_step_into = QPushButton("Step Into (F11)")
         self.btn_step_into.clicked.connect(self.emulator_step_into)
@@ -3823,7 +4389,7 @@ class MainWindow(QMainWindow):
         self.btn_step_over.clicked.connect(self.emulator_step_over)
         ctrl_layout.addWidget(self.btn_step_over)
         
-        ctrl_layout.addSpacing(20)
+        ctrl_layout.addSpacing(10)
         
         self.btn_run = QPushButton("▶ Run (F5)")
         self.btn_run.clicked.connect(self.emulator_run)
@@ -3834,19 +4400,6 @@ class MainWindow(QMainWindow):
         ctrl_layout.addWidget(self.btn_stop)
         
         ctrl_layout.addStretch()
-        
-        # Точки останова (компактный список)
-        bp_label = QLabel("Breakpoints:")
-        ctrl_layout.addWidget(bp_label)
-        
-        self.bp_list = QListWidget()
-        self.bp_list.setMaximumWidth(200)
-        self.bp_list.setMaximumHeight(60)
-        ctrl_layout.addWidget(self.bp_list)
-        
-        self.btn_clear_bp = QPushButton("Очистить BP")
-        self.btn_clear_bp.clicked.connect(self.clear_breakpoints)
-        ctrl_layout.addWidget(self.btn_clear_bp)
         
         main_layout.addWidget(ctrl_panel)
         
@@ -3864,11 +4417,13 @@ class MainWindow(QMainWindow):
         self.disasm_view.set_highlight(self.emulator.pc)
         
     def emulator_step_into(self):
-        """Step Into: одна инструкция, заходя в CALL"""
+        """Step Into: одна инструкция (обходит BP на текущем PC)"""
         if self.emulator.halted:
             self.statusBar.showMessage("CPU halted. Press Reset.", 3000)
             return
-        self.emulator.step_into()
+        self._save_watch_prev_values()
+        self._save_reg_prev_values()
+        self.emulator.step_into()  # ← step_into() обходит BP
         self.update_emulator_ui()
         self.update_disasm_highlight()
         
@@ -3877,52 +4432,133 @@ class MainWindow(QMainWindow):
         if self.emulator.halted:
             self.statusBar.showMessage("CPU halted. Press Reset.", 3000)
             return
+        self._save_watch_prev_values()
+        self._save_reg_prev_values()  # ← Сохраняем регистры ДО выполнения
         self.emulator.step_over()
         self.update_emulator_ui()
         self.update_disasm_highlight()
         
-    def emulator_run(self):
-        """Запуск с обновлением UI через QTimer"""
-        if self.emulator.halted:
-            self.statusBar.showMessage("CPU halted. Press Reset.", 3000)
+    def _run_tick(self):
+        """Один тик выполнения — оптимизирован для скорости"""
+        # === Проверки остановки ===
+        target_reached = (
+            self.run_target_addr is not None and 
+            self.emulator.pc == self.run_target_addr
+        )
+        if not self.emulator.running or self.emulator.halted or target_reached:
+            self.run_timer.stop()
+            self.emulator.running = False
+            if target_reached:
+                self.statusBar.showMessage(f"Достигнут курсор 0x{self.run_target_addr:04X}", 3000)
+                self.log(f"Run to Cursor: достигнут 0x{self.run_target_addr:04X}")
+            else:
+                self.statusBar.showMessage("Emulator stopped", 3000)
+            self.run_target_addr = None
+            self.update_emulator_ui()
+            self.update_emu_disasm_view()
             return
         
-        # Создаём таймер для периодического выполнения
+        # === Breakpoint имеет приоритет (с учётом условий и enabled) ===
+        if self.emulator.should_stop_at_bp(self.emulator.pc):
+            self.run_timer.stop()
+            self.emulator.running = False
+            self.run_target_addr = None
+            # === Увеличиваем счётчик срабатываний ===
+            self.emulator.register_bp_hit(self.emulator.pc)
+            self.update_emulator_ui()
+            self.update_emu_disasm_view()
+            self.sync_breakpoints()  # ← Обновить панель BP со счётчиком
+            self.statusBar.showMessage(f"Breakpoint at 0x{self.emulator.pc:04X}", 3000)
+            self.log(f"Breakpoint hit: 0x{self.emulator.pc:04X}")
+            return
+        
+        # === Сохраняем Watch и регистры один раз за тик ===
+        self._save_watch_prev_values()
+        self._save_reg_prev_values()
+        
+        # === ВЫПОЛНЯЕМ БОЛЬШОЙ ПАКЕТ БЕЗ СИГНАЛОВ (silent=True) ===
+        INSTRUCTIONS_PER_TICK = 300
+        executed = 0
+        for _ in range(INSTRUCTIONS_PER_TICK):
+            # Проверка цели Run to Cursor
+            if self.run_target_addr is not None and self.emulator.pc == self.run_target_addr:
+                break
+            # === Проверка BP с учётом условий и enabled ===
+            if self.emulator.should_stop_at_bp(self.emulator.pc):
+                break
+            # Выполняем БЕЗ emit сигнала
+            if not self.emulator.execute_instruction(silent=True):
+                break
+            executed += 1
+        
+        # === ОДНО обновление UI за весь тик ===
+        self.update_emulator_ui()
+        self.update_emu_disasm_cursor()
+        
+    def on_emu_cursor_changed(self, addr):
+        """Курсор изменён (одинарный клик в дизассемблере эмулятора)"""
+        self.statusBar.showMessage(f"Курсор: 0x{addr:04X} (Ctrl+F10 — выполнить до курсора)", 3000)
+        
+    def emulator_run_to_cursor(self, addr=None):
+        """Run to Cursor (Ctrl+F10): выполнить до курсора"""
+        if self.emulator.halted:
+            self.statusBar.showMessage("CPU halted. Press Reset (Ctrl+F2).", 3000)
+            return
+        if addr is None:
+            if hasattr(self.emu_disasm_view, 'cursor_addr') and self.emu_disasm_view.cursor_addr is not None:
+                addr = self.emu_disasm_view.cursor_addr
+            else:
+                self.statusBar.showMessage("Курсор не установлен. Кликните по строке дизассемблера.", 3000)
+                return
+        if addr == self.emulator.pc:
+            self.statusBar.showMessage("Курсор совпадает с PC.", 3000)
+            return
+        
+        # === Если PC на breakpoint, обходим его ===
+        if self.emulator.pc in self.emulator.breakpoints:
+            self._save_watch_prev_values()
+            self._save_reg_prev_values()
+            self.emulator.step_into()
+        
+        self.run_target_addr = addr
+        self.emulator.running = True
+        if not hasattr(self, 'run_timer'):
+            self.run_timer = QTimer()
+            self.run_timer.timeout.connect(self._run_tick)
+        self.run_timer.start(20)
+        self.statusBar.showMessage(f"Выполнение до 0x{addr:04X}...", 0)
+        self.log(f"Run to Cursor: 0x{addr:04X}")
+        
+    def emulator_run_from_here(self, addr):
+        """Run from Here: установить PC на курсор и запустить"""
+        if self.emulator.halted:
+            self.statusBar.showMessage("CPU halted. Press Reset (Ctrl+F2).", 3000)
+            return
+        
+        # Устанавливаем PC на адрес курсора
+        self.emulator.set_pc(addr)
+        self.update_emulator_ui()
+        self.update_disasm_highlight()
+        
+        # Запускаем обычный Run (без цели)
+        self.run_target_addr = None
+        self.emulator.running = True
+        
         if not hasattr(self, 'run_timer'):
             self.run_timer = QTimer()
             self.run_timer.timeout.connect(self._run_tick)
         
-        self.emulator.running = True
-        self.run_timer.start(20)  # 20 мс между тиками (50 FPS)
+        self.run_timer.start(20)
+        self.statusBar.showMessage(f"Run from 0x{addr:04X}...", 0)
+        self.log(f"Run from Here: 0x{addr:04X}")
         
-    def _run_tick(self):
-        """Один тик выполнения (вызывается QTimer)"""
-        if not self.emulator.running or self.emulator.halted:
-            self.run_timer.stop()
-            self.emulator.running = False
-            self.update_emulator_ui()
-            self.update_disasm_highlight()
-            return
-        
-        # Проверяем точки останова
-        if self.emulator.pc in self.emulator.breakpoints:
-            self.run_timer.stop()
-            self.emulator.running = False
-            self.emulator.breakpoint_hit.emit(self.emulator.pc)
-            self.update_emulator_ui()
-            self.update_disasm_highlight()
-            return
-        
-        # Выполняем 10 инструкций за тик
-        for _ in range(10):
-            if not self.emulator.execute_instruction():
-                break
-            if self.emulator.pc in self.emulator.breakpoints:
-                break
-        
-        # Обновляем UI
+    def emulator_jump_to_cursor(self, addr):
+        """Jump to Cursor: переместить PC без выполнения"""
+        self.emulator.set_pc(addr)
         self.update_emulator_ui()
         self.update_disasm_highlight()
+        self.statusBar.showMessage(f"PC установлен на 0x{addr:04X}", 3000)
+        self.log(f"Jump to Cursor: 0x{addr:04X}")
         
     def emulator_stop(self):
         """Остановка выполнения"""
@@ -3933,45 +4569,12 @@ class MainWindow(QMainWindow):
         self.update_disasm_highlight()
         self.disasm_view.set_breakpoints(self.emulator.breakpoints)
         
-    # def update_disasm_highlight(self):
-        # """Обновляет подсветку PC в окне дизассемблера"""
-        # if not self.mem_data:
-            # return
-        
-        # pc = self.emulator.pc
-        # start_addr = max(0, pc - 32)
-        # length = 128
-        
-        # lines = self.disassembler.disassemble(self.mem_data, start_addr, length)
-        # self.disasm_view.set_lines(lines)
-        # self.disasm_view.set_highlight(pc)
-        
-        # if hasattr(self.disasm_view, 'set_breakpoints'):
-            # self.disasm_view.set_breakpoints(self.emulator.breakpoints)
-        
-        # # Прокрутка к текущей инструкции
-        # if hasattr(self.disasm_view, 'addr_to_index') and pc in self.disasm_view.addr_to_index:
-            # idx = self.disasm_view.addr_to_index[pc]
-            # scroll_y = idx * self.disasm_view.line_height
-            # widget = self.disasm_view.parent()
-            # while widget is not None:
-                # if hasattr(widget, 'verticalScrollBar'):
-                    # widget.verticalScrollBar().setValue(max(0, scroll_y - 100))
-                    # break
-                # widget = widget.parent()
-        
-        # # === НОВОЕ: Синхронизация со встроенным дизассемблером эмулятора ===
-        # if hasattr(self, 'emu_disasm_view'):
-            # self.update_emu_disasm_view()
-		
     def update_disasm_highlight(self):
-        """Обновляет подсветку PC и breakpoints во встроенном дизассемблере эмулятора"""
+        """Обновляет подсветку PC во встроенном дизассемблере эмулятора"""
         if not self.mem_data:
             return
-        
-        # Обновляем ТОЛЬКО встроенный дизассемблер эмулятора
-        if hasattr(self, 'emu_disasm_view'):
-            self.update_emu_disasm_view()
+        # Используем частичное обновление (быстро)
+        self.update_emu_disasm_cursor()
 		    
     def on_toggle_breakpoint(self, addr):
         """Установка/удаление точки останова"""
@@ -3986,31 +4589,34 @@ class MainWindow(QMainWindow):
         
     def sync_breakpoints(self):
         """Синхронизирует breakpoints между всеми UI-компонентами"""
-        bps = self.emulator.breakpoints
+        # === Обновляем модель BP (таблица в панели Breakpoints) ===
+        if hasattr(self, 'bp_model'):
+            self.bp_model.refresh()
         
-        # Обновляем список в окне эмулятора
-        self.bp_list.clear()
-        for addr in sorted(bps):
-            self.bp_list.addItem(f"0x{addr:04X}")
-        
-        # Обновляем основной дизассемблер
-        #if hasattr(self.disasm_view, 'set_breakpoints'):
-        #    self.disasm_view.set_breakpoints(bps)
-        #    self.disasm_view.update()
-        
-        # Обновляем встроенный дизассемблер эмулятора ===
-        if hasattr(self, 'emu_disasm_view') and hasattr(self.emu_disasm_view, 'set_breakpoints'):
-            self.emu_disasm_view.set_breakpoints(bps)
+        # === Обновляем встроенный дизассемблер эмулятора ===
+        if hasattr(self, 'emu_disasm_view'):
+            if hasattr(self.emu_disasm_view, 'set_breakpoints'):
+                self.emu_disasm_view.set_breakpoints(self.emulator.breakpoints)
+            if hasattr(self.emu_disasm_view, 'set_bp_conditions'):
+                self.emu_disasm_view.set_bp_conditions(self.emulator.bp_conditions)
             self.emu_disasm_view.update()
             
+    def _save_reg_prev_values(self):
+        """Сохранить текущие значения регистров ДО выполнения (для подсветки)"""
+        state = self.emulator.get_state()
+        self.prev_reg_values = {}
+        for reg in ['A', 'B', 'C', 'D', 'E', 'H', 'L']:
+            self.prev_reg_values[reg] = state[reg]
+        for reg in ['SP', 'PC', 'BC', 'DE', 'HL']:
+            self.prev_reg_values[reg] = state[reg]
+            
     def emulator_retranslate(self):
-        """Локализация элементов вкладки эмулятора (новая структура)"""
+        """Локализация элементов вкладки эмулятора"""
         # Заголовки групп
         self.reg_group.setTitle(self.tr("emulator_registers"))
         self.flags_group.setTitle(self.tr("emulator_flags"))
         self.stack_group.setTitle(self.tr("emulator_stack"))
         self.stats_group.setTitle(self.tr("emulator_stats"))
-        
         # Кнопки управления
         self.btn_reset.setText(self.tr("emulator_reset"))
         self.btn_set_pc.setText(self.tr("emulator_set_pc"))
@@ -4018,13 +4624,454 @@ class MainWindow(QMainWindow):
         self.btn_step_over.setText(self.tr("emulator_step_over"))
         self.btn_run.setText(self.tr("emulator_run"))
         self.btn_stop.setText(self.tr("emulator_stop"))
-        self.btn_clear_bp.setText(self.tr("emulator_clear_bp"))
 		
     def safe_call(self, func, *args, **kwargs):
         """Безопасный вызов функции из любого потока через Qt event loop"""
         from PySide6.QtCore import QTimer
         QTimer.singleShot(0, lambda: func(*args, **kwargs))
 		
+    # =============================================
+    # WATCH: Диалоги и управление
+    # =============================================
+    
+    def watch_add_dialog(self):
+        """Диалог добавления элемента в Watch с автоименем и автоформатом"""
+        try:
+            dialog = QDialog(self)
+            dialog.setWindowTitle("Добавить в Watch")
+            dialog.setMinimumWidth(450)
+            layout = QFormLayout(dialog)
+            
+            # === Имя ===
+            name_edit = QLineEdit()
+            layout.addRow("Имя:", name_edit)
+            
+            # === Тип наблюдения ===
+            type_combo = QComboBox()
+            type_combo.addItems([
+                "Память (байт)",
+                "Память (слово)",
+                "Регистр"
+            ])
+            layout.addRow("Тип:", type_combo)
+            
+            # === Контейнер для динамического поля ===
+            target_stack = QStackedWidget()
+            
+            # Страница 0: QLineEdit для hex-адреса (память)
+            addr_edit = QLineEdit()
+            addr_edit.setPlaceholderText("Адрес HEX, например: 0100")
+            addr_edit.setMaxLength(4)
+            target_stack.addWidget(addr_edit)
+            
+            # Страница 1: QComboBox для регистров
+            reg_combo = QComboBox()
+            reg_combo.addItems([
+                "A", "B", "C", "D", "E", "H", "L",
+                "BC", "DE", "HL", "SP", "PC", "FLAGS"
+            ])
+            reg_combo.setEditable(False)
+            target_stack.addWidget(reg_combo)
+            
+            layout.addRow("Адрес/Регистр:", target_stack)
+            
+            # === Формат ===
+            format_combo = QComboBox()
+            format_combo.addItems(WatchModel.FORMATS)
+            layout.addRow("Формат:", format_combo)
+            
+            # =============================================
+            # АВТОИМЯ: генерация имени по умолчанию
+            # =============================================
+            
+            def generate_auto_name():
+                """Генерирует автоимя в зависимости от типа и цели"""
+                type_idx = type_combo.currentIndex()
+                if type_idx == 0:  # Память (байт)
+                    addr_text = addr_edit.text().strip()
+                    try:
+                        addr = int(addr_text, 16) if addr_text else 0
+                        return f"mem_{addr:04X}"
+                    except ValueError:
+                        return "mem_XXXX"
+                elif type_idx == 1:  # Память (слово)
+                    addr_text = addr_edit.text().strip()
+                    try:
+                        addr = int(addr_text, 16) if addr_text else 0
+                        return f"word_{addr:04X}"
+                    except ValueError:
+                        return "word_XXXX"
+                else:  # Регистр
+                    reg = reg_combo.currentText()
+                    return f"reg_{reg.lower()}"
+            
+            def update_name_placeholder():
+                """Обновляет placeholder имени с примером автоимени"""
+                name_edit.setPlaceholderText(f"Авто: {generate_auto_name()}")
+            
+            # =============================================
+            # АВТОФОРМАТ: выбор формата по умолчанию
+            # =============================================
+            
+            def get_auto_format():
+                """Возвращает автоформат в зависимости от типа и цели"""
+                type_idx = type_combo.currentIndex()
+                if type_idx == 2:  # Регистр
+                    reg = reg_combo.currentText()
+                    if reg == "FLAGS":
+                        return "bin"  # Флаги удобно смотреть в двоичном виде
+                    return "hex"      # Регистры — в hex
+                else:  # Память
+                    return "hex"      # Память — в hex
+            
+            def apply_auto_format():
+                """Применяет автоформат к format_combo"""
+                format_combo.setCurrentText(get_auto_format())
+            
+            # =============================================
+            # ОБРАБОТЧИКИ СОБЫТИЙ
+            # =============================================
+            
+            def on_reg_changed(reg_name):
+                """При смене регистра: обновить формат и placeholder имени"""
+                apply_auto_format()
+                update_name_placeholder()
+            
+            def on_addr_changed(text):
+                """При изменении адреса: обновить placeholder имени"""
+                update_name_placeholder()
+            
+            def on_type_changed(index):
+                """При смене типа: переключить поле, применить автоформат"""
+                if index == 2:  # Регистр
+                    target_stack.setCurrentIndex(1)
+                else:  # Память
+                    target_stack.setCurrentIndex(0)
+                apply_auto_format()
+                update_name_placeholder()
+            
+            # Подключение сигналов
+            type_combo.currentIndexChanged.connect(on_type_changed)
+            reg_combo.currentTextChanged.connect(on_reg_changed)
+            addr_edit.textChanged.connect(on_addr_changed)
+            
+            # Инициализация начального состояния
+            update_name_placeholder()
+            
+            # === Кнопки ===
+            btn_layout = QHBoxLayout()
+            btn_ok = QPushButton("OK")
+            btn_cancel = QPushButton("Отмена")
+            btn_ok.clicked.connect(dialog.accept)
+            btn_cancel.clicked.connect(dialog.reject)
+            btn_layout.addWidget(btn_ok)
+            btn_layout.addWidget(btn_cancel)
+            layout.addRow(btn_layout)
+            
+            # =============================================
+            # ОБРАБОТКА РЕЗУЛЬТАТА
+            # =============================================
+            
+            if dialog.exec() == QDialog.Accepted:
+                # Автоимя: если поле пустое — используем сгенерированное
+                name = name_edit.text().strip() or generate_auto_name()
+                fmt = format_combo.currentText()
+                type_idx = type_combo.currentIndex()
+                
+                if type_idx == 0:  # Память (байт)
+                    addr_text = addr_edit.text().strip()
+                    if not addr_text:
+                        QMessageBox.warning(self, "Ошибка", "Введите адрес памяти!")
+                        return
+                    addr = int(addr_text, 16)
+                    self.watch_model.add_watch(name, WatchModel.TYPE_MEM_BYTE, addr, fmt)
+                    self.log(f"Watch added: {name} = mem[0x{addr:04X}] byte ({fmt})")
+                    
+                elif type_idx == 1:  # Память (слово)
+                    addr_text = addr_edit.text().strip()
+                    if not addr_text:
+                        QMessageBox.warning(self, "Ошибка", "Введите адрес памяти!")
+                        return
+                    addr = int(addr_text, 16)
+                    self.watch_model.add_watch(name, WatchModel.TYPE_MEM_WORD, addr, fmt)
+                    self.log(f"Watch added: {name} = mem[0x{addr:04X}] word ({fmt})")
+                    
+                else:  # Регистр
+                    reg = reg_combo.currentText()
+                    self.watch_model.add_watch(name, WatchModel.TYPE_REG, reg, fmt)
+                    self.log(f"Watch added: {name} = {reg} ({fmt})")
+                    
+        except ValueError as e:
+            QMessageBox.warning(
+                self, "Ошибка формата",
+                f"Неверный формат адреса!\n\n"
+                f"Введите HEX-значение без префикса 0x.\n"
+                f"Примеры: 0100, 0FF0, FFFF\n\n"
+                f"Детали: {e}"
+            )
+        except Exception as e:
+            QMessageBox.critical(self, "Ошибка", f"Не удалось добавить Watch:\n{e}")
+            self.log(f"Watch add error: {e}")
+            
+    def watch_delete(self):
+        """Удалить выбранный элемент Watch"""
+        selected = self.watch_table.selectedIndexes()
+        if selected:
+            row = selected[0].row()
+            self.watch_model.remove_watch(row)
+        else:
+            self.statusBar.showMessage("Выберите элемент для удаления", 2000)
+            
+    def watch_clear(self):
+        """Очистить все элементы Watch"""
+        if self.watch_model.items:
+            reply = QMessageBox.question(
+                self, "Подтверждение",
+                "Удалить все элементы Watch?",
+                QMessageBox.Yes | QMessageBox.No
+            )
+            if reply == QMessageBox.Yes:
+                self.watch_model.clear()
+                
+    def watch_save_preset(self):
+        """Сохранить пресет Watch в файл"""
+        path, _ = QFileDialog.getSaveFileName(
+            self, "Сохранить пресет Watch",
+            "watch_preset.json",
+            "JSON Files (*.json);;All Files (*)"
+        )
+        if path:
+            if self.watch_model.save_preset(path):
+                self.statusBar.showMessage(f"Пресет сохранён: {path}", 3000)
+                self.log(f"Watch preset saved: {path}")
+            else:
+                QMessageBox.warning(self, "Ошибка", "Не удалось сохранить пресет")
+                
+    def watch_load_preset(self):
+        """Загрузить пресет Watch из файла"""
+        path, _ = QFileDialog.getOpenFileName(
+            self, "Загрузить пресет Watch",
+            "",
+            "JSON Files (*.json);;All Files (*)"
+        )
+        if path:
+            if self.watch_model.load_preset(path):
+                self.statusBar.showMessage(f"Пресет загружен: {path}", 3000)
+                self.log(f"Watch preset loaded: {path}")
+                self.watch_model.refresh()
+            else:
+                QMessageBox.warning(self, "Ошибка", "Не удалось загрузить пресет. Проверьте формат файла.")
+				
+        # =============================================
+    # BREAKPOINTS: Диалоги и управление (ИТЕРАЦИЯ C)
+    # =============================================
+    
+    def bp_add_dialog(self):
+        """Добавить BP через диалог"""
+        text, ok = QInputDialog.getText(self, "Add Breakpoint", "Address (HEX):")
+        if ok:
+            try:
+                addr = int(text, 16)
+                self.emulator.add_breakpoint(addr)
+                self.sync_breakpoints()
+                self.log(f"Breakpoint set: 0x{addr:04X}")
+            except ValueError:
+                QMessageBox.warning(self, "Error", "Invalid address!")
+    
+    def bp_edit_condition(self):
+        """Редактировать условие выбранной BP"""
+        selected = self.bp_table.selectedIndexes()
+        if not selected:
+            self.statusBar.showMessage("Выберите точку останова", 2000)
+            return
+        row = selected[0].row()
+        bps = self.bp_model.get_bp_list()
+        if row >= len(bps):
+            return
+        addr = bps[row]
+        existing = self.emulator.get_bp_condition(addr)
+        self.bp_condition_dialog(addr, existing)
+    
+    def bp_toggle_enabled(self):
+        """Включить/выключить выбранную BP"""
+        selected = self.bp_table.selectedIndexes()
+        if not selected:
+            self.statusBar.showMessage("Выберите точку останова", 2000)
+            return
+        row = selected[0].row()
+        bps = self.bp_model.get_bp_list()
+        if row >= len(bps):
+            return
+        addr = bps[row]
+        self.emulator.toggle_bp_enabled(addr)
+        self.sync_breakpoints()
+    
+    def bp_delete(self):
+        """Удалить выбранную BP"""
+        selected = self.bp_table.selectedIndexes()
+        if not selected:
+            self.statusBar.showMessage("Выберите точку останова", 2000)
+            return
+        row = selected[0].row()
+        bps = self.bp_model.get_bp_list()
+        if row >= len(bps):
+            return
+        addr = bps[row]
+        self.emulator.remove_breakpoint(addr)
+        self.sync_breakpoints()
+        self.log(f"Breakpoint removed: 0x{addr:04X}")
+    
+    def bp_condition_dialog(self, addr, existing_condition=""):
+        """Диалог ввода условия для BP"""
+        dialog = QDialog(self)
+        dialog.setWindowTitle(f"Условие точки останова 0x{addr:04X}")
+        dialog.setMinimumWidth(500)
+        layout = QVBoxLayout(dialog)
+        
+        hint = QLabel(
+            "Доступные переменные:\n"
+            "  Регистры: A, B, C, D, E, H, L, BC, DE, HL, SP, PC\n"
+            "  Флаги: S, Z, AC, P, CY\n"
+            "  Память: mem[0x0100]   Порты: io[0x01]\n"
+            "  Такты: cycles\n"
+            "  Операторы: ==, !=, <, >, <=, >=, and, or, not\n"
+            "Примеры: A == 0x55,  mem[0x80] == 0xFF,  HL > 0x1000 and Z == 0\n"
+            "Оставьте пустым для обычной точки останова."
+        )
+        hint.setWordWrap(True)
+        hint.setStyleSheet("color: #666; font-size: 9pt;")
+        layout.addWidget(hint)
+        
+        cond_edit = QLineEdit(existing_condition)
+        cond_edit.setPlaceholderText("Например: A == 0x55")
+        layout.addWidget(cond_edit)
+        
+        btn_layout = QHBoxLayout()
+        btn_clear = QPushButton("Очистить условие")
+        btn_clear.clicked.connect(lambda: cond_edit.setText(""))
+        btn_ok = QPushButton("OK")
+        btn_cancel = QPushButton("Отмена")
+        btn_ok.clicked.connect(dialog.accept)
+        btn_cancel.clicked.connect(dialog.reject)
+        btn_layout.addWidget(btn_clear)
+        btn_layout.addStretch()
+        btn_layout.addWidget(btn_ok)
+        btn_layout.addWidget(btn_cancel)
+        layout.addLayout(btn_layout)
+        
+        if dialog.exec() == QDialog.Accepted:
+            condition = cond_edit.text().strip()
+            if condition and not self._validate_bp_condition(condition):
+                QMessageBox.warning(self, "Ошибка", "Неверный синтаксис условия!")
+                return
+            self.emulator.set_bp_condition(addr, condition)
+            self.sync_breakpoints()
+            self.log(f"BP 0x{addr:04X} condition: {condition or '(none)'}")
+    
+    # =============================================
+    # BREAKPOINTS: Пресеты (сохранение/загрузка)
+    # =============================================
+    
+    def bp_save_preset(self):
+        """Сохранить пресет BP в JSON файл"""
+        path, _ = QFileDialog.getSaveFileName(
+            self, "Сохранить пресет Breakpoints",
+            "bp_preset.json",
+            "JSON Files (*.json);;All Files (*)"
+        )
+        if not path:
+            return
+        
+        try:
+            import json
+            data = {
+                "version": 1,
+                "breakpoints": []
+            }
+            
+            for addr in sorted(self.emulator.breakpoints):
+                bp_entry = {
+                    "addr": addr,
+                    "condition": self.emulator.get_bp_condition(addr),
+                    "enabled": self.emulator.bp_enabled.get(addr, True),
+                    "hit_count": self.emulator.bp_hit_count.get(addr, 0)
+                }
+                data["breakpoints"].append(bp_entry)
+            
+            with open(path, 'w', encoding='utf-8') as f:
+                json.dump(data, f, indent=2, ensure_ascii=False)
+            
+            self.statusBar.showMessage(f"Пресет BP сохранён: {path}", 3000)
+            self.log(f"BP preset saved: {path} ({len(data['breakpoints'])} breakpoints)")
+        except Exception as e:
+            QMessageBox.warning(self, "Ошибка", f"Не удалось сохранить пресет BP:\n{e}")
+    
+    def bp_load_preset(self):
+        """Загрузить пресет BP из JSON файла"""
+        path, _ = QFileDialog.getOpenFileName(
+            self, "Загрузить пресет Breakpoints",
+            "",
+            "JSON Files (*.json);;All Files (*)"
+        )
+        if not path:
+            return
+        
+        try:
+            import json
+            with open(path, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+            
+            # Очищаем текущие BP
+            self.emulator.clear_all_breakpoints()
+           
+            # Загружаем новые BP
+            loaded_count = 0
+            for bp_entry in data.get("breakpoints", []):
+                addr = bp_entry.get("addr")
+                if addr is None:
+                    continue
+                
+                self.emulator.add_breakpoint(addr)
+                
+                condition = bp_entry.get("condition", "")
+                if condition:
+                    self.emulator.set_bp_condition(addr, condition)
+                
+                enabled = bp_entry.get("enabled", True)
+                self.emulator.bp_enabled[addr] = enabled
+                
+                hit_count = bp_entry.get("hit_count", 0)
+                if hit_count > 0:
+                    self.emulator.bp_hit_count[addr] = hit_count
+                
+                loaded_count += 1
+            
+            self.sync_breakpoints()
+            self.statusBar.showMessage(f"Пресет BP загружен: {path}", 3000)
+            self.log(f"BP preset loaded: {path} ({loaded_count} breakpoints)")
+        except Exception as e:
+            QMessageBox.warning(self, "Ошибка", f"Не удалось загрузить пресет BP:\n{e}")
+        
+    def _validate_bp_condition(self, condition):
+        """Проверяет синтаксис условия"""
+        try:
+            compile(condition, '<bp_condition>', 'eval')
+            return True
+        except SyntaxError:
+            return False
+    
+    def on_set_conditional_bp(self, addr):
+        """Обработчик запроса на условный BP из контекстного меню"""
+        if addr not in self.emulator.breakpoints:
+            self.emulator.add_breakpoint(addr)
+        existing = self.emulator.get_bp_condition(addr)
+        self.bp_condition_dialog(addr, existing)
+        
+    def _save_watch_prev_values(self):
+        """Сохранить текущие значения Watch перед выполнением"""
+        if hasattr(self, 'watch_model'):
+            self.watch_model.save_prev_values()
+        
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     app.setStyle("Fusion")

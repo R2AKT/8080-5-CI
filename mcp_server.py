@@ -255,26 +255,145 @@ class MCPServerManager:
                 return f"Error: {e}"
         
         def emu_list_breakpoints() -> list:
-            """Список всех точек останова."""
+            """Список всех точек останова с условиями и статистикой."""
             try:
                 if not hasattr(self.mw, 'emulator'):
                     return []
-                return sorted([f"0x{addr:04X}" for addr in self.mw.emulator.breakpoints])
+                
+                result = []
+                for addr in sorted(self.mw.emulator.breakpoints):
+                    condition = self.mw.emulator.get_bp_condition(addr)
+                    enabled = self.mw.emulator.bp_enabled.get(addr, True)
+                    hit_count = self.mw.emulator.bp_hit_count.get(addr, 0)
+                    
+                    entry = f"0x{addr:04X}"
+                    if condition:
+                        entry += f" [{condition}]"
+                    if not enabled:
+                        entry += " (disabled)"
+                    entry += f" ×{hit_count}"
+                    
+                    result.append(entry)
+                
+                return result if result else ["No breakpoints set"]
             except Exception as e:
                 return [f"Error: {e}"]
         
         def emu_clear_breakpoints() -> str:
-            """Удалить все точки останова."""
+            """Удалить все точки останова, условия и статистику."""
             try:
                 if not hasattr(self.mw, 'emulator'):
                     return "Emulator not initialized"
-                self.mw.emulator.breakpoints.clear()
+                self.mw.emulator.clear_all_breakpoints()
                 if hasattr(self.mw, 'sync_breakpoints'):
                     self.mw.safe_call(self.mw.sync_breakpoints)
-                return "All breakpoints cleared"
+                return "All breakpoints, conditions and statistics cleared"
             except Exception as e:
                 return f"Error: {e}"
         
+        def emu_add_conditional_breakpoint(addr: int, condition: str) -> str:
+            """Добавить условную точку останова.
+            
+            Примеры условий:
+            - "A == 0x55" — остановиться когда A станет 0x55
+            - "HL > 0x1000" — когда HL превысит 0x1000
+            - "mem[0x0100] == 0xFF" — когда ячейка памяти станет FF
+            - "Z == 1" — когда флаг Zero установлен
+            - "cycles > 10000" — после 10000 тактов
+            
+            Доступные переменные: A,B,C,D,E,H,L,BC,DE,HL,SP,PC,
+            флаги S,Z,AC,P,CY, mem[addr], io[port], cycles
+            """
+            try:
+                if not hasattr(self.mw, 'emulator'):
+                    return "Emulator not initialized"
+                
+                # Валидация синтаксиса условия
+                if condition.strip():
+                    try:
+                        compile(condition, '<bp_condition>', 'eval')
+                    except SyntaxError as e:
+                        return f"Syntax error in condition: {e}"
+                
+                self.mw.emulator.add_breakpoint(addr)
+                if condition.strip():
+                    self.mw.emulator.set_bp_condition(addr, condition)
+                
+                if hasattr(self.mw, 'sync_breakpoints'):
+                    self.mw.safe_call(self.mw.sync_breakpoints)
+                
+                cond_text = f" with condition '{condition}'" if condition.strip() else ""
+                return f"Breakpoint added at 0x{addr:04X}{cond_text}"
+            except Exception as e:
+                return f"Error: {e}"
+        
+        def emu_set_bp_condition(addr: int, condition: str) -> str:
+            """Установить/изменить условие для существующей точки останова.
+            Пустое условие делает BP обычной."""
+            try:
+                if not hasattr(self.mw, 'emulator'):
+                    return "Emulator not initialized"
+                
+                if addr not in self.mw.emulator.breakpoints:
+                    return f"No breakpoint at 0x{addr:04X}. Add one first."
+                
+                # Валидация синтаксиса
+                if condition.strip():
+                    try:
+                        compile(condition, '<bp_condition>', 'eval')
+                    except SyntaxError as e:
+                        return f"Syntax error in condition: {e}"
+                
+                self.mw.emulator.set_bp_condition(addr, condition)
+                
+                if hasattr(self.mw, 'sync_breakpoints'):
+                    self.mw.safe_call(self.mw.sync_breakpoints)
+                
+                if condition.strip():
+                    return f"Condition set for BP 0x{addr:04X}: '{condition}'"
+                else:
+                    return f"Condition cleared for BP 0x{addr:04X} (now unconditional)"
+            except Exception as e:
+                return f"Error: {e}"
+        
+        def emu_toggle_bp_enabled(addr: int) -> str:
+            """Включить/выключить точку останова без удаления."""
+            try:
+                if not hasattr(self.mw, 'emulator'):
+                    return "Emulator not initialized"
+                
+                if addr not in self.mw.emulator.breakpoints:
+                    return f"No breakpoint at 0x{addr:04X}"
+                
+                self.mw.emulator.toggle_bp_enabled(addr)
+                enabled = self.mw.emulator.bp_enabled.get(addr, True)
+                
+                if hasattr(self.mw, 'sync_breakpoints'):
+                    self.mw.safe_call(self.mw.sync_breakpoints)
+                
+                state = "enabled" if enabled else "disabled"
+                return f"Breakpoint 0x{addr:04X} {state}"
+            except Exception as e:
+                return f"Error: {e}"
+        
+        def emu_get_bp_info(addr: int) -> dict:
+            """Получить полную информацию о точке останова."""
+            try:
+                if not hasattr(self.mw, 'emulator'):
+                    return {"error": "Emulator not initialized"}
+                
+                if addr not in self.mw.emulator.breakpoints:
+                    return {"error": f"No breakpoint at 0x{addr:04X}"}
+                
+                return {
+                    "addr": f"0x{addr:04X}",
+                    "condition": self.mw.emulator.get_bp_condition(addr) or None,
+                    "enabled": self.mw.emulator.bp_enabled.get(addr, True),
+                    "hit_count": self.mw.emulator.bp_hit_count.get(addr, 0)
+                }
+            except Exception as e:
+                return {"error": str(e)}
+            
         # =============================================
         # TOOLS: Анализ и трассировка
         # =============================================
@@ -552,6 +671,10 @@ class MCPServerManager:
         mcp.tool()(save_file)
         mcp.tool()(get_status)
         mcp.tool()(refresh)
+        mcp.tool()(emu_add_conditional_breakpoint)
+        mcp.tool()(emu_set_bp_condition)
+        mcp.tool()(emu_toggle_bp_enabled)
+        mcp.tool()(emu_get_bp_info)
         
         # =============================================
         # RESOURCES
@@ -615,7 +738,7 @@ class MCPServerManager:
         
         @mcp.resource("emulator://breakpoints")
         def get_emulator_breakpoints() -> str:
-            """Список точек останова эмулятора"""
+            """Список точек останова эмулятора с условиями"""
             if not hasattr(self.mw, 'emulator'):
                 return "Emulator not initialized"
             bps = sorted(self.mw.emulator.breakpoints)
@@ -623,7 +746,17 @@ class MCPServerManager:
                 return "Точек останова нет"
             lines = ["Точки останова:"]
             for addr in bps:
-                lines.append(f"  0x{addr:04X}")
+                condition = self.mw.emulator.get_bp_condition(addr)
+                enabled = self.mw.emulator.bp_enabled.get(addr, True)
+                hit_count = self.mw.emulator.bp_hit_count.get(addr, 0)
+                
+                line = f"  0x{addr:04X}"
+                if condition:
+                    line += f" [{condition}]"
+                if not enabled:
+                    line += " (выкл)"
+                line += f" ×{hit_count}"
+                lines.append(line)
             return "\n".join(lines)
         
         # =============================================
@@ -750,6 +883,30 @@ class MCPServerManager:
 Рекомендации по дальнейшей отладке
 Если обнаружена точка останова — сообщи об этом и предложи продолжить или остановиться."""
         
+        @mcp.prompt()
+        def setup_conditional_debugging() -> str:
+            """Настройка отладки с условными точками останова"""
+            return """Настрой эффективную отладку программы i8080 с использованием условных точек останова.
+План действий:
+1. Дизассемблируй программу (emu_disassemble) и определи ключевые участки кода
+2. Найди циклы, подпрограммы и критические точки
+3. Установи условные breakpoints в стратегических местах:
+   - Для циклов: условие на счётчик итераций или переменную цикла
+   - Для подпрограмм: условие на входные параметры
+   - Для работы с памятью: условие на значение в целевой ячейке
+4. Используй emu_add_conditional_breakpoint с осмысленными условиями
+5. Запусти программу (emu_run) и проанализируй, где происходит остановка
+6. При необходимости корректируй условия через emu_set_bp_condition
+
+Примеры полезных условий:
+- "A == 0x00" — остановка при обнулении аккумулятора
+- "HL > 0x1000" — выход за пределы ожидаемого диапазона
+- "mem[0x0100] != 0xFF" — изменение целевой ячейки памяти
+- "SP < 0xF000" — подозрительное значение стека (переполнение)
+- "cycles > 50000" — программа работает слишком долго
+
+После настройки объясни, какие условия были выбраны и почему."""
+
         return mcp
         
     def _get_api(self):

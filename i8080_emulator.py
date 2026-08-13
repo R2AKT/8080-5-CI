@@ -5,6 +5,12 @@
 
 from PySide6.QtCore import QObject, Signal
 
+class _SafeAccessor:
+    """Обёртка для безопасной индексации в условиях BP (mem[...], io[...])"""
+    def __init__(self, getter):
+        self._getter = getter
+    def __getitem__(self, key):
+        return self._getter(key)
 
 class I8080Emulator(QObject):
     """Эмулятор процессора Intel 8080"""
@@ -44,6 +50,10 @@ class I8080Emulator(QObject):
         self.halted = False
         self.interrupts_enabled = False
         self.breakpoints = set()
+        # === Условные breakpoints ===
+        self.bp_conditions = {}    # {addr: "условие"}
+        self.bp_enabled = {}       # {addr: True/False}
+        self.bp_hit_count = {}     # {addr: count}
         self.cycles = 0
         
     def reset(self):
@@ -230,14 +240,15 @@ class I8080Emulator(QObject):
         Выполнить одну инструкцию.
         
         Args:
-            silent: если True, не эмитить сигналы (для внутренних циклов)
+            silent: если True, не эмитить сигналы (для пакетного Run и трассировки)
         """
         if self.halted:
             return False
         
-        if self.pc in self.breakpoints:
+        if self.should_stop_at_bp(self.pc):
             if not silent:
                 self.breakpoint_hit.emit(self.pc)
+            self.bp_hit_count[self.pc] = self.bp_hit_count.get(self.pc, 0) + 1
             return False
         
         opcode = self.read_byte(self.pc)
@@ -245,7 +256,6 @@ class I8080Emulator(QObject):
         self.pc = (self.pc + 1) & 0xFFFF
         
         self._execute_opcode(opcode)
-        
         self.cycles += self._get_cycles(opcode)
         
         if not silent:
@@ -812,8 +822,73 @@ class I8080Emulator(QObject):
         self.breakpoints.add(addr & 0xFFFF)
         
     def remove_breakpoint(self, addr):
-        """Удалить точку останова"""
-        self.breakpoints.discard(addr & 0xFFFF)
+        """Удалить точку останова и связанные данные"""
+        addr &= 0xFFFF
+        self.breakpoints.discard(addr)
+        self.bp_conditions.pop(addr, None)
+        self.bp_enabled.pop(addr, None)
+        self.bp_hit_count.pop(addr, None)
+        
+    def should_stop_at_bp(self, addr):
+        """Проверяет, нужно ли останавливаться на BP с учётом условия и enabled"""
+        if addr not in self.breakpoints:
+            return False
+        # BP выключена
+        if not self.bp_enabled.get(addr, True):
+            return False
+        # Нет условия — обычная BP
+        condition = self.bp_conditions.get(addr, "")
+        if not condition.strip():
+            return True
+        # Проверяем условие через eval
+        try:
+            context = {
+                'A': self.a, 'B': self.b, 'C': self.c,
+                'D': self.d, 'E': self.e, 'H': self.h, 'L': self.l,
+                'BC': self.get_reg_pair('BC'),
+                'DE': self.get_reg_pair('DE'),
+                'HL': self.get_reg_pair('HL'),
+                'SP': self.sp, 'PC': self.pc,
+                'S': int(self.flag_s), 'Z': int(self.flag_z),
+                'AC': int(self.flag_ac), 'P': int(self.flag_p),
+                'CY': int(self.flag_cy),
+                'cycles': self.cycles,
+                'mem': _SafeAccessor(lambda a: self.read_byte(a)),
+                'io': _SafeAccessor(lambda p: self.io_ports.get(p, 0xFF)),
+            }
+            return bool(eval(condition, {"__builtins__": {}}, context))
+        except Exception as e:
+            self.log_message.emit(f"BP condition error at 0x{addr:04X}: {e}")
+            return True  # При ошибке условия считаем BP обычной
+            
+    def set_bp_condition(self, addr, condition):
+        """Установить условие для BP"""
+        addr &= 0xFFFF
+        if condition.strip():
+            self.bp_conditions[addr] = condition.strip()
+        else:
+            self.bp_conditions.pop(addr, None)
+            
+    def get_bp_condition(self, addr):
+        """Получить условие BP"""
+        return self.bp_conditions.get(addr & 0xFFFF, "")
+        
+    def toggle_bp_enabled(self, addr):
+        """Включить/выключить BP"""
+        addr &= 0xFFFF
+        self.bp_enabled[addr] = not self.bp_enabled.get(addr, True)
+        
+    def register_bp_hit(self, addr):
+        """Зарегистрировать срабатывание BP (увеличить счётчик)"""
+        addr &= 0xFFFF
+        self.bp_hit_count[addr] = self.bp_hit_count.get(addr, 0) + 1
+        
+    def clear_all_breakpoints(self):
+        """Удалить все BP и условия"""
+        self.breakpoints.clear()
+        self.bp_conditions.clear()
+        self.bp_enabled.clear()
+        self.bp_hit_count.clear()
         
     def get_state(self):
         """Получить текущее состояние для UI"""
@@ -853,7 +928,7 @@ class I8080Emulator(QObject):
         if had_bp:
             self.breakpoints.discard(current_pc)
         
-        result = self.execute_instruction()
+        result = self.execute_instruction(silent=True)
         
         # Восстанавливаем breakpoint
         if had_bp:
@@ -862,35 +937,41 @@ class I8080Emulator(QObject):
         return result
         
     def step_over(self):
+        """Step Over (F10): выполнить CALL как одну инструкцию, обходя BP на текущем PC"""
         if self.halted:
             return False
         
-        if self.is_call_instruction(self.pc):
-            return_addr = (self.pc + 3) & 0xFFFF
-            temp_bp = return_addr
-            self.breakpoints.add(temp_bp)
-            
-            max_steps = 100000
-            steps = 0
-            hit_user_bp = False
-            
-            while steps < max_steps and not self.halted:
-                if self.pc == temp_bp:
-                    break
-                # Проверяем пользовательские breakpoints (кроме временного)
-                if self.pc in self.breakpoints and self.pc != temp_bp:
-                    hit_user_bp = True
-                    self.breakpoint_hit.emit(self.pc)
-                    break
-                if not self.execute_instruction(silent=True):
-                    break
-                steps += 1
-            
-            self.breakpoints.discard(temp_bp)
-            self.state_changed.emit()
-            return True
-        else:
-            return self.step()
+        current_pc = self.pc
+        had_bp = current_pc in self.breakpoints
+        
+        # Временно удаляем breakpoint на текущем PC для обхода
+        if had_bp:
+            self.breakpoints.discard(current_pc)
+        
+        try:
+            if self.is_call_instruction(self.pc):
+                return_addr = (self.pc + 3) & 0xFFFF
+                temp_bp = return_addr
+                self.breakpoints.add(temp_bp)
+                
+                max_steps = 100000
+                steps = 0
+                while steps < max_steps and not self.halted:
+                    if self.pc == temp_bp:
+                        break
+                    if not self.execute_instruction(silent=True):
+                        break
+                    steps += 1
+                
+                self.breakpoints.discard(temp_bp)
+                return True
+            else:
+                # Не CALL — одна инструкция
+                return self.execute_instruction(silent=True)
+        finally:
+            # Восстанавливаем breakpoint в любом случае
+            if had_bp:
+                self.breakpoints.add(current_pc)
     
     def run_to(self, target_addr):
         """Выполнять до указанного адреса (Run to Cursor)"""
@@ -901,7 +982,7 @@ class I8080Emulator(QObject):
         while self.running and steps < max_steps:
             if self.pc == target_addr:
                 break
-            if self.pc in self.breakpoints:
+            if self.should_stop_at_bp(self.pc):
                 self.breakpoint_hit.emit(self.pc)
                 break
             # === ТИХИЙ РЕЖИМ ===
