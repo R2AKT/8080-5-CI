@@ -77,10 +77,11 @@ LANGS = {
 		# Эмулятор
         "tab_emulator": "Emulator", "emulator_registers": "Registers", "emulator_flags": "Flags",
         "emulator_stats": "Statistics", "emulator_control": "Control", "emulator_current_instr": "Current Instruction",
-        "emulator_breakpoints": "Breakpoints", "emulator_reset": "Reset", "emulator_set_pc": "Set PC...",
-        "emulator_step_into": "Step Into (F11)", "emulator_step_over": "Step Over (F10)",
-        "emulator_run": "▶ Run (F5)", "emulator_stop": "■ Stop", "emulator_add_bp": "Add",
-        "emulator_clear_bp": "Clear All", "end": "End:", "emulator_stack": "Stack",
+        "emulator_breakpoints": "Breakpoints", "emulator_reset": "⚡ Reset (Ctrl+F2)", "emulator_set_pc": "📌 Set PC...",
+        "emulator_step_into": "↴ Step Into (F11)", "emulator_step_over": "➟ Step Over (F10)",
+        "emulator_run": "🚀 Run (F5)", "emulator_stop": "⛔ Stop (F8)", "emulator_add_bp": "Add",
+        "emulator_clear_bp": "🗑 Clear All", "end": "End:", "emulator_stack": "Stack",
+        "tab_trace": "Trace", "emulator_trace": "Trace",
     },
     "ru": {
         "app_title": "i8080-5 CI",
@@ -135,9 +136,10 @@ LANGS = {
 		# Эмулятор
         "tab_emulator": "Эмулятор", "emulator_registers": "Регистры", "emulator_flags": "Флаги", "emulator_stats": "Статистика",
         "emulator_control": "Управление", "emulator_current_instr": "Текущая инструкция", "emulator_breakpoints": "Точки останова",
-        "emulator_reset": "Сброс", "emulator_set_pc": "Установить PC...", "emulator_step_into": "Шаг с заходом (F11)",
-        "emulator_step_over": "Шаг без захода (F10)", "emulator_run": "▶ Запуск (F5)", "emulator_stop": "■ Стоп",
-        "emulator_add_bp": "Добавить", "emulator_clear_bp": "Очистить все", "end": "Конец:", "emulator_stack": "Стек",
+        "emulator_reset": "⚡ Сброс (Ctrl+F2)", "emulator_set_pc": "📌 Установить PC...", "emulator_step_into": "↴ Шаг с заходом (F11)",
+        "emulator_step_over": "➟ Шаг без захода (F10)", "emulator_run": "🚀 Запуск (F5)", "emulator_stop": "⛔ Стоп (F8)",
+        "emulator_add_bp": "Добавить", "emulator_clear_bp": "🗑 Очистить все", "end": "Конец:", "emulator_stack": "Стек",
+        "tab_trace": "Трассировка", "emulator_trace": "Трассировка",
     }
 }
 
@@ -761,9 +763,9 @@ class DisasmView(QWidget):
         self.update()
         
         menu = QMenu(self)
-        act_run_to = menu.addAction(f"▶ Run to Cursor (0x{addr:04X})  [Ctrl+F10]")
-        act_run_from = menu.addAction(f"⤳ Run from Here (0x{addr:04X})")
-        act_jump = menu.addAction(f"⇢ Jump to Cursor (0x{addr:04X})")
+        act_run_to = menu.addAction(f"⥗ Run to Cursor (0x{addr:04X})  [Ctrl+F10]")
+        act_run_from = menu.addAction(f"⥟ Run from Here (0x{addr:04X})")
+        act_jump = menu.addAction(f"⤼ Jump to Cursor (0x{addr:04X})")
         menu.addSeparator()
         act_toggle_bp = menu.addAction(f"● Toggle Breakpoint (0x{addr:04X})")
         act_cond_bp = menu.addAction(f"◉ Set Conditional BP... (0x{addr:04X})")
@@ -2089,6 +2091,80 @@ class BreakpointModel(QAbstractTableModel):
                 return Qt.AlignCenter
         return None
 
+class TraceModel(QAbstractTableModel):
+    """Виртуальная модель трассировки — отрисовывает только видимые строки"""
+    
+    def __init__(self, emulator, parent=None):
+        super().__init__(parent)
+        self.emulator = emulator
+        self.disassembler = None  # Устанавливается из MainWindow
+    
+    def refresh(self):
+        """Уведомить Qt об изменении данных (перерисуются только видимые строки)"""
+        self.beginResetModel()
+        self.endResetModel()
+    
+    def rowCount(self, parent=None):
+        return self.emulator.trace_count()
+    
+    def columnCount(self, parent=None):
+        return 10
+    
+    def headerData(self, section, orientation, role=Qt.DisplayRole):
+        if role == Qt.DisplayRole and orientation == Qt.Horizontal:
+            headers = ["#", "PC", "Байты", "Мнемо", "A", "BC", "DE", "HL", "SP", "Флаги"]
+            return headers[section]
+        return None
+    
+    def data(self, index, role=Qt.DisplayRole):
+        if not index.isValid():
+            return None
+        row, col = index.row(), index.column()
+        # Читаем запись напрямую из кольцевого буфера
+        buf = self.emulator.trace_buffer
+        if row >= len(buf):
+            return None
+        rec = buf[row]
+        
+        if role == Qt.DisplayRole:
+            if col == 0:
+                return str(rec["seq"])
+            elif col == 1:
+                return f"{rec['pc']:04X}"
+            elif col == 2:
+                return " ".join(f"{b:02X}" for b in rec["bytes"])
+            elif col == 3:
+                return self._get_mnemonic(rec)
+            elif col == 4:
+                return f"{rec['A']:02X}"
+            elif col == 5:
+                return f"{rec['BC']:04X}"
+            elif col == 6:
+                return f"{rec['DE']:04X}"
+            elif col == 7:
+                return f"{rec['HL']:04X}"
+            elif col == 8:
+                return f"{rec['SP']:04X}"
+            elif col == 9:
+                f = rec["flags"]
+                return (f"{'S' if f[0] else '-'}{'Z' if f[1] else '-'}"
+                        f"{'A' if f[2] else '-'}{'P' if f[3] else '-'}"
+                        f"{'C' if f[4] else '-'}")
+        elif role == Qt.TextAlignmentRole:
+            if col in [0, 1, 4, 5, 6, 7, 8]:
+                return Qt.AlignCenter
+        return None
+    
+    def _get_mnemonic(self, rec):
+        """Определить мнемонику для записи"""
+        if not self.disassembler:
+            return f"DB {rec['opcode']:02X}h"
+        temp_mem = {rec["pc"] + i: b for i, b in enumerate(rec["bytes"])}
+        lines = self.disassembler.disassemble(temp_mem, rec["pc"], len(rec["bytes"]))
+        if lines:
+            return lines[0][2]
+        return f"DB {rec['opcode']:02X}h"
+
 # ==================== ГЛАВНОЕ ОКНО ====================
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -2151,6 +2227,9 @@ class MainWindow(QMainWindow):
         self.emulator = I8080Emulator(self.mem_data)
         self.emulator.state_changed.connect(self.update_emulator_ui)
         self.emulator.log_message.connect(self.log)
+        
+        # Передаём дизассемблер для трассировки
+        self.emulator.disassembler = self.disassembler
         
         # ============================================================
         # 4. СОЗДАНИЕ UI
@@ -2293,6 +2372,8 @@ class MainWindow(QMainWindow):
         
         # Эмулятор
         self.create_tab_emulator()
+        # Трассировка
+        self.create_tab_trace()
         
     def update_emulator_ui(self):
         """Обновляет UI эмулятора с подсветкой изменений"""
@@ -2339,7 +2420,6 @@ class MainWindow(QMainWindow):
             self.watch_model.refresh()
         
         # === ДИЗАССЕМБЛЕР ===
-        #self.update_emu_disasm_view()
         self.update_emu_disasm_cursor()  # ← ЧАСТИЧНОЕ обновление (быстро)
         
     def update_stack_view(self):
@@ -2804,6 +2884,7 @@ class MainWindow(QMainWindow):
         self.tabs.setTabText(6, self.tr("tab_compare"))    # Сравнение
         self.tabs.setTabText(7, self.tr("tab_scripts"))    # Скрипты
         self.tabs.setTabText(8, self.tr("tab_emulator"))   # Эмулятор
+        self.tabs.setTabText(9, self.tr("tab_trace"))      # Трассировка
         
         # ============================================================
         # ВКЛАДКА "УПРАВЛЕНИЕ"
@@ -3694,7 +3775,7 @@ class MainWindow(QMainWindow):
         QShortcut(QKeySequence("F5"), self, self.emulator_run)
         QShortcut(QKeySequence("F10"), self, self.emulator_step_over)
         QShortcut(QKeySequence("F11"), self, self.emulator_step_into)
-        QShortcut(QKeySequence("Shift+F5"), self, self.emulator_stop)
+        QShortcut(QKeySequence("F8"), self, self.emulator_stop)
         QShortcut(QKeySequence("Ctrl+F2"), self, self.emulator_reset)
         QShortcut(QKeySequence("Ctrl+F10"), self, self.emulator_run_to_cursor)
 		
@@ -4174,10 +4255,10 @@ class MainWindow(QMainWindow):
         self.btn_watch_add = QPushButton("+")
         self.btn_watch_add.setToolTip("Добавить элемент наблюдения")
         self.btn_watch_add.clicked.connect(self.watch_add_dialog)
-        self.btn_watch_del = QPushButton("-")
+        self.btn_watch_del = QPushButton("❌")
         self.btn_watch_del.setToolTip("Удалить выбранный элемент")
         self.btn_watch_del.clicked.connect(self.watch_delete)
-        self.btn_watch_clear = QPushButton("✕")
+        self.btn_watch_clear = QPushButton("🗑")
         self.btn_watch_clear.setToolTip("Очистить все")
         self.btn_watch_clear.clicked.connect(self.watch_clear)
         watch_btn_layout1.addWidget(self.btn_watch_add)
@@ -4225,16 +4306,16 @@ class MainWindow(QMainWindow):
         self.btn_bp_add = QPushButton("+")
         self.btn_bp_add.setToolTip("Добавить точку останова")
         self.btn_bp_add.clicked.connect(self.bp_add_dialog)
-        self.btn_bp_cond = QPushButton("±")
+        self.btn_bp_cond = QPushButton("🔧")
         self.btn_bp_cond.setToolTip("Редактировать условие")
         self.btn_bp_cond.clicked.connect(self.bp_edit_condition)
-        self.btn_bp_toggle = QPushButton("⏻")
+        self.btn_bp_toggle = QPushButton("🚫")
         self.btn_bp_toggle.setToolTip("Включить/выключить")
         self.btn_bp_toggle.clicked.connect(self.bp_toggle_enabled)
-        self.btn_bp_del = QPushButton("-")
+        self.btn_bp_del = QPushButton("❌")
         self.btn_bp_del.setToolTip("Удалить выбранную")
         self.btn_bp_del.clicked.connect(self.bp_delete)
-        self.btn_bp_clear = QPushButton("✕")
+        self.btn_bp_clear = QPushButton("🗑")
         self.btn_bp_clear.setToolTip("Очистить все")
         self.btn_bp_clear.clicked.connect(self.clear_breakpoints)
         bp_btn_layout.addWidget(self.btn_bp_add)
@@ -4371,33 +4452,42 @@ class MainWindow(QMainWindow):
         ctrl_layout = QHBoxLayout(ctrl_panel)
         ctrl_layout.setContentsMargins(0, 5, 0, 0)
         
-        self.btn_reset = QPushButton("Reset (Ctrl+F2)")
+        self.btn_reset = QPushButton("⚡ Reset (Ctrl+F2)")
         self.btn_reset.clicked.connect(self.emulator_reset)
         ctrl_layout.addWidget(self.btn_reset)
         
-        self.btn_set_pc = QPushButton("Set PC...")
+        self.btn_set_pc = QPushButton("📌 Set PC...")
         self.btn_set_pc.clicked.connect(self.set_pc_dialog)
         ctrl_layout.addWidget(self.btn_set_pc)
         
         ctrl_layout.addSpacing(10)
         
-        self.btn_step_into = QPushButton("Step Into (F11)")
+        self.btn_step_into = QPushButton("↴ Step Into (F11)")
         self.btn_step_into.clicked.connect(self.emulator_step_into)
         ctrl_layout.addWidget(self.btn_step_into)
         
-        self.btn_step_over = QPushButton("Step Over (F10)")
+        self.btn_step_over = QPushButton("➟ Step Over (F10)")
         self.btn_step_over.clicked.connect(self.emulator_step_over)
         ctrl_layout.addWidget(self.btn_step_over)
         
         ctrl_layout.addSpacing(10)
         
-        self.btn_run = QPushButton("▶ Run (F5)")
+        self.btn_run = QPushButton("🚀 Run (F5)")
         self.btn_run.clicked.connect(self.emulator_run)
         ctrl_layout.addWidget(self.btn_run)
         
-        self.btn_stop = QPushButton("■ Stop (Shift+F5)")
+        self.btn_stop = QPushButton("⛔ Stop (F8)")
         self.btn_stop.clicked.connect(self.emulator_stop)
         ctrl_layout.addWidget(self.btn_stop)
+        
+        ctrl_layout.addSpacing(20)
+        
+        # === ИТЕРАЦИЯ D: Чек-бокс трассировки ===
+        self.chk_trace_enable = QCheckBox("Трассировка")
+        self.chk_trace_enable.setToolTip("Включить запись трассировки выполнения")
+        self.chk_trace_enable.setChecked(False)
+        self.chk_trace_enable.toggled.connect(self.on_trace_checkbox_toggled)
+        ctrl_layout.addWidget(self.chk_trace_enable)
         
         ctrl_layout.addStretch()
         
@@ -4426,6 +4516,7 @@ class MainWindow(QMainWindow):
         self.emulator.step_into()  # ← step_into() обходит BP
         self.update_emulator_ui()
         self.update_disasm_highlight()
+        self.refresh_trace_table()  # ← ИТЕРАЦИЯ D
         
     def emulator_step_over(self):
         """Step Over: выполнить CALL как одну инструкцию"""
@@ -4437,6 +4528,7 @@ class MainWindow(QMainWindow):
         self.emulator.step_over()
         self.update_emulator_ui()
         self.update_disasm_highlight()
+        self.refresh_trace_table()  # ← ИТЕРАЦИЯ D
         
     def _run_tick(self):
         """Один тик выполнения — оптимизирован для скорости"""
@@ -4456,6 +4548,7 @@ class MainWindow(QMainWindow):
             self.run_target_addr = None
             self.update_emulator_ui()
             self.update_emu_disasm_view()
+            self.refresh_trace_table()  # ← ИТЕРАЦИЯ D: обновить трассировку
             return
         
         # === Breakpoint имеет приоритет (с учётом условий и enabled) ===
@@ -4469,6 +4562,7 @@ class MainWindow(QMainWindow):
             self.update_emu_disasm_view()
             self.sync_breakpoints()  # ← Обновить панель BP со счётчиком
             self.statusBar.showMessage(f"Breakpoint at 0x{self.emulator.pc:04X}", 3000)
+            self.refresh_trace_table()  # ← ИТЕРАЦИЯ D: обновить трассировку
             self.log(f"Breakpoint hit: 0x{self.emulator.pc:04X}")
             return
         
@@ -4493,6 +4587,7 @@ class MainWindow(QMainWindow):
         
         # === ОДНО обновление UI за весь тик ===
         self.update_emulator_ui()
+        self.refresh_trace_table()  # ← ИТЕРАЦИЯ D: обновить трассировку
         self.update_emu_disasm_cursor()
         
     def on_emu_cursor_changed(self, addr):
@@ -4624,6 +4719,10 @@ class MainWindow(QMainWindow):
         self.btn_step_over.setText(self.tr("emulator_step_over"))
         self.btn_run.setText(self.tr("emulator_run"))
         self.btn_stop.setText(self.tr("emulator_stop"))
+        
+        # Чек-бокс трассировки
+        if hasattr(self, 'chk_trace_enable'):
+            self.chk_trace_enable.setText(self.tr("emulator_trace"))
 		
     def safe_call(self, func, *args, **kwargs):
         """Безопасный вызов функции из любого потока через Qt event loop"""
@@ -5071,6 +5170,290 @@ class MainWindow(QMainWindow):
         """Сохранить текущие значения Watch перед выполнением"""
         if hasattr(self, 'watch_model'):
             self.watch_model.save_prev_values()
+            
+    def create_tab_trace(self):
+        """Создаёт вкладку трассировки (ИТЕРАЦИЯ D)"""
+        tab = QWidget()
+        layout = QVBoxLayout(tab)
+        
+        # === Панель управления трассировкой ===
+        ctrl_layout = QHBoxLayout()
+        
+        self.btn_trace_toggle = QPushButton("🔥 Включить запись")
+        self.btn_trace_toggle.setCheckable(True)
+        self.btn_trace_toggle.clicked.connect(self.on_trace_toggle)
+        ctrl_layout.addWidget(self.btn_trace_toggle)
+        
+        self.btn_trace_clear = QPushButton("🗑 Очистить")
+        self.btn_trace_clear.clicked.connect(self.on_trace_clear)
+        ctrl_layout.addWidget(self.btn_trace_clear)
+        
+        self.btn_trace_export = QPushButton("💾 Экспорт")
+        self.btn_trace_export.clicked.connect(self.on_trace_export)
+        ctrl_layout.addWidget(self.btn_trace_export)
+        
+        ctrl_layout.addSpacing(20)
+        
+        # Глубина буфера
+        ctrl_layout.addWidget(QLabel("Глубина:"))
+        self.spin_trace_depth = QSpinBox()
+        self.spin_trace_depth.setMinimum(100)
+        self.spin_trace_depth.setMaximum(100000)
+        self.spin_trace_depth.setValue(10000)
+        self.spin_trace_depth.setSingleStep(1000)
+        self.spin_trace_depth.valueChanged.connect(self.on_trace_depth_changed)
+        ctrl_layout.addWidget(self.spin_trace_depth)
+        
+        ctrl_layout.addSpacing(20)
+        
+        # Статус трассировки
+        self.lbl_trace_status = QLabel("Записей: 0 / 10000")
+        self.lbl_trace_status.setStyleSheet("color: #666;")
+        ctrl_layout.addWidget(self.lbl_trace_status)
+        
+        ctrl_layout.addStretch()
+        
+        # Поиск
+        ctrl_layout.addWidget(QLabel("Поиск:"))
+        self.txt_trace_search = QLineEdit()
+        self.txt_trace_search.setPlaceholderText("Адрес (HEX) или регистр=значение (A=55)")
+        self.txt_trace_search.setMaximumWidth(250)
+        self.txt_trace_search.returnPressed.connect(self.on_trace_search)
+        ctrl_layout.addWidget(self.txt_trace_search)
+        
+        self.btn_trace_search = QPushButton("🔍")
+        self.btn_trace_search.clicked.connect(self.on_trace_search)
+        ctrl_layout.addWidget(self.btn_trace_search)
+        
+        self.btn_trace_filter_clear = QPushButton("✕")
+        self.btn_trace_filter_clear.setToolTip("Сбросить фильтр")
+        self.btn_trace_filter_clear.clicked.connect(self.on_trace_filter_clear)
+        ctrl_layout.addWidget(self.btn_trace_filter_clear)
+        
+        layout.addLayout(ctrl_layout)
+        
+        # === Таблица трассировки ===
+        self.trace_model = TraceModel(self.emulator)
+        self.trace_model.disassembler = self.disassembler
+        self.trace_table = QTableView()
+        self.trace_table.setModel(self.trace_model)
+        self.trace_table.setSelectionBehavior(QTableView.SelectRows)
+        self.trace_table.setSelectionMode(QTableView.SingleSelection)
+        self.trace_table.setAlternatingRowColors(True)
+        self.trace_table.setFont(QFont("Consolas", 9))
+        self.trace_table.verticalHeader().setVisible(False)
+        # Ширина колонок
+        self.trace_table.setColumnWidth(0, 60)   # #
+        self.trace_table.setColumnWidth(1, 60)   # PC
+        self.trace_table.setColumnWidth(2, 90)   # Байты
+        self.trace_table.setColumnWidth(3, 180)  # Мнемо
+        self.trace_table.setColumnWidth(4, 40)   # A
+        self.trace_table.setColumnWidth(5, 60)   # BC
+        self.trace_table.setColumnWidth(6, 60)   # DE
+        self.trace_table.setColumnWidth(7, 60)   # HL
+        self.trace_table.setColumnWidth(8, 60)   # SP
+        self.trace_table.setColumnWidth(9, 90)   # Флаги
+        # Выбор строки → детали
+        self.trace_table.selectionModel().selectionChanged.connect(self.on_trace_selection_changed)
+        layout.addWidget(self.trace_table)
+        
+        layout.addWidget(self.trace_table)
+        
+        # === Панель детального просмотра выбранной записи ===
+        self.trace_detail_group = QGroupBox("Детали выбранной записи")
+        detail_layout = QHBoxLayout()
+        self.lbl_trace_detail = QLabel("Выберите запись для просмотра")
+        self.lbl_trace_detail.setFont(QFont("Consolas", 9))
+        self.lbl_trace_detail.setWordWrap(True)
+        detail_layout.addWidget(self.lbl_trace_detail)
+        self.trace_detail_group.setLayout(detail_layout)
+        layout.addWidget(self.trace_detail_group)
+        
+        # === Контекстное меню записи ===
+        self.trace_table.setContextMenuPolicy(Qt.CustomContextMenu)
+        self.trace_table.customContextMenuRequested.connect(self.on_trace_context_menu)
+        
+        self.tabs.addTab(tab, "")
+        self.tab_trace = tab
+        
+    # =============================================
+    # ИТЕРАЦИЯ D: Трассировка — обработчики
+    # =============================================
+    
+    def on_trace_toggle(self):
+        """Включить/выключить запись трассировки"""
+        if self.btn_trace_toggle.isChecked():
+            self.emulator.trace_start()
+            self.btn_trace_toggle.setText("⏹ Выключить запись")
+            self.btn_trace_toggle.setStyleSheet("background-color: #ffcccc;")
+            self.chk_trace_enable.setChecked(True)
+        else:
+            self.emulator.trace_stop()
+            self.btn_trace_toggle.setText("🔥 Включить запись")
+            self.btn_trace_toggle.setStyleSheet("")
+            self.chk_trace_enable.setChecked(False)
+        self.update_trace_status()
+    
+    def on_trace_clear(self):
+        """Очистить буфер трассировки"""
+        self.emulator.trace_clear()
+        if hasattr(self, 'trace_model'):
+            self.trace_model.refresh()  # ← Модель обновится сама
+        self.update_trace_status()
+        self.log("Буфер трассировки очищен")
+    
+    def on_trace_depth_changed(self, value):
+        """Изменение глубины буфера"""
+        self.emulator.trace_set_depth(value)
+        self.update_trace_status()
+    
+    def update_trace_status(self):
+        """Обновить статус трассировки"""
+        count = self.emulator.trace_count()
+        max_rec = self.emulator.trace_max_records
+        self.lbl_trace_status.setText(f"Записей: {count} / {max_rec}")
+    
+    def refresh_trace_table(self):
+        """Обновить таблицу трассировки (быстро, через виртуальную модель)"""
+        if hasattr(self, 'trace_model'):
+            self.trace_model.refresh()
+        self.update_trace_status()
+        # Автопрокрутка к последней записи
+        if hasattr(self, 'trace_table') and self.emulator.trace_count() > 0:
+            self.trace_table.scrollToBottom()
+    
+    def on_trace_selection_changed(self, selected, deselected):
+        """Выбор записи — показать детали"""
+        # === ИСПРАВЛЕНО: используем selectionModel для QTableView ===
+        indexes = selected.indexes()
+        if not indexes:
+            return
+        row = indexes[0].row()
+        records = self.emulator.trace_get()
+        if row < len(records):
+            rec = records[row]
+            self._show_trace_detail(rec)
+    
+    def _get_trace_mnemonic(self, rec):
+        """Определить мнемонику для записи трассировки"""
+        if not self.emulator.disassembler:
+            return f"DB {rec['opcode']:02X}h"
+        
+        # Создаём временный mem_dict из сохранённых байтов
+        temp_mem = {rec["pc"] + i: b for i, b in enumerate(rec["bytes"])}
+        lines = self.disassembler.disassemble(temp_mem, rec["pc"], len(rec["bytes"]))
+        if lines:
+            return lines[0][2]  # asm
+        return f"DB {rec['opcode']:02X}h"
+        
+    def _show_trace_detail(self, rec):
+        """Показать детальную информацию о записи"""
+        flags = rec["flags"]
+        flags_str = f"S={flags[0]} Z={flags[1]} AC={flags[2]} P={flags[3]} CY={flags[4]}"
+        mnemonic = self._get_trace_mnemonic(rec)
+        bytes_str = " ".join(f"{b:02X}" for b in rec["bytes"])
+        
+        detail = (
+            f"#{rec['seq']}  PC={rec['pc']:04X}  {bytes_str}  {mnemonic}\n"
+            f"Регистры ПОСЛЕ: A={rec['A']:02X}  BC={rec['BC']:04X}  DE={rec['DE']:04X}  "
+            f"HL={rec['HL']:04X}  SP={rec['SP']:04X}\n"
+            f"Флаги: {flags_str}\n"
+            f"Такты: {rec['cycles']} (всего: {rec['cycles_total']})"
+        )
+        self.lbl_trace_detail.setText(detail)
+    
+    def on_trace_context_menu(self, pos):
+        """Контекстное меню записи трассировки"""
+        # === ИСПРАВЛЕНО: indexAt вместо itemAt ===
+        index = self.trace_table.indexAt(pos)
+        if not index.isValid():
+            return
+        row = index.row()
+        records = self.emulator.trace_get()
+        if row >= len(records):
+            return
+        rec = records[row]
+         
+        menu = QMenu(self)
+        act_view = menu.addAction(f"👁 Просмотр состояния (#{rec['seq']})")
+        act_restore = menu.addAction(f"↩ Восстановить состояние")
+        act_goto = menu.addAction(f"➤ Перейти к адресу 0x{rec['pc']:04X} в дизассемблере")
+         
+        selected = menu.exec(self.trace_table.viewport().mapToGlobal(pos))
+         
+        if selected == act_view:
+            self._show_trace_detail(rec)
+        elif selected == act_restore:
+            self._restore_trace_state(rec)
+        elif selected == act_goto:
+            self._goto_trace_address(rec["pc"])
+    
+    def _restore_trace_state(self, rec):
+        """Восстановить состояние эмулятора из записи трассировки"""
+        emu = self.emulator
+        emu.a = rec["A"]
+        emu.b = rec["B"]
+        emu.c = rec["C"]
+        emu.d = rec["D"]
+        emu.e = rec["E"]
+        emu.h = rec["H"]
+        emu.l = rec["L"]
+        emu.sp = rec["SP"]
+        # PC устанавливаем на адрес ПОСЛЕ этой инструкции (для продолжения)
+        # Но для просмотра — на адрес самой инструкции
+        emu.pc = rec["pc"]
+        
+        flags = rec["flags"]
+        emu.flag_s = bool(flags[0])
+        emu.flag_z = bool(flags[1])
+        emu.flag_ac = bool(flags[2])
+        emu.flag_p = bool(flags[3])
+        emu.flag_cy = bool(flags[4])
+        
+        self.update_emulator_ui()
+        self.update_emu_disasm_view()
+        self.log(f"Состояние восстановлено из записи #{rec['seq']} (PC=0x{rec['pc']:04X})")
+        self.statusBar.showMessage(f"Состояние восстановлено: PC=0x{rec['pc']:04X}", 3000)
+    
+    def _goto_trace_address(self, addr):
+        """Перейти к адресу в дизассемблере эмулятора"""
+        self.emulator.set_pc(addr)
+        self.update_emulator_ui()
+        self.update_emu_disasm_view()
+        self.tabs.setCurrentWidget(self.tab_emulator)
+        self.statusBar.showMessage(f"PC установлен на 0x{addr:04X}", 3000)
+    
+    def on_trace_search(self):
+        """Поиск в трассировке (заглушка — реализуется в следующем шаге)"""
+        self.statusBar.showMessage("Поиск в трассировке: в разработке", 3000)
+    
+    def on_trace_filter_clear(self):
+        """Сбросить фильтр трассировки"""
+        self.txt_trace_search.clear()
+        self.refresh_trace_table()
+    
+    def on_trace_export(self):
+        """Экспорт трассировки (заглушка — реализуется в следующем шаге)"""
+        self.statusBar.showMessage("Экспорт трассировки: в разработке", 3000)
+        
+    def on_trace_checkbox_toggled(self, checked):
+        """Чек-бокс трассировки в эмуляторе"""
+        if checked:
+            self.emulator.trace_start()
+            self.log("Трассировка включена")
+        else:
+            self.emulator.trace_stop()
+            self.log("Трассировка выключена")
+        # Синхронизируем с кнопкой на вкладке трассировки
+        if hasattr(self, 'btn_trace_toggle'):
+            self.btn_trace_toggle.setChecked(checked)
+            if checked:
+                self.btn_trace_toggle.setText("⏹ Выключить запись")
+                self.btn_trace_toggle.setStyleSheet("background-color: #ffcccc;")
+            else:
+                self.btn_trace_toggle.setText("🔥 Включить запись")
+                self.btn_trace_toggle.setStyleSheet("")
+        self.update_trace_status()
         
 if __name__ == "__main__":
     app = QApplication(sys.argv)

@@ -4,6 +4,7 @@
 """
 
 from PySide6.QtCore import QObject, Signal
+from collections import deque
 
 class _SafeAccessor:
     """Обёртка для безопасной индексации в условиях BP (mem[...], io[...])"""
@@ -55,6 +56,13 @@ class I8080Emulator(QObject):
         self.bp_enabled = {}       # {addr: True/False}
         self.bp_hit_count = {}     # {addr: count}
         self.cycles = 0
+        
+        # Трассировка
+        self.trace_enabled = False
+        self.trace_max_records = 10000
+        self.trace_buffer = deque(maxlen=self.trace_max_records)
+        self.trace_seq = 0
+        self.disassembler = None  # Устанавливается из MainWindow
         
     def reset(self):
         """Сброс процессора"""
@@ -238,29 +246,37 @@ class I8080Emulator(QObject):
     def execute_instruction(self, silent=False):
         """
         Выполнить одну инструкцию.
-        
         Args:
             silent: если True, не эмитить сигналы (для пакетного Run и трассировки)
         """
         if self.halted:
             return False
-        
-        if self.should_stop_at_bp(self.pc):
+        if self.pc in self.breakpoints:
             if not silent:
                 self.breakpoint_hit.emit(self.pc)
-            self.bp_hit_count[self.pc] = self.bp_hit_count.get(self.pc, 0) + 1
             return False
-        
         opcode = self.read_byte(self.pc)
         pc_start = self.pc
+        
+        # === ТРАССИРОВКА: определяем байты инструкции ДО выполнения ===
+        trace_bytes = None
+        if self.trace_enabled:
+            if self.disassembler and opcode in self.disassembler.table:
+                size = self.disassembler.table[opcode][0]
+            else:
+                size = 1
+            trace_bytes = [self.read_byte(pc_start + i) for i in range(size)]
+        
         self.pc = (self.pc + 1) & 0xFFFF
-        
         self._execute_opcode(opcode)
-        self.cycles += self._get_cycles(opcode)
+        cycles = self._get_cycles(opcode)
+        self.cycles += cycles
         
+        # === ТРАССИРОВКА: запись ПОСЛЕ выполнения ===
+        if self.trace_enabled and trace_bytes is not None:
+            self._add_trace_record(pc_start, opcode, trace_bytes, cycles)
         if not silent:
             self.state_changed.emit()
-        
         return True
         
     def _execute_opcode(self, opcode):
@@ -889,6 +905,69 @@ class I8080Emulator(QObject):
         self.bp_conditions.clear()
         self.bp_enabled.clear()
         self.bp_hit_count.clear()
+        
+    # =============================================
+    # ИТЕРАЦИЯ D: Трассировка
+    # =============================================
+    
+    def trace_start(self):
+        """Включить запись трассировки"""
+        self.trace_enabled = True
+    
+    def trace_stop(self):
+        """Выключить запись трассировки"""
+        self.trace_enabled = False
+    
+    def trace_clear(self):
+        """Очистить буфер трассировки"""
+        self.trace_buffer.clear()
+        self.trace_seq = 0
+    
+    def trace_set_depth(self, depth):
+        """Установить глубину буфера"""
+        self.trace_max_records = depth
+        # Пересоздаём deque с новым maxlen, сохраняя данные
+        old_data = list(self.trace_buffer)
+        self.trace_buffer = deque(old_data, maxlen=depth)
+    
+    def trace_get(self, limit=None):
+        """Получить записи трассировки (последние limit или все)"""
+        if limit is None:
+            return list(self.trace_buffer)
+        return list(self.trace_buffer)[-limit:]
+    
+    def trace_count(self):
+        """Количество записей в буфере"""
+        return len(self.trace_buffer)
+    
+    def _get_trace_snapshot(self):
+        """Компактный снимок состояния для трассировки"""
+        return (
+            self.a, self.b, self.c, self.d, self.e, self.h, self.l,
+            self.sp,
+            int(self.flag_s), int(self.flag_z), int(self.flag_ac),
+            int(self.flag_p), int(self.flag_cy)
+        )
+    
+    def _add_trace_record(self, pc_start, opcode, instr_bytes, cycles):
+        """Добавить запись в буфер трассировки"""
+        a, b, c, d, e, h, l, sp, fs, fz, fac, fp, fcy = self._get_trace_snapshot()
+        record = {
+            "seq": self.trace_seq,
+            "pc": pc_start,
+            "opcode": opcode,
+            "bytes": instr_bytes,
+            "A": a, "B": b, "C": c, "D": d, "E": e, "H": h, "L": l,
+            "BC": (b << 8) | c,
+            "DE": (d << 8) | e,
+            "HL": (h << 8) | l,
+            "SP": sp,
+            "flags": (fs, fz, fac, fp, fcy),
+            "cycles": cycles,
+            "cycles_total": self.cycles,
+        }
+        self.trace_buffer.append(record)
+        self.trace_seq += 1
         
     def get_state(self):
         """Получить текущее состояние для UI"""
