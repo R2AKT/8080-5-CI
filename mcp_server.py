@@ -488,6 +488,26 @@ class MCPServerManager:
             except Exception as e:
                 return {"error": str(e)}
         
+        def emu_trace_start() -> str:
+            """Включить запись трассировки выполнения. Трассировка записывает каждую выполненную инструкцию с состоянием регистров."""
+            return api.emu_trace_start()
+        
+        def emu_trace_stop() -> str:
+            """Выключить запись трассировки выполнения."""
+            return api.emu_trace_stop()
+        
+        def emu_trace_clear() -> str:
+            """Очистить буфер трассировки."""
+            return api.emu_trace_clear()
+        
+        def emu_trace_get(limit: int = 0) -> list:
+            """Получить записи трассировки. limit=0 — все записи, иначе последние N записей."""
+            return api.emu_trace_get(limit if limit > 0 else None)
+        
+        def emu_trace_export(path: str, format: str = "txt") -> str:
+            """Экспорт трассировки в файл. format: txt, csv, json. path — путь к файлу."""
+            return api.emu_trace_export(path, format)
+        
         # =============================================
         # TOOLS: Управление шиной
         # =============================================
@@ -624,7 +644,7 @@ class MCPServerManager:
             api = self._get_api()
             api.refresh()
             return "GUI refreshed"
-        
+            
         # =============================================
         # РЕГИСТРАЦИЯ TOOLS (явная)
         # =============================================
@@ -675,6 +695,11 @@ class MCPServerManager:
         mcp.tool()(emu_set_bp_condition)
         mcp.tool()(emu_toggle_bp_enabled)
         mcp.tool()(emu_get_bp_info)
+        mcp.tool()(emu_trace_start)
+        mcp.tool()(emu_trace_stop)
+        mcp.tool()(emu_trace_clear)
+        mcp.tool()(emu_trace_get)
+        mcp.tool()(emu_trace_export)
         
         # =============================================
         # RESOURCES

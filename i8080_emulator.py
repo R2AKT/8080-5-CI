@@ -251,7 +251,7 @@ class I8080Emulator(QObject):
         """
         if self.halted:
             return False
-        if self.pc in self.breakpoints:
+        if self.should_stop_at_bp(self.pc):
             if not silent:
                 self.breakpoint_hit.emit(self.pc)
             return False
@@ -907,7 +907,7 @@ class I8080Emulator(QObject):
         self.bp_hit_count.clear()
         
     # =============================================
-    # ИТЕРАЦИЯ D: Трассировка
+    # Трассировка
     # =============================================
     
     def trace_start(self):

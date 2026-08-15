@@ -22,6 +22,14 @@ except ImportError as e:
     MCP_AVAILABLE = False
     print(f"MCP Server недоступен: {e}")
 	
+# === Опкоды переходов для подсветки в трассировке ===
+JUMP_OPCODES = {
+    0xC3, 0xCA, 0xC2, 0xDA, 0xD2, 0xF2, 0xFA, 0xEA, 0xE2,  # JMP, JZ, JNZ, JC, JNC, JP, JM, JPE, JPO
+    0xCD, 0xCC, 0xC4, 0xDC, 0xD4, 0xF4, 0xFC, 0xEC, 0xE4,  # CALL, CZ, CNZ, CC, CNC, CP, CM, CPE, CPO
+    0xC9, 0xC8, 0xC0, 0xD8, 0xD0, 0xF0, 0xF8, 0xE8, 0xE0,  # RET, RZ, RNZ, RC, RNC, RP, RM, RPE, RPO
+    0xC7, 0xCF, 0xD7, 0xDF, 0xE7, 0xEF, 0xF7, 0xFF         # RST 0-7
+}
+
 # ==================== ЛОКАЛИЗАЦИЯ И ТЕМЫ ====================
 LANGS = {
     "en": {
@@ -1575,6 +1583,74 @@ class AutomationAPI:
         if not hasattr(self.mw, 'emulator'):
             raise RuntimeError("Эмулятор не инициализирован")
         return self.mw.emulator.get_state()
+        
+    # =============================================
+    # ТРАССИРОВКА (ИТЕРАЦИЯ D)
+    # =============================================
+    def emu_trace_start(self):
+        """Включить запись трассировки"""
+        if not hasattr(self.mw, 'emulator'):
+            raise RuntimeError("Эмулятор не инициализирован")
+        self.mw.emulator.trace_start()
+        return "Трассировка включена"
+    
+    def emu_trace_stop(self):
+        """Выключить запись трассировки"""
+        if not hasattr(self.mw, 'emulator'):
+            raise RuntimeError("Эмулятор не инициализирован")
+        self.mw.emulator.trace_stop()
+        return "Трассировка выключена"
+    
+    def emu_trace_clear(self):
+        """Очистить буфер трассировки"""
+        if not hasattr(self.mw, 'emulator'):
+            raise RuntimeError("Эмулятор не инициализирован")
+        self.mw.emulator.trace_clear()
+        return "Буфер трассировки очищен"
+    
+    def emu_trace_get(self, limit=None):
+        """Получить записи трассировки"""
+        if not hasattr(self.mw, 'emulator'):
+            raise RuntimeError("Эмулятор не инициализирован")
+        records = self.mw.emulator.trace_get(limit)
+        result = []
+        for rec in records:
+            mnemonic = self.mw._get_trace_mnemonic(rec) if hasattr(self.mw, '_get_trace_mnemonic') else f"DB {rec['opcode']:02X}h"
+            bytes_str = " ".join(f"{b:02X}" for b in rec["bytes"])
+            flags = rec["flags"]
+            result.append({
+                "seq": rec['seq'],
+                "pc": f"{rec['pc']:04X}",
+                "bytes": bytes_str,
+                "mnemonic": mnemonic,
+                "A": f"{rec['A']:02X}",
+                "BC": f"{rec['BC']:04X}",
+                "DE": f"{rec['DE']:04X}",
+                "HL": f"{rec['HL']:04X}",
+                "SP": f"{rec['SP']:04X}",
+                "flags": {"S": flags[0], "Z": flags[1], "AC": flags[2], "P": flags[3], "CY": flags[4]},
+                "cycles": rec['cycles'],
+                "cycles_total": rec['cycles_total']
+            })
+        return result
+    
+    def emu_trace_export(self, path, format="txt"):
+        """Экспорт трассировки в файл"""
+        if not hasattr(self.mw, 'emulator'):
+            raise RuntimeError("Эмулятор не инициализирован")
+        records = self.mw.emulator.trace_get()
+        if not records:
+            return "Нет данных для экспорта"
+        try:
+            if format == "csv":
+                self.mw._export_trace_csv(path, records)
+            elif format == "json":
+                self.mw._export_trace_json(path, records)
+            else:
+                self.mw._export_trace_txt(path, records)
+            return f"Трассировка экспортирована в {path} ({len(records)} записей)"
+        except Exception as e:
+            raise RuntimeError(f"Ошибка экспорта: {e}")
 		
 # ==================== РАБОЧИЙ ПОТОК ====================
 class BusWorker(QObject):
@@ -2092,19 +2168,99 @@ class BreakpointModel(QAbstractTableModel):
         return None
 
 class TraceModel(QAbstractTableModel):
-    """Виртуальная модель трассировки — отрисовывает только видимые строки"""
+    """Виртуальная модель трассировки с поддержкой фильтра"""
     
     def __init__(self, emulator, parent=None):
         super().__init__(parent)
         self.emulator = emulator
-        self.disassembler = None  # Устанавливается из MainWindow
+        self.disassembler = None
+        self._filter = None
+        self._filtered_indices = None  # Индексы отфильтрованных записей
+    
+    def set_filter(self, filter_dict):
+        """Установить фильтр и обновить модель"""
+        self._filter = filter_dict
+        self.refresh()
     
     def refresh(self):
-        """Уведомить Qt об изменении данных (перерисуются только видимые строки)"""
+        """Уведомить Qt об изменении данных"""
+        self._apply_filter()
         self.beginResetModel()
         self.endResetModel()
     
+    def _apply_filter(self):
+        """Применить фильтр и сохранить индексы подходящих записей"""
+        if self._filter is None:
+            self._filtered_indices = None
+            return
+        buf = self.emulator.trace_buffer
+        self._filtered_indices = []
+        f = self._filter
+        if f["type"] == "addr":
+            for i, rec in enumerate(buf):
+                if rec["pc"] == f["value"]:
+                    self._filtered_indices.append(i)
+        elif f["type"] == "reg":
+            reg = f["reg"]
+            op = f.get("op", "==")  # ← По умолчанию равенство
+            value = f["value"]
+            flag_map = {'S': 0, 'Z': 1, 'AC': 2, 'P': 3, 'CY': 4}
+            for i, rec in enumerate(buf):
+                # Получаем значение регистра
+                if reg == 'A': val = rec["A"]
+                elif reg == 'B': val = rec["B"]
+                elif reg == 'C': val = rec["C"]
+                elif reg == 'D': val = rec["D"]
+                elif reg == 'E': val = rec["E"]
+                elif reg == 'H': val = rec["H"]
+                elif reg == 'L': val = rec["L"]
+                elif reg == 'BC': val = rec["BC"]
+                elif reg == 'DE': val = rec["DE"]
+                elif reg == 'HL': val = rec["HL"]
+                elif reg == 'SP': val = rec["SP"]
+                elif reg == 'PC': val = rec["pc"]
+                elif reg in flag_map:
+                    val = rec["flags"][flag_map[reg]]
+                else:
+                    continue
+                
+                # Сравниваем с учётом оператора
+                if op == '==' and val == value:
+                    self._filtered_indices.append(i)
+                elif op == '!=' and val != value:
+                    self._filtered_indices.append(i)
+                elif op == '>' and val > value:
+                    self._filtered_indices.append(i)
+                elif op == '<' and val < value:
+                    self._filtered_indices.append(i)
+                elif op == '>=' and val >= value:
+                    self._filtered_indices.append(i)
+                elif op == '<=' and val <= value:
+                    self._filtered_indices.append(i)
+        elif f["type"] == "mnemonic":
+            for i, rec in enumerate(buf):
+                mnemonic = self._get_mnemonic(rec)
+                if f["value"] in mnemonic.upper():
+                    self._filtered_indices.append(i)
+    
+    def _get_record(self, row):
+        """Получить запись по строке (с учётом фильтра)"""
+        buf = self.emulator.trace_buffer
+        if self._filtered_indices is not None:
+            if row >= len(self._filtered_indices):
+                return None
+            idx = self._filtered_indices[row]
+            if idx >= len(buf):
+                return None
+            return buf[idx]
+        else:
+            if row >= len(buf):
+                return None
+            return buf[row]
+    
     def rowCount(self, parent=None):
+        if self._filtered_indices is not None:
+            return len(self._filtered_indices)
         return self.emulator.trace_count()
     
     def columnCount(self, parent=None):
@@ -2119,12 +2275,10 @@ class TraceModel(QAbstractTableModel):
     def data(self, index, role=Qt.DisplayRole):
         if not index.isValid():
             return None
-        row, col = index.row(), index.column()
-        # Читаем запись напрямую из кольцевого буфера
-        buf = self.emulator.trace_buffer
-        if row >= len(buf):
+        rec = self._get_record(index.row())
+        if rec is None:
             return None
-        rec = buf[row]
+        col = index.column()
         
         if role == Qt.DisplayRole:
             if col == 0:
@@ -2153,6 +2307,25 @@ class TraceModel(QAbstractTableModel):
         elif role == Qt.TextAlignmentRole:
             if col in [0, 1, 4, 5, 6, 7, 8]:
                 return Qt.AlignCenter
+        elif role == Qt.BackgroundRole:
+            # === Подсветка переходов (JMP/CALL/RET/RST) ===
+            if rec["opcode"] in JUMP_OPCODES:
+                return QColor("#FFE0B2")  # Оранжевый фон для переходов
+            # === Подсветка изменённых регистров ===
+            prev_rec = self._get_record(index.row() - 1)
+            if prev_rec is not None:
+                if col == 4 and rec["A"] != prev_rec["A"]:
+                    return QColor("#FFCDD2")  # Красный фон
+                elif col == 5 and rec["BC"] != prev_rec["BC"]:
+                    return QColor("#FFCDD2")
+                elif col == 6 and rec["DE"] != prev_rec["DE"]:
+                    return QColor("#FFCDD2")
+                elif col == 7 and rec["HL"] != prev_rec["HL"]:
+                    return QColor("#FFCDD2")
+                elif col == 8 and rec["SP"] != prev_rec["SP"]:
+                    return QColor("#FFCDD2")
+                elif col == 9 and rec["flags"] != prev_rec["flags"]:
+                    return QColor("#FFCDD2")
         return None
     
     def _get_mnemonic(self, rec):
@@ -5216,7 +5389,7 @@ class MainWindow(QMainWindow):
         # Поиск
         ctrl_layout.addWidget(QLabel("Поиск:"))
         self.txt_trace_search = QLineEdit()
-        self.txt_trace_search.setPlaceholderText("Адрес (HEX) или регистр=значение (A=55)")
+        self.txt_trace_search.setPlaceholderText("Адрес (HEX) или регистр OP значение (A==55, HL>1000, SP<=F000)")
         self.txt_trace_search.setMaximumWidth(250)
         self.txt_trace_search.returnPressed.connect(self.on_trace_search)
         ctrl_layout.addWidget(self.txt_trace_search)
@@ -5225,7 +5398,7 @@ class MainWindow(QMainWindow):
         self.btn_trace_search.clicked.connect(self.on_trace_search)
         ctrl_layout.addWidget(self.btn_trace_search)
         
-        self.btn_trace_filter_clear = QPushButton("✕")
+        self.btn_trace_filter_clear = QPushButton("❌")
         self.btn_trace_filter_clear.setToolTip("Сбросить фильтр")
         self.btn_trace_filter_clear.clicked.connect(self.on_trace_filter_clear)
         ctrl_layout.addWidget(self.btn_trace_filter_clear)
@@ -5275,6 +5448,10 @@ class MainWindow(QMainWindow):
         
         self.tabs.addTab(tab, "")
         self.tab_trace = tab
+
+        # === Инициализация фильтра ===
+        self.trace_filter = None
+        self.trace_filtered_records = []
         
     # =============================================
     # ИТЕРАЦИЯ D: Трассировка — обработчики
@@ -5298,8 +5475,8 @@ class MainWindow(QMainWindow):
         """Очистить буфер трассировки"""
         self.emulator.trace_clear()
         if hasattr(self, 'trace_model'):
-            self.trace_model.refresh()  # ← Модель обновится сама
-        self.update_trace_status()
+            self.trace_model.set_filter(None)  # Сбрасываем фильтр при очистке
+        self.refresh_trace_table()
         self.log("Буфер трассировки очищен")
     
     def on_trace_depth_changed(self, value):
@@ -5324,15 +5501,14 @@ class MainWindow(QMainWindow):
     
     def on_trace_selection_changed(self, selected, deselected):
         """Выбор записи — показать детали"""
-        # === ИСПРАВЛЕНО: используем selectionModel для QTableView ===
         indexes = selected.indexes()
         if not indexes:
             return
         row = indexes[0].row()
-        records = self.emulator.trace_get()
-        if row < len(records):
-            rec = records[row]
-            self._show_trace_detail(rec)
+        if hasattr(self, 'trace_model'):
+            rec = self.trace_model._get_record(row)
+            if rec is not None:
+                self._show_trace_detail(rec)
     
     def _get_trace_mnemonic(self, rec):
         """Определить мнемонику для записи трассировки"""
@@ -5364,29 +5540,25 @@ class MainWindow(QMainWindow):
     
     def on_trace_context_menu(self, pos):
         """Контекстное меню записи трассировки"""
-        # === ИСПРАВЛЕНО: indexAt вместо itemAt ===
         index = self.trace_table.indexAt(pos)
         if not index.isValid():
             return
         row = index.row()
-        records = self.emulator.trace_get()
-        if row >= len(records):
-            return
-        rec = records[row]
-         
-        menu = QMenu(self)
-        act_view = menu.addAction(f"👁 Просмотр состояния (#{rec['seq']})")
-        act_restore = menu.addAction(f"↩ Восстановить состояние")
-        act_goto = menu.addAction(f"➤ Перейти к адресу 0x{rec['pc']:04X} в дизассемблере")
-         
-        selected = menu.exec(self.trace_table.viewport().mapToGlobal(pos))
-         
-        if selected == act_view:
-            self._show_trace_detail(rec)
-        elif selected == act_restore:
-            self._restore_trace_state(rec)
-        elif selected == act_goto:
-            self._goto_trace_address(rec["pc"])
+        if hasattr(self, 'trace_model'):
+            rec = self.trace_model._get_record(row)
+            if rec is None:
+                return
+            menu = QMenu(self)
+            act_view = menu.addAction(f"👁 Просмотр состояния (#{rec['seq']})")
+            act_restore = menu.addAction(f"↩ Восстановить состояние")
+            act_goto = menu.addAction(f"➤ Перейти к адресу 0x{rec['pc']:04X} в дизассемблере")
+            selected = menu.exec(self.trace_table.viewport().mapToGlobal(pos))
+            if selected == act_view:
+                self._show_trace_detail(rec)
+            elif selected == act_restore:
+                self._restore_trace_state(rec)
+            elif selected == act_goto:
+                self._goto_trace_address(rec["pc"])
     
     def _restore_trace_state(self, rec):
         """Восстановить состояние эмулятора из записи трассировки"""
@@ -5424,18 +5596,195 @@ class MainWindow(QMainWindow):
         self.statusBar.showMessage(f"PC установлен на 0x{addr:04X}", 3000)
     
     def on_trace_search(self):
-        """Поиск в трассировке (заглушка — реализуется в следующем шаге)"""
-        self.statusBar.showMessage("Поиск в трассировке: в разработке", 3000)
+        """Поиск в трассировке по адресу, регистру или мнемонике"""
+        query = self.txt_trace_search.text().strip()
+        filter_dict = self._parse_trace_filter(query)
+        if filter_dict is None and query:
+            self.statusBar.showMessage(f"Неверный формат запроса: {query}", 3000)
+            return
+        if hasattr(self, 'trace_model'):
+            self.trace_model.set_filter(filter_dict)
+        filtered_count = self.trace_model.rowCount() if hasattr(self, 'trace_model') else 0
+        total = self.emulator.trace_count()
+        self.statusBar.showMessage(f"Найдено: {filtered_count} из {total}", 3000)
+        if query:
+            self.log(f"Поиск в трассировке: '{query}' — найдено {filtered_count}")
     
     def on_trace_filter_clear(self):
         """Сбросить фильтр трассировки"""
         self.txt_trace_search.clear()
+        if hasattr(self, 'trace_model'):
+            self.trace_model.set_filter(None)
         self.refresh_trace_table()
     
+    def _parse_trace_filter(self, query):
+        """Парсит запрос поиска. Возвращает фильтр или None."""
+        query = query.strip()
+        if not query:
+            return None
+         
+        # === Операторы сравнения (проверяем в порядке убывания длины) ===
+        operators = ['!=', '==', '>=', '<=', '>', '<', '=']
+        for op in operators:
+            if op in query:
+                parts = query.split(op, 1)
+                reg = parts[0].strip().upper()
+                val_str = parts[1].strip()
+                valid_regs = ['A', 'B', 'C', 'D', 'E', 'H', 'L', 'BC', 'DE', 'HL', 'SP', 'PC',
+                              'S', 'Z', 'AC', 'P', 'CY']
+                if reg not in valid_regs:
+                    return None
+                try:
+                    value = int(val_str, 16) if val_str.lower().startswith('0x') or all(c in '0123456789abcdefABCDEF' for c in val_str) else int(val_str)
+                except ValueError:
+                    return None
+                # Нормализуем оператор: '=' → '=='
+                op_normalized = '==' if op == '=' else op
+                return {"type": "reg", "reg": reg, "op": op_normalized, "value": value}
+         
+        # Hex-адрес: 0010, 0x0010
+        try:
+            addr = int(query, 16)
+            if 0 <= addr <= 0xFFFF:
+                return {"type": "addr", "value": addr}
+        except ValueError:
+            pass
+         
+        # Мнемоника
+        return {"type": "mnemonic", "value": query.upper()}
+    
+    def _apply_trace_filter(self, records):
+        """Применяет фильтр к записям трассировки"""
+        if not self.trace_filter:
+            return records
+        filtered = []
+        f = self.trace_filter
+        if f["type"] == "addr":
+            for rec in records:
+                if rec["pc"] == f["value"]:
+                    filtered.append(rec)
+        elif f["type"] == "reg":
+            reg = f["reg"]
+            op = f.get("op", "==")  # По умолчанию равенство
+            value = f["value"]
+            flag_map = {'S': 0, 'Z': 1, 'AC': 2, 'P': 3, 'CY': 4}
+            
+            def get_reg_value(rec):
+                if reg == 'A': return rec["A"]
+                elif reg == 'B': return rec["B"]
+                elif reg == 'C': return rec["C"]
+                elif reg == 'D': return rec["D"]
+                elif reg == 'E': return rec["E"]
+                elif reg == 'H': return rec["H"]
+                elif reg == 'L': return rec["L"]
+                elif reg == 'BC': return rec["BC"]
+                elif reg == 'DE': return rec["DE"]
+                elif reg == 'HL': return rec["HL"]
+                elif reg == 'SP': return rec["SP"]
+                elif reg == 'PC': return rec["pc"]
+                elif reg in flag_map:
+                    return rec["flags"][flag_map[reg]]
+                return 0
+            
+            for rec in records:
+                val = get_reg_value(rec)
+                if op == '==' and val == value: filtered.append(rec)
+                elif op == '!=' and val != value: filtered.append(rec)
+                elif op == '>' and val > value: filtered.append(rec)
+                elif op == '<' and val < value: filtered.append(rec)
+                elif op == '>=' and val >= value: filtered.append(rec)
+                elif op == '<=' and val <= value: filtered.append(rec)
+        elif f["type"] == "mnemonic":
+            for rec in records:
+                mnemonic = self._get_trace_mnemonic(rec)
+                if f["value"] in mnemonic.upper():
+                    filtered.append(rec)
+        return filtered
+    
     def on_trace_export(self):
-        """Экспорт трассировки (заглушка — реализуется в следующем шаге)"""
-        self.statusBar.showMessage("Экспорт трассировки: в разработке", 3000)
-        
+        """Экспорт трассировки в TXT / CSV / JSON"""
+        records = self.emulator.trace_get()
+        if not records:
+            QMessageBox.warning(self, "Экспорт", "Нет данных для экспорта")
+            return
+        path, _ = QFileDialog.getSaveFileName(
+            self, "Экспорт трассировки",
+            "trace.txt",
+            "Text Files (*.txt);;CSV Files (*.csv);;JSON Files (*.json);;All Files (*)"
+        )
+        if not path:
+            return
+        try:
+            if path.endswith('.csv'):
+                self._export_trace_csv(path, records)
+            elif path.endswith('.json'):
+                self._export_trace_json(path, records)
+            else:
+                self._export_trace_txt(path, records)
+            self.statusBar.showMessage(f"Трассировка экспортирована: {path}", 3000)
+            self.log(f"Trace exported to {path} ({len(records)} records)")
+        except Exception as e:
+            QMessageBox.critical(self, "Ошибка", f"Не удалось экспортировать трассировку:\n{e}")
+    
+    def _export_trace_txt(self, path, records):
+        """Экспорт в TXT"""
+        with open(path, 'w', encoding='utf-8') as f:
+            f.write(f"# i8080 Trace Export\n")
+            f.write(f"# Records: {len(records)}\n")
+            f.write(f"{'#':>6}  {'PC':>4}  {'Bytes':<12}  {'Mnemonic':<20}  {'A':>2}  {'BC':>4}  {'DE':>4}  {'HL':>4}  {'SP':>4}  {'Flags':<5}  {'Cyc':>5}\n")
+            f.write("-" * 110 + "\n")
+            for rec in records:
+                mnemonic = self._get_trace_mnemonic(rec)
+                bytes_str = " ".join(f"{b:02X}" for b in rec["bytes"])
+                flags = rec["flags"]
+                flags_str = f"{'S' if flags[0] else '-'}{'Z' if flags[1] else '-'}{'A' if flags[2] else '-'}{'P' if flags[3] else '-'}{'C' if flags[4] else '-'}"
+                f.write(f"{rec['seq']:>6}  {rec['pc']:04X}  {bytes_str:<12}  {mnemonic:<20}  "
+                        f"{rec['A']:>2}  {rec['BC']:04X}  {rec['DE']:04X}  {rec['HL']:04X}  "
+                        f"{rec['SP']:04X}  {flags_str:<5}  {rec['cycles']:>5}\n")
+
+    def _export_trace_csv(self, path, records):
+        """Экспорт в CSV"""
+        import csv
+        with open(path, 'w', encoding='utf-8', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow(['seq', 'pc', 'bytes', 'mnemonic', 'A', 'BC', 'DE', 'HL', 'SP', 'flags', 'cycles', 'cycles_total'])
+            for rec in records:
+                mnemonic = self._get_trace_mnemonic(rec)
+                bytes_str = " ".join(f"{b:02X}" for b in rec["bytes"])
+                flags = rec["flags"]
+                flags_str = f"{'S' if flags[0] else '-'}{'Z' if flags[1] else '-'}{'A' if flags[2] else '-'}{'P' if flags[3] else '-'}{'C' if flags[4] else '-'}"
+                writer.writerow([
+                    rec['seq'], f"{rec['pc']:04X}", bytes_str, mnemonic,
+                    f"{rec['A']:02X}", f"{rec['BC']:04X}", f"{rec['DE']:04X}",
+                    f"{rec['HL']:04X}", f"{rec['SP']:04X}", flags_str,
+                    rec['cycles'], rec['cycles_total']
+                ])
+
+    def _export_trace_json(self, path, records):
+        """Экспорт в JSON"""
+        import json
+        data = {
+            "version": 1,
+            "records": []
+        }
+        for rec in records:
+            mnemonic = self._get_trace_mnemonic(rec)
+            bytes_str = " ".join(f"{b:02X}" for b in rec["bytes"])
+            flags = rec["flags"]
+            data["records"].append({
+                "seq": rec['seq'],
+                "pc": rec['pc'],
+                "bytes": bytes_str,
+                "mnemonic": mnemonic,
+                "A": rec['A'], "BC": rec['BC'], "DE": rec['DE'],
+                "HL": rec['HL'], "SP": rec['SP'],
+                "flags": {"S": flags[0], "Z": flags[1], "AC": flags[2], "P": flags[3], "CY": flags[4]},
+                "cycles": rec['cycles'],
+                "cycles_total": rec['cycles_total']
+            })
+        with open(path, 'w', encoding='utf-8') as f:
+            json.dump(data, f, indent=2, ensure_ascii=False)
+    
     def on_trace_checkbox_toggled(self, checked):
         """Чек-бокс трассировки в эмуляторе"""
         if checked:
