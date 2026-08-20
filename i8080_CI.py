@@ -2404,6 +2404,14 @@ class MainWindow(QMainWindow):
         # Передаём дизассемблер для трассировки
         self.emulator.disassembler = self.disassembler
         
+        # === Шина памяти ===
+        from modules import MemoryBus, RAMRegion
+        self.memory_bus = MemoryBus()
+        # RAM на всё адресное пространство, использует mem_data как хранилище
+        ram = RAMRegion(0x0000, 0xFFFF, data=self.mem_data, name="RAM")
+        self.memory_bus.register_memory(ram)
+        self.emulator.memory_bus = self.memory_bus
+        
         # ============================================================
         # 4. СОЗДАНИЕ UI
         # ============================================================
