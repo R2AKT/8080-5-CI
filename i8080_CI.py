@@ -2412,6 +2412,23 @@ class MainWindow(QMainWindow):
         self.memory_bus.register_memory(ram)
         self.emulator.memory_bus = self.memory_bus
         
+        # === IO-устройства ===
+        from modules.io import I8253
+        self.pit = I8253(base_port=0x00, name="PIT-0")
+        self.pit.register_to_bus(self.memory_bus)
+        
+        from modules.io import I8255
+        self.ppi = I8255(base_port=0x00, name="PPI-0")
+        self.ppi.register_to_bus(self.memory_bus)
+        
+        from modules.io import I8257
+        self.dma = I8257(base_port=0x00, name="DMA-0")
+        self.dma.register_to_bus(self.memory_bus)
+        
+        from modules.io import I8259
+        self.pic = I8259(base_port=0x00, name="PIC-0")
+        self.pic.register_to_bus(self.memory_bus)
+        
         # ============================================================
         # 4. СОЗДАНИЕ UI
         # ============================================================
