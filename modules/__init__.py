@@ -1,10 +1,9 @@
-"""Модули i8080-5 CI: шина памяти, устройства памяти."""
-from .memory_bus import (
-    MemoryBus, IOBus, MemoryRegion,
-    RAMRegion, ROMRegion, ShadowROMRegion,
-    BankedRegion, BankedROMRegion,
+"""Модули i8080-5 CI: шина памяти, устройства памяти и IO."""
+# Память
+from .memory import (
+    IOBus, MemoryBus, MemoryRegion, RAMRegion, ROMRegion,
+    BankedRegion, BankedROMRegion, ShadowROMRegion,
     PagedRegion, SegmentedRegion, SegmentedPagedRegion
 )
-
-"""Модули i8080-5 CI: устройства IO."""
-from .io import IODevice, I8255
+# IO-устройства
+from .io import IODevice, I8255, I8253, I8251, I8259, I8259A, I8257, I8237, I8279, I16550

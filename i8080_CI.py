@@ -2405,7 +2405,7 @@ class MainWindow(QMainWindow):
         self.emulator.disassembler = self.disassembler
         
         # === Шина памяти ===
-        from modules import MemoryBus, RAMRegion
+        from modules.memory import MemoryBus, RAMRegion
         self.memory_bus = MemoryBus()
         # RAM на всё адресное пространство, использует mem_data как хранилище
         ram = RAMRegion(0x0000, 0xFFFF, data=self.mem_data, name="RAM")
@@ -2413,6 +2413,10 @@ class MainWindow(QMainWindow):
         self.emulator.memory_bus = self.memory_bus
         
         # === IO-устройства ===
+        from modules.io import I8251
+        self.usart = I8251(base_port=0x00, name="USART-0")
+        self.usart.register_to_bus(self.memory_bus)
+        
         from modules.io import I8253
         self.pit = I8253(base_port=0x00, name="PIT-0")
         self.pit.register_to_bus(self.memory_bus)
@@ -2429,6 +2433,13 @@ class MainWindow(QMainWindow):
         self.pic = I8259(base_port=0x00, name="PIC-0")
         self.pic.register_to_bus(self.memory_bus)
         
+        from modules.io import I8279
+        self.kbd = I8279(base_port=0x00, name="KBD-0")
+        self.kbd.register_to_bus(self.memory_bus)
+                
+        from modules.io import I16550
+        self.i16550 = I16550(base_port=0x00, name="16550-0")
+        self.i16550.register_to_bus(self.memory_bus)
         # ============================================================
         # 4. СОЗДАНИЕ UI
         # ============================================================
