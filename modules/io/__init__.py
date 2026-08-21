@@ -11,3 +11,4 @@ from .i8276 import I8276
 from .i8279 import I8279
 
 from .i16550 import I16550
+from .i512vi1 import I512VI1

@@ -83,6 +83,127 @@ class I8272FDD:
             status |= 0x08  # Two Sided
         return status
 
+    # =============================================
+    # РАБОТА С ВНЕШНИМИ ОБРАЗАМИ ДИСКОВ
+    # =============================================
+    
+    # Стандартные форматы дискет
+    FORMATS = {
+        368640:  (40, 2, 9, 512),   # 5.25" 360 КБ
+        737280:  (80, 2, 9, 512),   # 3.5" 720 КБ
+        1228800: (80, 2, 15, 512),  # 5.25" 1.2 МБ
+        1474560: (80, 2, 18, 512),  # 3.5" 1.44 МБ
+    }
+    
+    def format_disk(self, tracks=None, heads=None, sectors_per_track=None, sector_size=None):
+        """Форматирование диска с заданными параметрами.
+        Если параметры не указаны, используются текущие."""
+        if tracks is not None:
+            self.max_cylinder = tracks - 1
+        if heads is not None:
+            self.max_head = heads - 1
+        if sectors_per_track is not None:
+            self.sectors_per_track = sectors_per_track
+        if sector_size is not None:
+            self.sector_size = sector_size
+        
+        self.data = {}
+        for cyl in range(self.max_cylinder + 1):
+            for head in range(self.max_head + 1):
+                for sec in range(1, self.sectors_per_track + 1):
+                    self.data[(cyl, head, sec)] = [0x00] * self.sector_size
+    
+    def load_from_file(self, path):
+        """Загрузка raw-образа диска из файла.
+        Формат определяется автоматически по размеру файла.
+        Возвращает True при успехе."""
+        try:
+            with open(path, 'rb') as f:
+                raw = f.read()
+            
+            size = len(raw)
+            if size == 0:
+                return False
+            
+            # Определяем формат по размеру
+            if size in self.FORMATS:
+                tracks, heads, sectors, sec_size = self.FORMATS[size]
+                self.max_cylinder = tracks - 1
+                self.max_head = heads - 1
+                self.sectors_per_track = sectors
+                self.sector_size = sec_size
+            else:
+                # Неизвестный формат — пробуем определить
+                # Предполагаем 2 головки, 512 байт на сектор
+                sec_size = 512
+                if size % sec_size != 0:
+                    return False
+                total_sectors = size // sec_size
+                # Пытаемся угадать геометрию
+                heads = 2
+                if total_sectors % heads != 0:
+                    heads = 1
+                track_sectors = total_sectors // heads
+                # Ищем подходящее количество дорожек
+                tracks = 80
+                if track_sectors % tracks != 0:
+                    tracks = 40
+                if track_sectors % tracks != 0:
+                    return False
+                sectors = track_sectors // tracks
+                
+                self.max_cylinder = tracks - 1
+                self.max_head = heads - 1
+                self.sectors_per_track = sectors
+                self.sector_size = sec_size
+            
+            # Загружаем данные
+            self.data = {}
+            offset = 0
+            for cyl in range(self.max_cylinder + 1):
+                for head in range(self.max_head + 1):
+                    for sec in range(1, self.sectors_per_track + 1):
+                        sector_data = list(raw[offset:offset + self.sector_size])
+                        if len(sector_data) < self.sector_size:
+                            sector_data.extend([0x00] * (self.sector_size - len(sector_data)))
+                        self.data[(cyl, head, sec)] = sector_data
+                        offset += self.sector_size
+            
+            self.ready = True
+            return True
+        except Exception:
+            return False
+    
+    def save_to_file(self, path):
+        """Сохранение raw-образа диска в файл.
+        Возвращает True при успехе."""
+        try:
+            raw = bytearray()
+            for cyl in range(self.max_cylinder + 1):
+                for head in range(self.max_head + 1):
+                    for sec in range(1, self.sectors_per_track + 1):
+                        key = (cyl, head, sec)
+                        if key in self.data:
+                            raw.extend(self.data[key])
+                        else:
+                            raw.extend([0x00] * self.sector_size)
+            
+            with open(path, 'wb') as f:
+                f.write(raw)
+            return True
+        except Exception:
+            return False
+    
+    def get_geometry(self):
+        """Геометрия диска для отладки"""
+        return {
+            "tracks": self.max_cylinder + 1,
+            "heads": self.max_head + 1,
+            "sectors_per_track": self.sectors_per_track,
+            "sector_size": self.sector_size,
+            "total_sectors": (self.max_cylinder + 1) * (self.max_head + 1) * self.sectors_per_track,
+            "total_bytes": (self.max_cylinder + 1) * (self.max_head + 1) * self.sectors_per_track * self.sector_size,
+        }
 
 class I8272(IODevice):
     """8272 FDC — контроллер гибких дисков"""
@@ -601,6 +722,40 @@ class I8272(IODevice):
         """Получить данные диска"""
         if 0 <= drive_num < 4:
             return self.drives[drive_num].data
+        return None
+    
+    # =============================================
+    # РАБОТА С ВНЕШНИМИ ОБРАЗАМИ ДИСКОВ
+    # =============================================
+    
+    def load_disk_image(self, drive_num, path):
+        """Загрузить образ диска из файла в дисковод.
+        Возвращает True при успехе."""
+        if 0 <= drive_num < 4:
+            return self.drives[drive_num].load_from_file(path)
+        return False
+    
+    def save_disk_image(self, drive_num, path):
+        """Сохранить образ диска из дисковода в файл.
+        Возвращает True при успехе."""
+        if 0 <= drive_num < 4:
+            return self.drives[drive_num].save_to_file(path)
+        return False
+    
+    def format_drive(self, drive_num, tracks=80, heads=2, sectors_per_track=18, sector_size=512):
+        """Форматировать дисковод с заданными параметрами.
+        Возвращает True при успехе."""
+        if 0 <= drive_num < 4:
+            drive = self.drives[drive_num]
+            drive.format_disk(tracks, heads, sectors_per_track, sector_size)
+            drive.ready = True
+            return True
+        return False
+    
+    def get_drive_geometry(self, drive_num):
+        """Геометрия диска в дисководе"""
+        if 0 <= drive_num < 4:
+            return self.drives[drive_num].get_geometry()
         return None
     
     # =============================================
