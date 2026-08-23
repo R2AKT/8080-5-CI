@@ -56,6 +56,7 @@ class I8253(IODevice):
         # Callback для OUT сигналов: on_out(channel, active)
         # Используется для подключения к IRQ контроллеру 8259
         self.on_out = None
+        self.on_irq = None
     
     def reset(self):
         """Сброс всех каналов."""
@@ -293,3 +294,16 @@ class I8253(IODevice):
                 for ch in self.channels
             ]
         }
+    
+    # =============================================
+    # ПРЕРЫВАНИЯ
+    # =============================================
+    def has_interrupt(self):
+        """Есть ли активное прерывание"""
+        return getattr(self, 'irq_flag', False)
+
+    def acknowledge_interrupt(self):
+        """Подтверждение прерывания"""
+        self.irq_flag = False
+        if self.on_irq:
+            self.on_irq(False)

@@ -67,6 +67,10 @@ class I8080Emulator(QObject):
         # === ИТЕРАЦИЯ E1: Шина памяти ===
         self.memory_bus = None  # Устанавливается из MainWindow
         
+        # Очередь внешних прерываний
+        self._pending_interrupts = []
+        self._interrupt_vector = None
+        
     def reset(self):
         """Сброс процессора"""
         self.a = self.b = self.c = self.d = 0x00
@@ -1160,6 +1164,62 @@ class I8080Emulator(QObject):
             self.log_message.emit(f"PC set to memory start: 0x{self.pc:04X}")
             return self.pc
         return None
+        
+    # =============================================
+    # ВНЕШНИЕ ПРЕРЫВАНИЯ (итерация 10.1)
+    # =============================================
+    def request_interrupt(self, vector):
+        """Запросить внешнее прерывание.
+        vector — опкод инструкции (0xC7-0xFF для RST, или 0xCD для CALL).
+        Вызывается из ComputerSystem."""
+        self._pending_interrupts.append(vector)
+
+    def has_pending_interrupt(self):
+        """Есть ли ожидающие прерывания"""
+        return len(self._pending_interrupts) > 0
+
+    def _handle_interrupt(self):
+        """Обработка внешнего прерывания.
+        Вызывается после каждой инструкции, если прерывания разрешены."""
+        if not self._pending_interrupts:
+            return False
+
+        if not self.int_enabled:
+            return False  # Прерывания запрещены (DI)
+
+        # Извлекаем вектор
+        vector = self._pending_interrupts.pop(0)
+
+        # Запрещаем прерывания на время обработки
+        self.int_enabled = False
+
+        # Выполняем вектор как инструкцию
+        if vector == 0x76:  # HLT — не обрабатываем
+            return False
+
+        # Сохраняем текущий PC в стек (как при CALL)
+        self.sp = (self.sp - 1) & 0xFFFF
+        self.write_byte(self.sp, (self.pc >> 8) & 0xFF)
+        self.sp = (self.sp - 1) & 0xFFFF
+        self.write_byte(self.sp, self.pc & 0xFF)
+
+        # Определяем адрес перехода по вектору
+        if 0xC7 <= vector <= 0xFF and (vector & 0x07) == 0x07:
+            # RST 0-7: адрес = (vector - 0xC7) / 8 * 8
+            rst_num = (vector - 0xC7) // 8
+            self.pc = rst_num * 8
+            self.cycles += 12  # RST: 12 тактов
+        elif vector == 0xCD:
+            # CALL addr: следующий байт — адрес (нужно получить из шины)
+            # В упрощённой реализации адрес должен быть передан заранее
+            self.cycles += 18
+        else:
+            # Неизвестный вектор — игнорируем
+            self.pc = self.read_word(self.sp)
+            self.sp = (self.sp + 2) & 0xFFFF
+            return False
+
+        return True
 # ============================================================
 # АВТОМАТИЧЕСКИЕ ТЕСТЫ (запуск: python i8080_emulator.py)
 # ============================================================

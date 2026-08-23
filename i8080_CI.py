@@ -10,7 +10,7 @@ from PySide6.QtWidgets import (QApplication, QMainWindow, QWidget, QVBoxLayout,
                                QToolTip, QStyle, QStatusBar, QDialog, QListWidget, QListWidgetItem, QMenu, QSplitter,
 							   QFormLayout, QStackedWidget)
 from PySide6.QtCore import Qt, QTimer, QThread, QObject, Signal, QAbstractTableModel, QModelIndex, QEvent, QLocale, QSettings, QRect
-from PySide6.QtGui import QFont, QColor, QPainter, QPen, QBrush, QShortcut, QKeySequence
+from PySide6.QtGui import QFont, QColor, QPainter, QPen, QBrush, QShortcut, QKeySequence, QAction
 
 from i8080_emulator import I8080Emulator
 
@@ -2412,34 +2412,42 @@ class MainWindow(QMainWindow):
         self.memory_bus.register_memory(ram)
         self.emulator.memory_bus = self.memory_bus
         
-        # # === IO-устройства ===
-        # from modules.io import I8251
-        # self.usart = I8251(base_port=0x00, name="USART-0")
-        # self.usart.register_to_bus(self.memory_bus)
-        
-        # from modules.io import I8253
-        # self.pit = I8253(base_port=0x00, name="PIT-0")
-        # self.pit.register_to_bus(self.memory_bus)
-        
-        # from modules.io import I8255
-        # self.ppi = I8255(base_port=0x00, name="PPI-0")
-        # self.ppi.register_to_bus(self.memory_bus)
-        
-        # from modules.io import I8257
-        # self.dma = I8257(base_port=0x00, name="DMA-0")
-        # self.dma.register_to_bus(self.memory_bus)
-        
-        # from modules.io import I8259
-        # self.pic = I8259(base_port=0x00, name="PIC-0")
-        # self.pic.register_to_bus(self.memory_bus)
-        
-        # from modules.io import I8279
-        # self.kbd = I8279(base_port=0x00, name="KBD-0")
-        # self.kbd.register_to_bus(self.memory_bus)
+        # === Интеграция системы профилей ===
+        from modules.system import ComputerSystem
+        from modules.config.system_profiles import get_profile_names
+
+        # Создаём системный контроллер
+        self.system = ComputerSystem()
+
+        # Загружаем профиль по умолчанию
+        self._current_profile = "empty"
+        self.system.load_profile(self._current_profile)
+
+        # Подключаем CPU к системе
+        self.system.connect_cpu(self.emulator)
                 
-        # from modules.io import I16550
-        # self.i16550 = I16550(base_port=0x00, name="16550-0")
-        # self.i16550.register_to_bus(self.memory_bus)
+        # Меню профилей
+        from PySide6.QtGui import QActionGroup  # ← ДОБАВЛЕНО в импорты
+
+        # Меню профилей
+        self.profile_menu = self.menuBar().addMenu("Профиль системы")
+
+        # Группа действий: только один профиль одновременно
+        self.profile_group = QActionGroup(self)
+        self.profile_group.setExclusive(True)  # ← КЛЮЧЕВАЯ СТРОКА
+
+        self.profile_actions = {}
+        for profile_name in get_profile_names():
+            action = QAction(profile_name, self)
+            action.setCheckable(True)
+            action.triggered.connect(lambda checked, pn=profile_name: self.load_profile(pn))
+            self.profile_group.addAction(action)       # ← в группу
+            self.profile_menu.addAction(action)        # ← в меню
+            self.profile_actions[profile_name] = action
+
+        # Отмечаем текущий профиль
+        self.profile_actions[self._current_profile].setChecked(True)
+        
         # ============================================================
         # 4. СОЗДАНИЕ UI
         # ============================================================
@@ -4740,6 +4748,11 @@ class MainWindow(QMainWindow):
         self.refresh_trace_table()  # ← ИТЕРАЦИЯ D
         
     def _run_tick(self):
+        """Один тик выполнения"""
+        # Такты для tick-устройств (512ВИ1, 8253 и т.д.)
+        if self.emulator.running and hasattr(self, 'system'):
+            self.system.tick(cycles=1)
+        
         """Один тик выполнения — оптимизирован для скорости"""
         # === Проверки остановки ===
         target_reached = (
@@ -4779,6 +4792,10 @@ class MainWindow(QMainWindow):
         self._save_watch_prev_values()
         self._save_reg_prev_values()
         
+        # === ПРОВЕРКА ПРЕРЫВАНИЙ (итерация 10.1) ===
+        if hasattr(self, 'system'):
+            self.system.check_interrupts()
+            
         # === ВЫПОЛНЯЕМ БОЛЬШОЙ ПАКЕТ БЕЗ СИГНАЛОВ (silent=True) ===
         INSTRUCTIONS_PER_TICK = 300
         executed = 0
@@ -4790,6 +4807,14 @@ class MainWindow(QMainWindow):
             if self.emulator.should_stop_at_bp(self.emulator.pc):
                 break
             # Выполняем БЕЗ emit сигнала
+            if not self.emulator.execute_instruction(silent=True):
+                break
+            executed += 1
+            
+            # === Обработка прерывания перед инструкцией ===
+            if self.emulator.has_pending_interrupt():
+                self.emulator._handle_interrupt()
+
             if not self.emulator.execute_instruction(silent=True):
                 break
             executed += 1
@@ -5839,7 +5864,51 @@ class MainWindow(QMainWindow):
                 self.btn_trace_toggle.setText("🔥 Включить запись")
                 self.btn_trace_toggle.setStyleSheet("")
         self.update_trace_status()
+
+    def load_profile(self, profile_name):
+        """Загрузка профиля системы (итерация 10.4)"""
+        try:
+            # Останавливаем эмулятор, если он запущен
+            if self.emulator.running:
+                self.emulator_stop()
+
+            # Загружаем профиль
+            self.system.load_profile(profile_name)
+            self._current_profile = profile_name
+
+            # Подключаем CPU к системе (обновляет emulator.memory_bus)
+            self.system.connect_cpu(self.emulator)
+
+            # Обновляем ссылку на шину памяти в MainWindow
+            self.memory_bus = self.system.bus
+
+            # Обновляем отметку в меню
+            if profile_name in self.profile_actions:
+                self.profile_actions[profile_name].setChecked(True)
+
+            # Обновляем панели устройств
+            self._update_device_panels()
+
+            # Обновляем статусную строку (БЕЗ скобок — это виджет, не метод)
+            self.statusBar.showMessage(
+                f"Профиль загружен: {self.system.config.system_name}", 3000
+            )
+            self.log(f"Профиль загружен: {profile_name} ({self.system.config.system_name})")
+
+        except ValueError as e:
+            QMessageBox.critical(self, "Ошибка профиля", str(e))
         
+    def _update_device_panels(self):
+        """Обновление панелей устройств после загрузки профиля"""
+        # Обновляем список устройств в отладчике (если есть)
+        if hasattr(self, 'device_list_widget'):
+            self.device_list_widget.clear()
+            for dev_info in self.system.list_devices():
+                item = QListWidgetItem(
+                    f"{dev_info['name']} @ {dev_info['base_port']}"
+                )
+                self.device_list_widget.addItem(item)    
+    
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     app.setStyle("Fusion")
