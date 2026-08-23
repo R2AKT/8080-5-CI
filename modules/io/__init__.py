@@ -14,3 +14,8 @@ from .i16550 import I16550
 from .i512vi1 import I512VI1
 from .cf_ide import CFIDE
 from .ch376s import CH376S
+from .am9511 import AM9511 
+
+from .lcd1602 import LCD1602
+from .lcd2004 import LCD2004
+from .tft8080 import TFT8080
