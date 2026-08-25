@@ -2736,13 +2736,10 @@ class MainWindow(QMainWindow):
 
         # Создаём системный контроллер
         self.system = ComputerSystem()
-
+        
         # Загружаем профиль по умолчанию
         self._current_profile = "empty"
         self.system.load_profile(self._current_profile)
-
-        # Подключаем CPU к системе
-        self.system.connect_cpu(self.emulator)
                 
         # Меню профилей
         from PySide6.QtGui import QActionGroup  # ← ДОБАВЛЕНО в импорты
@@ -4789,9 +4786,6 @@ class MainWindow(QMainWindow):
         left_layout = QVBoxLayout(left_panel)
         left_layout.setContentsMargins(0, 0, 0, 0)
         
-        #disasm_label = QLabel("Код:")
-        #disasm_label.setFont(QFont("Segoe UI", 9, QFont.Bold))
-        #left_layout.addWidget(disasm_label)
         self.lbl_emu_code = QLabel("Код:")
         self.lbl_emu_code.setFont(QFont("Segoe UI", 9, QFont.Bold))
         left_layout.addWidget(self.lbl_emu_code)
@@ -5121,7 +5115,7 @@ class MainWindow(QMainWindow):
             # CPU приостановлен (эмуляция HOLD/HLDA)
             self.update_emulator_ui()
             return
-        
+
         # === ПРОВЕРКА WAIT-СИГНАЛА (итерация 10.3) ===
         if getattr(self.emulator, 'wait_signal', False):
             # CPU ждёт устройство (эмуляция READY/WAIT)
@@ -5131,7 +5125,7 @@ class MainWindow(QMainWindow):
         # === ПРОВЕРКА ПРЕРЫВАНИЙ (итерация 10.1) ===
         if hasattr(self, 'system'):
             self.system.check_interrupts()
-        
+
         # === Проверки остановки ===
         target_reached = (
             self.run_target_addr is not None and
@@ -6247,34 +6241,37 @@ class MainWindow(QMainWindow):
     def load_profile(self, profile_name):
         """Загрузка профиля системы (итерация 10.4)"""
         try:
-            # ← ИСПРАВЛЕНО: было self.running, стало self.emulator.running
             if self.emulator.running:
                 self.emulator_stop()
 
-            # Загружаем профиль
             self.system.load_profile(profile_name)
             self._current_profile = profile_name
-
-            # Подключаем CPU к системе (обновляет emulator.memory_bus)
             self.system.connect_cpu(self.emulator)
-
-            # Обновляем ссылку на шину памяти в MainWindow
             self.memory_bus = self.system.bus
 
-            # Обновляем отметку в меню
+            # заменяем RAM из TOML на RAM с mem_data
+            from modules.memory import RAMRegion
+            self.memory_bus.memory_regions = [
+                r for r in self.memory_bus.memory_regions
+                if not isinstance(r, RAMRegion)
+            ]
+            ram = RAMRegion(0x0000, 0xFFFF, data=self.mem_data, name="RAM")
+            self.memory_bus.register_memory(ram)
+            # Убеждаемся, что эмулятор видит правильный bus
+            self.emulator.memory_bus = self.memory_bus
+
             if profile_name in self.profile_actions:
                 self.profile_actions[profile_name].setChecked(True)
 
-            # Обновляем панели устройств
             self._update_device_panels()
 
-            # Обновляем статусную строку
-            self.statusBar.showMessage(f"{self.tr('status_profile_loaded')}{self.system.config.system_name}", 3000)
+            self.statusBar.showMessage(
+                f"{self.tr('status_profile_loaded')}{self.system.config.system_name}", 3000
+            )
             self.log(f"{self.tr('status_profile_loaded')}{self.system.config.system_name}")
-
         except ValueError as e:
             QMessageBox.critical(self, self.tr("status_profile_err"), str(e))
-        
+
     def _update_device_panels(self):
         """Обновление панелей устройств после загрузки профиля"""
         # Обновляем список устройств в отладчике (если есть)

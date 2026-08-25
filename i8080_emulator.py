@@ -135,19 +135,6 @@ class I8080Emulator(QObject):
         }
         return regs.get(reg, 0)
         
-    # def set_reg(self, reg, value):
-        # """Установить значение регистра"""
-        # value &= 0xFF
-        # if reg == 'A': self.a = value
-        # elif reg == 'B': self.b = value
-        # elif reg == 'C': self.c = value
-        # elif reg == 'D': self.d = value
-        # elif reg == 'E': self.e = value
-        # elif reg == 'H': self.h = value
-        # elif reg == 'L': self.l = value
-        # elif reg == 'M':
-            # addr = self.get_reg_pair('HL')
-            # self.memory[addr] = value
     def set_reg(self, reg, value):
         """Установить значение регистра"""
         value &= 0xFF
@@ -162,9 +149,6 @@ class I8080Emulator(QObject):
             addr = self.get_reg_pair('HL')
             self.write_byte(addr, value)
             
-    # def read_byte(self, addr):
-        # """Чтение байта из памяти"""
-        # return self.memory.get(addr & 0xFFFF, 0xFF)
     def read_byte(self, addr):
         """Чтение байта из памяти (через шину, если есть)"""
         addr &= 0xFFFF
@@ -172,9 +156,6 @@ class I8080Emulator(QObject):
             return self.memory_bus.read(addr)
         return self.memory.get(addr, 0xFF)
         
-    # def write_byte(self, addr, value):
-        # """Запись байта в память"""
-        # self.memory[addr & 0xFFFF] = value & 0xFF
     def write_byte(self, addr, value):
         """Запись байта в память (через шину, если есть)"""
         addr &= 0xFFFF
@@ -183,11 +164,6 @@ class I8080Emulator(QObject):
         else:
             self.memory[addr] = value & 0xFF
             
-    # def read_word(self, addr):
-        # """Чтение слова (little-endian)"""
-        # low = self.read_byte(addr)
-        # high = self.read_byte(addr + 1)
-        # return (high << 8) | low
     def read_word(self, addr):
         """Чтение слова (little-endian), через шину, если есть"""
         addr &= 0xFFFF
@@ -200,10 +176,6 @@ class I8080Emulator(QObject):
             high = self.memory.get(addr + 1, 0xFF)
             return (high << 8) | low
             
-    # def write_word(self, addr, value):
-        # """Запись слова (little-endian)"""
-        # self.write_byte(addr, value & 0xFF)
-        # self.write_byte(addr + 1, (value >> 8) & 0xFF)
     def write_word(self, addr, value):
         """Запись слова (little-endian), через шину, если есть"""
         addr &= 0xFFFF
@@ -1149,15 +1121,6 @@ class I8080Emulator(QObject):
         self.state_changed.emit()  # Одно обновление в конце
         return steps
 		
-    # def set_pc_to_memory_start(self):
-        # """Установить PC на минимальный адрес загруженной памяти"""
-        # if self.memory:
-            # min_addr = min(self.memory.keys())
-            # self.pc = min_addr & 0xFFFF
-            # self.state_changed.emit()
-            # self.log_message.emit(f"PC set to memory start: 0x{self.pc:04X}")
-            # return self.pc
-        # return None
     def set_pc_to_memory_start(self):
         """Установить PC на минимальный адрес загруженной памяти"""
         # Пробуем шину, потом dict
