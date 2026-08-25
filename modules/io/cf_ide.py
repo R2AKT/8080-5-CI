@@ -86,6 +86,14 @@ class CFIDE(IODevice):
 
         # 8-bit mode
         self.eight_bit_mode = False
+        
+        # === Эмуляция занятости (итерация 10.3) ===
+        self.busy = False
+        self.busy_cycles = 0
+        self._pending_status = self.STATUS_DRDY
+        self._pending_irq = False
+        self.on_wait = None  # Callback для WAIT-сигнала
+        self.emulate_delay = False  # по умолчанию задержка выключена
 
     # =============================================
     # РАБОТА С ОБРАЗОМ ДИСКА
@@ -161,42 +169,33 @@ class CFIDE(IODevice):
         """Чтение из порта"""
         offset = port - self.base_port
         if offset == 0:
+            # если устройство занято, возвращаем 0
+            if self.busy:
+                return 0x00
             if self.data_direction == 'read' and self.data_index < len(self.data_buffer):
                 val = self.data_buffer[self.data_index]
                 self.data_index += 1
                 if self.data_index >= len(self.data_buffer):
-                    self._after_sector_read()  # ← ЗАМЕНА старого блока
+                    self._after_sector_read()
                 return val
             return 0x00
-
         elif offset == 1:
-            # Error Register
             return self.error_reg
-
         elif offset == 2:
-            # Sector Count
             return self.sector_count
-
         elif offset == 3:
-            # LBA Low
             return self.lba_low
-
         elif offset == 4:
-            # LBA Mid
             return self.lba_mid
-
         elif offset == 5:
-            # LBA High
             return self.lba_high
-
         elif offset == 6:
-            # Device/Head
             return self.device_head
-
         elif offset == 7:
-            # Status Register
+            # если устройство занято, возвращаем BSY
+            if self.busy:
+                return self.STATUS_BSY
             return self.status
-
         return 0xFF
 
     # =============================================
@@ -254,20 +253,31 @@ class CFIDE(IODevice):
         """Выполнение команды"""
         self.error_reg = 0x00
         self.status = self.STATUS_BSY
-
+         
         if self.command == self.CMD_IDENTIFY_DEVICE:
             self._cmd_identify()
-
         elif self.command in (self.CMD_READ_SECTORS, self.CMD_READ_SECTORS_NI):
             self._cmd_read_sectors()
-
         elif self.command in (self.CMD_WRITE_SECTORS, self.CMD_WRITE_SECTORS_NI):
             self._cmd_write_sectors()
-
         else:
-            # Неизвестная команда
             self.error_reg = self.ERROR_ABRT
             self.status = self.STATUS_DRDY | self.STATUS_ERR
+            return
+         
+        # запуск эмуляции занятости
+        if self.error_reg == 0:
+            count = self.sector_count if self.sector_count > 0 else 256
+            if self.command == self.CMD_IDENTIFY_DEVICE:
+                cycles = 30
+            else:
+                cycles = count * 50  # 50 тактов на сектор
+            generate_irq = self.command in (
+                self.CMD_IDENTIFY_DEVICE,
+                self.CMD_READ_SECTORS,
+                self.CMD_WRITE_SECTORS
+            )
+            self._start_operation(cycles, self.status, generate_irq)
 
     def _cmd_identify(self):
         """IDENTIFY DEVICE (0xEC)"""
@@ -313,9 +323,9 @@ class CFIDE(IODevice):
         self.data_direction = 'read'
         self.status = self.STATUS_DRDY | self.STATUS_DRQ
 
-        # Прерывание для команды с прерыванием
-        if self.command == self.CMD_IDENTIFY_DEVICE and self.on_irq:
-            self.on_irq(True)
+        # # Прерывание для команды с прерыванием
+        # if self.command == self.CMD_IDENTIFY_DEVICE and self.on_irq:
+            # self.on_irq(True)
 
     def _cmd_read_sectors(self):
         """READ SECTORS (0x20/0x21)"""
@@ -406,6 +416,52 @@ class CFIDE(IODevice):
             self.data_direction = None
             self.status &= ~self.STATUS_DRQ
             self.status |= self.STATUS_DRDY
+
+    # =============================================
+    # ЭМУЛЯЦИЯ ЗАНЯТОСТИ (итерация 10.3)
+    # =============================================
+    def set_emulate_delay(self, enabled):
+        """Включить/выключить эмуляцию задержки операций"""
+        self.emulate_delay = enabled
+
+    def _start_operation(self, cycles, final_status=None, generate_irq=True):
+        """Запуск операции с задержкой (эмуляция IORDY).
+        Если emulate_delay выключен, операция завершается мгновенно."""
+        if not self.emulate_delay:
+            # Мгновенное выполнение: статус уже установлен командой
+            if generate_irq and self.on_irq:
+                self.on_irq(True)
+            return
+        # Сохраняем финальный статус (уже установлен командой)
+        self._pending_status = final_status if final_status is not None else self.status
+        self._pending_irq = generate_irq
+        # Устанавливаем BSY
+        self.busy = True
+        self.busy_cycles = cycles
+        self.status = self.STATUS_BSY
+        # Активируем WAIT
+        if self.on_wait:
+            self.on_wait(True)
+
+    def tick(self, cycles=1):
+        """Вызывается каждый такт. Обработка занятости."""
+        if not self.busy:
+            return
+        self.busy_cycles -= cycles
+        if self.busy_cycles <= 0:
+            self.busy = False
+            self.status = self._pending_status
+            # Снимаем WAIT
+            if self.on_wait:
+                self.on_wait(False)
+            # Генерируем IRQ по завершении
+            if self._pending_irq and self.on_irq:
+                self.on_irq(True)
+            self._pending_irq = False
+
+    def is_busy(self):
+        """Проверка занятости устройства"""
+        return self.busy
 
     # =============================================
     # СОСТОЯНИЕ ДЛЯ ОТЛАДКИ

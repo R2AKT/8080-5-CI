@@ -15,7 +15,6 @@
 
 from .iodevice import IODevice
 
-
 class I8257(IODevice):
     """8257 (КР580ВТ57) — контроллер ПДП (базовый).
     
@@ -69,6 +68,8 @@ class I8257(IODevice):
         self.hold_active = False
         self.active_channel = None
         self.transfer_in_progress = False
+        # Flip-Flop для 16-битной записи
+        self.flip_flop = 0
     
     # =============================================
     # IO ЧТЕНИЕ / ЗАПИСЬ
@@ -103,29 +104,40 @@ class I8257(IODevice):
     def io_write(self, port, value):
         """Запись в регистр"""
         offset = port - self.base_port
-        
-        # Порты 0-7: Адреса и счётчики каналов
+        # Порты 0-7: Адреса и счётчики каналов (16-бит через Flip-Flop)
         if 0 <= offset <= 7:
             channel = offset // 2
             reg_type = offset % 2  # 0=адрес, 1=счётчик
             if reg_type == 0:
-                self.channels[channel]["addr"] = value & 0xFF
+                # Адрес канала
+                if self.flip_flop == 0:
+                    # LSB
+                    self.channels[channel]["addr"] = (self.channels[channel]["addr"] & 0xFF00) | (value & 0xFF)
+                    self.flip_flop = 1
+                else:
+                    # MSB
+                    self.channels[channel]["addr"] = (self.channels[channel]["addr"] & 0x00FF) | ((value & 0xFF) << 8)
+                    self.flip_flop = 0
             else:
-                self.channels[channel]["count"] = value & 0xFF
-        
+                # Счётчик канала
+                if self.flip_flop == 0:
+                    # LSB
+                    self.channels[channel]["count"] = (self.channels[channel]["count"] & 0xFF00) | (value & 0xFF)
+                    self.flip_flop = 1
+                else:
+                    # MSB
+                    self.channels[channel]["count"] = (self.channels[channel]["count"] & 0x00FF) | ((value & 0xFF) << 8)
+                    self.flip_flop = 0
         # Порт 8: Регистр режима
         elif offset == 8:
             self.mode_register = value & 0xFF
             self._parse_mode_register()
-        
         # Порт 9: Регистр управления
         elif offset == 9:
             self.command_register = value & 0xFF
-        
         # Порт 10: Регистр запросов
         elif offset == 10:
             self.request_register = value & 0xFF
-        
         # Порт 11: Регистр маски (один бит)
         elif offset == 11:
             bit = (value >> 2) & 0x03
@@ -134,23 +146,19 @@ class I8257(IODevice):
                 self.mask_register |= (1 << bit)
             else:
                 self.mask_register &= ~(1 << bit)
-        
         # Порт 12: Сброс Flip-Flop
         elif offset == 12:
-            pass  # Сброс Flip-Flop (не используется в эмуляции)
-        
+            self.flip_flop = 0  # ← ИЗМЕНЕНО: сброс Flip-Flop
         # Порт 13: Сброс контроллера
         elif offset == 13:
             self.reset()
-        
         # Порт 14: Регистр маски (все биты)
         elif offset == 14:
             self.mask_register = value & 0x0F
-        
         # Порт 15: Регистр запросов (все биты)
         elif offset == 15:
             self.request_register = value & 0x0F
-    
+        
     def _parse_mode_register(self):
         """Парсинг регистра режима"""
         for i in range(4):
@@ -242,7 +250,30 @@ class I8257(IODevice):
         self.active_channel = None
         if self.on_hold_release:
             self.on_hold_release()
-    
+
+    # =============================================
+    # ИНТЕГРАЦИЯ С СИСТЕМОЙ (итерация 10.2)
+    # =============================================
+    def set_memory_bus(self, bus):
+        """Подключить шину памяти к DMA"""
+        self.memory_bus = bus
+
+    def is_active(self):
+        """Проверка активности передачи"""
+        return self.hold_active and self.active_channel is not None
+        
+    def perform_transfer(self, bus=None):
+        """Выполнить передачу до завершения.
+        Если bus передан, подключает его."""
+        if bus is not None:
+            self.memory_bus = bus
+        # Выполняем передачу до завершения
+        max_iterations = 100000
+        iterations = 0
+        while self.is_active() and iterations < max_iterations:
+            self.tick(cycles=1)
+            iterations += 1
+        
     # =============================================
     # СОСТОЯНИЕ
     # =============================================
@@ -289,7 +320,23 @@ class I8237(I8257):
         super().reset()
         self.flip_flop = 0
         self.software_request = 0
-    
+        self._mem_to_mem_dst = 1  # ← ДОБАВЛЕНО: канал-приёмник по умолчанию
+
+    # =============================================
+    # ЗАПРОС ПДП (от устройств)
+    # =============================================    
+    def request_dma(self, channel):
+        """Запрос ПДП от устройства (переопределяется для 8237).
+        Инициализирует канал-приёмник для режима память↔память."""
+        super().request_dma(channel)
+        # Если активен режим память↔память, инициализируем канал-приёмник
+        if (self.command_register & 0x01) and channel == 0:
+            dst = self._mem_to_mem_dst
+            if 0 <= dst < 4:
+                self.channels[dst]["enabled"] = True
+                self.channels[dst]["current_addr"] = self.channels[dst]["addr"]
+                self.channels[dst]["current_count"] = self.channels[dst]["count"]
+                 
     # =============================================
     # ПАМЯТЬ ↔ ПАМЯТЬ (только 8237)
     # =============================================
@@ -323,31 +370,26 @@ class I8237(I8257):
                     self.on_hold_request()
     
     def tick(self, cycles=1):
-        """Вызывается каждый такт. Выполняет передачу данных.
-        Переопределяется для поддержки память ↔ память.
-        """
+        """Вызывается каждый такт. Выполняет передачу данных."""
         if not self.hold_active or self.active_channel is None:
             return
-        
         ch = self.channels[self.active_channel]
         if not ch["enabled"]:
             self._release_hold()
             return
-        
-        # Проверяем, это передача память ↔ память
-        if ch["mode"] == self.MODE_MEM_TO_MEM:
+        # проверяем бит 0 командного регистра ИЛИ режим канала
+        if (self.command_register & 0x01) or ch["mode"] == self.MODE_MEM_TO_MEM:
             self._tick_mem_to_mem(cycles)
         else:
-            # Обычная передача (память ↔ устройство)
             super().tick(cycles)
     
     def _tick_mem_to_mem(self, cycles=1):
         """Передача память ↔ память (только 8237)"""
         src_ch = self.channels[self.active_channel]
         dst_ch = self.channels[self._mem_to_mem_dst]
-        
         for _ in range(cycles):
-            if src_ch["current_count"] <= 0:
+            # ← ИЗМЕНЕНО: было `<= 0`, стало `< 0`
+            if src_ch["current_count"] < 0:
                 # Завершение передачи
                 src_ch["enabled"] = False
                 dst_ch["enabled"] = False
@@ -355,20 +397,17 @@ class I8237(I8257):
                 if self.on_transfer_complete:
                     self.on_transfer_complete(self.active_channel)
                 return
-            
             # Читаем из памяти источника
             src_addr = src_ch["current_addr"]
             if self.memory_bus:
                 data = self.memory_bus.read(src_addr)
-                # Записываем в память приёмника
                 dst_addr = dst_ch["current_addr"]
                 self.memory_bus.write(dst_addr, data)
-            
             src_ch["current_addr"] += 1
             src_ch["current_count"] -= 1
             dst_ch["current_addr"] += 1
             dst_ch["current_count"] -= 1
-    
+
     # =============================================
     # ПРОГРАММНЫЙ ЗАПУСК ЦИКЛА ОБМЕНА (только 8237)
     # =============================================
@@ -378,16 +417,68 @@ class I8237(I8257):
             self.software_request |= (1 << channel)
             self.request_dma(channel)
     
-    def io_write(self, port, value):
-        """Запись в регистр (переопределяется для 8237)"""
-        offset = port - self.base_port
+    # def io_write(self, port, value):
+        # """Запись в регистр (переопределяется для 8237)"""
+        # offset = port - self.base_port
         
-        # Порт 12: Сброс Flip-Flop
+        # # Остальное — как у 8257
+        # super().io_write(port, value)
+    def io_write(self, port, value):
+        """Запись в регистр (8237: структура портов реального чипа)"""
+        offset = port - self.base_port
+
+        # Порты 0-7: Адреса и счётчики каналов (базовый класс)
+        if 0 <= offset <= 7:
+            super().io_write(port, value)
+            return
+
+        # Порт 8: Командный регистр (бит 0 = память↔память)
+        if offset == 8:
+            self.command_register = value & 0xFF
+            return
+
+        # Порт 9: Регистр запросов (программный запрос)
+        if offset == 9:
+            channel = value & 0x03      # Биты 0-1: номер канала
+            if value & 0x04:            # Бит 2: запрос
+                self.software_request |= (1 << channel)
+                self.request_dma(channel)
+            else:
+                self.software_request &= ~(1 << channel)
+            return
+
+        # Порт 10: Регистр маски (один бит)
+        if offset == 10:
+            bit = (value >> 2) & 0x03
+            mask = value & 0x01
+            if mask:
+                self.mask_register |= (1 << bit)
+            else:
+                self.mask_register &= ~(1 << bit)
+            return
+
+        # Порт 11: Регистр режима
+        if offset == 11:
+            self.mode_register = value & 0xFF
+            self._parse_mode_register()
+            return
+
+        # Порт 12: Сброс (мастер)
         if offset == 12:
             self.flip_flop = 0
             return
-        
-        # Остальное — как у 8257
+
+        # Порт 13: Сброс маски (все каналы не замаскированы)
+        if offset == 13:
+            self.mask_register = 0x00
+            return
+
+        # Порт 14: Установка маски (все биты)
+        if offset == 14:
+            self.mask_register = value & 0x0F
+            return
+
+        # Остальное — базовый класс
         super().io_write(port, value)
     
     def get_state(self):

@@ -85,7 +85,7 @@
 #define AckError 0xFF
 ////
 //#define Debug
-//#define InvertCtrlBusControlBus
+#define InvertCtrlBusControlBus
 //#define DirectPortManipulation
 ///
 bool InvertCtrlBus = 0;

@@ -71,6 +71,9 @@ class I8080Emulator(QObject):
         self._pending_interrupts = []
         self._interrupt_vector = None
         
+        # === WAIT-сигнал (итерация 10.3) ===
+        self.wait_signal = False
+        
     def reset(self):
         """Сброс процессора"""
         self.a = self.b = self.c = self.d = 0x00
@@ -84,6 +87,13 @@ class I8080Emulator(QObject):
         self.cycles = 0
         self.io_ports = {}  # ← Добавлено: сброс IO-портов
         self.state_changed.emit()
+        # === WAIT-сигнал (итерация 10.3) ===
+        self.wait_signal = False
+        
+    def set_wait(self, active):
+        """Установить сигнал WAIT (от устройства).
+        Пока wait_signal=True, CPU не выполняет инструкции."""
+        self.wait_signal = active
         
     def set_pc(self, addr):
         """Установить Program Counter"""
@@ -310,6 +320,11 @@ class I8080Emulator(QObject):
         Args:
             silent: если True, не эмитить сигналы (для пакетного Run и трассировки)
         """
+        # === WAIT-сигнал: пропускаем инструкцию ===
+        if self.wait_signal:
+            self.cycles += 1  # Wait-state: один такт потрачен
+            return True       # Возвращаем True — CPU жив, но ждёт
+        
         if self.halted:
             return False
         if self.should_stop_at_bp(self.pc):

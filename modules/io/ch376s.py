@@ -241,6 +241,12 @@ class CH376S(IODevice):
         self._collecting_filename = False
         # Версия чипа
         self.ic_version = 0x76  # CH376S
+        # === Эмуляция занятости ===
+        self.busy = False
+        self.busy_cycles = 0
+        self._pending_status = self.STATUS_OK
+        self._pending_irq = False
+        self.emulate_delay = False  # По умолчанию задержка
 
     def set_disk_image(self, path, size_mb=32):
         """Установить образ диска.
@@ -279,9 +285,13 @@ class CH376S(IODevice):
         offset = port - self.base_port
         if offset == 0:
             # Data Port: чтение данных
+            if self.busy:
+                return 0xFF  # Устройство занято
             return self._read_data()
         elif offset == 1:
             # Status Port: чтение статуса
+            if self.busy:
+                return self.STATUS_BUSY
             return self.status
         return 0xFF
 
@@ -389,7 +399,12 @@ class CH376S(IODevice):
         cmd = self.pending_command if self.pending_command is not None else self.command
         self.pending_command = None
         self.status = self.STATUS_OK
+        
+        # Определяем длительность операции (в тактах CPU)
+        duration = self._get_operation_duration(cmd)
+        generate_irq = self._command_generates_irq(cmd)
 
+        # Выполняем команду (подготовка данных и состояния)
         if cmd == self.CMD_GET_IC_VER:
             self._cmd_get_ic_ver()
         elif cmd == self.CMD_GET_STATUS:
@@ -432,6 +447,10 @@ class CH376S(IODevice):
             self._cmd_file_locate()
         else:
             self.status = self.STATUS_ERROR
+        
+        # Запускаем эмуляцию задержки (если включена)
+        final_status = self.status
+        self._start_operation(duration, final_status, generate_irq)
 
     # =============================================
     # ФАЙЛОВАЯ СИСТЕМА
@@ -622,9 +641,9 @@ class CH376S(IODevice):
         self.disk_initialized = True
         self.disk.initialized = True
         self.status = self.STATUS_OK
-        # Генерируем прерывание
-        if self.on_irq:
-            self.on_irq(True)
+        # # Генерируем прерывание
+        # if self.on_irq:
+            # self.on_irq(True)
 
     def _cmd_disk_mount(self):
         """Монтирование диска"""
@@ -660,9 +679,9 @@ class CH376S(IODevice):
         self.data_index = 0
         self.data_direction = 'read'
         self.status = self.STATUS_OK
-        # Генерируем прерывание
-        if self.on_irq:
-            self.on_irq(True)
+        # # Генерируем прерывание
+        # if self.on_irq:
+            # self.on_irq(True)
 
     def _cmd_disk_write(self):
         """Запись секторов на диск"""
@@ -694,9 +713,9 @@ class CH376S(IODevice):
         self.data_buffer = bytearray()
         self.data_index = 0
         self.status = self.STATUS_OK
-        # Генерируем прерывание
-        if self.on_irq:
-            self.on_irq(True)
+        # # Генерируем прерывание
+        # if self.on_irq:
+            # self.on_irq(True)
 
     def _cmd_disk_capacity(self):
         """Получить ёмкость диска"""
@@ -743,8 +762,9 @@ class CH376S(IODevice):
         self.disk_connected = True
         self.disk.connected = True
         self.status = self.STATUS_OK
-        if self.on_irq:
-            self.on_irq(True)
+        # # Генерируем прерывание
+        # if self.on_irq:
+            # self.on_irq(True)
 
     def _cmd_disk_disconn(self):
         """Отключение диска"""
@@ -951,6 +971,66 @@ class CH376S(IODevice):
         """Подтверждение прерывания"""
         if self.on_irq:
             self.on_irq(False)
+
+    # =============================================
+    # ЭМУЛЯЦИЯ ЗАНЯТОСТИ (итерация 10.3)
+    # =============================================
+    def set_emulate_delay(self, enabled):
+        """Включить/выключить эмуляцию задержки операций"""
+        self.emulate_delay = enabled
+
+    def _start_operation(self, cycles, final_status=None, generate_irq=False):
+        """Запуск операции с задержкой.
+        Если emulate_delay выключен, операция завершается мгновенно."""
+        if not self.emulate_delay:
+            # Мгновенное выполнение: статус уже установлен командой
+            if generate_irq and self.on_irq:
+                self.on_irq(True)
+            return
+        self.busy = True
+        self.busy_cycles = cycles
+        self._pending_status = final_status if final_status is not None else self.status
+        self._pending_irq = generate_irq
+
+    def tick(self, cycles=1):
+        """Вызывается каждый такт. Обработка занятости."""
+        if not self.busy:
+            return
+        self.busy_cycles -= cycles
+        if self.busy_cycles <= 0:
+            self.busy = False
+            self.status = self._pending_status
+            if self._pending_irq and self.on_irq:
+                self.on_irq(True)
+            self._pending_irq = False
+
+    def is_busy(self):
+        """Проверка занятости устройства"""
+        return self.busy
+
+    def _get_operation_duration(self, cmd):
+        """Длительность операции в тактах CPU"""
+        if cmd == self.CMD_DISK_INIT:
+            return 100  # Инициализация USB
+        elif cmd == self.CMD_DISK_MOUNT:
+            return 50   # Монтирование ФС
+        elif cmd in (self.CMD_DISK_READ, self.CMD_DISK_WRITE):
+            return 50   # На сектор
+        elif cmd in (self.CMD_FILE_OPEN, self.CMD_FILE_CREATE,
+                     self.CMD_FILE_READ, self.CMD_FILE_WRITE,
+                     self.CMD_FILE_ERASE, self.CMD_FILE_LOCATE):
+            return 20   # Файловые операции
+        elif cmd in (self.CMD_GET_IC_VER, self.CMD_GET_STATUS,
+                     self.CMD_DISK_CAPACITY, self.CMD_DISK_QUERY):
+            return 1    # Мгновенные операции
+        return 1
+
+    def _command_generates_irq(self, cmd):
+        """Генерирует ли команда прерывание по завершении"""
+        return cmd in (
+            self.CMD_DISK_INIT, self.CMD_DISK_READ, self.CMD_DISK_WRITE,
+            self.CMD_DISK_CONNECT
+        )
 
     # =============================================
     # СОСТОЯНИЕ ДЛЯ ОТЛАДКИ

@@ -171,6 +171,8 @@ class ComputerSystem:
             cpu.memory_bus = self.bus
         if hasattr(cpu, 'io_bus'):
             cpu.io_bus = self.bus
+        # Подключение WAIT-сигналов
+        self.connect_wait_signals()
 
     # =============================================
     # ОБНОВЛЕНИЕ (для tick-based устройств)
@@ -235,6 +237,7 @@ class ComputerSystem:
                 print(f"  [{name}] {dev_state.get('name', '?')} "
                       f"@ {dev_state.get('base_port', '?')}")
         print("=" * 60)
+
     # =============================================
     # ПРЕРЫВАНИЯ (итерация 10.1)
     # =============================================
@@ -268,3 +271,40 @@ class ComputerSystem:
 
         # Вектор по умолчанию: RST 7
         return 0xFF
+
+    # =============================================
+    # ПДП
+    # =============================================
+    def check_dma(self):
+        """Проверка активных DMA-запросов.
+        Вызывается перед выполнением инструкций.
+        Возвращает True, если CPU должен быть приостановлен (HOLD)."""
+        dma_devices = self.get_devices_by_type("I8237")
+        for dma in dma_devices:
+            if hasattr(dma, 'is_active') and dma.is_active():
+                # Выполняем передачу
+                if hasattr(dma, 'perform_transfer'):
+                    dma.perform_transfer(self.bus)
+                return True  # CPU приостановлен
+        return False
+
+    # =============================================
+    # Wait-state
+    # =============================================
+    def check_wait(self):
+        """Проверка WAIT-сигналов от всех устройств.
+        Возвращает True, если CPU должен ждать."""
+        if self.cpu is None:
+            return False
+        for name, device in self.devices.items():
+            if hasattr(device, 'is_busy') and device.is_busy():
+                return True
+        return False
+
+    def connect_wait_signals(self):
+        """Подключить on_wait коллбэки устройств к CPU."""
+        if self.cpu is None:
+            return
+        for name, device in self.devices.items():
+            if hasattr(device, 'on_wait'):
+                device.on_wait = lambda active: self.cpu.set_wait(active)

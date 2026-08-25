@@ -82,7 +82,6 @@ LANGS = {
         "load_compare_title": "Load File to Compare", "export_compare_title": "Export Compare Report",
 		"tab_scripts": "Scripts", "run_script": "▶ Run Script", "load_script": "Load Script",
 		"save_script": "Save Script", "clear_output": "Clear Output", "script_output": "Output:",
-		# Эмулятор
         "tab_emulator": "Emulator", "emulator_registers": "Registers", "emulator_flags": "Flags",
         "emulator_stats": "Statistics", "emulator_control": "Control", "emulator_current_instr": "Current Instruction",
         "emulator_breakpoints": "Breakpoints", "emulator_reset": "⚡ Reset (Ctrl+F2)", "emulator_set_pc": "📌 Set PC...",
@@ -90,6 +89,164 @@ LANGS = {
         "emulator_run": "🚀 Run (F5)", "emulator_stop": "⛔ Stop (F8)", "emulator_add_bp": "Add",
         "emulator_clear_bp": "🗑 Clear All", "end": "End:", "emulator_stack": "Stack",
         "tab_trace": "Trace", "emulator_trace": "Trace",
+        "menu_profile":  "System Profile ",
+        "trace_on":  "🔥 Enable Recording ",  "trace_off":  "⏹ Disable Recording ",
+        "trace_clear":  "🗑 Clear ",  "trace_export":  "💾 Export ",
+        "trace_depth":  "Depth: ",  "trace_records":  "Records: ",
+        "trace_search":  "Search: ",
+        "trace_search_hint":  "Address (HEX) or register OP value (A==55, HL>1000, SP<=F000) ",
+        "trace_detail_title":  "Selected Record Details ",
+        "trace_detail_hint":  "Select a record to view ",
+        "trace_col_seq":  "# ",  "trace_col_pc":  "PC ",  "trace_col_bytes":  "Bytes ",
+        "trace_col_mnem":  "Mnemonic ",  "trace_col_flags":  "Flags ",
+        "emu_code":  "Code: ",  "emu_watch":  "Watch ",  "emu_bp":  "Breakpoints ",
+        "status_addr":  "Address: ",  "status_data":  "Data: ",
+        "status_mnem":  "Mnemonic: ",  "status_size":  "Size: ",
+        "search_title":  "Search Memory ",  "search_pattern":  "Pattern: ",
+        "search_mode":  "Mode: ",
+        "search_mode_hex":  "HEX Bytes ",  "search_mode_ascii":  "ASCII String ",
+        "search_mode_mask":  "HEX with Mask (??) ",
+        "search_find_next":  "Find Next ",  "search_find_all":  "Find All ",
+        "search_close":  "Close ",  "search_results":  "Results: ",
+        "ctx_run_to":  "Run to Cursor ",  "ctx_run_from":  "Run from Here ",
+        "ctx_jump":  "Jump to Cursor ",  "ctx_toggle_bp":  "Toggle Breakpoint ",
+        "ctx_cond_bp":  "Set Conditional BP... ",
+        "ctx_copy_addr":  "Copy Address ",  "ctx_copy_val":  "Copy Value ",
+        "ctx_invert":  "Invert Byte ",  "ctx_fill":  "Fill Range... ",
+        "ctx_disasm":  "Disassemble from ",  "ctx_goto":  "Goto Address... ",
+        "fill_title":  "Fill Range ",  "fill_value":  "Value (HEX): ",
+        "goto_title":  "Goto Address ",
+        "watch_add_title":  "Add to Watch ",  "watch_name":  "Name: ",
+        "watch_type":  "Type: ",  "watch_type_byte":  "Memory (byte) ",
+        "watch_type_word":  "Memory (word) ",  "watch_type_reg":  "Register ",
+        "watch_target":  "Address/Register: ",  "watch_format":  "Format: ",
+        "watch_addr_hint":  "HEX address, e.g. 0100 ",
+        "bp_cond_title":  "Breakpoint Condition ",
+        "bp_cond_clear":  "Clear Condition ",  "bp_cond_ok":  "OK ",  "bp_cond_cancel":  "Cancel ",
+        "bp_cond_hint":  "Available variables:\n"
+                         "  Registers: A, B, C, D, E, H, L, BC, DE, HL, SP, PC\n"
+                         "  Flags: S, Z, AC, P, CY\n"
+                         "  Memory: mem[0x0100]   Ports: io[0x01]\n"
+                         "  Cycles: cycles\n"
+                         "  Operators: ==, !=, <, >, <=, >=, and, or, not ",
+        "err_addr_mem":  "Enter memory address! ",  "err_syntax":  "Invalid syntax! ",
+        "dlg_cancel": "Cancel ", "dlg_ok": "OK ",
+        # Статистика эмулятора
+        "emu_cycles": "Cycles: ",
+        "emu_state": "State: ",
+        "emu_state_halted": "Halted (HLT)",
+        "emu_state_running": "Running",
+        "emu_state_ready": "Ready",
+        # Трассировка: детали и контекстное меню
+        "trace_regs_after": "Registers AFTER: ",
+        "trace_flags": "Flags: ",
+        "trace_cycles": "Cycles: ",
+        "trace_cycles_total": "(total: ",
+        "trace_ctx_view": "👁 View state ",
+        "trace_ctx_restore": "↩ Restore state",
+        "trace_ctx_goto": "➤ Goto address 0x",
+        "trace_ctx_goto_suffix": " in disassembler",
+        "trace_export_title": "Export Trace",
+        "trace_no_data": "No data to export",
+        "trace_exported": "Trace exported: ",
+        "trace_export_err": "Failed to export trace:\n",
+        # Watch: статусы и пресеты
+        "watch_select_del": "Select an item to delete",
+        "watch_confirm": "Confirmation",
+        "watch_confirm_del": "Delete all Watch items?",
+        "watch_save_preset": "Save Watch Preset",
+        "watch_load_preset": "Load Watch Preset",
+        "watch_preset_saved": "Preset saved: ",
+        "watch_preset_loaded": "Preset loaded: ",
+        "watch_preset_save_err": "Failed to save preset",
+        "watch_preset_load_err": "Failed to load preset. Check file format.",
+        "watch_auto_prefix": "Auto: ",
+        "watch_err_addr": "Enter memory address!",
+        "watch_err_fmt_title": "Format Error",
+        "watch_err_add": "Failed to add Watch:\n",
+        # BP: статусы и пресеты
+        "bp_select": "Select a breakpoint",
+        "bp_add_title": "Add Breakpoint",
+        "bp_addr": "Address (HEX): ",
+        "bp_err_addr": "Invalid address!",
+        "bp_save_preset": "Save BP Preset",
+        "bp_load_preset": "Load BP Preset",
+        "bp_preset_saved": "BP preset saved: ",
+        "bp_preset_loaded": "BP preset loaded: ",
+        "bp_preset_save_err": "Failed to save BP preset:\n",
+        "bp_preset_load_err": "Failed to load BP preset:\n",
+        "bp_cond_err": "Invalid condition syntax!",
+        "bp_cond_example": "Example: A == 0x55",
+        # Диалоги
+        "set_pc_title": "Set PC",
+        "export_disasm_title": "Export Disassembly",
+        "export_disasm_log": "Disassembly exported to: ",
+        "export_disasm_status": "Exported to ",
+        "search_invalid_hex": "Invalid HEX pattern!",
+        "search_invalid_len": "Invalid pattern length!",
+        "search_invalid_byte": "Invalid byte: ",
+        "search_found": "Found ",
+        "search_matches": " matches",
+        "fill_size": "Size (Dec): ",
+        "fill_start_addr": "Start Address (HEX): ",
+        # Статусбар
+        "status_cursor": "Cursor: 0x",
+        "status_cursor_hint": " (Ctrl+F10 — run to cursor)",
+        "status_not_connected": "Not connected!",
+        "status_bus_active": "Bus already active!",
+        "status_bus_not_active": "Bus not active!",
+        "status_reached_cursor": "Reached cursor 0x",
+        "status_emu_stopped": "Emulator stopped",
+        "status_bp_hit": "Breakpoint at 0x",
+        "status_running": "Running...",
+        "status_cpu_halted": "CPU halted. Press Reset (Ctrl+F2).",
+        "status_cpu_halted_short": "CPU halted. Press Reset.",
+        "status_cursor_not_set": "Cursor not set. Click a disassembler line.",
+        "status_cursor_eq_pc": "Cursor equals PC.",
+        "status_running_to": "Running to 0x",
+        "status_running_from": "Running from 0x",
+        "status_pc_set": "PC set to 0x",
+        "status_state_restored": "State restored: PC=0x",
+        "status_trace_search_err": "Invalid query format: ",
+        "status_trace_found": "Found: ",
+        "status_trace_of": " of ",
+        "status_refreshed": "Refreshed",
+        "status_undo_depth": "Undo depth: ",
+        "status_nothing_undo": "Nothing to undo",
+        "status_undo": "Undo: ",
+        "status_undo_bytes": " bytes",
+        "status_nothing_redo": "Nothing to redo",
+        "status_redo": "Redo: ",
+        "status_redo_bytes": " bytes",
+        "status_profile_loaded": "Profile loaded: ",
+        "status_profile_err": "Profile Error",
+        # Скрипты
+        "script_no_code": "No code to run.",
+        "script_running": "Running script...",
+        "script_done": "✓ Script completed successfully.",
+        "script_completed": "Script completed",
+        "script_err": "✗ ERROR: ",
+        "script_error": "Script error!",
+        "script_load_title": "Load Script",
+        "script_loaded": "Script loaded: ",
+        "script_save_title": "Save Script",
+        "script_saved": "Script saved: ",
+        # Скрипты: метка вывода
+        "script_output_label": "Output: ",
+        # IO секвенсор: placeholder
+        "seq_placeholder": "Format:\nW 01 FF ; Write value FFh to port 01h\nR 02    ; Read from port 02h\nD 10    ; Delay 10 ms",
+        # Разное
+        "bus_not_active_msg": "Bus not active! Hold the bus first.",
+        "mcp_err_title": "MCP",
+        "mcp_err_msg": "MCP Server unavailable. Install dependencies:\npip install mcp uvicorn starlette",
+        "info_title": "Info",
+        "hold_bus_first": "Hold the bus (HOLD) before flashing.",
+        "dev_not_connected": "Device not connected. Firmware loaded to editor only.",
+        "bus_not_active_log": "Bus not active. Hold the bus before flashing.",
+        "trace_buf_cleared": "Trace buffer cleared",
+        "trace_search_log": "Trace search: '",
+        "trace_search_found": "' — found ",
+        "trace_filter_clear":  "Reset filter ",
     },
     "ru": {
         "app_title": "i8080-5 CI",
@@ -141,13 +298,170 @@ LANGS = {
         "load_compare_title": "Загрузить файл для сравнения", "export_compare_title": "Экспорт отчёта о сравнении",
 		"tab_scripts": "Скрипты", "run_script": "▶ Выполнить скрипт", "load_script": "Загрузить скрипт",
 		"save_script": "Сохранить скрипт", "clear_output": "Очистить вывод", "script_output": "Вывод:",
-		# Эмулятор
         "tab_emulator": "Эмулятор", "emulator_registers": "Регистры", "emulator_flags": "Флаги", "emulator_stats": "Статистика",
         "emulator_control": "Управление", "emulator_current_instr": "Текущая инструкция", "emulator_breakpoints": "Точки останова",
         "emulator_reset": "⚡ Сброс (Ctrl+F2)", "emulator_set_pc": "📌 Установить PC...", "emulator_step_into": "↴ Шаг с заходом (F11)",
         "emulator_step_over": "➟ Шаг без захода (F10)", "emulator_run": "🚀 Запуск (F5)", "emulator_stop": "⛔ Стоп (F8)",
         "emulator_add_bp": "Добавить", "emulator_clear_bp": "🗑 Очистить все", "end": "Конец:", "emulator_stack": "Стек",
         "tab_trace": "Трассировка", "emulator_trace": "Трассировка",
+        "menu_profile":  "Профиль системы ",
+        "trace_on":  "🔥 Включить запись ",  "trace_off":  "⏹ Выключить запись ",
+        "trace_clear":  "🗑 Очистить ",  "trace_export":  "💾 Экспорт ",
+        "trace_depth":  "Глубина: ",  "trace_records":  "Записей: ",
+        "trace_search":  "Поиск: ",
+        "trace_search_hint":  "Адрес (HEX) или регистр ОП значение (A==55, HL>1000, SP<=F000) ",
+        "trace_detail_title":  "Детали выбранной записи ",
+        "trace_detail_hint":  "Выберите запись для просмотра ",
+        "trace_col_seq":  "# ",  "trace_col_pc":  "PC ",  "trace_col_bytes":  "Байты ",
+        "trace_col_mnem":  "Мнемо ",  "trace_col_flags":  "Флаги ",
+        "emu_code":  "Код: ",  "emu_watch":  "Watch ",  "emu_bp":  "Точки останова ",
+        "status_addr":  "Адрес: ",  "status_data":  "Данные: ",
+        "status_mnem":  "Мнемоника: ",  "status_size":  "Размер: ",
+        "search_title":  "Поиск в памяти ",  "search_pattern":  "Паттерн: ",
+        "search_mode":  "Режим: ",
+        "search_mode_hex":  "HEX байты ",  "search_mode_ascii":  "ASCII строка ",
+        "search_mode_mask":  "HEX с маской (??) ",
+        "search_find_next":  "Найти далее ",  "search_find_all":  "Найти все ",
+        "search_close":  "Закрыть ",  "search_results":  "Результаты: ",
+        "ctx_run_to":  "Выполнить до курсора ",  "ctx_run_from":  "Выполнить отсюда ",
+        "ctx_jump":  "Перейти к курсору ",  "ctx_toggle_bp":  "Точка останова ",
+        "ctx_cond_bp":  "Условная точка останова... ",
+        "ctx_copy_addr":  "Копировать адрес ",  "ctx_copy_val":  "Копировать значение ",
+        "ctx_invert":  "Инвертировать байт ",  "ctx_fill":  "Заполнить диапазон... ",
+        "ctx_disasm":  "Дизассемблировать от ",  "ctx_goto":  "Перейти к адресу... ",
+        "fill_title":  "Заполнить диапазон ",  "fill_value":  "Значение (HEX): ",
+        "goto_title":  "Перейти к адресу ",
+        "watch_add_title":  "Добавить в Watch ",  "watch_name":  "Имя: ",
+        "watch_type":  "Тип: ",  "watch_type_byte":  "Память (байт) ",
+        "watch_type_word":  "Память (слово) ",  "watch_type_reg":  "Регистр ",
+        "watch_target":  "Адрес/Регистр: ",  "watch_format":  "Формат: ",
+        "watch_addr_hint":  "Адрес HEX, например: 0100 ",
+        "bp_cond_title":  "Условие точки останова ",
+        "bp_cond_clear":  "Очистить условие ",  "bp_cond_ok":  "OK ",  "bp_cond_cancel":  "Отмена ",
+        "bp_cond_hint":  "Доступные переменные:\n"
+                         "  Регистры: A, B, C, D, E, H, L, BC, DE, HL, SP, PC\n"
+                         "  Флаги: S, Z, AC, P, CY\n"
+                         "  Память: mem[0x0100]   Порты: io[0x01]\n"
+                         "  Такты: cycles\n"
+                         "  Операторы: ==, !=, <, >, <=, >=, and, or, not ",
+        "err_addr_mem":  "Введите адрес памяти! ",  "err_syntax":  "Неверный синтаксис! ",
+        "dlg_cancel": "Отмена ", "dlg_ok": "OK ",
+        # Статистика эмулятора
+        "emu_cycles": "Такты: ",
+        "emu_state": "Состояние: ",
+        "emu_state_halted": "Остановлен (HLT)",
+        "emu_state_running": "Выполняется",
+        "emu_state_ready": "Готов",
+        # Трассировка: детали и контекстное меню
+        "trace_regs_after": "Регистры ПОСЛЕ: ",
+        "trace_flags": "Флаги: ",
+        "trace_cycles": "Такты: ",
+        "trace_cycles_total": "(всего: ",
+        "trace_ctx_view": "👁 Просмотр состояния ",
+        "trace_ctx_restore": "↩ Восстановить состояние",
+        "trace_ctx_goto": "➤ Перейти к адресу 0x",
+        "trace_ctx_goto_suffix": " в дизассемблере",
+        "trace_export_title": "Экспорт трассировки",
+        "trace_no_data": "Нет данных для экспорта",
+        "trace_exported": "Трассировка экспортирована: ",
+        "trace_export_err": "Не удалось экспортировать трассировку:\n",
+        # Watch: статусы и пресеты
+        "watch_select_del": "Выберите элемент для удаления",
+        "watch_confirm": "Подтверждение",
+        "watch_confirm_del": "Удалить все элементы Watch?",
+        "watch_save_preset": "Сохранить пресет Watch",
+        "watch_load_preset": "Загрузить пресет Watch",
+        "watch_preset_saved": "Пресет сохранён: ",
+        "watch_preset_loaded": "Пресет загружен: ",
+        "watch_preset_save_err": "Не удалось сохранить пресет",
+        "watch_preset_load_err": "Не удалось загрузить пресет. Проверьте формат файла.",
+        "watch_auto_prefix": "Авто: ",
+        "watch_err_addr": "Введите адрес памяти!",
+        "watch_err_fmt_title": "Ошибка формата",
+        "watch_err_add": "Не удалось добавить Watch:\n",
+        # BP: статусы и пресеты
+        "bp_select": "Выберите точку останова",
+        "bp_add_title": "Добавить точку останова",
+        "bp_addr": "Адрес (HEX): ",
+        "bp_err_addr": "Неверный адрес!",
+        "bp_save_preset": "Сохранить пресет BP",
+        "bp_load_preset": "Загрузить пресет BP",
+        "bp_preset_saved": "Пресет BP сохранён: ",
+        "bp_preset_loaded": "Пресет BP загружен: ",
+        "bp_preset_save_err": "Не удалось сохранить пресет BP:\n",
+        "bp_preset_load_err": "Не удалось загрузить пресет BP:\n",
+        "bp_cond_err": "Неверный синтаксис условия!",
+        "bp_cond_example": "Например: A == 0x55",
+        # Диалоги
+        "set_pc_title": "Установить PC",
+        "export_disasm_title": "Экспорт дизассемблера",
+        "export_disasm_log": "Дизассемблер экспортирован в: ",
+        "export_disasm_status": "Экспортировано в ",
+        "search_invalid_hex": "Неверный HEX-паттерн!",
+        "search_invalid_len": "Неверная длина паттерна!",
+        "search_invalid_byte": "Неверный байт: ",
+        "search_found": "Найдено ",
+        "search_matches": " совпадений",
+        "fill_size": "Размер (дек): ",
+        "fill_start_addr": "Начальный адрес (HEX): ",
+        # Статусбар
+        "status_cursor": "Курсор: 0x",
+        "status_cursor_hint": " (Ctrl+F10 — выполнить до курсора)",
+        "status_not_connected": "Не подключено!",
+        "status_bus_active": "Шина уже активна!",
+        "status_bus_not_active": "Шина не активна!",
+        "status_reached_cursor": "Достигнут курсор 0x",
+        "status_emu_stopped": "Эмулятор остановлен",
+        "status_bp_hit": "Точка останова на 0x",
+        "status_running": "Выполнение...",
+        "status_cpu_halted": "CPU остановлен. Нажмите Сброс (Ctrl+F2).",
+        "status_cpu_halted_short": "CPU остановлен. Нажмите Сброс.",
+        "status_cursor_not_set": "Курсор не установлен. Кликните по строке дизассемблера.",
+        "status_cursor_eq_pc": "Курсор совпадает с PC.",
+        "status_running_to": "Выполнение до 0x",
+        "status_running_from": "Выполнение от 0x",
+        "status_pc_set": "PC установлен на 0x",
+        "status_state_restored": "Состояние восстановлено: PC=0x",
+        "status_trace_search_err": "Неверный формат запроса: ",
+        "status_trace_found": "Найдено: ",
+        "status_trace_of": " из ",
+        "status_refreshed": "Обновлено",
+        "status_undo_depth": "Глубина отмены: ",
+        "status_nothing_undo": "Нечего отменять",
+        "status_undo": "Отмена: ",
+        "status_undo_bytes": " байт",
+        "status_nothing_redo": "Нечего повторять",
+        "status_redo": "Повтор: ",
+        "status_redo_bytes": " байт",
+        "status_profile_loaded": "Профиль загружен: ",
+        "status_profile_err": "Ошибка профиля",
+        # Скрипты
+        "script_no_code": "Нет кода для выполнения.",
+        "script_running": "Выполнение скрипта...",
+        "script_done": "✓ Скрипт выполнен успешно.",
+        "script_completed": "Скрипт выполнен",
+        "script_err": "✗ ОШИБКА: ",
+        "script_error": "Ошибка скрипта!",
+        "script_load_title": "Загрузить скрипт",
+        "script_loaded": "Скрипт загружен: ",
+        "script_save_title": "Сохранить скрипт",
+        "script_saved": "Скрипт сохранён: ",
+        # Скрипты: метка вывода
+        "script_output_label": "Вывод: ",
+        # IO секвенсор: placeholder
+        "seq_placeholder": "Формат:\nW 01 FF ; Запись в порт 01h значения FFh\nR 02    ; Чтение из порта 02h\nD 10    ; Задержка 10 мс",
+        # Разное
+        "bus_not_active_msg": "Шина не активна! Сначала захватите шину.",
+        "mcp_err_title": "MCP",
+        "mcp_err_msg": "MCP Server недоступен. Установите зависимости:\npip install mcp uvicorn starlette",
+        "info_title": "Информация",
+        "hold_bus_first": "Сначала захватите шину (HOLD) перед прошивкой.",
+        "dev_not_connected": "Устройство не подключено. Прошивка загружена только в редактор.",
+        "bus_not_active_log": "Шина не активна. Захватите шину перед прошивкой.",
+        "trace_buf_cleared": "Буфер трассировки очищен",
+        "trace_search_log": "Поиск в трассировке: '",
+        "trace_search_found": "' — найдено ",
+        "trace_filter_clear":  "Сбросить фильтр ",
     }
 }
 
@@ -437,6 +751,8 @@ class DisasmView(QWidget):
         
         self.breakpoints = set()  # Точки останова для отрисовки
         self.bp_conditions = {}  # ← ИТЕРАЦИЯ C: условия для отрисовки
+        
+        self.lang = "en"
         
     def set_bp_conditions(self, conditions):
         """Установить условия BP для отрисовки"""
@@ -758,28 +1074,21 @@ class DisasmView(QWidget):
         if not self.interactive:
             super().contextMenuEvent(event)
             return
-        
-        # === ИСПРАВЛЕНО: pos() вместо position() ===
         addr = self.get_line_addr_at(event.pos().y())
-        
         if addr is None:
             super().contextMenuEvent(event)
             return
-        
-        # Обновляем курсор на clicked строку
         self.cursor_addr = addr
         self.update()
-        
+        L = LANGS.get(self.lang, LANGS["en"])
         menu = QMenu(self)
-        act_run_to = menu.addAction(f"⥗ Run to Cursor (0x{addr:04X})  [Ctrl+F10]")
-        act_run_from = menu.addAction(f"⥟ Run from Here (0x{addr:04X})")
-        act_jump = menu.addAction(f"⤼ Jump to Cursor (0x{addr:04X})")
+        act_run_to = menu.addAction(f"⥗ {L.get('ctx_run_to', 'Run to Cursor')} (0x{addr:04X})  [Ctrl+F10]")
+        act_run_from = menu.addAction(f"⥟ {L.get('ctx_run_from', 'Run from Here')} (0x{addr:04X})")
+        act_jump = menu.addAction(f"⤼ {L.get('ctx_jump', 'Jump to Cursor')} (0x{addr:04X})")
         menu.addSeparator()
-        act_toggle_bp = menu.addAction(f"● Toggle Breakpoint (0x{addr:04X})")
-        act_cond_bp = menu.addAction(f"◉ Set Conditional BP... (0x{addr:04X})")
-        
+        act_toggle_bp = menu.addAction(f"● {L.get('ctx_toggle_bp', 'Toggle Breakpoint')} (0x{addr:04X})")
+        act_cond_bp = menu.addAction(f"◉ {L.get('ctx_cond_bp', 'Set Conditional BP...')} (0x{addr:04X})")
         selected = menu.exec(event.globalPos())
-        
         if selected == act_run_to:
             self.runToCursorRequested.emit(addr)
         elif selected == act_run_from:
@@ -790,7 +1099,7 @@ class DisasmView(QWidget):
             self.toggleBreakpoint.emit(addr)
         elif selected == act_cond_bp:
             self.setConditionalBreakpointRequested.emit(addr)
-            
+
 # ==================== МОДЕЛЬ ДАННЫХ HEX-РЕДАКТОРА ====================
 class HexModel(QAbstractTableModel):
     dataEdited = Signal()
@@ -1090,7 +1399,7 @@ class SearchDialog(QDialog):
     def on_result_double_click(self, item):
         # Извлекаем адрес из текста элемента
         text = item.text()
-        if ":" in text:
+        if":" in text:
             addr_str = text.split(":")[0].strip()
             try:
                 addr = int(addr_str, 16)
@@ -2176,6 +2485,7 @@ class TraceModel(QAbstractTableModel):
         self.disassembler = None
         self._filter = None
         self._filtered_indices = None  # Индексы отфильтрованных записей
+        self.lang = "en"
     
     def set_filter(self, filter_dict):
         """Установить фильтр и обновить модель"""
@@ -2268,10 +2578,18 @@ class TraceModel(QAbstractTableModel):
     
     def headerData(self, section, orientation, role=Qt.DisplayRole):
         if role == Qt.DisplayRole and orientation == Qt.Horizontal:
-            headers = ["#", "PC", "Байты", "Мнемо", "A", "BC", "DE", "HL", "SP", "Флаги"]
+            L = LANGS.get(self.lang, LANGS["en"])
+            headers = [
+                L.get("trace_col_seq", "#"),
+                L.get("trace_col_pc", "PC"),
+                L.get("trace_col_bytes", "Bytes"),
+                L.get("trace_col_mnem", "Mnemonic"),
+                "A", "BC", "DE", "HL", "SP",
+                L.get("trace_col_flags", "Flags")
+            ]
             return headers[section]
         return None
-    
+
     def data(self, index, role=Qt.DisplayRole):
         if not index.isValid():
             return None
@@ -2628,9 +2946,9 @@ class MainWindow(QMainWindow):
         self.update_stack_view()
         
         # === СТАТИСТИКА ===
-        self.cycles_label.setText(f"Такты: {state['cycles']}")
-        status = "Остановлен (HLT)" if state['halted'] else ("Выполняется" if state['running'] else "Готов")
-        self.state_label.setText(f"Состояние: {status}")
+        self.cycles_label.setText(f"{self.tr('emu_cycles')}{state['cycles']}")
+        status = self.tr('emu_state_halted') if state['halted'] else (self.tr('emu_state_running') if state['running'] else self.tr('emu_state_ready'))
+        self.state_label.setText(f"{self.tr('emu_state')}{status}")
         
         # === WATCH-ОКНО ===
         if hasattr(self, 'watch_model'):
@@ -2762,17 +3080,17 @@ class MainWindow(QMainWindow):
         
     def set_pc_dialog(self):
         """Диалог установки PC"""
-        text, ok = QInputDialog.getText(self, "Set PC", "Address (HEX):")
+        text, ok = QInputDialog.getText(self, self.tr("set_pc_title"), "Address (HEX):")
         if ok:
             try:
                 addr = int(text, 16)
                 self.emulator.set_pc(addr)
             except ValueError:
-                QMessageBox.warning(self, "Error", "Invalid address!")
+                QMessageBox.warning(self, self.tr("error"), self.tr("bp_err_addr"))
                 
     def add_breakpoint_dialog(self):
         """Диалог добавления точки останова"""
-        text, ok = QInputDialog.getText(self, "Add Breakpoint", "Address (HEX):")
+        text, ok = QInputDialog.getText(self, self.tr("bp_addr"), "Address (HEX):")
         if ok:
             try:
                 addr = int(text, 16)
@@ -2780,7 +3098,7 @@ class MainWindow(QMainWindow):
                 self.sync_breakpoints()
                 self.log(f"Breakpoint set: 0x{addr:04X}")
             except ValueError:
-                QMessageBox.warning(self, "Error", "Invalid address!")
+                QMessageBox.warning(self, self.tr("error"), self.tr("bp_err_addr"))
                
     def clear_breakpoints(self):
         """Очистить все точки останова"""
@@ -3048,7 +3366,7 @@ class MainWindow(QMainWindow):
         seq_layout.addLayout(seq_ctrl_layout)
         
         self.seq_text = QTextEdit()
-        self.seq_text.setPlaceholderText("Формат:\nW 01 FF ; Запись в порт 01h значения FFh\nR 02    ; Чтение из порта 02h\nD 10    ; Задержка 10 мс")
+        self.seq_text.setPlaceholderText(self.tr("seq_placeholder"))
         self.seq_text.setFont(QFont("Consolas", 10))
         seq_layout.addWidget(self.seq_text)
         
@@ -3072,6 +3390,9 @@ class MainWindow(QMainWindow):
         # Обновляем тему дизассемблера
         is_dark = (self.current_theme == "Dark")
         self.disasm_view.set_theme(is_dark)
+        
+        if hasattr(self, 'emu_disasm_view'):
+            self.emu_disasm_view.set_theme(is_dark)
         
     def retranslate_ui(self):
         self.setWindowTitle(self.tr("app_title"))
@@ -3192,11 +3513,37 @@ class MainWindow(QMainWindow):
         self.btn_load_script.setText(self.tr("load_script"))
         self.btn_save_script.setText(self.tr("save_script"))
         self.btn_clear_output.setText(self.tr("clear_output"))
+        self.lbl_script_output.setText(self.tr("script_output_label"))
         
         # ============================================================
         # ВКЛАДКА "ЭМУЛЯТОР"
         # ============================================================
         self.emulator_retranslate()
+        
+        # ============================================================
+        # ВКЛАДКА "ТРАССИРОВКА"
+        # ============================================================
+        if hasattr(self, 'btn_trace_toggle'):
+            if self.btn_trace_toggle.isChecked():
+                self.btn_trace_toggle.setText(self.tr("trace_off"))
+            else:
+                self.btn_trace_toggle.setText(self.tr("trace_on"))
+            self.lbl_trace_detail.setText(self.tr("trace_detail_hint"))
+            self.btn_trace_clear.setText(self.tr("trace_clear"))
+            self.btn_trace_export.setText(self.tr("trace_export"))
+            self.lbl_trace_depth.setText(self.tr("trace_depth"))
+            self.lbl_trace_search.setText(self.tr("trace_search"))
+            self.txt_trace_search.setPlaceholderText(self.tr("trace_search_hint"))
+            self.trace_detail_group.setTitle(self.tr("trace_detail_title"))
+        # ============================================================
+        # МЕНЮ ПРОФИЛЕЙ
+        # ============================================================
+        if hasattr(self, 'profile_menu'):
+            self.profile_menu.setTitle(self.tr("menu_profile"))
+        # ============================================================
+        # СТРОКА СТАТУСА
+        # ============================================================
+        self.status_label_size.setText(f"0 {self.tr('status_size')}")
         
         # ============================================================
         # ЛОГ
@@ -3208,6 +3555,16 @@ class MainWindow(QMainWindow):
         # ============================================================
         self.hex_model.lang = self.current_lang
         self.hex_model.layoutChanged.emit()
+        
+        # модель трассировки
+        if hasattr(self, 'trace_model'):
+            self.trace_model.lang = self.current_lang
+            self.trace_model.refresh()
+        
+        # язык дизассемблера эмулятора
+        if hasattr(self, 'emu_disasm_view'):
+            self.emu_disasm_view.lang = self.current_lang
+            self.emu_disasm_view.update()
         
     # ==================== ЛОГИКА ====================
     def refresh_ports(self):
@@ -3426,7 +3783,7 @@ class MainWindow(QMainWindow):
             self.status_label_size.setText(f"{len(self.mem_data)} {self.tr('bytes')}")  # ← Добавить
         else:
             self.lbl_range.setText(f"{self.tr('range')} -")
-            self.status_label_size.setText("0 bytes")  # ← Добавить
+            self.status_label_size.setText(f"0 {self.tr('bytes')}")
             
     # ==================== КОНВЕРТАЦИЯ ЗНАЧЕНИЙ ====================
     def value_to_bytes(self, value, bits, endian):
@@ -3547,12 +3904,12 @@ class MainWindow(QMainWindow):
         
         # Проверяем состояние перед записью
         if not self.is_connected:
-            self.log("Device not connected. Firmware loaded to editor only.")
+            self.log(self.tr("dev_not_connected"))
             return
             
         if not self.bus_active:
-            self.log("Bus not active. Hold the bus before flashing.")
-            QMessageBox.information(self, "Info", "Hold the bus (HOLD) before flashing.")
+            self.log(self.tr("bus_not_active_log"))
+            QMessageBox.information(self, self.tr("info_title"), self.tr("hold_bus_first"))
             return
         
         if QMessageBox.question(self, self.tr("flash_q"), self.tr("flash_msg")) == QMessageBox.Yes:
@@ -3723,9 +4080,9 @@ class MainWindow(QMainWindow):
 		
     def on_status_update(self, addr, data, mnemonic):
         """Обновление статусной строки при наведении на ячейку"""
-        self.status_label_addr.setText(f"Адрес: {addr}")
-        self.status_label_data.setText(f"Данные: {data}")
-        self.status_label_mnem.setText(f"Мнемоника: {mnemonic}")
+        self.status_label_addr.setText(f"{self.tr('status_addr')} {addr}")
+        self.status_label_data.setText(f"{self.tr('status_data')} {data}")
+        self.status_label_mnem.setText(f"{self.tr('status_mnem')} {mnemonic}")
 	
     def export_disasm(self):
         """Экспорт дизассемблированного листинга в файл"""
@@ -3936,20 +4293,20 @@ class MainWindow(QMainWindow):
 		
     def on_hold_clicked(self):
         if not self.is_connected: 
-            self.statusBar.showMessage("Not connected!", 2000)
+            self.statusBar.showMessage(self.tr("status_not_connected"), 2000)
             return
         if self.bus_active:
-            self.statusBar.showMessage("Bus already active!", 2000)
+            self.statusBar.showMessage(self.tr("status_bus_active"), 2000)
             return
         self.send_command(bytes([CMD_HOLD]))
         self.btn_hold.setEnabled(False)
         
     def on_unhold_clicked(self):
         if not self.is_connected:
-            self.statusBar.showMessage("Not connected!", 2000)
+            self.statusBar.showMessage(self.tr("status_not_connected"), 2000)
             return
         if not self.bus_active:
-            self.statusBar.showMessage("Bus not active!", 2000)
+            self.statusBar.showMessage(self.tr("status_bus_not_active"), 2000)
             return
         self.send_command(bytes([CMD_UNHOLD]))
         self.btn_unhold.setEnabled(False)
@@ -4256,7 +4613,8 @@ class MainWindow(QMainWindow):
         layout.addWidget(self.script_editor)
         
         # Разделитель
-        layout.addWidget(QLabel("Output:"))
+        self.lbl_script_output = QLabel(self.tr("script_output_label"))
+        layout.addWidget(self.lbl_script_output)
         
         # Вывод
         self.script_output = QTextEdit()
@@ -4272,11 +4630,11 @@ class MainWindow(QMainWindow):
         """Выполняет скрипт из редактора"""
         code = self.script_editor.toPlainText()
         if not code.strip():
-            self.script_output.append("No code to run.")
+            self.script_output.append(self.tr("script_no_code"))
             return
             
         self.script_output.clear()
-        self.script_output.append("Running script...")
+        self.script_output.append(self.tr("script_running"))
         
         # Создаём API
         api = AutomationAPI(self)
@@ -4333,41 +4691,41 @@ class MainWindow(QMainWindow):
             
             if output:
                 self.script_output.append(output.rstrip())
-            self.script_output.append("\n✓ Script completed successfully.")
-            self.statusBar.showMessage("Script completed", 3000)
+            self.script_output.append(f"\n{self.tr('script_done')}")
+            self.statusBar.showMessage(self.tr("script_completed"), 3000)
             
         except Exception as e:
             sys.stdout = old_stdout
-            self.script_output.append(f"\n✗ ERROR: {str(e)}")
+            self.script_output.append(f"\n{self.tr('script_err')}{str(e)}")
             import traceback
             self.script_output.append(traceback.format_exc())
-            self.statusBar.showMessage("Script error!", 3000)
+            self.statusBar.showMessage(self.tr("script_error"), 3000)
             
     def load_script_file(self):
         """Загружает скрипт из файла"""
         path, _ = QFileDialog.getOpenFileName(
-            self, "Load Script", "", 
+            self, self.tr("script_load_title"),
             "Python Scripts (*.py);;Text Files (*.txt);;All Files (*)"
         )
         if path:
             try:
                 with open(path, 'r', encoding='utf-8') as f:
                     self.script_editor.setPlainText(f.read())
-                self.statusBar.showMessage(f"Script loaded: {path}", 3000)
+                self.statusBar.showMessage(f"{self.tr('script_loaded')}{path}", 3000)
             except Exception as e:
                 QMessageBox.critical(self, self.tr("error"), str(e))
                 
     def save_script_file(self):
         """Сохраняет скрипт в файл"""
         path, _ = QFileDialog.getSaveFileName(
-            self, "Save Script", "", 
+            self, self.tr("script_save_title"), "", 
             "Python Scripts (*.py);;Text Files (*.txt);;All Files (*)"
         )
         if path:
             try:
                 with open(path, 'w', encoding='utf-8') as f:
                     f.write(self.script_editor.toPlainText())
-                self.statusBar.showMessage(f"Script saved: {path}", 3000)
+                self.statusBar.showMessage(f"{self.tr('script_saved')}{path}", 3000)
             except Exception as e:
                 QMessageBox.critical(self, self.tr("error"), str(e))
 
@@ -4406,7 +4764,7 @@ class MainWindow(QMainWindow):
 			
     def on_mcp_toggle(self):
         if not MCP_AVAILABLE or self.mcp_server is None:
-            QMessageBox.warning(self, "MCP", "MCP Server недоступен. Установите зависимости:\npip install mcp uvicorn starlette")
+            QMessageBox.warning(self, self.tr("mcp_err_title"), self.tr("mcp_err_msg"))
             return
             
         if self.mcp_server.running:
@@ -4431,11 +4789,16 @@ class MainWindow(QMainWindow):
         left_layout = QVBoxLayout(left_panel)
         left_layout.setContentsMargins(0, 0, 0, 0)
         
-        disasm_label = QLabel("Код:")
-        disasm_label.setFont(QFont("Segoe UI", 9, QFont.Bold))
-        left_layout.addWidget(disasm_label)
+        #disasm_label = QLabel("Код:")
+        #disasm_label.setFont(QFont("Segoe UI", 9, QFont.Bold))
+        #left_layout.addWidget(disasm_label)
+        self.lbl_emu_code = QLabel("Код:")
+        self.lbl_emu_code.setFont(QFont("Segoe UI", 9, QFont.Bold))
+        left_layout.addWidget(self.lbl_emu_code)
+
         
         self.emu_disasm_view = DisasmView(self.mem_data)
+        self.emu_disasm_view.lang = self.current_lang
         self.emu_disasm_view.set_lines([])
         self.emu_disasm_view.set_highlight(None)
         if hasattr(self.emu_disasm_view, 'set_breakpoints'):
@@ -4746,101 +5109,113 @@ class MainWindow(QMainWindow):
         self.update_emulator_ui()
         self.update_disasm_highlight()
         self.refresh_trace_table()  # ← ИТЕРАЦИЯ D
-        
+
     def _run_tick(self):
-        """Один тик выполнения"""
-        # Такты для tick-устройств (512ВИ1, 8253 и т.д.)
-        if self.emulator.running and hasattr(self, 'system'):
+        """Один тик выполнения — оптимизирован для скорости"""
+        # === Такты для tick-устройств (512ВИ1, 8253, AM9511, CF IDE, CH376S) ===
+        if hasattr(self, 'system') and self.emulator.running:
             self.system.tick(cycles=1)
         
-        """Один тик выполнения — оптимизирован для скорости"""
+        # === ПРОВЕРКА DMA (итерация 10.2) ===
+        if hasattr(self, 'system') and self.system.check_dma():
+            # CPU приостановлен (эмуляция HOLD/HLDA)
+            self.update_emulator_ui()
+            return
+        
+        # === ПРОВЕРКА WAIT-СИГНАЛА (итерация 10.3) ===
+        if getattr(self.emulator, 'wait_signal', False):
+            # CPU ждёт устройство (эмуляция READY/WAIT)
+            self.update_emulator_ui()
+            return
+        
+        # === ПРОВЕРКА ПРЕРЫВАНИЙ (итерация 10.1) ===
+        if hasattr(self, 'system'):
+            self.system.check_interrupts()
+        
         # === Проверки остановки ===
         target_reached = (
-            self.run_target_addr is not None and 
+            self.run_target_addr is not None and
             self.emulator.pc == self.run_target_addr
         )
         if not self.emulator.running or self.emulator.halted or target_reached:
             self.run_timer.stop()
             self.emulator.running = False
             if target_reached:
-                self.statusBar.showMessage(f"Достигнут курсор 0x{self.run_target_addr:04X}", 3000)
-                self.log(f"Run to Cursor: достигнут 0x{self.run_target_addr:04X}")
+                self.statusBar.showMessage(f"{self.tr('status_reached_cursor')}{self.run_target_addr:04X}", 3000)
+                self.log(f"{self.tr('status_reached_cursor')}{self.run_target_addr:04X}")
             else:
-                self.statusBar.showMessage("Emulator stopped", 3000)
+                self.statusBar.showMessage(self.tr("status_emu_stopped"), 3000)
             self.run_target_addr = None
             self.update_emulator_ui()
             self.update_emu_disasm_view()
-            self.refresh_trace_table()  # ← ИТЕРАЦИЯ D: обновить трассировку
+            self.refresh_trace_table()
             return
-        
-        # === Breakpoint имеет приоритет (с учётом условий и enabled) ===
+
+        # === Breakpoint имеет приоритет ===
         if self.emulator.should_stop_at_bp(self.emulator.pc):
             self.run_timer.stop()
             self.emulator.running = False
             self.run_target_addr = None
-            # === Увеличиваем счётчик срабатываний ===
             self.emulator.register_bp_hit(self.emulator.pc)
             self.update_emulator_ui()
             self.update_emu_disasm_view()
-            self.sync_breakpoints()  # ← Обновить панель BP со счётчиком
-            self.statusBar.showMessage(f"Breakpoint at 0x{self.emulator.pc:04X}", 3000)
-            self.refresh_trace_table()  # ← ИТЕРАЦИЯ D: обновить трассировку
+            self.sync_breakpoints()
+            self.statusBar.showMessage(f"{self.tr('status_bp_hit')}{self.emulator.pc:04X}", 3000)
+            self.refresh_trace_table()
             self.log(f"Breakpoint hit: 0x{self.emulator.pc:04X}")
             return
-        
+
         # === Сохраняем Watch и регистры один раз за тик ===
         self._save_watch_prev_values()
         self._save_reg_prev_values()
-        
-        # === ПРОВЕРКА ПРЕРЫВАНИЙ (итерация 10.1) ===
-        if hasattr(self, 'system'):
-            self.system.check_interrupts()
-            
-        # === ВЫПОЛНЯЕМ БОЛЬШОЙ ПАКЕТ БЕЗ СИГНАЛОВ (silent=True) ===
+
+        # === ВЫПОЛНЯЕМ ПАКЕТ ИНСТРУКЦИЙ ===
         INSTRUCTIONS_PER_TICK = 300
         executed = 0
         for _ in range(INSTRUCTIONS_PER_TICK):
             # Проверка цели Run to Cursor
             if self.run_target_addr is not None and self.emulator.pc == self.run_target_addr:
                 break
-            # === Проверка BP с учётом условий и enabled ===
+            # Проверка BP с учётом условий и enabled
             if self.emulator.should_stop_at_bp(self.emulator.pc):
                 break
-            # Выполняем БЕЗ emit сигнала
-            if not self.emulator.execute_instruction(silent=True):
+            # Проверка DMA и WAIT перед каждой инструкцией
+            if getattr(self.emulator, 'wait_signal', False):
                 break
-            executed += 1
-            
+            if hasattr(self, 'system') and self.system.check_dma():
+                break
+
             # === Обработка прерывания перед инструкцией ===
             if self.emulator.has_pending_interrupt():
                 self.emulator._handle_interrupt()
 
+            # Выполняем БЕЗ emit сигнала
             if not self.emulator.execute_instruction(silent=True):
                 break
             executed += 1
-        
+
         # === ОДНО обновление UI за весь тик ===
         self.update_emulator_ui()
-        self.refresh_trace_table()  # ← ИТЕРАЦИЯ D: обновить трассировку
+        self.refresh_trace_table()
         self.update_emu_disasm_cursor()
-        
+
     def on_emu_cursor_changed(self, addr):
         """Курсор изменён (одинарный клик в дизассемблере эмулятора)"""
-        self.statusBar.showMessage(f"Курсор: 0x{addr:04X} (Ctrl+F10 — выполнить до курсора)", 3000)
+        self.statusBar.showMessage(f"{self.tr('status_cursor')}{addr:04X}{self.tr('status_cursor_hint')}", 3000)
         
     def emulator_run_to_cursor(self, addr=None):
         """Run to Cursor (Ctrl+F10): выполнить до курсора"""
         if self.emulator.halted:
-            self.statusBar.showMessage("CPU halted. Press Reset (Ctrl+F2).", 3000)
+            self.statusBar.showMessage(self.tr("status_cpu_halted"), 3000)
             return
         if addr is None:
             if hasattr(self.emu_disasm_view, 'cursor_addr') and self.emu_disasm_view.cursor_addr is not None:
                 addr = self.emu_disasm_view.cursor_addr
             else:
-                self.statusBar.showMessage("Курсор не установлен. Кликните по строке дизассемблера.", 3000)
+                self.statusBar.showMessage(self.tr("status_cursor_not_set"), 3000)
                 return
         if addr == self.emulator.pc:
-            self.statusBar.showMessage("Курсор совпадает с PC.", 3000)
+            self.statusBar.showMessage(self.tr("status_cursor_eq_pc"), 3000)
             return
         
         # === Если PC на breakpoint, обходим его ===
@@ -4855,13 +5230,13 @@ class MainWindow(QMainWindow):
             self.run_timer = QTimer()
             self.run_timer.timeout.connect(self._run_tick)
         self.run_timer.start(20)
-        self.statusBar.showMessage(f"Выполнение до 0x{addr:04X}...", 0)
-        self.log(f"Run to Cursor: 0x{addr:04X}")
+        self.statusBar.showMessage(f"{self.tr('status_running_to')}{addr:04X}...", 0)
+        self.log(f"{self.tr('status_running_from')}{addr:04X}")
         
     def emulator_run_from_here(self, addr):
         """Run from Here: установить PC на курсор и запустить"""
         if self.emulator.halted:
-            self.statusBar.showMessage("CPU halted. Press Reset (Ctrl+F2).", 3000)
+            self.statusBar.showMessage(self.tr("status_cpu_halted"), 3000)
             return
         
         # Устанавливаем PC на адрес курсора
@@ -4878,16 +5253,16 @@ class MainWindow(QMainWindow):
             self.run_timer.timeout.connect(self._run_tick)
         
         self.run_timer.start(20)
-        self.statusBar.showMessage(f"Run from 0x{addr:04X}...", 0)
-        self.log(f"Run from Here: 0x{addr:04X}")
+        self.statusBar.showMessage(f"{self.tr('status_running_from')}{addr:04X}...", 0)
+        self.log(f"{self.tr('status_running_from')}{addr:04X}")
         
     def emulator_jump_to_cursor(self, addr):
         """Jump to Cursor: переместить PC без выполнения"""
         self.emulator.set_pc(addr)
         self.update_emulator_ui()
         self.update_disasm_highlight()
-        self.statusBar.showMessage(f"PC установлен на 0x{addr:04X}", 3000)
-        self.log(f"Jump to Cursor: 0x{addr:04X}")
+        self.statusBar.showMessage(f"{self.tr('ctx_jump')}{addr:04X}", 3000)
+        self.log(f"{self.tr('ctx_jump')}{addr:04X}")
         
     def emulator_stop(self):
         """Остановка выполнения"""
@@ -4957,6 +5332,15 @@ class MainWindow(QMainWindow):
         # Чек-бокс трассировки
         if hasattr(self, 'chk_trace_enable'):
             self.chk_trace_enable.setText(self.tr("emulator_trace"))
+            
+        # ← ДОБАВЛЕНО: метка "Код"
+        if hasattr(self, 'lbl_emu_code'):
+            self.lbl_emu_code.setText(self.tr("emu_code"))
+        # ← ДОБАВЛЕНО: группы Watch и Breakpoints
+        if hasattr(self, 'watch_group'):
+            self.watch_group.setTitle(self.tr("emu_watch"))
+        if hasattr(self, 'bp_group'):
+            self.bp_group.setTitle(self.tr("emu_bp"))
 		
     def safe_call(self, func, *args, **kwargs):
         """Безопасный вызов функции из любого потока через Qt event loop"""
@@ -4971,29 +5355,25 @@ class MainWindow(QMainWindow):
         """Диалог добавления элемента в Watch с автоименем и автоформатом"""
         try:
             dialog = QDialog(self)
-            dialog.setWindowTitle("Добавить в Watch")
+            dialog.setWindowTitle(self.tr("watch_add_title"))
             dialog.setMinimumWidth(450)
             layout = QFormLayout(dialog)
             
             # === Имя ===
             name_edit = QLineEdit()
-            layout.addRow("Имя:", name_edit)
+            layout.addRow(self.tr("watch_name"), name_edit)
             
             # === Тип наблюдения ===
             type_combo = QComboBox()
-            type_combo.addItems([
-                "Память (байт)",
-                "Память (слово)",
-                "Регистр"
-            ])
-            layout.addRow("Тип:", type_combo)
+            type_combo.addItems([self.tr("watch_type_byte"), self.tr("watch_type_word"), self.tr("watch_type_reg")])
+            layout.addRow(self.tr("watch_type"), type_combo)
             
             # === Контейнер для динамического поля ===
             target_stack = QStackedWidget()
             
             # Страница 0: QLineEdit для hex-адреса (память)
             addr_edit = QLineEdit()
-            addr_edit.setPlaceholderText("Адрес HEX, например: 0100")
+            addr_edit.setPlaceholderText(self.tr("watch_addr_hint"))
             addr_edit.setMaxLength(4)
             target_stack.addWidget(addr_edit)
             
@@ -5006,12 +5386,12 @@ class MainWindow(QMainWindow):
             reg_combo.setEditable(False)
             target_stack.addWidget(reg_combo)
             
-            layout.addRow("Адрес/Регистр:", target_stack)
+            layout.addRow(self.tr("watch_target"), target_stack)
             
             # === Формат ===
             format_combo = QComboBox()
             format_combo.addItems(WatchModel.FORMATS)
-            layout.addRow("Формат:", format_combo)
+            layout.addRow(self.tr("watch_format"), format_combo)
             
             # =============================================
             # АВТОИМЯ: генерация имени по умолчанию
@@ -5040,7 +5420,7 @@ class MainWindow(QMainWindow):
             
             def update_name_placeholder():
                 """Обновляет placeholder имени с примером автоимени"""
-                name_edit.setPlaceholderText(f"Авто: {generate_auto_name()}")
+                name_edit.setPlaceholderText(f"{self.tr('watch_auto_prefix')} {generate_auto_name()}")
             
             # =============================================
             # АВТОФОРМАТ: выбор формата по умолчанию
@@ -5093,8 +5473,8 @@ class MainWindow(QMainWindow):
             
             # === Кнопки ===
             btn_layout = QHBoxLayout()
-            btn_ok = QPushButton("OK")
-            btn_cancel = QPushButton("Отмена")
+            btn_ok = QPushButton(self.tr("dlg_ok"))
+            btn_cancel = QPushButton(self.tr("dlg_cancel"))
             btn_ok.clicked.connect(dialog.accept)
             btn_cancel.clicked.connect(dialog.reject)
             btn_layout.addWidget(btn_ok)
@@ -5104,7 +5484,6 @@ class MainWindow(QMainWindow):
             # =============================================
             # ОБРАБОТКА РЕЗУЛЬТАТА
             # =============================================
-            
             if dialog.exec() == QDialog.Accepted:
                 # Автоимя: если поле пустое — используем сгенерированное
                 name = name_edit.text().strip() or generate_auto_name()
@@ -5114,7 +5493,7 @@ class MainWindow(QMainWindow):
                 if type_idx == 0:  # Память (байт)
                     addr_text = addr_edit.text().strip()
                     if not addr_text:
-                        QMessageBox.warning(self, "Ошибка", "Введите адрес памяти!")
+                        QMessageBox.warning(self, self.tr("error"), self.tr("watch_err_addr"))
                         return
                     addr = int(addr_text, 16)
                     self.watch_model.add_watch(name, WatchModel.TYPE_MEM_BYTE, addr, fmt)
@@ -5123,7 +5502,7 @@ class MainWindow(QMainWindow):
                 elif type_idx == 1:  # Память (слово)
                     addr_text = addr_edit.text().strip()
                     if not addr_text:
-                        QMessageBox.warning(self, "Ошибка", "Введите адрес памяти!")
+                        QMessageBox.warning(self, self.tr("error"), self.tr("watch_err_addr"))
                         return
                     addr = int(addr_text, 16)
                     self.watch_model.add_watch(name, WatchModel.TYPE_MEM_WORD, addr, fmt)
@@ -5136,14 +5515,14 @@ class MainWindow(QMainWindow):
                     
         except ValueError as e:
             QMessageBox.warning(
-                self, "Ошибка формата",
+                self.tr("watch_err_fmt_title"),
                 f"Неверный формат адреса!\n\n"
                 f"Введите HEX-значение без префикса 0x.\n"
                 f"Примеры: 0100, 0FF0, FFFF\n\n"
                 f"Детали: {e}"
             )
         except Exception as e:
-            QMessageBox.critical(self, "Ошибка", f"Не удалось добавить Watch:\n{e}")
+            QMessageBox.critical(self, self.tr("error"), f"{self.tr('watch_err_add')}{e}")
             self.log(f"Watch add error: {e}")
             
     def watch_delete(self):
@@ -5153,14 +5532,14 @@ class MainWindow(QMainWindow):
             row = selected[0].row()
             self.watch_model.remove_watch(row)
         else:
-            self.statusBar.showMessage("Выберите элемент для удаления", 2000)
+            self.statusBar.showMessage(self.tr("watch_select_del"), 2000)
             
     def watch_clear(self):
         """Очистить все элементы Watch"""
         if self.watch_model.items:
             reply = QMessageBox.question(
-                self, "Подтверждение",
-                "Удалить все элементы Watch?",
+                self, self.tr("watch_confirm"),
+                self.tr("watch_confirm_del"),
                 QMessageBox.Yes | QMessageBox.No
             )
             if reply == QMessageBox.Yes:
@@ -5169,31 +5548,31 @@ class MainWindow(QMainWindow):
     def watch_save_preset(self):
         """Сохранить пресет Watch в файл"""
         path, _ = QFileDialog.getSaveFileName(
-            self, "Сохранить пресет Watch",
+            self, self.tr("watch_save_preset"),
             "watch_preset.json",
             "JSON Files (*.json);;All Files (*)"
         )
         if path:
             if self.watch_model.save_preset(path):
-                self.statusBar.showMessage(f"Пресет сохранён: {path}", 3000)
+                self.statusBar.showMessage(f"{self.tr('watch_preset_saved')}{path}", 3000)
                 self.log(f"Watch preset saved: {path}")
             else:
-                QMessageBox.warning(self, "Ошибка", "Не удалось сохранить пресет")
+                QMessageBox.warning(self, self.tr("error"), self.tr("watch_preset_save_err"))
                 
     def watch_load_preset(self):
         """Загрузить пресет Watch из файла"""
         path, _ = QFileDialog.getOpenFileName(
-            self, "Загрузить пресет Watch",
+            self, self.tr("watch_load_preset"),
             "",
             "JSON Files (*.json);;All Files (*)"
         )
         if path:
             if self.watch_model.load_preset(path):
-                self.statusBar.showMessage(f"Пресет загружен: {path}", 3000)
+                self.statusBar.showMessage(f"{self.tr('watch_preset_loaded')}{path}", 3000)
                 self.log(f"Watch preset loaded: {path}")
                 self.watch_model.refresh()
             else:
-                QMessageBox.warning(self, "Ошибка", "Не удалось загрузить пресет. Проверьте формат файла.")
+                QMessageBox.warning(self, self.tr("error"), self.tr("watch_preset_load_err"))
 				
         # =============================================
     # BREAKPOINTS: Диалоги и управление (ИТЕРАЦИЯ C)
@@ -5201,7 +5580,7 @@ class MainWindow(QMainWindow):
     
     def bp_add_dialog(self):
         """Добавить BP через диалог"""
-        text, ok = QInputDialog.getText(self, "Add Breakpoint", "Address (HEX):")
+        text, ok = QInputDialog.getText(self, self.tr("bp_add_title"), self.tr("bp_addr"))
         if ok:
             try:
                 addr = int(text, 16)
@@ -5209,13 +5588,13 @@ class MainWindow(QMainWindow):
                 self.sync_breakpoints()
                 self.log(f"Breakpoint set: 0x{addr:04X}")
             except ValueError:
-                QMessageBox.warning(self, "Error", "Invalid address!")
+                QMessageBox.warning(self, self.tr("error"), self.tr("bp_err_addr"))
     
     def bp_edit_condition(self):
         """Редактировать условие выбранной BP"""
         selected = self.bp_table.selectedIndexes()
         if not selected:
-            self.statusBar.showMessage("Выберите точку останова", 2000)
+            self.statusBar.showMessage(self.tr("bp_select"), 2000)
             return
         row = selected[0].row()
         bps = self.bp_model.get_bp_list()
@@ -5229,7 +5608,7 @@ class MainWindow(QMainWindow):
         """Включить/выключить выбранную BP"""
         selected = self.bp_table.selectedIndexes()
         if not selected:
-            self.statusBar.showMessage("Выберите точку останова", 2000)
+            self.statusBar.showMessage(self.tr("bp_select"), 2000)
             return
         row = selected[0].row()
         bps = self.bp_model.get_bp_list()
@@ -5243,7 +5622,7 @@ class MainWindow(QMainWindow):
         """Удалить выбранную BP"""
         selected = self.bp_table.selectedIndexes()
         if not selected:
-            self.statusBar.showMessage("Выберите точку останова", 2000)
+            self.statusBar.showMessage(self.tr("bp_select"), 2000)
             return
         row = selected[0].row()
         bps = self.bp_model.get_bp_list()
@@ -5257,7 +5636,7 @@ class MainWindow(QMainWindow):
     def bp_condition_dialog(self, addr, existing_condition=""):
         """Диалог ввода условия для BP"""
         dialog = QDialog(self)
-        dialog.setWindowTitle(f"Условие точки останова 0x{addr:04X}")
+        dialog.setWindowTitle(f"{self.tr('bp_cond_title')} 0x{addr:04X}")
         dialog.setMinimumWidth(500)
         layout = QVBoxLayout(dialog)
         
@@ -5276,14 +5655,14 @@ class MainWindow(QMainWindow):
         layout.addWidget(hint)
         
         cond_edit = QLineEdit(existing_condition)
-        cond_edit.setPlaceholderText("Например: A == 0x55")
+        cond_edit.setPlaceholderText(self.tr("bp_cond_example"))
         layout.addWidget(cond_edit)
         
         btn_layout = QHBoxLayout()
-        btn_clear = QPushButton("Очистить условие")
+        btn_clear = QPushButton(self.tr("bp_cond_clear"))
         btn_clear.clicked.connect(lambda: cond_edit.setText(""))
-        btn_ok = QPushButton("OK")
-        btn_cancel = QPushButton("Отмена")
+        btn_ok = QPushButton(self.tr("dlg_ok"))
+        btn_cancel = QPushButton(self.tr("dlg_cancel"))
         btn_ok.clicked.connect(dialog.accept)
         btn_cancel.clicked.connect(dialog.reject)
         btn_layout.addWidget(btn_clear)
@@ -5295,7 +5674,7 @@ class MainWindow(QMainWindow):
         if dialog.exec() == QDialog.Accepted:
             condition = cond_edit.text().strip()
             if condition and not self._validate_bp_condition(condition):
-                QMessageBox.warning(self, "Ошибка", "Неверный синтаксис условия!")
+                QMessageBox.warning(self, self.tr("error"), self.tr("bp_cond_err"))
                 return
             self.emulator.set_bp_condition(addr, condition)
             self.sync_breakpoints()
@@ -5308,7 +5687,7 @@ class MainWindow(QMainWindow):
     def bp_save_preset(self):
         """Сохранить пресет BP в JSON файл"""
         path, _ = QFileDialog.getSaveFileName(
-            self, "Сохранить пресет Breakpoints",
+            self, self.tr("bp_save_preset"),
             "bp_preset.json",
             "JSON Files (*.json);;All Files (*)"
         )
@@ -5334,15 +5713,15 @@ class MainWindow(QMainWindow):
             with open(path, 'w', encoding='utf-8') as f:
                 json.dump(data, f, indent=2, ensure_ascii=False)
             
-            self.statusBar.showMessage(f"Пресет BP сохранён: {path}", 3000)
+            self.statusBar.showMessage(f"{self.tr('bp_preset_saved')}{path}", 3000)
             self.log(f"BP preset saved: {path} ({len(data['breakpoints'])} breakpoints)")
         except Exception as e:
-            QMessageBox.warning(self, "Ошибка", f"Не удалось сохранить пресет BP:\n{e}")
+            QMessageBox.warning(self, self.tr("error"), f"{self.tr('bp_preset_save_err')}{e}")
     
     def bp_load_preset(self):
         """Загрузить пресет BP из JSON файла"""
         path, _ = QFileDialog.getOpenFileName(
-            self, "Загрузить пресет Breakpoints",
+            self, self.tr("bp_load_preset"),
             "",
             "JSON Files (*.json);;All Files (*)"
         )
@@ -5380,10 +5759,10 @@ class MainWindow(QMainWindow):
                 loaded_count += 1
             
             self.sync_breakpoints()
-            self.statusBar.showMessage(f"Пресет BP загружен: {path}", 3000)
+            self.statusBar.showMessage(f"{self.tr('bp_preset_loaded')}{path}", 3000)
             self.log(f"BP preset loaded: {path} ({loaded_count} breakpoints)")
         except Exception as e:
-            QMessageBox.warning(self, "Ошибка", f"Не удалось загрузить пресет BP:\n{e}")
+            QMessageBox.warning(self, self.tr("error"), f"{self.tr('bp_preset_load_err')}{e}")
         
     def _validate_bp_condition(self, condition):
         """Проверяет синтаксис условия"""
@@ -5429,7 +5808,8 @@ class MainWindow(QMainWindow):
         ctrl_layout.addSpacing(20)
         
         # Глубина буфера
-        ctrl_layout.addWidget(QLabel("Глубина:"))
+        self.lbl_trace_depth = QLabel("Глубина:")
+        ctrl_layout.addWidget(self.lbl_trace_depth)
         self.spin_trace_depth = QSpinBox()
         self.spin_trace_depth.setMinimum(100)
         self.spin_trace_depth.setMaximum(100000)
@@ -5448,7 +5828,8 @@ class MainWindow(QMainWindow):
         ctrl_layout.addStretch()
         
         # Поиск
-        ctrl_layout.addWidget(QLabel("Поиск:"))
+        self.lbl_trace_search = QLabel("Поиск:")
+        ctrl_layout.addWidget(self.lbl_trace_search)
         self.txt_trace_search = QLineEdit()
         self.txt_trace_search.setPlaceholderText("Адрес (HEX) или регистр OP значение (A==55, HL>1000, SP<=F000)")
         self.txt_trace_search.setMaximumWidth(250)
@@ -5491,8 +5872,6 @@ class MainWindow(QMainWindow):
         self.trace_table.selectionModel().selectionChanged.connect(self.on_trace_selection_changed)
         layout.addWidget(self.trace_table)
         
-        layout.addWidget(self.trace_table)
-        
         # === Панель детального просмотра выбранной записи ===
         self.trace_detail_group = QGroupBox("Детали выбранной записи")
         detail_layout = QHBoxLayout()
@@ -5522,12 +5901,12 @@ class MainWindow(QMainWindow):
         """Включить/выключить запись трассировки"""
         if self.btn_trace_toggle.isChecked():
             self.emulator.trace_start()
-            self.btn_trace_toggle.setText("⏹ Выключить запись")
+            self.btn_trace_toggle.setText(self.tr("trace_off"))
             self.btn_trace_toggle.setStyleSheet("background-color: #ffcccc;")
             self.chk_trace_enable.setChecked(True)
         else:
             self.emulator.trace_stop()
-            self.btn_trace_toggle.setText("🔥 Включить запись")
+            self.btn_trace_toggle.setText(self.tr("trace_on"))
             self.btn_trace_toggle.setStyleSheet("")
             self.chk_trace_enable.setChecked(False)
         self.update_trace_status()
@@ -5538,7 +5917,7 @@ class MainWindow(QMainWindow):
         if hasattr(self, 'trace_model'):
             self.trace_model.set_filter(None)  # Сбрасываем фильтр при очистке
         self.refresh_trace_table()
-        self.log("Буфер трассировки очищен")
+        self.log(self.tr("trace_buf_cleared"))
     
     def on_trace_depth_changed(self, value):
         """Изменение глубины буфера"""
@@ -5549,7 +5928,7 @@ class MainWindow(QMainWindow):
         """Обновить статус трассировки"""
         count = self.emulator.trace_count()
         max_rec = self.emulator.trace_max_records
-        self.lbl_trace_status.setText(f"Записей: {count} / {max_rec}")
+        self.lbl_trace_status.setText(f"{self.tr('trace_records')}{count} / {max_rec}")
     
     def refresh_trace_table(self):
         """Обновить таблицу трассировки (быстро, через виртуальную модель)"""
@@ -5610,9 +5989,9 @@ class MainWindow(QMainWindow):
             if rec is None:
                 return
             menu = QMenu(self)
-            act_view = menu.addAction(f"👁 Просмотр состояния (#{rec['seq']})")
-            act_restore = menu.addAction(f"↩ Восстановить состояние")
-            act_goto = menu.addAction(f"➤ Перейти к адресу 0x{rec['pc']:04X} в дизассемблере")
+            act_view = menu.addAction(f"{self.tr('trace_ctx_view')}(#{rec['seq']})")
+            act_restore = menu.addAction(self.tr('trace_ctx_restore'))
+            act_goto = menu.addAction(f"{self.tr('trace_ctx_goto')}{rec['pc']:04X}{self.tr('trace_ctx_goto_suffix')}")
             selected = menu.exec(self.trace_table.viewport().mapToGlobal(pos))
             if selected == act_view:
                 self._show_trace_detail(rec)
@@ -5645,8 +6024,8 @@ class MainWindow(QMainWindow):
         
         self.update_emulator_ui()
         self.update_emu_disasm_view()
-        self.log(f"Состояние восстановлено из записи #{rec['seq']} (PC=0x{rec['pc']:04X})")
-        self.statusBar.showMessage(f"Состояние восстановлено: PC=0x{rec['pc']:04X}", 3000)
+        self.log(f"{self.tr('status_state_restored')}{rec['pc']:04X}")
+        self.statusBar.showMessage(f"{self.tr('status_state_restored')}{rec['pc']:04X}", 3000)
     
     def _goto_trace_address(self, addr):
         """Перейти к адресу в дизассемблере эмулятора"""
@@ -5654,22 +6033,22 @@ class MainWindow(QMainWindow):
         self.update_emulator_ui()
         self.update_emu_disasm_view()
         self.tabs.setCurrentWidget(self.tab_emulator)
-        self.statusBar.showMessage(f"PC установлен на 0x{addr:04X}", 3000)
+        self.statusBar.showMessage(f"{self.tr('status_pc_set')}{addr:04X}", 3000)
     
     def on_trace_search(self):
         """Поиск в трассировке по адресу, регистру или мнемонике"""
         query = self.txt_trace_search.text().strip()
         filter_dict = self._parse_trace_filter(query)
         if filter_dict is None and query:
-            self.statusBar.showMessage(f"Неверный формат запроса: {query}", 3000)
+            self.statusBar.showMessage(f"{self.tr('status_trace_search_err')}{query}", 3000)
             return
         if hasattr(self, 'trace_model'):
             self.trace_model.set_filter(filter_dict)
         filtered_count = self.trace_model.rowCount() if hasattr(self, 'trace_model') else 0
         total = self.emulator.trace_count()
-        self.statusBar.showMessage(f"Найдено: {filtered_count} из {total}", 3000)
+        self.statusBar.showMessage(f"{self.tr('status_trace_found')}{filtered_count}{self.tr('status_trace_of')}{total}", 3000)
         if query:
-            self.log(f"Поиск в трассировке: '{query}' — найдено {filtered_count}")
+            self.log(f"{self.tr('trace_search_log')}{query}{self.tr('trace_search_found')}{filtered_count}")
     
     def on_trace_filter_clear(self):
         """Сбросить фильтр трассировки"""
@@ -5766,10 +6145,10 @@ class MainWindow(QMainWindow):
         """Экспорт трассировки в TXT / CSV / JSON"""
         records = self.emulator.trace_get()
         if not records:
-            QMessageBox.warning(self, "Экспорт", "Нет данных для экспорта")
+            QMessageBox.warning(self, self.tr("trace_export_title"), self.tr("trace_no_data"))
             return
         path, _ = QFileDialog.getSaveFileName(
-            self, "Экспорт трассировки",
+            self, self.tr("trace_export_title"),
             "trace.txt",
             "Text Files (*.txt);;CSV Files (*.csv);;JSON Files (*.json);;All Files (*)"
         )
@@ -5782,10 +6161,10 @@ class MainWindow(QMainWindow):
                 self._export_trace_json(path, records)
             else:
                 self._export_trace_txt(path, records)
-            self.statusBar.showMessage(f"Трассировка экспортирована: {path}", 3000)
+            self.statusBar.showMessage(f"{self.tr('trace_exported')}{path}", 3000)
             self.log(f"Trace exported to {path} ({len(records)} records)")
         except Exception as e:
-            QMessageBox.critical(self, "Ошибка", f"Не удалось экспортировать трассировку:\n{e}")
+            QMessageBox.critical(self, self.tr("error"), f"{self.tr('trace_export_err')}{e}")
     
     def _export_trace_txt(self, path, records):
         """Экспорт в TXT"""
@@ -5858,17 +6237,17 @@ class MainWindow(QMainWindow):
         if hasattr(self, 'btn_trace_toggle'):
             self.btn_trace_toggle.setChecked(checked)
             if checked:
-                self.btn_trace_toggle.setText("⏹ Выключить запись")
+                self.btn_trace_toggle.setText(self.tr("trace_off"))
                 self.btn_trace_toggle.setStyleSheet("background-color: #ffcccc;")
             else:
-                self.btn_trace_toggle.setText("🔥 Включить запись")
+                self.btn_trace_toggle.setText(self.tr("trace_on"))
                 self.btn_trace_toggle.setStyleSheet("")
         self.update_trace_status()
 
     def load_profile(self, profile_name):
         """Загрузка профиля системы (итерация 10.4)"""
         try:
-            # Останавливаем эмулятор, если он запущен
+            # ← ИСПРАВЛЕНО: было self.running, стало self.emulator.running
             if self.emulator.running:
                 self.emulator_stop()
 
@@ -5889,14 +6268,12 @@ class MainWindow(QMainWindow):
             # Обновляем панели устройств
             self._update_device_panels()
 
-            # Обновляем статусную строку (БЕЗ скобок — это виджет, не метод)
-            self.statusBar.showMessage(
-                f"Профиль загружен: {self.system.config.system_name}", 3000
-            )
-            self.log(f"Профиль загружен: {profile_name} ({self.system.config.system_name})")
+            # Обновляем статусную строку
+            self.statusBar.showMessage(f"{self.tr('status_profile_loaded')}{self.system.config.system_name}", 3000)
+            self.log(f"{self.tr('status_profile_loaded')}{self.system.config.system_name}")
 
         except ValueError as e:
-            QMessageBox.critical(self, "Ошибка профиля", str(e))
+            QMessageBox.critical(self, self.tr("status_profile_err"), str(e))
         
     def _update_device_panels(self):
         """Обновление панелей устройств после загрузки профиля"""
