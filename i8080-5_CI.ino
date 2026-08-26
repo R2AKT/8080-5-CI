@@ -78,30 +78,85 @@
 #define AckEEPROMWriteBlock 0x33
 //
 #define CmdGetSizeSetup 0x40
-#define CmdSetPolaritySetup 0x41
 #define AckGetSizeSetup 0x40
-#define AckSetPolaritySetup 0x41
 //
 #define AckError 0xFF
 ////
 //#define Debug
-#define InvertCtrlBusControlBus
 //#define DirectPortManipulation
 ///
-bool InvertCtrlBus = 0;
-///
 void setup() {
-  Disable_BUS_Ctrl(); // Disable BUS control
+  ///
+  #ifdef Debug
+    Serial.println ("Set 'CPU' pins...");
+  #endif
   //
+  pinMode (HOLDPin, INPUT);
+  digitalWrite (HOLDPin, LOW);
+  //
+  pinMode (HLDAPin, INPUT);
+  digitalWrite (HLDAPin, LOW);
+  //
+  pinMode (BUSInUse, INPUT);
+  digitalWrite (BUSInUse, LOW);
+  ///
+  #ifdef Debug
+    Serial.println ("Set 'Memory' pins to output...");
+  #endif
+  //
+  pinMode (MemW_Pin, OUTPUT);
+  digitalWrite (MemW_Pin, LOW);
+  //
+  pinMode (MemR_Pin, OUTPUT);
+  digitalWrite (MemR_Pin, LOW);
+  //
+  #ifdef Debug
+    Serial.println ("Set 'IO' pins to output...");
+  #endif
+  //
+  pinMode (IOW_Pin, OUTPUT);
+  digitalWrite (IOW_Pin, LOW);
+  //
+  pinMode (IOR_Pin, OUTPUT);
+  digitalWrite (IOR_Pin, LOW);
+  ///
+  #ifdef Debug
+    Serial.println ("Set 'Internal Out' pins...");
+  #endif
+  //
+  pinMode (latchOutPin, OUTPUT);
+  digitalWrite (latchOutPin, LOW);
+  //
+  pinMode (clockOutPin, OUTPUT);
+  digitalWrite (clockOutPin, LOW);
+  //
+  pinMode (clockInPin, OUTPUT);
+  digitalWrite (clockInPin, HIGH);
+  //
+  pinMode (dataOutPin, OUTPUT);
+  digitalWrite (dataOutPin, LOW);
+  //
+  pinMode (DataOutEn, OUTPUT);
+  digitalWrite (DataOutEn, HIGH); // Z-state DataBus
+  //
+  pinMode (AddressOutEn, OUTPUT);
+  digitalWrite (AddressOutEn, HIGH); // Z-state AddressBus
+  ///
+  #ifdef Debug
+    Serial.println ("Set 'Internal In' pins...");
+  #endif
+  //
+  pinMode (latchInPin, OUTPUT);
+  digitalWrite (latchInPin, HIGH);
+  //
+  pinMode (dataInPin, INPUT);
+  digitalWrite (dataInPin, LOW);
+  ///
   Serial.begin (9600); // 9600/38400/57600/115200;
   //
   #ifdef Debug
     Serial.println ("i8080-5 CI v.0.2.b. Copyright by Sergey Dorozhkin (aka R2AKT) 2024-2026.");
   #endif
-  //
-  Set_Internal_OutPin();
-  Set_Internal_InPin();
-  Set_CPUPin();
   //
   #ifdef Debug
     Serial.println ("Set to 0x00 outputs (Address+Data)");
@@ -128,14 +183,6 @@ void setup() {
     __asm__("nop\n\t");   // Задержка 1 такт
     PORTB &= ~(1 << PB1); // Установить LOW
   #endif
-  //
-  Enable_BUS_Ctrl (BusModeRead); // Enable BUS control, read mode
-  //
-  #ifdef InvertCtrlBusControlBus
-    InvertCtrlBus = 1;
-  #else
-    InvertCtrlBus = 0;
-  #endif
 }
 ///
 void loop() {
@@ -161,22 +208,6 @@ void loop() {
         Tx_Buff[1] = MAX_DATA_SIZE;
         send_packet (Tx_Buff, 2);
         break;
-      case CmdSetPolaritySetup:
-        if (Rx_Buff[1]) {
-        #ifdef Debug
-          Serial.println("'Set Control Bus Polarity' command - INVERT BUS!");
-        #endif
-          InvertCtrlBus = 1;
-        } else {
-          #ifdef Debug
-            Serial.println("'Set Control Bus Polarity' command - NORMAL BUS.");
-          #endif
-          InvertCtrlBus = 0;
-        }
-        //
-        Tx_Buff[0] = AckSetPolaritySetup;
-        send_packet (Tx_Buff, 1);
-        break;
       case CmdNOP:
         #ifdef Debug
           Serial.println("'NOP''command''");
@@ -185,7 +216,6 @@ void loop() {
         send_packet (Tx_Buff, 1);
         break;
       case CmdHold:
-        Enable_BUS_Ctrl (BusModeRead); // Enable BUS control, read mode
         //
         #ifdef Debug
           Serial.println("Check BUS...'HLDA' pin LOW?");
@@ -201,10 +231,14 @@ void loop() {
           //
           delay (10);
         }
+        //
         #ifdef Debug
           Serial.println("Set 'HOLD' pin to HIGH. Wait CPU...");
         #endif
-        digitalWrite(HOLDPin, HIGH);
+        //
+        pinMode (HOLDPin, OUTPUT);
+        digitalWrite(HOLDPin, HIGH); // Try HOLD bus
+        //
         while (!digitalRead (HLDAPin)) {
           #ifdef Debug
             Serial.println("Wait HIGH 'HLDA' pin...");
@@ -216,7 +250,14 @@ void loop() {
           delay (10);
         }
         #ifdef Debug
-          Serial.println("'HLDA' pin is HIGH. Run...");
+          Serial.println("'HLDA' pin is HIGH.");
+        #endif
+        //
+        pinMode (BUSInUse, OUTPUT);
+        digitalWrite(BUSInUse, HIGH); // Disable bus
+        //
+        #ifdef Debug
+          Serial.println("'~BusEn' pin is HIGH.");
         #endif
         //
         Tx_Buff[0] = CmdHold;
@@ -225,15 +266,38 @@ void loop() {
         //
         Active = true;
         //
+        pinMode (DataOutEn, OUTPUT);
+        digitalWrite (DataOutEn, LOW); // Active-state DataBus
+        //
+        pinMode (AddressOutEn, OUTPUT);
+        digitalWrite (AddressOutEn, LOW); // Active-state AddressBus
+        //
+        #ifdef Debug
+          Serial.println("RUN...");
+        #endif
+        //
         break;
       //
       case CmdUnHold:
-        Disable_BUS_Ctrl (); // Disable BUS control 
+        //
+        pinMode (DataOutEn, OUTPUT);
+        digitalWrite (DataOutEn, HIGH); // Z-state DataBus
+        //
+        pinMode (AddressOutEn, OUTPUT);
+        digitalWrite (AddressOutEn, HIGH); // Z-state AddressBus
+        //
+        digitalWrite(BUSInUse, LOW); // Enable bus
+        pinMode (BUSInUse, INPUT);
+        //
+        #ifdef Debug
+          Serial.println("'~BusEn' pin is LOW.");
+        #endif
+        //
+        digitalWrite(HOLDPin, LOW); // Try UnHOLD bus
         //
         #ifdef Debug
           Serial.println("Set 'HOLD' pin to LOW.");
         #endif
-        digitalWrite(HOLDPin, LOW);
         //
         while (digitalRead (HLDAPin)) {
           #ifdef Debug
@@ -251,15 +315,18 @@ void loop() {
             Serial.println("'HLDA' pin LOW !");
         #endif
         //
+        pinMode (HOLDPin, INPUT);
+        digitalWrite (HOLDPin, LOW);
+        //
         Tx_Buff[0] = CmdUnHold;
         Tx_Buff[1] = AckUnHold;
         send_packet (Tx_Buff, 2);
-        //      
-        #ifdef Debug
-          Serial.println ("CPU RUN...OK!");
-        #endif
         //
         Active = false;
+        //      
+        #ifdef Debug
+          Serial.println ("CPU RUN...");
+        #endif
         //
         break;
       //
@@ -278,7 +345,8 @@ void loop() {
           Serial.println ("Read memory...");
         #endif
         //
-        Enable_BUS_Ctrl (BusModeRead); // Enable BUS control, read mode
+        pinMode (DataOutEn, OUTPUT);
+        digitalWrite (DataOutEn, HIGH); // Z-state DataBus
         //
         Tx_Buff[3] = MemRead ((Rx_Buff[1]<<8) + Rx_Buff[2]);
         //
@@ -317,13 +385,12 @@ void loop() {
           Serial.println ("Read memory block...");
         #endif
         //
-        Enable_BUS_Ctrl (BusModeRead); // Enable BUS control, read mode
+        pinMode (DataOutEn, OUTPUT);
+        digitalWrite (DataOutEn, HIGH); // Z-state DataBus
         //
         for (uint8_t Index = 0; Index < Rx_Buff[1]; Index++) {
           Tx_Buff[3+Index] = MemRead (StartAddr + Index);
         }
-        //
-        //Disable_BUS_Ctrl (); // Disable BUS control 
         //
         Tx_Buff[0] = AckMemReadBlock;
         Tx_Buff[1] = Rx_Buff[1];
@@ -347,11 +414,13 @@ void loop() {
           Serial.println ("Write memory...");
         #endif
         //
-        Enable_BUS_Ctrl (BusModeWrite); // Enable BUS control, write mode
+        pinMode (DataOutEn, OUTPUT);
+        digitalWrite (DataOutEn, LOW); // Active-state DataBus
         //
         MemWrite (Rx_Buff[3], (Rx_Buff[1]<<8) + Rx_Buff[2]);
         //
-        //Disable_BUS_Ctrl (); // Disable BUS control 
+        pinMode (DataOutEn, OUTPUT);
+        digitalWrite (DataOutEn, HIGH); // Z-state DataBus
         //
         Tx_Buff[0] = AckMemWriteByte;
         Tx_Buff[1] = Rx_Buff[1];
@@ -370,8 +439,6 @@ void loop() {
           send_packet (Tx_Buff, 1);
           return;
         }
-        //
-        Enable_BUS_Ctrl (BusModeWrite); // Enable BUS control, write mode
         //
         if (Rx_Buff[1] > MAX_DATA_SIZE) { // Max data size limit!
           #ifdef Debug
@@ -399,13 +466,15 @@ void loop() {
           Serial.println ("Write memory block...");
         #endif
         //
-        Enable_BUS_Ctrl (BusModeWrite); // Enable BUS control, write mode
+        pinMode (DataOutEn, OUTPUT);
+        digitalWrite (DataOutEn, LOW); // Active-state DataBus
         //
         for (uint8_t Index = 0; Index < Rx_Buff[1]; Index++) {
           MemWrite (Rx_Buff[Index + 4], StartAddr + Index);
         }
         //
-        //Disable_BUS_Ctrl (); // Disable BUS control 
+        pinMode (DataOutEn, OUTPUT);
+        digitalWrite (DataOutEn, HIGH); // Z-state DataBus
         //
         Tx_Buff[0] = AckMemWriteBlock;
         Tx_Buff[1] = Rx_Buff[1];
@@ -430,11 +499,13 @@ void loop() {
           Serial.println ("Write EEPROM...");
         #endif
         //
-        Enable_BUS_Ctrl (BusModeWrite); // Enable BUS control, write mode
+        pinMode (DataOutEn, OUTPUT);
+        digitalWrite (DataOutEn, LOW); // Active-state DataBus
         //
         EEPROMWrite (Rx_Buff[3], (Rx_Buff[1]<<8) + Rx_Buff[2]);
         //
-        //Disable_BUS_Ctrl (); // Disable BUS control 
+        pinMode (DataOutEn, OUTPUT);
+        digitalWrite (DataOutEn, HIGH); // Z-state DataBus
         //
         Tx_Buff[0] = AckEEPROMWriteByte;
         Tx_Buff[1] = Rx_Buff[1];
@@ -453,8 +524,6 @@ void loop() {
           send_packet (Tx_Buff, 1);
           return;
         }
-        //
-        Enable_BUS_Ctrl (BusModeWrite); // Enable BUS control, write mode
         //
         if (Rx_Buff[1] > MAX_DATA_SIZE) { // Max data size limit!
           #ifdef Debug
@@ -482,14 +551,16 @@ void loop() {
           Serial.println ("Write EEPROM block...");
         #endif
         //
-        Enable_BUS_Ctrl (BusModeWrite); // Enable BUS control, write mode
+        pinMode (DataOutEn, OUTPUT);
+        digitalWrite (DataOutEn, LOW); // Active-state DataBus
         //
         for (uint8_t Index = 0; Index < Rx_Buff[1]; Index++) {
           EEPROMWrite (Rx_Buff[Index + 4], StartAddr + Index);
           delay (1);
         }
         //
-        //Disable_BUS_Ctrl (); // Disable BUS control 
+        pinMode (DataOutEn, OUTPUT);
+        digitalWrite (DataOutEn, HIGH); // Z-state DataBus
         //
         Tx_Buff[0] = AckEEPROMWriteBlock;
         Tx_Buff[1] = Rx_Buff[1];
@@ -514,11 +585,10 @@ void loop() {
           Serial.println ("Read IO...");
         #endif
         //
-        Enable_BUS_Ctrl (BusModeRead); // Enable BUS control, read mode
+        pinMode (DataOutEn, OUTPUT);
+        digitalWrite (DataOutEn, HIGH); // Z-state DataBus
         //
         Tx_Buff[3] = IORead ((Rx_Buff[1]<<8) + Rx_Buff[2]);
-        //
-        //Disable_BUS_Ctrl (); // Disable BUS control 
         //
         Tx_Buff[0] = AckIOReadByte;
         Tx_Buff[1] = Rx_Buff[1];
@@ -554,13 +624,12 @@ void loop() {
           Serial.println ("Read IO block...");
         #endif
         //
-        Enable_BUS_Ctrl (BusModeRead); // Enable BUS control, read mode
+        pinMode (DataOutEn, OUTPUT);
+        digitalWrite (DataOutEn, HIGH); // Z-state DataBus
         //
         for (uint8_t Index = 0; Index < Rx_Buff[1]; Index++) {
           Tx_Buff[3+Index] = IORead (StartAddr + Index);
         }
-        //
-        //Disable_BUS_Ctrl (); // Disable BUS control 
         //
         Tx_Buff[0] = AckIOReadBlock;
         Tx_Buff[1] = Rx_Buff[1];
@@ -584,11 +653,13 @@ void loop() {
           Serial.println ("Write IO...");
         #endif
         //
-        Enable_BUS_Ctrl (BusModeWrite); // Enable BUS control, write mode
+        pinMode (DataOutEn, OUTPUT);
+        digitalWrite (DataOutEn, LOW); // Active-state DataBus
         //
         IOWrite (Rx_Buff[3], (Rx_Buff[1]<<8) + Rx_Buff[2]);
         //
-        //Disable_BUS_Ctrl (); // Disable BUS control 
+        pinMode (DataOutEn, OUTPUT);
+        digitalWrite (DataOutEn, HIGH); // Z-state DataBus
         //
         Tx_Buff[0] = AckIOWriteByte;
         Tx_Buff[1] = Rx_Buff[1];
@@ -607,8 +678,6 @@ void loop() {
           send_packet (Tx_Buff, 1);
           return;
         }
-        //
-        Enable_BUS_Ctrl (BusModeWrite); // Enable BUS control, write mode
         //
         if (Rx_Buff[1] > MAX_DATA_SIZE) { // Max data size limit!
           #ifdef Debug
@@ -636,13 +705,12 @@ void loop() {
           Serial.println ("Write IO block...");
         #endif
         //
-        Enable_BUS_Ctrl (BusModeWrite); // Enable BUS control, write mode
+        pinMode (DataOutEn, OUTPUT);
+        digitalWrite (DataOutEn, HIGH); // Z-state DataBus
         //
         for (uint8_t Index = 0; Index < Rx_Buff[1]; Index++) {
           IOWrite (Rx_Buff[Index + 4], StartAddr + Index);
         }
-        //
-        //Disable_BUS_Ctrl (); // Disable BUS control 
         //
         Tx_Buff[0] = AckIOWriteBlock;
         Tx_Buff[1] = Rx_Buff[1];
@@ -690,11 +758,7 @@ void EEPROMWrite (uint8_t Data, uint16_t Address) {
       Serial.println ("Set 'MemWR' pin to LOW.");
   #endif
   //
-  if (!InvertCtrlBus) {
-    digitalWrite (MemW_Pin, LOW);
-  } else {
-    digitalWrite (MemW_Pin, HIGH);
-  }
+  digitalWrite (MemW_Pin, HIGH);
   //
   delay (1);
   //
@@ -702,11 +766,7 @@ void EEPROMWrite (uint8_t Data, uint16_t Address) {
     Serial.println ("Set 'MemWR' pin to HIGH.");
   #endif
   //
-  if (!InvertCtrlBus) {
-    digitalWrite (MemW_Pin, HIGH);
-  } else {
-    digitalWrite (MemW_Pin, LOW);
-  }
+  digitalWrite (MemW_Pin, LOW);
   //
   delay (2);
   //
@@ -739,21 +799,13 @@ void MemWrite (uint8_t Data, uint16_t Address) {
     Serial.println ("Set 'MemWR' pin to LOW.");
   #endif
   //
-  if (!InvertCtrlBus) {
-    digitalWrite (MemW_Pin, LOW);
-  } else {
-    digitalWrite (MemW_Pin, HIGH);
-  }
+  digitalWrite (MemW_Pin, HIGH);
   //
   #ifdef Debug
     Serial.println ("Set 'MemWR' pin to HIGH.");
   #endif
   //
-  if (!InvertCtrlBus) {
-    digitalWrite (MemW_Pin, HIGH);
-  } else {
-    digitalWrite (MemW_Pin, LOW);
-  }
+  digitalWrite (MemW_Pin, LOW);
   //
 };
 //
@@ -784,11 +836,7 @@ uint8_t MemRead (uint16_t Address) {
     Serial.println ("Set 'MemRD' pin to LOW.");
   #endif
   //
-  if (!InvertCtrlBus) {
-    digitalWrite (MemR_Pin, LOW); // toggle the MRDPin
-  } else {
-    digitalWrite (MemR_Pin, HIGH); // toggle the MRDPin
-  }
+  digitalWrite (MemR_Pin, HIGH); // toggle the MRDPin
   //
   #ifdef Debug
     Serial.println ("Latch in data.");
@@ -819,11 +867,7 @@ uint8_t MemRead (uint16_t Address) {
     Serial.println ("Set 'MemRD' pin to HIGH.");
   #endif
   //
-  if (!InvertCtrlBus) {
-    digitalWrite (MemR_Pin, HIGH); // toggle the MRDPin
-  } else {
-    digitalWrite (MemR_Pin, LOW); // toggle the MRDPin
-  }
+  digitalWrite (MemR_Pin, LOW); // toggle the MRDPin
   //
   return IncomingValue;
 };
@@ -855,21 +899,13 @@ void IOWrite (uint8_t Data, uint16_t Address) {
     Serial.println ("Set 'IOWR' pin to LOW.");
   #endif
   //
-  if (!InvertCtrlBus) {
-    digitalWrite (IOW_Pin, LOW); // toggle the IOWRPin
-  } else {
-    digitalWrite (IOW_Pin, HIGH); // toggle the IOWRPin 
-  }
+  digitalWrite (IOW_Pin, HIGH); // toggle the IOWRPin
   //
   #ifdef Debug
     Serial.println ("Set 'IOWR' pin to HIGH.");
   #endif
   //
-  if (!InvertCtrlBus) {
-    digitalWrite (IOW_Pin, HIGH); // toggle the IOWRPin
-  } else {
-    digitalWrite (IOW_Pin, LOW); // toggle the IOWRPin
-  }
+  digitalWrite (IOW_Pin, LOW); // toggle the IOWRPin
   //
 };
 //
@@ -900,11 +936,7 @@ uint8_t IORead (uint16_t Address) {
     Serial.println ("Set 'IORD' pin to LOW.");
   #endif
   //
-  if (!InvertCtrlBus) {
-    digitalWrite (IOR_Pin, LOW); // toggle the IORDPin
-  } else {
-    digitalWrite (IOR_Pin, HIGH); // toggle the IORDPin
-  }
+  digitalWrite (IOR_Pin, HIGH); // toggle the IORDPin
   //
   #ifdef Debug
     Serial.println ("Latch in data.");
@@ -935,161 +967,11 @@ uint8_t IORead (uint16_t Address) {
     Serial.println ("Set 'IORD' pin to HIGH.");
   #endif
   //
-  if (!InvertCtrlBus) {
-    digitalWrite (IOR_Pin, HIGH); // toggle the IORDPin
-  } else {
-    digitalWrite (IOR_Pin, LOW); // toggle the IORDPin
-  }
+  digitalWrite (IOR_Pin, LOW); // toggle the IORDPin
   //
   return IncomingValue;
 };
 ///
-void Enable_BUS_Ctrl (uint8_t BusMode) {
-  // 
-  #ifdef Debug
-    Serial.println ("Set 'Memory' pins to output...");
-  #endif
-  //
-  pinMode (MemW_Pin, OUTPUT);
-  pinMode (MemR_Pin, OUTPUT);
-  //
-  #ifdef Debug
-    Serial.println ("Set 'MemWR' pin to HIGH.");
-  #endif
-  //
-  if (!InvertCtrlBus) {
-    digitalWrite (MemW_Pin, HIGH);
-  } else {
-    digitalWrite (MemW_Pin, LOW);
-  }
-  //
-  #ifdef Debug
-    Serial.println ("Set 'MemRD' pin to HIGH.");
-  #endif
-  //
-  if (!InvertCtrlBus) {
-    digitalWrite (MemR_Pin, HIGH);
-  } else {
-    digitalWrite (MemR_Pin, LOW);
-  }
-  //
-  #ifdef Debug
-    Serial.println ("Set 'IO' pins to output...");
-  #endif
-  //
-  pinMode (IOW_Pin, OUTPUT);
-  pinMode (IOR_Pin, OUTPUT);
-  //
-  #ifdef Debug
-    Serial.println ("Set 'IOWR' pin to HIGH.");
-  #endif
-  //
-  if (!InvertCtrlBus) {
-    digitalWrite (IOW_Pin, HIGH);
-  } else {
-    digitalWrite (IOW_Pin, LOW);
-  }
-  //
-  #ifdef Debug
-    Serial.println ("Set 'IORD' pin to HIGH.");
-  #endif
-  //
-  if (!InvertCtrlBus) {
-    digitalWrite (IOR_Pin, HIGH);
-  } else {
-    digitalWrite (IOR_Pin, LOW);
-  }
-  ///
-  #ifdef Debug
-    Serial.println ("Enable address output.");
-  #endif
-  digitalWrite (AddressOutEn, LOW);
-  //
-  if (BusMode == BusModeRead) {
-    #ifdef Debug
-      Serial.println ("Disable data output.");
-    #endif
-    digitalWrite (DataOutEn, HIGH);
-  } else {
-    #ifdef Debug
-      Serial.println ("Enable data output.");
-    #endif
-    digitalWrite (DataOutEn, LOW);
-  }
-  //
-}
-//
-void Disable_BUS_Ctrl (void) {
-  //
-  #ifdef Debug
-    Serial.println ("Disable address output.");
-  #endif
-  digitalWrite (AddressOutEn, HIGH);
-  #ifdef Debug
-    Serial.println ("Disable data output.");
-  #endif
-  digitalWrite (DataOutEn, HIGH);
-  ///
-  #ifdef Debug
-    Serial.println ("Set 'Memory' pins to input...");
-  #endif
-  //
-  pinMode (MemW_Pin, INPUT);
-  pinMode (MemR_Pin, INPUT);
-  //
-  #ifdef Debug
-    Serial.println ("Set 'IO' pins to input...");
-  #endif
-  //
-  pinMode (IOW_Pin, INPUT);
-  pinMode (IOR_Pin, INPUT);
-}
-//
-void Set_Internal_OutPin (void) {
-  #ifdef Debug
-    Serial.println ("Set 'Internal Out' pins...");
-  #endif
-  //
-  pinMode (latchOutPin, OUTPUT);
-  pinMode (clockOutPin, OUTPUT);
-  pinMode (dataOutPin, OUTPUT);
-  pinMode (DataOutEn, OUTPUT);
-  pinMode (AddressOutEn, OUTPUT);
-  //
-  digitalWrite (latchOutPin, LOW);
-  digitalWrite (clockOutPin, LOW);
-  digitalWrite (dataOutPin, LOW);
-  digitalWrite (DataOutEn, LOW);
-  digitalWrite (AddressOutEn, LOW);
-}
-//
-void Set_Internal_InPin (void) {
-  #ifdef Debug
-    Serial.println ("Set 'Internal In' pins...");
-  #endif
-  //
-  pinMode (latchInPin, OUTPUT);
-  pinMode (clockInPin, OUTPUT);
-  pinMode (dataInPin, INPUT);
-  //
-  digitalWrite (latchInPin, HIGH);
-  digitalWrite (clockInPin, HIGH);
-}
-//
-void Set_CPUPin (void) {
-  #ifdef Debug
-    Serial.println ("Set 'CPU' pins...");
-  #endif
-  //
-  pinMode (HOLDPin, OUTPUT);
-  pinMode (HLDAPin, INPUT);
-  pinMode (BUSInUse, OUTPUT);
-  //
-  digitalWrite (HOLDPin, LOW);
-  digitalWrite (HLDAPin, LOW);
-  digitalWrite (BUSInUse, LOW);
-}
-///////
 int16_t receive_packet (uint8_t *Buff, bool Blocking, uint16_t TimeOut) {
   //
   static bool packet_Rx_Sync = false;

@@ -88,7 +88,7 @@ LANGS = {
         "emulator_step_into": "↴ Step Into (F11)", "emulator_step_over": "➟ Step Over (F10)",
         "emulator_run": "🚀 Run (F5)", "emulator_stop": "⛔ Stop (F8)", "emulator_add_bp": "Add",
         "emulator_clear_bp": "🗑 Clear All", "end": "End:", "emulator_stack": "Stack",
-        "tab_trace": "Trace", "emulator_trace": "Trace",
+        "tab_trace": "Trace", "emulator_trace": "Trace",  "trace_filter_clear":  "Reset filter ",
         "menu_profile":  "System Profile ",
         "trace_on":  "🔥 Enable Recording ",  "trace_off":  "⏹ Disable Recording ",
         "trace_clear":  "🗑 Clear ",  "trace_export":  "💾 Export ",
@@ -307,7 +307,7 @@ LANGS = {
         "menu_profile":  "Профиль системы ",
         "trace_on":  "🔥 Включить запись ",  "trace_off":  "⏹ Выключить запись ",
         "trace_clear":  "🗑 Очистить ",  "trace_export":  "💾 Экспорт ",
-        "trace_depth":  "Глубина: ",  "trace_records":  "Записей: ",
+        "trace_depth":  "Глубина: ",  "trace_records":  "Записей: ", "trace_filter_clear":  "Сбросить фильтр",
         "trace_search":  "Поиск: ",
         "trace_search_hint":  "Адрес (HEX) или регистр ОП значение (A==55, HL>1000, SP<=F000) ",
         "trace_detail_title":  "Детали выбранной записи ",
@@ -3532,6 +3532,8 @@ class MainWindow(QMainWindow):
             self.lbl_trace_search.setText(self.tr("trace_search"))
             self.txt_trace_search.setPlaceholderText(self.tr("trace_search_hint"))
             self.trace_detail_group.setTitle(self.tr("trace_detail_title"))
+            self.btn_trace_filter_clear.setToolTip(self.tr("trace_filter_clear"))
+            
         # ============================================================
         # МЕНЮ ПРОФИЛЕЙ
         # ============================================================
