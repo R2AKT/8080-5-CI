@@ -89,6 +89,7 @@ LANGS = {
         "emulator_run": "🚀 Run (F5)", "emulator_stop": "⛔ Stop (F8)", "emulator_add_bp": "Add",
         "emulator_clear_bp": "🗑 Clear All", "end": "End:", "emulator_stack": "Stack",
         "tab_trace": "Trace", "emulator_trace": "Trace",  "trace_filter_clear":  "Reset filter ",
+        "emulator_trace_on": "Trace on", "emulator_trace_off": "Trace off", 
         "menu_profile":  "System Profile ",
         "trace_on":  "🔥 Enable Recording ",  "trace_off":  "⏹ Disable Recording ",
         "trace_clear":  "🗑 Clear ",  "trace_export":  "💾 Export ",
@@ -247,6 +248,18 @@ LANGS = {
         "trace_search_log": "Trace search: '",
         "trace_search_found": "' — found ",
         "trace_filter_clear":  "Reset filter ",
+        "tip_watch_add":  "Add watch item ",  "tip_watch_del":  "Delete selected item ",
+        "tip_watch_clear":  "Clear all ",  "tip_watch_save":  "Save preset ",
+        "tip_watch_load":  "Load preset ",  "tip_bp_add":  "Add breakpoint ",
+        "tip_bp_cond":  "Edit condition ",  "tip_bp_toggle":  "Enable/disable ",
+        "tip_bp_del":  "Delete selected ",  "tip_bp_clear":  "Clear all ",
+        "tip_bp_save":  "Save BP preset ",  "tip_bp_load":  "Load BP preset ",
+        "tip_trace_enable":  "Enable trace recording ",
+        "trace_filter_clear":  "Reset filter ",
+        "watch_col_name":   "Name  ",   "watch_col_target":   "Addr/Reg  ",
+        "watch_col_value":   "Value  ",   "watch_col_format":   "Format  ",
+        "bp_col_addr":   "Address  ",   "bp_col_cond":   "Condition  ",
+        "bp_col_enabled":   "On  ",   "bp_col_hits":   "Hits  ",
     },
     "ru": {
         "app_title": "i8080-5 CI",
@@ -258,7 +271,7 @@ LANGS = {
         "memory": "Память (RAM/ROM) — чтение/запись значений", "io_port": "Порт ввода-вывода (IO) — чтение/запись значений",
         "addr_hex": "Адрес (HEX):", "port_hex": "Порт (HEX):", "bits": "Разрядность (бит):",
         "value_hex": "Значение (HEX):", "endian": "Порядок байтов:", "read": "Прочитать", "write": "Записать",
-        "range": "Диапазон:", "read_block": "Читать блок...", "start": "Start:", "len": "Len:",
+        "range": "Диапазон:", "read_block": "Читать блок...", "start": "Старт:", "len": "длина:",
         "disasm": "Дизассемблировать", "auto_disasm": "Авто при чтении/загрузке",
         "pattern": "Паттерн:", "start_test": "Запустить тест памяти",
         "single_io": "Одиночные операции IO", "read_in": "Читать (IN)", "write_out": "Записать (OUT)",
@@ -304,6 +317,7 @@ LANGS = {
         "emulator_step_over": "➟ Шаг без захода (F10)", "emulator_run": "🚀 Запуск (F5)", "emulator_stop": "⛔ Стоп (F8)",
         "emulator_add_bp": "Добавить", "emulator_clear_bp": "🗑 Очистить все", "end": "Конец:", "emulator_stack": "Стек",
         "tab_trace": "Трассировка", "emulator_trace": "Трассировка",
+        "emulator_trace_on": "Трассировка включена", "emulator_trace_off": "Трассировка выключена", 
         "menu_profile":  "Профиль системы ",
         "trace_on":  "🔥 Включить запись ",  "trace_off":  "⏹ Выключить запись ",
         "trace_clear":  "🗑 Очистить ",  "trace_export":  "💾 Экспорт ",
@@ -462,6 +476,18 @@ LANGS = {
         "trace_search_log": "Поиск в трассировке: '",
         "trace_search_found": "' — найдено ",
         "trace_filter_clear":  "Сбросить фильтр ",
+        "tip_watch_add":  "Добавить элемент наблюдения ",  "tip_watch_del":  "Удалить выбранный элемент ",
+        "tip_watch_clear":  "Очистить все ",  "tip_watch_save":  "Сохранить пресет ",
+        "tip_watch_load":  "Загрузить пресет ",  "tip_bp_add":  "Добавить точку останова ",
+        "tip_bp_cond":  "Редактировать условие ",  "tip_bp_toggle":  "Включить/выключить ",
+        "tip_bp_del":  "Удалить выбранную ",  "tip_bp_clear":  "Очистить все ",
+        "tip_bp_save":  "Сохранить пресет BP ",  "tip_bp_load":  "Загрузить пресет BP ",
+        "tip_trace_enable":  "Включить запись трассировки выполнения ",
+        "trace_filter_clear":  "Сбросить фильтр ",
+        "watch_col_name":   "Имя  ",   "watch_col_target":   "Адрес/Рег  ",
+        "watch_col_value":   "Значение  ",   "watch_col_format":   "Формат  ",
+        "bp_col_addr":   "Адрес  ",   "bp_col_cond":   "Условие  ",
+        "bp_col_enabled":   "Вкл  ",   "bp_col_hits":   "Сраб.  ",
     }
 }
 
@@ -2201,6 +2227,7 @@ class WatchModel(QAbstractTableModel):
     def __init__(self, emulator, parent=None):
         super().__init__(parent)
         self.emulator = emulator
+        self.lang = "en"
         self.items = []  # Список элементов наблюдения
         self.prev_values = {}  # Предыдущие значения для подсветки
         
@@ -2380,7 +2407,13 @@ class WatchModel(QAbstractTableModel):
         
     def headerData(self, section, orientation, role=Qt.DisplayRole):
         if role == Qt.DisplayRole and orientation == Qt.Horizontal:
-            headers = ["Имя", "Адрес/Рег", "Значение", "Формат"]
+            L = LANGS.get(self.lang, LANGS["en"])
+            headers = [
+                L.get("watch_col_name", "Name"),
+                L.get("watch_col_target", "Addr/Reg"),
+                L.get("watch_col_value", "Value"),
+                L.get("watch_col_format", "Format"),
+            ]
             return headers[section]
         return None
         
@@ -2425,6 +2458,7 @@ class BreakpointModel(QAbstractTableModel):
     def __init__(self, emulator, parent=None):
         super().__init__(parent)
         self.emulator = emulator
+        self.lang = "en"
     
     def get_bp_list(self):
         """Отсортированный список адресов BP"""
@@ -2444,7 +2478,13 @@ class BreakpointModel(QAbstractTableModel):
     
     def headerData(self, section, orientation, role=Qt.DisplayRole):
         if role == Qt.DisplayRole and orientation == Qt.Horizontal:
-            headers = ["Адрес", "Условие", "Вкл", "Сраб."]
+            L = LANGS.get(self.lang, LANGS["en"])
+            headers = [
+                L.get("bp_col_addr", "Address"),
+                L.get("bp_col_cond", "Condition"),
+                L.get("bp_col_enabled", "On"),
+                L.get("bp_col_hits", "Hits"),
+            ]
             return headers[section]
         return None
     
@@ -3560,11 +3600,40 @@ class MainWindow(QMainWindow):
             self.trace_model.lang = self.current_lang
             self.trace_model.refresh()
         
+        # модель Watch  ← ДОБАВЛЕНО
+        if hasattr(self, 'watch_model'):
+            self.watch_model.lang = self.current_lang
+            self.watch_model.layoutChanged.emit()
+        
+        # модель Breakpoints  ← ДОБАВЛЕНО
+        if hasattr(self, 'bp_model'):
+            self.bp_model.lang = self.current_lang
+            self.bp_model.refresh()
+        
         # язык дизассемблера эмулятора
         if hasattr(self, 'emu_disasm_view'):
             self.emu_disasm_view.lang = self.current_lang
             self.emu_disasm_view.update()
         
+        # === Тултипы кнопок трассировки ===
+        if hasattr(self, 'btn_trace_filter_clear'):
+            self.btn_trace_filter_clear.setToolTip(self.tr("trace_filter_clear"))
+        # === Тултипы кнопок эмулятора ===
+        if hasattr(self, 'btn_watch_add'):
+            self.btn_watch_add.setToolTip(self.tr("tip_watch_add"))
+            self.btn_watch_del.setToolTip(self.tr("tip_watch_del"))
+            self.btn_watch_clear.setToolTip(self.tr("tip_watch_clear"))
+            self.btn_watch_save_preset.setToolTip(self.tr("tip_watch_save"))
+            self.btn_watch_load_preset.setToolTip(self.tr("tip_watch_load"))
+            self.btn_bp_add.setToolTip(self.tr("tip_bp_add"))
+            self.btn_bp_cond.setToolTip(self.tr("tip_bp_cond"))
+            self.btn_bp_toggle.setToolTip(self.tr("tip_bp_toggle"))
+            self.btn_bp_del.setToolTip(self.tr("tip_bp_del"))
+            self.btn_bp_clear.setToolTip(self.tr("tip_bp_clear"))
+            self.btn_bp_save_preset.setToolTip(self.tr("tip_bp_save"))
+            self.btn_bp_load_preset.setToolTip(self.tr("tip_bp_load"))
+            self.chk_trace_enable.setToolTip(self.tr("tip_trace_enable"))
+            
     # ==================== ЛОГИКА ====================
     def refresh_ports(self):
         self.port_combo.clear()
@@ -5085,7 +5154,7 @@ class MainWindow(QMainWindow):
     def emulator_step_into(self):
         """Step Into: одна инструкция (обходит BP на текущем PC)"""
         if self.emulator.halted:
-            self.statusBar.showMessage("CPU halted. Press Reset.", 3000)
+            self.statusBar.showMessage(f"{self.tr('status_cpu_halted_short')}", 3000)
             return
         self._save_watch_prev_values()
         self._save_reg_prev_values()
@@ -5097,7 +5166,7 @@ class MainWindow(QMainWindow):
     def emulator_step_over(self):
         """Step Over: выполнить CALL как одну инструкцию"""
         if self.emulator.halted:
-            self.statusBar.showMessage("CPU halted. Press Reset.", 3000)
+            self.statusBar.showMessage(f"{self.tr('status_cpu_halted_short')}", 3000) 
             return
         self._save_watch_prev_values()
         self._save_reg_prev_values()  # ← Сохраняем регистры ДО выполнения
@@ -6225,10 +6294,10 @@ class MainWindow(QMainWindow):
         """Чек-бокс трассировки в эмуляторе"""
         if checked:
             self.emulator.trace_start()
-            self.log("Трассировка включена")
+            self.log(f"{self.tr('emulator_trace_on')}")
         else:
             self.emulator.trace_stop()
-            self.log("Трассировка выключена")
+            self.log(f"{self.tr('emulator_trace_off')}")
         # Синхронизируем с кнопкой на вкладке трассировки
         if hasattr(self, 'btn_trace_toggle'):
             self.btn_trace_toggle.setChecked(checked)
