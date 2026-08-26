@@ -13,10 +13,11 @@ ComputerSystem — инкапсуляция полной компьютерно�
 - Динамическое добавление/удаление устройств
 - Сохранение/восстановление состояний
 """
+import os.path
+
 from .memory.memory_bus import MemoryBus
 from .config.device_config import DeviceConfig, DeviceFactory
 from .config.system_profiles import get_profile, get_profile_names
-
 
 class ComputerSystem:
     """Полная компьютерная система"""
@@ -29,6 +30,44 @@ class ComputerSystem:
         self.profile_name = None    # имя профиля
         self.cpu = None             # ссылка на CPU (устанавливается извне)
         self._device_callbacks = {} # name -> callbacks (on_irq, on_drq и т.д.)
+
+    def validate_profile_files(self):
+        """Проверяет наличие файлов образов, указанных в конфигурации.
+        Возвращает список ошибок (пустой список если всё в порядке)."""
+        errors = []
+        if self.config is None:
+            return errors
+        
+        # Проверяем файлы образов из конфигурации
+        for mem_config in self.config.memory_regions:
+            if not isinstance(mem_config, dict):
+                continue
+            # Проверяем файл образа (если указан)
+            image_file = mem_config.get("image_file") or mem_config.get("file")
+            if image_file:
+                # Относительный путь относительно рабочего каталога
+                if not os.path.isabs(image_file):
+                    image_path = os.path.join(os.getcwd(), image_file)
+                else:
+                    image_path = image_file
+                if not os.path.isfile(image_path):
+                    errors.append(f"Файл образа не найден: {image_file}")
+        
+        # Проверяем файлы устройств
+        for dev_config in self.config.devices:
+            if not isinstance(dev_config, dict):
+                continue
+            # Проверяем файлы образов устройств
+            image_file = dev_config.get("image_file") or dev_config.get("file")
+            if image_file:
+                if not os.path.isabs(image_file):
+                    image_path = os.path.join(os.getcwd(), image_file)
+                else:
+                    image_path = image_file
+                if not os.path.isfile(image_path):
+                    errors.append(f"Файл образа устройства не найден: {image_file}")
+        
+        return errors
 
     # =============================================
     # ЗАГРУЗКА КОНФИГУРАЦИИ
@@ -50,12 +89,22 @@ class ComputerSystem:
         return self
 
     def load_profile(self, profile_name):
-        """Загрузить предустановленный профиль"""
+        """Загрузка профиля системы (итерация 10.4)"""
         profile = get_profile(profile_name)
         if profile is None:
             raise ValueError(f"Профиль '{profile_name}' не найден. "
                              f"Доступные: {get_profile_names()}")
-        return self.load_from_toml_string(profile["toml"], name=profile_name)
+
+        # Внешний профиль: храним как dict
+        if "config" in profile:
+            self.config = DeviceConfig()
+            self.config.load_from_dict(profile["config"])
+            self.profile_name = profile_name
+            self._apply_config()
+            return self
+
+        # Встроенный профиль: из TOML-строки
+        return self.load_from_toml_string(profile.get("toml", ""), name=profile_name)
 
     # =============================================
     # ПРИМЕНЕНИЕ КОНФИГУРАЦИИ

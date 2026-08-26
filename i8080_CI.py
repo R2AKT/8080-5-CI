@@ -1223,7 +1223,12 @@ class HexTableView(QTableView):
         self.disassembler = disassembler
         self.mem_data = mem_data
         self.setMouseTracking(True)
-        
+    
+    def tr(self, key):
+        if self.parent() and hasattr(self.parent(), 'tr'):
+            return self.parent().tr(key)
+        return key
+    
     def event(self, event):
         if event.type() == QEvent.ToolTip:
             viewport_pos = self.viewport().mapFrom(self, event.pos())
@@ -1277,31 +1282,31 @@ class HexTableView(QTableView):
             byte_val = self.mem_data[addr]
             
             # Копировать адрес
-            act_copy_addr = menu.addAction(f"Copy Address (0x{addr:04X})")
+            act_copy_addr = menu.addAction(f"{self.tr('ctx_copy_addr')} (0x{addr:04X})")
             act_copy_addr.triggered.connect(lambda: self.copy_to_clipboard(f"{addr:04X}"))
             
             # Копировать значение
-            act_copy_val = menu.addAction(f"Copy Value (0x{byte_val:02X})")
+            act_copy_val = menu.addAction(f"{self.tr('ctx_copy_val')} (0x{byte_val:02X})")
             act_copy_val.triggered.connect(lambda: self.copy_to_clipboard(f"{byte_val:02X}"))
             
             menu.addSeparator()
             
             # Инвертировать байт
-            act_invert = menu.addAction(f"Invert Byte (0x{~byte_val & 0xFF:02X})")
+            act_invert = menu.addAction(f"{self.tr('ctx_invert')} (0x{~byte_val & 0xFF:02X})")
             act_invert.triggered.connect(lambda: self.invert_byte(addr))
             
             # Заполнить диапазон
-            act_fill = menu.addAction("Fill Range...")
+            act_fill = menu.addAction(self.tr("ctx_fill"))
             act_fill.triggered.connect(lambda: self.fill_range(addr))
             
             menu.addSeparator()
             
             # Дизассемблировать отсюда
-            act_disasm = menu.addAction(f"Disassemble from 0x{addr:04X}")
+            act_disasm = menu.addAction(f"{self.tr('ctx_disasm')}0x{addr:04X}")
             act_disasm.triggered.connect(lambda: self.disasm_from(addr))
             
             # Перейти к адресу
-            act_goto = menu.addAction("Goto Address...")
+            act_goto = menu.addAction(self.tr("ctx_goto"))
             act_goto.triggered.connect(lambda: self.goto_dialog())
             
         menu.exec(event.globalPos())
@@ -1323,14 +1328,14 @@ class HexTableView(QTableView):
                 
     def fill_range(self, start_addr):
         """Заполняет диапазон значением"""
-        text, ok = QInputDialog.getText(self, "Fill Range", "Value (HEX):")
+        text, ok = QInputDialog.getText(self, self.tr("fill_title"), self.tr("fill_value"))
         if not ok: return
         try:
             val = int(text, 16)
         except ValueError:
             return
             
-        size, ok2 = QInputDialog.getInt(self, "Fill Range", "Size (Dec):", 16, 1, 4096)
+        size, ok2 = QInputDialog.getInt(self, self.tr("fill_title"), self.tr("fill_size"), 16, 1, 4096)
         if not ok2: return
         
         changes = []
@@ -1351,7 +1356,7 @@ class HexTableView(QTableView):
         
     def goto_dialog(self):
         """Диалог перехода к адресу"""
-        text, ok = QInputDialog.getText(self, "Goto Address", "Address (HEX):")
+        text, ok = QInputDialog.getText(self, self.tr("goto_title"), self.tr("bp_addr"))
         if not ok: return
         try:
             addr = int(text, 16)
@@ -1373,7 +1378,7 @@ class SearchDialog(QDialog):
         
         # Поле ввода паттерна
         input_layout = QHBoxLayout()
-        self.lbl_pattern = QLabel("Pattern:")
+        self.lbl_pattern = QLabel(self.tr("search_pattern"))
         self.txt_pattern = QLineEdit()
         self.txt_pattern.setPlaceholderText("C3 00 10 or HELLO")
         input_layout.addWidget(self.lbl_pattern)
@@ -1382,18 +1387,22 @@ class SearchDialog(QDialog):
         
         # Режим поиска
         mode_layout = QHBoxLayout()
-        self.lbl_mode = QLabel("Mode:")
+        self.lbl_mode = QLabel(self.tr("search_mode"))
         self.cmb_mode = QComboBox()
-        self.cmb_mode.addItems(["HEX Bytes", "ASCII String", "HEX with Mask (??)"])
+        self.cmb_mode.addItems([
+            self.tr("search_mode_hex"),
+            self.tr("search_mode_ascii"),
+            self.tr("search_mode_mask")
+        ])
         mode_layout.addWidget(self.lbl_mode)
         mode_layout.addWidget(self.cmb_mode)
         layout.addLayout(mode_layout)
         
         # Кнопки
         btn_layout = QHBoxLayout()
-        self.btn_find = QPushButton("Find Next")
-        self.btn_find_all = QPushButton("Find All")
-        self.btn_close = QPushButton("Close")
+        self.btn_find = QPushButton(self.tr("search_find_next"))
+        self.btn_find_all = QPushButton(self.tr("search_find_all"))
+        self.btn_close = QPushButton(self.tr("search_close"))
         self.btn_find.clicked.connect(self.on_find)
         self.btn_find_all.clicked.connect(self.on_find_all)
         self.btn_close.clicked.connect(self.close)
@@ -1403,12 +1412,35 @@ class SearchDialog(QDialog):
         layout.addLayout(btn_layout)
         
         # Результаты
-        self.lbl_results = QLabel("Results:")
+        self.lbl_results = QLabel(self.tr("search_results"))
         layout.addWidget(self.lbl_results)
         
         self.results_list = QListWidget()
         self.results_list.itemDoubleClicked.connect(self.on_result_double_click)
         layout.addWidget(self.results_list)
+        
+    def tr(self, key):
+        if self.parent() and hasattr(self.parent(), 'tr'):
+            return self.parent().tr(key)
+        return key
+        
+    def retranslate(self):
+        self.setWindowTitle(self.tr("search_title"))
+        self.lbl_pattern.setText(self.tr("search_pattern"))
+        self.lbl_mode.setText(self.tr("search_mode"))
+        self.btn_find.setText(self.tr("search_find_next"))
+        self.btn_find_all.setText(self.tr("search_find_all"))
+        self.btn_close.setText(self.tr("search_close"))
+        self.lbl_results.setText(self.tr("search_results"))
+        # Обновляем пункты combo (не меняем текущий выбор)
+        current = self.cmb_mode.currentIndex()
+        self.cmb_mode.clear()
+        self.cmb_mode.addItems([
+            self.tr("search_mode_hex"),
+            self.tr("search_mode_ascii"),
+            self.tr("search_mode_mask")
+        ])
+        self.cmb_mode.setCurrentIndex(current)
         
     def on_find(self):
         pattern = self.txt_pattern.text().strip()
@@ -3098,7 +3130,7 @@ class MainWindow(QMainWindow):
     def emulator_run(self):
         """Запуск эмулятора (F5)"""
         if self.emulator.halted:
-            self.statusBar.showMessage("CPU halted. Press Reset (Ctrl+F2).", 3000)
+            self.statusBar.showMessage(self.tr("status_cpu_halted"), 3000)
             return
         self.run_target_addr = None
         
@@ -3117,7 +3149,7 @@ class MainWindow(QMainWindow):
         
     def set_pc_dialog(self):
         """Диалог установки PC"""
-        text, ok = QInputDialog.getText(self, self.tr("set_pc_title"), "Address (HEX):")
+        text, ok = QInputDialog.getText(self, self.tr("set_pc_title"), self.tr("bp_addr"))
         if ok:
             try:
                 addr = int(text, 16)
@@ -3127,7 +3159,7 @@ class MainWindow(QMainWindow):
                 
     def add_breakpoint_dialog(self):
         """Диалог добавления точки останова"""
-        text, ok = QInputDialog.getText(self, self.tr("bp_addr"), "Address (HEX):")
+        text, ok = QInputDialog.getText(self, self.tr("bp_addr"), self.tr("bp_addr"))
         if ok:
             try:
                 addr = int(text, 16)
@@ -3595,6 +3627,10 @@ class MainWindow(QMainWindow):
         self.hex_model.lang = self.current_lang
         self.hex_model.layoutChanged.emit()
         
+        # обновление диалога поиска
+        if hasattr(self, 'search_dialog'):
+            self.search_dialog.retranslate()
+        
         # модель трассировки
         if hasattr(self, 'trace_model'):
             self.trace_model.lang = self.current_lang
@@ -3618,6 +3654,7 @@ class MainWindow(QMainWindow):
         # === Тултипы кнопок трассировки ===
         if hasattr(self, 'btn_trace_filter_clear'):
             self.btn_trace_filter_clear.setToolTip(self.tr("trace_filter_clear"))
+            
         # === Тултипы кнопок эмулятора ===
         if hasattr(self, 'btn_watch_add'):
             self.btn_watch_add.setToolTip(self.tr("tip_watch_add"))
@@ -4019,7 +4056,7 @@ class MainWindow(QMainWindow):
 
     # ==================== БЛОКИ, ТЕСТЫ, IO ====================
     def show_read_block_dialog(self):
-        text1, ok1 = QInputDialog.getText(self, self.tr("addr_hex"), "Start Address (HEX):")
+        text1, ok1 = QInputDialog.getText(self, self.tr("addr_hex"), self.tr("fill_start_addr"))
         if not ok1: return
         try:
             addr = int(text1, 16)
@@ -4028,9 +4065,8 @@ class MainWindow(QMainWindow):
             return
             
         size, ok2 = QInputDialog.getInt(
-            self, 
-            self.tr("len"), 
-            "Size (Dec):", 
+            self, self.tr("len"),
+            self.tr("fill_size"), 
             self.max_block_size,  # ← Значение по умолчанию
             1, 
             self.max_block_size   # ← Максимальное значение
@@ -4086,8 +4122,8 @@ class MainWindow(QMainWindow):
         bus_required = ["read_block", "write_block", "test_mem", 
                         "read_io_block", "write_io_block", "run_io_sequence"]
         if task in bus_required and not self.bus_active:
-            self.log("Bus not active! Hold the bus first.")
-            QMessageBox.warning(self, self.tr("error"), "Bus not active! Hold the bus first.")
+            self.log(self.tr("bus_not_active_msg"))
+            QMessageBox.warning(self, self.tr("error"), self.tr("bus_not_active_msg"))
             return
             
         # Блокируем очередь на время работы worker
@@ -4159,8 +4195,8 @@ class MainWindow(QMainWindow):
             return
             
         path, _ = QFileDialog.getSaveFileName(
-            self, 
-            "Export Disassembly", 
+            self,
+            self.tr("export_disasm_title"),
             "", 
             "Assembly Files (*.asm);;Text Files (*.txt);;All Files (*)"
         )
@@ -4187,8 +4223,8 @@ class MainWindow(QMainWindow):
                     
                     f.write(f"{addr:04X}  {bytes_str:<12} {asm}{undoc_mark}{target_comment}\n")
                     
-            self.log(f"Disassembly exported to: {path}")
-            self.statusBar.showMessage(f"Exported to {path}", 3000)
+            self.log(f"{self.tr('export_disasm_log')}{path}")
+            self.statusBar.showMessage(f"{self.tr('export_disasm_status')}{path}", 3000)
             
         except Exception as e:
             QMessageBox.critical(self, self.tr("error"), str(e))
@@ -4209,7 +4245,7 @@ class MainWindow(QMainWindow):
             try:
                 pattern_bytes = bytes.fromhex(pattern.replace(" ", ""))
             except ValueError:
-                QMessageBox.warning(self, self.tr("error"), "Invalid HEX pattern!")
+                QMessageBox.warning(self, self.tr("error"), self.tr("search_invalid_hex"))
                 return
                 
             for addr in sorted(self.mem_data.keys()):
@@ -4241,7 +4277,7 @@ class MainWindow(QMainWindow):
             # Парсим паттерн с маской
             parts = pattern.replace(" ", "").upper()
             if len(parts) % 2 != 0:
-                QMessageBox.warning(self, self.tr("error"), "Invalid pattern length!")
+                QMessageBox.warning(self, self.tr("error"), self.tr("search_invalid_len"))
                 return
                 
             pattern_list = []
@@ -4253,7 +4289,7 @@ class MainWindow(QMainWindow):
                     try:
                         pattern_list.append(int(byte_str, 16))
                     except ValueError:
-                        QMessageBox.warning(self, self.tr("error"), f"Invalid byte: {byte_str}")
+                        QMessageBox.warning(self, self.tr("error"), f"{self.tr('search_invalid_byte')}{byte_str}")
                         return
                         
             for addr in sorted(self.mem_data.keys()):
@@ -4274,7 +4310,7 @@ class MainWindow(QMainWindow):
         if hasattr(self, 'search_dialog'):
             self.search_dialog.show_results(results)
             
-        self.statusBar.showMessage(f"Found {len(results)} matches", 3000)
+        self.statusBar.showMessage(f"{self.tr('search_found')}{len(results)}{self.tr('search_matches')}", 3000)
         
     def goto_address(self, addr):
         """Переход к адресу в hex-редакторе"""
@@ -4423,7 +4459,7 @@ class MainWindow(QMainWindow):
 		
     def show_goto_dialog(self):
         """Диалог перехода к адресу (Ctrl+G)"""
-        text, ok = QInputDialog.getText(self, self.tr("goto_addr"), "Address (HEX):")
+        text, ok = QInputDialog.getText(self, self.tr("goto_title"), self.tr("bp_addr"))
         if not ok: return
         try:
             addr = int(text, 16)
@@ -4437,7 +4473,7 @@ class MainWindow(QMainWindow):
         if self.auto_disasm_check.isChecked():
             self.auto_disasm()
         self.update_range_label()
-        self.statusBar.showMessage("Refreshed", 2000)
+        self.statusBar.showMessage(self.tr("status_refreshed"), 2000)
 
     def push_undo(self, changes):
         """Добавляет операцию в стек undo"""
@@ -4446,12 +4482,12 @@ class MainWindow(QMainWindow):
         if len(self.undo_stack) > self.max_undo_depth:
             self.undo_stack.pop(0)
         self.redo_stack.clear()  # Очищаем redo при новом изменении
-        self.statusBar.showMessage(f"Undo depth: {len(self.undo_stack)}", 2000)
+        elf.statusBar.showMessage(f"{self.tr('status_undo_depth')}{len(self.undo_stack)}", 2000)
         
     def undo(self):
         """Отмена последнего изменения (Ctrl+Z)"""
         if not self.undo_stack:
-            self.statusBar.showMessage("Nothing to undo", 2000)
+            self.statusBar.showMessage(self.tr("status_nothing_undo"), 2000)
             return
         changes = self.undo_stack.pop()
         for addr, old_val, new_val in changes:
@@ -4460,12 +4496,12 @@ class MainWindow(QMainWindow):
         self.hex_model.update_data(self.mem_data)
         if self.auto_disasm_check.isChecked():
             self.auto_disasm()
-        self.statusBar.showMessage(f"Undo: {len(changes)} bytes", 2000)
+        self.statusBar.showMessage(f"{self.tr('status_undo')}{len(changes)}{self.tr('status_undo_bytes')}", 2000)
         
     def redo(self):
         """Повтор последнего изменения (Ctrl+Y)"""
         if not self.redo_stack:
-            self.statusBar.showMessage("Nothing to redo", 2000)
+            self.statusBar.showMessage(self.tr("status_nothing_redo"), 2000)
             return
         changes = self.redo_stack.pop()
         for addr, old_val, new_val in changes:
@@ -4474,7 +4510,7 @@ class MainWindow(QMainWindow):
         self.hex_model.update_data(self.mem_data)
         if self.auto_disasm_check.isChecked():
             self.auto_disasm()
-        self.statusBar.showMessage(f"Redo: {len(changes)} bytes", 2000)
+        self.statusBar.showMessage(f"{self.tr('status_redo')}{len(changes)}{self.tr('status_redo_bytes')}", 2000)
 		
     def create_tab_compare(self):
         tab = QWidget()
@@ -5705,16 +5741,7 @@ class MainWindow(QMainWindow):
         dialog.setMinimumWidth(500)
         layout = QVBoxLayout(dialog)
         
-        hint = QLabel(
-            "Доступные переменные:\n"
-            "  Регистры: A, B, C, D, E, H, L, BC, DE, HL, SP, PC\n"
-            "  Флаги: S, Z, AC, P, CY\n"
-            "  Память: mem[0x0100]   Порты: io[0x01]\n"
-            "  Такты: cycles\n"
-            "  Операторы: ==, !=, <, >, <=, >=, and, or, not\n"
-            "Примеры: A == 0x55,  mem[0x80] == 0xFF,  HL > 0x1000 and Z == 0\n"
-            "Оставьте пустым для обычной точки останова."
-        )
+        hint = QLabel(self.tr("bp_cond_hint"))
         hint.setWordWrap(True)
         hint.setStyleSheet("color: #666; font-size: 9pt;")
         layout.addWidget(hint)
@@ -6036,10 +6063,10 @@ class MainWindow(QMainWindow):
         
         detail = (
             f"#{rec['seq']}  PC={rec['pc']:04X}  {bytes_str}  {mnemonic}\n"
-            f"Регистры ПОСЛЕ: A={rec['A']:02X}  BC={rec['BC']:04X}  DE={rec['DE']:04X}  "
+            f"{self.tr('trace_regs_after')}A={rec['A']:02X}  BC={rec['BC']:04X}  DE={rec['DE']:04X}  "
             f"HL={rec['HL']:04X}  SP={rec['SP']:04X}\n"
-            f"Флаги: {flags_str}\n"
-            f"Такты: {rec['cycles']} (всего: {rec['cycles_total']})"
+            f"{self.tr('trace_flags')}{flags_str}\n"
+            f"{self.tr('trace_cycles')}{rec['cycles']}{self.tr('trace_cycles_total')}{rec['cycles_total']})"
         )
         self.lbl_trace_detail.setText(detail)
     
@@ -6315,12 +6342,22 @@ class MainWindow(QMainWindow):
             if self.emulator.running:
                 self.emulator_stop()
 
+            # Загружаем профиль (внутри создаётся НОВАЯ шина)
             self.system.load_profile(profile_name)
             self._current_profile = profile_name
+            
+            # === ПРОВЕРКА ФАЙЛОВ ОБРАЗОВ (ИТЕРАЦИЯ 10.4.1) ===
+            errors = self.system.validate_profile_files()
+            if errors:
+                raise ValueError(f"Ошибки загрузки профиля:\n" + "\n".join(errors))
+
+            # Переподключаем CPU к НОВОЙ шине
             self.system.connect_cpu(self.emulator)
+
+            # Обновляем ссылку на шину в MainWindow
             self.memory_bus = self.system.bus
 
-            # заменяем RAM из TOML на RAM с mem_data
+            # Заменяем RAM из TOML на RAM с mem_data
             from modules.memory import RAMRegion
             self.memory_bus.memory_regions = [
                 r for r in self.memory_bus.memory_regions
@@ -6328,14 +6365,20 @@ class MainWindow(QMainWindow):
             ]
             ram = RAMRegion(0x0000, 0xFFFF, data=self.mem_data, name="RAM")
             self.memory_bus.register_memory(ram)
-            # Убеждаемся, что эмулятор видит правильный bus
+
+            # Эмулятор видит правильный bus
             self.emulator.memory_bus = self.memory_bus
+
+            # Сбрасываем состояние эмулятора
+            self.emulator.halted = False
+            self.emulator.wait_signal = False
+            if self.mem_data:
+                self.emulator.set_pc_to_memory_start()
+                self.update_emu_disasm_view()
 
             if profile_name in self.profile_actions:
                 self.profile_actions[profile_name].setChecked(True)
-
             self._update_device_panels()
-
             self.statusBar.showMessage(
                 f"{self.tr('status_profile_loaded')}{self.system.config.system_name}", 3000
             )

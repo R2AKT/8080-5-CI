@@ -1,234 +1,115 @@
 """
-Профили систем: пресеты конфигурации для различных платформ.
-Итерация 9.2: пресеты систем.
+Профили систем для i8080-5 CI.
+Итерация 10.4 + вынос профилей во внешние TOML-файлы.
 
-Поддерживаемые профили:
-- empty: ПУСТОЙ (64кБ RAM, без устройств) 
-- radio86rk: Радио-86РК
-- micro80: Микро-80
-- vector06c: Вектор-06Ц
-- custom: Пользовательская конфигурация
-"""
-# =============================================
-# ПРОФИЛЬ: ПУСТОЙ
-# =============================================
-
-EMPTY = """
-[system]
-name = "ПУСТОЙ"
-cpu = "i8080"
-clock_mhz = 2.5
-description = "Пустой профиль"
-
-# Память
-[[memory]]
-type = "ram"
-start = 0x0000
-end = 0xFFFF
-name = "RAM-64K"
+Приоритет загрузки:
+1. Внешний файл профилей в рабочем каталоге (профили/*.toml)
+2. Встроенные профили (встроенные как fallback)
 """
 
-# =============================================
-# ПРОФИЛЬ: РАДИО-86РК
-# =============================================
+import os
+import os.path
+import glob
 
-RADIO86RK = """
-[system]
-name = "Радио-86РК"
-cpu = "i8080"
-clock_mhz = 1.78
-description = "Радио-86РК — одноплатный компьютер, 1986 г."
+# Базовый каталог проекта (каталог скрипта)
+_PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+_PROFILES_DIR = os.path.join(_PROJECT_DIR, "profiles")
 
-# Память
-[[memory]]
-type = "ram"
-start = 0x0000
-end = 0xBFFF
-name = "RAM-48K"
-
-[[memory]]
-type = "rom"
-start = 0xC000
-end = 0xFFFF
-name = "ROM-16K"
-file = "radio86rk.rom"
-
-# Устройства
-[[devices]]
-type = "i8255"
-name = "PPI-0"
-base_port = 0x00
-description = "PPI для клавиатуры и дисплея"
-
-[[devices]]
-type = "i8253"
-name = "PIT-0"
-base_port = 0x04
-description = "Таймер для звука"
-
-# Настройки дисплея (эмуляция через PPI + RAM)
-[display]
-type = "text"
-cols = 38
-rows = 25
-video_ram_start = 0x8000
-font_start = 0xF800
-"""
-
-# =============================================
-# ПРОФИЛЬ: МИКРО-80
-# =============================================
-
-MICRO80 = """
-[system]
-name = "Микро-80"
-cpu = "i8080"
-clock_mhz = 1.0
-description = "Микро-80 — одноплатный компьютер, 1983 г."
-
-# Память
-[[memory]]
-type = "ram"
-start = 0x0000
-end = 0x7FFF
-name = "RAM-32K"
-
-[[memory]]
-type = "rom"
-start = 0x8000
-end = 0xFFFF
-name = "ROM-32K"
-file = "micro80.rom"
-
-# Устройства
-[[devices]]
-type = "i8255"
-name = "PPI-0"
-base_port = 0x00
-description = "PPI для клавиатуры и дисплея"
-
-# Настройки дисплея
-[display]
-type = "text"
-cols = 38
-rows = 25
-video_ram_start = 0x8000
-font_start = 0xF800
-"""
-
-# =============================================
-# ПРОФИЛЬ: ВЕКТОР-06Ц
-# =============================================
-
-VECTOR06C = """
-[system]
-name = "Вектор-06Ц"
-cpu = "i8080"
-clock_mhz = 3.0
-description = "Вектор-06Ц — домашний компьютер, 1986 г."
-
-# Память (банкирование через порты)
-[[memory]]
-type = "ram"
-start = 0x0000
-end = 0xFFFF
-name = "RAM-64K"
-
-[[memory]]
-type = "rom"
-start = 0xC000
-end = 0xFFFF
-name = "ROM-16K"
-file = "vector06c.rom"
-
-# Устройства
-[[devices]]
-type = "i8255"
-name = "PPI-0"
-base_port = 0x00
-description = "PPI для клавиатуры"
-
-[[devices]]
-type = "i8253"
-name = "PIT-0"
-base_port = 0x04
-description = "Таймер для звука"
-
-[[devices]]
-type = "i8257"
-name = "DMA-0"
-base_port = 0x08
-description = "DMA для видео"
-
-[[devices]]
-type = "i8272"
-name = "FDC-0"
-base_port = 0x18
-description = "Контроллер гибких дисков"
-
-[[devices]]
-type = "i8276"
-name = "CRT-0"
-base_port = 0x20
-description = "CRT-контроллер"
-
-[[devices]]
-type = "lcd1602"
-name = "LCD-0"
-base_port = 0x30
-description = "Символьный дисплей"
-
-# Настройки дисплея
-[display]
-type = "graphics"
-width = 512
-height = 512
-colors = 16
-video_ram_start = 0x0000
-
-# Настройки звука
-[audio]
-type = "beeper"
-channels = 1
-"""
-
-# =============================================
-# РЕЕСТР ПРОФИЛЕЙ
-# =============================================
-
+# ============================================================
+# ВСТРОЕННЫЕ ПРОФИЛИ (минимальный набор, если нет внешних)
+# ============================================================
 SYSTEM_PROFILES = {
     "empty": {
-        "name": "ПУСТОЙ",
-        "toml": EMPTY,
-    },
-    "radio86rk": {
-        "name": "Радио-86РК",
-        "toml": RADIO86RK,
-    },
-    "micro80": {
-        "name": "Микро-80",
-        "toml": MICRO80,
-    },
-    "vector06c": {
-        "name": "Вектор-06Ц",
-        "toml": VECTOR06C,
+        "name": "empty",
+        "description": "Пустая система (без устройств)",
+        "toml": """
+[system]
+name = "Empty System"
+cpu = "i8080"
+clock_mhz = 2
+
+[[memory.regions]]
+type = "ram"
+start = 0
+end = 65535
+name = "RAM"
+"""
     },
 }
 
+# ============================================================
+# ЗАГРУЗКА ИЗ ВНЕШНИХ TOML-ФАЙЛОВ
+# ============================================================
+_external_profiles = {}
 
-def get_profile_names():
-    """Список доступных профилей"""
-    return list(SYSTEM_PROFILES.keys())
+def _load_external_profiles():
+    """Загружает профили из каталога профили/*.toml"""
+    global _external_profiles
+    _external_profiles = {}
+
+    if not os.path.isdir(_PROFILES_DIR):
+        return
+
+    try:
+        import tomllib
+    except ImportError:
+        try:
+            import tomli as tomllib
+        except ImportError:
+            return
+
+    for filepath in sorted(glob.glob(os.path.join(_PROFILES_DIR, "*.toml"))):
+        try:
+            with open(filepath, 'rb') as f:
+                data = tomllib.load(f)
+
+            profile_name = os.path.splitext(os.path.basename(filepath))[0]
+
+            for pname, pdata in data.get("profiles", {}).items():
+                full_name = (
+                    f"{profile_name}.{pname}"
+                    if len(data.get("profiles", {})) > 1
+                    else profile_name
+                )
+
+                # Храним как dict вместо TOML-строки (без tomli_w)
+                _external_profiles[full_name] = {
+                    "name": full_name,
+                    "description": pdata.get("description", ""),
+                    "config": pdata,          # ← dict вместо TOML-строки
+                    "filepath": filepath,
+                }
+        except Exception as e:
+            print(f"Ошибка загрузки профиля {filepath}: {e}")
+
+# Загружаем при импорте модуля
+_load_external_profiles()
+
+
+def reload_profiles():
+    """Перезагрузить профили из внешних файлов"""
+    _load_external_profiles()
 
 
 def get_profile(profile_name):
-    """Получить профиль по имени"""
+    """Получить профиль по имени.
+    
+    Приоритет: внешние профили → встроенные профили.
+    """
+    if profile_name in _external_profiles:
+        return _external_profiles[profile_name]
     return SYSTEM_PROFILES.get(profile_name, None)
 
 
-def get_profile_toml(profile_name):
-    """Получить TOML-строку профиля"""
-    profile = SYSTEM_PROFILES.get(profile_name, None)
-    if profile:
-        return profile["toml"]
-    return None
+def get_profile_names():
+    """Список доступных профилей (внешние + встроенные)"""
+    names = list(_external_profiles.keys())
+    for name in SYSTEM_PROFILES:
+        if name not in names:
+            names.append(name)
+    return names
+
+
+def get_profiles_dir():
+    """Вернуть путь к каталогу профилей"""
+    return _PROFILES_DIR

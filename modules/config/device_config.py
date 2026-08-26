@@ -1,41 +1,3 @@
-"""
-Конфигурация устройств через TOML.
-Итерация 9.1: устранение конфликта адресов.
-
-Формат TOML:
-    [system]
-    name = "Radio-86RK"
-    cpu = "i8080"
-    clock_mhz = 1.78
-
-    [[memory]]
-    type = "ram"
-    start = 0x0000
-    end = 0xBFFF
-    name = "RAM"
-
-    [[memory]]
-    type = "rom"
-    start = 0xC000
-    end = 0xFFFF
-    name = "ROM"
-    file = "radio86rk.rom"
-
-    [[devices]]
-    type = "i8255"
-    name = "PPI-0"
-    base_port = 0x00
-
-    [[devices]]
-    type = "i8253"
-    name = "PIT-0"
-    base_port = 0x04
-
-    [[devices]]
-    type = "lcd1602"
-    name = "LCD-0"
-    base_port = 0x20
-"""
 try:
     import tomllib
 except ImportError:
@@ -55,6 +17,20 @@ class DeviceConfig:
         self.memory_regions = []  # [{type, start, end, name, file, ...}]
         self.devices = []         # [{type, name, base_port, ...}]
 
+    def load_from_dict(self, config_dict):
+        """Загрузить конфигурацию из dict (внешний профиль)"""
+        system_cfg = config_dict.get("system", {})
+        self.system_name = system_cfg.get("name", "Custom")
+        self.cpu = system_cfg.get("cpu", "i8080")
+        self.clock_mhz = system_cfg.get("clock_mhz", 2)
+
+        self.memory_regions = config_dict.get("memory", {}).get("regions", [])
+        self.devices = config_dict.get("devices", [])
+
+        errors = self.validate()
+        if errors:
+            raise ValueError("Ошибки конфигурации:\n" + "\n".join(errors))
+        
     def load_from_file(self, path):
         """Загрузить конфигурацию из TOML-файла"""
         if tomllib is None:
@@ -66,44 +42,90 @@ class DeviceConfig:
 
     def load_from_string(self, toml_string):
         """Загрузить конфигурацию из TOML-строки"""
-        if tomllib is None:
-            raise ImportError("tomllib/tomli не установлен. Установите: pip install tomli")
-        data = tomllib.loads(toml_string)
-        self._parse(data)
-        return self
+        if not toml_string or not toml_string.strip():
+            # Пустая строка — создаём пустую конфигурацию
+            self.system_name = "Empty System"
+            self.cpu = "i8080"
+            self.clock_mhz = 2
+            self.memory_regions = []
+            self.devices = []
+            return
+        
+        try:
+            import tomllib
+        except ImportError:
+            try:
+                import tomli as tomllib
+            except ImportError:
+                # Если нет tomllib, создаём пустую конфигурацию
+                self.system_name = "Empty System"
+                self.cpu = "i8080"
+                self.clock_mhz = 2
+                self.memory_regions = []
+                self.devices = []
+                return
+        
+        try:
+            data = tomllib.loads(toml_string)
+            self._parse(data)
+        except Exception as e:
+            # При ошибке парсинга создаём пустую конфигурацию
+            self.system_name = "Empty System"
+            self.cpu = "i8080"
+            self.clock_mhz = 2
+            self.memory_regions = []
+            self.devices = []
 
     def _parse(self, data):
-        """Парсинг TOML-данных"""
+        """Парсинг конфигурации из словаря"""
+        # Защита от пустых или некорректных данных
+        if not data or not isinstance(data, dict):
+            self.system_name = "Empty System"
+            self.cpu = "i8080"
+            self.clock_mhz = 2
+            self.memory_regions = []
+            self.devices = []
+            return
+
         # Секция [system]
         system = data.get("system", {})
-        self.system_name = system.get("name", "Custom")
+        if not isinstance(system, dict):
+            system = {}
+        self.system_name = system.get("name", "Empty System")
         self.cpu = system.get("cpu", "i8080")
-        self.clock_mhz = system.get("clock_mhz", 1.78)
+        self.clock_mhz = system.get("clock_mhz", 2)
 
-        # Секция [[memory]]
+        # Секция [memory]
+        memory = data.get("memory", {})
+        if not isinstance(memory, dict):
+            memory = {}
+        
+        regions = memory.get("regions", [])
+        if not isinstance(regions, list):
+            regions = []
+        
         self.memory_regions = []
-        for mem in data.get("memory", []):
+        for mem in regions:
+            if not isinstance(mem, dict):
+                continue  # Пропускаем некорректные записи
             self.memory_regions.append({
                 "type": mem.get("type", "ram"),
-                "start": self._parse_addr(mem.get("start", "0x0000")),
-                "end": self._parse_addr(mem.get("end", "0xFFFF")),
+                "start": mem.get("start", 0),
+                "end": mem.get("end", 0xFFFF),
                 "name": mem.get("name", "RAM"),
-                "file": mem.get("file", None),
+                "image_file": mem.get("image_file", None),
             })
 
-        # Секция [[devices]]
+        # Секция [devices]
+        devices = data.get("devices", [])
+        if not isinstance(devices, list):
+            devices = []
+        
         self.devices = []
-        for dev in data.get("devices", []):
-            entry = {
-                "type": dev.get("type", ""),
-                "name": dev.get("name", ""),
-                "base_port": self._parse_addr(dev.get("base_port", "0x00")),
-            }
-            # Дополнительные параметры устройства
-            for key, value in dev.items():
-                if key not in ("type", "name", "base_port"):
-                    entry[key] = value
-            self.devices.append(entry)
+        for dev in devices:
+            if not isinstance(dev, dict):
+                continue
+            self.devices.append(dev)
 
     @staticmethod
     def _parse_addr(value):

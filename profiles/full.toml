@@ -1,0 +1,22 @@
+[profiles.full_system]
+description = "Полная система с устройствами"
+
+[profiles.full_system.system]
+name = "Full System"
+cpu = "i8080"
+clock_mhz = 2
+
+[[profiles.full_system.memory.regions]]
+type = "ram"
+start = 0x0000
+end = 0xFFFF
+#image_file = "images/full_ram.bin"
+
+[[profiles.full_system.devices]]
+type = "cf_ide"
+base_port = 0x40
+image_file = "images/cf_ide.bin"
+
+[[profiles.full_system.devices]]
+type = "8253"
+base_port = 0x20
