@@ -13,7 +13,7 @@ class DeviceConfig:
     def __init__(self):
         self.system_name = ""
         self.cpu = "i8080"
-        self.clock_mhz = 1.78
+        self.clock_mhz = 2.5
         self.memory_regions = []  # [{type, start, end, name, file, ...}]
         self.devices = []         # [{type, name, base_port, ...}]
 
@@ -228,33 +228,42 @@ class DeviceFactory:
         """Создать экземпляр устройства"""
         # Ленивые импорты
         try:
-            if dev_type == "i8255":
-                from modules.io.i8255 import I8255
-                return I8255(base_port=base_port, name=name)
-            elif dev_type == "i8253":
-                from modules.io.i8253 import I8253
-                return I8253(base_port=base_port, name=name)
-            elif dev_type == "i8259":
-                from modules.io.i8259 import I8259
-                return I8259(base_port=base_port, name=name)
-            elif dev_type == "i8257":
-                from modules.io.i8257 import I8257
+            if dev_type == "i8237":
+                from modules.io.i8257 import I8237
                 return I8257(base_port=base_port, name=name)
             elif dev_type == "i8251":
                 from modules.io.i8251 import I8251
                 return I8251(base_port=base_port, name=name)
-            elif dev_type == "i16550":
-                from modules.io.i16550 import I16550
-                return I16550(base_port=base_port, name=name)
-            elif dev_type == "i8279":
-                from modules.io.i8279 import I8279
-                return I8279(base_port=base_port, name=name)
-            elif dev_type == "i8276":
-                from modules.io.i8276 import I8276
-                return I8276(base_port=base_port, name=name)
+            elif dev_type == "i8253":
+                from modules.io.i8253 import I8253
+                return I8253(base_port=base_port, name=name)
+            elif dev_type == "i8255":
+                from modules.io.i8255 import I8255
+                return I8255(base_port=base_port, name=name)
+            elif dev_type == "i8257":
+                from modules.io.i8257 import I8257
+                return I8257(base_port=base_port, name=name)
+            elif dev_type == "i8259":
+                from modules.io.i8259 import I8259
+                return I8259(base_port=base_port, name=name)
+            elif dev_type == "i8259a":
+                from modules.io.i8259 import I8259A
+                return I8259(base_port=base_port, name=name) 
             elif dev_type == "i8272":
                 from modules.io.i8272 import I8272
                 return I8272(base_port=base_port, name=name)
+            elif dev_type == "i8275":
+                from modules.io.i8275 import I8275
+                return I8275(base_port=base_port, name=name)
+            elif dev_type == "i8276":
+                from modules.io.i8276 import I8276
+                return I8276(base_port=base_port, name=name)
+            elif dev_type == "i8279":
+                from modules.io.i8279 import I8279
+                return I8279(base_port=base_port, name=name)
+            elif dev_type == "i16550":
+                from modules.io.i16550 import I16550
+                return I16550(base_port=base_port, name=name)
             elif dev_type == "i512vi1":
                 from modules.io.i512vi1 import I512VI1
                 return I512VI1(base_port=base_port, name=name)
@@ -299,6 +308,31 @@ class DeviceFactory:
             if file_path:
                 data = cls._load_rom_file(file_path, start)
             return ROMRegion(start, end, data=data, name=name)
+            
+        elif mem_type == "banked":
+            from modules.memory.banked import BankedRegion
+            return BankedRegion(start, end, name=name)
+            
+        elif mem_type == "bankedrom":
+            from modules.memory.banked import BankedROMRegion
+            return BankedROMRegion(start, end, name=name)
+            
+        elif mem_type == "shadow":
+            from modules.memory.shadow import ShadowROMRegion
+            return ShadowROMRegion(start, end, name=name)
+            
+        elif mem_type == "paged":
+            from modules.memory.paged import PagedRegion
+            return PagedRegion(start, end, name=name)
+            
+        elif mem_type == "segmented":
+            from modules.memory.segmented import SegmentedRegion
+            return SegmentedRegion(start, end, name=name)
+            
+        elif mem_type == "segmentedpaged":
+            from modules.memory.segmentedpaged import SegmentedPagedRegion
+            return SegmentedPagedRegion(start, end, name=name)
+            
         else:
             return None
 

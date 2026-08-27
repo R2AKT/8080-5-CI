@@ -2,7 +2,7 @@
 description = "Полная система с устройствами"
 
 [profiles.full_system.system]
-name = "Full System"
+name = "Full System with devices"
 cpu = "i8080"
 clock_mhz = 2
 
@@ -13,10 +13,71 @@ end = 0xFFFF
 #image_file = "images/full_ram.bin"
 
 [[profiles.full_system.devices]]
-type = "cf_ide"
-base_port = 0x40
-image_file = "images/cf_ide.bin"
+type = "i8251"
+name = "USART"
+base_port = 0x01
 
 [[profiles.full_system.devices]]
-type = "8253"
+type = "i8253"
+name = "PIT"
+base_port = 0x04
+
+[[profiles.full_system.devices]]
+type = "i8255"
+name = "PPA"
+base_port = 0x08
+
+[[profiles.full_system.devices]]
+type = "i8259"
+name = "PIC"
+base_port = 0x10
+
+[[profiles.full_system.devices]]
+type = "i8279"
+name = "KBD"
+base_port = 0x16
+
+[[profiles.full_system.devices]]
+type = "i8272"
+name = "FDC"
 base_port = 0x20
+
+[[profiles.full_system.devices]]
+type = "i8257"
+name = "DMA"
+base_port = 0x24
+
+[[profiles.full_system.devices]]
+type = "lcd1602"
+name = "LCD16x2"
+base_port = 0x36
+cols = 16
+rows = 2
+
+[[profiles.full_system.devices]]
+type = "lcd2004"
+name = "LCD20x4"
+base_port = 0x38
+cols = 20
+rows = 4
+
+[[profiles.full_system.devices]]
+type = "i8275"
+name = "CRT8275"
+base_port = 0x40
+
+[[profiles.full_system.devices]]
+type = "i8276"
+name = "Matrix8276"
+base_port = 0x50
+
+[[profiles.full_system.devices]]
+type = "tft8080"
+name = "TFT320x240"
+base_port = 0x60
+
+[[profiles.full_system.devices]]
+type = "cf_ide"
+name = "IDE8"
+base_port = 0x70
+#image_file = "images/cf_ide.bin"

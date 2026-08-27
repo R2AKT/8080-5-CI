@@ -2,7 +2,7 @@
 description = "Пустая система (без устройств)"
 
 [profiles.empty.system]
-name = "Empty System"
+name = "Empty System 64k RAM"
 cpu = "i8080"
 clock_mhz = 2
 
