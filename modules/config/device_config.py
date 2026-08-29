@@ -181,19 +181,21 @@ class DeviceFactory:
 
     # Размер портов для каждого типа устройства
     PORT_COUNTS = {
-        "i8255": 4,      # PPI: порты A, B, C, Control
-        "i8253": 4,      # PIT: 3 канала + Control
-        "i8259": 2,      # PIC: 2 порта
-        "i8257": 16,     # DMA: 16 портов
         "i8251": 2,      # USART: Data + Control
-        "i16550": 8,     # UART: 8 регистров
-        "i8279": 2,      # Клавиатура/дисплей: 2 порта
-        "i8276": 2,      # CRT: 2 порта
+        "i8253": 4,      # PIT: 3 канала + Control
+        "i8255": 4,      # PPI: порты A, B, C, Control
+        "i8257": 16,     # DMA: 16 портов
+        "i8259": 2,      # PIC: 2 порт
+        "i8259a": 2,     # PIC: 2 порта
         "i8272": 4,      # FDC: 4 порта
-        "i512vi1": 2,    # RTC: Address + Data
-        "cf_ide": 8,     # CF IDE: 8 портов
-        "ch376s": 2,     # USB: Data + Command
+        "i8275": 2,      # CRT: 2 порта
+        "i8276": 2,      # CRT: 2 порта
+        "i8279": 2,      # Клавиатура/дисплей: 2 порта
         "am9511": 2,     # APU: Data + Command
+        "i512vi1": 2,    # RTC: Address + Data
+        "i16550": 8,     # UART: 8 регистров
+        "ch376s": 2,     # USB: Data + Command
+        "cf_ide": 8,     # CF IDE: 8 портов
         "lcd1602": 2,    # LCD: Data + Control
         "lcd2004": 2,    # LCD: Data + Control
         "tft8080": 2,    # TFT: 2 порта
@@ -248,7 +250,7 @@ class DeviceFactory:
                 return I8259(base_port=base_port, name=name)
             elif dev_type == "i8259a":
                 from modules.io.i8259 import I8259A
-                return I8259(base_port=base_port, name=name) 
+                return I8259A(base_port=base_port, name=name) 
             elif dev_type == "i8272":
                 from modules.io.i8272 import I8272
                 return I8272(base_port=base_port, name=name)
@@ -308,31 +310,58 @@ class DeviceFactory:
             if file_path:
                 data = cls._load_rom_file(file_path, start)
             return ROMRegion(start, end, data=data, name=name)
-            
-        elif mem_type == "banked":
-            from modules.memory.banked import BankedRegion
-            return BankedRegion(start, end, name=name)
-            
-        elif mem_type == "bankedrom":
-            from modules.memory.banked import BankedROMRegion
-            return BankedROMRegion(start, end, name=name)
-            
         elif mem_type == "shadow":
             from modules.memory.shadow import ShadowROMRegion
-            return ShadowROMRegion(start, end, name=name)
-            
+            data = {}
+            file_path = mem_config.get("file", None)
+            if file_path:
+                data = cls._load_rom_file(file_path, 0)
+            low_addr = mem_config.get("low_addr", 0x0000)
+            high_addr = mem_config.get("high_addr", 0xF800)
+            mode = mem_config.get("mode", "m1")
+            action = mem_config.get("action", "move")
+            trigger_addr = mem_config.get("trigger_addr", None)
+            trigger_port = mem_config.get("trigger_port", None)
+            m1_count = mem_config.get("m1_count", 3)
+            return ShadowROMRegion(data, low_addr, high_addr, mode, action, trigger_addr, trigger_port, m1_count, name=name)
+        elif mem_type == "banked":
+            from modules.memory.banked import BankedRegion
+            num_banks = mem_config.get("num_banks", 2)
+            switch_port = mem_config.get("switch_port", None)
+            switch_addr = mem_config.get("switch_addr", None)
+            return BankedRegion(start, end, num_banks, switch_port, switch_addr, name=name)
+        elif mem_type == "bankedrom":
+            from modules.memory.banked import BankedROMRegion
+            num_banks = mem_config.get("num_banks", 2)
+            switch_port = mem_config.get("switch_port", None)
+            switch_addr = mem_config.get("switch_addr", None)
+            banks = []
+            for i in range(num_banks):
+                bank_file = mem_config.get(f"bank_{i}_file", None)
+                bank_data = {}
+                if bank_file:
+                    bank_data = cls._load_rom_file(bank_file, 0)
+                banks.append(bank_data)
+            return BankedROMRegion(start, end, banks, switch_port, switch_addr, name=name)
         elif mem_type == "paged":
             from modules.memory.paged import PagedRegion
-            return PagedRegion(start, end, name=name)
-            
+            page_size = mem_config.get("page_size", 16384)
+            num_physical_pages = mem_config.get("num_physical_pages", 16)
+            switch_ports = mem_config.get("switch_ports", [])
+            switch_addrs = mem_config.get("switch_addrs", [])
+            return PagedRegion(start, end, page_size, num_physical_pages, switch_ports, switch_addrs, name=name)
         elif mem_type == "segmented":
             from modules.memory.segmented import SegmentedRegion
-            return SegmentedRegion(start, end, name=name)
-            
+            num_segments = mem_config.get("num_segments", 16)
+            switch_port = mem_config.get("switch_port", None)
+            switch_addr = mem_config.get("switch_addr", None)
+            return SegmentedRegion(start, end, num_segments, switch_port, switch_addr, name=name)
         elif mem_type == "segmentedpaged":
             from modules.memory.segmentedpaged import SegmentedPagedRegion
-            return SegmentedPagedRegion(start, end, name=name)
-            
+            segment_size = mem_config.get("segment_size", 16384)
+            num_physical_pages = mem_config.get("num_physical_pages", 16)
+            base_port = mem_config.get("base_port", 0x00)
+            return SegmentedPagedRegion(start, end, segment_size, num_physical_pages, base_port, name=name)
         else:
             return None
 
