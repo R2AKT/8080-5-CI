@@ -1,0 +1,130 @@
+"""
+Диспетчер устройств.
+Итерация 11: Интеграция устройств в GUI.
+"""
+from PySide6.QtWidgets import (
+    QDialog, QVBoxLayout, QHBoxLayout, QLabel,
+    QPushButton, QListWidget, QListWidgetItem, QCheckBox
+)
+from PySide6.QtCore import Qt
+from PySide6.QtGui import QFont
+
+from .device_window import DeviceWindow
+
+
+class DeviceManagerDialog(QDialog):
+    """Диспетчер устройств: список + открытие индивидуальных окон"""
+
+    def __init__(self, system, parent=None):
+        super().__init__(parent)
+        self.system = system
+        self.device_windows = {}  # name -> DeviceWindow
+        self._always_on_top = False
+
+        self.setWindowTitle("Диспетчер устройств")
+        self.setMinimumSize(400, 500)
+
+        self._init_ui()
+        self.refresh_devices()
+
+    def _init_ui(self):
+        layout = QVBoxLayout(self)
+
+        # Заголовок
+        title = QLabel("Устройства текущего профиля")
+        title.setFont(QFont("Segoe UI", 11, QFont.Bold))
+        layout.addWidget(title)
+
+        # Список устройств
+        self.device_list = QListWidget()
+        self.device_list.itemDoubleClicked.connect(self._on_item_double_clicked)
+        layout.addWidget(self.device_list)
+
+        # Кнопки
+        btn_layout = QHBoxLayout()
+        self.btn_open = QPushButton("Открыть окно")
+        self.btn_open.clicked.connect(self._open_selected)
+        self.btn_close_all = QPushButton("Закрыть все")
+        self.btn_close_all.clicked.connect(self.close_all_windows)
+        self.btn_refresh = QPushButton("Обновить")
+        self.btn_refresh.clicked.connect(self.refresh_devices)
+        btn_layout.addWidget(self.btn_open)
+        btn_layout.addWidget(self.btn_close_all)
+        btn_layout.addWidget(self.btn_refresh)
+        layout.addLayout(btn_layout)
+
+        # Опция "поверх всех"
+        self.chk_always_on_top = QCheckBox("Окна устройств всегда поверх всех")
+        self.chk_always_on_top.toggled.connect(self._toggle_always_on_top)
+        layout.addWidget(self.chk_always_on_top)
+
+    def refresh_devices(self):
+        """Обновить список устройств из профиля"""
+        self.device_list.clear()
+        if not hasattr(self.system, 'list_devices'):
+            return
+        for dev_info in self.system.list_devices():
+            name = dev_info.get('name', '?')
+            dev_type = dev_info.get('type', '?')
+            base_port = dev_info.get('base_port', '?')
+            marker = "●" if name in self.device_windows and self.device_windows[name].isVisible() else "○"
+            item = QListWidgetItem(f"{marker} {name}  [{dev_type}] @ {base_port}")
+            item.setData(Qt.UserRole, name)
+            self.device_list.addItem(item)
+
+    def _on_item_double_clicked(self, item):
+        name = item.data(Qt.UserRole)
+        self._open_device_window(name)
+
+    def _open_selected(self):
+        item = self.device_list.currentItem()
+        if item:
+            name = item.data(Qt.UserRole)
+            self._open_device_window(name)
+
+    def _open_device_window(self, device_name):
+        """Открыть/показать окно устройства"""
+        device = self.system.get_device(device_name)
+        if device is None:
+            return
+
+        if device_name in self.device_windows:
+            win = self.device_windows[device_name]
+            if win.isVisible():
+                win.raise_()
+                win.activateWindow()
+                return
+        else:
+            win = DeviceWindow(
+                device, device_name,
+                always_on_top=self._always_on_top,
+                parent=self
+            )
+            self.device_windows[device_name] = win
+
+        win.show()
+        win.raise_()
+        self.refresh_devices()
+
+    def _toggle_always_on_top(self, checked):
+        """Применить флаг ко всем открытым окнам"""
+        self._always_on_top = checked
+        for win in self.device_windows.values():
+            if win.isVisible():
+                win.set_always_on_top(checked)
+
+    def close_all_windows(self):
+        for win in self.device_windows.values():
+            win.close()
+        self.device_windows.clear()
+        self.refresh_devices()
+
+    def on_profile_changed(self):
+        """Вызывается при смене профиля — закрываем все окна"""
+        self.close_all_windows()
+        self.refresh_devices()
+
+    def closeEvent(self, event):
+        # При закрытии диспетчера — закрываем и окна устройств
+        self.close_all_windows()
+        event.accept()

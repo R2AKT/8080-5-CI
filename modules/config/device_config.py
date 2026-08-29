@@ -184,6 +184,7 @@ class DeviceFactory:
         "i8251": 2,      # USART: Data + Control
         "i8253": 4,      # PIT: 3 канала + Control
         "i8255": 4,      # PPI: порты A, B, C, Control
+        "i8237": 16,     # DMA: 16 портов
         "i8257": 16,     # DMA: 16 портов
         "i8259": 2,      # PIC: 2 порт
         "i8259a": 2,     # PIC: 2 порта
@@ -232,7 +233,7 @@ class DeviceFactory:
         try:
             if dev_type == "i8237":
                 from modules.io.i8257 import I8237
-                return I8257(base_port=base_port, name=name)
+                return I8237(base_port=base_port, name=name)
             elif dev_type == "i8251":
                 from modules.io.i8251 import I8251
                 return I8251(base_port=base_port, name=name)
