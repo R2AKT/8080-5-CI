@@ -260,6 +260,8 @@ LANGS = {
         "watch_col_value":   "Value  ",   "watch_col_format":   "Format  ",
         "bp_col_addr":   "Address  ",   "bp_col_cond":   "Condition  ",
         "bp_col_enabled":   "On  ",   "bp_col_hits":   "Hits  ",
+        # Устройства
+        "menu_devices": "Devices", "device_manager": "Device Manager",
     },
     "ru": {
         "app_title": "i8080-5 CI",
@@ -488,6 +490,8 @@ LANGS = {
         "watch_col_value":   "Значение  ",   "watch_col_format":   "Формат  ",
         "bp_col_addr":   "Адрес  ",   "bp_col_cond":   "Условие  ",
         "bp_col_enabled":   "Вкл  ",   "bp_col_hits":   "Сраб.  ",
+        # Устройства
+        "menu_devices": "Устройства", "device_manager": "Диспетчер устройств",
     }
 }
 
@@ -2818,6 +2822,11 @@ class MainWindow(QMainWindow):
 
         # Меню профилей
         self.profile_menu = self.menuBar().addMenu("Профиль системы")
+        
+        # Меню устройств
+        devices_menu = self.menuBar().addMenu("Устройства")
+        act_manager = devices_menu.addAction("Диспетчер устройств")
+        act_manager.triggered.connect(self.show_device_manager)
 
         # Группа действий: только один профиль одновременно
         self.profile_group = QActionGroup(self)
@@ -2900,6 +2909,11 @@ class MainWindow(QMainWindow):
         # === ИТЕРАЦИЯ B: Цель для Run to Cursor ===
         self.run_target_addr = None
         
+        # ============================================================
+        # 10. УСТРОЙСТВА
+        # ============================================================
+        self.device_manager = None  # Диспетчер устройств (ленивая инициализация)
+                
     def tr(self, key):
         return LANGS.get(self.current_lang, LANGS["en"]).get(key, key)
         
@@ -2976,6 +2990,7 @@ class MainWindow(QMainWindow):
         
         # Эмулятор
         self.create_tab_emulator()
+        
         # Трассировка
         self.create_tab_trace()
         
@@ -3611,6 +3626,7 @@ class MainWindow(QMainWindow):
         # ============================================================
         if hasattr(self, 'profile_menu'):
             self.profile_menu.setTitle(self.tr("menu_profile"))
+            
         # ============================================================
         # СТРОКА СТАТУСА
         # ============================================================
@@ -3670,6 +3686,10 @@ class MainWindow(QMainWindow):
             self.btn_bp_save_preset.setToolTip(self.tr("tip_bp_save"))
             self.btn_bp_load_preset.setToolTip(self.tr("tip_bp_load"))
             self.chk_trace_enable.setToolTip(self.tr("tip_trace_enable"))
+        
+        # === Устройства ===
+        if hasattr(self, 'devices_menu'):
+            self.devices_menu.setTitle(self.tr("menu_devices"))
             
     # ==================== ЛОГИКА ====================
     def refresh_ports(self):
@@ -6383,6 +6403,11 @@ class MainWindow(QMainWindow):
                 f"{self.tr('status_profile_loaded')}{self.system.config.system_name}", 3000
             )
             self.log(f"{self.tr('status_profile_loaded')}{self.system.config.system_name}")
+            
+            # Закрываем окна устройств при смене профиля
+            if self.device_manager is not None:
+                self.device_manager.on_profile_changed()
+                
         except ValueError as e:
             QMessageBox.critical(self, self.tr("status_profile_err"), str(e))
 
@@ -6396,6 +6421,15 @@ class MainWindow(QMainWindow):
                     f"{dev_info['name']} @ {dev_info['base_port']}"
                 )
                 self.device_list_widget.addItem(item)    
+    
+    def show_device_manager(self):
+        """Открыть/показать диспетчер устройств"""
+        if self.device_manager is None:
+            from ui.device_manager import DeviceManagerDialog
+            self.device_manager = DeviceManagerDialog(self.system, parent=self)
+        self.device_manager.refresh_devices()
+        self.device_manager.show()
+        self.device_manager.raise_()
     
 if __name__ == "__main__":
     app = QApplication(sys.argv)
