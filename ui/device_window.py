@@ -15,6 +15,8 @@ from PySide6.QtGui import QFont
 
 from .display_widgets import create_display_widget
 
+from .serial_terminal import create_terminal_widget
+
 class DeviceWindow(QWidget):
     """Индивидуальное окно устройства с автообновлением состояния"""
 
@@ -62,7 +64,12 @@ class DeviceWindow(QWidget):
         self.display_widget = create_display_widget(self.device)
         if self.display_widget is not None:
             layout.addWidget(self.display_widget)
-
+            
+        # === Виджет терминала (если устройство — USART/UART) ===
+        self.terminal_widget = create_terminal_widget(self.device)
+        if self.terminal_widget is not None:
+            layout.addWidget(self.terminal_widget, 1)
+        
         # Прокручиваемая область с регистрами
         scroll = QScrollArea()
         scroll.setWidgetResizable(True)

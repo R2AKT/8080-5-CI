@@ -182,6 +182,7 @@ class CRTWidget(QWidget):
         self.update()
 
     def refresh(self):
+        self._recalc_size()
         self.update()
 
     def paintEvent(self, event):
