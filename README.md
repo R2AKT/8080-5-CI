@@ -12,6 +12,7 @@ Allows you to read and write data from/to memory and I/O ports.
 <img src="8080-5 CI_app_disas.png">
 <img src="8080-5 CI_app_emu.png">
 <img src="8080-5 CI_app_trace.png">
+<img src="8080-5 CI_app_device.png">
 
 Firmware for Arduino Nano is included (test version).
 

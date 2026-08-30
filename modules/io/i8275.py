@@ -31,7 +31,7 @@
   0x83: Load Cursor Position
 """
 from .iodevice import IODevice
-
+from .chargen import get_char_generator
 
 class I8275(IODevice):
     """8275 (КР580ВГ75) — CRT-контроллер"""
@@ -61,6 +61,12 @@ class I8275(IODevice):
     def __init__(self, base_port, name="I8275"):
         super().__init__(base_port, 2, name)
         self.reset()
+        
+        # Знакогенератор
+        from .chargen import CharGenerator
+        self.char_gen = CharGenerator()
+        self.font_data = dict(self.char_gen.fonts[8])  # По умолчанию 8×8
+        
         # Callback прерывания: on_irq(active)
         self.on_irq = None
         # Callback DMA-запроса: on_drq(active)
@@ -386,3 +392,12 @@ class I8275(IODevice):
             "param_error": self.param_error,
             "status": f"0x{self._get_status():02X}",
         }
+
+    def load_font_from_file(self, path):
+        """Загрузить шрифт знакогенератора из raw-файла."""
+        return self.char_gen.load_from_file(path)
+
+    def get_char_bitmap(self, code):
+        """Код символа → пиксельная карта (через знакогенератор)."""
+        h = getattr(self, 'char_height', 8)
+        return self.char_gen.get_bitmap(code, h)

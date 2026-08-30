@@ -19,7 +19,7 @@
     Запись  — Command Register
 """
 from .iodevice import IODevice
-
+from .chargen import get_char_generator
 
 class I8276(IODevice):
     """8276 — CRT-контроллер"""
@@ -48,6 +48,12 @@ class I8276(IODevice):
     def __init__(self, base_port, name="I8276"):
         super().__init__(base_port, 2, name)
         self.reset()
+        
+        # Знакогенератор
+        from .chargen import CharGenerator
+        self.char_gen = CharGenerator()
+        self.font_data = dict(self.char_gen.fonts[8])  # По умолчанию 8×8
+        
         # Callback прерывания: on_irq(active)
         self.on_irq = None
         # Callback DMA-запроса: on_drq(active)
@@ -140,13 +146,13 @@ class I8276(IODevice):
                 self._apply_init_params()
             return
         # Запись в видеопамять
-        self.video_ram[self.video_addr] = (value, 0x07)
+        self.video_ram[self.video_addr] = (value, 0x00)
         self.video_addr += 1
         # Уведомляем об обновлении
         if self.on_display_update:
             x = self.video_addr % self.chars_per_line
             y = self.video_addr // self.chars_per_line
-            self.on_display_update(value, 0x07, x, y)
+            self.on_display_update(value, 0x00, x, y)
 
     def _apply_init_params(self):
         """Применить параметры инициализации"""
@@ -282,7 +288,7 @@ class I8276(IODevice):
             lines.append(line)
         return lines
 
-    def set_character(self, x, y, char, attr=0x07):
+    def set_character(self, x, y, char, attr=0x00):
         """Установить символ в видеопамять"""
         offset = y * self.chars_per_line + x
         self.video_ram[offset] = (char & 0xFF, attr & 0xFF)
@@ -317,3 +323,12 @@ class I8276(IODevice):
             "drq_flag": self.drq_flag,
             "status": f"0x{self._get_status():02X}",
         }
+
+    def load_font_from_file(self, path):
+        """Загрузить шрифт знакогенератора из raw-файла."""
+        return self.char_gen.load_from_file(path)
+
+    def get_char_bitmap(self, code):
+        """Код символа → пиксельная карта (через знакогенератор)."""
+        h = getattr(self, 'char_height', 8)
+        return self.char_gen.get_bitmap(code, h)

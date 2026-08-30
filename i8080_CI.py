@@ -13,6 +13,7 @@ from PySide6.QtCore import Qt, QTimer, QThread, QObject, Signal, QAbstractTableM
 from PySide6.QtGui import QFont, QColor, QPainter, QPen, QBrush, QShortcut, QKeySequence, QAction
 
 from i8080_emulator import I8080Emulator
+from ui.device_manager import DeviceManagerDialog
 
 # === MCP Server (опционально) ===
 try:
@@ -1487,6 +1488,7 @@ class AutomationAPI:
     
     def __init__(self, main_window):
         self.mw = main_window
+        self.system = main_window.system
         
     # =============================================
     # ПРОВЕРКИ СОСТОЯНИЯ
@@ -2845,12 +2847,17 @@ class MainWindow(QMainWindow):
         self.profile_actions[self._current_profile].setChecked(True)
         
         # ============================================================
-        # 4. СОЗДАНИЕ UI
+        # 4. УСТРОЙСТВА
+        # ============================================================
+        self.device_manager = None  # Диспетчер устройств (ленивая инициализация)
+        
+        # ============================================================
+        # 5. СОЗДАНИЕ UI
         # ============================================================
         self.init_ui()
         
         # ============================================================
-        # 5. СТАТУСНАЯ СТРОКА (после init_ui)
+        # 6. СТАТУСНАЯ СТРОКА (после init_ui)
         # ============================================================
         self.statusBar = self.statusBar()
         self.status_label_addr = QLabel("Адрес: -")
@@ -2866,7 +2873,7 @@ class MainWindow(QMainWindow):
         self.statusBar.addPermanentWidget(self.status_label_mnem)
         
         # ============================================================
-        # 6. MCP SERVER (после инициализации данных и UI)
+        # 7. MCP SERVER (после инициализации данных и UI)
         # ============================================================
         self._automation_api = AutomationAPI(self)
         self.mcp_server = None
@@ -2877,7 +2884,7 @@ class MainWindow(QMainWindow):
                 self.log(f"MCP Server initialization failed: {e}")
         
         # ============================================================
-        # 7. ЛОКАЛИЗАЦИЯ И ТЕМА
+        # 8. ЛОКАЛИЗАЦИЯ И ТЕМА
         # ============================================================
         self.retranslate_ui()
         QApplication.instance().setStyleSheet(THEMES[self.current_theme])
@@ -2887,7 +2894,7 @@ class MainWindow(QMainWindow):
         self.disasm_view.set_theme(is_dark)
         
         # ============================================================
-        # 8. ТАЙМЕРЫ
+        # 9. ТАЙМЕРЫ
         # ============================================================
         self.poll_timer = QTimer()
         self.poll_timer.timeout.connect(self.read_serial)
@@ -2897,7 +2904,7 @@ class MainWindow(QMainWindow):
         self.disasm_timer.timeout.connect(self.auto_disasm)
         
         # ============================================================
-        # 9. ФИНАЛЬНАЯ НАСТРОЙКА
+        # 10. ФИНАЛЬНАЯ НАСТРОЙКА
         # ============================================================
         self.update_ui_state()
         self.setup_shortcuts()
@@ -2909,11 +2916,6 @@ class MainWindow(QMainWindow):
         # === ИТЕРАЦИЯ B: Цель для Run to Cursor ===
         self.run_target_addr = None
         
-        # ============================================================
-        # 10. УСТРОЙСТВА
-        # ============================================================
-        self.device_manager = None  # Диспетчер устройств (ленивая инициализация)
-                
     def tr(self, key):
         return LANGS.get(self.current_lang, LANGS["en"]).get(key, key)
         
@@ -4828,7 +4830,7 @@ class MainWindow(QMainWindow):
     def load_script_file(self):
         """Загружает скрипт из файла"""
         path, _ = QFileDialog.getOpenFileName(
-            self, self.tr("script_load_title"),
+            self, self.tr("script_load_title"), "",
             "Python Scripts (*.py);;Text Files (*.txt);;All Files (*)"
         )
         if path:
@@ -6425,7 +6427,6 @@ class MainWindow(QMainWindow):
     def show_device_manager(self):
         """Открыть/показать диспетчер устройств"""
         if self.device_manager is None:
-            from ui.device_manager import DeviceManagerDialog
             self.device_manager = DeviceManagerDialog(self.system, parent=self)
         self.device_manager.refresh_devices()
         self.device_manager.show()

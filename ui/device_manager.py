@@ -1,10 +1,14 @@
 """
 Диспетчер устройств.
 Итерация 11: Интеграция устройств в GUI.
+
+Отображает список устройств текущего профиля.
+Двойной клик или кнопка «Открыть» — открывает окно устройства.
 """
 from PySide6.QtWidgets import (
     QDialog, QVBoxLayout, QHBoxLayout, QLabel,
-    QPushButton, QListWidget, QListWidgetItem, QCheckBox
+    QPushButton, QListWidget, QListWidgetItem, QCheckBox,
+    QFrame
 )
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QFont
@@ -22,13 +26,15 @@ class DeviceManagerDialog(QDialog):
         self._always_on_top = False
 
         self.setWindowTitle("Диспетчер устройств")
-        self.setMinimumSize(400, 500)
+        self.setMinimumSize(420, 500)
+        self.resize(440, 520)
 
         self._init_ui()
         self.refresh_devices()
 
     def _init_ui(self):
         layout = QVBoxLayout(self)
+        layout.setContentsMargins(8, 8, 8, 8)
 
         # Заголовок
         title = QLabel("Устройства текущего профиля")
@@ -37,8 +43,14 @@ class DeviceManagerDialog(QDialog):
 
         # Список устройств
         self.device_list = QListWidget()
+        self.device_list.setFont(QFont("Consolas", 10))
         self.device_list.itemDoubleClicked.connect(self._on_item_double_clicked)
-        layout.addWidget(self.device_list)
+        layout.addWidget(self.device_list, 1)
+
+        # Разделитель
+        sep = QFrame()
+        sep.setFrameShape(QFrame.HLine)
+        layout.addWidget(sep)
 
         # Кнопки
         btn_layout = QHBoxLayout()
@@ -72,15 +84,22 @@ class DeviceManagerDialog(QDialog):
             item.setData(Qt.UserRole, name)
             self.device_list.addItem(item)
 
+        if self.device_list.count() == 0:
+            item = QListWidgetItem("(нет устройств)")
+            item.setFlags(Qt.NoItemFlags)
+            self.device_list.addItem(item)
+
     def _on_item_double_clicked(self, item):
         name = item.data(Qt.UserRole)
-        self._open_device_window(name)
+        if name:
+            self._open_device_window(name)
 
     def _open_selected(self):
         item = self.device_list.currentItem()
         if item:
             name = item.data(Qt.UserRole)
-            self._open_device_window(name)
+            if name:
+                self._open_device_window(name)
 
     def _open_device_window(self, device_name):
         """Открыть/показать окно устройства"""
@@ -114,6 +133,7 @@ class DeviceManagerDialog(QDialog):
                 win.set_always_on_top(checked)
 
     def close_all_windows(self):
+        """Закрыть все окна устройств"""
         for win in self.device_windows.values():
             win.close()
         self.device_windows.clear()

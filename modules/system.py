@@ -153,6 +153,10 @@ class ComputerSystem:
         if "rom_file" in config and hasattr(device, 'load_rom'):
             device.load_rom(config["rom_file"])
 
+        # Шрифт знакогенератора (для CRT)
+        if "font_file" in config and hasattr(device, 'load_font_from_file'):
+            device.load_font_from_file(config["font_file"])
+
     # =============================================
     # СБРОС
     # =============================================

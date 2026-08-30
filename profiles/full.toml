@@ -28,6 +28,12 @@ name = "PPA"
 base_port = 0x08
 
 [[profiles.full_system.devices]]
+type = "i512vi1"
+name = "RTC"
+base_port = 0x0D
+#image_file = "images/nvram.bin"
+
+[[profiles.full_system.devices]]
 type = "i8259"
 name = "PIC"
 base_port = 0x10
