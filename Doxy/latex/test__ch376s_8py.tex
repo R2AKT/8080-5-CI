@@ -1,0 +1,61 @@
+\doxysection{tests/test\+\_\+ch376s.py File Reference}
+\hypertarget{test__ch376s_8py}{}\label{test__ch376s_8py}\index{tests/test\_ch376s.py@{tests/test\_ch376s.py}}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacetest__ch376s}{test\+\_\+ch376s}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespacetest__ch376s_a765e9a0629981bb003c5a02fb295c1c4}{test\+\_\+ch376s.\+check}} (name, actual, expected)
+\item 
+\mbox{\hyperlink{namespacetest__ch376s_ad4f0d92635507c4e9b6fa6f094164f7b}{test\+\_\+ch376s.\+send\+\_\+filename}} (\mbox{\hyperlink{namespacetest__ch376s_a7b6f6c3e1ad53967f8dc2f5416ba36bc}{usb}}, \mbox{\hyperlink{namespacetest__ch376s_a4125cc53919051fbc520da9502cf07b1}{bus}}, name)
+\item 
+\mbox{\hyperlink{namespacetest__ch376s_a7db9f119ff9d02bbf37c3d2cc27841c0}{test\+\_\+ch376s.\+read\+\_\+data\+\_\+port}} (\mbox{\hyperlink{namespacetest__ch376s_a7b6f6c3e1ad53967f8dc2f5416ba36bc}{usb}}, \mbox{\hyperlink{namespacetest__ch376s_a4125cc53919051fbc520da9502cf07b1}{bus}}, count)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{namespacetest__ch376s_a0fa5d882a6ef095e903852d553028ad5}{test\+\_\+ch376s.\+passed}} = 0
+\item 
+int \mbox{\hyperlink{namespacetest__ch376s_a2508ea37ba7ca1a55c129c239687a481}{test\+\_\+ch376s.\+failed}} = 0
+\item 
+\mbox{\hyperlink{namespacetest__ch376s_a4125cc53919051fbc520da9502cf07b1}{test\+\_\+ch376s.\+bus}} = \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus}{Memory\+Bus}}()
+\item 
+\mbox{\hyperlink{namespacetest__ch376s_a7b6f6c3e1ad53967f8dc2f5416ba36bc}{test\+\_\+ch376s.\+usb}} = \mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s}{CH376S}}(base\+\_\+port=0x276)
+\item 
+\mbox{\hyperlink{namespacetest__ch376s_a2c21591b5d3a9aa656de1739830f2704}{test\+\_\+ch376s.\+delete}}
+\item 
+\mbox{\hyperlink{namespacetest__ch376s_a03413ff8f7d55b339583281e100e3914}{test\+\_\+ch376s.\+False}}
+\item 
+\mbox{\hyperlink{namespacetest__ch376s_af4abb5f0853aeccfb29baef8988426ec}{test\+\_\+ch376s.\+suffix}}
+\item 
+\mbox{\hyperlink{namespacetest__ch376s_a96386c54fb7f72fb6cb36bcb5d1d7e68}{test\+\_\+ch376s.\+disk\+\_\+path}} = f.\+name
+\item 
+\mbox{\hyperlink{namespacetest__ch376s_a465a9d8e419f572bfa72e1e8b32c2fb3}{test\+\_\+ch376s.\+size\+\_\+mb}}
+\item 
+list \mbox{\hyperlink{namespacetest__ch376s_a41e1707c2dfc0006f17247c4e940f091}{test\+\_\+ch376s.\+capacity\+\_\+bytes}} = \mbox{[}$\,$\mbox{]}
+\item 
+list \mbox{\hyperlink{namespacetest__ch376s_a6fd20f65eea6e3496db72e3e4857f438}{test\+\_\+ch376s.\+capacity}}
+\item 
+\mbox{\hyperlink{namespacetest__ch376s_a80d0f01891443111467f2a4b413fa4e4}{test\+\_\+ch376s.\+test\+\_\+data}} = bytearray(\mbox{[}i \& 0x\+FF for i in range(512)\mbox{]})
+\item 
+\mbox{\hyperlink{namespacetest__ch376s_aa0b28fcb23b17c48eb7cd273a405ab1f}{test\+\_\+ch376s.\+disk\+\_\+data}} = f.\+read(512)
+\item 
+list \mbox{\hyperlink{namespacetest__ch376s_a6bd42b74d7d21137248d3f1dcbb8f6dc}{test\+\_\+ch376s.\+read\+\_\+data}} = \mbox{[}$\,$\mbox{]}
+\item 
+\mbox{\hyperlink{namespacetest__ch376s_ae6657e7c12d2e04877378a1ac46503d9}{test\+\_\+ch376s.\+version}} = bus.\+io\+\_\+read(0x276)
+\item 
+\mbox{\hyperlink{namespacetest__ch376s_a9337bb09ce2769cc03e5ee99e0b04d2c}{test\+\_\+ch376s.\+idx}} = usb.\+\_\+fs\+\_\+find\+\_\+file("{}TEST.\+TXT"{})
+\item 
+\mbox{\hyperlink{namespacetest__ch376s_acb9721568b73e477f39cfa85bd5157af}{test\+\_\+ch376s.\+data\+\_\+buffer}}
+\item 
+\mbox{\hyperlink{namespacetest__ch376s_a062a361ffcac9ff84d6a655735c961f5}{test\+\_\+ch376s.\+data\+\_\+direction}}
+\item 
+\mbox{\hyperlink{namespacetest__ch376s_afac83629f55642f2d8828a027d597d27}{test\+\_\+ch376s.\+data\+\_\+index}}
+\item 
+\mbox{\hyperlink{namespacetest__ch376s_a5d37971c96930ab677aac77a6a874635}{test\+\_\+ch376s.\+entry}} = usb.\+\_\+fs\+\_\+read\+\_\+entry(usb.\+file\+\_\+index)
+\item 
+\mbox{\hyperlink{namespacetest__ch376s_aa0fe66171a1e91b57533ea14138c6d26}{test\+\_\+ch376s.\+enum\+\_\+data}} = bus.\+io\+\_\+read(0x276)
+\end{DoxyCompactItemize}

@@ -1,0 +1,133 @@
+\doxysection{modules.\+memory.\+memory\+\_\+bus.\+ROMRegion Class Reference}
+\hypertarget{classmodules_1_1memory_1_1memory__bus_1_1_r_o_m_region}{}\label{classmodules_1_1memory_1_1memory__bus_1_1_r_o_m_region}\index{modules.memory.memory\_bus.ROMRegion@{modules.memory.memory\_bus.ROMRegion}}
+
+
+Inheritance diagram for modules.\+memory.\+memory\+\_\+bus.\+ROMRegion\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=209pt]{classmodules_1_1memory_1_1memory__bus_1_1_r_o_m_region__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for modules.\+memory.\+memory\+\_\+bus.\+ROMRegion\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=209pt]{classmodules_1_1memory_1_1memory__bus_1_1_r_o_m_region__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_r_o_m_region_aae2bc33d181bf0b1f0f1c0b50b354a12}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_a43dd15c2b8e11e0e886a94792fdd6880}{start}}, \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_ad9c14b35f4aec59f6494496a4a8881a8}{end}}, \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_r_o_m_region_aa8814801054e06ac1229787761b32a25}{data}}=None, \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_a182987f561d8f1276e9ba1458f1a160c}{name}}="{}ROM"{})
+\item 
+\mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_r_o_m_region_a0f7dac26453f4c9ee7c57b5f87962175}{read}} (self, addr)
+\item 
+\mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_r_o_m_region_ae59746d161ef4b01b2f0de66dca093c7}{write}} (self, addr, value)
+\item 
+\mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_r_o_m_region_a209cb40784636e3afee337ac6418819e}{reset}} (self)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_region}{modules.\+memory.\+memory\+\_\+bus.\+Memory\+Region}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_aa390a09d4e8f8d0d9ce19232a8625f3b}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_a43dd15c2b8e11e0e886a94792fdd6880}{start}}, \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_ad9c14b35f4aec59f6494496a4a8881a8}{end}}, \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_a182987f561d8f1276e9ba1458f1a160c}{name}}="{}region"{})
+\item 
+\mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_a900e938846a8971cc3241066efc1329f}{contains}} (self, addr)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_r_o_m_region_aa8814801054e06ac1229787761b32a25}{data}} = dict(data) if data else \{\}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_region}{modules.\+memory.\+memory\+\_\+bus.\+Memory\+Region}}}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_a43dd15c2b8e11e0e886a94792fdd6880}{start}} = start \& 0x\+FFFF
+\item 
+int \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_ad9c14b35f4aec59f6494496a4a8881a8}{end}} = end \& 0x\+FFFF
+\item 
+\mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_a182987f561d8f1276e9ba1458f1a160c}{name}} = name
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}ROM: только чтение. Запись игнорируется.\end{DoxyVerb}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classmodules_1_1memory_1_1memory__bus_1_1_r_o_m_region_aae2bc33d181bf0b1f0f1c0b50b354a12}\index{modules.memory.memory\_bus.ROMRegion@{modules.memory.memory\_bus.ROMRegion}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!modules.memory.memory\_bus.ROMRegion@{modules.memory.memory\_bus.ROMRegion}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \label{classmodules_1_1memory_1_1memory__bus_1_1_r_o_m_region_aae2bc33d181bf0b1f0f1c0b50b354a12} 
+modules.\+memory.\+memory\+\_\+bus.\+ROMRegion.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{start}{, }\item[{}]{end}{, }\item[{}]{data}{ = {\ttfamily None}, }\item[{}]{name}{ = {\ttfamily "{}ROM"{}}}\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=211pt]{classmodules_1_1memory_1_1memory__bus_1_1_r_o_m_region_aae2bc33d181bf0b1f0f1c0b50b354a12_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=211pt]{classmodules_1_1memory_1_1memory__bus_1_1_r_o_m_region_aae2bc33d181bf0b1f0f1c0b50b354a12_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classmodules_1_1memory_1_1memory__bus_1_1_r_o_m_region_a0f7dac26453f4c9ee7c57b5f87962175}\index{modules.memory.memory\_bus.ROMRegion@{modules.memory.memory\_bus.ROMRegion}!read@{read}}
+\index{read@{read}!modules.memory.memory\_bus.ROMRegion@{modules.memory.memory\_bus.ROMRegion}}
+\doxysubsubsection{\texorpdfstring{read()}{read()}}
+{\footnotesize\ttfamily \label{classmodules_1_1memory_1_1memory__bus_1_1_r_o_m_region_a0f7dac26453f4c9ee7c57b5f87962175} 
+modules.\+memory.\+memory\+\_\+bus.\+ROMRegion.\+read (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{addr}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Чтение байта. Переопределяется подклассами.\end{DoxyVerb}
+ 
+
+Reimplemented from \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_aa7586fa5d3bc8133dad3624eebf0d19e}{modules.\+memory.\+memory\+\_\+bus.\+Memory\+Region}}.
+
+\Hypertarget{classmodules_1_1memory_1_1memory__bus_1_1_r_o_m_region_a209cb40784636e3afee337ac6418819e}\index{modules.memory.memory\_bus.ROMRegion@{modules.memory.memory\_bus.ROMRegion}!reset@{reset}}
+\index{reset@{reset}!modules.memory.memory\_bus.ROMRegion@{modules.memory.memory\_bus.ROMRegion}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily \label{classmodules_1_1memory_1_1memory__bus_1_1_r_o_m_region_a209cb40784636e3afee337ac6418819e} 
+modules.\+memory.\+memory\+\_\+bus.\+ROMRegion.\+reset (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Сброс региона (например, при сбросе системы).\end{DoxyVerb}
+ 
+
+Reimplemented from \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_a5a97354dcc0dca2c264f91f961d30eae}{modules.\+memory.\+memory\+\_\+bus.\+Memory\+Region}}.
+
+\Hypertarget{classmodules_1_1memory_1_1memory__bus_1_1_r_o_m_region_ae59746d161ef4b01b2f0de66dca093c7}\index{modules.memory.memory\_bus.ROMRegion@{modules.memory.memory\_bus.ROMRegion}!write@{write}}
+\index{write@{write}!modules.memory.memory\_bus.ROMRegion@{modules.memory.memory\_bus.ROMRegion}}
+\doxysubsubsection{\texorpdfstring{write()}{write()}}
+{\footnotesize\ttfamily \label{classmodules_1_1memory_1_1memory__bus_1_1_r_o_m_region_ae59746d161ef4b01b2f0de66dca093c7} 
+modules.\+memory.\+memory\+\_\+bus.\+ROMRegion.\+write (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{addr}{, }\item[{}]{value}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Запись байта. Переопределяется подклассами.\end{DoxyVerb}
+ 
+
+Reimplemented from \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_a693a7091168e93cd36b98fba8c1a7c28}{modules.\+memory.\+memory\+\_\+bus.\+Memory\+Region}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classmodules_1_1memory_1_1memory__bus_1_1_r_o_m_region_aa8814801054e06ac1229787761b32a25}\index{modules.memory.memory\_bus.ROMRegion@{modules.memory.memory\_bus.ROMRegion}!data@{data}}
+\index{data@{data}!modules.memory.memory\_bus.ROMRegion@{modules.memory.memory\_bus.ROMRegion}}
+\doxysubsubsection{\texorpdfstring{data}{data}}
+{\footnotesize\ttfamily \label{classmodules_1_1memory_1_1memory__bus_1_1_r_o_m_region_aa8814801054e06ac1229787761b32a25} 
+modules.\+memory.\+memory\+\_\+bus.\+ROMRegion.\+data = dict(data) if data else \{\}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+modules/memory/\mbox{\hyperlink{memory__bus_8py}{memory\+\_\+bus.\+py}}\end{DoxyCompactItemize}

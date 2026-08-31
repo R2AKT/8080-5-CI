@@ -1,0 +1,174 @@
+\doxysection{ui.\+display\+\_\+widgets.\+TFTWidget Class Reference}
+\hypertarget{classui_1_1display__widgets_1_1_t_f_t_widget}{}\label{classui_1_1display__widgets_1_1_t_f_t_widget}\index{ui.display\_widgets.TFTWidget@{ui.display\_widgets.TFTWidget}}
+
+
+Inheritance diagram for ui.\+display\+\_\+widgets.\+TFTWidget\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=228pt]{classui_1_1display__widgets_1_1_t_f_t_widget__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for ui.\+display\+\_\+widgets.\+TFTWidget\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=228pt]{classui_1_1display__widgets_1_1_t_f_t_widget__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classui_1_1display__widgets_1_1_t_f_t_widget_aaeb96f065dd665ad80875e21a50fc79d}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, \mbox{\hyperlink{classui_1_1display__widgets_1_1_t_f_t_widget_a419b843b413d1db32d06407f642afd25}{device}}, parent=None)
+\item 
+\mbox{\hyperlink{classui_1_1display__widgets_1_1_t_f_t_widget_ab99384aa259f1627caa5fc90d02b9365}{refresh}} (self)
+\item 
+\mbox{\hyperlink{classui_1_1display__widgets_1_1_t_f_t_widget_a453c2ebc4bb53dd11b343d4e5bd9e874}{paint\+Event}} (self, event)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classui_1_1display__widgets_1_1_t_f_t_widget_a419b843b413d1db32d06407f642afd25}{device}} = device
+\item 
+\mbox{\hyperlink{classui_1_1display__widgets_1_1_t_f_t_widget_a0fab6cebdf509ce73fdf0ffdc7368e8c}{dev\+\_\+w}} = getattr(\mbox{\hyperlink{classui_1_1display__widgets_1_1_t_f_t_widget_a419b843b413d1db32d06407f642afd25}{device}}, \textquotesingle{}width\textquotesingle{}, 320)
+\item 
+\mbox{\hyperlink{classui_1_1display__widgets_1_1_t_f_t_widget_a20ff5325e3cd8bcffb83650420d81532}{dev\+\_\+h}} = getattr(\mbox{\hyperlink{classui_1_1display__widgets_1_1_t_f_t_widget_a419b843b413d1db32d06407f642afd25}{device}}, \textquotesingle{}height\textquotesingle{}, 240)
+\item 
+int \mbox{\hyperlink{classui_1_1display__widgets_1_1_t_f_t_widget_a662264820517fc089abb2e4bf0150b3e}{scale}} = 2
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classui_1_1display__widgets_1_1_t_f_t_widget_a5d0278e161aaef5e71579ed3c468173c}{\+\_\+recalc\+\_\+size}} (self)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classui_1_1display__widgets_1_1_t_f_t_widget_a9db730594f41cae5aa3e1076ff67eb56}{\+\_\+rgb565\+\_\+to\+\_\+rgb888}} (pixel)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Виджет для графического дисплея TFT8080 (RGB565)\end{DoxyVerb}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classui_1_1display__widgets_1_1_t_f_t_widget_aaeb96f065dd665ad80875e21a50fc79d}\index{ui.display\_widgets.TFTWidget@{ui.display\_widgets.TFTWidget}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!ui.display\_widgets.TFTWidget@{ui.display\_widgets.TFTWidget}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \label{classui_1_1display__widgets_1_1_t_f_t_widget_aaeb96f065dd665ad80875e21a50fc79d} 
+ui.\+display\+\_\+widgets.\+TFTWidget.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{device}{, }\item[{}]{parent}{ = {\ttfamily None}}\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=231pt]{classui_1_1display__widgets_1_1_t_f_t_widget_aaeb96f065dd665ad80875e21a50fc79d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=231pt]{classui_1_1display__widgets_1_1_t_f_t_widget_aaeb96f065dd665ad80875e21a50fc79d_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classui_1_1display__widgets_1_1_t_f_t_widget_a5d0278e161aaef5e71579ed3c468173c}\index{ui.display\_widgets.TFTWidget@{ui.display\_widgets.TFTWidget}!\_recalc\_size@{\_recalc\_size}}
+\index{\_recalc\_size@{\_recalc\_size}!ui.display\_widgets.TFTWidget@{ui.display\_widgets.TFTWidget}}
+\doxysubsubsection{\texorpdfstring{\_recalc\_size()}{\_recalc\_size()}}
+{\footnotesize\ttfamily \label{classui_1_1display__widgets_1_1_t_f_t_widget_a5d0278e161aaef5e71579ed3c468173c} 
+ui.\+display\+\_\+widgets.\+TFTWidget.\+\_\+recalc\+\_\+size (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Пересчёт размера виджета при изменении параметров устройства\end{DoxyVerb}
+ Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classui_1_1display__widgets_1_1_t_f_t_widget_a5d0278e161aaef5e71579ed3c468173c_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classui_1_1display__widgets_1_1_t_f_t_widget_a9db730594f41cae5aa3e1076ff67eb56}\index{ui.display\_widgets.TFTWidget@{ui.display\_widgets.TFTWidget}!\_rgb565\_to\_rgb888@{\_rgb565\_to\_rgb888}}
+\index{\_rgb565\_to\_rgb888@{\_rgb565\_to\_rgb888}!ui.display\_widgets.TFTWidget@{ui.display\_widgets.TFTWidget}}
+\doxysubsubsection{\texorpdfstring{\_rgb565\_to\_rgb888()}{\_rgb565\_to\_rgb888()}}
+{\footnotesize\ttfamily \label{classui_1_1display__widgets_1_1_t_f_t_widget_a9db730594f41cae5aa3e1076ff67eb56} 
+ui.\+display\+\_\+widgets.\+TFTWidget.\+\_\+rgb565\+\_\+to\+\_\+rgb888 (\begin{DoxyParamCaption}\item[{}]{pixel}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+\begin{DoxyVerb}Конвертация RGB565 → (R, G, B)\end{DoxyVerb}
+ Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classui_1_1display__widgets_1_1_t_f_t_widget_a9db730594f41cae5aa3e1076ff67eb56_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classui_1_1display__widgets_1_1_t_f_t_widget_a453c2ebc4bb53dd11b343d4e5bd9e874}\index{ui.display\_widgets.TFTWidget@{ui.display\_widgets.TFTWidget}!paintEvent@{paintEvent}}
+\index{paintEvent@{paintEvent}!ui.display\_widgets.TFTWidget@{ui.display\_widgets.TFTWidget}}
+\doxysubsubsection{\texorpdfstring{paintEvent()}{paintEvent()}}
+{\footnotesize\ttfamily \label{classui_1_1display__widgets_1_1_t_f_t_widget_a453c2ebc4bb53dd11b343d4e5bd9e874} 
+ui.\+display\+\_\+widgets.\+TFTWidget.\+paint\+Event (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{event}{}\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classui_1_1display__widgets_1_1_t_f_t_widget_a453c2ebc4bb53dd11b343d4e5bd9e874_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classui_1_1display__widgets_1_1_t_f_t_widget_ab99384aa259f1627caa5fc90d02b9365}\index{ui.display\_widgets.TFTWidget@{ui.display\_widgets.TFTWidget}!refresh@{refresh}}
+\index{refresh@{refresh}!ui.display\_widgets.TFTWidget@{ui.display\_widgets.TFTWidget}}
+\doxysubsubsection{\texorpdfstring{refresh()}{refresh()}}
+{\footnotesize\ttfamily \label{classui_1_1display__widgets_1_1_t_f_t_widget_ab99384aa259f1627caa5fc90d02b9365} 
+ui.\+display\+\_\+widgets.\+TFTWidget.\+refresh (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classui_1_1display__widgets_1_1_t_f_t_widget_ab99384aa259f1627caa5fc90d02b9365_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classui_1_1display__widgets_1_1_t_f_t_widget_a20ff5325e3cd8bcffb83650420d81532}\index{ui.display\_widgets.TFTWidget@{ui.display\_widgets.TFTWidget}!dev\_h@{dev\_h}}
+\index{dev\_h@{dev\_h}!ui.display\_widgets.TFTWidget@{ui.display\_widgets.TFTWidget}}
+\doxysubsubsection{\texorpdfstring{dev\_h}{dev\_h}}
+{\footnotesize\ttfamily \label{classui_1_1display__widgets_1_1_t_f_t_widget_a20ff5325e3cd8bcffb83650420d81532} 
+ui.\+display\+\_\+widgets.\+TFTWidget.\+dev\+\_\+h = getattr(\mbox{\hyperlink{classui_1_1display__widgets_1_1_t_f_t_widget_a419b843b413d1db32d06407f642afd25}{device}}, \textquotesingle{}height\textquotesingle{}, 240)}
+
+\Hypertarget{classui_1_1display__widgets_1_1_t_f_t_widget_a0fab6cebdf509ce73fdf0ffdc7368e8c}\index{ui.display\_widgets.TFTWidget@{ui.display\_widgets.TFTWidget}!dev\_w@{dev\_w}}
+\index{dev\_w@{dev\_w}!ui.display\_widgets.TFTWidget@{ui.display\_widgets.TFTWidget}}
+\doxysubsubsection{\texorpdfstring{dev\_w}{dev\_w}}
+{\footnotesize\ttfamily \label{classui_1_1display__widgets_1_1_t_f_t_widget_a0fab6cebdf509ce73fdf0ffdc7368e8c} 
+ui.\+display\+\_\+widgets.\+TFTWidget.\+dev\+\_\+w = getattr(\mbox{\hyperlink{classui_1_1display__widgets_1_1_t_f_t_widget_a419b843b413d1db32d06407f642afd25}{device}}, \textquotesingle{}width\textquotesingle{}, 320)}
+
+\Hypertarget{classui_1_1display__widgets_1_1_t_f_t_widget_a419b843b413d1db32d06407f642afd25}\index{ui.display\_widgets.TFTWidget@{ui.display\_widgets.TFTWidget}!device@{device}}
+\index{device@{device}!ui.display\_widgets.TFTWidget@{ui.display\_widgets.TFTWidget}}
+\doxysubsubsection{\texorpdfstring{device}{device}}
+{\footnotesize\ttfamily \label{classui_1_1display__widgets_1_1_t_f_t_widget_a419b843b413d1db32d06407f642afd25} 
+ui.\+display\+\_\+widgets.\+TFTWidget.\+device = device}
+
+\Hypertarget{classui_1_1display__widgets_1_1_t_f_t_widget_a662264820517fc089abb2e4bf0150b3e}\index{ui.display\_widgets.TFTWidget@{ui.display\_widgets.TFTWidget}!scale@{scale}}
+\index{scale@{scale}!ui.display\_widgets.TFTWidget@{ui.display\_widgets.TFTWidget}}
+\doxysubsubsection{\texorpdfstring{scale}{scale}}
+{\footnotesize\ttfamily \label{classui_1_1display__widgets_1_1_t_f_t_widget_a662264820517fc089abb2e4bf0150b3e} 
+int ui.\+display\+\_\+widgets.\+TFTWidget.\+scale = 2}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+ui/\mbox{\hyperlink{display__widgets_8py}{display\+\_\+widgets.\+py}}\end{DoxyCompactItemize}

@@ -1,0 +1,5 @@
+<map id="modules.memory.shadow.ShadowROMRegion" name="modules.memory.shadow.ShadowROMRegion">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,96,225,139"/>
+<area shape="rect" id="Node000002" href="$classmodules_1_1memory_1_1memory__bus_1_1_memory_region.html" title=" " alt="" coords="29,5,201,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="118,64,118,96,112,96,112,64"/>
+</map>

@@ -1,0 +1,26 @@
+\doxysection{modules.\+io.\+i8251 Namespace Reference}
+\hypertarget{namespacemodules_1_1io_1_1i8251}{}\label{namespacemodules_1_1io_1_1i8251}\index{modules.io.i8251@{modules.io.i8251}}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classmodules_1_1io_1_1i8251_1_1_i8251}{I8251}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}8251 (КР580ВВ51) — USART (Universal Synchronous/Asynchronous Receiver/Transmitter).
+Итерация E5: расширенные IO-устройства.
+
+Регистры (2 порта):
+  offset 0: Data / Status (чтение), Data / Mode/Command (запись)
+  offset 1: Mode Register / Command Register / Status Register
+
+Режимы:
+  - Синхронный
+  - Асинхронный (1x, 16x, 64x baud rate)
+
+Сигналы прерываний:
+  TxRDY — передатчик готов к передаче
+  RxRDY — приёмник принял данные
+\end{DoxyVerb}
+ 

@@ -1,0 +1,25 @@
+\doxysection{modules.\+system Namespace Reference}
+\hypertarget{namespacemodules_1_1system}{}\label{namespacemodules_1_1system}\index{modules.system@{modules.system}}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classmodules_1_1system_1_1_computer_system}{Computer\+System}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}ComputerSystem — инкапсуляция полной компьютерной системы.
+Итерация 9.3: интеграция всех модулей.
+
+Объединяет:
+- CPU (i8080 эмулятор)
+- Шину памяти (MemoryBus)
+- Все IO-устройства
+- Профили систем (TOML)
+
+Поддерживает:
+- Загрузку из TOML-файла или профиля
+- Динамическое добавление/удаление устройств
+- Сохранение/восстановление состояний
+\end{DoxyVerb}
+ 

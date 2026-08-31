@@ -1,0 +1,831 @@
+\doxysection{modules.\+io.\+i512vi1.\+I512\+VI1 Class Reference}
+\hypertarget{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1}{}\label{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1}\index{modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}}
+
+
+Inheritance diagram for modules.\+io.\+i512vi1.\+I512\+VI1\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=227pt]{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for modules.\+io.\+i512vi1.\+I512\+VI1\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=227pt]{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_ab41575179bd3cbfebe1dab597f2f36e4}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, \mbox{\hyperlink{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1}{base\+\_\+port}}, \mbox{\hyperlink{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1}{name}}="{}I512\+VI1"{})
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a21684ba1399530311845cd73b3f576b8}{reset}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a4bdf0c6054f1232d39192b7d42ab88f7}{init\+\_\+from\+\_\+system\+\_\+time}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a05ded6a41efa8d6258a8b0334fe9efae}{tick}} (self, cycles=1)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_ac4d04fb203659d1badcb9660e16819b8}{io\+\_\+read}} (self, port)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a78db73315d170cef6e71684fc27f496f}{io\+\_\+write}} (self, port, value)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_adb7d41fb8734dcb1e6d377837797251f}{set\+\_\+nvm\+\_\+file}} (self, path)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a3f6998d634d08342607d2c7842955529}{load\+\_\+nvm}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_ad07af5af10799ec47348e8c25d1ad9a0}{save\+\_\+nvm}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a30ae7e3a5f963cda52741721b562c968}{get\+\_\+state}} (self)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device}{modules.\+io.\+iodevice.\+IODevice}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_af44b72c0a1d9f3622b18ce802d33290b}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, \mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_a349db233ca1e3fd7c64e10db67c21aa3}{base\+\_\+port}}, \mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_a2023de274431002e37faef63d740d9e9}{port\+\_\+count}}, \mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_a4ef4b1e055e68877b069410b67b6c90d}{name}}="{}IODevice"{})
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_a8b83e9174621e573851b94cc407ab267}{register\+\_\+to\+\_\+bus}} (self, bus)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_a1636fa580fb8cafd15d2b4b24cdf6e9d}{unregister\+\_\+from\+\_\+bus}} (self, bus)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a85634ce767eaa62f475bca31390de47a}{nvm\+\_\+file}} = None
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_aa66b09ee3fb00ad8c91a1e63309d13cd}{on\+\_\+irq}} = None
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a15627c9a559ae10f92e57f40b6f14d15}{current\+\_\+reg}} = self.\+REG\+\_\+D
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_af26ff735fc269a788069ff1e8cbe710c}{reg\+\_\+a}} = 0x26
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a60ec2011090e40e1a1c2348fe14a3446}{reg\+\_\+b}} = self.\+B\+\_\+24H
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a89ea73eaa3a0394efee0aadd86139fe0}{reg\+\_\+c}} = 0x00
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_aba3d7f1ce003e5952825d0ff04adcab7}{reg\+\_\+d}} = self.\+D\+\_\+\+VRT
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_aa0007264e2d2e4a3402a46ab0af88867}{seconds}} = 0
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_aec65e334bc5457888b304e37a6ec0716}{minutes}} = 0
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a5fe4e067badc22cbda5446f0cac50f70}{hours}} = 0
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a759adf59443e07fcac0ec7bc577a863e}{day\+\_\+of\+\_\+week}} = 1
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a18543e0e49c6f7ac0030bc05e90f885a}{day\+\_\+of\+\_\+month}} = 1
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a9848c47d4a84728c0ef4c5851a9d84dc}{month}} = 1
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_ace1f755c9ef99a04bce7b2f1704295f8}{year}} = 0
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a5b46cd6320574eca136f9f138e47aedf}{alarm\+\_\+sec}} = self.\+ALARM\+\_\+\+DONT\+\_\+\+CARE
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_abedd97dbf06b94c74254d1d874dcc8bb}{alarm\+\_\+min}} = self.\+ALARM\+\_\+\+DONT\+\_\+\+CARE
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a374625ca74b5f3b308c9dca715473806}{alarm\+\_\+hrs}} = self.\+ALARM\+\_\+\+DONT\+\_\+\+CARE
+\item 
+list \mbox{\hyperlink{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a1135c78d3a8f6cedd852147499cc3f7f}{nvm}} = \mbox{[}0x00\mbox{]} \texorpdfstring{$\ast$}{*} self.\+NVM\+\_\+\+SIZE
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device}{modules.\+io.\+iodevice.\+IODevice}}}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_a349db233ca1e3fd7c64e10db67c21aa3}{base\+\_\+port}} = base\+\_\+port \& 0x\+FF
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_a2023de274431002e37faef63d740d9e9}{port\+\_\+count}} = port\+\_\+count
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_a4ef4b1e055e68877b069410b67b6c90d}{name}} = name
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a5b5bd003adf1aad6bbe8814ff4254091}{NVM\+\_\+\+SIZE}} = 50
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a5812d8b6ac12a11646abbf74e4d93fc5}{NVM\+\_\+\+START}} = 0x0E
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a6d503e9b89d1c5deb910ea45110b7b40}{REG\+\_\+\+SECONDS}} = 0x00
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a7a2c6f0f56aecc04c90e6e31939f7d9b}{REG\+\_\+\+ALARM\+\_\+\+SEC}} = 0x01
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_ae3e58e70d03cb4a70a4da8f018d604c0}{REG\+\_\+\+MINUTES}} = 0x02
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a080a1cc1c6d7c6af226f2d34c27f7790}{REG\+\_\+\+ALARM\+\_\+\+MIN}} = 0x03
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_ab5d4040c59fd3f70e7f38fe2b49a5dc3}{REG\+\_\+\+HOURS}} = 0x04
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a6051744590d40087cf712322a3f6cec4}{REG\+\_\+\+ALARM\+\_\+\+HRS}} = 0x05
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a1b8637f1321f22962f6696a5f45fc71c}{REG\+\_\+\+DOW}} = 0x06
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a0a544e6ce25d8598561fcb7b155750d2}{REG\+\_\+\+DOM}} = 0x07
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a5258ef167bbbb1696484c676e766c95b}{REG\+\_\+\+MONTH}} = 0x08
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a3fe11faac131e43c08e449912b52d9f9}{REG\+\_\+\+YEAR}} = 0x09
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_aa10cda37292a2ca520e15d49cd65b912}{REG\+\_\+A}} = 0x0A
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a4c6be29fd838f964374ebefe57f2e422}{REG\+\_\+B}} = 0x0B
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_ae02f4bd1050eedb237bc7011105dc865}{REG\+\_\+C}} = 0x0C
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_af2675d7b6d3f64d42468dfe1681f3453}{REG\+\_\+D}} = 0x0D
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a5055981183b4ea8f2033079372be19d5}{B\+\_\+\+SET}} = 0x80
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_ab0e46da990ca3a26f9687ac903b73040}{B\+\_\+\+PIE}} = 0x40
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a7ae987658b1288abcb1327611513c9c1}{B\+\_\+\+AIE}} = 0x20
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a57fb6eeb5d5b0a7c3794b2a60984927b}{B\+\_\+\+UIE}} = 0x10
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a41fcde6adf774d66e6dc768fb2958b8b}{B\+\_\+\+SQWE}} = 0x08
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a40db9e56555a49b7224c77a554c4449a}{B\+\_\+\+DM}} = 0x04
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a3adf3f8145d051d6892994c4738c3c64}{B\+\_\+24H}} = 0x02
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_ad92b445467b053329c7bd3c338e73df1}{B\+\_\+\+DSE}} = 0x01
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a7c0decfe62dabd22be85af1caee7b1a5}{C\+\_\+\+IRQF}} = 0x80
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a84caad4f66b21c2d8e4725dcc329b764}{C\+\_\+\+PF}} = 0x40
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_ab7482adc3d7c71c0811f72bf33fa87c5}{C\+\_\+\+AF}} = 0x20
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_aa2ac11135f5a8fb7b9f69fbaae099ac3}{C\+\_\+\+UF}} = 0x10
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a1ac3da480cfa8c51557308229ed71b23}{D\+\_\+\+VRT}} = 0x80
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a9f30e6c04077e32b1f257fad29bc5687}{ALARM\+\_\+\+DONT\+\_\+\+CARE}} = 0x\+C0
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a58b9e2d1aa8429bdb63945f16492fb0e}{\+\_\+update\+\_\+time}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_aa365315e372773c69c7ceb5022fbcfd4}{\+\_\+increment\+\_\+day}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a8b83be3b04c9f2142592fdcbc3b26118}{\+\_\+days\+\_\+in\+\_\+month}} (self, \mbox{\hyperlink{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a9848c47d4a84728c0ef4c5851a9d84dc}{month}}, \mbox{\hyperlink{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_ace1f755c9ef99a04bce7b2f1704295f8}{year}})
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_adf2585b302f5aff9ac0beabd662181f4}{\+\_\+check\+\_\+alarm}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a4f1c3642f507f61159e52f5e522aa30a}{\+\_\+is\+\_\+binary}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_aa08150f72c12df692d3db71c09005ddf}{\+\_\+encode}} (self, value)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a33719817171057753b5a50dd5da7aee3}{\+\_\+decode}} (self, value)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a3242172c5f234af3ee14e8e06fcf6d4c}{\+\_\+read\+\_\+reg}} (self, reg)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a38f9522e207385e6e711ca6b81895151}{\+\_\+write\+\_\+reg}} (self, reg, value)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a44e9ba0137fc8a2411828f62e9a5b69d}{\+\_\+last\+\_\+tick}} = time.\+time()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}512ВИ1 — часы реального времени с энергонезависимой памятью\end{DoxyVerb}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_ab41575179bd3cbfebe1dab597f2f36e4}\index{modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_ab41575179bd3cbfebe1dab597f2f36e4} 
+modules.\+io.\+i512vi1.\+I512\+VI1.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{base\+\_\+port}{, }\item[{}]{name}{ = {\ttfamily "{}I512VI1"{}}}\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=217pt]{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_ab41575179bd3cbfebe1dab597f2f36e4_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=217pt]{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_ab41575179bd3cbfebe1dab597f2f36e4_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_adf2585b302f5aff9ac0beabd662181f4}\index{modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}!\_check\_alarm@{\_check\_alarm}}
+\index{\_check\_alarm@{\_check\_alarm}!modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}}
+\doxysubsubsection{\texorpdfstring{\_check\_alarm()}{\_check\_alarm()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_adf2585b302f5aff9ac0beabd662181f4} 
+modules.\+io.\+i512vi1.\+I512\+VI1.\+\_\+check\+\_\+alarm (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Проверка будильника\end{DoxyVerb}
+ Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_adf2585b302f5aff9ac0beabd662181f4_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a8b83be3b04c9f2142592fdcbc3b26118}\index{modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}!\_days\_in\_month@{\_days\_in\_month}}
+\index{\_days\_in\_month@{\_days\_in\_month}!modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}}
+\doxysubsubsection{\texorpdfstring{\_days\_in\_month()}{\_days\_in\_month()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a8b83be3b04c9f2142592fdcbc3b26118} 
+modules.\+io.\+i512vi1.\+I512\+VI1.\+\_\+days\+\_\+in\+\_\+month (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{month}{, }\item[{}]{year}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Количество дней в месяце с учётом високосного года\end{DoxyVerb}
+ Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a8b83be3b04c9f2142592fdcbc3b26118_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a33719817171057753b5a50dd5da7aee3}\index{modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}!\_decode@{\_decode}}
+\index{\_decode@{\_decode}!modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}}
+\doxysubsubsection{\texorpdfstring{\_decode()}{\_decode()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a33719817171057753b5a50dd5da7aee3} 
+modules.\+io.\+i512vi1.\+I512\+VI1.\+\_\+decode (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Декодирование значения в зависимости от режима DM\end{DoxyVerb}
+ Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a33719817171057753b5a50dd5da7aee3_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a33719817171057753b5a50dd5da7aee3_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_aa08150f72c12df692d3db71c09005ddf}\index{modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}!\_encode@{\_encode}}
+\index{\_encode@{\_encode}!modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}}
+\doxysubsubsection{\texorpdfstring{\_encode()}{\_encode()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_aa08150f72c12df692d3db71c09005ddf} 
+modules.\+io.\+i512vi1.\+I512\+VI1.\+\_\+encode (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Кодирование значения в зависимости от режима DM\end{DoxyVerb}
+ Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_aa08150f72c12df692d3db71c09005ddf_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_aa08150f72c12df692d3db71c09005ddf_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_aa365315e372773c69c7ceb5022fbcfd4}\index{modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}!\_increment\_day@{\_increment\_day}}
+\index{\_increment\_day@{\_increment\_day}!modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}}
+\doxysubsubsection{\texorpdfstring{\_increment\_day()}{\_increment\_day()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_aa365315e372773c69c7ceb5022fbcfd4} 
+modules.\+io.\+i512vi1.\+I512\+VI1.\+\_\+increment\+\_\+day (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Инкремент дня с учётом месяцев и високосных годов\end{DoxyVerb}
+ Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_aa365315e372773c69c7ceb5022fbcfd4_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_aa365315e372773c69c7ceb5022fbcfd4_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a4f1c3642f507f61159e52f5e522aa30a}\index{modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}!\_is\_binary@{\_is\_binary}}
+\index{\_is\_binary@{\_is\_binary}!modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}}
+\doxysubsubsection{\texorpdfstring{\_is\_binary()}{\_is\_binary()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a4f1c3642f507f61159e52f5e522aa30a} 
+modules.\+io.\+i512vi1.\+I512\+VI1.\+\_\+is\+\_\+binary (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Проверка режима данных (DM бит регистра B)\end{DoxyVerb}
+ Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a4f1c3642f507f61159e52f5e522aa30a_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a3242172c5f234af3ee14e8e06fcf6d4c}\index{modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}!\_read\_reg@{\_read\_reg}}
+\index{\_read\_reg@{\_read\_reg}!modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}}
+\doxysubsubsection{\texorpdfstring{\_read\_reg()}{\_read\_reg()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a3242172c5f234af3ee14e8e06fcf6d4c} 
+modules.\+io.\+i512vi1.\+I512\+VI1.\+\_\+read\+\_\+reg (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{reg}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Чтение регистра\end{DoxyVerb}
+ Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a3242172c5f234af3ee14e8e06fcf6d4c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a3242172c5f234af3ee14e8e06fcf6d4c_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a58b9e2d1aa8429bdb63945f16492fb0e}\index{modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}!\_update\_time@{\_update\_time}}
+\index{\_update\_time@{\_update\_time}!modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}}
+\doxysubsubsection{\texorpdfstring{\_update\_time()}{\_update\_time()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a58b9e2d1aa8429bdb63945f16492fb0e} 
+modules.\+io.\+i512vi1.\+I512\+VI1.\+\_\+update\+\_\+time (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Обновление времени на 1 секунду\end{DoxyVerb}
+ Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a58b9e2d1aa8429bdb63945f16492fb0e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a58b9e2d1aa8429bdb63945f16492fb0e_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a38f9522e207385e6e711ca6b81895151}\index{modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}!\_write\_reg@{\_write\_reg}}
+\index{\_write\_reg@{\_write\_reg}!modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}}
+\doxysubsubsection{\texorpdfstring{\_write\_reg()}{\_write\_reg()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a38f9522e207385e6e711ca6b81895151} 
+modules.\+io.\+i512vi1.\+I512\+VI1.\+\_\+write\+\_\+reg (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{reg}{, }\item[{}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Запись регистра\end{DoxyVerb}
+ Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a38f9522e207385e6e711ca6b81895151_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a38f9522e207385e6e711ca6b81895151_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a30ae7e3a5f963cda52741721b562c968}\index{modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}!get\_state@{get\_state}}
+\index{get\_state@{get\_state}!modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}}
+\doxysubsubsection{\texorpdfstring{get\_state()}{get\_state()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a30ae7e3a5f963cda52741721b562c968} 
+modules.\+io.\+i512vi1.\+I512\+VI1.\+get\+\_\+state (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Состояние для отладки\end{DoxyVerb}
+ 
+
+Reimplemented from \mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_a17a7a0beff1c642aa1b3763e15bd429f}{modules.\+io.\+iodevice.\+IODevice}}.
+
+\Hypertarget{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a4bdf0c6054f1232d39192b7d42ab88f7}\index{modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}!init\_from\_system\_time@{init\_from\_system\_time}}
+\index{init\_from\_system\_time@{init\_from\_system\_time}!modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}}
+\doxysubsubsection{\texorpdfstring{init\_from\_system\_time()}{init\_from\_system\_time()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a4bdf0c6054f1232d39192b7d42ab88f7} 
+modules.\+io.\+i512vi1.\+I512\+VI1.\+init\+\_\+from\+\_\+system\+\_\+time (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Инициализация времени по системным часам\end{DoxyVerb}
+ \Hypertarget{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_ac4d04fb203659d1badcb9660e16819b8}\index{modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}!io\_read@{io\_read}}
+\index{io\_read@{io\_read}!modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}}
+\doxysubsubsection{\texorpdfstring{io\_read()}{io\_read()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_ac4d04fb203659d1badcb9660e16819b8} 
+modules.\+io.\+i512vi1.\+I512\+VI1.\+io\+\_\+read (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{port}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Чтение из порта\end{DoxyVerb}
+ 
+
+Reimplemented from \mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_a48e12c7ac8519e89080b7981c57ae58d}{modules.\+io.\+iodevice.\+IODevice}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_ac4d04fb203659d1badcb9660e16819b8_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a78db73315d170cef6e71684fc27f496f}\index{modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}!io\_write@{io\_write}}
+\index{io\_write@{io\_write}!modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}}
+\doxysubsubsection{\texorpdfstring{io\_write()}{io\_write()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a78db73315d170cef6e71684fc27f496f} 
+modules.\+io.\+i512vi1.\+I512\+VI1.\+io\+\_\+write (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{port}{, }\item[{}]{value}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Запись в порт\end{DoxyVerb}
+ 
+
+Reimplemented from \mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_a2957a963b46a5b4179fe85570fc377be}{modules.\+io.\+iodevice.\+IODevice}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a78db73315d170cef6e71684fc27f496f_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a3f6998d634d08342607d2c7842955529}\index{modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}!load\_nvm@{load\_nvm}}
+\index{load\_nvm@{load\_nvm}!modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}}
+\doxysubsubsection{\texorpdfstring{load\_nvm()}{load\_nvm()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a3f6998d634d08342607d2c7842955529} 
+modules.\+io.\+i512vi1.\+I512\+VI1.\+load\+\_\+nvm (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Загрузить NVM из файла. Возвращает True при успехе.\end{DoxyVerb}
+ \Hypertarget{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a21684ba1399530311845cd73b3f576b8}\index{modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}!reset@{reset}}
+\index{reset@{reset}!modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a21684ba1399530311845cd73b3f576b8} 
+modules.\+io.\+i512vi1.\+I512\+VI1.\+reset (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Сброс модуля\end{DoxyVerb}
+ 
+
+Reimplemented from \mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_afe097230fde568f41b4153ecc99c6f4b}{modules.\+io.\+iodevice.\+IODevice}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a21684ba1399530311845cd73b3f576b8_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_ad07af5af10799ec47348e8c25d1ad9a0}\index{modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}!save\_nvm@{save\_nvm}}
+\index{save\_nvm@{save\_nvm}!modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}}
+\doxysubsubsection{\texorpdfstring{save\_nvm()}{save\_nvm()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_ad07af5af10799ec47348e8c25d1ad9a0} 
+modules.\+io.\+i512vi1.\+I512\+VI1.\+save\+\_\+nvm (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Сохранить NVM в файл. Возвращает True при успехе.\end{DoxyVerb}
+ \Hypertarget{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_adb7d41fb8734dcb1e6d377837797251f}\index{modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}!set\_nvm\_file@{set\_nvm\_file}}
+\index{set\_nvm\_file@{set\_nvm\_file}!modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}}
+\doxysubsubsection{\texorpdfstring{set\_nvm\_file()}{set\_nvm\_file()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_adb7d41fb8734dcb1e6d377837797251f} 
+modules.\+io.\+i512vi1.\+I512\+VI1.\+set\+\_\+nvm\+\_\+file (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{path}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Установить путь к файлу NVM (из TOML-конфигурации)\end{DoxyVerb}
+ \Hypertarget{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a05ded6a41efa8d6258a8b0334fe9efae}\index{modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}!tick@{tick}}
+\index{tick@{tick}!modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}}
+\doxysubsubsection{\texorpdfstring{tick()}{tick()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a05ded6a41efa8d6258a8b0334fe9efae} 
+modules.\+io.\+i512vi1.\+I512\+VI1.\+tick (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{cycles}{ = {\ttfamily 1}}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Обновление времени по реальному системному времени\end{DoxyVerb}
+ 
+
+Reimplemented from \mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_a15761d8fd686da3088af53bd512045d9}{modules.\+io.\+iodevice.\+IODevice}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a05ded6a41efa8d6258a8b0334fe9efae_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a05ded6a41efa8d6258a8b0334fe9efae_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a44e9ba0137fc8a2411828f62e9a5b69d}\index{modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}!\_last\_tick@{\_last\_tick}}
+\index{\_last\_tick@{\_last\_tick}!modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}}
+\doxysubsubsection{\texorpdfstring{\_last\_tick}{\_last\_tick}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a44e9ba0137fc8a2411828f62e9a5b69d} 
+modules.\+io.\+i512vi1.\+I512\+VI1.\+\_\+last\+\_\+tick = time.\+time()\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a9f30e6c04077e32b1f257fad29bc5687}\index{modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}!ALARM\_DONT\_CARE@{ALARM\_DONT\_CARE}}
+\index{ALARM\_DONT\_CARE@{ALARM\_DONT\_CARE}!modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}}
+\doxysubsubsection{\texorpdfstring{ALARM\_DONT\_CARE}{ALARM\_DONT\_CARE}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a9f30e6c04077e32b1f257fad29bc5687} 
+int modules.\+io.\+i512vi1.\+I512\+VI1.\+ALARM\+\_\+\+DONT\+\_\+\+CARE = 0x\+C0\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a374625ca74b5f3b308c9dca715473806}\index{modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}!alarm\_hrs@{alarm\_hrs}}
+\index{alarm\_hrs@{alarm\_hrs}!modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}}
+\doxysubsubsection{\texorpdfstring{alarm\_hrs}{alarm\_hrs}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a374625ca74b5f3b308c9dca715473806} 
+int modules.\+io.\+i512vi1.\+I512\+VI1.\+alarm\+\_\+hrs = self.\+ALARM\+\_\+\+DONT\+\_\+\+CARE}
+
+\Hypertarget{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_abedd97dbf06b94c74254d1d874dcc8bb}\index{modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}!alarm\_min@{alarm\_min}}
+\index{alarm\_min@{alarm\_min}!modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}}
+\doxysubsubsection{\texorpdfstring{alarm\_min}{alarm\_min}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_abedd97dbf06b94c74254d1d874dcc8bb} 
+int modules.\+io.\+i512vi1.\+I512\+VI1.\+alarm\+\_\+min = self.\+ALARM\+\_\+\+DONT\+\_\+\+CARE}
+
+\Hypertarget{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a5b46cd6320574eca136f9f138e47aedf}\index{modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}!alarm\_sec@{alarm\_sec}}
+\index{alarm\_sec@{alarm\_sec}!modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}}
+\doxysubsubsection{\texorpdfstring{alarm\_sec}{alarm\_sec}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a5b46cd6320574eca136f9f138e47aedf} 
+int modules.\+io.\+i512vi1.\+I512\+VI1.\+alarm\+\_\+sec = self.\+ALARM\+\_\+\+DONT\+\_\+\+CARE}
+
+\Hypertarget{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a3adf3f8145d051d6892994c4738c3c64}\index{modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}!B\_24H@{B\_24H}}
+\index{B\_24H@{B\_24H}!modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}}
+\doxysubsubsection{\texorpdfstring{B\_24H}{B\_24H}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a3adf3f8145d051d6892994c4738c3c64} 
+int modules.\+io.\+i512vi1.\+I512\+VI1.\+B\+\_\+24H = 0x02\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a7ae987658b1288abcb1327611513c9c1}\index{modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}!B\_AIE@{B\_AIE}}
+\index{B\_AIE@{B\_AIE}!modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}}
+\doxysubsubsection{\texorpdfstring{B\_AIE}{B\_AIE}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a7ae987658b1288abcb1327611513c9c1} 
+modules.\+io.\+i512vi1.\+I512\+VI1.\+B\+\_\+\+AIE = 0x20\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a40db9e56555a49b7224c77a554c4449a}\index{modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}!B\_DM@{B\_DM}}
+\index{B\_DM@{B\_DM}!modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}}
+\doxysubsubsection{\texorpdfstring{B\_DM}{B\_DM}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a40db9e56555a49b7224c77a554c4449a} 
+modules.\+io.\+i512vi1.\+I512\+VI1.\+B\+\_\+\+DM = 0x04\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_ad92b445467b053329c7bd3c338e73df1}\index{modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}!B\_DSE@{B\_DSE}}
+\index{B\_DSE@{B\_DSE}!modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}}
+\doxysubsubsection{\texorpdfstring{B\_DSE}{B\_DSE}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_ad92b445467b053329c7bd3c338e73df1} 
+int modules.\+io.\+i512vi1.\+I512\+VI1.\+B\+\_\+\+DSE = 0x01\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_ab0e46da990ca3a26f9687ac903b73040}\index{modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}!B\_PIE@{B\_PIE}}
+\index{B\_PIE@{B\_PIE}!modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}}
+\doxysubsubsection{\texorpdfstring{B\_PIE}{B\_PIE}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_ab0e46da990ca3a26f9687ac903b73040} 
+int modules.\+io.\+i512vi1.\+I512\+VI1.\+B\+\_\+\+PIE = 0x40\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a5055981183b4ea8f2033079372be19d5}\index{modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}!B\_SET@{B\_SET}}
+\index{B\_SET@{B\_SET}!modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}}
+\doxysubsubsection{\texorpdfstring{B\_SET}{B\_SET}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a5055981183b4ea8f2033079372be19d5} 
+modules.\+io.\+i512vi1.\+I512\+VI1.\+B\+\_\+\+SET = 0x80\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a41fcde6adf774d66e6dc768fb2958b8b}\index{modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}!B\_SQWE@{B\_SQWE}}
+\index{B\_SQWE@{B\_SQWE}!modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}}
+\doxysubsubsection{\texorpdfstring{B\_SQWE}{B\_SQWE}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a41fcde6adf774d66e6dc768fb2958b8b} 
+int modules.\+io.\+i512vi1.\+I512\+VI1.\+B\+\_\+\+SQWE = 0x08\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a57fb6eeb5d5b0a7c3794b2a60984927b}\index{modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}!B\_UIE@{B\_UIE}}
+\index{B\_UIE@{B\_UIE}!modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}}
+\doxysubsubsection{\texorpdfstring{B\_UIE}{B\_UIE}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a57fb6eeb5d5b0a7c3794b2a60984927b} 
+int modules.\+io.\+i512vi1.\+I512\+VI1.\+B\+\_\+\+UIE = 0x10\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_ab7482adc3d7c71c0811f72bf33fa87c5}\index{modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}!C\_AF@{C\_AF}}
+\index{C\_AF@{C\_AF}!modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}}
+\doxysubsubsection{\texorpdfstring{C\_AF}{C\_AF}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_ab7482adc3d7c71c0811f72bf33fa87c5} 
+int modules.\+io.\+i512vi1.\+I512\+VI1.\+C\+\_\+\+AF = 0x20\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a7c0decfe62dabd22be85af1caee7b1a5}\index{modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}!C\_IRQF@{C\_IRQF}}
+\index{C\_IRQF@{C\_IRQF}!modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}}
+\doxysubsubsection{\texorpdfstring{C\_IRQF}{C\_IRQF}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a7c0decfe62dabd22be85af1caee7b1a5} 
+int modules.\+io.\+i512vi1.\+I512\+VI1.\+C\+\_\+\+IRQF = 0x80\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a84caad4f66b21c2d8e4725dcc329b764}\index{modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}!C\_PF@{C\_PF}}
+\index{C\_PF@{C\_PF}!modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}}
+\doxysubsubsection{\texorpdfstring{C\_PF}{C\_PF}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a84caad4f66b21c2d8e4725dcc329b764} 
+int modules.\+io.\+i512vi1.\+I512\+VI1.\+C\+\_\+\+PF = 0x40\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_aa2ac11135f5a8fb7b9f69fbaae099ac3}\index{modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}!C\_UF@{C\_UF}}
+\index{C\_UF@{C\_UF}!modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}}
+\doxysubsubsection{\texorpdfstring{C\_UF}{C\_UF}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_aa2ac11135f5a8fb7b9f69fbaae099ac3} 
+int modules.\+io.\+i512vi1.\+I512\+VI1.\+C\+\_\+\+UF = 0x10\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a15627c9a559ae10f92e57f40b6f14d15}\index{modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}!current\_reg@{current\_reg}}
+\index{current\_reg@{current\_reg}!modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}}
+\doxysubsubsection{\texorpdfstring{current\_reg}{current\_reg}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a15627c9a559ae10f92e57f40b6f14d15} 
+modules.\+io.\+i512vi1.\+I512\+VI1.\+current\+\_\+reg = self.\+REG\+\_\+D}
+
+\Hypertarget{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a1ac3da480cfa8c51557308229ed71b23}\index{modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}!D\_VRT@{D\_VRT}}
+\index{D\_VRT@{D\_VRT}!modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}}
+\doxysubsubsection{\texorpdfstring{D\_VRT}{D\_VRT}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a1ac3da480cfa8c51557308229ed71b23} 
+int modules.\+io.\+i512vi1.\+I512\+VI1.\+D\+\_\+\+VRT = 0x80\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a18543e0e49c6f7ac0030bc05e90f885a}\index{modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}!day\_of\_month@{day\_of\_month}}
+\index{day\_of\_month@{day\_of\_month}!modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}}
+\doxysubsubsection{\texorpdfstring{day\_of\_month}{day\_of\_month}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a18543e0e49c6f7ac0030bc05e90f885a} 
+modules.\+io.\+i512vi1.\+I512\+VI1.\+day\+\_\+of\+\_\+month = 1}
+
+\Hypertarget{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a759adf59443e07fcac0ec7bc577a863e}\index{modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}!day\_of\_week@{day\_of\_week}}
+\index{day\_of\_week@{day\_of\_week}!modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}}
+\doxysubsubsection{\texorpdfstring{day\_of\_week}{day\_of\_week}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a759adf59443e07fcac0ec7bc577a863e} 
+modules.\+io.\+i512vi1.\+I512\+VI1.\+day\+\_\+of\+\_\+week = 1}
+
+\Hypertarget{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a5fe4e067badc22cbda5446f0cac50f70}\index{modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}!hours@{hours}}
+\index{hours@{hours}!modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}}
+\doxysubsubsection{\texorpdfstring{hours}{hours}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a5fe4e067badc22cbda5446f0cac50f70} 
+modules.\+io.\+i512vi1.\+I512\+VI1.\+hours = 0}
+
+\Hypertarget{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_aec65e334bc5457888b304e37a6ec0716}\index{modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}!minutes@{minutes}}
+\index{minutes@{minutes}!modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}}
+\doxysubsubsection{\texorpdfstring{minutes}{minutes}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_aec65e334bc5457888b304e37a6ec0716} 
+modules.\+io.\+i512vi1.\+I512\+VI1.\+minutes = 0}
+
+\Hypertarget{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a9848c47d4a84728c0ef4c5851a9d84dc}\index{modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}!month@{month}}
+\index{month@{month}!modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}}
+\doxysubsubsection{\texorpdfstring{month}{month}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a9848c47d4a84728c0ef4c5851a9d84dc} 
+modules.\+io.\+i512vi1.\+I512\+VI1.\+month = 1}
+
+\Hypertarget{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a1135c78d3a8f6cedd852147499cc3f7f}\index{modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}!nvm@{nvm}}
+\index{nvm@{nvm}!modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}}
+\doxysubsubsection{\texorpdfstring{nvm}{nvm}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a1135c78d3a8f6cedd852147499cc3f7f} 
+modules.\+io.\+i512vi1.\+I512\+VI1.\+nvm = \mbox{[}0x00\mbox{]} \texorpdfstring{$\ast$}{*} self.\+NVM\+\_\+\+SIZE}
+
+\Hypertarget{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a85634ce767eaa62f475bca31390de47a}\index{modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}!nvm\_file@{nvm\_file}}
+\index{nvm\_file@{nvm\_file}!modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}}
+\doxysubsubsection{\texorpdfstring{nvm\_file}{nvm\_file}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a85634ce767eaa62f475bca31390de47a} 
+modules.\+io.\+i512vi1.\+I512\+VI1.\+nvm\+\_\+file = None}
+
+\Hypertarget{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a5b5bd003adf1aad6bbe8814ff4254091}\index{modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}!NVM\_SIZE@{NVM\_SIZE}}
+\index{NVM\_SIZE@{NVM\_SIZE}!modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}}
+\doxysubsubsection{\texorpdfstring{NVM\_SIZE}{NVM\_SIZE}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a5b5bd003adf1aad6bbe8814ff4254091} 
+modules.\+io.\+i512vi1.\+I512\+VI1.\+NVM\+\_\+\+SIZE = 50\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a5812d8b6ac12a11646abbf74e4d93fc5}\index{modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}!NVM\_START@{NVM\_START}}
+\index{NVM\_START@{NVM\_START}!modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}}
+\doxysubsubsection{\texorpdfstring{NVM\_START}{NVM\_START}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a5812d8b6ac12a11646abbf74e4d93fc5} 
+int modules.\+io.\+i512vi1.\+I512\+VI1.\+NVM\+\_\+\+START = 0x0E\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_aa66b09ee3fb00ad8c91a1e63309d13cd}\index{modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}!on\_irq@{on\_irq}}
+\index{on\_irq@{on\_irq}!modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}}
+\doxysubsubsection{\texorpdfstring{on\_irq}{on\_irq}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_aa66b09ee3fb00ad8c91a1e63309d13cd} 
+modules.\+io.\+i512vi1.\+I512\+VI1.\+on\+\_\+irq = None}
+
+\Hypertarget{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_aa10cda37292a2ca520e15d49cd65b912}\index{modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}!REG\_A@{REG\_A}}
+\index{REG\_A@{REG\_A}!modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}}
+\doxysubsubsection{\texorpdfstring{REG\_A}{REG\_A}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_aa10cda37292a2ca520e15d49cd65b912} 
+int modules.\+io.\+i512vi1.\+I512\+VI1.\+REG\+\_\+A = 0x0A\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_af26ff735fc269a788069ff1e8cbe710c}\index{modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}!reg\_a@{reg\_a}}
+\index{reg\_a@{reg\_a}!modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}}
+\doxysubsubsection{\texorpdfstring{reg\_a}{reg\_a}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_af26ff735fc269a788069ff1e8cbe710c} 
+int modules.\+io.\+i512vi1.\+I512\+VI1.\+reg\+\_\+a = 0x26}
+
+\Hypertarget{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a6051744590d40087cf712322a3f6cec4}\index{modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}!REG\_ALARM\_HRS@{REG\_ALARM\_HRS}}
+\index{REG\_ALARM\_HRS@{REG\_ALARM\_HRS}!modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}}
+\doxysubsubsection{\texorpdfstring{REG\_ALARM\_HRS}{REG\_ALARM\_HRS}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a6051744590d40087cf712322a3f6cec4} 
+int modules.\+io.\+i512vi1.\+I512\+VI1.\+REG\+\_\+\+ALARM\+\_\+\+HRS = 0x05\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a080a1cc1c6d7c6af226f2d34c27f7790}\index{modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}!REG\_ALARM\_MIN@{REG\_ALARM\_MIN}}
+\index{REG\_ALARM\_MIN@{REG\_ALARM\_MIN}!modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}}
+\doxysubsubsection{\texorpdfstring{REG\_ALARM\_MIN}{REG\_ALARM\_MIN}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a080a1cc1c6d7c6af226f2d34c27f7790} 
+int modules.\+io.\+i512vi1.\+I512\+VI1.\+REG\+\_\+\+ALARM\+\_\+\+MIN = 0x03\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a7a2c6f0f56aecc04c90e6e31939f7d9b}\index{modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}!REG\_ALARM\_SEC@{REG\_ALARM\_SEC}}
+\index{REG\_ALARM\_SEC@{REG\_ALARM\_SEC}!modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}}
+\doxysubsubsection{\texorpdfstring{REG\_ALARM\_SEC}{REG\_ALARM\_SEC}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a7a2c6f0f56aecc04c90e6e31939f7d9b} 
+int modules.\+io.\+i512vi1.\+I512\+VI1.\+REG\+\_\+\+ALARM\+\_\+\+SEC = 0x01\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a4c6be29fd838f964374ebefe57f2e422}\index{modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}!REG\_B@{REG\_B}}
+\index{REG\_B@{REG\_B}!modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}}
+\doxysubsubsection{\texorpdfstring{REG\_B}{REG\_B}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a4c6be29fd838f964374ebefe57f2e422} 
+int modules.\+io.\+i512vi1.\+I512\+VI1.\+REG\+\_\+B = 0x0B\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a60ec2011090e40e1a1c2348fe14a3446}\index{modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}!reg\_b@{reg\_b}}
+\index{reg\_b@{reg\_b}!modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}}
+\doxysubsubsection{\texorpdfstring{reg\_b}{reg\_b}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a60ec2011090e40e1a1c2348fe14a3446} 
+int modules.\+io.\+i512vi1.\+I512\+VI1.\+reg\+\_\+b = self.\+B\+\_\+24H}
+
+\Hypertarget{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_ae02f4bd1050eedb237bc7011105dc865}\index{modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}!REG\_C@{REG\_C}}
+\index{REG\_C@{REG\_C}!modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}}
+\doxysubsubsection{\texorpdfstring{REG\_C}{REG\_C}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_ae02f4bd1050eedb237bc7011105dc865} 
+modules.\+io.\+i512vi1.\+I512\+VI1.\+REG\+\_\+C = 0x0C\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a89ea73eaa3a0394efee0aadd86139fe0}\index{modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}!reg\_c@{reg\_c}}
+\index{reg\_c@{reg\_c}!modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}}
+\doxysubsubsection{\texorpdfstring{reg\_c}{reg\_c}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a89ea73eaa3a0394efee0aadd86139fe0} 
+int modules.\+io.\+i512vi1.\+I512\+VI1.\+reg\+\_\+c = 0x00}
+
+\Hypertarget{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_af2675d7b6d3f64d42468dfe1681f3453}\index{modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}!REG\_D@{REG\_D}}
+\index{REG\_D@{REG\_D}!modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}}
+\doxysubsubsection{\texorpdfstring{REG\_D}{REG\_D}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_af2675d7b6d3f64d42468dfe1681f3453} 
+modules.\+io.\+i512vi1.\+I512\+VI1.\+REG\+\_\+D = 0x0D\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_aba3d7f1ce003e5952825d0ff04adcab7}\index{modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}!reg\_d@{reg\_d}}
+\index{reg\_d@{reg\_d}!modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}}
+\doxysubsubsection{\texorpdfstring{reg\_d}{reg\_d}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_aba3d7f1ce003e5952825d0ff04adcab7} 
+int modules.\+io.\+i512vi1.\+I512\+VI1.\+reg\+\_\+d = self.\+D\+\_\+\+VRT}
+
+\Hypertarget{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a0a544e6ce25d8598561fcb7b155750d2}\index{modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}!REG\_DOM@{REG\_DOM}}
+\index{REG\_DOM@{REG\_DOM}!modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}}
+\doxysubsubsection{\texorpdfstring{REG\_DOM}{REG\_DOM}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a0a544e6ce25d8598561fcb7b155750d2} 
+int modules.\+io.\+i512vi1.\+I512\+VI1.\+REG\+\_\+\+DOM = 0x07\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a1b8637f1321f22962f6696a5f45fc71c}\index{modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}!REG\_DOW@{REG\_DOW}}
+\index{REG\_DOW@{REG\_DOW}!modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}}
+\doxysubsubsection{\texorpdfstring{REG\_DOW}{REG\_DOW}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a1b8637f1321f22962f6696a5f45fc71c} 
+int modules.\+io.\+i512vi1.\+I512\+VI1.\+REG\+\_\+\+DOW = 0x06\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_ab5d4040c59fd3f70e7f38fe2b49a5dc3}\index{modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}!REG\_HOURS@{REG\_HOURS}}
+\index{REG\_HOURS@{REG\_HOURS}!modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}}
+\doxysubsubsection{\texorpdfstring{REG\_HOURS}{REG\_HOURS}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_ab5d4040c59fd3f70e7f38fe2b49a5dc3} 
+int modules.\+io.\+i512vi1.\+I512\+VI1.\+REG\+\_\+\+HOURS = 0x04\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_ae3e58e70d03cb4a70a4da8f018d604c0}\index{modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}!REG\_MINUTES@{REG\_MINUTES}}
+\index{REG\_MINUTES@{REG\_MINUTES}!modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}}
+\doxysubsubsection{\texorpdfstring{REG\_MINUTES}{REG\_MINUTES}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_ae3e58e70d03cb4a70a4da8f018d604c0} 
+int modules.\+io.\+i512vi1.\+I512\+VI1.\+REG\+\_\+\+MINUTES = 0x02\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a5258ef167bbbb1696484c676e766c95b}\index{modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}!REG\_MONTH@{REG\_MONTH}}
+\index{REG\_MONTH@{REG\_MONTH}!modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}}
+\doxysubsubsection{\texorpdfstring{REG\_MONTH}{REG\_MONTH}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a5258ef167bbbb1696484c676e766c95b} 
+int modules.\+io.\+i512vi1.\+I512\+VI1.\+REG\+\_\+\+MONTH = 0x08\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a6d503e9b89d1c5deb910ea45110b7b40}\index{modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}!REG\_SECONDS@{REG\_SECONDS}}
+\index{REG\_SECONDS@{REG\_SECONDS}!modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}}
+\doxysubsubsection{\texorpdfstring{REG\_SECONDS}{REG\_SECONDS}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a6d503e9b89d1c5deb910ea45110b7b40} 
+int modules.\+io.\+i512vi1.\+I512\+VI1.\+REG\+\_\+\+SECONDS = 0x00\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a3fe11faac131e43c08e449912b52d9f9}\index{modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}!REG\_YEAR@{REG\_YEAR}}
+\index{REG\_YEAR@{REG\_YEAR}!modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}}
+\doxysubsubsection{\texorpdfstring{REG\_YEAR}{REG\_YEAR}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_a3fe11faac131e43c08e449912b52d9f9} 
+int modules.\+io.\+i512vi1.\+I512\+VI1.\+REG\+\_\+\+YEAR = 0x09\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_aa0007264e2d2e4a3402a46ab0af88867}\index{modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}!seconds@{seconds}}
+\index{seconds@{seconds}!modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}}
+\doxysubsubsection{\texorpdfstring{seconds}{seconds}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_aa0007264e2d2e4a3402a46ab0af88867} 
+modules.\+io.\+i512vi1.\+I512\+VI1.\+seconds = 0}
+
+\Hypertarget{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_ace1f755c9ef99a04bce7b2f1704295f8}\index{modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}!year@{year}}
+\index{year@{year}!modules.io.i512vi1.I512VI1@{modules.io.i512vi1.I512VI1}}
+\doxysubsubsection{\texorpdfstring{year}{year}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1_ace1f755c9ef99a04bce7b2f1704295f8} 
+modules.\+io.\+i512vi1.\+I512\+VI1.\+year = 0}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+modules/io/\mbox{\hyperlink{i512vi1_8py}{i512vi1.\+py}}\end{DoxyCompactItemize}

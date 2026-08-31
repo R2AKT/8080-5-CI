@@ -1,0 +1,177 @@
+\doxysection{i8080\+\_\+\+CI.\+Trace\+Model Class Reference}
+\hypertarget{classi8080___c_i_1_1_trace_model}{}\label{classi8080___c_i_1_1_trace_model}\index{i8080\_CI.TraceModel@{i8080\_CI.TraceModel}}
+
+
+Inheritance diagram for i8080\+\_\+\+CI.\+Trace\+Model\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=190pt]{classi8080___c_i_1_1_trace_model__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for i8080\+\_\+\+CI.\+Trace\+Model\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=190pt]{classi8080___c_i_1_1_trace_model__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classi8080___c_i_1_1_trace_model_a82aa9ae2580b6f6d4c702c2ee2772f1c}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, \mbox{\hyperlink{classi8080___c_i_1_1_trace_model_a473d55cb996cf3483e3488c157b0b0fa}{emulator}}, parent=None)
+\item 
+\mbox{\hyperlink{classi8080___c_i_1_1_trace_model_aeca5c04c25d8793a62efdffbf6446828}{set\+\_\+filter}} (self, filter\+\_\+dict)
+\item 
+\mbox{\hyperlink{classi8080___c_i_1_1_trace_model_a2867e7dd290372a22cfd432a0c7ac9fa}{refresh}} (self)
+\item 
+\mbox{\hyperlink{classi8080___c_i_1_1_trace_model_a1ebc613d8e96dfc787e3bd2166f2c44c}{row\+Count}} (self, parent=None)
+\item 
+\mbox{\hyperlink{classi8080___c_i_1_1_trace_model_a316d70b46dad502f5e424ff2d719093c}{column\+Count}} (self, parent=None)
+\item 
+\mbox{\hyperlink{classi8080___c_i_1_1_trace_model_af5939f890ff8d4a54675abb7842f3115}{header\+Data}} (self, section, orientation, role=Qt.\+Display\+Role)
+\item 
+\mbox{\hyperlink{classi8080___c_i_1_1_trace_model_a616bc035da4626a52de0d3d49ec17949}{data}} (self, index, role=Qt.\+Display\+Role)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classi8080___c_i_1_1_trace_model_a473d55cb996cf3483e3488c157b0b0fa}{emulator}} = emulator
+\item 
+\mbox{\hyperlink{classi8080___c_i_1_1_trace_model_a21a3508d17908397cdb9066c9fb83c05}{disassembler}} = None
+\item 
+str \mbox{\hyperlink{classi8080___c_i_1_1_trace_model_a9cee3ca762a1487619d6589f436a11ab}{lang}} = "{}en"{}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classi8080___c_i_1_1_trace_model_a8a1c25ef32c48f788ed419f0d366142a}{\+\_\+apply\+\_\+filter}} (self)
+\item 
+\mbox{\hyperlink{classi8080___c_i_1_1_trace_model_a1f47430757ce95472ddb786f3ffe455c}{\+\_\+get\+\_\+record}} (self, row)
+\item 
+\mbox{\hyperlink{classi8080___c_i_1_1_trace_model_a05359abb41518daacce9f86006d05f35}{\+\_\+get\+\_\+mnemonic}} (self, rec)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classi8080___c_i_1_1_trace_model_a094548086e5c0266ad121df2e5cd0a2a}{\+\_\+filter}} = None
+\item 
+list \mbox{\hyperlink{classi8080___c_i_1_1_trace_model_a51182f03ece9782c4fd14cdae279bf69}{\+\_\+filtered\+\_\+indices}} = None
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Виртуальная модель трассировки с поддержкой фильтра\end{DoxyVerb}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classi8080___c_i_1_1_trace_model_a82aa9ae2580b6f6d4c702c2ee2772f1c}\index{i8080\_CI.TraceModel@{i8080\_CI.TraceModel}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!i8080\_CI.TraceModel@{i8080\_CI.TraceModel}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_trace_model_a82aa9ae2580b6f6d4c702c2ee2772f1c} 
+i8080\+\_\+\+CI.\+Trace\+Model.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{emulator}{, }\item[{}]{parent}{ = {\ttfamily None}}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classi8080___c_i_1_1_trace_model_a8a1c25ef32c48f788ed419f0d366142a}\index{i8080\_CI.TraceModel@{i8080\_CI.TraceModel}!\_apply\_filter@{\_apply\_filter}}
+\index{\_apply\_filter@{\_apply\_filter}!i8080\_CI.TraceModel@{i8080\_CI.TraceModel}}
+\doxysubsubsection{\texorpdfstring{\_apply\_filter()}{\_apply\_filter()}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_trace_model_a8a1c25ef32c48f788ed419f0d366142a} 
+i8080\+\_\+\+CI.\+Trace\+Model.\+\_\+apply\+\_\+filter (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Применить фильтр и сохранить индексы подходящих записей\end{DoxyVerb}
+ \Hypertarget{classi8080___c_i_1_1_trace_model_a05359abb41518daacce9f86006d05f35}\index{i8080\_CI.TraceModel@{i8080\_CI.TraceModel}!\_get\_mnemonic@{\_get\_mnemonic}}
+\index{\_get\_mnemonic@{\_get\_mnemonic}!i8080\_CI.TraceModel@{i8080\_CI.TraceModel}}
+\doxysubsubsection{\texorpdfstring{\_get\_mnemonic()}{\_get\_mnemonic()}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_trace_model_a05359abb41518daacce9f86006d05f35} 
+i8080\+\_\+\+CI.\+Trace\+Model.\+\_\+get\+\_\+mnemonic (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{rec}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Определить мнемонику для записи\end{DoxyVerb}
+ \Hypertarget{classi8080___c_i_1_1_trace_model_a1f47430757ce95472ddb786f3ffe455c}\index{i8080\_CI.TraceModel@{i8080\_CI.TraceModel}!\_get\_record@{\_get\_record}}
+\index{\_get\_record@{\_get\_record}!i8080\_CI.TraceModel@{i8080\_CI.TraceModel}}
+\doxysubsubsection{\texorpdfstring{\_get\_record()}{\_get\_record()}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_trace_model_a1f47430757ce95472ddb786f3ffe455c} 
+i8080\+\_\+\+CI.\+Trace\+Model.\+\_\+get\+\_\+record (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{row}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Получить запись по строке (с учётом фильтра)\end{DoxyVerb}
+ \Hypertarget{classi8080___c_i_1_1_trace_model_a316d70b46dad502f5e424ff2d719093c}\index{i8080\_CI.TraceModel@{i8080\_CI.TraceModel}!columnCount@{columnCount}}
+\index{columnCount@{columnCount}!i8080\_CI.TraceModel@{i8080\_CI.TraceModel}}
+\doxysubsubsection{\texorpdfstring{columnCount()}{columnCount()}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_trace_model_a316d70b46dad502f5e424ff2d719093c} 
+i8080\+\_\+\+CI.\+Trace\+Model.\+column\+Count (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{parent}{ = {\ttfamily None}}\end{DoxyParamCaption})}
+
+\Hypertarget{classi8080___c_i_1_1_trace_model_a616bc035da4626a52de0d3d49ec17949}\index{i8080\_CI.TraceModel@{i8080\_CI.TraceModel}!data@{data}}
+\index{data@{data}!i8080\_CI.TraceModel@{i8080\_CI.TraceModel}}
+\doxysubsubsection{\texorpdfstring{data()}{data()}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_trace_model_a616bc035da4626a52de0d3d49ec17949} 
+i8080\+\_\+\+CI.\+Trace\+Model.\+data (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{index}{, }\item[{}]{role}{ = {\ttfamily Qt.DisplayRole}}\end{DoxyParamCaption})}
+
+\Hypertarget{classi8080___c_i_1_1_trace_model_af5939f890ff8d4a54675abb7842f3115}\index{i8080\_CI.TraceModel@{i8080\_CI.TraceModel}!headerData@{headerData}}
+\index{headerData@{headerData}!i8080\_CI.TraceModel@{i8080\_CI.TraceModel}}
+\doxysubsubsection{\texorpdfstring{headerData()}{headerData()}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_trace_model_af5939f890ff8d4a54675abb7842f3115} 
+i8080\+\_\+\+CI.\+Trace\+Model.\+header\+Data (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{section}{, }\item[{}]{orientation}{, }\item[{}]{role}{ = {\ttfamily Qt.DisplayRole}}\end{DoxyParamCaption})}
+
+\Hypertarget{classi8080___c_i_1_1_trace_model_a2867e7dd290372a22cfd432a0c7ac9fa}\index{i8080\_CI.TraceModel@{i8080\_CI.TraceModel}!refresh@{refresh}}
+\index{refresh@{refresh}!i8080\_CI.TraceModel@{i8080\_CI.TraceModel}}
+\doxysubsubsection{\texorpdfstring{refresh()}{refresh()}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_trace_model_a2867e7dd290372a22cfd432a0c7ac9fa} 
+i8080\+\_\+\+CI.\+Trace\+Model.\+refresh (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Уведомить Qt об изменении данных\end{DoxyVerb}
+ \Hypertarget{classi8080___c_i_1_1_trace_model_a1ebc613d8e96dfc787e3bd2166f2c44c}\index{i8080\_CI.TraceModel@{i8080\_CI.TraceModel}!rowCount@{rowCount}}
+\index{rowCount@{rowCount}!i8080\_CI.TraceModel@{i8080\_CI.TraceModel}}
+\doxysubsubsection{\texorpdfstring{rowCount()}{rowCount()}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_trace_model_a1ebc613d8e96dfc787e3bd2166f2c44c} 
+i8080\+\_\+\+CI.\+Trace\+Model.\+row\+Count (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{parent}{ = {\ttfamily None}}\end{DoxyParamCaption})}
+
+\Hypertarget{classi8080___c_i_1_1_trace_model_aeca5c04c25d8793a62efdffbf6446828}\index{i8080\_CI.TraceModel@{i8080\_CI.TraceModel}!set\_filter@{set\_filter}}
+\index{set\_filter@{set\_filter}!i8080\_CI.TraceModel@{i8080\_CI.TraceModel}}
+\doxysubsubsection{\texorpdfstring{set\_filter()}{set\_filter()}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_trace_model_aeca5c04c25d8793a62efdffbf6446828} 
+i8080\+\_\+\+CI.\+Trace\+Model.\+set\+\_\+filter (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{filter\+\_\+dict}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Установить фильтр и обновить модель\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classi8080___c_i_1_1_trace_model_a094548086e5c0266ad121df2e5cd0a2a}\index{i8080\_CI.TraceModel@{i8080\_CI.TraceModel}!\_filter@{\_filter}}
+\index{\_filter@{\_filter}!i8080\_CI.TraceModel@{i8080\_CI.TraceModel}}
+\doxysubsubsection{\texorpdfstring{\_filter}{\_filter}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_trace_model_a094548086e5c0266ad121df2e5cd0a2a} 
+i8080\+\_\+\+CI.\+Trace\+Model.\+\_\+filter = None\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classi8080___c_i_1_1_trace_model_a51182f03ece9782c4fd14cdae279bf69}\index{i8080\_CI.TraceModel@{i8080\_CI.TraceModel}!\_filtered\_indices@{\_filtered\_indices}}
+\index{\_filtered\_indices@{\_filtered\_indices}!i8080\_CI.TraceModel@{i8080\_CI.TraceModel}}
+\doxysubsubsection{\texorpdfstring{\_filtered\_indices}{\_filtered\_indices}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_trace_model_a51182f03ece9782c4fd14cdae279bf69} 
+i8080\+\_\+\+CI.\+Trace\+Model.\+\_\+filtered\+\_\+indices = None\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classi8080___c_i_1_1_trace_model_a21a3508d17908397cdb9066c9fb83c05}\index{i8080\_CI.TraceModel@{i8080\_CI.TraceModel}!disassembler@{disassembler}}
+\index{disassembler@{disassembler}!i8080\_CI.TraceModel@{i8080\_CI.TraceModel}}
+\doxysubsubsection{\texorpdfstring{disassembler}{disassembler}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_trace_model_a21a3508d17908397cdb9066c9fb83c05} 
+i8080\+\_\+\+CI.\+Trace\+Model.\+disassembler = None}
+
+\Hypertarget{classi8080___c_i_1_1_trace_model_a473d55cb996cf3483e3488c157b0b0fa}\index{i8080\_CI.TraceModel@{i8080\_CI.TraceModel}!emulator@{emulator}}
+\index{emulator@{emulator}!i8080\_CI.TraceModel@{i8080\_CI.TraceModel}}
+\doxysubsubsection{\texorpdfstring{emulator}{emulator}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_trace_model_a473d55cb996cf3483e3488c157b0b0fa} 
+i8080\+\_\+\+CI.\+Trace\+Model.\+emulator = emulator}
+
+\Hypertarget{classi8080___c_i_1_1_trace_model_a9cee3ca762a1487619d6589f436a11ab}\index{i8080\_CI.TraceModel@{i8080\_CI.TraceModel}!lang@{lang}}
+\index{lang@{lang}!i8080\_CI.TraceModel@{i8080\_CI.TraceModel}}
+\doxysubsubsection{\texorpdfstring{lang}{lang}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_trace_model_a9cee3ca762a1487619d6589f436a11ab} 
+str i8080\+\_\+\+CI.\+Trace\+Model.\+lang = "{}en"{}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{i8080___c_i_8py}{i8080\+\_\+\+CI.\+py}}\end{DoxyCompactItemize}

@@ -1,0 +1,32 @@
+\doxysection{modules.\+io.\+tft8080 Namespace Reference}
+\hypertarget{namespacemodules_1_1io_1_1tft8080}{}\label{namespacemodules_1_1io_1_1tft8080}\index{modules.io.tft8080@{modules.io.tft8080}}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080}{TFT8080}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}TFT8080 — TFT-дисплей с 8080-интерфейсом.
+Итерация 8: Дисплеи.
+
+Интерфейс (классический 8080):
+  8-битная шина данных (D0-D7)
+  Выбор регистра/данных: линия адреса A0
+    A0=0 → порт индекса (команды/регистра)
+    A0=1 → порт данных
+  Сигналы RD, WR — аппаратные сигналы шины (эмулируются фактом чтения/записи)
+  Сигнал CS — аппаратный сигнал декодера адреса (всё устройство по базовому адресу)
+
+Регистры (2 порта):
+  offset 0 (A0=0): Index/Command Register — выбор регистра (команды)
+  offset 1 (A0=1): Data Register — данные для выбранного регистра
+
+Команды (упрощённо):
+  0x21: Set Column Address
+  0x22: Set Row Address
+  0x2C: Memory Write
+  0x2E: Memory Read
+\end{DoxyVerb}
+ 

@@ -1,0 +1,130 @@
+\doxysection{modules.\+memory.\+memory\+\_\+bus.\+Memory\+Region Class Reference}
+\hypertarget{classmodules_1_1memory_1_1memory__bus_1_1_memory_region}{}\label{classmodules_1_1memory_1_1memory__bus_1_1_memory_region}\index{modules.memory.memory\_bus.MemoryRegion@{modules.memory.memory\_bus.MemoryRegion}}
+
+
+Inheritance diagram for modules.\+memory.\+memory\+\_\+bus.\+Memory\+Region\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1memory_1_1memory__bus_1_1_memory_region__inherit__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_aa390a09d4e8f8d0d9ce19232a8625f3b}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_a43dd15c2b8e11e0e886a94792fdd6880}{start}}, \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_ad9c14b35f4aec59f6494496a4a8881a8}{end}}, \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_a182987f561d8f1276e9ba1458f1a160c}{name}}="{}region"{})
+\item 
+\mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_a900e938846a8971cc3241066efc1329f}{contains}} (self, addr)
+\item 
+\mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_aa7586fa5d3bc8133dad3624eebf0d19e}{read}} (self, addr)
+\item 
+\mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_a693a7091168e93cd36b98fba8c1a7c28}{write}} (self, addr, value)
+\item 
+\mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_a5a97354dcc0dca2c264f91f961d30eae}{reset}} (self)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_a43dd15c2b8e11e0e886a94792fdd6880}{start}} = start \& 0x\+FFFF
+\item 
+int \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_ad9c14b35f4aec59f6494496a4a8881a8}{end}} = end \& 0x\+FFFF
+\item 
+\mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_a182987f561d8f1276e9ba1458f1a160c}{name}} = name
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Базовый регион памяти (абстрактный).
+Подклассы: RAMRegion, ROMRegion, ShadowROM, BankedMemory и т.д.
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_aa390a09d4e8f8d0d9ce19232a8625f3b}\index{modules.memory.memory\_bus.MemoryRegion@{modules.memory.memory\_bus.MemoryRegion}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!modules.memory.memory\_bus.MemoryRegion@{modules.memory.memory\_bus.MemoryRegion}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \label{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_aa390a09d4e8f8d0d9ce19232a8625f3b} 
+modules.\+memory.\+memory\+\_\+bus.\+Memory\+Region.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{start}{, }\item[{}]{end}{, }\item[{}]{name}{ = {\ttfamily "{}region"{}}}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_a900e938846a8971cc3241066efc1329f}\index{modules.memory.memory\_bus.MemoryRegion@{modules.memory.memory\_bus.MemoryRegion}!contains@{contains}}
+\index{contains@{contains}!modules.memory.memory\_bus.MemoryRegion@{modules.memory.memory\_bus.MemoryRegion}}
+\doxysubsubsection{\texorpdfstring{contains()}{contains()}}
+{\footnotesize\ttfamily \label{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_a900e938846a8971cc3241066efc1329f} 
+modules.\+memory.\+memory\+\_\+bus.\+Memory\+Region.\+contains (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{addr}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Проверяет, принадлежит ли адрес региону\end{DoxyVerb}
+ 
+
+Reimplemented in \mbox{\hyperlink{classmodules_1_1memory_1_1shadow_1_1_shadow_r_o_m_region_ac49fc88f769aa04b1d8553684cae2c5e}{modules.\+memory.\+shadow.\+Shadow\+ROMRegion}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_a900e938846a8971cc3241066efc1329f_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_aa7586fa5d3bc8133dad3624eebf0d19e}\index{modules.memory.memory\_bus.MemoryRegion@{modules.memory.memory\_bus.MemoryRegion}!read@{read}}
+\index{read@{read}!modules.memory.memory\_bus.MemoryRegion@{modules.memory.memory\_bus.MemoryRegion}}
+\doxysubsubsection{\texorpdfstring{read()}{read()}}
+{\footnotesize\ttfamily \label{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_aa7586fa5d3bc8133dad3624eebf0d19e} 
+modules.\+memory.\+memory\+\_\+bus.\+Memory\+Region.\+read (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{addr}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Чтение байта. Переопределяется подклассами.\end{DoxyVerb}
+ 
+
+Reimplemented in \mbox{\hyperlink{classmodules_1_1memory_1_1banked_1_1_banked_region_afad3c78978cf30c9de5a8a18a2992401}{modules.\+memory.\+banked.\+Banked\+Region}}, \mbox{\hyperlink{classmodules_1_1memory_1_1banked_1_1_banked_r_o_m_region_aad82cb21ae20a3d090755c48a2cb8497}{modules.\+memory.\+banked.\+Banked\+ROMRegion}}, \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_r_a_m_region_aa19d66cf8f8484a3beb22e22fd1bc590}{modules.\+memory.\+memory\+\_\+bus.\+RAMRegion}}, \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_r_o_m_region_a0f7dac26453f4c9ee7c57b5f87962175}{modules.\+memory.\+memory\+\_\+bus.\+ROMRegion}}, \mbox{\hyperlink{classmodules_1_1memory_1_1paged_1_1_paged_region_a4d10d134d23b53166d12777a895ab7f0}{modules.\+memory.\+paged.\+Paged\+Region}}, \mbox{\hyperlink{classmodules_1_1memory_1_1segmented_1_1_segmented_region_a414318af0e686840507eaa36f138f5c7}{modules.\+memory.\+segmented.\+Segmented\+Region}}, \mbox{\hyperlink{classmodules_1_1memory_1_1segmentedpaged_1_1_segmented_paged_region_a8e215334a5eb4542625e1ade30d28bd5}{modules.\+memory.\+segmentedpaged.\+Segmented\+Paged\+Region}}, \mbox{\hyperlink{classmodules_1_1memory_1_1shadow_1_1_shadow_r_o_m_region_a3f08306e17d39567ddd550c0b4a47a60}{modules.\+memory.\+shadow.\+Shadow\+ROMRegion}}, and \mbox{\hyperlink{classtest__memory__bus_1_1_test_r_a_m_a4108db203e224243c9c5527316501e9f}{test\+\_\+memory\+\_\+bus.\+Test\+RAM}}.
+
+\Hypertarget{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_a5a97354dcc0dca2c264f91f961d30eae}\index{modules.memory.memory\_bus.MemoryRegion@{modules.memory.memory\_bus.MemoryRegion}!reset@{reset}}
+\index{reset@{reset}!modules.memory.memory\_bus.MemoryRegion@{modules.memory.memory\_bus.MemoryRegion}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily \label{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_a5a97354dcc0dca2c264f91f961d30eae} 
+modules.\+memory.\+memory\+\_\+bus.\+Memory\+Region.\+reset (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Сброс региона (например, при сбросе системы).\end{DoxyVerb}
+ 
+
+Reimplemented in \mbox{\hyperlink{classmodules_1_1memory_1_1banked_1_1_banked_region_a6140081943f9e7edeac5c3f03a129b6d}{modules.\+memory.\+banked.\+Banked\+Region}}, \mbox{\hyperlink{classmodules_1_1memory_1_1banked_1_1_banked_r_o_m_region_acbe85f0635e7fc90897e20faa9aad27d}{modules.\+memory.\+banked.\+Banked\+ROMRegion}}, \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_r_a_m_region_aed41ecc855bb234a15a19ad01c8952ad}{modules.\+memory.\+memory\+\_\+bus.\+RAMRegion}}, \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_r_o_m_region_a209cb40784636e3afee337ac6418819e}{modules.\+memory.\+memory\+\_\+bus.\+ROMRegion}}, \mbox{\hyperlink{classmodules_1_1memory_1_1paged_1_1_paged_region_a5890eee305b91a4a12cdd121edf4b8e0}{modules.\+memory.\+paged.\+Paged\+Region}}, \mbox{\hyperlink{classmodules_1_1memory_1_1segmented_1_1_segmented_region_a73bb46d197122850965952a0bef5d2df}{modules.\+memory.\+segmented.\+Segmented\+Region}}, \mbox{\hyperlink{classmodules_1_1memory_1_1segmentedpaged_1_1_segmented_paged_region_a2db1ec7ffd5c48330fc414ca77f5dc8d}{modules.\+memory.\+segmentedpaged.\+Segmented\+Paged\+Region}}, and \mbox{\hyperlink{classmodules_1_1memory_1_1shadow_1_1_shadow_r_o_m_region_ac26443b5447ba8cdb0ccc01bfe76d4a5}{modules.\+memory.\+shadow.\+Shadow\+ROMRegion}}.
+
+\Hypertarget{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_a693a7091168e93cd36b98fba8c1a7c28}\index{modules.memory.memory\_bus.MemoryRegion@{modules.memory.memory\_bus.MemoryRegion}!write@{write}}
+\index{write@{write}!modules.memory.memory\_bus.MemoryRegion@{modules.memory.memory\_bus.MemoryRegion}}
+\doxysubsubsection{\texorpdfstring{write()}{write()}}
+{\footnotesize\ttfamily \label{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_a693a7091168e93cd36b98fba8c1a7c28} 
+modules.\+memory.\+memory\+\_\+bus.\+Memory\+Region.\+write (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{addr}{, }\item[{}]{value}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Запись байта. Переопределяется подклассами.\end{DoxyVerb}
+ 
+
+Reimplemented in \mbox{\hyperlink{classmodules_1_1memory_1_1banked_1_1_banked_region_a5bedd3736bc9a1cf0d9a3cfb56f9f835}{modules.\+memory.\+banked.\+Banked\+Region}}, \mbox{\hyperlink{classmodules_1_1memory_1_1banked_1_1_banked_r_o_m_region_a86e01d9adb9f26747fe135bd9cdeb65e}{modules.\+memory.\+banked.\+Banked\+ROMRegion}}, \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_r_a_m_region_a4ab92b2978ebc5ef13d794f3237204df}{modules.\+memory.\+memory\+\_\+bus.\+RAMRegion}}, \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_r_o_m_region_ae59746d161ef4b01b2f0de66dca093c7}{modules.\+memory.\+memory\+\_\+bus.\+ROMRegion}}, \mbox{\hyperlink{classmodules_1_1memory_1_1paged_1_1_paged_region_ad0fbe93ee2e4cec7064a8bebe011982f}{modules.\+memory.\+paged.\+Paged\+Region}}, \mbox{\hyperlink{classmodules_1_1memory_1_1segmented_1_1_segmented_region_a0674d14e0be47c5dbe0904954a79da14}{modules.\+memory.\+segmented.\+Segmented\+Region}}, \mbox{\hyperlink{classmodules_1_1memory_1_1segmentedpaged_1_1_segmented_paged_region_a6333f3aea22556f29477c7c8fcc36c5c}{modules.\+memory.\+segmentedpaged.\+Segmented\+Paged\+Region}}, \mbox{\hyperlink{classmodules_1_1memory_1_1shadow_1_1_shadow_r_o_m_region_abb1d4517aeced3eb6dbb577d7078201b}{modules.\+memory.\+shadow.\+Shadow\+ROMRegion}}, and \mbox{\hyperlink{classtest__memory__bus_1_1_test_r_a_m_a90947d29e598972de199acd802e16eae}{test\+\_\+memory\+\_\+bus.\+Test\+RAM}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_ad9c14b35f4aec59f6494496a4a8881a8}\index{modules.memory.memory\_bus.MemoryRegion@{modules.memory.memory\_bus.MemoryRegion}!end@{end}}
+\index{end@{end}!modules.memory.memory\_bus.MemoryRegion@{modules.memory.memory\_bus.MemoryRegion}}
+\doxysubsubsection{\texorpdfstring{end}{end}}
+{\footnotesize\ttfamily \label{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_ad9c14b35f4aec59f6494496a4a8881a8} 
+int modules.\+memory.\+memory\+\_\+bus.\+Memory\+Region.\+end = end \& 0x\+FFFF}
+
+\Hypertarget{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_a182987f561d8f1276e9ba1458f1a160c}\index{modules.memory.memory\_bus.MemoryRegion@{modules.memory.memory\_bus.MemoryRegion}!name@{name}}
+\index{name@{name}!modules.memory.memory\_bus.MemoryRegion@{modules.memory.memory\_bus.MemoryRegion}}
+\doxysubsubsection{\texorpdfstring{name}{name}}
+{\footnotesize\ttfamily \label{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_a182987f561d8f1276e9ba1458f1a160c} 
+modules.\+memory.\+memory\+\_\+bus.\+Memory\+Region.\+name = name}
+
+\Hypertarget{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_a43dd15c2b8e11e0e886a94792fdd6880}\index{modules.memory.memory\_bus.MemoryRegion@{modules.memory.memory\_bus.MemoryRegion}!start@{start}}
+\index{start@{start}!modules.memory.memory\_bus.MemoryRegion@{modules.memory.memory\_bus.MemoryRegion}}
+\doxysubsubsection{\texorpdfstring{start}{start}}
+{\footnotesize\ttfamily \label{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_a43dd15c2b8e11e0e886a94792fdd6880} 
+int modules.\+memory.\+memory\+\_\+bus.\+Memory\+Region.\+start = start \& 0x\+FFFF}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+modules/memory/\mbox{\hyperlink{memory__bus_8py}{memory\+\_\+bus.\+py}}\end{DoxyCompactItemize}

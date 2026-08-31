@@ -1,0 +1,42 @@
+\doxysection{modules.\+io.\+cf\+\_\+ide Namespace Reference}
+\hypertarget{namespacemodules_1_1io_1_1cf__ide}{}\label{namespacemodules_1_1io_1_1cf__ide}\index{modules.io.cf\_ide@{modules.io.cf\_ide}}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e}{CFIDE}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}CF IDE — CompactFlash в режиме ATA/IDE.
+Итерация E6: Хранение.
+
+Особенности для i8080:
+- Шина данных 8 бит (16-битные регистры читаются по 2 байта)
+- Режим 8-bit PIO для совместимости
+- LBA-адресация (без CHS)
+
+Регистры (8 портов, base_port + offset):
+  offset 0: Data (16-bit, читается как 2 байта LSB/MSB)
+  offset 1: Error (чтение) / Features (запись)
+  offset 2: Sector Count
+  offset 3: LBA Low (Sector)
+  offset 4: LBA Mid (Cylinder Low)
+  offset 5: LBA High (Cylinder High)
+  offset 6: Device/Head
+  offset 7: Status (чтение) / Command (запись)
+
+Команды:
+  0xEC: IDENTIFY DEVICE
+  0x20: READ SECTORS (с прерыванием)
+  0x21: READ SECTORS (без прерывания)
+  0x30: WRITE SECTORS (с прерыванием)
+  0x31: WRITE SECTORS (без прерывания)
+
+Статусные биты (Status Register):
+  Bit 7: BSY  — занят
+  Bit 6: DRDY — готов
+  Bit 3: DRQ  — запрос данных
+  Bit 0: ERR  — ошибка
+\end{DoxyVerb}
+ 

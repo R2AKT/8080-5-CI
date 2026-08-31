@@ -1,0 +1,243 @@
+\doxysection{i8080\+\_\+\+CI.\+Watch\+Model Class Reference}
+\hypertarget{classi8080___c_i_1_1_watch_model}{}\label{classi8080___c_i_1_1_watch_model}\index{i8080\_CI.WatchModel@{i8080\_CI.WatchModel}}
+
+
+Inheritance diagram for i8080\+\_\+\+CI.\+Watch\+Model\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=192pt]{classi8080___c_i_1_1_watch_model__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for i8080\+\_\+\+CI.\+Watch\+Model\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=192pt]{classi8080___c_i_1_1_watch_model__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classi8080___c_i_1_1_watch_model_a86251128c4aeb909e35435b9c4c7545c}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, \mbox{\hyperlink{classi8080___c_i_1_1_watch_model_aa023c9f9c5fa13db01aabf7e83ecc561}{emulator}}, parent=None)
+\item 
+\mbox{\hyperlink{classi8080___c_i_1_1_watch_model_afd6797f50ca7792502128de0519f6d0a}{add\+\_\+watch}} (self, name, watch\+\_\+type, target, fmt="{}hex"{})
+\item 
+\mbox{\hyperlink{classi8080___c_i_1_1_watch_model_aba126dab7f9634ef7e3bc5b909510feb}{remove\+\_\+watch}} (self, row)
+\item 
+\mbox{\hyperlink{classi8080___c_i_1_1_watch_model_a958fb5099c3162264a61d67e536e309e}{clear}} (self)
+\item 
+\mbox{\hyperlink{classi8080___c_i_1_1_watch_model_a7b415f28a4ec27cf032db772117d5189}{get\+\_\+value}} (self, item)
+\item 
+\mbox{\hyperlink{classi8080___c_i_1_1_watch_model_a947b0096db981f09592cc5dcbb601450}{format\+\_\+value}} (self, value, fmt, is\+\_\+word=False)
+\item 
+\mbox{\hyperlink{classi8080___c_i_1_1_watch_model_afb12cb215a37d789bbf975e20b8c9726}{get\+\_\+display\+\_\+value}} (self, item)
+\item 
+\mbox{\hyperlink{classi8080___c_i_1_1_watch_model_a870cb0a522dcf61457c999b693c5f631}{save\+\_\+preset}} (self, filepath)
+\item 
+\mbox{\hyperlink{classi8080___c_i_1_1_watch_model_ada8b931bc21dc58907e557d4300a2986}{load\+\_\+preset}} (self, filepath)
+\item 
+\mbox{\hyperlink{classi8080___c_i_1_1_watch_model_a43a40feed43e857c1c58827c735b2381}{save\+\_\+prev\+\_\+values}} (self)
+\item 
+\mbox{\hyperlink{classi8080___c_i_1_1_watch_model_af60128dfebda034c8c8ab61908021c46}{refresh}} (self)
+\item 
+\mbox{\hyperlink{classi8080___c_i_1_1_watch_model_aeb9d12ea6ed359ed7958bcded3c6f515}{row\+Count}} (self, parent=None)
+\item 
+\mbox{\hyperlink{classi8080___c_i_1_1_watch_model_ae03b156d6038f3811c84e581137b01ab}{column\+Count}} (self, parent=None)
+\item 
+\mbox{\hyperlink{classi8080___c_i_1_1_watch_model_a5daff57278ca69c8146757d8f1234ba4}{header\+Data}} (self, section, orientation, role=Qt.\+Display\+Role)
+\item 
+\mbox{\hyperlink{classi8080___c_i_1_1_watch_model_a16f8ce63f9754f987c4fcf02895f8959}{data}} (self, index, role=Qt.\+Display\+Role)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classi8080___c_i_1_1_watch_model_aa023c9f9c5fa13db01aabf7e83ecc561}{emulator}} = emulator
+\item 
+str \mbox{\hyperlink{classi8080___c_i_1_1_watch_model_a796b5fa7d84a7b99510829e067aeedb2}{lang}} = "{}en"{}
+\item 
+list \mbox{\hyperlink{classi8080___c_i_1_1_watch_model_ac263f884bfb946743080a9c71f786670}{items}} = \mbox{[}$\,$\mbox{]}
+\item 
+dict \mbox{\hyperlink{classi8080___c_i_1_1_watch_model_a34143645c914b971488e6b52f4e9c701}{prev\+\_\+values}} = \{\}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+list \mbox{\hyperlink{classi8080___c_i_1_1_watch_model_ad454da767bb6da348832a8dd908cff6b}{FORMATS}} = \mbox{[}"{}hex"{}, "{}dec"{}, "{}signed"{}, "{}bin"{}, "{}ascii"{}\mbox{]}
+\item 
+str \mbox{\hyperlink{classi8080___c_i_1_1_watch_model_a6599dfd4a7215758071a548a29ba5c4a}{TYPE\+\_\+\+MEM\+\_\+\+BYTE}} = "{}mem\+\_\+byte"{}
+\item 
+str \mbox{\hyperlink{classi8080___c_i_1_1_watch_model_a2f57b1bc54d44c92ef9f595e9b07254e}{TYPE\+\_\+\+MEM\+\_\+\+WORD}} = "{}mem\+\_\+word"{}
+\item 
+str \mbox{\hyperlink{classi8080___c_i_1_1_watch_model_a35ae3428add35199e069746a82de4974}{TYPE\+\_\+\+REG}} = "{}reg"{}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Модель для Watch-окна (наблюдение за памятью и регистрами)\end{DoxyVerb}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classi8080___c_i_1_1_watch_model_a86251128c4aeb909e35435b9c4c7545c}\index{i8080\_CI.WatchModel@{i8080\_CI.WatchModel}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!i8080\_CI.WatchModel@{i8080\_CI.WatchModel}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_watch_model_a86251128c4aeb909e35435b9c4c7545c} 
+i8080\+\_\+\+CI.\+Watch\+Model.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{emulator}{, }\item[{}]{parent}{ = {\ttfamily None}}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classi8080___c_i_1_1_watch_model_afd6797f50ca7792502128de0519f6d0a}\index{i8080\_CI.WatchModel@{i8080\_CI.WatchModel}!add\_watch@{add\_watch}}
+\index{add\_watch@{add\_watch}!i8080\_CI.WatchModel@{i8080\_CI.WatchModel}}
+\doxysubsubsection{\texorpdfstring{add\_watch()}{add\_watch()}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_watch_model_afd6797f50ca7792502128de0519f6d0a} 
+i8080\+\_\+\+CI.\+Watch\+Model.\+add\+\_\+watch (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{name}{, }\item[{}]{watch\+\_\+type}{, }\item[{}]{target}{, }\item[{}]{fmt}{ = {\ttfamily "{}hex"{}}}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Добавить элемент наблюдения\end{DoxyVerb}
+ \Hypertarget{classi8080___c_i_1_1_watch_model_a958fb5099c3162264a61d67e536e309e}\index{i8080\_CI.WatchModel@{i8080\_CI.WatchModel}!clear@{clear}}
+\index{clear@{clear}!i8080\_CI.WatchModel@{i8080\_CI.WatchModel}}
+\doxysubsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_watch_model_a958fb5099c3162264a61d67e536e309e} 
+i8080\+\_\+\+CI.\+Watch\+Model.\+clear (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Очистить все элементы\end{DoxyVerb}
+ \Hypertarget{classi8080___c_i_1_1_watch_model_ae03b156d6038f3811c84e581137b01ab}\index{i8080\_CI.WatchModel@{i8080\_CI.WatchModel}!columnCount@{columnCount}}
+\index{columnCount@{columnCount}!i8080\_CI.WatchModel@{i8080\_CI.WatchModel}}
+\doxysubsubsection{\texorpdfstring{columnCount()}{columnCount()}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_watch_model_ae03b156d6038f3811c84e581137b01ab} 
+i8080\+\_\+\+CI.\+Watch\+Model.\+column\+Count (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{parent}{ = {\ttfamily None}}\end{DoxyParamCaption})}
+
+\Hypertarget{classi8080___c_i_1_1_watch_model_a16f8ce63f9754f987c4fcf02895f8959}\index{i8080\_CI.WatchModel@{i8080\_CI.WatchModel}!data@{data}}
+\index{data@{data}!i8080\_CI.WatchModel@{i8080\_CI.WatchModel}}
+\doxysubsubsection{\texorpdfstring{data()}{data()}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_watch_model_a16f8ce63f9754f987c4fcf02895f8959} 
+i8080\+\_\+\+CI.\+Watch\+Model.\+data (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{index}{, }\item[{}]{role}{ = {\ttfamily Qt.DisplayRole}}\end{DoxyParamCaption})}
+
+\Hypertarget{classi8080___c_i_1_1_watch_model_a947b0096db981f09592cc5dcbb601450}\index{i8080\_CI.WatchModel@{i8080\_CI.WatchModel}!format\_value@{format\_value}}
+\index{format\_value@{format\_value}!i8080\_CI.WatchModel@{i8080\_CI.WatchModel}}
+\doxysubsubsection{\texorpdfstring{format\_value()}{format\_value()}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_watch_model_a947b0096db981f09592cc5dcbb601450} 
+i8080\+\_\+\+CI.\+Watch\+Model.\+format\+\_\+value (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{value}{, }\item[{}]{fmt}{, }\item[{}]{is\+\_\+word}{ = {\ttfamily False}}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Форматировать значение\end{DoxyVerb}
+ \Hypertarget{classi8080___c_i_1_1_watch_model_afb12cb215a37d789bbf975e20b8c9726}\index{i8080\_CI.WatchModel@{i8080\_CI.WatchModel}!get\_display\_value@{get\_display\_value}}
+\index{get\_display\_value@{get\_display\_value}!i8080\_CI.WatchModel@{i8080\_CI.WatchModel}}
+\doxysubsubsection{\texorpdfstring{get\_display\_value()}{get\_display\_value()}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_watch_model_afb12cb215a37d789bbf975e20b8c9726} 
+i8080\+\_\+\+CI.\+Watch\+Model.\+get\+\_\+display\+\_\+value (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{item}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Получить отформатированное значение\end{DoxyVerb}
+ \Hypertarget{classi8080___c_i_1_1_watch_model_a7b415f28a4ec27cf032db772117d5189}\index{i8080\_CI.WatchModel@{i8080\_CI.WatchModel}!get\_value@{get\_value}}
+\index{get\_value@{get\_value}!i8080\_CI.WatchModel@{i8080\_CI.WatchModel}}
+\doxysubsubsection{\texorpdfstring{get\_value()}{get\_value()}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_watch_model_a7b415f28a4ec27cf032db772117d5189} 
+i8080\+\_\+\+CI.\+Watch\+Model.\+get\+\_\+value (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{item}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Получить текущее значение элемента\end{DoxyVerb}
+ \Hypertarget{classi8080___c_i_1_1_watch_model_a5daff57278ca69c8146757d8f1234ba4}\index{i8080\_CI.WatchModel@{i8080\_CI.WatchModel}!headerData@{headerData}}
+\index{headerData@{headerData}!i8080\_CI.WatchModel@{i8080\_CI.WatchModel}}
+\doxysubsubsection{\texorpdfstring{headerData()}{headerData()}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_watch_model_a5daff57278ca69c8146757d8f1234ba4} 
+i8080\+\_\+\+CI.\+Watch\+Model.\+header\+Data (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{section}{, }\item[{}]{orientation}{, }\item[{}]{role}{ = {\ttfamily Qt.DisplayRole}}\end{DoxyParamCaption})}
+
+\Hypertarget{classi8080___c_i_1_1_watch_model_ada8b931bc21dc58907e557d4300a2986}\index{i8080\_CI.WatchModel@{i8080\_CI.WatchModel}!load\_preset@{load\_preset}}
+\index{load\_preset@{load\_preset}!i8080\_CI.WatchModel@{i8080\_CI.WatchModel}}
+\doxysubsubsection{\texorpdfstring{load\_preset()}{load\_preset()}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_watch_model_ada8b931bc21dc58907e557d4300a2986} 
+i8080\+\_\+\+CI.\+Watch\+Model.\+load\+\_\+preset (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{filepath}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Загрузить пресет из JSON файла\end{DoxyVerb}
+ \Hypertarget{classi8080___c_i_1_1_watch_model_af60128dfebda034c8c8ab61908021c46}\index{i8080\_CI.WatchModel@{i8080\_CI.WatchModel}!refresh@{refresh}}
+\index{refresh@{refresh}!i8080\_CI.WatchModel@{i8080\_CI.WatchModel}}
+\doxysubsubsection{\texorpdfstring{refresh()}{refresh()}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_watch_model_af60128dfebda034c8c8ab61908021c46} 
+i8080\+\_\+\+CI.\+Watch\+Model.\+refresh (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Обновить данные модели\end{DoxyVerb}
+ \Hypertarget{classi8080___c_i_1_1_watch_model_aba126dab7f9634ef7e3bc5b909510feb}\index{i8080\_CI.WatchModel@{i8080\_CI.WatchModel}!remove\_watch@{remove\_watch}}
+\index{remove\_watch@{remove\_watch}!i8080\_CI.WatchModel@{i8080\_CI.WatchModel}}
+\doxysubsubsection{\texorpdfstring{remove\_watch()}{remove\_watch()}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_watch_model_aba126dab7f9634ef7e3bc5b909510feb} 
+i8080\+\_\+\+CI.\+Watch\+Model.\+remove\+\_\+watch (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{row}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Удалить элемент наблюдения\end{DoxyVerb}
+ \Hypertarget{classi8080___c_i_1_1_watch_model_aeb9d12ea6ed359ed7958bcded3c6f515}\index{i8080\_CI.WatchModel@{i8080\_CI.WatchModel}!rowCount@{rowCount}}
+\index{rowCount@{rowCount}!i8080\_CI.WatchModel@{i8080\_CI.WatchModel}}
+\doxysubsubsection{\texorpdfstring{rowCount()}{rowCount()}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_watch_model_aeb9d12ea6ed359ed7958bcded3c6f515} 
+i8080\+\_\+\+CI.\+Watch\+Model.\+row\+Count (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{parent}{ = {\ttfamily None}}\end{DoxyParamCaption})}
+
+\Hypertarget{classi8080___c_i_1_1_watch_model_a870cb0a522dcf61457c999b693c5f631}\index{i8080\_CI.WatchModel@{i8080\_CI.WatchModel}!save\_preset@{save\_preset}}
+\index{save\_preset@{save\_preset}!i8080\_CI.WatchModel@{i8080\_CI.WatchModel}}
+\doxysubsubsection{\texorpdfstring{save\_preset()}{save\_preset()}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_watch_model_a870cb0a522dcf61457c999b693c5f631} 
+i8080\+\_\+\+CI.\+Watch\+Model.\+save\+\_\+preset (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{filepath}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Сохранить пресет в JSON файл\end{DoxyVerb}
+ \Hypertarget{classi8080___c_i_1_1_watch_model_a43a40feed43e857c1c58827c735b2381}\index{i8080\_CI.WatchModel@{i8080\_CI.WatchModel}!save\_prev\_values@{save\_prev\_values}}
+\index{save\_prev\_values@{save\_prev\_values}!i8080\_CI.WatchModel@{i8080\_CI.WatchModel}}
+\doxysubsubsection{\texorpdfstring{save\_prev\_values()}{save\_prev\_values()}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_watch_model_a43a40feed43e857c1c58827c735b2381} 
+i8080\+\_\+\+CI.\+Watch\+Model.\+save\+\_\+prev\+\_\+values (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Сохранить текущие значения для подсветки изменений\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classi8080___c_i_1_1_watch_model_aa023c9f9c5fa13db01aabf7e83ecc561}\index{i8080\_CI.WatchModel@{i8080\_CI.WatchModel}!emulator@{emulator}}
+\index{emulator@{emulator}!i8080\_CI.WatchModel@{i8080\_CI.WatchModel}}
+\doxysubsubsection{\texorpdfstring{emulator}{emulator}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_watch_model_aa023c9f9c5fa13db01aabf7e83ecc561} 
+i8080\+\_\+\+CI.\+Watch\+Model.\+emulator = emulator}
+
+\Hypertarget{classi8080___c_i_1_1_watch_model_ad454da767bb6da348832a8dd908cff6b}\index{i8080\_CI.WatchModel@{i8080\_CI.WatchModel}!FORMATS@{FORMATS}}
+\index{FORMATS@{FORMATS}!i8080\_CI.WatchModel@{i8080\_CI.WatchModel}}
+\doxysubsubsection{\texorpdfstring{FORMATS}{FORMATS}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_watch_model_ad454da767bb6da348832a8dd908cff6b} 
+list i8080\+\_\+\+CI.\+Watch\+Model.\+FORMATS = \mbox{[}"{}hex"{}, "{}dec"{}, "{}signed"{}, "{}bin"{}, "{}ascii"{}\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classi8080___c_i_1_1_watch_model_ac263f884bfb946743080a9c71f786670}\index{i8080\_CI.WatchModel@{i8080\_CI.WatchModel}!items@{items}}
+\index{items@{items}!i8080\_CI.WatchModel@{i8080\_CI.WatchModel}}
+\doxysubsubsection{\texorpdfstring{items}{items}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_watch_model_ac263f884bfb946743080a9c71f786670} 
+i8080\+\_\+\+CI.\+Watch\+Model.\+items = \mbox{[}$\,$\mbox{]}}
+
+\Hypertarget{classi8080___c_i_1_1_watch_model_a796b5fa7d84a7b99510829e067aeedb2}\index{i8080\_CI.WatchModel@{i8080\_CI.WatchModel}!lang@{lang}}
+\index{lang@{lang}!i8080\_CI.WatchModel@{i8080\_CI.WatchModel}}
+\doxysubsubsection{\texorpdfstring{lang}{lang}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_watch_model_a796b5fa7d84a7b99510829e067aeedb2} 
+str i8080\+\_\+\+CI.\+Watch\+Model.\+lang = "{}en"{}}
+
+\Hypertarget{classi8080___c_i_1_1_watch_model_a34143645c914b971488e6b52f4e9c701}\index{i8080\_CI.WatchModel@{i8080\_CI.WatchModel}!prev\_values@{prev\_values}}
+\index{prev\_values@{prev\_values}!i8080\_CI.WatchModel@{i8080\_CI.WatchModel}}
+\doxysubsubsection{\texorpdfstring{prev\_values}{prev\_values}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_watch_model_a34143645c914b971488e6b52f4e9c701} 
+dict i8080\+\_\+\+CI.\+Watch\+Model.\+prev\+\_\+values = \{\}}
+
+\Hypertarget{classi8080___c_i_1_1_watch_model_a6599dfd4a7215758071a548a29ba5c4a}\index{i8080\_CI.WatchModel@{i8080\_CI.WatchModel}!TYPE\_MEM\_BYTE@{TYPE\_MEM\_BYTE}}
+\index{TYPE\_MEM\_BYTE@{TYPE\_MEM\_BYTE}!i8080\_CI.WatchModel@{i8080\_CI.WatchModel}}
+\doxysubsubsection{\texorpdfstring{TYPE\_MEM\_BYTE}{TYPE\_MEM\_BYTE}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_watch_model_a6599dfd4a7215758071a548a29ba5c4a} 
+i8080\+\_\+\+CI.\+Watch\+Model.\+TYPE\+\_\+\+MEM\+\_\+\+BYTE = "{}mem\+\_\+byte"{}\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classi8080___c_i_1_1_watch_model_a2f57b1bc54d44c92ef9f595e9b07254e}\index{i8080\_CI.WatchModel@{i8080\_CI.WatchModel}!TYPE\_MEM\_WORD@{TYPE\_MEM\_WORD}}
+\index{TYPE\_MEM\_WORD@{TYPE\_MEM\_WORD}!i8080\_CI.WatchModel@{i8080\_CI.WatchModel}}
+\doxysubsubsection{\texorpdfstring{TYPE\_MEM\_WORD}{TYPE\_MEM\_WORD}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_watch_model_a2f57b1bc54d44c92ef9f595e9b07254e} 
+str i8080\+\_\+\+CI.\+Watch\+Model.\+TYPE\+\_\+\+MEM\+\_\+\+WORD = "{}mem\+\_\+word"{}\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classi8080___c_i_1_1_watch_model_a35ae3428add35199e069746a82de4974}\index{i8080\_CI.WatchModel@{i8080\_CI.WatchModel}!TYPE\_REG@{TYPE\_REG}}
+\index{TYPE\_REG@{TYPE\_REG}!i8080\_CI.WatchModel@{i8080\_CI.WatchModel}}
+\doxysubsubsection{\texorpdfstring{TYPE\_REG}{TYPE\_REG}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_watch_model_a35ae3428add35199e069746a82de4974} 
+str i8080\+\_\+\+CI.\+Watch\+Model.\+TYPE\+\_\+\+REG = "{}reg"{}\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{i8080___c_i_8py}{i8080\+\_\+\+CI.\+py}}\end{DoxyCompactItemize}

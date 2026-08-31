@@ -1,0 +1,373 @@
+\doxysection{modules.\+system.\+Computer\+System Class Reference}
+\hypertarget{classmodules_1_1system_1_1_computer_system}{}\label{classmodules_1_1system_1_1_computer_system}\index{modules.system.ComputerSystem@{modules.system.ComputerSystem}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodules_1_1system_1_1_computer_system_a61f9456bdfe769febf166d969fa9eba7}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1system_1_1_computer_system_acbb14766bc9fb75ff3ad157cc0ae0887}{validate\+\_\+profile\+\_\+files}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1system_1_1_computer_system_a337d8c7c92c8f1d1d8ef0689b838be44}{load\+\_\+from\+\_\+toml\+\_\+file}} (self, path)
+\item 
+\mbox{\hyperlink{classmodules_1_1system_1_1_computer_system_ac278b7ac3e8e1747225b1b349da558b0}{load\+\_\+from\+\_\+toml\+\_\+string}} (self, toml\+\_\+string, name="{}Custom"{})
+\item 
+\mbox{\hyperlink{classmodules_1_1system_1_1_computer_system_a69ac67f695c5f6cae744c0be8e296f1c}{load\+\_\+profile}} (self, \mbox{\hyperlink{classmodules_1_1system_1_1_computer_system_a5cbfce8de2c225e942de2fd64adf319a}{profile\+\_\+name}})
+\item 
+\mbox{\hyperlink{classmodules_1_1system_1_1_computer_system_ad6e0680f861517f9e4d6924a93e74356}{reset\+\_\+all}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1system_1_1_computer_system_a918c2b4d812ba346c3084ada6b2bacbf}{reset\+\_\+cpu}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1system_1_1_computer_system_a2f82d105749d8e6470834f5355f80c72}{get\+\_\+device}} (self, name)
+\item 
+\mbox{\hyperlink{classmodules_1_1system_1_1_computer_system_ae0516f47efefeb220507872aa91baced}{get\+\_\+devices\+\_\+by\+\_\+type}} (self, device\+\_\+type)
+\item 
+\mbox{\hyperlink{classmodules_1_1system_1_1_computer_system_ad4ae8e668e8012ce720e1f90ec145114}{list\+\_\+devices}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1system_1_1_computer_system_a3a553fd85a44922b3e1f78a60be06482}{set\+\_\+callback}} (self, device\+\_\+name, callback\+\_\+name, callback)
+\item 
+\mbox{\hyperlink{classmodules_1_1system_1_1_computer_system_a3b6c9be550c238e81629631056f73d13}{connect\+\_\+cpu}} (self, \mbox{\hyperlink{classmodules_1_1system_1_1_computer_system_abc32530676b043247b5de1869261e7b8}{cpu}})
+\item 
+\mbox{\hyperlink{classmodules_1_1system_1_1_computer_system_a350031139d53b3eb6fcac566d1db7a1b}{tick}} (self, cycles=1)
+\item 
+\mbox{\hyperlink{classmodules_1_1system_1_1_computer_system_ad8db9babc56f78550eb3bb948eea4d58}{save\+\_\+all\+\_\+nvram}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1system_1_1_computer_system_a45aa0df3317ce25e93a56bbde46822bb}{load\+\_\+all\+\_\+nvram}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1system_1_1_computer_system_a75695898ca8d45447de243602aaa2626}{get\+\_\+state}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1system_1_1_computer_system_a610a07df40f8b893de754eb5141b92bc}{print\+\_\+state}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1system_1_1_computer_system_a69c76aab57d6339c384998129c28c6df}{check\+\_\+interrupts}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1system_1_1_computer_system_aefd6e408874464c921537e8ecf195a9e}{check\+\_\+dma}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1system_1_1_computer_system_ac2b3ea6ff77bd2df785e2a122aed0bcf}{check\+\_\+wait}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1system_1_1_computer_system_adc943badc4b2ac610000eb137421a979}{connect\+\_\+wait\+\_\+signals}} (self)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodules_1_1system_1_1_computer_system_a8e7f93b5bd8fe0aa39f22967a1f14b78}{bus}} = \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus}{Memory\+Bus}}()
+\item 
+dict \mbox{\hyperlink{classmodules_1_1system_1_1_computer_system_a5fd68908251471c155e5f726d66d1f01}{devices}} = \{\}
+\item 
+list \mbox{\hyperlink{classmodules_1_1system_1_1_computer_system_a4174d07eb222b742e7d8cd5f83eb25a8}{memory\+\_\+regions}} = \mbox{[}$\,$\mbox{]}
+\item 
+\mbox{\hyperlink{classmodules_1_1system_1_1_computer_system_a1e9dcd2984283b616e201a6fd0aa5c8e}{config}} = None
+\item 
+\mbox{\hyperlink{classmodules_1_1system_1_1_computer_system_a5cbfce8de2c225e942de2fd64adf319a}{profile\+\_\+name}} = None
+\item 
+\mbox{\hyperlink{classmodules_1_1system_1_1_computer_system_abc32530676b043247b5de1869261e7b8}{cpu}} = None
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodules_1_1system_1_1_computer_system_a14e8dfbedfa9d1b4b02f91486bdaf18a}{\+\_\+apply\+\_\+config}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1system_1_1_computer_system_ac37da3c20115773bed3d383c254fdf52}{\+\_\+apply\+\_\+device\+\_\+params}} (self, device, \mbox{\hyperlink{classmodules_1_1system_1_1_computer_system_a1e9dcd2984283b616e201a6fd0aa5c8e}{config}})
+\item 
+\mbox{\hyperlink{classmodules_1_1system_1_1_computer_system_abe6cb107b1ff2433c3f5e0d8e320ff8f}{\+\_\+get\+\_\+interrupt\+\_\+vector}} (self, device\+\_\+name, device)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+dict \mbox{\hyperlink{classmodules_1_1system_1_1_computer_system_ac8b55bc82a094e89052fa756d57c72d5}{\+\_\+device\+\_\+callbacks}} = \{\}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Полная компьютерная система\end{DoxyVerb}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classmodules_1_1system_1_1_computer_system_a61f9456bdfe769febf166d969fa9eba7}\index{modules.system.ComputerSystem@{modules.system.ComputerSystem}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!modules.system.ComputerSystem@{modules.system.ComputerSystem}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \label{classmodules_1_1system_1_1_computer_system_a61f9456bdfe769febf166d969fa9eba7} 
+modules.\+system.\+Computer\+System.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classmodules_1_1system_1_1_computer_system_a14e8dfbedfa9d1b4b02f91486bdaf18a}\index{modules.system.ComputerSystem@{modules.system.ComputerSystem}!\_apply\_config@{\_apply\_config}}
+\index{\_apply\_config@{\_apply\_config}!modules.system.ComputerSystem@{modules.system.ComputerSystem}}
+\doxysubsubsection{\texorpdfstring{\_apply\_config()}{\_apply\_config()}}
+{\footnotesize\ttfamily \label{classmodules_1_1system_1_1_computer_system_a14e8dfbedfa9d1b4b02f91486bdaf18a} 
+modules.\+system.\+Computer\+System.\+\_\+apply\+\_\+config (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Применить загруженную конфигурацию\end{DoxyVerb}
+ Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1system_1_1_computer_system_a14e8dfbedfa9d1b4b02f91486bdaf18a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1system_1_1_computer_system_a14e8dfbedfa9d1b4b02f91486bdaf18a_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1system_1_1_computer_system_ac37da3c20115773bed3d383c254fdf52}\index{modules.system.ComputerSystem@{modules.system.ComputerSystem}!\_apply\_device\_params@{\_apply\_device\_params}}
+\index{\_apply\_device\_params@{\_apply\_device\_params}!modules.system.ComputerSystem@{modules.system.ComputerSystem}}
+\doxysubsubsection{\texorpdfstring{\_apply\_device\_params()}{\_apply\_device\_params()}}
+{\footnotesize\ttfamily \label{classmodules_1_1system_1_1_computer_system_ac37da3c20115773bed3d383c254fdf52} 
+modules.\+system.\+Computer\+System.\+\_\+apply\+\_\+device\+\_\+params (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{device}{, }\item[{}]{config}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Применение дополнительных параметров устройства\end{DoxyVerb}
+ Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1system_1_1_computer_system_ac37da3c20115773bed3d383c254fdf52_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1system_1_1_computer_system_abe6cb107b1ff2433c3f5e0d8e320ff8f}\index{modules.system.ComputerSystem@{modules.system.ComputerSystem}!\_get\_interrupt\_vector@{\_get\_interrupt\_vector}}
+\index{\_get\_interrupt\_vector@{\_get\_interrupt\_vector}!modules.system.ComputerSystem@{modules.system.ComputerSystem}}
+\doxysubsubsection{\texorpdfstring{\_get\_interrupt\_vector()}{\_get\_interrupt\_vector()}}
+{\footnotesize\ttfamily \label{classmodules_1_1system_1_1_computer_system_abe6cb107b1ff2433c3f5e0d8e320ff8f} 
+modules.\+system.\+Computer\+System.\+\_\+get\+\_\+interrupt\+\_\+vector (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{device\+\_\+name}{, }\item[{}]{device}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Определить вектор прерывания для устройства.
+По умолчанию: RST 7 (0xFF). Можно переопределить в конфигурации.\end{DoxyVerb}
+ \Hypertarget{classmodules_1_1system_1_1_computer_system_aefd6e408874464c921537e8ecf195a9e}\index{modules.system.ComputerSystem@{modules.system.ComputerSystem}!check\_dma@{check\_dma}}
+\index{check\_dma@{check\_dma}!modules.system.ComputerSystem@{modules.system.ComputerSystem}}
+\doxysubsubsection{\texorpdfstring{check\_dma()}{check\_dma()}}
+{\footnotesize\ttfamily \label{classmodules_1_1system_1_1_computer_system_aefd6e408874464c921537e8ecf195a9e} 
+modules.\+system.\+Computer\+System.\+check\+\_\+dma (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Проверка активных DMA-запросов.
+Вызывается перед выполнением инструкций.
+Возвращает True, если CPU должен быть приостановлен (HOLD).\end{DoxyVerb}
+ \Hypertarget{classmodules_1_1system_1_1_computer_system_a69c76aab57d6339c384998129c28c6df}\index{modules.system.ComputerSystem@{modules.system.ComputerSystem}!check\_interrupts@{check\_interrupts}}
+\index{check\_interrupts@{check\_interrupts}!modules.system.ComputerSystem@{modules.system.ComputerSystem}}
+\doxysubsubsection{\texorpdfstring{check\_interrupts()}{check\_interrupts()}}
+{\footnotesize\ttfamily \label{classmodules_1_1system_1_1_computer_system_a69c76aab57d6339c384998129c28c6df} 
+modules.\+system.\+Computer\+System.\+check\+\_\+interrupts (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Проверка прерываний от всех устройств.
+Вызывается после каждой инструкции CPU.\end{DoxyVerb}
+ \Hypertarget{classmodules_1_1system_1_1_computer_system_ac2b3ea6ff77bd2df785e2a122aed0bcf}\index{modules.system.ComputerSystem@{modules.system.ComputerSystem}!check\_wait@{check\_wait}}
+\index{check\_wait@{check\_wait}!modules.system.ComputerSystem@{modules.system.ComputerSystem}}
+\doxysubsubsection{\texorpdfstring{check\_wait()}{check\_wait()}}
+{\footnotesize\ttfamily \label{classmodules_1_1system_1_1_computer_system_ac2b3ea6ff77bd2df785e2a122aed0bcf} 
+modules.\+system.\+Computer\+System.\+check\+\_\+wait (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Проверка WAIT-сигналов от всех устройств.
+Возвращает True, если CPU должен ждать.\end{DoxyVerb}
+ \Hypertarget{classmodules_1_1system_1_1_computer_system_a3b6c9be550c238e81629631056f73d13}\index{modules.system.ComputerSystem@{modules.system.ComputerSystem}!connect\_cpu@{connect\_cpu}}
+\index{connect\_cpu@{connect\_cpu}!modules.system.ComputerSystem@{modules.system.ComputerSystem}}
+\doxysubsubsection{\texorpdfstring{connect\_cpu()}{connect\_cpu()}}
+{\footnotesize\ttfamily \label{classmodules_1_1system_1_1_computer_system_a3b6c9be550c238e81629631056f73d13} 
+modules.\+system.\+Computer\+System.\+connect\+\_\+cpu (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{cpu}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Подключить CPU к системе\end{DoxyVerb}
+ \Hypertarget{classmodules_1_1system_1_1_computer_system_adc943badc4b2ac610000eb137421a979}\index{modules.system.ComputerSystem@{modules.system.ComputerSystem}!connect\_wait\_signals@{connect\_wait\_signals}}
+\index{connect\_wait\_signals@{connect\_wait\_signals}!modules.system.ComputerSystem@{modules.system.ComputerSystem}}
+\doxysubsubsection{\texorpdfstring{connect\_wait\_signals()}{connect\_wait\_signals()}}
+{\footnotesize\ttfamily \label{classmodules_1_1system_1_1_computer_system_adc943badc4b2ac610000eb137421a979} 
+modules.\+system.\+Computer\+System.\+connect\+\_\+wait\+\_\+signals (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Подключить on_wait коллбэки устройств к CPU.\end{DoxyVerb}
+ \Hypertarget{classmodules_1_1system_1_1_computer_system_a2f82d105749d8e6470834f5355f80c72}\index{modules.system.ComputerSystem@{modules.system.ComputerSystem}!get\_device@{get\_device}}
+\index{get\_device@{get\_device}!modules.system.ComputerSystem@{modules.system.ComputerSystem}}
+\doxysubsubsection{\texorpdfstring{get\_device()}{get\_device()}}
+{\footnotesize\ttfamily \label{classmodules_1_1system_1_1_computer_system_a2f82d105749d8e6470834f5355f80c72} 
+modules.\+system.\+Computer\+System.\+get\+\_\+device (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{name}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Получить устройство по имени\end{DoxyVerb}
+ \Hypertarget{classmodules_1_1system_1_1_computer_system_ae0516f47efefeb220507872aa91baced}\index{modules.system.ComputerSystem@{modules.system.ComputerSystem}!get\_devices\_by\_type@{get\_devices\_by\_type}}
+\index{get\_devices\_by\_type@{get\_devices\_by\_type}!modules.system.ComputerSystem@{modules.system.ComputerSystem}}
+\doxysubsubsection{\texorpdfstring{get\_devices\_by\_type()}{get\_devices\_by\_type()}}
+{\footnotesize\ttfamily \label{classmodules_1_1system_1_1_computer_system_ae0516f47efefeb220507872aa91baced} 
+modules.\+system.\+Computer\+System.\+get\+\_\+devices\+\_\+by\+\_\+type (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{device\+\_\+type}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Получить все устройства определённого типа\end{DoxyVerb}
+ \Hypertarget{classmodules_1_1system_1_1_computer_system_a75695898ca8d45447de243602aaa2626}\index{modules.system.ComputerSystem@{modules.system.ComputerSystem}!get\_state@{get\_state}}
+\index{get\_state@{get\_state}!modules.system.ComputerSystem@{modules.system.ComputerSystem}}
+\doxysubsubsection{\texorpdfstring{get\_state()}{get\_state()}}
+{\footnotesize\ttfamily \label{classmodules_1_1system_1_1_computer_system_a75695898ca8d45447de243602aaa2626} 
+modules.\+system.\+Computer\+System.\+get\+\_\+state (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Полное состояние системы для отладки\end{DoxyVerb}
+ \Hypertarget{classmodules_1_1system_1_1_computer_system_ad4ae8e668e8012ce720e1f90ec145114}\index{modules.system.ComputerSystem@{modules.system.ComputerSystem}!list\_devices@{list\_devices}}
+\index{list\_devices@{list\_devices}!modules.system.ComputerSystem@{modules.system.ComputerSystem}}
+\doxysubsubsection{\texorpdfstring{list\_devices()}{list\_devices()}}
+{\footnotesize\ttfamily \label{classmodules_1_1system_1_1_computer_system_ad4ae8e668e8012ce720e1f90ec145114} 
+modules.\+system.\+Computer\+System.\+list\+\_\+devices (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Список устройств с основной информацией\end{DoxyVerb}
+ \Hypertarget{classmodules_1_1system_1_1_computer_system_a45aa0df3317ce25e93a56bbde46822bb}\index{modules.system.ComputerSystem@{modules.system.ComputerSystem}!load\_all\_nvram@{load\_all\_nvram}}
+\index{load\_all\_nvram@{load\_all\_nvram}!modules.system.ComputerSystem@{modules.system.ComputerSystem}}
+\doxysubsubsection{\texorpdfstring{load\_all\_nvram()}{load\_all\_nvram()}}
+{\footnotesize\ttfamily \label{classmodules_1_1system_1_1_computer_system_a45aa0df3317ce25e93a56bbde46822bb} 
+modules.\+system.\+Computer\+System.\+load\+\_\+all\+\_\+nvram (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Загрузить все NVM\end{DoxyVerb}
+ \Hypertarget{classmodules_1_1system_1_1_computer_system_a337d8c7c92c8f1d1d8ef0689b838be44}\index{modules.system.ComputerSystem@{modules.system.ComputerSystem}!load\_from\_toml\_file@{load\_from\_toml\_file}}
+\index{load\_from\_toml\_file@{load\_from\_toml\_file}!modules.system.ComputerSystem@{modules.system.ComputerSystem}}
+\doxysubsubsection{\texorpdfstring{load\_from\_toml\_file()}{load\_from\_toml\_file()}}
+{\footnotesize\ttfamily \label{classmodules_1_1system_1_1_computer_system_a337d8c7c92c8f1d1d8ef0689b838be44} 
+modules.\+system.\+Computer\+System.\+load\+\_\+from\+\_\+toml\+\_\+file (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{path}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Загрузить конфигурацию из TOML-файла\end{DoxyVerb}
+ Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1system_1_1_computer_system_a337d8c7c92c8f1d1d8ef0689b838be44_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1system_1_1_computer_system_ac278b7ac3e8e1747225b1b349da558b0}\index{modules.system.ComputerSystem@{modules.system.ComputerSystem}!load\_from\_toml\_string@{load\_from\_toml\_string}}
+\index{load\_from\_toml\_string@{load\_from\_toml\_string}!modules.system.ComputerSystem@{modules.system.ComputerSystem}}
+\doxysubsubsection{\texorpdfstring{load\_from\_toml\_string()}{load\_from\_toml\_string()}}
+{\footnotesize\ttfamily \label{classmodules_1_1system_1_1_computer_system_ac278b7ac3e8e1747225b1b349da558b0} 
+modules.\+system.\+Computer\+System.\+load\+\_\+from\+\_\+toml\+\_\+string (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{toml\+\_\+string}{, }\item[{}]{name}{ = {\ttfamily "{}Custom"{}}}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Загрузить конфигурацию из TOML-строки\end{DoxyVerb}
+ Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1system_1_1_computer_system_ac278b7ac3e8e1747225b1b349da558b0_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1system_1_1_computer_system_ac278b7ac3e8e1747225b1b349da558b0_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1system_1_1_computer_system_a69ac67f695c5f6cae744c0be8e296f1c}\index{modules.system.ComputerSystem@{modules.system.ComputerSystem}!load\_profile@{load\_profile}}
+\index{load\_profile@{load\_profile}!modules.system.ComputerSystem@{modules.system.ComputerSystem}}
+\doxysubsubsection{\texorpdfstring{load\_profile()}{load\_profile()}}
+{\footnotesize\ttfamily \label{classmodules_1_1system_1_1_computer_system_a69ac67f695c5f6cae744c0be8e296f1c} 
+modules.\+system.\+Computer\+System.\+load\+\_\+profile (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{profile\+\_\+name}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Загрузка профиля системы (итерация 10.4)\end{DoxyVerb}
+ Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1system_1_1_computer_system_a69ac67f695c5f6cae744c0be8e296f1c_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1system_1_1_computer_system_a610a07df40f8b893de754eb5141b92bc}\index{modules.system.ComputerSystem@{modules.system.ComputerSystem}!print\_state@{print\_state}}
+\index{print\_state@{print\_state}!modules.system.ComputerSystem@{modules.system.ComputerSystem}}
+\doxysubsubsection{\texorpdfstring{print\_state()}{print\_state()}}
+{\footnotesize\ttfamily \label{classmodules_1_1system_1_1_computer_system_a610a07df40f8b893de754eb5141b92bc} 
+modules.\+system.\+Computer\+System.\+print\+\_\+state (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Вывод состояния в консоль\end{DoxyVerb}
+ \Hypertarget{classmodules_1_1system_1_1_computer_system_ad6e0680f861517f9e4d6924a93e74356}\index{modules.system.ComputerSystem@{modules.system.ComputerSystem}!reset\_all@{reset\_all}}
+\index{reset\_all@{reset\_all}!modules.system.ComputerSystem@{modules.system.ComputerSystem}}
+\doxysubsubsection{\texorpdfstring{reset\_all()}{reset\_all()}}
+{\footnotesize\ttfamily \label{classmodules_1_1system_1_1_computer_system_ad6e0680f861517f9e4d6924a93e74356} 
+modules.\+system.\+Computer\+System.\+reset\+\_\+all (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Полный сброс системы\end{DoxyVerb}
+ Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1system_1_1_computer_system_ad6e0680f861517f9e4d6924a93e74356_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1system_1_1_computer_system_a918c2b4d812ba346c3084ada6b2bacbf}\index{modules.system.ComputerSystem@{modules.system.ComputerSystem}!reset\_cpu@{reset\_cpu}}
+\index{reset\_cpu@{reset\_cpu}!modules.system.ComputerSystem@{modules.system.ComputerSystem}}
+\doxysubsubsection{\texorpdfstring{reset\_cpu()}{reset\_cpu()}}
+{\footnotesize\ttfamily \label{classmodules_1_1system_1_1_computer_system_a918c2b4d812ba346c3084ada6b2bacbf} 
+modules.\+system.\+Computer\+System.\+reset\+\_\+cpu (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Сброс CPU\end{DoxyVerb}
+ \Hypertarget{classmodules_1_1system_1_1_computer_system_ad8db9babc56f78550eb3bb948eea4d58}\index{modules.system.ComputerSystem@{modules.system.ComputerSystem}!save\_all\_nvram@{save\_all\_nvram}}
+\index{save\_all\_nvram@{save\_all\_nvram}!modules.system.ComputerSystem@{modules.system.ComputerSystem}}
+\doxysubsubsection{\texorpdfstring{save\_all\_nvram()}{save\_all\_nvram()}}
+{\footnotesize\ttfamily \label{classmodules_1_1system_1_1_computer_system_ad8db9babc56f78550eb3bb948eea4d58} 
+modules.\+system.\+Computer\+System.\+save\+\_\+all\+\_\+nvram (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Сохранить все NVM (для RTC, батарейных устройств)\end{DoxyVerb}
+ \Hypertarget{classmodules_1_1system_1_1_computer_system_a3a553fd85a44922b3e1f78a60be06482}\index{modules.system.ComputerSystem@{modules.system.ComputerSystem}!set\_callback@{set\_callback}}
+\index{set\_callback@{set\_callback}!modules.system.ComputerSystem@{modules.system.ComputerSystem}}
+\doxysubsubsection{\texorpdfstring{set\_callback()}{set\_callback()}}
+{\footnotesize\ttfamily \label{classmodules_1_1system_1_1_computer_system_a3a553fd85a44922b3e1f78a60be06482} 
+modules.\+system.\+Computer\+System.\+set\+\_\+callback (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{device\+\_\+name}{, }\item[{}]{callback\+\_\+name}{, }\item[{}]{callback}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Установить callback для устройства (on_irq, on_drq, on_wait и т.д.)\end{DoxyVerb}
+ \Hypertarget{classmodules_1_1system_1_1_computer_system_a350031139d53b3eb6fcac566d1db7a1b}\index{modules.system.ComputerSystem@{modules.system.ComputerSystem}!tick@{tick}}
+\index{tick@{tick}!modules.system.ComputerSystem@{modules.system.ComputerSystem}}
+\doxysubsubsection{\texorpdfstring{tick()}{tick()}}
+{\footnotesize\ttfamily \label{classmodules_1_1system_1_1_computer_system_a350031139d53b3eb6fcac566d1db7a1b} 
+modules.\+system.\+Computer\+System.\+tick (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{cycles}{ = {\ttfamily 1}}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Вызывается каждый такт CPU для tick-based устройств\end{DoxyVerb}
+ \Hypertarget{classmodules_1_1system_1_1_computer_system_acbb14766bc9fb75ff3ad157cc0ae0887}\index{modules.system.ComputerSystem@{modules.system.ComputerSystem}!validate\_profile\_files@{validate\_profile\_files}}
+\index{validate\_profile\_files@{validate\_profile\_files}!modules.system.ComputerSystem@{modules.system.ComputerSystem}}
+\doxysubsubsection{\texorpdfstring{validate\_profile\_files()}{validate\_profile\_files()}}
+{\footnotesize\ttfamily \label{classmodules_1_1system_1_1_computer_system_acbb14766bc9fb75ff3ad157cc0ae0887} 
+modules.\+system.\+Computer\+System.\+validate\+\_\+profile\+\_\+files (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Проверяет наличие файлов образов, указанных в конфигурации.
+Возвращает список ошибок (пустой список если всё в порядке).\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classmodules_1_1system_1_1_computer_system_ac8b55bc82a094e89052fa756d57c72d5}\index{modules.system.ComputerSystem@{modules.system.ComputerSystem}!\_device\_callbacks@{\_device\_callbacks}}
+\index{\_device\_callbacks@{\_device\_callbacks}!modules.system.ComputerSystem@{modules.system.ComputerSystem}}
+\doxysubsubsection{\texorpdfstring{\_device\_callbacks}{\_device\_callbacks}}
+{\footnotesize\ttfamily \label{classmodules_1_1system_1_1_computer_system_ac8b55bc82a094e89052fa756d57c72d5} 
+dict modules.\+system.\+Computer\+System.\+\_\+device\+\_\+callbacks = \{\}\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classmodules_1_1system_1_1_computer_system_a8e7f93b5bd8fe0aa39f22967a1f14b78}\index{modules.system.ComputerSystem@{modules.system.ComputerSystem}!bus@{bus}}
+\index{bus@{bus}!modules.system.ComputerSystem@{modules.system.ComputerSystem}}
+\doxysubsubsection{\texorpdfstring{bus}{bus}}
+{\footnotesize\ttfamily \label{classmodules_1_1system_1_1_computer_system_a8e7f93b5bd8fe0aa39f22967a1f14b78} 
+modules.\+system.\+Computer\+System.\+bus = \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus}{Memory\+Bus}}()}
+
+\Hypertarget{classmodules_1_1system_1_1_computer_system_a1e9dcd2984283b616e201a6fd0aa5c8e}\index{modules.system.ComputerSystem@{modules.system.ComputerSystem}!config@{config}}
+\index{config@{config}!modules.system.ComputerSystem@{modules.system.ComputerSystem}}
+\doxysubsubsection{\texorpdfstring{config}{config}}
+{\footnotesize\ttfamily \label{classmodules_1_1system_1_1_computer_system_a1e9dcd2984283b616e201a6fd0aa5c8e} 
+modules.\+system.\+Computer\+System.\+config = None}
+
+\Hypertarget{classmodules_1_1system_1_1_computer_system_abc32530676b043247b5de1869261e7b8}\index{modules.system.ComputerSystem@{modules.system.ComputerSystem}!cpu@{cpu}}
+\index{cpu@{cpu}!modules.system.ComputerSystem@{modules.system.ComputerSystem}}
+\doxysubsubsection{\texorpdfstring{cpu}{cpu}}
+{\footnotesize\ttfamily \label{classmodules_1_1system_1_1_computer_system_abc32530676b043247b5de1869261e7b8} 
+modules.\+system.\+Computer\+System.\+cpu = None}
+
+\Hypertarget{classmodules_1_1system_1_1_computer_system_a5fd68908251471c155e5f726d66d1f01}\index{modules.system.ComputerSystem@{modules.system.ComputerSystem}!devices@{devices}}
+\index{devices@{devices}!modules.system.ComputerSystem@{modules.system.ComputerSystem}}
+\doxysubsubsection{\texorpdfstring{devices}{devices}}
+{\footnotesize\ttfamily \label{classmodules_1_1system_1_1_computer_system_a5fd68908251471c155e5f726d66d1f01} 
+modules.\+system.\+Computer\+System.\+devices = \{\}}
+
+\Hypertarget{classmodules_1_1system_1_1_computer_system_a4174d07eb222b742e7d8cd5f83eb25a8}\index{modules.system.ComputerSystem@{modules.system.ComputerSystem}!memory\_regions@{memory\_regions}}
+\index{memory\_regions@{memory\_regions}!modules.system.ComputerSystem@{modules.system.ComputerSystem}}
+\doxysubsubsection{\texorpdfstring{memory\_regions}{memory\_regions}}
+{\footnotesize\ttfamily \label{classmodules_1_1system_1_1_computer_system_a4174d07eb222b742e7d8cd5f83eb25a8} 
+modules.\+system.\+Computer\+System.\+memory\+\_\+regions = \mbox{[}$\,$\mbox{]}}
+
+\Hypertarget{classmodules_1_1system_1_1_computer_system_a5cbfce8de2c225e942de2fd64adf319a}\index{modules.system.ComputerSystem@{modules.system.ComputerSystem}!profile\_name@{profile\_name}}
+\index{profile\_name@{profile\_name}!modules.system.ComputerSystem@{modules.system.ComputerSystem}}
+\doxysubsubsection{\texorpdfstring{profile\_name}{profile\_name}}
+{\footnotesize\ttfamily \label{classmodules_1_1system_1_1_computer_system_a5cbfce8de2c225e942de2fd64adf319a} 
+modules.\+system.\+Computer\+System.\+profile\+\_\+name = None}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+modules/\mbox{\hyperlink{system_8py}{system.\+py}}\end{DoxyCompactItemize}

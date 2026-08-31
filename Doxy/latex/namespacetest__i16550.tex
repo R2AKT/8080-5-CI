@@ -1,0 +1,130 @@
+\doxysection{test\+\_\+i16550 Namespace Reference}
+\hypertarget{namespacetest__i16550}{}\label{namespacetest__i16550}\index{test\_i16550@{test\_i16550}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespacetest__i16550_a4ef5244d4b47f60f78b72bd19acd0061}{check}} (name, actual, expected)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{namespacetest__i16550_afe54659af6ecb2f5a9005de4d89861de}{passed}} = 0
+\item 
+int \mbox{\hyperlink{namespacetest__i16550_a8c845e76cd3e7a279af54af48ea7502e}{failed}} = 0
+\item 
+\mbox{\hyperlink{namespacetest__i16550_aa2159e3d4bc1bb3eaff40505318d4406}{bus}} = \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus}{Memory\+Bus}}()
+\item 
+\mbox{\hyperlink{namespacetest__i16550_a4723dd989f1ada68a06ffaa149964529}{uart}} = \mbox{\hyperlink{classmodules_1_1io_1_1i16550_1_1_i16550}{I16550}}(base\+\_\+port=0x00)
+\item 
+list \mbox{\hyperlink{namespacetest__i16550_a7f0fd10255d51445862b8aa7ff66d551}{transmitted}} = \mbox{[}$\,$\mbox{]}
+\item 
+\mbox{\hyperlink{namespacetest__i16550_a4d41bd721a802b103f41a07e4949fe4f}{on\+\_\+transmit}}
+\item 
+list \mbox{\hyperlink{namespacetest__i16550_a13481afdec00744abcb52ae5839b132f}{interrupts}} = \mbox{[}$\,$\mbox{]}
+\item 
+\mbox{\hyperlink{namespacetest__i16550_a5abbdfc7ef820e47081cc02b1d3db45d}{on\+\_\+interrupt}}
+\item 
+\mbox{\hyperlink{namespacetest__i16550_acaf27d4cb2be55af530740220b948ffa}{data}} = bus.\+io\+\_\+read(0x00)
+\item 
+\mbox{\hyperlink{namespacetest__i16550_adef3a28ca56710d4c3fedc8a5aead37d}{uart2}} = \mbox{\hyperlink{classmodules_1_1io_1_1i16550_1_1_i16550}{I16550}}(base\+\_\+port=0x10)
+\item 
+\mbox{\hyperlink{namespacetest__i16550_a788fc5ffb984315bd3b4220790990ac9}{bus2}} = \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus}{Memory\+Bus}}()
+\item 
+list \mbox{\hyperlink{namespacetest__i16550_a4d841f02b8816cde2be3e3e1224466f5}{interrupts2}} = \mbox{[}$\,$\mbox{]}
+\item 
+\mbox{\hyperlink{namespacetest__i16550_ad585feb570b271d9ad2daad147a93f2b}{iir}} = bus2.\+io\+\_\+read(0x12)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Тест I16550 UART (итерация E5)\end{DoxyVerb}
+ 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespacetest__i16550_a4ef5244d4b47f60f78b72bd19acd0061}\index{test\_i16550@{test\_i16550}!check@{check}}
+\index{check@{check}!test\_i16550@{test\_i16550}}
+\doxysubsubsection{\texorpdfstring{check()}{check()}}
+{\footnotesize\ttfamily \label{namespacetest__i16550_a4ef5244d4b47f60f78b72bd19acd0061} 
+test\+\_\+i16550.\+check (\begin{DoxyParamCaption}\item[{}]{name}{, }\item[{}]{actual}{, }\item[{}]{expected}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{namespacetest__i16550_aa2159e3d4bc1bb3eaff40505318d4406}\index{test\_i16550@{test\_i16550}!bus@{bus}}
+\index{bus@{bus}!test\_i16550@{test\_i16550}}
+\doxysubsubsection{\texorpdfstring{bus}{bus}}
+{\footnotesize\ttfamily \label{namespacetest__i16550_aa2159e3d4bc1bb3eaff40505318d4406} 
+test\+\_\+i16550.\+bus = \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus}{Memory\+Bus}}()}
+
+\Hypertarget{namespacetest__i16550_a788fc5ffb984315bd3b4220790990ac9}\index{test\_i16550@{test\_i16550}!bus2@{bus2}}
+\index{bus2@{bus2}!test\_i16550@{test\_i16550}}
+\doxysubsubsection{\texorpdfstring{bus2}{bus2}}
+{\footnotesize\ttfamily \label{namespacetest__i16550_a788fc5ffb984315bd3b4220790990ac9} 
+test\+\_\+i16550.\+bus2 = \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus}{Memory\+Bus}}()}
+
+\Hypertarget{namespacetest__i16550_acaf27d4cb2be55af530740220b948ffa}\index{test\_i16550@{test\_i16550}!data@{data}}
+\index{data@{data}!test\_i16550@{test\_i16550}}
+\doxysubsubsection{\texorpdfstring{data}{data}}
+{\footnotesize\ttfamily \label{namespacetest__i16550_acaf27d4cb2be55af530740220b948ffa} 
+test\+\_\+i16550.\+data = bus.\+io\+\_\+read(0x00)}
+
+\Hypertarget{namespacetest__i16550_a8c845e76cd3e7a279af54af48ea7502e}\index{test\_i16550@{test\_i16550}!failed@{failed}}
+\index{failed@{failed}!test\_i16550@{test\_i16550}}
+\doxysubsubsection{\texorpdfstring{failed}{failed}}
+{\footnotesize\ttfamily \label{namespacetest__i16550_a8c845e76cd3e7a279af54af48ea7502e} 
+int test\+\_\+i16550.\+failed = 0}
+
+\Hypertarget{namespacetest__i16550_ad585feb570b271d9ad2daad147a93f2b}\index{test\_i16550@{test\_i16550}!iir@{iir}}
+\index{iir@{iir}!test\_i16550@{test\_i16550}}
+\doxysubsubsection{\texorpdfstring{iir}{iir}}
+{\footnotesize\ttfamily \label{namespacetest__i16550_ad585feb570b271d9ad2daad147a93f2b} 
+test\+\_\+i16550.\+iir = bus2.\+io\+\_\+read(0x12)}
+
+\Hypertarget{namespacetest__i16550_a13481afdec00744abcb52ae5839b132f}\index{test\_i16550@{test\_i16550}!interrupts@{interrupts}}
+\index{interrupts@{interrupts}!test\_i16550@{test\_i16550}}
+\doxysubsubsection{\texorpdfstring{interrupts}{interrupts}}
+{\footnotesize\ttfamily \label{namespacetest__i16550_a13481afdec00744abcb52ae5839b132f} 
+list test\+\_\+i16550.\+interrupts = \mbox{[}$\,$\mbox{]}}
+
+\Hypertarget{namespacetest__i16550_a4d841f02b8816cde2be3e3e1224466f5}\index{test\_i16550@{test\_i16550}!interrupts2@{interrupts2}}
+\index{interrupts2@{interrupts2}!test\_i16550@{test\_i16550}}
+\doxysubsubsection{\texorpdfstring{interrupts2}{interrupts2}}
+{\footnotesize\ttfamily \label{namespacetest__i16550_a4d841f02b8816cde2be3e3e1224466f5} 
+list test\+\_\+i16550.\+interrupts2 = \mbox{[}$\,$\mbox{]}}
+
+\Hypertarget{namespacetest__i16550_a5abbdfc7ef820e47081cc02b1d3db45d}\index{test\_i16550@{test\_i16550}!on\_interrupt@{on\_interrupt}}
+\index{on\_interrupt@{on\_interrupt}!test\_i16550@{test\_i16550}}
+\doxysubsubsection{\texorpdfstring{on\_interrupt}{on\_interrupt}}
+{\footnotesize\ttfamily \label{namespacetest__i16550_a5abbdfc7ef820e47081cc02b1d3db45d} 
+test\+\_\+i16550.\+on\+\_\+interrupt}
+
+\Hypertarget{namespacetest__i16550_a4d41bd721a802b103f41a07e4949fe4f}\index{test\_i16550@{test\_i16550}!on\_transmit@{on\_transmit}}
+\index{on\_transmit@{on\_transmit}!test\_i16550@{test\_i16550}}
+\doxysubsubsection{\texorpdfstring{on\_transmit}{on\_transmit}}
+{\footnotesize\ttfamily \label{namespacetest__i16550_a4d41bd721a802b103f41a07e4949fe4f} 
+test\+\_\+i16550.\+on\+\_\+transmit}
+
+\Hypertarget{namespacetest__i16550_afe54659af6ecb2f5a9005de4d89861de}\index{test\_i16550@{test\_i16550}!passed@{passed}}
+\index{passed@{passed}!test\_i16550@{test\_i16550}}
+\doxysubsubsection{\texorpdfstring{passed}{passed}}
+{\footnotesize\ttfamily \label{namespacetest__i16550_afe54659af6ecb2f5a9005de4d89861de} 
+int test\+\_\+i16550.\+passed = 0}
+
+\Hypertarget{namespacetest__i16550_a7f0fd10255d51445862b8aa7ff66d551}\index{test\_i16550@{test\_i16550}!transmitted@{transmitted}}
+\index{transmitted@{transmitted}!test\_i16550@{test\_i16550}}
+\doxysubsubsection{\texorpdfstring{transmitted}{transmitted}}
+{\footnotesize\ttfamily \label{namespacetest__i16550_a7f0fd10255d51445862b8aa7ff66d551} 
+list test\+\_\+i16550.\+transmitted = \mbox{[}$\,$\mbox{]}}
+
+\Hypertarget{namespacetest__i16550_a4723dd989f1ada68a06ffaa149964529}\index{test\_i16550@{test\_i16550}!uart@{uart}}
+\index{uart@{uart}!test\_i16550@{test\_i16550}}
+\doxysubsubsection{\texorpdfstring{uart}{uart}}
+{\footnotesize\ttfamily \label{namespacetest__i16550_a4723dd989f1ada68a06ffaa149964529} 
+test\+\_\+i16550.\+uart = \mbox{\hyperlink{classmodules_1_1io_1_1i16550_1_1_i16550}{I16550}}(base\+\_\+port=0x00)}
+
+\Hypertarget{namespacetest__i16550_adef3a28ca56710d4c3fedc8a5aead37d}\index{test\_i16550@{test\_i16550}!uart2@{uart2}}
+\index{uart2@{uart2}!test\_i16550@{test\_i16550}}
+\doxysubsubsection{\texorpdfstring{uart2}{uart2}}
+{\footnotesize\ttfamily \label{namespacetest__i16550_adef3a28ca56710d4c3fedc8a5aead37d} 
+test\+\_\+i16550.\+uart2 = \mbox{\hyperlink{classmodules_1_1io_1_1i16550_1_1_i16550}{I16550}}(base\+\_\+port=0x10)}
+

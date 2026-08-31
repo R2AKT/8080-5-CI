@@ -1,0 +1,721 @@
+\doxysection{modules.\+io.\+cf\+\_\+ide.\+CFIDE Class Reference}
+\hypertarget{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e}{}\label{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e}\index{modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}}
+
+
+Inheritance diagram for modules.\+io.\+cf\+\_\+ide.\+CFIDE\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=227pt]{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for modules.\+io.\+cf\+\_\+ide.\+CFIDE\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=227pt]{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_aaf1030a6deab4e4a4a9f27283e290852}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, \mbox{\hyperlink{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e}{base\+\_\+port}}, \mbox{\hyperlink{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e}{name}}="{}CFIDE"{})
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_ab0ad73522a5ba597b4405576992f8a88}{reset}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_aba2c853391b9033989d0a99b298b054f}{set\+\_\+disk\+\_\+image}} (self, path, size\+\_\+mb=32)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a65c66fd7815cb927204d7b53fc6e64be}{io\+\_\+read}} (self, port)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_ab616e78e2af6ce97a54c683edcd3cc7a}{io\+\_\+write}} (self, port, value)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_ac3bec88130ad30ba063adfbefd7340cf}{set\+\_\+emulate\+\_\+delay}} (self, enabled)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_aaf3f8f67a9107c687c0866566c1bc9cd}{tick}} (self, cycles=1)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a00ee0c5b45fb14031bcc73c53b7eacf5}{is\+\_\+busy}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_afa4242d3e02bf9ee09886e58e965704c}{get\+\_\+state}} (self)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device}{modules.\+io.\+iodevice.\+IODevice}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_af44b72c0a1d9f3622b18ce802d33290b}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, \mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_a349db233ca1e3fd7c64e10db67c21aa3}{base\+\_\+port}}, \mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_a2023de274431002e37faef63d740d9e9}{port\+\_\+count}}, \mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_a4ef4b1e055e68877b069410b67b6c90d}{name}}="{}IODevice"{})
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_a8b83e9174621e573851b94cc407ab267}{register\+\_\+to\+\_\+bus}} (self, bus)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_a1636fa580fb8cafd15d2b4b24cdf6e9d}{unregister\+\_\+from\+\_\+bus}} (self, bus)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_ac5391177922698faac06a449839f1feb}{disk\+\_\+file}} = None
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_ac31bc290d0b9e436849ca132a22d0801}{disk\+\_\+size}} = 0
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a886236d1c43b1cff6c68e476afef2a59}{total\+\_\+sectors}} = 0
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a223e5135ce8d6fbbe382feee492db574}{on\+\_\+irq}} = None
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a38bd21c22bff5492801d963716e23efe}{error\+\_\+reg}} = 0x00
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a6372beabbcadef0cd9b5e5f113a2de1e}{features\+\_\+reg}} = 0x00
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a696311696946ddbc1b8682faefd79191}{sector\+\_\+count}} = 0x01
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_acecdc8dc8f626d89c847ba11c6ef7cdc}{lba\+\_\+low}} = 0x00
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a1c4421c0d7f946b89859cb68db84bd50}{lba\+\_\+mid}} = 0x00
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a0b79e0a9e2672cb515404dd02da63bad}{lba\+\_\+high}} = 0x00
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a597a1da6834df93c9222607cf263c472}{device\+\_\+head}} = 0x00
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_aa0c580701999f9d5263a8619e30e29fe}{status}} = self.\+STATUS\+\_\+\+DRDY
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a3c4ec95565742c88070a8b8a770e0a9e}{command}} = 0x00
+\item 
+list \mbox{\hyperlink{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_aab6321703bb7fbca1309478afb20d7bf}{data\+\_\+buffer}} = \mbox{[}$\,$\mbox{]}
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_ad313cb022754fce2e2bec46eedc463f8}{data\+\_\+index}} = 0
+\item 
+str \mbox{\hyperlink{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a879795bba92c2bea9bdf0828f9248031}{data\+\_\+direction}} = None
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_af12507c5b3ae4556634ae81da6162a9c}{data\+\_\+count}} = 0
+\item 
+bool \mbox{\hyperlink{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a4ed45b77a8191dc7eccafbd9126ebba2}{eight\+\_\+bit\+\_\+mode}} = False
+\item 
+bool \mbox{\hyperlink{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_aba9a91d6a59aa446018310ae5225cf24}{busy}} = False
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_ad66f30e63a192c2eb6edf7b5772a79ae}{busy\+\_\+cycles}} = 0
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_ae70162360e2f5b435e6b5dd8dcf64ed5}{on\+\_\+wait}} = None
+\item 
+bool \mbox{\hyperlink{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a7d74933d917aa392c9e8f7dbfc9cbb91}{emulate\+\_\+delay}} = False
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device}{modules.\+io.\+iodevice.\+IODevice}}}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_a349db233ca1e3fd7c64e10db67c21aa3}{base\+\_\+port}} = base\+\_\+port \& 0x\+FF
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_a2023de274431002e37faef63d740d9e9}{port\+\_\+count}} = port\+\_\+count
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_a4ef4b1e055e68877b069410b67b6c90d}{name}} = name
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_acf52e14f42bbb4025b0c3af3a30bb367}{CMD\+\_\+\+IDENTIFY\+\_\+\+DEVICE}} = 0x\+EC
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a02be6162225494ca89925af5662fcf5e}{CMD\+\_\+\+READ\+\_\+\+SECTORS}} = 0x20
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a763cd945cc3d6825d7af98ac263d1819}{CMD\+\_\+\+READ\+\_\+\+SECTORS\+\_\+\+NI}} = 0x21
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a9e1a17b5623d292c0a2dbdf92a8f7ad2}{CMD\+\_\+\+WRITE\+\_\+\+SECTORS}} = 0x30
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_af480690a1dde2aac9a22f72f849ef21c}{CMD\+\_\+\+WRITE\+\_\+\+SECTORS\+\_\+\+NI}} = 0x31
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a547990c69e5fbfecaf032e49584bfc79}{STATUS\+\_\+\+BSY}} = 0x80
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_af61728ec72038aea26ba24807167f2eb}{STATUS\+\_\+\+DRDY}} = 0x40
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_ac11178a8c3239fb3bbfa7150b5d9acdb}{STATUS\+\_\+\+DRQ}} = 0x08
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a0155e3db11f297307c5923c932355eb3}{STATUS\+\_\+\+ERR}} = 0x01
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_abb51b0823e0d939f05e0d7f3ba2d0a9e}{ERROR\+\_\+\+ABRT}} = 0x04
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a222aa1eccf6e87627c05ba2234e8da6f}{ERROR\+\_\+\+IDNF}} = 0x10
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_ae95b9a9f84798977db295e64fd560e39}{SECTOR\+\_\+\+SIZE}} = 512
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a73d9422801895047a9b66f5ba3e0bdf5}{\+\_\+read\+\_\+sector}} (self, lba)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_ae64090332391cf99e56372507502b57b}{\+\_\+write\+\_\+sector}} (self, lba, data)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a6174830f9c9b796adc52ac9e75100fe4}{\+\_\+get\+\_\+lba}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a590623a2ff03f3941736d29bf42a3c70}{\+\_\+execute\+\_\+command}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a8f076291a625c42c56aa54caeafcb636}{\+\_\+cmd\+\_\+identify}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a2a64f24ec4aee3212cb1b65dd933d9de}{\+\_\+cmd\+\_\+read\+\_\+sectors}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_ac5fd3c8d5283ccd3e49b57142c8fd7f1}{\+\_\+cmd\+\_\+write\+\_\+sectors}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a5f3e80f9ed3d2882450e66e8da92a71b}{\+\_\+complete\+\_\+write}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_af7183d65e7d3882baa034c89b1aaf3d1}{\+\_\+after\+\_\+sector\+\_\+read}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a7c8e75d15f0716f728167f4fa753e747}{\+\_\+start\+\_\+operation}} (self, cycles, final\+\_\+status=None, generate\+\_\+irq=True)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_ac6cbddea8d57129aa8aa1eed4f608608}{\+\_\+pending\+\_\+status}} = self.\+STATUS\+\_\+\+DRDY
+\item 
+bool \mbox{\hyperlink{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a23e77146f91e1615b93868b02ef9690f}{\+\_\+pending\+\_\+irq}} = False
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}CF IDE — CompactFlash в режиме ATA/IDE\end{DoxyVerb}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_aaf1030a6deab4e4a4a9f27283e290852}\index{modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_aaf1030a6deab4e4a4a9f27283e290852} 
+modules.\+io.\+cf\+\_\+ide.\+CFIDE.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{base\+\_\+port}{, }\item[{}]{name}{ = {\ttfamily "{}CFIDE"{}}}\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=209pt]{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_aaf1030a6deab4e4a4a9f27283e290852_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=209pt]{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_aaf1030a6deab4e4a4a9f27283e290852_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_af7183d65e7d3882baa034c89b1aaf3d1}\index{modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}!\_after\_sector\_read@{\_after\_sector\_read}}
+\index{\_after\_sector\_read@{\_after\_sector\_read}!modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}}
+\doxysubsubsection{\texorpdfstring{\_after\_sector\_read()}{\_after\_sector\_read()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_af7183d65e7d3882baa034c89b1aaf3d1} 
+modules.\+io.\+cf\+\_\+ide.\+CFIDE.\+\_\+after\+\_\+sector\+\_\+read (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}После чтения всех байт сектора — загрузить следующий или завершить\end{DoxyVerb}
+ Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_af7183d65e7d3882baa034c89b1aaf3d1_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_af7183d65e7d3882baa034c89b1aaf3d1_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a8f076291a625c42c56aa54caeafcb636}\index{modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}!\_cmd\_identify@{\_cmd\_identify}}
+\index{\_cmd\_identify@{\_cmd\_identify}!modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}}
+\doxysubsubsection{\texorpdfstring{\_cmd\_identify()}{\_cmd\_identify()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a8f076291a625c42c56aa54caeafcb636} 
+modules.\+io.\+cf\+\_\+ide.\+CFIDE.\+\_\+cmd\+\_\+identify (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}IDENTIFY DEVICE (0xEC)\end{DoxyVerb}
+ Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a8f076291a625c42c56aa54caeafcb636_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a2a64f24ec4aee3212cb1b65dd933d9de}\index{modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}!\_cmd\_read\_sectors@{\_cmd\_read\_sectors}}
+\index{\_cmd\_read\_sectors@{\_cmd\_read\_sectors}!modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}}
+\doxysubsubsection{\texorpdfstring{\_cmd\_read\_sectors()}{\_cmd\_read\_sectors()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a2a64f24ec4aee3212cb1b65dd933d9de} 
+modules.\+io.\+cf\+\_\+ide.\+CFIDE.\+\_\+cmd\+\_\+read\+\_\+sectors (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}READ SECTORS (0x20/0x21)\end{DoxyVerb}
+ Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a2a64f24ec4aee3212cb1b65dd933d9de_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a2a64f24ec4aee3212cb1b65dd933d9de_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_ac5fd3c8d5283ccd3e49b57142c8fd7f1}\index{modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}!\_cmd\_write\_sectors@{\_cmd\_write\_sectors}}
+\index{\_cmd\_write\_sectors@{\_cmd\_write\_sectors}!modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}}
+\doxysubsubsection{\texorpdfstring{\_cmd\_write\_sectors()}{\_cmd\_write\_sectors()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_ac5fd3c8d5283ccd3e49b57142c8fd7f1} 
+modules.\+io.\+cf\+\_\+ide.\+CFIDE.\+\_\+cmd\+\_\+write\+\_\+sectors (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}WRITE SECTORS (0x30/0x31)\end{DoxyVerb}
+ Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_ac5fd3c8d5283ccd3e49b57142c8fd7f1_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_ac5fd3c8d5283ccd3e49b57142c8fd7f1_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a5f3e80f9ed3d2882450e66e8da92a71b}\index{modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}!\_complete\_write@{\_complete\_write}}
+\index{\_complete\_write@{\_complete\_write}!modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}}
+\doxysubsubsection{\texorpdfstring{\_complete\_write()}{\_complete\_write()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a5f3e80f9ed3d2882450e66e8da92a71b} 
+modules.\+io.\+cf\+\_\+ide.\+CFIDE.\+\_\+complete\+\_\+write (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Завершение записи сектора\end{DoxyVerb}
+ Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a5f3e80f9ed3d2882450e66e8da92a71b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a5f3e80f9ed3d2882450e66e8da92a71b_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a590623a2ff03f3941736d29bf42a3c70}\index{modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}!\_execute\_command@{\_execute\_command}}
+\index{\_execute\_command@{\_execute\_command}!modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}}
+\doxysubsubsection{\texorpdfstring{\_execute\_command()}{\_execute\_command()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a590623a2ff03f3941736d29bf42a3c70} 
+modules.\+io.\+cf\+\_\+ide.\+CFIDE.\+\_\+execute\+\_\+command (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Выполнение команды\end{DoxyVerb}
+ Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a590623a2ff03f3941736d29bf42a3c70_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a590623a2ff03f3941736d29bf42a3c70_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a6174830f9c9b796adc52ac9e75100fe4}\index{modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}!\_get\_lba@{\_get\_lba}}
+\index{\_get\_lba@{\_get\_lba}!modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}}
+\doxysubsubsection{\texorpdfstring{\_get\_lba()}{\_get\_lba()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a6174830f9c9b796adc52ac9e75100fe4} 
+modules.\+io.\+cf\+\_\+ide.\+CFIDE.\+\_\+get\+\_\+lba (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Получить LBA адрес из регистров\end{DoxyVerb}
+ Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a6174830f9c9b796adc52ac9e75100fe4_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a73d9422801895047a9b66f5ba3e0bdf5}\index{modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}!\_read\_sector@{\_read\_sector}}
+\index{\_read\_sector@{\_read\_sector}!modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}}
+\doxysubsubsection{\texorpdfstring{\_read\_sector()}{\_read\_sector()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a73d9422801895047a9b66f5ba3e0bdf5} 
+modules.\+io.\+cf\+\_\+ide.\+CFIDE.\+\_\+read\+\_\+sector (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{lba}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Чтение сектора с диска\end{DoxyVerb}
+ Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a73d9422801895047a9b66f5ba3e0bdf5_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a7c8e75d15f0716f728167f4fa753e747}\index{modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}!\_start\_operation@{\_start\_operation}}
+\index{\_start\_operation@{\_start\_operation}!modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}}
+\doxysubsubsection{\texorpdfstring{\_start\_operation()}{\_start\_operation()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a7c8e75d15f0716f728167f4fa753e747} 
+modules.\+io.\+cf\+\_\+ide.\+CFIDE.\+\_\+start\+\_\+operation (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{cycles}{, }\item[{}]{final\+\_\+status}{ = {\ttfamily None}, }\item[{}]{generate\+\_\+irq}{ = {\ttfamily True}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Запуск операции с задержкой (эмуляция IORDY).
+Если emulate_delay выключен, операция завершается мгновенно.\end{DoxyVerb}
+ Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a7c8e75d15f0716f728167f4fa753e747_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_ae64090332391cf99e56372507502b57b}\index{modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}!\_write\_sector@{\_write\_sector}}
+\index{\_write\_sector@{\_write\_sector}!modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}}
+\doxysubsubsection{\texorpdfstring{\_write\_sector()}{\_write\_sector()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_ae64090332391cf99e56372507502b57b} 
+modules.\+io.\+cf\+\_\+ide.\+CFIDE.\+\_\+write\+\_\+sector (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{lba}{, }\item[{}]{data}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Запись сектора на диск\end{DoxyVerb}
+ Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_ae64090332391cf99e56372507502b57b_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_afa4242d3e02bf9ee09886e58e965704c}\index{modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}!get\_state@{get\_state}}
+\index{get\_state@{get\_state}!modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}}
+\doxysubsubsection{\texorpdfstring{get\_state()}{get\_state()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_afa4242d3e02bf9ee09886e58e965704c} 
+modules.\+io.\+cf\+\_\+ide.\+CFIDE.\+get\+\_\+state (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Состояние для отладки\end{DoxyVerb}
+ 
+
+Reimplemented from \mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_a17a7a0beff1c642aa1b3763e15bd429f}{modules.\+io.\+iodevice.\+IODevice}}.
+
+\Hypertarget{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a65c66fd7815cb927204d7b53fc6e64be}\index{modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}!io\_read@{io\_read}}
+\index{io\_read@{io\_read}!modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}}
+\doxysubsubsection{\texorpdfstring{io\_read()}{io\_read()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a65c66fd7815cb927204d7b53fc6e64be} 
+modules.\+io.\+cf\+\_\+ide.\+CFIDE.\+io\+\_\+read (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{port}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Чтение из порта\end{DoxyVerb}
+ 
+
+Reimplemented from \mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_a48e12c7ac8519e89080b7981c57ae58d}{modules.\+io.\+iodevice.\+IODevice}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a65c66fd7815cb927204d7b53fc6e64be_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_ab616e78e2af6ce97a54c683edcd3cc7a}\index{modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}!io\_write@{io\_write}}
+\index{io\_write@{io\_write}!modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}}
+\doxysubsubsection{\texorpdfstring{io\_write()}{io\_write()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_ab616e78e2af6ce97a54c683edcd3cc7a} 
+modules.\+io.\+cf\+\_\+ide.\+CFIDE.\+io\+\_\+write (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{port}{, }\item[{}]{value}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Запись в порт\end{DoxyVerb}
+ 
+
+Reimplemented from \mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_a2957a963b46a5b4179fe85570fc377be}{modules.\+io.\+iodevice.\+IODevice}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_ab616e78e2af6ce97a54c683edcd3cc7a_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a00ee0c5b45fb14031bcc73c53b7eacf5}\index{modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}!is\_busy@{is\_busy}}
+\index{is\_busy@{is\_busy}!modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}}
+\doxysubsubsection{\texorpdfstring{is\_busy()}{is\_busy()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a00ee0c5b45fb14031bcc73c53b7eacf5} 
+modules.\+io.\+cf\+\_\+ide.\+CFIDE.\+is\+\_\+busy (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Проверка занятости устройства\end{DoxyVerb}
+ \Hypertarget{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_ab0ad73522a5ba597b4405576992f8a88}\index{modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}!reset@{reset}}
+\index{reset@{reset}!modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_ab0ad73522a5ba597b4405576992f8a88} 
+modules.\+io.\+cf\+\_\+ide.\+CFIDE.\+reset (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Сброс контроллера\end{DoxyVerb}
+ 
+
+Reimplemented from \mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_afe097230fde568f41b4153ecc99c6f4b}{modules.\+io.\+iodevice.\+IODevice}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_ab0ad73522a5ba597b4405576992f8a88_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_aba2c853391b9033989d0a99b298b054f}\index{modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}!set\_disk\_image@{set\_disk\_image}}
+\index{set\_disk\_image@{set\_disk\_image}!modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}}
+\doxysubsubsection{\texorpdfstring{set\_disk\_image()}{set\_disk\_image()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_aba2c853391b9033989d0a99b298b054f} 
+modules.\+io.\+cf\+\_\+ide.\+CFIDE.\+set\+\_\+disk\+\_\+image (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{path}{, }\item[{}]{size\+\_\+mb}{ = {\ttfamily 32}}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Установить образ диска.
+Если файл не существует или меньше нужного размера — создаётся пустой образ.\end{DoxyVerb}
+ \Hypertarget{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_ac3bec88130ad30ba063adfbefd7340cf}\index{modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}!set\_emulate\_delay@{set\_emulate\_delay}}
+\index{set\_emulate\_delay@{set\_emulate\_delay}!modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}}
+\doxysubsubsection{\texorpdfstring{set\_emulate\_delay()}{set\_emulate\_delay()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_ac3bec88130ad30ba063adfbefd7340cf} 
+modules.\+io.\+cf\+\_\+ide.\+CFIDE.\+set\+\_\+emulate\+\_\+delay (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{enabled}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Включить/выключить эмуляцию задержки операций\end{DoxyVerb}
+ \Hypertarget{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_aaf3f8f67a9107c687c0866566c1bc9cd}\index{modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}!tick@{tick}}
+\index{tick@{tick}!modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}}
+\doxysubsubsection{\texorpdfstring{tick()}{tick()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_aaf3f8f67a9107c687c0866566c1bc9cd} 
+modules.\+io.\+cf\+\_\+ide.\+CFIDE.\+tick (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{cycles}{ = {\ttfamily 1}}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Вызывается каждый такт. Обработка занятости.\end{DoxyVerb}
+ 
+
+Reimplemented from \mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_a15761d8fd686da3088af53bd512045d9}{modules.\+io.\+iodevice.\+IODevice}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_aaf3f8f67a9107c687c0866566c1bc9cd_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a23e77146f91e1615b93868b02ef9690f}\index{modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}!\_pending\_irq@{\_pending\_irq}}
+\index{\_pending\_irq@{\_pending\_irq}!modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}}
+\doxysubsubsection{\texorpdfstring{\_pending\_irq}{\_pending\_irq}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a23e77146f91e1615b93868b02ef9690f} 
+bool modules.\+io.\+cf\+\_\+ide.\+CFIDE.\+\_\+pending\+\_\+irq = False\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_ac6cbddea8d57129aa8aa1eed4f608608}\index{modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}!\_pending\_status@{\_pending\_status}}
+\index{\_pending\_status@{\_pending\_status}!modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}}
+\doxysubsubsection{\texorpdfstring{\_pending\_status}{\_pending\_status}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_ac6cbddea8d57129aa8aa1eed4f608608} 
+int modules.\+io.\+cf\+\_\+ide.\+CFIDE.\+\_\+pending\+\_\+status = self.\+STATUS\+\_\+\+DRDY\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_aba9a91d6a59aa446018310ae5225cf24}\index{modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}!busy@{busy}}
+\index{busy@{busy}!modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}}
+\doxysubsubsection{\texorpdfstring{busy}{busy}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_aba9a91d6a59aa446018310ae5225cf24} 
+bool modules.\+io.\+cf\+\_\+ide.\+CFIDE.\+busy = False}
+
+\Hypertarget{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_ad66f30e63a192c2eb6edf7b5772a79ae}\index{modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}!busy\_cycles@{busy\_cycles}}
+\index{busy\_cycles@{busy\_cycles}!modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}}
+\doxysubsubsection{\texorpdfstring{busy\_cycles}{busy\_cycles}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_ad66f30e63a192c2eb6edf7b5772a79ae} 
+int modules.\+io.\+cf\+\_\+ide.\+CFIDE.\+busy\+\_\+cycles = 0}
+
+\Hypertarget{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_acf52e14f42bbb4025b0c3af3a30bb367}\index{modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}!CMD\_IDENTIFY\_DEVICE@{CMD\_IDENTIFY\_DEVICE}}
+\index{CMD\_IDENTIFY\_DEVICE@{CMD\_IDENTIFY\_DEVICE}!modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}}
+\doxysubsubsection{\texorpdfstring{CMD\_IDENTIFY\_DEVICE}{CMD\_IDENTIFY\_DEVICE}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_acf52e14f42bbb4025b0c3af3a30bb367} 
+int modules.\+io.\+cf\+\_\+ide.\+CFIDE.\+CMD\+\_\+\+IDENTIFY\+\_\+\+DEVICE = 0x\+EC\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a02be6162225494ca89925af5662fcf5e}\index{modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}!CMD\_READ\_SECTORS@{CMD\_READ\_SECTORS}}
+\index{CMD\_READ\_SECTORS@{CMD\_READ\_SECTORS}!modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}}
+\doxysubsubsection{\texorpdfstring{CMD\_READ\_SECTORS}{CMD\_READ\_SECTORS}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a02be6162225494ca89925af5662fcf5e} 
+modules.\+io.\+cf\+\_\+ide.\+CFIDE.\+CMD\+\_\+\+READ\+\_\+\+SECTORS = 0x20\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a763cd945cc3d6825d7af98ac263d1819}\index{modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}!CMD\_READ\_SECTORS\_NI@{CMD\_READ\_SECTORS\_NI}}
+\index{CMD\_READ\_SECTORS\_NI@{CMD\_READ\_SECTORS\_NI}!modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}}
+\doxysubsubsection{\texorpdfstring{CMD\_READ\_SECTORS\_NI}{CMD\_READ\_SECTORS\_NI}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a763cd945cc3d6825d7af98ac263d1819} 
+modules.\+io.\+cf\+\_\+ide.\+CFIDE.\+CMD\+\_\+\+READ\+\_\+\+SECTORS\+\_\+\+NI = 0x21\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a9e1a17b5623d292c0a2dbdf92a8f7ad2}\index{modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}!CMD\_WRITE\_SECTORS@{CMD\_WRITE\_SECTORS}}
+\index{CMD\_WRITE\_SECTORS@{CMD\_WRITE\_SECTORS}!modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}}
+\doxysubsubsection{\texorpdfstring{CMD\_WRITE\_SECTORS}{CMD\_WRITE\_SECTORS}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a9e1a17b5623d292c0a2dbdf92a8f7ad2} 
+modules.\+io.\+cf\+\_\+ide.\+CFIDE.\+CMD\+\_\+\+WRITE\+\_\+\+SECTORS = 0x30\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_af480690a1dde2aac9a22f72f849ef21c}\index{modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}!CMD\_WRITE\_SECTORS\_NI@{CMD\_WRITE\_SECTORS\_NI}}
+\index{CMD\_WRITE\_SECTORS\_NI@{CMD\_WRITE\_SECTORS\_NI}!modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}}
+\doxysubsubsection{\texorpdfstring{CMD\_WRITE\_SECTORS\_NI}{CMD\_WRITE\_SECTORS\_NI}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_af480690a1dde2aac9a22f72f849ef21c} 
+modules.\+io.\+cf\+\_\+ide.\+CFIDE.\+CMD\+\_\+\+WRITE\+\_\+\+SECTORS\+\_\+\+NI = 0x31\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a3c4ec95565742c88070a8b8a770e0a9e}\index{modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}!command@{command}}
+\index{command@{command}!modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}}
+\doxysubsubsection{\texorpdfstring{command}{command}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a3c4ec95565742c88070a8b8a770e0a9e} 
+int modules.\+io.\+cf\+\_\+ide.\+CFIDE.\+command = 0x00}
+
+\Hypertarget{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_aab6321703bb7fbca1309478afb20d7bf}\index{modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}!data\_buffer@{data\_buffer}}
+\index{data\_buffer@{data\_buffer}!modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}}
+\doxysubsubsection{\texorpdfstring{data\_buffer}{data\_buffer}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_aab6321703bb7fbca1309478afb20d7bf} 
+modules.\+io.\+cf\+\_\+ide.\+CFIDE.\+data\+\_\+buffer = \mbox{[}$\,$\mbox{]}}
+
+\Hypertarget{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_af12507c5b3ae4556634ae81da6162a9c}\index{modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}!data\_count@{data\_count}}
+\index{data\_count@{data\_count}!modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}}
+\doxysubsubsection{\texorpdfstring{data\_count}{data\_count}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_af12507c5b3ae4556634ae81da6162a9c} 
+int modules.\+io.\+cf\+\_\+ide.\+CFIDE.\+data\+\_\+count = 0}
+
+\Hypertarget{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a879795bba92c2bea9bdf0828f9248031}\index{modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}!data\_direction@{data\_direction}}
+\index{data\_direction@{data\_direction}!modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}}
+\doxysubsubsection{\texorpdfstring{data\_direction}{data\_direction}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a879795bba92c2bea9bdf0828f9248031} 
+modules.\+io.\+cf\+\_\+ide.\+CFIDE.\+data\+\_\+direction = None}
+
+\Hypertarget{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_ad313cb022754fce2e2bec46eedc463f8}\index{modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}!data\_index@{data\_index}}
+\index{data\_index@{data\_index}!modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}}
+\doxysubsubsection{\texorpdfstring{data\_index}{data\_index}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_ad313cb022754fce2e2bec46eedc463f8} 
+modules.\+io.\+cf\+\_\+ide.\+CFIDE.\+data\+\_\+index = 0}
+
+\Hypertarget{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a597a1da6834df93c9222607cf263c472}\index{modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}!device\_head@{device\_head}}
+\index{device\_head@{device\_head}!modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}}
+\doxysubsubsection{\texorpdfstring{device\_head}{device\_head}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a597a1da6834df93c9222607cf263c472} 
+int modules.\+io.\+cf\+\_\+ide.\+CFIDE.\+device\+\_\+head = 0x00}
+
+\Hypertarget{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_ac5391177922698faac06a449839f1feb}\index{modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}!disk\_file@{disk\_file}}
+\index{disk\_file@{disk\_file}!modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}}
+\doxysubsubsection{\texorpdfstring{disk\_file}{disk\_file}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_ac5391177922698faac06a449839f1feb} 
+modules.\+io.\+cf\+\_\+ide.\+CFIDE.\+disk\+\_\+file = None}
+
+\Hypertarget{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_ac31bc290d0b9e436849ca132a22d0801}\index{modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}!disk\_size@{disk\_size}}
+\index{disk\_size@{disk\_size}!modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}}
+\doxysubsubsection{\texorpdfstring{disk\_size}{disk\_size}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_ac31bc290d0b9e436849ca132a22d0801} 
+int modules.\+io.\+cf\+\_\+ide.\+CFIDE.\+disk\+\_\+size = 0}
+
+\Hypertarget{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a4ed45b77a8191dc7eccafbd9126ebba2}\index{modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}!eight\_bit\_mode@{eight\_bit\_mode}}
+\index{eight\_bit\_mode@{eight\_bit\_mode}!modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}}
+\doxysubsubsection{\texorpdfstring{eight\_bit\_mode}{eight\_bit\_mode}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a4ed45b77a8191dc7eccafbd9126ebba2} 
+bool modules.\+io.\+cf\+\_\+ide.\+CFIDE.\+eight\+\_\+bit\+\_\+mode = False}
+
+\Hypertarget{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a7d74933d917aa392c9e8f7dbfc9cbb91}\index{modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}!emulate\_delay@{emulate\_delay}}
+\index{emulate\_delay@{emulate\_delay}!modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}}
+\doxysubsubsection{\texorpdfstring{emulate\_delay}{emulate\_delay}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a7d74933d917aa392c9e8f7dbfc9cbb91} 
+bool modules.\+io.\+cf\+\_\+ide.\+CFIDE.\+emulate\+\_\+delay = False}
+
+\Hypertarget{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_abb51b0823e0d939f05e0d7f3ba2d0a9e}\index{modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}!ERROR\_ABRT@{ERROR\_ABRT}}
+\index{ERROR\_ABRT@{ERROR\_ABRT}!modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}}
+\doxysubsubsection{\texorpdfstring{ERROR\_ABRT}{ERROR\_ABRT}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_abb51b0823e0d939f05e0d7f3ba2d0a9e} 
+int modules.\+io.\+cf\+\_\+ide.\+CFIDE.\+ERROR\+\_\+\+ABRT = 0x04\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a222aa1eccf6e87627c05ba2234e8da6f}\index{modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}!ERROR\_IDNF@{ERROR\_IDNF}}
+\index{ERROR\_IDNF@{ERROR\_IDNF}!modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}}
+\doxysubsubsection{\texorpdfstring{ERROR\_IDNF}{ERROR\_IDNF}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a222aa1eccf6e87627c05ba2234e8da6f} 
+int modules.\+io.\+cf\+\_\+ide.\+CFIDE.\+ERROR\+\_\+\+IDNF = 0x10\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a38bd21c22bff5492801d963716e23efe}\index{modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}!error\_reg@{error\_reg}}
+\index{error\_reg@{error\_reg}!modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}}
+\doxysubsubsection{\texorpdfstring{error\_reg}{error\_reg}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a38bd21c22bff5492801d963716e23efe} 
+int modules.\+io.\+cf\+\_\+ide.\+CFIDE.\+error\+\_\+reg = 0x00}
+
+\Hypertarget{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a6372beabbcadef0cd9b5e5f113a2de1e}\index{modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}!features\_reg@{features\_reg}}
+\index{features\_reg@{features\_reg}!modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}}
+\doxysubsubsection{\texorpdfstring{features\_reg}{features\_reg}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a6372beabbcadef0cd9b5e5f113a2de1e} 
+int modules.\+io.\+cf\+\_\+ide.\+CFIDE.\+features\+\_\+reg = 0x00}
+
+\Hypertarget{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a0b79e0a9e2672cb515404dd02da63bad}\index{modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}!lba\_high@{lba\_high}}
+\index{lba\_high@{lba\_high}!modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}}
+\doxysubsubsection{\texorpdfstring{lba\_high}{lba\_high}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a0b79e0a9e2672cb515404dd02da63bad} 
+int modules.\+io.\+cf\+\_\+ide.\+CFIDE.\+lba\+\_\+high = 0x00}
+
+\Hypertarget{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_acecdc8dc8f626d89c847ba11c6ef7cdc}\index{modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}!lba\_low@{lba\_low}}
+\index{lba\_low@{lba\_low}!modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}}
+\doxysubsubsection{\texorpdfstring{lba\_low}{lba\_low}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_acecdc8dc8f626d89c847ba11c6ef7cdc} 
+int modules.\+io.\+cf\+\_\+ide.\+CFIDE.\+lba\+\_\+low = 0x00}
+
+\Hypertarget{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a1c4421c0d7f946b89859cb68db84bd50}\index{modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}!lba\_mid@{lba\_mid}}
+\index{lba\_mid@{lba\_mid}!modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}}
+\doxysubsubsection{\texorpdfstring{lba\_mid}{lba\_mid}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a1c4421c0d7f946b89859cb68db84bd50} 
+int modules.\+io.\+cf\+\_\+ide.\+CFIDE.\+lba\+\_\+mid = 0x00}
+
+\Hypertarget{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a223e5135ce8d6fbbe382feee492db574}\index{modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}!on\_irq@{on\_irq}}
+\index{on\_irq@{on\_irq}!modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}}
+\doxysubsubsection{\texorpdfstring{on\_irq}{on\_irq}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a223e5135ce8d6fbbe382feee492db574} 
+modules.\+io.\+cf\+\_\+ide.\+CFIDE.\+on\+\_\+irq = None}
+
+\Hypertarget{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_ae70162360e2f5b435e6b5dd8dcf64ed5}\index{modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}!on\_wait@{on\_wait}}
+\index{on\_wait@{on\_wait}!modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}}
+\doxysubsubsection{\texorpdfstring{on\_wait}{on\_wait}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_ae70162360e2f5b435e6b5dd8dcf64ed5} 
+modules.\+io.\+cf\+\_\+ide.\+CFIDE.\+on\+\_\+wait = None}
+
+\Hypertarget{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a696311696946ddbc1b8682faefd79191}\index{modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}!sector\_count@{sector\_count}}
+\index{sector\_count@{sector\_count}!modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}}
+\doxysubsubsection{\texorpdfstring{sector\_count}{sector\_count}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a696311696946ddbc1b8682faefd79191} 
+modules.\+io.\+cf\+\_\+ide.\+CFIDE.\+sector\+\_\+count = 0x01}
+
+\Hypertarget{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_ae95b9a9f84798977db295e64fd560e39}\index{modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}!SECTOR\_SIZE@{SECTOR\_SIZE}}
+\index{SECTOR\_SIZE@{SECTOR\_SIZE}!modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}}
+\doxysubsubsection{\texorpdfstring{SECTOR\_SIZE}{SECTOR\_SIZE}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_ae95b9a9f84798977db295e64fd560e39} 
+modules.\+io.\+cf\+\_\+ide.\+CFIDE.\+SECTOR\+\_\+\+SIZE = 512\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_aa0c580701999f9d5263a8619e30e29fe}\index{modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}!status@{status}}
+\index{status@{status}!modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}}
+\doxysubsubsection{\texorpdfstring{status}{status}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_aa0c580701999f9d5263a8619e30e29fe} 
+modules.\+io.\+cf\+\_\+ide.\+CFIDE.\+status = self.\+STATUS\+\_\+\+DRDY}
+
+\Hypertarget{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a547990c69e5fbfecaf032e49584bfc79}\index{modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}!STATUS\_BSY@{STATUS\_BSY}}
+\index{STATUS\_BSY@{STATUS\_BSY}!modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}}
+\doxysubsubsection{\texorpdfstring{STATUS\_BSY}{STATUS\_BSY}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a547990c69e5fbfecaf032e49584bfc79} 
+modules.\+io.\+cf\+\_\+ide.\+CFIDE.\+STATUS\+\_\+\+BSY = 0x80\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_af61728ec72038aea26ba24807167f2eb}\index{modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}!STATUS\_DRDY@{STATUS\_DRDY}}
+\index{STATUS\_DRDY@{STATUS\_DRDY}!modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}}
+\doxysubsubsection{\texorpdfstring{STATUS\_DRDY}{STATUS\_DRDY}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_af61728ec72038aea26ba24807167f2eb} 
+modules.\+io.\+cf\+\_\+ide.\+CFIDE.\+STATUS\+\_\+\+DRDY = 0x40\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_ac11178a8c3239fb3bbfa7150b5d9acdb}\index{modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}!STATUS\_DRQ@{STATUS\_DRQ}}
+\index{STATUS\_DRQ@{STATUS\_DRQ}!modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}}
+\doxysubsubsection{\texorpdfstring{STATUS\_DRQ}{STATUS\_DRQ}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_ac11178a8c3239fb3bbfa7150b5d9acdb} 
+modules.\+io.\+cf\+\_\+ide.\+CFIDE.\+STATUS\+\_\+\+DRQ = 0x08\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a0155e3db11f297307c5923c932355eb3}\index{modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}!STATUS\_ERR@{STATUS\_ERR}}
+\index{STATUS\_ERR@{STATUS\_ERR}!modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}}
+\doxysubsubsection{\texorpdfstring{STATUS\_ERR}{STATUS\_ERR}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a0155e3db11f297307c5923c932355eb3} 
+int modules.\+io.\+cf\+\_\+ide.\+CFIDE.\+STATUS\+\_\+\+ERR = 0x01\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a886236d1c43b1cff6c68e476afef2a59}\index{modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}!total\_sectors@{total\_sectors}}
+\index{total\_sectors@{total\_sectors}!modules.io.cf\_ide.CFIDE@{modules.io.cf\_ide.CFIDE}}
+\doxysubsubsection{\texorpdfstring{total\_sectors}{total\_sectors}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e_a886236d1c43b1cff6c68e476afef2a59} 
+modules.\+io.\+cf\+\_\+ide.\+CFIDE.\+total\+\_\+sectors = 0}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+modules/io/\mbox{\hyperlink{cf__ide_8py}{cf\+\_\+ide.\+py}}\end{DoxyCompactItemize}

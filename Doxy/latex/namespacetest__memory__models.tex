@@ -1,0 +1,122 @@
+\doxysection{test\+\_\+memory\+\_\+models Namespace Reference}
+\hypertarget{namespacetest__memory__models}{}\label{namespacetest__memory__models}\index{test\_memory\_models@{test\_memory\_models}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespacetest__memory__models_abc39327da0b7df3f9ad424013b912095}{check}} (name, actual, expected)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{namespacetest__memory__models_a5b14a1909f9c58f3537a48384937b564}{passed}} = 0
+\item 
+int \mbox{\hyperlink{namespacetest__memory__models_a5f5a880c7dbff5a27af65fff776e1d4f}{failed}} = 0
+\item 
+\mbox{\hyperlink{namespacetest__memory__models_ad53dd4a08dfe49df95e6bb52f77d5353}{bus}} = Memory\+Bus()
+\item 
+\mbox{\hyperlink{namespacetest__memory__models_acbdb0b1f9e2947e0f7294165ffd34d23}{paged}}
+\item 
+\mbox{\hyperlink{namespacetest__memory__models_a9498e474e8d5e9d219562d32a676a504}{bus2}} = Memory\+Bus()
+\item 
+\mbox{\hyperlink{namespacetest__memory__models_a662cece85d56bc20481e51ec8163c11f}{segmented}}
+\item 
+\mbox{\hyperlink{namespacetest__memory__models_a87ca7c12ef894801ab0b517cae073d8a}{bus3}} = Memory\+Bus()
+\item 
+\mbox{\hyperlink{namespacetest__memory__models_a57f4b3a57ef4a2fe24547f8fa46580d9}{seg\+\_\+paged}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Тест PagedRegion, SegmentedRegion, SegmentedPagedRegion (итерация E2)\end{DoxyVerb}
+ 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespacetest__memory__models_abc39327da0b7df3f9ad424013b912095}\index{test\_memory\_models@{test\_memory\_models}!check@{check}}
+\index{check@{check}!test\_memory\_models@{test\_memory\_models}}
+\doxysubsubsection{\texorpdfstring{check()}{check()}}
+{\footnotesize\ttfamily \label{namespacetest__memory__models_abc39327da0b7df3f9ad424013b912095} 
+test\+\_\+memory\+\_\+models.\+check (\begin{DoxyParamCaption}\item[{}]{name}{, }\item[{}]{actual}{, }\item[{}]{expected}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{namespacetest__memory__models_ad53dd4a08dfe49df95e6bb52f77d5353}\index{test\_memory\_models@{test\_memory\_models}!bus@{bus}}
+\index{bus@{bus}!test\_memory\_models@{test\_memory\_models}}
+\doxysubsubsection{\texorpdfstring{bus}{bus}}
+{\footnotesize\ttfamily \label{namespacetest__memory__models_ad53dd4a08dfe49df95e6bb52f77d5353} 
+test\+\_\+memory\+\_\+models.\+bus = Memory\+Bus()}
+
+\Hypertarget{namespacetest__memory__models_a9498e474e8d5e9d219562d32a676a504}\index{test\_memory\_models@{test\_memory\_models}!bus2@{bus2}}
+\index{bus2@{bus2}!test\_memory\_models@{test\_memory\_models}}
+\doxysubsubsection{\texorpdfstring{bus2}{bus2}}
+{\footnotesize\ttfamily \label{namespacetest__memory__models_a9498e474e8d5e9d219562d32a676a504} 
+test\+\_\+memory\+\_\+models.\+bus2 = Memory\+Bus()}
+
+\Hypertarget{namespacetest__memory__models_a87ca7c12ef894801ab0b517cae073d8a}\index{test\_memory\_models@{test\_memory\_models}!bus3@{bus3}}
+\index{bus3@{bus3}!test\_memory\_models@{test\_memory\_models}}
+\doxysubsubsection{\texorpdfstring{bus3}{bus3}}
+{\footnotesize\ttfamily \label{namespacetest__memory__models_a87ca7c12ef894801ab0b517cae073d8a} 
+test\+\_\+memory\+\_\+models.\+bus3 = Memory\+Bus()}
+
+\Hypertarget{namespacetest__memory__models_a5f5a880c7dbff5a27af65fff776e1d4f}\index{test\_memory\_models@{test\_memory\_models}!failed@{failed}}
+\index{failed@{failed}!test\_memory\_models@{test\_memory\_models}}
+\doxysubsubsection{\texorpdfstring{failed}{failed}}
+{\footnotesize\ttfamily \label{namespacetest__memory__models_a5f5a880c7dbff5a27af65fff776e1d4f} 
+int test\+\_\+memory\+\_\+models.\+failed = 0}
+
+\Hypertarget{namespacetest__memory__models_acbdb0b1f9e2947e0f7294165ffd34d23}\index{test\_memory\_models@{test\_memory\_models}!paged@{paged}}
+\index{paged@{paged}!test\_memory\_models@{test\_memory\_models}}
+\doxysubsubsection{\texorpdfstring{paged}{paged}}
+{\footnotesize\ttfamily \label{namespacetest__memory__models_acbdb0b1f9e2947e0f7294165ffd34d23} 
+test\+\_\+memory\+\_\+models.\+paged}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ =\ \ PagedRegion(}
+\DoxyCodeLine{00002\ \ \ \ \ 0x0000,\ 0xFFFF,}
+\DoxyCodeLine{00003\ \ \ \ \ page\_size=16384,\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ 16КБ\ на\ страницу}}
+\DoxyCodeLine{00004\ \ \ \ \ num\_physical\_pages=16,\ \ \ \ \textcolor{comment}{\#\ 16\ физических\ страниц\ =\ 256КБ}}
+\DoxyCodeLine{00005\ \ \ \ \ switch\_ports=[0x00,\ 0x01,\ 0x02,\ 0x03],\ \ \textcolor{comment}{\#\ Порты\ для\ 4\ виртуальных\ страниц}}
+\DoxyCodeLine{00006\ \ \ \ \ name=\textcolor{stringliteral}{"{}PagedRAM"{}}}
+\DoxyCodeLine{00007\ )}
+
+\end{DoxyCode}
+\Hypertarget{namespacetest__memory__models_a5b14a1909f9c58f3537a48384937b564}\index{test\_memory\_models@{test\_memory\_models}!passed@{passed}}
+\index{passed@{passed}!test\_memory\_models@{test\_memory\_models}}
+\doxysubsubsection{\texorpdfstring{passed}{passed}}
+{\footnotesize\ttfamily \label{namespacetest__memory__models_a5b14a1909f9c58f3537a48384937b564} 
+int test\+\_\+memory\+\_\+models.\+passed = 0}
+
+\Hypertarget{namespacetest__memory__models_a57f4b3a57ef4a2fe24547f8fa46580d9}\index{test\_memory\_models@{test\_memory\_models}!seg\_paged@{seg\_paged}}
+\index{seg\_paged@{seg\_paged}!test\_memory\_models@{test\_memory\_models}}
+\doxysubsubsection{\texorpdfstring{seg\_paged}{seg\_paged}}
+{\footnotesize\ttfamily \label{namespacetest__memory__models_a57f4b3a57ef4a2fe24547f8fa46580d9} 
+test\+\_\+memory\+\_\+models.\+seg\+\_\+paged}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ =\ \ SegmentedPagedRegion(}
+\DoxyCodeLine{00002\ \ \ \ \ 0x0000,\ 0xFFFF,}
+\DoxyCodeLine{00003\ \ \ \ \ segment\_size=16384,\ \ \ \ \ \ \ \textcolor{comment}{\#\ 16КБ\ на\ сегмент}}
+\DoxyCodeLine{00004\ \ \ \ \ num\_physical\_pages=16,\ \ \ \ \textcolor{comment}{\#\ 16\ физических\ страниц\ =\ 256КБ}}
+\DoxyCodeLine{00005\ \ \ \ \ base\_port=0x00,\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Порты\ 0x00-\/0x03\ для\ 4\ сегментов}}
+\DoxyCodeLine{00006\ \ \ \ \ name=\textcolor{stringliteral}{"{}SegmentedPagedRAM"{}}}
+\DoxyCodeLine{00007\ )}
+
+\end{DoxyCode}
+\Hypertarget{namespacetest__memory__models_a662cece85d56bc20481e51ec8163c11f}\index{test\_memory\_models@{test\_memory\_models}!segmented@{segmented}}
+\index{segmented@{segmented}!test\_memory\_models@{test\_memory\_models}}
+\doxysubsubsection{\texorpdfstring{segmented}{segmented}}
+{\footnotesize\ttfamily \label{namespacetest__memory__models_a662cece85d56bc20481e51ec8163c11f} 
+test\+\_\+memory\+\_\+models.\+segmented}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ =\ \ SegmentedRegion(}
+\DoxyCodeLine{00002\ \ \ \ \ 0x0000,\ 0xFFFF,}
+\DoxyCodeLine{00003\ \ \ \ \ num\_segments=16,\ \ \ \ \ \ \textcolor{comment}{\#\ 16\ сегментов\ по\ 64КБ\ =\ 1МБ}}
+\DoxyCodeLine{00004\ \ \ \ \ switch\_port=0x10,\ \ \ \ \ \textcolor{comment}{\#\ Порт\ для\ переключения\ сегмента}}
+\DoxyCodeLine{00005\ \ \ \ \ name=\textcolor{stringliteral}{"{}SegmentedRAM"{}}}
+\DoxyCodeLine{00006\ )}
+
+\end{DoxyCode}

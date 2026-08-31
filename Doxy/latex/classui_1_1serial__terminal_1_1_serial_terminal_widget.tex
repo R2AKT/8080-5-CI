@@ -1,0 +1,369 @@
+\doxysection{ui.\+serial\+\_\+terminal.\+Serial\+Terminal\+Widget Class Reference}
+\hypertarget{classui_1_1serial__terminal_1_1_serial_terminal_widget}{}\label{classui_1_1serial__terminal_1_1_serial_terminal_widget}\index{ui.serial\_terminal.SerialTerminalWidget@{ui.serial\_terminal.SerialTerminalWidget}}
+
+
+Inheritance diagram for ui.\+serial\+\_\+terminal.\+Serial\+Terminal\+Widget\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=197pt]{classui_1_1serial__terminal_1_1_serial_terminal_widget__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for ui.\+serial\+\_\+terminal.\+Serial\+Terminal\+Widget\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=197pt]{classui_1_1serial__terminal_1_1_serial_terminal_widget__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classui_1_1serial__terminal_1_1_serial_terminal_widget_a799ee850d416702bc84f451b9af13cde}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, \mbox{\hyperlink{classui_1_1serial__terminal_1_1_serial_terminal_widget_a73086955e725f43f8f3ca20029c52686}{device}}, parent=None)
+\item 
+\mbox{\hyperlink{classui_1_1serial__terminal_1_1_serial_terminal_widget_a0c040e007b76e0340d04f6cf96ad14df}{append\+\_\+text}} (self, text)
+\item 
+\mbox{\hyperlink{classui_1_1serial__terminal_1_1_serial_terminal_widget_aa1b6e7d6ceb02cad90392a41a8e2495e}{close\+Event}} (self, event)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classui_1_1serial__terminal_1_1_serial_terminal_widget_a73086955e725f43f8f3ca20029c52686}{device}} = device
+\item 
+\mbox{\hyperlink{classui_1_1serial__terminal_1_1_serial_terminal_widget_a9aae52982d36a921ea3527f20745a8c7}{display}} = QText\+Edit()
+\item 
+\mbox{\hyperlink{classui_1_1serial__terminal_1_1_serial_terminal_widget_a15f3fa86d120fa26c14aff46485d73fe}{input}} = QLine\+Edit()
+\item 
+\mbox{\hyperlink{classui_1_1serial__terminal_1_1_serial_terminal_widget_af4cb5361ec7e7efcad51152c9d3ef00d}{btn\+\_\+send}} = QPush\+Button("{}Отправить"{})
+\item 
+\mbox{\hyperlink{classui_1_1serial__terminal_1_1_serial_terminal_widget_a6137092e410dd17fa43d0e29a44ca0f6}{chk\+\_\+echo}} = QCheck\+Box("{}Локальное эхо"{})
+\item 
+\mbox{\hyperlink{classui_1_1serial__terminal_1_1_serial_terminal_widget_ac165c8ff89a6dbc45468e31d1303522e}{chk\+\_\+cr\+\_\+lf}} = QCheck\+Box("{}CR+LF"{})
+\item 
+\mbox{\hyperlink{classui_1_1serial__terminal_1_1_serial_terminal_widget_ae6c6941276014e21b4d9662aaf8da518}{chk\+\_\+hex\+\_\+mode}} = QCheck\+Box("{}HEX-\/ввод"{})
+\item 
+\mbox{\hyperlink{classui_1_1serial__terminal_1_1_serial_terminal_widget_a6515316a15cc64d4bf9eda1429582ef5}{lbl\+\_\+counters}} = QLabel("{}TX\+: 0 RX\+: 0"{})
+\item 
+\mbox{\hyperlink{classui_1_1serial__terminal_1_1_serial_terminal_widget_abb2072cd95e0081c5f3d0f8946ad0b49}{btn\+\_\+clear}} = QPush\+Button("{}Очистить"{})
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classui_1_1serial__terminal_1_1_serial_terminal_widget_a3f4039c621f28f72e4cf63b66b0a10f1}{data\+\_\+received}} = Signal(int)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classui_1_1serial__terminal_1_1_serial_terminal_widget_a6e33c96af115f466f82ac7e4997bcb21}{\+\_\+init\+\_\+ui}} (self)
+\item 
+\mbox{\hyperlink{classui_1_1serial__terminal_1_1_serial_terminal_widget_a7bf01a068de6a6df251e8d70cce5f46a}{\+\_\+connect\+\_\+device}} (self)
+\item 
+\mbox{\hyperlink{classui_1_1serial__terminal_1_1_serial_terminal_widget_a3f2433aca783e2283b69c6510e45c6d0}{\+\_\+disconnect\+\_\+device}} (self)
+\item 
+\mbox{\hyperlink{classui_1_1serial__terminal_1_1_serial_terminal_widget_a0b372ecaa8ca1fe7785a7aeeab3610b2}{\+\_\+on\+\_\+device\+\_\+transmit}} (self, data)
+\item 
+\mbox{\hyperlink{classui_1_1serial__terminal_1_1_serial_terminal_widget_ac65b12c9505391f6791783c36d0190ff}{\+\_\+display\+\_\+data}} (self, data)
+\item 
+\mbox{\hyperlink{classui_1_1serial__terminal_1_1_serial_terminal_widget_a8517bfb5cc3a142709e38b1cff08bc67}{\+\_\+on\+\_\+send}} (self)
+\item 
+\mbox{\hyperlink{classui_1_1serial__terminal_1_1_serial_terminal_widget_ab30635b375ca20d5e13d7a1410642db9}{\+\_\+send\+\_\+byte}} (self, byte)
+\item 
+\mbox{\hyperlink{classui_1_1serial__terminal_1_1_serial_terminal_widget_a25a261c90d73c0683743c2add4e69404}{\+\_\+on\+\_\+clear}} (self)
+\item 
+\mbox{\hyperlink{classui_1_1serial__terminal_1_1_serial_terminal_widget_ab11facadb96d4a3274a7c14633c4de18}{\+\_\+update\+\_\+counters}} (self)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classui_1_1serial__terminal_1_1_serial_terminal_widget_a49ef17a1184cce7d6f9ce6fec2154a9e}{\+\_\+rx\+\_\+count}} = 0
+\item 
+int \mbox{\hyperlink{classui_1_1serial__terminal_1_1_serial_terminal_widget_a4b771a63872e8bcf3bf902610b5d182a}{\+\_\+tx\+\_\+count}} = 0
+\item 
+\mbox{\hyperlink{classui_1_1serial__terminal_1_1_serial_terminal_widget_af521275a7348d3834770e91513bec220}{\+\_\+display\+\_\+data}}
+\item 
+\mbox{\hyperlink{classui_1_1serial__terminal_1_1_serial_terminal_widget_a7f474d1da8aec9a23ea2cd3e434b0593}{\+\_\+on\+\_\+send}}
+\item 
+\mbox{\hyperlink{classui_1_1serial__terminal_1_1_serial_terminal_widget_a891ce7a0941e9f9103f16286b54b42a2}{\+\_\+on\+\_\+clear}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Виджет терминала для последовательных портов 8251/16550\end{DoxyVerb}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classui_1_1serial__terminal_1_1_serial_terminal_widget_a799ee850d416702bc84f451b9af13cde}\index{ui.serial\_terminal.SerialTerminalWidget@{ui.serial\_terminal.SerialTerminalWidget}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!ui.serial\_terminal.SerialTerminalWidget@{ui.serial\_terminal.SerialTerminalWidget}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \label{classui_1_1serial__terminal_1_1_serial_terminal_widget_a799ee850d416702bc84f451b9af13cde} 
+ui.\+serial\+\_\+terminal.\+Serial\+Terminal\+Widget.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{device}{, }\item[{}]{parent}{ = {\ttfamily None}}\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=200pt]{classui_1_1serial__terminal_1_1_serial_terminal_widget_a799ee850d416702bc84f451b9af13cde_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=200pt]{classui_1_1serial__terminal_1_1_serial_terminal_widget_a799ee850d416702bc84f451b9af13cde_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classui_1_1serial__terminal_1_1_serial_terminal_widget_a7bf01a068de6a6df251e8d70cce5f46a}\index{ui.serial\_terminal.SerialTerminalWidget@{ui.serial\_terminal.SerialTerminalWidget}!\_connect\_device@{\_connect\_device}}
+\index{\_connect\_device@{\_connect\_device}!ui.serial\_terminal.SerialTerminalWidget@{ui.serial\_terminal.SerialTerminalWidget}}
+\doxysubsubsection{\texorpdfstring{\_connect\_device()}{\_connect\_device()}}
+{\footnotesize\ttfamily \label{classui_1_1serial__terminal_1_1_serial_terminal_widget_a7bf01a068de6a6df251e8d70cce5f46a} 
+ui.\+serial\+\_\+terminal.\+Serial\+Terminal\+Widget.\+\_\+connect\+\_\+device (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Подключение к callback устройства\end{DoxyVerb}
+ Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classui_1_1serial__terminal_1_1_serial_terminal_widget_a7bf01a068de6a6df251e8d70cce5f46a_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classui_1_1serial__terminal_1_1_serial_terminal_widget_a3f2433aca783e2283b69c6510e45c6d0}\index{ui.serial\_terminal.SerialTerminalWidget@{ui.serial\_terminal.SerialTerminalWidget}!\_disconnect\_device@{\_disconnect\_device}}
+\index{\_disconnect\_device@{\_disconnect\_device}!ui.serial\_terminal.SerialTerminalWidget@{ui.serial\_terminal.SerialTerminalWidget}}
+\doxysubsubsection{\texorpdfstring{\_disconnect\_device()}{\_disconnect\_device()}}
+{\footnotesize\ttfamily \label{classui_1_1serial__terminal_1_1_serial_terminal_widget_a3f2433aca783e2283b69c6510e45c6d0} 
+ui.\+serial\+\_\+terminal.\+Serial\+Terminal\+Widget.\+\_\+disconnect\+\_\+device (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Отключение от устройства\end{DoxyVerb}
+ Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classui_1_1serial__terminal_1_1_serial_terminal_widget_a3f2433aca783e2283b69c6510e45c6d0_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classui_1_1serial__terminal_1_1_serial_terminal_widget_ac65b12c9505391f6791783c36d0190ff}\index{ui.serial\_terminal.SerialTerminalWidget@{ui.serial\_terminal.SerialTerminalWidget}!\_display\_data@{\_display\_data}}
+\index{\_display\_data@{\_display\_data}!ui.serial\_terminal.SerialTerminalWidget@{ui.serial\_terminal.SerialTerminalWidget}}
+\doxysubsubsection{\texorpdfstring{\_display\_data()}{\_display\_data()}}
+{\footnotesize\ttfamily \label{classui_1_1serial__terminal_1_1_serial_terminal_widget_ac65b12c9505391f6791783c36d0190ff} 
+ui.\+serial\+\_\+terminal.\+Serial\+Terminal\+Widget.\+\_\+display\+\_\+data (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{data}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Отображение данных в виджете (в UI-потоке)\end{DoxyVerb}
+ Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classui_1_1serial__terminal_1_1_serial_terminal_widget_ac65b12c9505391f6791783c36d0190ff_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classui_1_1serial__terminal_1_1_serial_terminal_widget_a6e33c96af115f466f82ac7e4997bcb21}\index{ui.serial\_terminal.SerialTerminalWidget@{ui.serial\_terminal.SerialTerminalWidget}!\_init\_ui@{\_init\_ui}}
+\index{\_init\_ui@{\_init\_ui}!ui.serial\_terminal.SerialTerminalWidget@{ui.serial\_terminal.SerialTerminalWidget}}
+\doxysubsubsection{\texorpdfstring{\_init\_ui()}{\_init\_ui()}}
+{\footnotesize\ttfamily \label{classui_1_1serial__terminal_1_1_serial_terminal_widget_a6e33c96af115f466f82ac7e4997bcb21} 
+ui.\+serial\+\_\+terminal.\+Serial\+Terminal\+Widget.\+\_\+init\+\_\+ui (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classui_1_1serial__terminal_1_1_serial_terminal_widget_a25a261c90d73c0683743c2add4e69404}\index{ui.serial\_terminal.SerialTerminalWidget@{ui.serial\_terminal.SerialTerminalWidget}!\_on\_clear@{\_on\_clear}}
+\index{\_on\_clear@{\_on\_clear}!ui.serial\_terminal.SerialTerminalWidget@{ui.serial\_terminal.SerialTerminalWidget}}
+\doxysubsubsection{\texorpdfstring{\_on\_clear()}{\_on\_clear()}}
+{\footnotesize\ttfamily \label{classui_1_1serial__terminal_1_1_serial_terminal_widget_a25a261c90d73c0683743c2add4e69404} 
+ui.\+serial\+\_\+terminal.\+Serial\+Terminal\+Widget.\+\_\+on\+\_\+clear (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Очистка терминала\end{DoxyVerb}
+ Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classui_1_1serial__terminal_1_1_serial_terminal_widget_a25a261c90d73c0683743c2add4e69404_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classui_1_1serial__terminal_1_1_serial_terminal_widget_a0b372ecaa8ca1fe7785a7aeeab3610b2}\index{ui.serial\_terminal.SerialTerminalWidget@{ui.serial\_terminal.SerialTerminalWidget}!\_on\_device\_transmit@{\_on\_device\_transmit}}
+\index{\_on\_device\_transmit@{\_on\_device\_transmit}!ui.serial\_terminal.SerialTerminalWidget@{ui.serial\_terminal.SerialTerminalWidget}}
+\doxysubsubsection{\texorpdfstring{\_on\_device\_transmit()}{\_on\_device\_transmit()}}
+{\footnotesize\ttfamily \label{classui_1_1serial__terminal_1_1_serial_terminal_widget_a0b372ecaa8ca1fe7785a7aeeab3610b2} 
+ui.\+serial\+\_\+terminal.\+Serial\+Terminal\+Widget.\+\_\+on\+\_\+device\+\_\+transmit (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{data}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Получены данные от устройства — эмитим сигнал (потокобезопасно)\end{DoxyVerb}
+ Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classui_1_1serial__terminal_1_1_serial_terminal_widget_a0b372ecaa8ca1fe7785a7aeeab3610b2_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classui_1_1serial__terminal_1_1_serial_terminal_widget_a8517bfb5cc3a142709e38b1cff08bc67}\index{ui.serial\_terminal.SerialTerminalWidget@{ui.serial\_terminal.SerialTerminalWidget}!\_on\_send@{\_on\_send}}
+\index{\_on\_send@{\_on\_send}!ui.serial\_terminal.SerialTerminalWidget@{ui.serial\_terminal.SerialTerminalWidget}}
+\doxysubsubsection{\texorpdfstring{\_on\_send()}{\_on\_send()}}
+{\footnotesize\ttfamily \label{classui_1_1serial__terminal_1_1_serial_terminal_widget_a8517bfb5cc3a142709e38b1cff08bc67} 
+ui.\+serial\+\_\+terminal.\+Serial\+Terminal\+Widget.\+\_\+on\+\_\+send (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Отправка данных пользователем\end{DoxyVerb}
+ Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classui_1_1serial__terminal_1_1_serial_terminal_widget_a8517bfb5cc3a142709e38b1cff08bc67_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classui_1_1serial__terminal_1_1_serial_terminal_widget_ab30635b375ca20d5e13d7a1410642db9}\index{ui.serial\_terminal.SerialTerminalWidget@{ui.serial\_terminal.SerialTerminalWidget}!\_send\_byte@{\_send\_byte}}
+\index{\_send\_byte@{\_send\_byte}!ui.serial\_terminal.SerialTerminalWidget@{ui.serial\_terminal.SerialTerminalWidget}}
+\doxysubsubsection{\texorpdfstring{\_send\_byte()}{\_send\_byte()}}
+{\footnotesize\ttfamily \label{classui_1_1serial__terminal_1_1_serial_terminal_widget_ab30635b375ca20d5e13d7a1410642db9} 
+ui.\+serial\+\_\+terminal.\+Serial\+Terminal\+Widget.\+\_\+send\+\_\+byte (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{byte}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Отправка одного байта в устройство через порт данных\end{DoxyVerb}
+ Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classui_1_1serial__terminal_1_1_serial_terminal_widget_ab30635b375ca20d5e13d7a1410642db9_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classui_1_1serial__terminal_1_1_serial_terminal_widget_ab11facadb96d4a3274a7c14633c4de18}\index{ui.serial\_terminal.SerialTerminalWidget@{ui.serial\_terminal.SerialTerminalWidget}!\_update\_counters@{\_update\_counters}}
+\index{\_update\_counters@{\_update\_counters}!ui.serial\_terminal.SerialTerminalWidget@{ui.serial\_terminal.SerialTerminalWidget}}
+\doxysubsubsection{\texorpdfstring{\_update\_counters()}{\_update\_counters()}}
+{\footnotesize\ttfamily \label{classui_1_1serial__terminal_1_1_serial_terminal_widget_ab11facadb96d4a3274a7c14633c4de18} 
+ui.\+serial\+\_\+terminal.\+Serial\+Terminal\+Widget.\+\_\+update\+\_\+counters (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Обновление счётчиков TX/RX\end{DoxyVerb}
+ Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classui_1_1serial__terminal_1_1_serial_terminal_widget_ab11facadb96d4a3274a7c14633c4de18_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classui_1_1serial__terminal_1_1_serial_terminal_widget_a0c040e007b76e0340d04f6cf96ad14df}\index{ui.serial\_terminal.SerialTerminalWidget@{ui.serial\_terminal.SerialTerminalWidget}!append\_text@{append\_text}}
+\index{append\_text@{append\_text}!ui.serial\_terminal.SerialTerminalWidget@{ui.serial\_terminal.SerialTerminalWidget}}
+\doxysubsubsection{\texorpdfstring{append\_text()}{append\_text()}}
+{\footnotesize\ttfamily \label{classui_1_1serial__terminal_1_1_serial_terminal_widget_a0c040e007b76e0340d04f6cf96ad14df} 
+ui.\+serial\+\_\+terminal.\+Serial\+Terminal\+Widget.\+append\+\_\+text (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{text}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Программное добавление текста (для скриптов)\end{DoxyVerb}
+ \Hypertarget{classui_1_1serial__terminal_1_1_serial_terminal_widget_aa1b6e7d6ceb02cad90392a41a8e2495e}\index{ui.serial\_terminal.SerialTerminalWidget@{ui.serial\_terminal.SerialTerminalWidget}!closeEvent@{closeEvent}}
+\index{closeEvent@{closeEvent}!ui.serial\_terminal.SerialTerminalWidget@{ui.serial\_terminal.SerialTerminalWidget}}
+\doxysubsubsection{\texorpdfstring{closeEvent()}{closeEvent()}}
+{\footnotesize\ttfamily \label{classui_1_1serial__terminal_1_1_serial_terminal_widget_aa1b6e7d6ceb02cad90392a41a8e2495e} 
+ui.\+serial\+\_\+terminal.\+Serial\+Terminal\+Widget.\+close\+Event (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{event}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Отключение от устройства при закрытии\end{DoxyVerb}
+ Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classui_1_1serial__terminal_1_1_serial_terminal_widget_aa1b6e7d6ceb02cad90392a41a8e2495e_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classui_1_1serial__terminal_1_1_serial_terminal_widget_af521275a7348d3834770e91513bec220}\index{ui.serial\_terminal.SerialTerminalWidget@{ui.serial\_terminal.SerialTerminalWidget}!\_display\_data@{\_display\_data}}
+\index{\_display\_data@{\_display\_data}!ui.serial\_terminal.SerialTerminalWidget@{ui.serial\_terminal.SerialTerminalWidget}}
+\doxysubsubsection{\texorpdfstring{\_display\_data}{\_display\_data}}
+{\footnotesize\ttfamily \label{classui_1_1serial__terminal_1_1_serial_terminal_widget_af521275a7348d3834770e91513bec220} 
+ui.\+serial\+\_\+terminal.\+Serial\+Terminal\+Widget.\+\_\+display\+\_\+data\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classui_1_1serial__terminal_1_1_serial_terminal_widget_a891ce7a0941e9f9103f16286b54b42a2}\index{ui.serial\_terminal.SerialTerminalWidget@{ui.serial\_terminal.SerialTerminalWidget}!\_on\_clear@{\_on\_clear}}
+\index{\_on\_clear@{\_on\_clear}!ui.serial\_terminal.SerialTerminalWidget@{ui.serial\_terminal.SerialTerminalWidget}}
+\doxysubsubsection{\texorpdfstring{\_on\_clear}{\_on\_clear}}
+{\footnotesize\ttfamily \label{classui_1_1serial__terminal_1_1_serial_terminal_widget_a891ce7a0941e9f9103f16286b54b42a2} 
+ui.\+serial\+\_\+terminal.\+Serial\+Terminal\+Widget.\+\_\+on\+\_\+clear\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classui_1_1serial__terminal_1_1_serial_terminal_widget_a7f474d1da8aec9a23ea2cd3e434b0593}\index{ui.serial\_terminal.SerialTerminalWidget@{ui.serial\_terminal.SerialTerminalWidget}!\_on\_send@{\_on\_send}}
+\index{\_on\_send@{\_on\_send}!ui.serial\_terminal.SerialTerminalWidget@{ui.serial\_terminal.SerialTerminalWidget}}
+\doxysubsubsection{\texorpdfstring{\_on\_send}{\_on\_send}}
+{\footnotesize\ttfamily \label{classui_1_1serial__terminal_1_1_serial_terminal_widget_a7f474d1da8aec9a23ea2cd3e434b0593} 
+ui.\+serial\+\_\+terminal.\+Serial\+Terminal\+Widget.\+\_\+on\+\_\+send\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classui_1_1serial__terminal_1_1_serial_terminal_widget_a49ef17a1184cce7d6f9ce6fec2154a9e}\index{ui.serial\_terminal.SerialTerminalWidget@{ui.serial\_terminal.SerialTerminalWidget}!\_rx\_count@{\_rx\_count}}
+\index{\_rx\_count@{\_rx\_count}!ui.serial\_terminal.SerialTerminalWidget@{ui.serial\_terminal.SerialTerminalWidget}}
+\doxysubsubsection{\texorpdfstring{\_rx\_count}{\_rx\_count}}
+{\footnotesize\ttfamily \label{classui_1_1serial__terminal_1_1_serial_terminal_widget_a49ef17a1184cce7d6f9ce6fec2154a9e} 
+int ui.\+serial\+\_\+terminal.\+Serial\+Terminal\+Widget.\+\_\+rx\+\_\+count = 0\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classui_1_1serial__terminal_1_1_serial_terminal_widget_a4b771a63872e8bcf3bf902610b5d182a}\index{ui.serial\_terminal.SerialTerminalWidget@{ui.serial\_terminal.SerialTerminalWidget}!\_tx\_count@{\_tx\_count}}
+\index{\_tx\_count@{\_tx\_count}!ui.serial\_terminal.SerialTerminalWidget@{ui.serial\_terminal.SerialTerminalWidget}}
+\doxysubsubsection{\texorpdfstring{\_tx\_count}{\_tx\_count}}
+{\footnotesize\ttfamily \label{classui_1_1serial__terminal_1_1_serial_terminal_widget_a4b771a63872e8bcf3bf902610b5d182a} 
+int ui.\+serial\+\_\+terminal.\+Serial\+Terminal\+Widget.\+\_\+tx\+\_\+count = 0\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classui_1_1serial__terminal_1_1_serial_terminal_widget_abb2072cd95e0081c5f3d0f8946ad0b49}\index{ui.serial\_terminal.SerialTerminalWidget@{ui.serial\_terminal.SerialTerminalWidget}!btn\_clear@{btn\_clear}}
+\index{btn\_clear@{btn\_clear}!ui.serial\_terminal.SerialTerminalWidget@{ui.serial\_terminal.SerialTerminalWidget}}
+\doxysubsubsection{\texorpdfstring{btn\_clear}{btn\_clear}}
+{\footnotesize\ttfamily \label{classui_1_1serial__terminal_1_1_serial_terminal_widget_abb2072cd95e0081c5f3d0f8946ad0b49} 
+ui.\+serial\+\_\+terminal.\+Serial\+Terminal\+Widget.\+btn\+\_\+clear = QPush\+Button("{}Очистить"{})}
+
+\Hypertarget{classui_1_1serial__terminal_1_1_serial_terminal_widget_af4cb5361ec7e7efcad51152c9d3ef00d}\index{ui.serial\_terminal.SerialTerminalWidget@{ui.serial\_terminal.SerialTerminalWidget}!btn\_send@{btn\_send}}
+\index{btn\_send@{btn\_send}!ui.serial\_terminal.SerialTerminalWidget@{ui.serial\_terminal.SerialTerminalWidget}}
+\doxysubsubsection{\texorpdfstring{btn\_send}{btn\_send}}
+{\footnotesize\ttfamily \label{classui_1_1serial__terminal_1_1_serial_terminal_widget_af4cb5361ec7e7efcad51152c9d3ef00d} 
+ui.\+serial\+\_\+terminal.\+Serial\+Terminal\+Widget.\+btn\+\_\+send = QPush\+Button("{}Отправить"{})}
+
+\Hypertarget{classui_1_1serial__terminal_1_1_serial_terminal_widget_ac165c8ff89a6dbc45468e31d1303522e}\index{ui.serial\_terminal.SerialTerminalWidget@{ui.serial\_terminal.SerialTerminalWidget}!chk\_cr\_lf@{chk\_cr\_lf}}
+\index{chk\_cr\_lf@{chk\_cr\_lf}!ui.serial\_terminal.SerialTerminalWidget@{ui.serial\_terminal.SerialTerminalWidget}}
+\doxysubsubsection{\texorpdfstring{chk\_cr\_lf}{chk\_cr\_lf}}
+{\footnotesize\ttfamily \label{classui_1_1serial__terminal_1_1_serial_terminal_widget_ac165c8ff89a6dbc45468e31d1303522e} 
+ui.\+serial\+\_\+terminal.\+Serial\+Terminal\+Widget.\+chk\+\_\+cr\+\_\+lf = QCheck\+Box("{}CR+LF"{})}
+
+\Hypertarget{classui_1_1serial__terminal_1_1_serial_terminal_widget_a6137092e410dd17fa43d0e29a44ca0f6}\index{ui.serial\_terminal.SerialTerminalWidget@{ui.serial\_terminal.SerialTerminalWidget}!chk\_echo@{chk\_echo}}
+\index{chk\_echo@{chk\_echo}!ui.serial\_terminal.SerialTerminalWidget@{ui.serial\_terminal.SerialTerminalWidget}}
+\doxysubsubsection{\texorpdfstring{chk\_echo}{chk\_echo}}
+{\footnotesize\ttfamily \label{classui_1_1serial__terminal_1_1_serial_terminal_widget_a6137092e410dd17fa43d0e29a44ca0f6} 
+ui.\+serial\+\_\+terminal.\+Serial\+Terminal\+Widget.\+chk\+\_\+echo = QCheck\+Box("{}Локальное эхо"{})}
+
+\Hypertarget{classui_1_1serial__terminal_1_1_serial_terminal_widget_ae6c6941276014e21b4d9662aaf8da518}\index{ui.serial\_terminal.SerialTerminalWidget@{ui.serial\_terminal.SerialTerminalWidget}!chk\_hex\_mode@{chk\_hex\_mode}}
+\index{chk\_hex\_mode@{chk\_hex\_mode}!ui.serial\_terminal.SerialTerminalWidget@{ui.serial\_terminal.SerialTerminalWidget}}
+\doxysubsubsection{\texorpdfstring{chk\_hex\_mode}{chk\_hex\_mode}}
+{\footnotesize\ttfamily \label{classui_1_1serial__terminal_1_1_serial_terminal_widget_ae6c6941276014e21b4d9662aaf8da518} 
+ui.\+serial\+\_\+terminal.\+Serial\+Terminal\+Widget.\+chk\+\_\+hex\+\_\+mode = QCheck\+Box("{}HEX-\/ввод"{})}
+
+\Hypertarget{classui_1_1serial__terminal_1_1_serial_terminal_widget_a3f4039c621f28f72e4cf63b66b0a10f1}\index{ui.serial\_terminal.SerialTerminalWidget@{ui.serial\_terminal.SerialTerminalWidget}!data\_received@{data\_received}}
+\index{data\_received@{data\_received}!ui.serial\_terminal.SerialTerminalWidget@{ui.serial\_terminal.SerialTerminalWidget}}
+\doxysubsubsection{\texorpdfstring{data\_received}{data\_received}}
+{\footnotesize\ttfamily \label{classui_1_1serial__terminal_1_1_serial_terminal_widget_a3f4039c621f28f72e4cf63b66b0a10f1} 
+ui.\+serial\+\_\+terminal.\+Serial\+Terminal\+Widget.\+data\+\_\+received = Signal(int)\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classui_1_1serial__terminal_1_1_serial_terminal_widget_a73086955e725f43f8f3ca20029c52686}\index{ui.serial\_terminal.SerialTerminalWidget@{ui.serial\_terminal.SerialTerminalWidget}!device@{device}}
+\index{device@{device}!ui.serial\_terminal.SerialTerminalWidget@{ui.serial\_terminal.SerialTerminalWidget}}
+\doxysubsubsection{\texorpdfstring{device}{device}}
+{\footnotesize\ttfamily \label{classui_1_1serial__terminal_1_1_serial_terminal_widget_a73086955e725f43f8f3ca20029c52686} 
+ui.\+serial\+\_\+terminal.\+Serial\+Terminal\+Widget.\+device = device}
+
+\Hypertarget{classui_1_1serial__terminal_1_1_serial_terminal_widget_a9aae52982d36a921ea3527f20745a8c7}\index{ui.serial\_terminal.SerialTerminalWidget@{ui.serial\_terminal.SerialTerminalWidget}!display@{display}}
+\index{display@{display}!ui.serial\_terminal.SerialTerminalWidget@{ui.serial\_terminal.SerialTerminalWidget}}
+\doxysubsubsection{\texorpdfstring{display}{display}}
+{\footnotesize\ttfamily \label{classui_1_1serial__terminal_1_1_serial_terminal_widget_a9aae52982d36a921ea3527f20745a8c7} 
+ui.\+serial\+\_\+terminal.\+Serial\+Terminal\+Widget.\+display = QText\+Edit()}
+
+\Hypertarget{classui_1_1serial__terminal_1_1_serial_terminal_widget_a15f3fa86d120fa26c14aff46485d73fe}\index{ui.serial\_terminal.SerialTerminalWidget@{ui.serial\_terminal.SerialTerminalWidget}!input@{input}}
+\index{input@{input}!ui.serial\_terminal.SerialTerminalWidget@{ui.serial\_terminal.SerialTerminalWidget}}
+\doxysubsubsection{\texorpdfstring{input}{input}}
+{\footnotesize\ttfamily \label{classui_1_1serial__terminal_1_1_serial_terminal_widget_a15f3fa86d120fa26c14aff46485d73fe} 
+ui.\+serial\+\_\+terminal.\+Serial\+Terminal\+Widget.\+input = QLine\+Edit()}
+
+\Hypertarget{classui_1_1serial__terminal_1_1_serial_terminal_widget_a6515316a15cc64d4bf9eda1429582ef5}\index{ui.serial\_terminal.SerialTerminalWidget@{ui.serial\_terminal.SerialTerminalWidget}!lbl\_counters@{lbl\_counters}}
+\index{lbl\_counters@{lbl\_counters}!ui.serial\_terminal.SerialTerminalWidget@{ui.serial\_terminal.SerialTerminalWidget}}
+\doxysubsubsection{\texorpdfstring{lbl\_counters}{lbl\_counters}}
+{\footnotesize\ttfamily \label{classui_1_1serial__terminal_1_1_serial_terminal_widget_a6515316a15cc64d4bf9eda1429582ef5} 
+ui.\+serial\+\_\+terminal.\+Serial\+Terminal\+Widget.\+lbl\+\_\+counters = QLabel("{}TX\+: 0 RX\+: 0"{})}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+ui/\mbox{\hyperlink{serial__terminal_8py}{serial\+\_\+terminal.\+py}}\end{DoxyCompactItemize}

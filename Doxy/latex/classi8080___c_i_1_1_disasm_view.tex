@@ -1,0 +1,461 @@
+\doxysection{i8080\+\_\+\+CI.\+Disasm\+View Class Reference}
+\hypertarget{classi8080___c_i_1_1_disasm_view}{}\label{classi8080___c_i_1_1_disasm_view}\index{i8080\_CI.DisasmView@{i8080\_CI.DisasmView}}
+
+
+Inheritance diagram for i8080\+\_\+\+CI.\+Disasm\+View\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=194pt]{classi8080___c_i_1_1_disasm_view__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for i8080\+\_\+\+CI.\+Disasm\+View\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=194pt]{classi8080___c_i_1_1_disasm_view__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classi8080___c_i_1_1_disasm_view_a8ea72c6b2890157f513704ea1f80dd66}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, \mbox{\hyperlink{classi8080___c_i_1_1_disasm_view_a8583f8a031b2a935a5c25617a0a7e4dc}{mem\+\_\+data}}, parent=None)
+\item 
+\mbox{\hyperlink{classi8080___c_i_1_1_disasm_view_a2ba862ae685c94b96e28d39792e48ac6}{set\+\_\+bp\+\_\+conditions}} (self, conditions)
+\item 
+\mbox{\hyperlink{classi8080___c_i_1_1_disasm_view_aadb74e4ee41f32eceafc393658250f4d}{set\+\_\+highlight}} (self, addr)
+\item 
+\mbox{\hyperlink{classi8080___c_i_1_1_disasm_view_a10106ee78ed1df9fec6fd330ba0a32d0}{setup\+\_\+colors}} (self)
+\item 
+\mbox{\hyperlink{classi8080___c_i_1_1_disasm_view_abc323245b3c4eb194c984eb6c2144e2d}{set\+\_\+theme}} (self, is\+\_\+dark)
+\item 
+\mbox{\hyperlink{classi8080___c_i_1_1_disasm_view_aca92433e9275a58ac5e3bd3333bdd56e}{set\+\_\+lines}} (self, \mbox{\hyperlink{classi8080___c_i_1_1_disasm_view_ad24edef959f9ab7b99b0a2580c3ff07b}{lines}})
+\item 
+\mbox{\hyperlink{classi8080___c_i_1_1_disasm_view_a02225dd22fba33ca4f82d4f04ac5fd78}{get\+\_\+instruction\+\_\+color}} (self, asm)
+\item 
+\mbox{\hyperlink{classi8080___c_i_1_1_disasm_view_ac550039c460ba83a7231b392d84590ee}{wheel\+Event}} (self, event)
+\item 
+\mbox{\hyperlink{classi8080___c_i_1_1_disasm_view_abe67f0f88dfbce3dea81be7f5ea5439c}{paint\+Event}} (self, event)
+\item 
+\mbox{\hyperlink{classi8080___c_i_1_1_disasm_view_a53fbbc1588d8212d7ba7f3cd96028881}{draw\+\_\+arrows}} (self, painter)
+\item 
+\mbox{\hyperlink{classi8080___c_i_1_1_disasm_view_a5d3f630a5f6673a61e65651027169972}{mouse\+Double\+Click\+Event}} (self, event)
+\item 
+\mbox{\hyperlink{classi8080___c_i_1_1_disasm_view_a0844f7e66d359010e39e4f3df97c68ad}{set\+\_\+breakpoints}} (self, \mbox{\hyperlink{classi8080___c_i_1_1_disasm_view_a5a5e5e90637dedeb9544a5437d11cd55}{breakpoints}})
+\item 
+\mbox{\hyperlink{classi8080___c_i_1_1_disasm_view_ad3cc66b8d5e9139f89bd6d9e48c903e6}{set\+\_\+interactive}} (self, enabled)
+\item 
+\mbox{\hyperlink{classi8080___c_i_1_1_disasm_view_a598453972678a16624fd61697a6c8c86}{set\+\_\+cursor}} (self, addr)
+\item 
+\mbox{\hyperlink{classi8080___c_i_1_1_disasm_view_a1545e6d23d3ae534aea7e32dd0ccd389}{get\+\_\+line\+\_\+addr\+\_\+at}} (self, y)
+\item 
+\mbox{\hyperlink{classi8080___c_i_1_1_disasm_view_a6e4d3ed3925c72e320d97a9dc77b4b16}{mouse\+Press\+Event}} (self, event)
+\item 
+\mbox{\hyperlink{classi8080___c_i_1_1_disasm_view_a5914b31bee2ef7725e275c1beae0c84c}{context\+Menu\+Event}} (self, event)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+list \mbox{\hyperlink{classi8080___c_i_1_1_disasm_view_ad24edef959f9ab7b99b0a2580c3ff07b}{lines}} = \mbox{[}$\,$\mbox{]}
+\item 
+\mbox{\hyperlink{classi8080___c_i_1_1_disasm_view_a8583f8a031b2a935a5c25617a0a7e4dc}{mem\+\_\+data}} = mem\+\_\+data
+\item 
+int \mbox{\hyperlink{classi8080___c_i_1_1_disasm_view_a716d2f84cfe9adf9d48f0c507aa7b795}{line\+\_\+height}} = 22
+\item 
+dict \mbox{\hyperlink{classi8080___c_i_1_1_disasm_view_a6231034c8f995fd9786424e11b104e4c}{addr\+\_\+to\+\_\+index}} = \{\}
+\item 
+int \mbox{\hyperlink{classi8080___c_i_1_1_disasm_view_ae40a75f8d2d72c329e4f1b791c28f3a7}{font\+\_\+size}} = 10
+\item 
+int \mbox{\hyperlink{classi8080___c_i_1_1_disasm_view_a1014777737ed6656e41fa7f3304981ff}{arrow\+\_\+margin}} = 30
+\item 
+bool \mbox{\hyperlink{classi8080___c_i_1_1_disasm_view_a195d065a82aa4b108fc0f87751a678c7}{is\+\_\+dark\+\_\+theme}} = False
+\item 
+\mbox{\hyperlink{classi8080___c_i_1_1_disasm_view_ab74d401e416b9bd57b47be7dd029fdf3}{highlight\+\_\+addr}} = None
+\item 
+bool \mbox{\hyperlink{classi8080___c_i_1_1_disasm_view_a561076e1708a410ecfeb1a08c060521e}{interactive}} = False
+\item 
+\mbox{\hyperlink{classi8080___c_i_1_1_disasm_view_a6649d9e82ca4ff5b53623fb4783cde76}{cursor\+\_\+addr}} = None
+\item 
+\mbox{\hyperlink{classi8080___c_i_1_1_disasm_view_a5a5e5e90637dedeb9544a5437d11cd55}{breakpoints}} = set()
+\item 
+dict \mbox{\hyperlink{classi8080___c_i_1_1_disasm_view_a5a97bfd09b6cd5c25b4a5d8f72953939}{bp\+\_\+conditions}} = \{\}
+\item 
+str \mbox{\hyperlink{classi8080___c_i_1_1_disasm_view_abc3055262c18cce0c5618d17764c4a97}{lang}} = "{}en"{}
+\item 
+dict \mbox{\hyperlink{classi8080___c_i_1_1_disasm_view_aa3e1182a9ec10833da1119ceb0e99cab}{colors}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classi8080___c_i_1_1_disasm_view_a749375678ce47e4ddc5d7b492ea83555}{toggle\+Breakpoint}} = Signal(int)
+\item 
+\mbox{\hyperlink{classi8080___c_i_1_1_disasm_view_ae5681dd5cb583dd3d7e23f5b8488b6be}{cursor\+Changed}} = Signal(int)
+\item 
+\mbox{\hyperlink{classi8080___c_i_1_1_disasm_view_ad7278246a7d94844ba94dc334d0f2934}{run\+To\+Cursor\+Requested}} = Signal(int)
+\item 
+\mbox{\hyperlink{classi8080___c_i_1_1_disasm_view_a74e850f446cf33437afb56fbb052138c}{run\+From\+Here\+Requested}} = Signal(int)
+\item 
+\mbox{\hyperlink{classi8080___c_i_1_1_disasm_view_afe68c04ce32b25e0b95e25c1800eed3f}{jump\+To\+Cursor\+Requested}} = Signal(int)
+\item 
+\mbox{\hyperlink{classi8080___c_i_1_1_disasm_view_a0517905c658006545f5ac8b004a1496e}{set\+Conditional\+Breakpoint\+Requested}} = Signal(int)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classi8080___c_i_1_1_disasm_view_a8ea72c6b2890157f513704ea1f80dd66}\index{i8080\_CI.DisasmView@{i8080\_CI.DisasmView}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!i8080\_CI.DisasmView@{i8080\_CI.DisasmView}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_disasm_view_a8ea72c6b2890157f513704ea1f80dd66} 
+i8080\+\_\+\+CI.\+Disasm\+View.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{mem\+\_\+data}{, }\item[{}]{parent}{ = {\ttfamily None}}\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=196pt]{classi8080___c_i_1_1_disasm_view_a8ea72c6b2890157f513704ea1f80dd66_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=196pt]{classi8080___c_i_1_1_disasm_view_a8ea72c6b2890157f513704ea1f80dd66_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classi8080___c_i_1_1_disasm_view_a5914b31bee2ef7725e275c1beae0c84c}\index{i8080\_CI.DisasmView@{i8080\_CI.DisasmView}!contextMenuEvent@{contextMenuEvent}}
+\index{contextMenuEvent@{contextMenuEvent}!i8080\_CI.DisasmView@{i8080\_CI.DisasmView}}
+\doxysubsubsection{\texorpdfstring{contextMenuEvent()}{contextMenuEvent()}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_disasm_view_a5914b31bee2ef7725e275c1beae0c84c} 
+i8080\+\_\+\+CI.\+Disasm\+View.\+context\+Menu\+Event (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{event}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Контекстное меню (только в интерактивном режиме)\end{DoxyVerb}
+ \Hypertarget{classi8080___c_i_1_1_disasm_view_a53fbbc1588d8212d7ba7f3cd96028881}\index{i8080\_CI.DisasmView@{i8080\_CI.DisasmView}!draw\_arrows@{draw\_arrows}}
+\index{draw\_arrows@{draw\_arrows}!i8080\_CI.DisasmView@{i8080\_CI.DisasmView}}
+\doxysubsubsection{\texorpdfstring{draw\_arrows()}{draw\_arrows()}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_disasm_view_a53fbbc1588d8212d7ba7f3cd96028881} 
+i8080\+\_\+\+CI.\+Disasm\+View.\+draw\+\_\+arrows (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{painter}{}\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classi8080___c_i_1_1_disasm_view_a53fbbc1588d8212d7ba7f3cd96028881_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classi8080___c_i_1_1_disasm_view_a02225dd22fba33ca4f82d4f04ac5fd78}\index{i8080\_CI.DisasmView@{i8080\_CI.DisasmView}!get\_instruction\_color@{get\_instruction\_color}}
+\index{get\_instruction\_color@{get\_instruction\_color}!i8080\_CI.DisasmView@{i8080\_CI.DisasmView}}
+\doxysubsubsection{\texorpdfstring{get\_instruction\_color()}{get\_instruction\_color()}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_disasm_view_a02225dd22fba33ca4f82d4f04ac5fd78} 
+i8080\+\_\+\+CI.\+Disasm\+View.\+get\+\_\+instruction\+\_\+color (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{asm}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Возвращает цвет для команды в зависимости от её типа\end{DoxyVerb}
+ Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classi8080___c_i_1_1_disasm_view_a02225dd22fba33ca4f82d4f04ac5fd78_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classi8080___c_i_1_1_disasm_view_a1545e6d23d3ae534aea7e32dd0ccd389}\index{i8080\_CI.DisasmView@{i8080\_CI.DisasmView}!get\_line\_addr\_at@{get\_line\_addr\_at}}
+\index{get\_line\_addr\_at@{get\_line\_addr\_at}!i8080\_CI.DisasmView@{i8080\_CI.DisasmView}}
+\doxysubsubsection{\texorpdfstring{get\_line\_addr\_at()}{get\_line\_addr\_at()}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_disasm_view_a1545e6d23d3ae534aea7e32dd0ccd389} 
+i8080\+\_\+\+CI.\+Disasm\+View.\+get\+\_\+line\+\_\+addr\+\_\+at (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{y}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Возвращает адрес строки по Y-координате мыши\end{DoxyVerb}
+ \Hypertarget{classi8080___c_i_1_1_disasm_view_a5d3f630a5f6673a61e65651027169972}\index{i8080\_CI.DisasmView@{i8080\_CI.DisasmView}!mouseDoubleClickEvent@{mouseDoubleClickEvent}}
+\index{mouseDoubleClickEvent@{mouseDoubleClickEvent}!i8080\_CI.DisasmView@{i8080\_CI.DisasmView}}
+\doxysubsubsection{\texorpdfstring{mouseDoubleClickEvent()}{mouseDoubleClickEvent()}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_disasm_view_a5d3f630a5f6673a61e65651027169972} 
+i8080\+\_\+\+CI.\+Disasm\+View.\+mouse\+Double\+Click\+Event (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{event}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Двойной ЛЕВЫЙ клик — установить/удалить точку останова\end{DoxyVerb}
+ Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=225pt]{classi8080___c_i_1_1_disasm_view_a5d3f630a5f6673a61e65651027169972_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=225pt]{classi8080___c_i_1_1_disasm_view_a5d3f630a5f6673a61e65651027169972_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classi8080___c_i_1_1_disasm_view_a6e4d3ed3925c72e320d97a9dc77b4b16}\index{i8080\_CI.DisasmView@{i8080\_CI.DisasmView}!mousePressEvent@{mousePressEvent}}
+\index{mousePressEvent@{mousePressEvent}!i8080\_CI.DisasmView@{i8080\_CI.DisasmView}}
+\doxysubsubsection{\texorpdfstring{mousePressEvent()}{mousePressEvent()}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_disasm_view_a6e4d3ed3925c72e320d97a9dc77b4b16} 
+i8080\+\_\+\+CI.\+Disasm\+View.\+mouse\+Press\+Event (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{event}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Одинарный ЛЕВЫЙ клик — установка курсора\end{DoxyVerb}
+ \Hypertarget{classi8080___c_i_1_1_disasm_view_abe67f0f88dfbce3dea81be7f5ea5439c}\index{i8080\_CI.DisasmView@{i8080\_CI.DisasmView}!paintEvent@{paintEvent}}
+\index{paintEvent@{paintEvent}!i8080\_CI.DisasmView@{i8080\_CI.DisasmView}}
+\doxysubsubsection{\texorpdfstring{paintEvent()}{paintEvent()}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_disasm_view_abe67f0f88dfbce3dea81be7f5ea5439c} 
+i8080\+\_\+\+CI.\+Disasm\+View.\+paint\+Event (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{event}{}\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classi8080___c_i_1_1_disasm_view_abe67f0f88dfbce3dea81be7f5ea5439c_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classi8080___c_i_1_1_disasm_view_a2ba862ae685c94b96e28d39792e48ac6}\index{i8080\_CI.DisasmView@{i8080\_CI.DisasmView}!set\_bp\_conditions@{set\_bp\_conditions}}
+\index{set\_bp\_conditions@{set\_bp\_conditions}!i8080\_CI.DisasmView@{i8080\_CI.DisasmView}}
+\doxysubsubsection{\texorpdfstring{set\_bp\_conditions()}{set\_bp\_conditions()}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_disasm_view_a2ba862ae685c94b96e28d39792e48ac6} 
+i8080\+\_\+\+CI.\+Disasm\+View.\+set\+\_\+bp\+\_\+conditions (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{conditions}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Установить условия BP для отрисовки\end{DoxyVerb}
+ \Hypertarget{classi8080___c_i_1_1_disasm_view_a0844f7e66d359010e39e4f3df97c68ad}\index{i8080\_CI.DisasmView@{i8080\_CI.DisasmView}!set\_breakpoints@{set\_breakpoints}}
+\index{set\_breakpoints@{set\_breakpoints}!i8080\_CI.DisasmView@{i8080\_CI.DisasmView}}
+\doxysubsubsection{\texorpdfstring{set\_breakpoints()}{set\_breakpoints()}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_disasm_view_a0844f7e66d359010e39e4f3df97c68ad} 
+i8080\+\_\+\+CI.\+Disasm\+View.\+set\+\_\+breakpoints (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{breakpoints}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Установить точки останова для отрисовки\end{DoxyVerb}
+ \Hypertarget{classi8080___c_i_1_1_disasm_view_a598453972678a16624fd61697a6c8c86}\index{i8080\_CI.DisasmView@{i8080\_CI.DisasmView}!set\_cursor@{set\_cursor}}
+\index{set\_cursor@{set\_cursor}!i8080\_CI.DisasmView@{i8080\_CI.DisasmView}}
+\doxysubsubsection{\texorpdfstring{set\_cursor()}{set\_cursor()}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_disasm_view_a598453972678a16624fd61697a6c8c86} 
+i8080\+\_\+\+CI.\+Disasm\+View.\+set\+\_\+cursor (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{addr}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Установить курсор Run to Cursor\end{DoxyVerb}
+ \Hypertarget{classi8080___c_i_1_1_disasm_view_aadb74e4ee41f32eceafc393658250f4d}\index{i8080\_CI.DisasmView@{i8080\_CI.DisasmView}!set\_highlight@{set\_highlight}}
+\index{set\_highlight@{set\_highlight}!i8080\_CI.DisasmView@{i8080\_CI.DisasmView}}
+\doxysubsubsection{\texorpdfstring{set\_highlight()}{set\_highlight()}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_disasm_view_aadb74e4ee41f32eceafc393658250f4d} 
+i8080\+\_\+\+CI.\+Disasm\+View.\+set\+\_\+highlight (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{addr}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Установить подсветку строки (PC эмулятора)\end{DoxyVerb}
+ \Hypertarget{classi8080___c_i_1_1_disasm_view_ad3cc66b8d5e9139f89bd6d9e48c903e6}\index{i8080\_CI.DisasmView@{i8080\_CI.DisasmView}!set\_interactive@{set\_interactive}}
+\index{set\_interactive@{set\_interactive}!i8080\_CI.DisasmView@{i8080\_CI.DisasmView}}
+\doxysubsubsection{\texorpdfstring{set\_interactive()}{set\_interactive()}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_disasm_view_ad3cc66b8d5e9139f89bd6d9e48c903e6} 
+i8080\+\_\+\+CI.\+Disasm\+View.\+set\+\_\+interactive (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{enabled}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Включает/выключает интерактивный режим (курсор + меню)\end{DoxyVerb}
+ \Hypertarget{classi8080___c_i_1_1_disasm_view_aca92433e9275a58ac5e3bd3333bdd56e}\index{i8080\_CI.DisasmView@{i8080\_CI.DisasmView}!set\_lines@{set\_lines}}
+\index{set\_lines@{set\_lines}!i8080\_CI.DisasmView@{i8080\_CI.DisasmView}}
+\doxysubsubsection{\texorpdfstring{set\_lines()}{set\_lines()}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_disasm_view_aca92433e9275a58ac5e3bd3333bdd56e} 
+i8080\+\_\+\+CI.\+Disasm\+View.\+set\+\_\+lines (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{lines}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classi8080___c_i_1_1_disasm_view_abc323245b3c4eb194c984eb6c2144e2d}\index{i8080\_CI.DisasmView@{i8080\_CI.DisasmView}!set\_theme@{set\_theme}}
+\index{set\_theme@{set\_theme}!i8080\_CI.DisasmView@{i8080\_CI.DisasmView}}
+\doxysubsubsection{\texorpdfstring{set\_theme()}{set\_theme()}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_disasm_view_abc323245b3c4eb194c984eb6c2144e2d} 
+i8080\+\_\+\+CI.\+Disasm\+View.\+set\+\_\+theme (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{is\+\_\+dark}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Устанавливает тему\end{DoxyVerb}
+ Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classi8080___c_i_1_1_disasm_view_abc323245b3c4eb194c984eb6c2144e2d_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classi8080___c_i_1_1_disasm_view_a10106ee78ed1df9fec6fd330ba0a32d0}\index{i8080\_CI.DisasmView@{i8080\_CI.DisasmView}!setup\_colors@{setup\_colors}}
+\index{setup\_colors@{setup\_colors}!i8080\_CI.DisasmView@{i8080\_CI.DisasmView}}
+\doxysubsubsection{\texorpdfstring{setup\_colors()}{setup\_colors()}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_disasm_view_a10106ee78ed1df9fec6fd330ba0a32d0} 
+i8080\+\_\+\+CI.\+Disasm\+View.\+setup\+\_\+colors (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Настраивает цвета в зависимости от темы\end{DoxyVerb}
+ Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classi8080___c_i_1_1_disasm_view_a10106ee78ed1df9fec6fd330ba0a32d0_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classi8080___c_i_1_1_disasm_view_ac550039c460ba83a7231b392d84590ee}\index{i8080\_CI.DisasmView@{i8080\_CI.DisasmView}!wheelEvent@{wheelEvent}}
+\index{wheelEvent@{wheelEvent}!i8080\_CI.DisasmView@{i8080\_CI.DisasmView}}
+\doxysubsubsection{\texorpdfstring{wheelEvent()}{wheelEvent()}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_disasm_view_ac550039c460ba83a7231b392d84590ee} 
+i8080\+\_\+\+CI.\+Disasm\+View.\+wheel\+Event (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{event}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Ctrl + колесо мыши для изменения размера шрифта\end{DoxyVerb}
+ Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=221pt]{classi8080___c_i_1_1_disasm_view_ac550039c460ba83a7231b392d84590ee_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=221pt]{classi8080___c_i_1_1_disasm_view_ac550039c460ba83a7231b392d84590ee_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classi8080___c_i_1_1_disasm_view_a6231034c8f995fd9786424e11b104e4c}\index{i8080\_CI.DisasmView@{i8080\_CI.DisasmView}!addr\_to\_index@{addr\_to\_index}}
+\index{addr\_to\_index@{addr\_to\_index}!i8080\_CI.DisasmView@{i8080\_CI.DisasmView}}
+\doxysubsubsection{\texorpdfstring{addr\_to\_index}{addr\_to\_index}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_disasm_view_a6231034c8f995fd9786424e11b104e4c} 
+dict i8080\+\_\+\+CI.\+Disasm\+View.\+addr\+\_\+to\+\_\+index = \{\}}
+
+\Hypertarget{classi8080___c_i_1_1_disasm_view_a1014777737ed6656e41fa7f3304981ff}\index{i8080\_CI.DisasmView@{i8080\_CI.DisasmView}!arrow\_margin@{arrow\_margin}}
+\index{arrow\_margin@{arrow\_margin}!i8080\_CI.DisasmView@{i8080\_CI.DisasmView}}
+\doxysubsubsection{\texorpdfstring{arrow\_margin}{arrow\_margin}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_disasm_view_a1014777737ed6656e41fa7f3304981ff} 
+i8080\+\_\+\+CI.\+Disasm\+View.\+arrow\+\_\+margin = 30}
+
+\Hypertarget{classi8080___c_i_1_1_disasm_view_a5a97bfd09b6cd5c25b4a5d8f72953939}\index{i8080\_CI.DisasmView@{i8080\_CI.DisasmView}!bp\_conditions@{bp\_conditions}}
+\index{bp\_conditions@{bp\_conditions}!i8080\_CI.DisasmView@{i8080\_CI.DisasmView}}
+\doxysubsubsection{\texorpdfstring{bp\_conditions}{bp\_conditions}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_disasm_view_a5a97bfd09b6cd5c25b4a5d8f72953939} 
+dict i8080\+\_\+\+CI.\+Disasm\+View.\+bp\+\_\+conditions = \{\}}
+
+\Hypertarget{classi8080___c_i_1_1_disasm_view_a5a5e5e90637dedeb9544a5437d11cd55}\index{i8080\_CI.DisasmView@{i8080\_CI.DisasmView}!breakpoints@{breakpoints}}
+\index{breakpoints@{breakpoints}!i8080\_CI.DisasmView@{i8080\_CI.DisasmView}}
+\doxysubsubsection{\texorpdfstring{breakpoints}{breakpoints}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_disasm_view_a5a5e5e90637dedeb9544a5437d11cd55} 
+i8080\+\_\+\+CI.\+Disasm\+View.\+breakpoints = set()}
+
+\Hypertarget{classi8080___c_i_1_1_disasm_view_aa3e1182a9ec10833da1119ceb0e99cab}\index{i8080\_CI.DisasmView@{i8080\_CI.DisasmView}!colors@{colors}}
+\index{colors@{colors}!i8080\_CI.DisasmView@{i8080\_CI.DisasmView}}
+\doxysubsubsection{\texorpdfstring{colors}{colors}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_disasm_view_aa3e1182a9ec10833da1119ceb0e99cab} 
+dict i8080\+\_\+\+CI.\+Disasm\+View.\+colors}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}bg"{}}:\ QColor(\textcolor{stringliteral}{"{}\#1e1e1e"{}}),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}addr"{}}:\ QColor(\textcolor{stringliteral}{"{}\#858585"{}}),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}bytes"{}}:\ QColor(\textcolor{stringliteral}{"{}\#6a6a6a"{}}),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}jump"{}}:\ QColor(\textcolor{stringliteral}{"{}\#569cd6"{}}),\ \ \ \ \ \ \textcolor{comment}{\#\ Синий}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}memory"{}}:\ QColor(\textcolor{stringliteral}{"{}\#6bcf7f"{}}),\ \ \ \ \textcolor{comment}{\#\ Зелёный}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}io"{}}:\ QColor(\textcolor{stringliteral}{"{}\#c586c0"{}}),\ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Фиолетовый}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}control"{}}:\ QColor(\textcolor{stringliteral}{"{}\#858585"{}}),\ \ \ \textcolor{comment}{\#\ Серый}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}register"{}}:\ QColor(\textcolor{stringliteral}{"{}\#ce9178"{}}),\ \ \textcolor{comment}{\#\ Оранжевый}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}alu"{}}:\ QColor(\textcolor{stringliteral}{"{}\#dcdcaa"{}}),\ \ \ \ \ \ \ \textcolor{comment}{\#\ Жёлтый}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}stack"{}}:\ QColor(\textcolor{stringliteral}{"{}\#4ec9b0"{}}),\ \ \ \ \ \textcolor{comment}{\#\ Бирюзовый}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}undoc"{}}:\ QColor(\textcolor{stringliteral}{"{}\#ff6b6b"{}}),\ \ \ \ \ \textcolor{comment}{\#\ Красный}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}comment"{}}:\ QColor(\textcolor{stringliteral}{"{}\#569cd6"{}}),\ \ \ \textcolor{comment}{\#\ Голубой}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}text"{}}:\ QColor(\textcolor{stringliteral}{"{}\#d4d4d4"{}}),\ \ \ \ \ \ \textcolor{comment}{\#\ Основной\ текст}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{classi8080___c_i_1_1_disasm_view_a6649d9e82ca4ff5b53623fb4783cde76}\index{i8080\_CI.DisasmView@{i8080\_CI.DisasmView}!cursor\_addr@{cursor\_addr}}
+\index{cursor\_addr@{cursor\_addr}!i8080\_CI.DisasmView@{i8080\_CI.DisasmView}}
+\doxysubsubsection{\texorpdfstring{cursor\_addr}{cursor\_addr}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_disasm_view_a6649d9e82ca4ff5b53623fb4783cde76} 
+i8080\+\_\+\+CI.\+Disasm\+View.\+cursor\+\_\+addr = None}
+
+\Hypertarget{classi8080___c_i_1_1_disasm_view_ae5681dd5cb583dd3d7e23f5b8488b6be}\index{i8080\_CI.DisasmView@{i8080\_CI.DisasmView}!cursorChanged@{cursorChanged}}
+\index{cursorChanged@{cursorChanged}!i8080\_CI.DisasmView@{i8080\_CI.DisasmView}}
+\doxysubsubsection{\texorpdfstring{cursorChanged}{cursorChanged}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_disasm_view_ae5681dd5cb583dd3d7e23f5b8488b6be} 
+i8080\+\_\+\+CI.\+Disasm\+View.\+cursor\+Changed = Signal(int)\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classi8080___c_i_1_1_disasm_view_ae40a75f8d2d72c329e4f1b791c28f3a7}\index{i8080\_CI.DisasmView@{i8080\_CI.DisasmView}!font\_size@{font\_size}}
+\index{font\_size@{font\_size}!i8080\_CI.DisasmView@{i8080\_CI.DisasmView}}
+\doxysubsubsection{\texorpdfstring{font\_size}{font\_size}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_disasm_view_ae40a75f8d2d72c329e4f1b791c28f3a7} 
+i8080\+\_\+\+CI.\+Disasm\+View.\+font\+\_\+size = 10}
+
+\Hypertarget{classi8080___c_i_1_1_disasm_view_ab74d401e416b9bd57b47be7dd029fdf3}\index{i8080\_CI.DisasmView@{i8080\_CI.DisasmView}!highlight\_addr@{highlight\_addr}}
+\index{highlight\_addr@{highlight\_addr}!i8080\_CI.DisasmView@{i8080\_CI.DisasmView}}
+\doxysubsubsection{\texorpdfstring{highlight\_addr}{highlight\_addr}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_disasm_view_ab74d401e416b9bd57b47be7dd029fdf3} 
+i8080\+\_\+\+CI.\+Disasm\+View.\+highlight\+\_\+addr = None}
+
+\Hypertarget{classi8080___c_i_1_1_disasm_view_a561076e1708a410ecfeb1a08c060521e}\index{i8080\_CI.DisasmView@{i8080\_CI.DisasmView}!interactive@{interactive}}
+\index{interactive@{interactive}!i8080\_CI.DisasmView@{i8080\_CI.DisasmView}}
+\doxysubsubsection{\texorpdfstring{interactive}{interactive}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_disasm_view_a561076e1708a410ecfeb1a08c060521e} 
+bool i8080\+\_\+\+CI.\+Disasm\+View.\+interactive = False}
+
+\Hypertarget{classi8080___c_i_1_1_disasm_view_a195d065a82aa4b108fc0f87751a678c7}\index{i8080\_CI.DisasmView@{i8080\_CI.DisasmView}!is\_dark\_theme@{is\_dark\_theme}}
+\index{is\_dark\_theme@{is\_dark\_theme}!i8080\_CI.DisasmView@{i8080\_CI.DisasmView}}
+\doxysubsubsection{\texorpdfstring{is\_dark\_theme}{is\_dark\_theme}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_disasm_view_a195d065a82aa4b108fc0f87751a678c7} 
+bool i8080\+\_\+\+CI.\+Disasm\+View.\+is\+\_\+dark\+\_\+theme = False}
+
+\Hypertarget{classi8080___c_i_1_1_disasm_view_afe68c04ce32b25e0b95e25c1800eed3f}\index{i8080\_CI.DisasmView@{i8080\_CI.DisasmView}!jumpToCursorRequested@{jumpToCursorRequested}}
+\index{jumpToCursorRequested@{jumpToCursorRequested}!i8080\_CI.DisasmView@{i8080\_CI.DisasmView}}
+\doxysubsubsection{\texorpdfstring{jumpToCursorRequested}{jumpToCursorRequested}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_disasm_view_afe68c04ce32b25e0b95e25c1800eed3f} 
+i8080\+\_\+\+CI.\+Disasm\+View.\+jump\+To\+Cursor\+Requested = Signal(int)\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classi8080___c_i_1_1_disasm_view_abc3055262c18cce0c5618d17764c4a97}\index{i8080\_CI.DisasmView@{i8080\_CI.DisasmView}!lang@{lang}}
+\index{lang@{lang}!i8080\_CI.DisasmView@{i8080\_CI.DisasmView}}
+\doxysubsubsection{\texorpdfstring{lang}{lang}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_disasm_view_abc3055262c18cce0c5618d17764c4a97} 
+str i8080\+\_\+\+CI.\+Disasm\+View.\+lang = "{}en"{}}
+
+\Hypertarget{classi8080___c_i_1_1_disasm_view_a716d2f84cfe9adf9d48f0c507aa7b795}\index{i8080\_CI.DisasmView@{i8080\_CI.DisasmView}!line\_height@{line\_height}}
+\index{line\_height@{line\_height}!i8080\_CI.DisasmView@{i8080\_CI.DisasmView}}
+\doxysubsubsection{\texorpdfstring{line\_height}{line\_height}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_disasm_view_a716d2f84cfe9adf9d48f0c507aa7b795} 
+int i8080\+\_\+\+CI.\+Disasm\+View.\+line\+\_\+height = 22}
+
+\Hypertarget{classi8080___c_i_1_1_disasm_view_ad24edef959f9ab7b99b0a2580c3ff07b}\index{i8080\_CI.DisasmView@{i8080\_CI.DisasmView}!lines@{lines}}
+\index{lines@{lines}!i8080\_CI.DisasmView@{i8080\_CI.DisasmView}}
+\doxysubsubsection{\texorpdfstring{lines}{lines}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_disasm_view_ad24edef959f9ab7b99b0a2580c3ff07b} 
+i8080\+\_\+\+CI.\+Disasm\+View.\+lines = \mbox{[}$\,$\mbox{]}}
+
+\Hypertarget{classi8080___c_i_1_1_disasm_view_a8583f8a031b2a935a5c25617a0a7e4dc}\index{i8080\_CI.DisasmView@{i8080\_CI.DisasmView}!mem\_data@{mem\_data}}
+\index{mem\_data@{mem\_data}!i8080\_CI.DisasmView@{i8080\_CI.DisasmView}}
+\doxysubsubsection{\texorpdfstring{mem\_data}{mem\_data}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_disasm_view_a8583f8a031b2a935a5c25617a0a7e4dc} 
+i8080\+\_\+\+CI.\+Disasm\+View.\+mem\+\_\+data = mem\+\_\+data}
+
+\Hypertarget{classi8080___c_i_1_1_disasm_view_a74e850f446cf33437afb56fbb052138c}\index{i8080\_CI.DisasmView@{i8080\_CI.DisasmView}!runFromHereRequested@{runFromHereRequested}}
+\index{runFromHereRequested@{runFromHereRequested}!i8080\_CI.DisasmView@{i8080\_CI.DisasmView}}
+\doxysubsubsection{\texorpdfstring{runFromHereRequested}{runFromHereRequested}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_disasm_view_a74e850f446cf33437afb56fbb052138c} 
+i8080\+\_\+\+CI.\+Disasm\+View.\+run\+From\+Here\+Requested = Signal(int)\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classi8080___c_i_1_1_disasm_view_ad7278246a7d94844ba94dc334d0f2934}\index{i8080\_CI.DisasmView@{i8080\_CI.DisasmView}!runToCursorRequested@{runToCursorRequested}}
+\index{runToCursorRequested@{runToCursorRequested}!i8080\_CI.DisasmView@{i8080\_CI.DisasmView}}
+\doxysubsubsection{\texorpdfstring{runToCursorRequested}{runToCursorRequested}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_disasm_view_ad7278246a7d94844ba94dc334d0f2934} 
+i8080\+\_\+\+CI.\+Disasm\+View.\+run\+To\+Cursor\+Requested = Signal(int)\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classi8080___c_i_1_1_disasm_view_a0517905c658006545f5ac8b004a1496e}\index{i8080\_CI.DisasmView@{i8080\_CI.DisasmView}!setConditionalBreakpointRequested@{setConditionalBreakpointRequested}}
+\index{setConditionalBreakpointRequested@{setConditionalBreakpointRequested}!i8080\_CI.DisasmView@{i8080\_CI.DisasmView}}
+\doxysubsubsection{\texorpdfstring{setConditionalBreakpointRequested}{setConditionalBreakpointRequested}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_disasm_view_a0517905c658006545f5ac8b004a1496e} 
+i8080\+\_\+\+CI.\+Disasm\+View.\+set\+Conditional\+Breakpoint\+Requested = Signal(int)\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classi8080___c_i_1_1_disasm_view_a749375678ce47e4ddc5d7b492ea83555}\index{i8080\_CI.DisasmView@{i8080\_CI.DisasmView}!toggleBreakpoint@{toggleBreakpoint}}
+\index{toggleBreakpoint@{toggleBreakpoint}!i8080\_CI.DisasmView@{i8080\_CI.DisasmView}}
+\doxysubsubsection{\texorpdfstring{toggleBreakpoint}{toggleBreakpoint}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_disasm_view_a749375678ce47e4ddc5d7b492ea83555} 
+i8080\+\_\+\+CI.\+Disasm\+View.\+toggle\+Breakpoint = Signal(int)\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{i8080___c_i_8py}{i8080\+\_\+\+CI.\+py}}\end{DoxyCompactItemize}

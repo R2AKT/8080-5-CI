@@ -1,0 +1,53 @@
+\doxysection{tests/test\+\_\+i8272.py File Reference}
+\hypertarget{test__i8272_8py}{}\label{test__i8272_8py}\index{tests/test\_i8272.py@{tests/test\_i8272.py}}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacetest__i8272}{test\+\_\+i8272}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespacetest__i8272_a03b3144405e8d8ad007a5fd166f5150b}{test\+\_\+i8272.\+check}} (name, actual, expected)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{namespacetest__i8272_aadf1866fcae8f8eb456c8cad39b8f659}{test\+\_\+i8272.\+passed}} = 0
+\item 
+int \mbox{\hyperlink{namespacetest__i8272_a423e071c75bb020bd564b9280bb88127}{test\+\_\+i8272.\+failed}} = 0
+\item 
+\mbox{\hyperlink{namespacetest__i8272_afd854083a6801fd120ca4c6f6b687fbe}{test\+\_\+i8272.\+bus}} = \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus}{Memory\+Bus}}()
+\item 
+\mbox{\hyperlink{namespacetest__i8272_ad111743a78cccc4d53081875322c1d49}{test\+\_\+i8272.\+fdc}} = \mbox{\hyperlink{classmodules_1_1io_1_1i8272_1_1_i8272}{I8272}}(base\+\_\+port=0x\+F0)
+\item 
+\mbox{\hyperlink{namespacetest__i8272_a4afd3bba0518c428544603edab6288a4}{test\+\_\+i8272.\+status}} = bus.\+io\+\_\+read(0x\+F2)
+\item 
+\mbox{\hyperlink{namespacetest__i8272_ac926bee6f2cf662c191e086ee3e45f7d}{test\+\_\+i8272.\+drive}} = fdc.\+drives\mbox{[}0\mbox{]}
+\item 
+\mbox{\hyperlink{namespacetest__i8272_a1c46f6d38e60352e8b502d36afd7fb16}{test\+\_\+i8272.\+sector\+\_\+data}} = drive.\+read\+\_\+sector(0, 0, 1)
+\item 
+\mbox{\hyperlink{namespacetest__i8272_a9cccaf534ead7690ce4f6766bb771e9f}{test\+\_\+i8272.\+result}} = bus.\+io\+\_\+read(0x\+F2)
+\item 
+list \mbox{\hyperlink{namespacetest__i8272_a06a3734488b6bbe79c1fff75c0aabb00}{test\+\_\+i8272.\+read\+\_\+data}} = \mbox{[}$\,$\mbox{]}
+\item 
+\mbox{\hyperlink{namespacetest__i8272_a98bed51152a08713e217d20d337ec9bd}{test\+\_\+i8272.\+st0}} = bus.\+io\+\_\+read(0x\+F2)
+\item 
+\mbox{\hyperlink{namespacetest__i8272_aadf6309a2118a5a9735f19bc100c6581}{test\+\_\+i8272.\+cyl}} = bus.\+io\+\_\+read(0x\+F2)
+\item 
+\mbox{\hyperlink{namespacetest__i8272_af995fbdf57dd3f1c2791ab70ac5a0bfb}{test\+\_\+i8272.\+version}} = bus.\+io\+\_\+read(0x\+F2)
+\item 
+\mbox{\hyperlink{namespacetest__i8272_a66246a6e27e8faac3a15d554446cf55e}{test\+\_\+i8272.\+cylinder}}
+\item 
+\mbox{\hyperlink{namespacetest__i8272_ae26f49aa8b0cc91e33c3b3616b21baf3}{test\+\_\+i8272.\+head}} = bus.\+io\+\_\+read(0x\+F2)
+\item 
+\mbox{\hyperlink{namespacetest__i8272_a163cf4ff01b858549578366bd04cc4d8}{test\+\_\+i8272.\+sector}}
+\item 
+\mbox{\hyperlink{namespacetest__i8272_a738956cd0df1ab80ce45765d2403a926}{test\+\_\+i8272.\+st1}} = bus.\+io\+\_\+read(0x\+F2)
+\item 
+\mbox{\hyperlink{namespacetest__i8272_a8f0160646f83a573287bd14af4b61f00}{test\+\_\+i8272.\+st2}} = bus.\+io\+\_\+read(0x\+F2)
+\item 
+\mbox{\hyperlink{namespacetest__i8272_a9a38c9f7decaa27557912ff35341d87f}{test\+\_\+i8272.\+sec}} = bus.\+io\+\_\+read(0x\+F2)
+\item 
+\mbox{\hyperlink{namespacetest__i8272_ac7a8f067584ec4abacbffca8c606cda1}{test\+\_\+i8272.\+n}} = bus.\+io\+\_\+read(0x\+F2)
+\end{DoxyCompactItemize}

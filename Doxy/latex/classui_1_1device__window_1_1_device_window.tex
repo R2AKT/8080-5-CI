@@ -1,0 +1,256 @@
+\doxysection{ui.\+device\+\_\+window.\+Device\+Window Class Reference}
+\hypertarget{classui_1_1device__window_1_1_device_window}{}\label{classui_1_1device__window_1_1_device_window}\index{ui.device\_window.DeviceWindow@{ui.device\_window.DeviceWindow}}
+
+
+Inheritance diagram for ui.\+device\+\_\+window.\+Device\+Window\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=242pt]{classui_1_1device__window_1_1_device_window__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for ui.\+device\+\_\+window.\+Device\+Window\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=242pt]{classui_1_1device__window_1_1_device_window__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classui_1_1device__window_1_1_device_window_a4c0eeb46bc11ffca3ad979f3771cf6db}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, \mbox{\hyperlink{classui_1_1device__window_1_1_device_window_aec61c48aec024dd8c2928ca4c041e969}{device}}, \mbox{\hyperlink{classui_1_1device__window_1_1_device_window_a40f83c45f0cf52693f165b5c1aacf3ff}{device\+\_\+name}}, \mbox{\hyperlink{classui_1_1device__window_1_1_device_window_a21843b6fddb0930b4c359567fea5bfc7}{lang}}="{}en"{}, always\+\_\+on\+\_\+top=False, parent=None)
+\item 
+\mbox{\hyperlink{classui_1_1device__window_1_1_device_window_aa9e3027d277996873b3fa62cfa9bb61c}{refresh}} (self)
+\item 
+\mbox{\hyperlink{classui_1_1device__window_1_1_device_window_a23604dabfc445352e367259f1566bf83}{set\+\_\+always\+\_\+on\+\_\+top}} (self, enabled)
+\item 
+\mbox{\hyperlink{classui_1_1device__window_1_1_device_window_ade96055c0da618bb75d0b4046bf4457c}{close\+Event}} (self, event)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classui_1_1device__window_1_1_device_window_aec61c48aec024dd8c2928ca4c041e969}{device}} = device
+\item 
+\mbox{\hyperlink{classui_1_1device__window_1_1_device_window_a40f83c45f0cf52693f165b5c1aacf3ff}{device\+\_\+name}} = device\+\_\+name
+\item 
+\mbox{\hyperlink{classui_1_1device__window_1_1_device_window_a21843b6fddb0930b4c359567fea5bfc7}{lang}} = lang
+\item 
+\mbox{\hyperlink{classui_1_1device__window_1_1_device_window_a2c6f4e6181d8d04a5db1cd97b686ddff}{refresh\+\_\+timer}} = QTimer(self)
+\item 
+\mbox{\hyperlink{classui_1_1device__window_1_1_device_window_a1b208e84f61e68625605a770d873fae3}{display\+\_\+widget}} = create\+\_\+display\+\_\+widget(self.\+device)
+\item 
+\mbox{\hyperlink{classui_1_1device__window_1_1_device_window_a493aa1fc8422c2bd1c423bbf854524bb}{terminal\+\_\+widget}} = create\+\_\+terminal\+\_\+widget(self.\+device)
+\item 
+\mbox{\hyperlink{classui_1_1device__window_1_1_device_window_a39adb17e870a155d0a3c810c31c5230a}{regs\+\_\+layout}} = QForm\+Layout(scroll\+\_\+widget)
+\item 
+\mbox{\hyperlink{classui_1_1device__window_1_1_device_window_afe47015fdfa2ebac4f290b590098e5e5}{chk\+\_\+auto}} = QCheck\+Box("{}Авто"{})
+\item 
+\mbox{\hyperlink{classui_1_1device__window_1_1_device_window_a108fd0cda261b32fb5b658bed4da5a56}{btn\+\_\+refresh}} = QPush\+Button("{}Обновить"{})
+\item 
+\mbox{\hyperlink{classui_1_1device__window_1_1_device_window_aa9742ce582e68e40606bff694c6e90b8}{refresh}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classui_1_1device__window_1_1_device_window_a56306f622bfc9667d4c2e761aaecc286}{\+\_\+init\+\_\+ui}} (self)
+\item 
+\mbox{\hyperlink{classui_1_1device__window_1_1_device_window_a857a0b099c491ed8b66db4efb6d608d5}{\+\_\+get\+\_\+state}} (self)
+\item 
+\mbox{\hyperlink{classui_1_1device__window_1_1_device_window_a24932febeb68b181ae185bdf697fa0f4}{\+\_\+format\+\_\+value}} (self, val)
+\item 
+\mbox{\hyperlink{classui_1_1device__window_1_1_device_window_aa519270621d7b834508d31d9cee894b5}{\+\_\+auto\+\_\+refresh}} (self)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+dict \mbox{\hyperlink{classui_1_1device__window_1_1_device_window_a007acab4c9c2c17e822236774d6750f1}{\+\_\+fields}} = \{\}
+\item 
+\mbox{\hyperlink{classui_1_1device__window_1_1_device_window_aa4873e66b4abd3f70855ce878529fff1}{\+\_\+auto\+\_\+refresh}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Индивидуальное окно устройства с автообновлением состояния\end{DoxyVerb}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classui_1_1device__window_1_1_device_window_a4c0eeb46bc11ffca3ad979f3771cf6db}\index{ui.device\_window.DeviceWindow@{ui.device\_window.DeviceWindow}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!ui.device\_window.DeviceWindow@{ui.device\_window.DeviceWindow}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \label{classui_1_1device__window_1_1_device_window_a4c0eeb46bc11ffca3ad979f3771cf6db} 
+ui.\+device\+\_\+window.\+Device\+Window.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{device}{, }\item[{}]{device\+\_\+name}{, }\item[{}]{lang}{ = {\ttfamily "{}en"{}}, }\item[{}]{always\+\_\+on\+\_\+top}{ = {\ttfamily False}, }\item[{}]{parent}{ = {\ttfamily None}}\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=244pt]{classui_1_1device__window_1_1_device_window_a4c0eeb46bc11ffca3ad979f3771cf6db_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=244pt]{classui_1_1device__window_1_1_device_window_a4c0eeb46bc11ffca3ad979f3771cf6db_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classui_1_1device__window_1_1_device_window_aa519270621d7b834508d31d9cee894b5}\index{ui.device\_window.DeviceWindow@{ui.device\_window.DeviceWindow}!\_auto\_refresh@{\_auto\_refresh}}
+\index{\_auto\_refresh@{\_auto\_refresh}!ui.device\_window.DeviceWindow@{ui.device\_window.DeviceWindow}}
+\doxysubsubsection{\texorpdfstring{\_auto\_refresh()}{\_auto\_refresh()}}
+{\footnotesize\ttfamily \label{classui_1_1device__window_1_1_device_window_aa519270621d7b834508d31d9cee894b5} 
+ui.\+device\+\_\+window.\+Device\+Window.\+\_\+auto\+\_\+refresh (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classui_1_1device__window_1_1_device_window_a24932febeb68b181ae185bdf697fa0f4}\index{ui.device\_window.DeviceWindow@{ui.device\_window.DeviceWindow}!\_format\_value@{\_format\_value}}
+\index{\_format\_value@{\_format\_value}!ui.device\_window.DeviceWindow@{ui.device\_window.DeviceWindow}}
+\doxysubsubsection{\texorpdfstring{\_format\_value()}{\_format\_value()}}
+{\footnotesize\ttfamily \label{classui_1_1device__window_1_1_device_window_a24932febeb68b181ae185bdf697fa0f4} 
+ui.\+device\+\_\+window.\+Device\+Window.\+\_\+format\+\_\+value (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{val}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Форматировать значение для отображения\end{DoxyVerb}
+ Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classui_1_1device__window_1_1_device_window_a24932febeb68b181ae185bdf697fa0f4_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classui_1_1device__window_1_1_device_window_a857a0b099c491ed8b66db4efb6d608d5}\index{ui.device\_window.DeviceWindow@{ui.device\_window.DeviceWindow}!\_get\_state@{\_get\_state}}
+\index{\_get\_state@{\_get\_state}!ui.device\_window.DeviceWindow@{ui.device\_window.DeviceWindow}}
+\doxysubsubsection{\texorpdfstring{\_get\_state()}{\_get\_state()}}
+{\footnotesize\ttfamily \label{classui_1_1device__window_1_1_device_window_a857a0b099c491ed8b66db4efb6d608d5} 
+ui.\+device\+\_\+window.\+Device\+Window.\+\_\+get\+\_\+state (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Получить состояние устройства\end{DoxyVerb}
+ Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classui_1_1device__window_1_1_device_window_a857a0b099c491ed8b66db4efb6d608d5_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classui_1_1device__window_1_1_device_window_a56306f622bfc9667d4c2e761aaecc286}\index{ui.device\_window.DeviceWindow@{ui.device\_window.DeviceWindow}!\_init\_ui@{\_init\_ui}}
+\index{\_init\_ui@{\_init\_ui}!ui.device\_window.DeviceWindow@{ui.device\_window.DeviceWindow}}
+\doxysubsubsection{\texorpdfstring{\_init\_ui()}{\_init\_ui()}}
+{\footnotesize\ttfamily \label{classui_1_1device__window_1_1_device_window_a56306f622bfc9667d4c2e761aaecc286} 
+ui.\+device\+\_\+window.\+Device\+Window.\+\_\+init\+\_\+ui (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classui_1_1device__window_1_1_device_window_ade96055c0da618bb75d0b4046bf4457c}\index{ui.device\_window.DeviceWindow@{ui.device\_window.DeviceWindow}!closeEvent@{closeEvent}}
+\index{closeEvent@{closeEvent}!ui.device\_window.DeviceWindow@{ui.device\_window.DeviceWindow}}
+\doxysubsubsection{\texorpdfstring{closeEvent()}{closeEvent()}}
+{\footnotesize\ttfamily \label{classui_1_1device__window_1_1_device_window_ade96055c0da618bb75d0b4046bf4457c} 
+ui.\+device\+\_\+window.\+Device\+Window.\+close\+Event (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{event}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classui_1_1device__window_1_1_device_window_aa9e3027d277996873b3fa62cfa9bb61c}\index{ui.device\_window.DeviceWindow@{ui.device\_window.DeviceWindow}!refresh@{refresh}}
+\index{refresh@{refresh}!ui.device\_window.DeviceWindow@{ui.device\_window.DeviceWindow}}
+\doxysubsubsection{\texorpdfstring{refresh()}{refresh()}}
+{\footnotesize\ttfamily \label{classui_1_1device__window_1_1_device_window_aa9e3027d277996873b3fa62cfa9bb61c} 
+ui.\+device\+\_\+window.\+Device\+Window.\+refresh (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Обновить значения регистров\end{DoxyVerb}
+ Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classui_1_1device__window_1_1_device_window_aa9e3027d277996873b3fa62cfa9bb61c_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classui_1_1device__window_1_1_device_window_a23604dabfc445352e367259f1566bf83}\index{ui.device\_window.DeviceWindow@{ui.device\_window.DeviceWindow}!set\_always\_on\_top@{set\_always\_on\_top}}
+\index{set\_always\_on\_top@{set\_always\_on\_top}!ui.device\_window.DeviceWindow@{ui.device\_window.DeviceWindow}}
+\doxysubsubsection{\texorpdfstring{set\_always\_on\_top()}{set\_always\_on\_top()}}
+{\footnotesize\ttfamily \label{classui_1_1device__window_1_1_device_window_a23604dabfc445352e367259f1566bf83} 
+ui.\+device\+\_\+window.\+Device\+Window.\+set\+\_\+always\+\_\+on\+\_\+top (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{enabled}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Установить/снять флаг поверх всех окон\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classui_1_1device__window_1_1_device_window_aa4873e66b4abd3f70855ce878529fff1}\index{ui.device\_window.DeviceWindow@{ui.device\_window.DeviceWindow}!\_auto\_refresh@{\_auto\_refresh}}
+\index{\_auto\_refresh@{\_auto\_refresh}!ui.device\_window.DeviceWindow@{ui.device\_window.DeviceWindow}}
+\doxysubsubsection{\texorpdfstring{\_auto\_refresh}{\_auto\_refresh}}
+{\footnotesize\ttfamily \label{classui_1_1device__window_1_1_device_window_aa4873e66b4abd3f70855ce878529fff1} 
+ui.\+device\+\_\+window.\+Device\+Window.\+\_\+auto\+\_\+refresh\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classui_1_1device__window_1_1_device_window_a007acab4c9c2c17e822236774d6750f1}\index{ui.device\_window.DeviceWindow@{ui.device\_window.DeviceWindow}!\_fields@{\_fields}}
+\index{\_fields@{\_fields}!ui.device\_window.DeviceWindow@{ui.device\_window.DeviceWindow}}
+\doxysubsubsection{\texorpdfstring{\_fields}{\_fields}}
+{\footnotesize\ttfamily \label{classui_1_1device__window_1_1_device_window_a007acab4c9c2c17e822236774d6750f1} 
+dict ui.\+device\+\_\+window.\+Device\+Window.\+\_\+fields = \{\}\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classui_1_1device__window_1_1_device_window_a108fd0cda261b32fb5b658bed4da5a56}\index{ui.device\_window.DeviceWindow@{ui.device\_window.DeviceWindow}!btn\_refresh@{btn\_refresh}}
+\index{btn\_refresh@{btn\_refresh}!ui.device\_window.DeviceWindow@{ui.device\_window.DeviceWindow}}
+\doxysubsubsection{\texorpdfstring{btn\_refresh}{btn\_refresh}}
+{\footnotesize\ttfamily \label{classui_1_1device__window_1_1_device_window_a108fd0cda261b32fb5b658bed4da5a56} 
+ui.\+device\+\_\+window.\+Device\+Window.\+btn\+\_\+refresh = QPush\+Button("{}Обновить"{})}
+
+\Hypertarget{classui_1_1device__window_1_1_device_window_afe47015fdfa2ebac4f290b590098e5e5}\index{ui.device\_window.DeviceWindow@{ui.device\_window.DeviceWindow}!chk\_auto@{chk\_auto}}
+\index{chk\_auto@{chk\_auto}!ui.device\_window.DeviceWindow@{ui.device\_window.DeviceWindow}}
+\doxysubsubsection{\texorpdfstring{chk\_auto}{chk\_auto}}
+{\footnotesize\ttfamily \label{classui_1_1device__window_1_1_device_window_afe47015fdfa2ebac4f290b590098e5e5} 
+ui.\+device\+\_\+window.\+Device\+Window.\+chk\+\_\+auto = QCheck\+Box("{}Авто"{})}
+
+\Hypertarget{classui_1_1device__window_1_1_device_window_aec61c48aec024dd8c2928ca4c041e969}\index{ui.device\_window.DeviceWindow@{ui.device\_window.DeviceWindow}!device@{device}}
+\index{device@{device}!ui.device\_window.DeviceWindow@{ui.device\_window.DeviceWindow}}
+\doxysubsubsection{\texorpdfstring{device}{device}}
+{\footnotesize\ttfamily \label{classui_1_1device__window_1_1_device_window_aec61c48aec024dd8c2928ca4c041e969} 
+ui.\+device\+\_\+window.\+Device\+Window.\+device = device}
+
+\Hypertarget{classui_1_1device__window_1_1_device_window_a40f83c45f0cf52693f165b5c1aacf3ff}\index{ui.device\_window.DeviceWindow@{ui.device\_window.DeviceWindow}!device\_name@{device\_name}}
+\index{device\_name@{device\_name}!ui.device\_window.DeviceWindow@{ui.device\_window.DeviceWindow}}
+\doxysubsubsection{\texorpdfstring{device\_name}{device\_name}}
+{\footnotesize\ttfamily \label{classui_1_1device__window_1_1_device_window_a40f83c45f0cf52693f165b5c1aacf3ff} 
+ui.\+device\+\_\+window.\+Device\+Window.\+device\+\_\+name = device\+\_\+name}
+
+\Hypertarget{classui_1_1device__window_1_1_device_window_a1b208e84f61e68625605a770d873fae3}\index{ui.device\_window.DeviceWindow@{ui.device\_window.DeviceWindow}!display\_widget@{display\_widget}}
+\index{display\_widget@{display\_widget}!ui.device\_window.DeviceWindow@{ui.device\_window.DeviceWindow}}
+\doxysubsubsection{\texorpdfstring{display\_widget}{display\_widget}}
+{\footnotesize\ttfamily \label{classui_1_1device__window_1_1_device_window_a1b208e84f61e68625605a770d873fae3} 
+ui.\+device\+\_\+window.\+Device\+Window.\+display\+\_\+widget = create\+\_\+display\+\_\+widget(self.\+device)}
+
+\Hypertarget{classui_1_1device__window_1_1_device_window_a21843b6fddb0930b4c359567fea5bfc7}\index{ui.device\_window.DeviceWindow@{ui.device\_window.DeviceWindow}!lang@{lang}}
+\index{lang@{lang}!ui.device\_window.DeviceWindow@{ui.device\_window.DeviceWindow}}
+\doxysubsubsection{\texorpdfstring{lang}{lang}}
+{\footnotesize\ttfamily \label{classui_1_1device__window_1_1_device_window_a21843b6fddb0930b4c359567fea5bfc7} 
+ui.\+device\+\_\+window.\+Device\+Window.\+lang = lang}
+
+\Hypertarget{classui_1_1device__window_1_1_device_window_aa9742ce582e68e40606bff694c6e90b8}\index{ui.device\_window.DeviceWindow@{ui.device\_window.DeviceWindow}!refresh@{refresh}}
+\index{refresh@{refresh}!ui.device\_window.DeviceWindow@{ui.device\_window.DeviceWindow}}
+\doxysubsubsection{\texorpdfstring{refresh}{refresh}}
+{\footnotesize\ttfamily \label{classui_1_1device__window_1_1_device_window_aa9742ce582e68e40606bff694c6e90b8} 
+ui.\+device\+\_\+window.\+Device\+Window.\+refresh}
+
+\Hypertarget{classui_1_1device__window_1_1_device_window_a2c6f4e6181d8d04a5db1cd97b686ddff}\index{ui.device\_window.DeviceWindow@{ui.device\_window.DeviceWindow}!refresh\_timer@{refresh\_timer}}
+\index{refresh\_timer@{refresh\_timer}!ui.device\_window.DeviceWindow@{ui.device\_window.DeviceWindow}}
+\doxysubsubsection{\texorpdfstring{refresh\_timer}{refresh\_timer}}
+{\footnotesize\ttfamily \label{classui_1_1device__window_1_1_device_window_a2c6f4e6181d8d04a5db1cd97b686ddff} 
+ui.\+device\+\_\+window.\+Device\+Window.\+refresh\+\_\+timer = QTimer(self)}
+
+\Hypertarget{classui_1_1device__window_1_1_device_window_a39adb17e870a155d0a3c810c31c5230a}\index{ui.device\_window.DeviceWindow@{ui.device\_window.DeviceWindow}!regs\_layout@{regs\_layout}}
+\index{regs\_layout@{regs\_layout}!ui.device\_window.DeviceWindow@{ui.device\_window.DeviceWindow}}
+\doxysubsubsection{\texorpdfstring{regs\_layout}{regs\_layout}}
+{\footnotesize\ttfamily \label{classui_1_1device__window_1_1_device_window_a39adb17e870a155d0a3c810c31c5230a} 
+ui.\+device\+\_\+window.\+Device\+Window.\+regs\+\_\+layout = QForm\+Layout(scroll\+\_\+widget)}
+
+\Hypertarget{classui_1_1device__window_1_1_device_window_a493aa1fc8422c2bd1c423bbf854524bb}\index{ui.device\_window.DeviceWindow@{ui.device\_window.DeviceWindow}!terminal\_widget@{terminal\_widget}}
+\index{terminal\_widget@{terminal\_widget}!ui.device\_window.DeviceWindow@{ui.device\_window.DeviceWindow}}
+\doxysubsubsection{\texorpdfstring{terminal\_widget}{terminal\_widget}}
+{\footnotesize\ttfamily \label{classui_1_1device__window_1_1_device_window_a493aa1fc8422c2bd1c423bbf854524bb} 
+ui.\+device\+\_\+window.\+Device\+Window.\+terminal\+\_\+widget = create\+\_\+terminal\+\_\+widget(self.\+device)}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+ui/\mbox{\hyperlink{device__window_8py}{device\+\_\+window.\+py}}\end{DoxyCompactItemize}

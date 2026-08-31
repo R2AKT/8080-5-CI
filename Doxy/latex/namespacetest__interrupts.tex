@@ -1,0 +1,253 @@
+\doxysection{test\+\_\+interrupts Namespace Reference}
+\hypertarget{namespacetest__interrupts}{}\label{namespacetest__interrupts}\index{test\_interrupts@{test\_interrupts}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespacetest__interrupts_a4e39070f00f03ea697fa7f10c54cf3f3}{check}} (\mbox{\hyperlink{namespacetest__interrupts_ac7d68c1c7f593e15ef98b3abdbdcc0ae}{name}}, actual, expected)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{namespacetest__interrupts_ad4c1623154793003cdb658498eb5161d}{passed}} = 0
+\item 
+int \mbox{\hyperlink{namespacetest__interrupts_a59b069901296a29b2f662f150fda8a39}{failed}} = 0
+\item 
+str \mbox{\hyperlink{namespacetest__interrupts_a50aaa2f9ccfc6d9391a7c9e1c81b7a67}{toml\+\_\+config}}
+\item 
+\mbox{\hyperlink{namespacetest__interrupts_a4e30637ba25a11b943223aa6748ca941}{system}} = \mbox{\hyperlink{classmodules_1_1system_1_1_computer_system}{Computer\+System}}()
+\item 
+\mbox{\hyperlink{namespacetest__interrupts_ac7d68c1c7f593e15ef98b3abdbdcc0ae}{name}}
+\item 
+\mbox{\hyperlink{namespacetest__interrupts_a69ec98c4c1d918ba289b09acf0f5dcf5}{pit}} = system.\+get\+\_\+device("{}PIT-\/0"{})
+\item 
+\mbox{\hyperlink{namespacetest__interrupts_a5e18034c213f0f8d3ee4e5d1f15f576d}{vector}} = system.\+\_\+get\+\_\+interrupt\+\_\+vector("{}PIT-\/0"{}, pit)
+\item 
+str \mbox{\hyperlink{namespacetest__interrupts_abbc12126ee11b7925d9576a449c3eca2}{toml\+\_\+config2}}
+\item 
+\mbox{\hyperlink{namespacetest__interrupts_aa922c8ee8db0569fd5ddafb30c396cc0}{system2}} = \mbox{\hyperlink{classmodules_1_1system_1_1_computer_system}{Computer\+System}}()
+\item 
+\mbox{\hyperlink{namespacetest__interrupts_a09a86192f4ceef02ec6817f1f194311d}{pit2}} = system2.\+get\+\_\+device("{}PIT-\/0"{})
+\item 
+\mbox{\hyperlink{namespacetest__interrupts_aebff30d19398af66307ebd92cd1a4adf}{vector2}} = system2.\+\_\+get\+\_\+interrupt\+\_\+vector("{}PIT-\/0"{}, pit2)
+\item 
+dict \mbox{\hyperlink{namespacetest__interrupts_aa6f250a0133dba7525c58f759679b6cc}{mem}}
+\item 
+\mbox{\hyperlink{namespacetest__interrupts_a32790dc39998330e7dc6e33fa4fd5c82}{emu}} = \mbox{\hyperlink{classi8080__emulator_1_1_i8080_emulator}{I8080\+Emulator}}(\mbox{\hyperlink{namespacetest__interrupts_aa6f250a0133dba7525c58f759679b6cc}{mem}})
+\item 
+\mbox{\hyperlink{namespacetest__interrupts_a89f43cd897c483680456b66a363c530c}{sp}}
+\item 
+\mbox{\hyperlink{namespacetest__interrupts_a847fbfd73c6aa55b8e5e5c48c307d218}{int\+\_\+enabled}}
+\item 
+\mbox{\hyperlink{namespacetest__interrupts_a8791b12069f2014c0b09c9470296133e}{result}} = emu.\+\_\+handle\+\_\+interrupt()
+\item 
+\mbox{\hyperlink{namespacetest__interrupts_a0f382c62d133491b7a8de685d1e2efd0}{emu2}} = \mbox{\hyperlink{classi8080__emulator_1_1_i8080_emulator}{I8080\+Emulator}}(\mbox{\hyperlink{namespacetest__interrupts_aa6f250a0133dba7525c58f759679b6cc}{mem}})
+\item 
+\mbox{\hyperlink{namespacetest__interrupts_a97645d2139fa0420cafb586bb61c559d}{result2}} = emu2.\+\_\+handle\+\_\+interrupt()
+\item 
+\mbox{\hyperlink{namespacetest__interrupts_a646e236bd2e9f2b1d88f0038615a29a5}{system3}} = \mbox{\hyperlink{classmodules_1_1system_1_1_computer_system}{Computer\+System}}()
+\item 
+\mbox{\hyperlink{namespacetest__interrupts_a5a47a913c8213649ee04935276aa3ff7}{emu3}} = \mbox{\hyperlink{classi8080__emulator_1_1_i8080_emulator}{I8080\+Emulator}}(\mbox{\hyperlink{namespacetest__interrupts_aa6f250a0133dba7525c58f759679b6cc}{mem}})
+\item 
+\mbox{\hyperlink{namespacetest__interrupts_a6f646a81cd3ac5d6a6d5ddf62a0871c3}{pit3}} = system3.\+get\+\_\+device("{}PIT-\/0"{})
+\item 
+\mbox{\hyperlink{namespacetest__interrupts_a14ff5fbe244893a3ada118c07f4ab4ee}{irq\+\_\+flag}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Тест системы прерываний (итерация 10.1)\end{DoxyVerb}
+ 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespacetest__interrupts_a4e39070f00f03ea697fa7f10c54cf3f3}\index{test\_interrupts@{test\_interrupts}!check@{check}}
+\index{check@{check}!test\_interrupts@{test\_interrupts}}
+\doxysubsubsection{\texorpdfstring{check()}{check()}}
+{\footnotesize\ttfamily \label{namespacetest__interrupts_a4e39070f00f03ea697fa7f10c54cf3f3} 
+test\+\_\+interrupts.\+check (\begin{DoxyParamCaption}\item[{}]{name}{, }\item[{}]{actual}{, }\item[{}]{expected}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{namespacetest__interrupts_a32790dc39998330e7dc6e33fa4fd5c82}\index{test\_interrupts@{test\_interrupts}!emu@{emu}}
+\index{emu@{emu}!test\_interrupts@{test\_interrupts}}
+\doxysubsubsection{\texorpdfstring{emu}{emu}}
+{\footnotesize\ttfamily \label{namespacetest__interrupts_a32790dc39998330e7dc6e33fa4fd5c82} 
+test\+\_\+interrupts.\+emu = \mbox{\hyperlink{classi8080__emulator_1_1_i8080_emulator}{I8080\+Emulator}}(\mbox{\hyperlink{namespacetest__interrupts_aa6f250a0133dba7525c58f759679b6cc}{mem}})}
+
+\Hypertarget{namespacetest__interrupts_a0f382c62d133491b7a8de685d1e2efd0}\index{test\_interrupts@{test\_interrupts}!emu2@{emu2}}
+\index{emu2@{emu2}!test\_interrupts@{test\_interrupts}}
+\doxysubsubsection{\texorpdfstring{emu2}{emu2}}
+{\footnotesize\ttfamily \label{namespacetest__interrupts_a0f382c62d133491b7a8de685d1e2efd0} 
+test\+\_\+interrupts.\+emu2 = \mbox{\hyperlink{classi8080__emulator_1_1_i8080_emulator}{I8080\+Emulator}}(\mbox{\hyperlink{namespacetest__interrupts_aa6f250a0133dba7525c58f759679b6cc}{mem}})}
+
+\Hypertarget{namespacetest__interrupts_a5a47a913c8213649ee04935276aa3ff7}\index{test\_interrupts@{test\_interrupts}!emu3@{emu3}}
+\index{emu3@{emu3}!test\_interrupts@{test\_interrupts}}
+\doxysubsubsection{\texorpdfstring{emu3}{emu3}}
+{\footnotesize\ttfamily \label{namespacetest__interrupts_a5a47a913c8213649ee04935276aa3ff7} 
+test\+\_\+interrupts.\+emu3 = \mbox{\hyperlink{classi8080__emulator_1_1_i8080_emulator}{I8080\+Emulator}}(\mbox{\hyperlink{namespacetest__interrupts_aa6f250a0133dba7525c58f759679b6cc}{mem}})}
+
+\Hypertarget{namespacetest__interrupts_a59b069901296a29b2f662f150fda8a39}\index{test\_interrupts@{test\_interrupts}!failed@{failed}}
+\index{failed@{failed}!test\_interrupts@{test\_interrupts}}
+\doxysubsubsection{\texorpdfstring{failed}{failed}}
+{\footnotesize\ttfamily \label{namespacetest__interrupts_a59b069901296a29b2f662f150fda8a39} 
+int test\+\_\+interrupts.\+failed = 0}
+
+\Hypertarget{namespacetest__interrupts_a847fbfd73c6aa55b8e5e5c48c307d218}\index{test\_interrupts@{test\_interrupts}!int\_enabled@{int\_enabled}}
+\index{int\_enabled@{int\_enabled}!test\_interrupts@{test\_interrupts}}
+\doxysubsubsection{\texorpdfstring{int\_enabled}{int\_enabled}}
+{\footnotesize\ttfamily \label{namespacetest__interrupts_a847fbfd73c6aa55b8e5e5c48c307d218} 
+test\+\_\+interrupts.\+int\+\_\+enabled}
+
+\Hypertarget{namespacetest__interrupts_a14ff5fbe244893a3ada118c07f4ab4ee}\index{test\_interrupts@{test\_interrupts}!irq\_flag@{irq\_flag}}
+\index{irq\_flag@{irq\_flag}!test\_interrupts@{test\_interrupts}}
+\doxysubsubsection{\texorpdfstring{irq\_flag}{irq\_flag}}
+{\footnotesize\ttfamily \label{namespacetest__interrupts_a14ff5fbe244893a3ada118c07f4ab4ee} 
+test\+\_\+interrupts.\+irq\+\_\+flag}
+
+\Hypertarget{namespacetest__interrupts_aa6f250a0133dba7525c58f759679b6cc}\index{test\_interrupts@{test\_interrupts}!mem@{mem}}
+\index{mem@{mem}!test\_interrupts@{test\_interrupts}}
+\doxysubsubsection{\texorpdfstring{mem}{mem}}
+{\footnotesize\ttfamily \label{namespacetest__interrupts_aa6f250a0133dba7525c58f759679b6cc} 
+dict test\+\_\+interrupts.\+mem}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ =\ \ \{}
+\DoxyCodeLine{00002\ \ \ \ \ 0x0000:\ 0x00,\ \ \textcolor{comment}{\#\ NOP}}
+\DoxyCodeLine{00003\ \ \ \ \ 0x0001:\ 0x00,\ \ \textcolor{comment}{\#\ NOP}}
+\DoxyCodeLine{00004\ \ \ \ \ 0x0038:\ 0xC3,\ \ \textcolor{comment}{\#\ JMP\ 0x0100\ (по\ адресу\ RST\ 7)}}
+\DoxyCodeLine{00005\ \ \ \ \ 0x0039:\ 0x00,}
+\DoxyCodeLine{00006\ \ \ \ \ 0x003A:\ 0x01,}
+\DoxyCodeLine{00007\ \ \ \ \ 0x0100:\ 0x76,\ \ \textcolor{comment}{\#\ HLT}}
+\DoxyCodeLine{00008\ \}}
+
+\end{DoxyCode}
+\Hypertarget{namespacetest__interrupts_ac7d68c1c7f593e15ef98b3abdbdcc0ae}\index{test\_interrupts@{test\_interrupts}!name@{name}}
+\index{name@{name}!test\_interrupts@{test\_interrupts}}
+\doxysubsubsection{\texorpdfstring{name}{name}}
+{\footnotesize\ttfamily \label{namespacetest__interrupts_ac7d68c1c7f593e15ef98b3abdbdcc0ae} 
+test\+\_\+interrupts.\+name}
+
+\Hypertarget{namespacetest__interrupts_ad4c1623154793003cdb658498eb5161d}\index{test\_interrupts@{test\_interrupts}!passed@{passed}}
+\index{passed@{passed}!test\_interrupts@{test\_interrupts}}
+\doxysubsubsection{\texorpdfstring{passed}{passed}}
+{\footnotesize\ttfamily \label{namespacetest__interrupts_ad4c1623154793003cdb658498eb5161d} 
+int test\+\_\+interrupts.\+passed = 0}
+
+\Hypertarget{namespacetest__interrupts_a69ec98c4c1d918ba289b09acf0f5dcf5}\index{test\_interrupts@{test\_interrupts}!pit@{pit}}
+\index{pit@{pit}!test\_interrupts@{test\_interrupts}}
+\doxysubsubsection{\texorpdfstring{pit}{pit}}
+{\footnotesize\ttfamily \label{namespacetest__interrupts_a69ec98c4c1d918ba289b09acf0f5dcf5} 
+test\+\_\+interrupts.\+pit = system.\+get\+\_\+device("{}PIT-\/0"{})}
+
+\Hypertarget{namespacetest__interrupts_a09a86192f4ceef02ec6817f1f194311d}\index{test\_interrupts@{test\_interrupts}!pit2@{pit2}}
+\index{pit2@{pit2}!test\_interrupts@{test\_interrupts}}
+\doxysubsubsection{\texorpdfstring{pit2}{pit2}}
+{\footnotesize\ttfamily \label{namespacetest__interrupts_a09a86192f4ceef02ec6817f1f194311d} 
+test\+\_\+interrupts.\+pit2 = system2.\+get\+\_\+device("{}PIT-\/0"{})}
+
+\Hypertarget{namespacetest__interrupts_a6f646a81cd3ac5d6a6d5ddf62a0871c3}\index{test\_interrupts@{test\_interrupts}!pit3@{pit3}}
+\index{pit3@{pit3}!test\_interrupts@{test\_interrupts}}
+\doxysubsubsection{\texorpdfstring{pit3}{pit3}}
+{\footnotesize\ttfamily \label{namespacetest__interrupts_a6f646a81cd3ac5d6a6d5ddf62a0871c3} 
+test\+\_\+interrupts.\+pit3 = system3.\+get\+\_\+device("{}PIT-\/0"{})}
+
+\Hypertarget{namespacetest__interrupts_a8791b12069f2014c0b09c9470296133e}\index{test\_interrupts@{test\_interrupts}!result@{result}}
+\index{result@{result}!test\_interrupts@{test\_interrupts}}
+\doxysubsubsection{\texorpdfstring{result}{result}}
+{\footnotesize\ttfamily \label{namespacetest__interrupts_a8791b12069f2014c0b09c9470296133e} 
+test\+\_\+interrupts.\+result = emu.\+\_\+handle\+\_\+interrupt()}
+
+\Hypertarget{namespacetest__interrupts_a97645d2139fa0420cafb586bb61c559d}\index{test\_interrupts@{test\_interrupts}!result2@{result2}}
+\index{result2@{result2}!test\_interrupts@{test\_interrupts}}
+\doxysubsubsection{\texorpdfstring{result2}{result2}}
+{\footnotesize\ttfamily \label{namespacetest__interrupts_a97645d2139fa0420cafb586bb61c559d} 
+test\+\_\+interrupts.\+result2 = emu2.\+\_\+handle\+\_\+interrupt()}
+
+\Hypertarget{namespacetest__interrupts_a89f43cd897c483680456b66a363c530c}\index{test\_interrupts@{test\_interrupts}!sp@{sp}}
+\index{sp@{sp}!test\_interrupts@{test\_interrupts}}
+\doxysubsubsection{\texorpdfstring{sp}{sp}}
+{\footnotesize\ttfamily \label{namespacetest__interrupts_a89f43cd897c483680456b66a363c530c} 
+test\+\_\+interrupts.\+sp}
+
+\Hypertarget{namespacetest__interrupts_a4e30637ba25a11b943223aa6748ca941}\index{test\_interrupts@{test\_interrupts}!system@{system}}
+\index{system@{system}!test\_interrupts@{test\_interrupts}}
+\doxysubsubsection{\texorpdfstring{system}{system}}
+{\footnotesize\ttfamily \label{namespacetest__interrupts_a4e30637ba25a11b943223aa6748ca941} 
+test\+\_\+interrupts.\+system = \mbox{\hyperlink{classmodules_1_1system_1_1_computer_system}{Computer\+System}}()}
+
+\Hypertarget{namespacetest__interrupts_aa922c8ee8db0569fd5ddafb30c396cc0}\index{test\_interrupts@{test\_interrupts}!system2@{system2}}
+\index{system2@{system2}!test\_interrupts@{test\_interrupts}}
+\doxysubsubsection{\texorpdfstring{system2}{system2}}
+{\footnotesize\ttfamily \label{namespacetest__interrupts_aa922c8ee8db0569fd5ddafb30c396cc0} 
+test\+\_\+interrupts.\+system2 = \mbox{\hyperlink{classmodules_1_1system_1_1_computer_system}{Computer\+System}}()}
+
+\Hypertarget{namespacetest__interrupts_a646e236bd2e9f2b1d88f0038615a29a5}\index{test\_interrupts@{test\_interrupts}!system3@{system3}}
+\index{system3@{system3}!test\_interrupts@{test\_interrupts}}
+\doxysubsubsection{\texorpdfstring{system3}{system3}}
+{\footnotesize\ttfamily \label{namespacetest__interrupts_a646e236bd2e9f2b1d88f0038615a29a5} 
+test\+\_\+interrupts.\+system3 = \mbox{\hyperlink{classmodules_1_1system_1_1_computer_system}{Computer\+System}}()}
+
+\Hypertarget{namespacetest__interrupts_a50aaa2f9ccfc6d9391a7c9e1c81b7a67}\index{test\_interrupts@{test\_interrupts}!toml\_config@{toml\_config}}
+\index{toml\_config@{toml\_config}!test\_interrupts@{test\_interrupts}}
+\doxysubsubsection{\texorpdfstring{toml\_config}{toml\_config}}
+{\footnotesize\ttfamily \label{namespacetest__interrupts_a50aaa2f9ccfc6d9391a7c9e1c81b7a67} 
+test\+\_\+interrupts.\+toml\+\_\+config}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ =\ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{00002\ \textcolor{stringliteral}{[system]}}
+\DoxyCodeLine{00003\ \textcolor{stringliteral}{name\ =\ "{}IRQ\ Test"{}}}
+\DoxyCodeLine{00004\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{00005\ \textcolor{stringliteral}{[[memory]]}}
+\DoxyCodeLine{00006\ \textcolor{stringliteral}{type\ =\ "{}ram"{}}}
+\DoxyCodeLine{00007\ \textcolor{stringliteral}{start\ =\ 0x0000}}
+\DoxyCodeLine{00008\ \textcolor{stringliteral}{end\ =\ 0xFFFF}}
+\DoxyCodeLine{00009\ \textcolor{stringliteral}{name\ =\ "{}RAM"{}}}
+\DoxyCodeLine{00010\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{00011\ \textcolor{stringliteral}{[[devices]]}}
+\DoxyCodeLine{00012\ \textcolor{stringliteral}{type\ =\ "{}i8253"{}}}
+\DoxyCodeLine{00013\ \textcolor{stringliteral}{name\ =\ "{}PIT-\/0"{}}}
+\DoxyCodeLine{00014\ \textcolor{stringliteral}{base\_port\ =\ 0x04}}
+\DoxyCodeLine{00015\ \textcolor{stringliteral}{irq\_vector\ =\ 0xCF}}
+\DoxyCodeLine{00016\ \textcolor{stringliteral}{"{}"{}"{}}}
+
+\end{DoxyCode}
+\Hypertarget{namespacetest__interrupts_abbc12126ee11b7925d9576a449c3eca2}\index{test\_interrupts@{test\_interrupts}!toml\_config2@{toml\_config2}}
+\index{toml\_config2@{toml\_config2}!test\_interrupts@{test\_interrupts}}
+\doxysubsubsection{\texorpdfstring{toml\_config2}{toml\_config2}}
+{\footnotesize\ttfamily \label{namespacetest__interrupts_abbc12126ee11b7925d9576a449c3eca2} 
+test\+\_\+interrupts.\+toml\+\_\+config2}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ =\ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{00002\ \textcolor{stringliteral}{[system]}}
+\DoxyCodeLine{00003\ \textcolor{stringliteral}{name\ =\ "{}IRQ\ Default"{}}}
+\DoxyCodeLine{00004\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{00005\ \textcolor{stringliteral}{[[memory]]}}
+\DoxyCodeLine{00006\ \textcolor{stringliteral}{type\ =\ "{}ram"{}}}
+\DoxyCodeLine{00007\ \textcolor{stringliteral}{start\ =\ 0x0000}}
+\DoxyCodeLine{00008\ \textcolor{stringliteral}{end\ =\ 0xFFFF}}
+\DoxyCodeLine{00009\ \textcolor{stringliteral}{name\ =\ "{}RAM"{}}}
+\DoxyCodeLine{00010\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{00011\ \textcolor{stringliteral}{[[devices]]}}
+\DoxyCodeLine{00012\ \textcolor{stringliteral}{type\ =\ "{}i8253"{}}}
+\DoxyCodeLine{00013\ \textcolor{stringliteral}{name\ =\ "{}PIT-\/0"{}}}
+\DoxyCodeLine{00014\ \textcolor{stringliteral}{base\_port\ =\ 0x04}}
+\DoxyCodeLine{00015\ \textcolor{stringliteral}{"{}"{}"{}}}
+
+\end{DoxyCode}
+\Hypertarget{namespacetest__interrupts_a5e18034c213f0f8d3ee4e5d1f15f576d}\index{test\_interrupts@{test\_interrupts}!vector@{vector}}
+\index{vector@{vector}!test\_interrupts@{test\_interrupts}}
+\doxysubsubsection{\texorpdfstring{vector}{vector}}
+{\footnotesize\ttfamily \label{namespacetest__interrupts_a5e18034c213f0f8d3ee4e5d1f15f576d} 
+test\+\_\+interrupts.\+vector = system.\+\_\+get\+\_\+interrupt\+\_\+vector("{}PIT-\/0"{}, pit)}
+
+\Hypertarget{namespacetest__interrupts_aebff30d19398af66307ebd92cd1a4adf}\index{test\_interrupts@{test\_interrupts}!vector2@{vector2}}
+\index{vector2@{vector2}!test\_interrupts@{test\_interrupts}}
+\doxysubsubsection{\texorpdfstring{vector2}{vector2}}
+{\footnotesize\ttfamily \label{namespacetest__interrupts_aebff30d19398af66307ebd92cd1a4adf} 
+test\+\_\+interrupts.\+vector2 = system2.\+\_\+get\+\_\+interrupt\+\_\+vector("{}PIT-\/0"{}, pit2)}
+

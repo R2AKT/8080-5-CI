@@ -1,0 +1,270 @@
+\doxysection{modules.\+memory.\+banked.\+Banked\+Region Class Reference}
+\hypertarget{classmodules_1_1memory_1_1banked_1_1_banked_region}{}\label{classmodules_1_1memory_1_1banked_1_1_banked_region}\index{modules.memory.banked.BankedRegion@{modules.memory.banked.BankedRegion}}
+
+
+Inheritance diagram for modules.\+memory.\+banked.\+Banked\+Region\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=241pt]{classmodules_1_1memory_1_1banked_1_1_banked_region__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for modules.\+memory.\+banked.\+Banked\+Region\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=241pt]{classmodules_1_1memory_1_1banked_1_1_banked_region__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodules_1_1memory_1_1banked_1_1_banked_region_aec8cd7d12bfd30924c9ed438deea3675}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_a43dd15c2b8e11e0e886a94792fdd6880}{start}}, \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_ad9c14b35f4aec59f6494496a4a8881a8}{end}}, \mbox{\hyperlink{classmodules_1_1memory_1_1banked_1_1_banked_region_a6a639a80dd4f4e17f54060950533bae1}{num\+\_\+banks}}=2, \mbox{\hyperlink{classmodules_1_1memory_1_1banked_1_1_banked_region_a3f10562528b4ddbd4b54847a150edfe1}{switch\+\_\+port}}=None, \mbox{\hyperlink{classmodules_1_1memory_1_1banked_1_1_banked_region_a868cc5db10420d05347d48c9791d7ba8}{switch\+\_\+addr}}=None, \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_a182987f561d8f1276e9ba1458f1a160c}{name}}="{}Banked\+RAM"{})
+\item 
+\mbox{\hyperlink{classmodules_1_1memory_1_1banked_1_1_banked_region_afa1dee9b20404af207f626863e85c58c}{select\+\_\+bank}} (self, bank\+\_\+num)
+\item 
+\mbox{\hyperlink{classmodules_1_1memory_1_1banked_1_1_banked_region_afad3c78978cf30c9de5a8a18a2992401}{read}} (self, addr)
+\item 
+\mbox{\hyperlink{classmodules_1_1memory_1_1banked_1_1_banked_region_a5bedd3736bc9a1cf0d9a3cfb56f9f835}{write}} (self, addr, value)
+\item 
+\mbox{\hyperlink{classmodules_1_1memory_1_1banked_1_1_banked_region_a9ed7fb6d0f842aaf9e4f30bdc4de4bfe}{io\+\_\+write}} (self, port, value)
+\item 
+\mbox{\hyperlink{classmodules_1_1memory_1_1banked_1_1_banked_region_a4c4e1416d6892556e137ae3bc7ff288e}{get\+\_\+state}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1memory_1_1banked_1_1_banked_region_a6140081943f9e7edeac5c3f03a129b6d}{reset}} (self)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_region}{modules.\+memory.\+memory\+\_\+bus.\+Memory\+Region}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_aa390a09d4e8f8d0d9ce19232a8625f3b}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_a43dd15c2b8e11e0e886a94792fdd6880}{start}}, \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_ad9c14b35f4aec59f6494496a4a8881a8}{end}}, \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_a182987f561d8f1276e9ba1458f1a160c}{name}}="{}region"{})
+\item 
+\mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_a900e938846a8971cc3241066efc1329f}{contains}} (self, addr)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classmodules_1_1memory_1_1banked_1_1_banked_region_a70055a2765a739d7ded39876047438ba}{window\+\_\+size}} = \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_ad9c14b35f4aec59f6494496a4a8881a8}{end}} -\/ \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_a43dd15c2b8e11e0e886a94792fdd6880}{start}} + 1
+\item 
+\mbox{\hyperlink{classmodules_1_1memory_1_1banked_1_1_banked_region_a6a639a80dd4f4e17f54060950533bae1}{num\+\_\+banks}} = num\+\_\+banks
+\item 
+\mbox{\hyperlink{classmodules_1_1memory_1_1banked_1_1_banked_region_a3f10562528b4ddbd4b54847a150edfe1}{switch\+\_\+port}} = switch\+\_\+port
+\item 
+\mbox{\hyperlink{classmodules_1_1memory_1_1banked_1_1_banked_region_a868cc5db10420d05347d48c9791d7ba8}{switch\+\_\+addr}} = switch\+\_\+addr
+\item 
+int \mbox{\hyperlink{classmodules_1_1memory_1_1banked_1_1_banked_region_aa4501741febdaad35ae857a09270d58f}{current\+\_\+bank}} = 0
+\item 
+list \mbox{\hyperlink{classmodules_1_1memory_1_1banked_1_1_banked_region_ab9ced65f760234399ac773a8221d7b1c}{banks}} = \mbox{[}\{\} for \+\_\+ in range(\mbox{\hyperlink{classmodules_1_1memory_1_1banked_1_1_banked_region_a6a639a80dd4f4e17f54060950533bae1}{num\+\_\+banks}})\mbox{]}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_region}{modules.\+memory.\+memory\+\_\+bus.\+Memory\+Region}}}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_a43dd15c2b8e11e0e886a94792fdd6880}{start}} = start \& 0x\+FFFF
+\item 
+int \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_ad9c14b35f4aec59f6494496a4a8881a8}{end}} = end \& 0x\+FFFF
+\item 
+\mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_a182987f561d8f1276e9ba1458f1a160c}{name}} = name
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classmodules_1_1memory_1_1banked_1_1_banked_region_a6563c7ec130b951dcef4790dd77feee2}{\+\_\+switch\+\_\+pending}} = False
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Банковая память: окно в адресном пространстве, через которое
+виден один из банков физической памяти.
+
+Переключение банков:
+- через IO-порт (switch_port) — запись в порт выбирает банк
+- через адрес памяти (switch_addr) — запись по адресу выбирает банк
+
+Пример для Радио-86РК:
+- Окно: 0x0000-0xFFFF (всё адресное пространство)
+- 4 банка по 64 КБ
+- Переключение через порт 0x00
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classmodules_1_1memory_1_1banked_1_1_banked_region_aec8cd7d12bfd30924c9ed438deea3675}\index{modules.memory.banked.BankedRegion@{modules.memory.banked.BankedRegion}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!modules.memory.banked.BankedRegion@{modules.memory.banked.BankedRegion}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \label{classmodules_1_1memory_1_1banked_1_1_banked_region_aec8cd7d12bfd30924c9ed438deea3675} 
+modules.\+memory.\+banked.\+Banked\+Region.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{start}{, }\item[{}]{end}{, }\item[{}]{num\+\_\+banks}{ = {\ttfamily 2}, }\item[{}]{switch\+\_\+port}{ = {\ttfamily None}, }\item[{}]{switch\+\_\+addr}{ = {\ttfamily None}, }\item[{}]{name}{ = {\ttfamily "{}BankedRAM"{}}}\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=241pt]{classmodules_1_1memory_1_1banked_1_1_banked_region_aec8cd7d12bfd30924c9ed438deea3675_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=241pt]{classmodules_1_1memory_1_1banked_1_1_banked_region_aec8cd7d12bfd30924c9ed438deea3675_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classmodules_1_1memory_1_1banked_1_1_banked_region_a4c4e1416d6892556e137ae3bc7ff288e}\index{modules.memory.banked.BankedRegion@{modules.memory.banked.BankedRegion}!get\_state@{get\_state}}
+\index{get\_state@{get\_state}!modules.memory.banked.BankedRegion@{modules.memory.banked.BankedRegion}}
+\doxysubsubsection{\texorpdfstring{get\_state()}{get\_state()}}
+{\footnotesize\ttfamily \label{classmodules_1_1memory_1_1banked_1_1_banked_region_a4c4e1416d6892556e137ae3bc7ff288e} 
+modules.\+memory.\+banked.\+Banked\+Region.\+get\+\_\+state (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Текущее состояние банков\end{DoxyVerb}
+ \Hypertarget{classmodules_1_1memory_1_1banked_1_1_banked_region_a9ed7fb6d0f842aaf9e4f30bdc4de4bfe}\index{modules.memory.banked.BankedRegion@{modules.memory.banked.BankedRegion}!io\_write@{io\_write}}
+\index{io\_write@{io\_write}!modules.memory.banked.BankedRegion@{modules.memory.banked.BankedRegion}}
+\doxysubsubsection{\texorpdfstring{io\_write()}{io\_write()}}
+{\footnotesize\ttfamily \label{classmodules_1_1memory_1_1banked_1_1_banked_region_a9ed7fb6d0f842aaf9e4f30bdc4de4bfe} 
+modules.\+memory.\+banked.\+Banked\+Region.\+io\+\_\+write (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{port}{, }\item[{}]{value}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Обработка записи в IO-порт (переключение банка)\end{DoxyVerb}
+ Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1memory_1_1banked_1_1_banked_region_a9ed7fb6d0f842aaf9e4f30bdc4de4bfe_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1memory_1_1banked_1_1_banked_region_afad3c78978cf30c9de5a8a18a2992401}\index{modules.memory.banked.BankedRegion@{modules.memory.banked.BankedRegion}!read@{read}}
+\index{read@{read}!modules.memory.banked.BankedRegion@{modules.memory.banked.BankedRegion}}
+\doxysubsubsection{\texorpdfstring{read()}{read()}}
+{\footnotesize\ttfamily \label{classmodules_1_1memory_1_1banked_1_1_banked_region_afad3c78978cf30c9de5a8a18a2992401} 
+modules.\+memory.\+banked.\+Banked\+Region.\+read (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{addr}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Чтение из текущего банка\end{DoxyVerb}
+ 
+
+Reimplemented from \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_aa7586fa5d3bc8133dad3624eebf0d19e}{modules.\+memory.\+memory\+\_\+bus.\+Memory\+Region}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1memory_1_1banked_1_1_banked_region_afad3c78978cf30c9de5a8a18a2992401_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1memory_1_1banked_1_1_banked_region_afad3c78978cf30c9de5a8a18a2992401_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1memory_1_1banked_1_1_banked_region_a6140081943f9e7edeac5c3f03a129b6d}\index{modules.memory.banked.BankedRegion@{modules.memory.banked.BankedRegion}!reset@{reset}}
+\index{reset@{reset}!modules.memory.banked.BankedRegion@{modules.memory.banked.BankedRegion}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily \label{classmodules_1_1memory_1_1banked_1_1_banked_region_a6140081943f9e7edeac5c3f03a129b6d} 
+modules.\+memory.\+banked.\+Banked\+Region.\+reset (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Сброс на банк 0\end{DoxyVerb}
+ 
+
+Reimplemented from \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_a5a97354dcc0dca2c264f91f961d30eae}{modules.\+memory.\+memory\+\_\+bus.\+Memory\+Region}}.
+
+\Hypertarget{classmodules_1_1memory_1_1banked_1_1_banked_region_afa1dee9b20404af207f626863e85c58c}\index{modules.memory.banked.BankedRegion@{modules.memory.banked.BankedRegion}!select\_bank@{select\_bank}}
+\index{select\_bank@{select\_bank}!modules.memory.banked.BankedRegion@{modules.memory.banked.BankedRegion}}
+\doxysubsubsection{\texorpdfstring{select\_bank()}{select\_bank()}}
+{\footnotesize\ttfamily \label{classmodules_1_1memory_1_1banked_1_1_banked_region_afa1dee9b20404af207f626863e85c58c} 
+modules.\+memory.\+banked.\+Banked\+Region.\+select\+\_\+bank (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{bank\+\_\+num}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Переключить банк\end{DoxyVerb}
+ Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1memory_1_1banked_1_1_banked_region_afa1dee9b20404af207f626863e85c58c_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1memory_1_1banked_1_1_banked_region_a5bedd3736bc9a1cf0d9a3cfb56f9f835}\index{modules.memory.banked.BankedRegion@{modules.memory.banked.BankedRegion}!write@{write}}
+\index{write@{write}!modules.memory.banked.BankedRegion@{modules.memory.banked.BankedRegion}}
+\doxysubsubsection{\texorpdfstring{write()}{write()}}
+{\footnotesize\ttfamily \label{classmodules_1_1memory_1_1banked_1_1_banked_region_a5bedd3736bc9a1cf0d9a3cfb56f9f835} 
+modules.\+memory.\+banked.\+Banked\+Region.\+write (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{addr}{, }\item[{}]{value}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Запись в текущий банк, или переключение банка\end{DoxyVerb}
+ 
+
+Reimplemented from \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_a693a7091168e93cd36b98fba8c1a7c28}{modules.\+memory.\+memory\+\_\+bus.\+Memory\+Region}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1memory_1_1banked_1_1_banked_region_a5bedd3736bc9a1cf0d9a3cfb56f9f835_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1memory_1_1banked_1_1_banked_region_a5bedd3736bc9a1cf0d9a3cfb56f9f835_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classmodules_1_1memory_1_1banked_1_1_banked_region_a6563c7ec130b951dcef4790dd77feee2}\index{modules.memory.banked.BankedRegion@{modules.memory.banked.BankedRegion}!\_switch\_pending@{\_switch\_pending}}
+\index{\_switch\_pending@{\_switch\_pending}!modules.memory.banked.BankedRegion@{modules.memory.banked.BankedRegion}}
+\doxysubsubsection{\texorpdfstring{\_switch\_pending}{\_switch\_pending}}
+{\footnotesize\ttfamily \label{classmodules_1_1memory_1_1banked_1_1_banked_region_a6563c7ec130b951dcef4790dd77feee2} 
+bool modules.\+memory.\+banked.\+Banked\+Region.\+\_\+switch\+\_\+pending = False\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classmodules_1_1memory_1_1banked_1_1_banked_region_ab9ced65f760234399ac773a8221d7b1c}\index{modules.memory.banked.BankedRegion@{modules.memory.banked.BankedRegion}!banks@{banks}}
+\index{banks@{banks}!modules.memory.banked.BankedRegion@{modules.memory.banked.BankedRegion}}
+\doxysubsubsection{\texorpdfstring{banks}{banks}}
+{\footnotesize\ttfamily \label{classmodules_1_1memory_1_1banked_1_1_banked_region_ab9ced65f760234399ac773a8221d7b1c} 
+list modules.\+memory.\+banked.\+Banked\+Region.\+banks = \mbox{[}\{\} for \+\_\+ in range(\mbox{\hyperlink{classmodules_1_1memory_1_1banked_1_1_banked_region_a6a639a80dd4f4e17f54060950533bae1}{num\+\_\+banks}})\mbox{]}}
+
+\Hypertarget{classmodules_1_1memory_1_1banked_1_1_banked_region_aa4501741febdaad35ae857a09270d58f}\index{modules.memory.banked.BankedRegion@{modules.memory.banked.BankedRegion}!current\_bank@{current\_bank}}
+\index{current\_bank@{current\_bank}!modules.memory.banked.BankedRegion@{modules.memory.banked.BankedRegion}}
+\doxysubsubsection{\texorpdfstring{current\_bank}{current\_bank}}
+{\footnotesize\ttfamily \label{classmodules_1_1memory_1_1banked_1_1_banked_region_aa4501741febdaad35ae857a09270d58f} 
+modules.\+memory.\+banked.\+Banked\+Region.\+current\+\_\+bank = 0}
+
+\Hypertarget{classmodules_1_1memory_1_1banked_1_1_banked_region_a6a639a80dd4f4e17f54060950533bae1}\index{modules.memory.banked.BankedRegion@{modules.memory.banked.BankedRegion}!num\_banks@{num\_banks}}
+\index{num\_banks@{num\_banks}!modules.memory.banked.BankedRegion@{modules.memory.banked.BankedRegion}}
+\doxysubsubsection{\texorpdfstring{num\_banks}{num\_banks}}
+{\footnotesize\ttfamily \label{classmodules_1_1memory_1_1banked_1_1_banked_region_a6a639a80dd4f4e17f54060950533bae1} 
+modules.\+memory.\+banked.\+Banked\+Region.\+num\+\_\+banks = num\+\_\+banks}
+
+\Hypertarget{classmodules_1_1memory_1_1banked_1_1_banked_region_a868cc5db10420d05347d48c9791d7ba8}\index{modules.memory.banked.BankedRegion@{modules.memory.banked.BankedRegion}!switch\_addr@{switch\_addr}}
+\index{switch\_addr@{switch\_addr}!modules.memory.banked.BankedRegion@{modules.memory.banked.BankedRegion}}
+\doxysubsubsection{\texorpdfstring{switch\_addr}{switch\_addr}}
+{\footnotesize\ttfamily \label{classmodules_1_1memory_1_1banked_1_1_banked_region_a868cc5db10420d05347d48c9791d7ba8} 
+modules.\+memory.\+banked.\+Banked\+Region.\+switch\+\_\+addr = switch\+\_\+addr}
+
+\Hypertarget{classmodules_1_1memory_1_1banked_1_1_banked_region_a3f10562528b4ddbd4b54847a150edfe1}\index{modules.memory.banked.BankedRegion@{modules.memory.banked.BankedRegion}!switch\_port@{switch\_port}}
+\index{switch\_port@{switch\_port}!modules.memory.banked.BankedRegion@{modules.memory.banked.BankedRegion}}
+\doxysubsubsection{\texorpdfstring{switch\_port}{switch\_port}}
+{\footnotesize\ttfamily \label{classmodules_1_1memory_1_1banked_1_1_banked_region_a3f10562528b4ddbd4b54847a150edfe1} 
+modules.\+memory.\+banked.\+Banked\+Region.\+switch\+\_\+port = switch\+\_\+port}
+
+\Hypertarget{classmodules_1_1memory_1_1banked_1_1_banked_region_a70055a2765a739d7ded39876047438ba}\index{modules.memory.banked.BankedRegion@{modules.memory.banked.BankedRegion}!window\_size@{window\_size}}
+\index{window\_size@{window\_size}!modules.memory.banked.BankedRegion@{modules.memory.banked.BankedRegion}}
+\doxysubsubsection{\texorpdfstring{window\_size}{window\_size}}
+{\footnotesize\ttfamily \label{classmodules_1_1memory_1_1banked_1_1_banked_region_a70055a2765a739d7ded39876047438ba} 
+int modules.\+memory.\+banked.\+Banked\+Region.\+window\+\_\+size = \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_ad9c14b35f4aec59f6494496a4a8881a8}{end}} -\/ \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_a43dd15c2b8e11e0e886a94792fdd6880}{start}} + 1}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+modules/memory/\mbox{\hyperlink{banked_8py}{banked.\+py}}\end{DoxyCompactItemize}

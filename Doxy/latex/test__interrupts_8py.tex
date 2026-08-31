@@ -1,0 +1,59 @@
+\doxysection{tests/test\+\_\+interrupts.py File Reference}
+\hypertarget{test__interrupts_8py}{}\label{test__interrupts_8py}\index{tests/test\_interrupts.py@{tests/test\_interrupts.py}}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacetest__interrupts}{test\+\_\+interrupts}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespacetest__interrupts_a4e39070f00f03ea697fa7f10c54cf3f3}{test\+\_\+interrupts.\+check}} (\mbox{\hyperlink{namespacetest__interrupts_ac7d68c1c7f593e15ef98b3abdbdcc0ae}{name}}, actual, expected)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{namespacetest__interrupts_ad4c1623154793003cdb658498eb5161d}{test\+\_\+interrupts.\+passed}} = 0
+\item 
+int \mbox{\hyperlink{namespacetest__interrupts_a59b069901296a29b2f662f150fda8a39}{test\+\_\+interrupts.\+failed}} = 0
+\item 
+str \mbox{\hyperlink{namespacetest__interrupts_a50aaa2f9ccfc6d9391a7c9e1c81b7a67}{test\+\_\+interrupts.\+toml\+\_\+config}}
+\item 
+\mbox{\hyperlink{namespacetest__interrupts_a4e30637ba25a11b943223aa6748ca941}{test\+\_\+interrupts.\+system}} = \mbox{\hyperlink{classmodules_1_1system_1_1_computer_system}{Computer\+System}}()
+\item 
+\mbox{\hyperlink{namespacetest__interrupts_ac7d68c1c7f593e15ef98b3abdbdcc0ae}{test\+\_\+interrupts.\+name}}
+\item 
+\mbox{\hyperlink{namespacetest__interrupts_a69ec98c4c1d918ba289b09acf0f5dcf5}{test\+\_\+interrupts.\+pit}} = system.\+get\+\_\+device("{}PIT-\/0"{})
+\item 
+\mbox{\hyperlink{namespacetest__interrupts_a5e18034c213f0f8d3ee4e5d1f15f576d}{test\+\_\+interrupts.\+vector}} = system.\+\_\+get\+\_\+interrupt\+\_\+vector("{}PIT-\/0"{}, pit)
+\item 
+str \mbox{\hyperlink{namespacetest__interrupts_abbc12126ee11b7925d9576a449c3eca2}{test\+\_\+interrupts.\+toml\+\_\+config2}}
+\item 
+\mbox{\hyperlink{namespacetest__interrupts_aa922c8ee8db0569fd5ddafb30c396cc0}{test\+\_\+interrupts.\+system2}} = \mbox{\hyperlink{classmodules_1_1system_1_1_computer_system}{Computer\+System}}()
+\item 
+\mbox{\hyperlink{namespacetest__interrupts_a09a86192f4ceef02ec6817f1f194311d}{test\+\_\+interrupts.\+pit2}} = system2.\+get\+\_\+device("{}PIT-\/0"{})
+\item 
+\mbox{\hyperlink{namespacetest__interrupts_aebff30d19398af66307ebd92cd1a4adf}{test\+\_\+interrupts.\+vector2}} = system2.\+\_\+get\+\_\+interrupt\+\_\+vector("{}PIT-\/0"{}, pit2)
+\item 
+dict \mbox{\hyperlink{namespacetest__interrupts_aa6f250a0133dba7525c58f759679b6cc}{test\+\_\+interrupts.\+mem}}
+\item 
+\mbox{\hyperlink{namespacetest__interrupts_a32790dc39998330e7dc6e33fa4fd5c82}{test\+\_\+interrupts.\+emu}} = \mbox{\hyperlink{classi8080__emulator_1_1_i8080_emulator}{I8080\+Emulator}}(\mbox{\hyperlink{namespacetest__interrupts_aa6f250a0133dba7525c58f759679b6cc}{mem}})
+\item 
+\mbox{\hyperlink{namespacetest__interrupts_a89f43cd897c483680456b66a363c530c}{test\+\_\+interrupts.\+sp}}
+\item 
+\mbox{\hyperlink{namespacetest__interrupts_a847fbfd73c6aa55b8e5e5c48c307d218}{test\+\_\+interrupts.\+int\+\_\+enabled}}
+\item 
+\mbox{\hyperlink{namespacetest__interrupts_a8791b12069f2014c0b09c9470296133e}{test\+\_\+interrupts.\+result}} = emu.\+\_\+handle\+\_\+interrupt()
+\item 
+\mbox{\hyperlink{namespacetest__interrupts_a0f382c62d133491b7a8de685d1e2efd0}{test\+\_\+interrupts.\+emu2}} = \mbox{\hyperlink{classi8080__emulator_1_1_i8080_emulator}{I8080\+Emulator}}(\mbox{\hyperlink{namespacetest__interrupts_aa6f250a0133dba7525c58f759679b6cc}{mem}})
+\item 
+\mbox{\hyperlink{namespacetest__interrupts_a97645d2139fa0420cafb586bb61c559d}{test\+\_\+interrupts.\+result2}} = emu2.\+\_\+handle\+\_\+interrupt()
+\item 
+\mbox{\hyperlink{namespacetest__interrupts_a646e236bd2e9f2b1d88f0038615a29a5}{test\+\_\+interrupts.\+system3}} = \mbox{\hyperlink{classmodules_1_1system_1_1_computer_system}{Computer\+System}}()
+\item 
+\mbox{\hyperlink{namespacetest__interrupts_a5a47a913c8213649ee04935276aa3ff7}{test\+\_\+interrupts.\+emu3}} = \mbox{\hyperlink{classi8080__emulator_1_1_i8080_emulator}{I8080\+Emulator}}(\mbox{\hyperlink{namespacetest__interrupts_aa6f250a0133dba7525c58f759679b6cc}{mem}})
+\item 
+\mbox{\hyperlink{namespacetest__interrupts_a6f646a81cd3ac5d6a6d5ddf62a0871c3}{test\+\_\+interrupts.\+pit3}} = system3.\+get\+\_\+device("{}PIT-\/0"{})
+\item 
+\mbox{\hyperlink{namespacetest__interrupts_a14ff5fbe244893a3ada118c07f4ab4ee}{test\+\_\+interrupts.\+irq\+\_\+flag}}
+\end{DoxyCompactItemize}

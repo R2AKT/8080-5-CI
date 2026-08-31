@@ -1,0 +1,53 @@
+\doxysection{tests/test\+\_\+dma\+\_\+device.py File Reference}
+\hypertarget{test__dma__device_8py}{}\label{test__dma__device_8py}\index{tests/test\_dma\_device.py@{tests/test\_dma\_device.py}}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacetest__dma__device}{test\+\_\+dma\+\_\+device}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespacetest__dma__device_aa17fe00ea35ef3dd88200541b231c008}{test\+\_\+dma\+\_\+device.\+check}} (name, actual, expected)
+\item 
+\mbox{\hyperlink{namespacetest__dma__device_a2a52d27901d46d71cdd852611697cd13}{test\+\_\+dma\+\_\+device.\+read\+\_\+callback}} (ch)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{namespacetest__dma__device_a8acb583de6df31a24bc642567b0bd0cf}{test\+\_\+dma\+\_\+device.\+passed}} = 0
+\item 
+int \mbox{\hyperlink{namespacetest__dma__device_a8c9609217dfe4bfc0dac12c14cd72020}{test\+\_\+dma\+\_\+device.\+failed}} = 0
+\item 
+\mbox{\hyperlink{namespacetest__dma__device_a3f18a6118f736072cd610b67628942ce}{test\+\_\+dma\+\_\+device.\+bus}} = \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus}{Memory\+Bus}}()
+\item 
+\mbox{\hyperlink{namespacetest__dma__device_a9b82c0cc7d49603b277e84931a83328e}{test\+\_\+dma\+\_\+device.\+ram}} = \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_r_a_m_region}{RAMRegion}}(0x0000, 0x\+FFFF, name="{}RAM"{})
+\item 
+\mbox{\hyperlink{namespacetest__dma__device_adf34f2f896de8d05640ce6df2786df86}{test\+\_\+dma\+\_\+device.\+dma}} = \mbox{\hyperlink{classmodules_1_1io_1_1i8257_1_1_i8257}{I8257}}(base\+\_\+port=0x00, name="{}DMA-\/0"{})
+\item 
+list \mbox{\hyperlink{namespacetest__dma__device_a524b916a82df63016e4748f18df15fc1}{test\+\_\+dma\+\_\+device.\+test\+\_\+data}} = \mbox{[}0x\+A0, 0x\+A1, 0x\+A2, 0x\+A3, 0x\+A4\mbox{]}
+\item 
+\mbox{\hyperlink{namespacetest__dma__device_a5ac0ba564d88ae8d8a6adb51e2e12ed2}{test\+\_\+dma\+\_\+device.\+mask\+\_\+register}}
+\item 
+list \mbox{\hyperlink{namespacetest__dma__device_ae87546289a02e2d294f91c751a384660}{test\+\_\+dma\+\_\+device.\+device\+\_\+received}} = \mbox{[}$\,$\mbox{]}
+\item 
+\mbox{\hyperlink{namespacetest__dma__device_a2ec53a97fe61aecb0a8216163ceb69e7}{test\+\_\+dma\+\_\+device.\+on\+\_\+device\+\_\+write}}
+\item 
+\mbox{\hyperlink{namespacetest__dma__device_a2f8609c2aceb82fdc956e00724a11401}{test\+\_\+dma\+\_\+device.\+dma2}} = \mbox{\hyperlink{classmodules_1_1io_1_1i8257_1_1_i8257}{I8257}}(base\+\_\+port=0x00, name="{}DMA-\/1"{})
+\item 
+list \mbox{\hyperlink{namespacetest__dma__device_a373006d42b728161568ec491867dfab9}{test\+\_\+dma\+\_\+device.\+device\+\_\+data}} = \mbox{[}0x\+B0, 0x\+B1, 0x\+B2\mbox{]}
+\item 
+list \mbox{\hyperlink{namespacetest__dma__device_a3a7803027de1d12b3b09562c601a373f}{test\+\_\+dma\+\_\+device.\+read\+\_\+index}} = \mbox{[}0\mbox{]}
+\item 
+\mbox{\hyperlink{namespacetest__dma__device_a44e459082b3555485009e3ca260628a2}{test\+\_\+dma\+\_\+device.\+on\+\_\+device\+\_\+read}}
+\item 
+\mbox{\hyperlink{namespacetest__dma__device_a71fe9496c36506b437fb252ac2525da3}{test\+\_\+dma\+\_\+device.\+dma3}} = \mbox{\hyperlink{classmodules_1_1io_1_1i8257_1_1_i8257}{I8257}}(base\+\_\+port=0x00, name="{}DMA-\/2"{})
+\item 
+list \mbox{\hyperlink{namespacetest__dma__device_a15ab348444dc60b3ab7087aba00e1b98}{test\+\_\+dma\+\_\+device.\+device\+\_\+received3}} = \mbox{[}$\,$\mbox{]}
+\item 
+list \mbox{\hyperlink{namespacetest__dma__device_ad2832c015c4eb10c653488288c690412}{test\+\_\+dma\+\_\+device.\+transfer\+\_\+complete}} = \mbox{[}$\,$\mbox{]}
+\item 
+\mbox{\hyperlink{namespacetest__dma__device_aa141bb23bb73fbd72603dd7dd112413b}{test\+\_\+dma\+\_\+device.\+on\+\_\+transfer\+\_\+complete}}
+\item 
+\mbox{\hyperlink{namespacetest__dma__device_ab0947e866bfc42fb6be68ad898ed487d}{test\+\_\+dma\+\_\+device.\+dma4}} = \mbox{\hyperlink{classmodules_1_1io_1_1i8257_1_1_i8257}{I8257}}(base\+\_\+port=0x00, name="{}DMA-\/2"{})
+\end{DoxyCompactItemize}

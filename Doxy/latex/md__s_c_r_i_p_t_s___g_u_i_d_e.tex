@@ -1,0 +1,396 @@
+\chapter{SCRIPTS\+\_\+\+GUIDE.\+md — Руководство по скриптам i8080-\/5 CI}
+\hypertarget{md__s_c_r_i_p_t_s___g_u_i_d_e}{}\label{md__s_c_r_i_p_t_s___g_u_i_d_e}\index{SCRIPTS\_GUIDE.md — Руководство по скриптам i8080-\/5 CI@{SCRIPTS\_GUIDE.md — Руководство по скриптам i8080-\/5 CI}}
+\label{md__s_c_r_i_p_t_s___g_u_i_d_e_autotoc_md37}%
+\Hypertarget{md__s_c_r_i_p_t_s___g_u_i_d_e_autotoc_md37}%
+
+
+\begin{quote}
+{\bfseries{Версия\+:}} 2.\+0 ~\newline
+ {\bfseries{Дата\+:}} 2026-\/08-\/16 ~\newline
+ {\bfseries{Вкладка\+:}} «Скрипты» (Scripts) \end{quote}
+
+
+Скрипты позволяют автоматизировать работу с программой\+: читать/записывать память, управлять эмулятором, дизассемблировать код и управлять устройством через COM-\/порт.
+
+\DoxyHorRuler{0}
+\hypertarget{md__s_c_r_i_p_t_s___g_u_i_d_e_autotoc_md39}{}\doxysection{\texorpdfstring{Содержание}{Содержание}}\label{md__s_c_r_i_p_t_s___g_u_i_d_e_autotoc_md39}
+
+\begin{DoxyEnumerate}
+\item Открытие вкладки скриптов
+\item Интерфейс вкладки
+\item Как пишутся скрипты
+\item Справочник функций
+\item Функции эмулятора (через \`{}api\`{})
+\item Примеры скриптов
+\item Советы и ограничения
+\end{DoxyEnumerate}
+
+\DoxyHorRuler{0}
+\hypertarget{md__s_c_r_i_p_t_s___g_u_i_d_e_autotoc_md41}{}\doxysection{\texorpdfstring{1. Открытие вкладки скриптов}{1. Открытие вкладки скриптов}}\label{md__s_c_r_i_p_t_s___g_u_i_d_e_autotoc_md41}
+Откройте вкладку {\bfseries{«Скрипты»}} (Scripts) в главной панели вкладок.\hypertarget{md__s_c_r_i_p_t_s___g_u_i_d_e_autotoc_md42}{}\doxysection{\texorpdfstring{2. Интерфейс вкладки}{2. Интерфейс вкладки}}\label{md__s_c_r_i_p_t_s___g_u_i_d_e_autotoc_md42}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Элемент   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Назначение    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Элемент   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Назначение    }\\\cline{1-2}
+\endhead
+▶ Run Script   &Выполнить скрипт из редактора    \\\cline{1-2}
+Load Script   &Загрузить скрипт из файла ({\ttfamily .py} / {\ttfamily .txt})    \\\cline{1-2}
+Save Script   &Сохранить скрипт в файл    \\\cline{1-2}
+Clear Output   &Очистить окно вывода    \\\cline{1-2}
+Редактор кода   &Редактор Python-\/скрипта    \\\cline{1-2}
+Вывод (Output)   &Результат выполнения скрипта   \\\cline{1-2}
+\end{longtabu}
+
+
+Результат {\ttfamily print()} и {\ttfamily log()} попадает в окно «Вывод».
+
+\DoxyHorRuler{0}
+\hypertarget{md__s_c_r_i_p_t_s___g_u_i_d_e_autotoc_md44}{}\doxysection{\texorpdfstring{3. Как пишутся скрипты}{3. Как пишутся скрипты}}\label{md__s_c_r_i_p_t_s___g_u_i_d_e_autotoc_md44}
+Скрипты выполняются как обычный Python-\/код. Все функции API доступны {\bfseries{напрямую}} (без префикса), а также через объект {\ttfamily api}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{\#\ Оба\ варианта\ работают:}}
+\DoxyCodeLine{fill\_mem(0x0000,\ 256,\ 0x55)\ \ \ \ \ \ \textcolor{comment}{\#\ напрямую}}
+\DoxyCodeLine{api.fill\_mem(0x0000,\ 256,\ 0x55)\ \ \textcolor{comment}{\#\ через\ api}}
+
+\end{DoxyCode}
+
+
+Функции эмулятора доступны {\bfseries{только через {\ttfamily api}}}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{api.emu\_get\_reg(\textcolor{stringliteral}{"{}A"{}})}
+\DoxyCodeLine{api.emu\_reset()}
+
+\end{DoxyCode}
+
+
+Вывод в окно вывода — через {\ttfamily print()} или {\ttfamily log()}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{print(\textcolor{stringliteral}{"{}Привет\ из\ скрипта"{}})}
+\DoxyCodeLine{log(\textcolor{stringliteral}{"{}Сообщение\ в\ журнал\ программы"{}})}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+\hypertarget{md__s_c_r_i_p_t_s___g_u_i_d_e_autotoc_md46}{}\doxysection{\texorpdfstring{4. Справочник функций}{4. Справочник функций}}\label{md__s_c_r_i_p_t_s___g_u_i_d_e_autotoc_md46}
+\hypertarget{md__s_c_r_i_p_t_s___g_u_i_d_e_autotoc_md47}{}\doxysubsection{\texorpdfstring{📦 Локальная память (не требует устройства)}{📦 Локальная память (не требует устройства)}}\label{md__s_c_r_i_p_t_s___g_u_i_d_e_autotoc_md47}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Функция   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Описание   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Возвращает    }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Функция   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Описание   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Возвращает    }\\\cline{1-3}
+\endhead
+{\ttfamily read\+\_\+mem(addr)}   &Прочитать байт по адресу   &{\ttfamily int} или {\ttfamily None}    \\\cline{1-3}
+{\ttfamily write\+\_\+mem(addr, val)}   &Записать байт   &{\ttfamily None}    \\\cline{1-3}
+{\ttfamily read\+\_\+block(addr, size)}   &Прочитать блок   &{\ttfamily list\mbox{[}int\mbox{]}}    \\\cline{1-3}
+{\ttfamily write\+\_\+block(addr, data)}   &Записать блок   &{\ttfamily None}    \\\cline{1-3}
+{\ttfamily fill\+\_\+mem(addr, size, val)}   &Заполнить диапазон   &{\ttfamily None}   \\\cline{1-3}
+\end{longtabu}
+\hypertarget{md__s_c_r_i_p_t_s___g_u_i_d_e_autotoc_md48}{}\doxysubsection{\texorpdfstring{🔌 Память и порты устройства (требуют шину)}{🔌 Память и порты устройства (требуют шину)}}\label{md__s_c_r_i_p_t_s___g_u_i_d_e_autotoc_md48}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Функция   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Описание   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Возвращает    }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Функция   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Описание   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Возвращает    }\\\cline{1-3}
+\endhead
+{\ttfamily dev\+\_\+read\+\_\+mem(addr)}   &Прочитать байт из устройства   &{\ttfamily int} или {\ttfamily None}    \\\cline{1-3}
+{\ttfamily dev\+\_\+write\+\_\+mem(addr, val)}   &Записать байт в устройство   &{\ttfamily bool}    \\\cline{1-3}
+{\ttfamily dev\+\_\+read\+\_\+io(port)}   &Прочитать IO-\/порт   &{\ttfamily int} или {\ttfamily None}    \\\cline{1-3}
+{\ttfamily dev\+\_\+write\+\_\+io(port, val)}   &Записать IO-\/порт   &{\ttfamily bool}   \\\cline{1-3}
+\end{longtabu}
+\hypertarget{md__s_c_r_i_p_t_s___g_u_i_d_e_autotoc_md49}{}\doxysubsection{\texorpdfstring{🔄 Синхронизация устройство ↔ образ (требуют шину)}{🔄 Синхронизация устройство ↔ образ (требуют шину)}}\label{md__s_c_r_i_p_t_s___g_u_i_d_e_autotoc_md49}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Функция   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Описание   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Возвращает    }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Функция   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Описание   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Возвращает    }\\\cline{1-3}
+\endhead
+{\ttfamily download(addr, size)}   &Устройство → образ   &{\ttfamily list\mbox{[}int\mbox{]}} или {\ttfamily None}    \\\cline{1-3}
+{\ttfamily upload(addr, size)}   &Образ → устройство   &{\ttfamily bool}    \\\cline{1-3}
+{\ttfamily download\+\_\+all(start=0, end=0x\+FFFF)}   &Вся память устройства → образ   &{\ttfamily list\mbox{[}int\mbox{]}}    \\\cline{1-3}
+{\ttfamily upload\+\_\+all()}   &Весь образ → устройство   &{\ttfamily bool}   \\\cline{1-3}
+\end{longtabu}
+\hypertarget{md__s_c_r_i_p_t_s___g_u_i_d_e_autotoc_md50}{}\doxysubsection{\texorpdfstring{🚌 Шина (требуют подключения)}{🚌 Шина (требуют подключения)}}\label{md__s_c_r_i_p_t_s___g_u_i_d_e_autotoc_md50}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Функция   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Описание   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Возвращает    }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Функция   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Описание   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Возвращает    }\\\cline{1-3}
+\endhead
+{\ttfamily hold\+\_\+bus()}   &Захватить шину (HOLD)   &{\ttfamily bool}    \\\cline{1-3}
+{\ttfamily unhold\+\_\+bus()}   &Освободить шину   &{\ttfamily bool}    \\\cline{1-3}
+{\ttfamily wait\+\_\+bus(timeout=5.\+0)}   &Ждать захвата шины   &{\ttfamily bool}    \\\cline{1-3}
+{\ttfamily wait\+\_\+unhold(timeout=5.\+0)}   &Ждать освобождения шины   &{\ttfamily bool}   \\\cline{1-3}
+\end{longtabu}
+\hypertarget{md__s_c_r_i_p_t_s___g_u_i_d_e_autotoc_md51}{}\doxysubsection{\texorpdfstring{📁 Файлы}{📁 Файлы}}\label{md__s_c_r_i_p_t_s___g_u_i_d_e_autotoc_md51}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Функция   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Описание   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Возвращает    }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Функция   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Описание   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Возвращает    }\\\cline{1-3}
+\endhead
+{\ttfamily load\+\_\+file(path, base\+\_\+addr=0)}   &Загрузить {\ttfamily .hex}/{\ttfamily .bin} в образ   &{\ttfamily int} (кол-\/во байт)    \\\cline{1-3}
+{\ttfamily save\+\_\+file(path)}   &Сохранить образ в файл   &{\ttfamily bool}   \\\cline{1-3}
+\end{longtabu}
+\hypertarget{md__s_c_r_i_p_t_s___g_u_i_d_e_autotoc_md52}{}\doxysubsection{\texorpdfstring{🛠 Утилиты}{🛠 Утилиты}}\label{md__s_c_r_i_p_t_s___g_u_i_d_e_autotoc_md52}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Функция   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Описание   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Возвращает    }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Функция   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Описание   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Возвращает    }\\\cline{1-3}
+\endhead
+{\ttfamily disassemble(addr=None, length=None, show=False)}   &Дизассемблировать образ   &{\ttfamily list\mbox{[}str\mbox{]}}    \\\cline{1-3}
+{\ttfamily search(pattern, mode="{}hex"{})}   &Поиск в образе ({\ttfamily hex}/{\ttfamily ascii})   &{\ttfamily list\mbox{[}int\mbox{]}}    \\\cline{1-3}
+{\ttfamily refresh()}   &Обновить hex-\/редактор и дизассемблер   &{\ttfamily None}    \\\cline{1-3}
+{\ttfamily log(msg)}   &Вывод в журнал программы   &{\ttfamily None}    \\\cline{1-3}
+{\ttfamily status()}   &Состояние программы   &{\ttfamily dict}    \\\cline{1-3}
+{\ttfamily goto(addr)}   &Перейти к адресу в hex-\/редакторе   &{\ttfamily None}   \\\cline{1-3}
+\end{longtabu}
+
+
+\DoxyHorRuler{0}
+\hypertarget{md__s_c_r_i_p_t_s___g_u_i_d_e_autotoc_md54}{}\doxysection{\texorpdfstring{5. Функции эмулятора (через {\ttfamily api})}{5. Функции эмулятора (через {\ttfamily api})}}\label{md__s_c_r_i_p_t_s___g_u_i_d_e_autotoc_md54}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Функция   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Описание   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Возвращает    }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Функция   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Описание   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Возвращает    }\\\cline{1-3}
+\endhead
+{\ttfamily api.\+emu\+\_\+reset()}   &Сброс эмулятора   &{\ttfamily str}    \\\cline{1-3}
+{\ttfamily api.\+emu\+\_\+step()}   &Выполнить одну инструкцию   &{\ttfamily str}    \\\cline{1-3}
+{\ttfamily api.\+emu\+\_\+get\+\_\+reg(reg)}   &Прочитать регистр   &{\ttfamily int}    \\\cline{1-3}
+{\ttfamily api.\+emu\+\_\+set\+\_\+reg(reg, val)}   &Установить регистр   &{\ttfamily str}    \\\cline{1-3}
+{\ttfamily api.\+emu\+\_\+get\+\_\+psw()}   &Прочитать PSW   &{\ttfamily int}    \\\cline{1-3}
+{\ttfamily api.\+emu\+\_\+set\+\_\+psw(val)}   &Установить PSW   &{\ttfamily str}    \\\cline{1-3}
+{\ttfamily api.\+emu\+\_\+get\+\_\+flags()}   &Прочитать флаги   &{\ttfamily dict}    \\\cline{1-3}
+{\ttfamily api.\+emu\+\_\+set\+\_\+flag(flag, val)}   &Установить флаг   &{\ttfamily str}    \\\cline{1-3}
+{\ttfamily api.\+emu\+\_\+get\+\_\+state()}   &Полное состояние   &{\ttfamily dict}   \\\cline{1-3}
+\end{longtabu}
+
+
+{\bfseries{Регистры\+:}} {\ttfamily A}, {\ttfamily B}, {\ttfamily C}, {\ttfamily D}, {\ttfamily E}, {\ttfamily H}, {\ttfamily L}, {\ttfamily BC}, {\ttfamily DE}, {\ttfamily HL}, {\ttfamily SP}, {\ttfamily PC} ~\newline
+ {\bfseries{Флаги\+:}} {\ttfamily S}, {\ttfamily Z}, {\ttfamily AC}, {\ttfamily P}, {\ttfamily CY}
+
+\DoxyHorRuler{0}
+\hypertarget{md__s_c_r_i_p_t_s___g_u_i_d_e_autotoc_md56}{}\doxysection{\texorpdfstring{6. Примеры скриптов}{6. Примеры скриптов}}\label{md__s_c_r_i_p_t_s___g_u_i_d_e_autotoc_md56}
+\hypertarget{md__s_c_r_i_p_t_s___g_u_i_d_e_autotoc_md57}{}\doxysubsection{\texorpdfstring{Пример 1\+: Заполнить память паттерном}{Пример 1\+: Заполнить память паттерном}}\label{md__s_c_r_i_p_t_s___g_u_i_d_e_autotoc_md57}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{\#\ Заполнить\ 256\ байт\ паттерном\ 0x55,\ начиная\ с\ 0x0000}}
+\DoxyCodeLine{fill\_mem(0x0000,\ 256,\ 0x55)}
+\DoxyCodeLine{refresh()}
+\DoxyCodeLine{log(\textcolor{stringliteral}{"{}Память\ заполнена\ паттерном\ 0x55"{}})}
+
+\end{DoxyCode}
+\hypertarget{md__s_c_r_i_p_t_s___g_u_i_d_e_autotoc_md58}{}\doxysubsection{\texorpdfstring{Пример 2\+: Дизассемблировать и вывести}{Пример 2\+: Дизассемблировать и вывести}}\label{md__s_c_r_i_p_t_s___g_u_i_d_e_autotoc_md58}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{\#\ Дизассемблировать\ 16\ байт\ с\ адреса\ 0x0000}}
+\DoxyCodeLine{\textcolor{keywordflow}{for}\ line\ \textcolor{keywordflow}{in}\ disassemble(0x0000,\ 16):}
+\DoxyCodeLine{\ \ \ \ print(line)}
+
+\end{DoxyCode}
+\hypertarget{md__s_c_r_i_p_t_s___g_u_i_d_e_autotoc_md59}{}\doxysubsection{\texorpdfstring{Пример 3\+: Поиск в памяти}{Пример 3\+: Поиск в памяти}}\label{md__s_c_r_i_p_t_s___g_u_i_d_e_autotoc_md59}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{\#\ Найти\ все\ JMP\ (0xC3)}}
+\DoxyCodeLine{results\ =\ search(\textcolor{stringliteral}{'C3'},\ \textcolor{stringliteral}{'hex'})}
+\DoxyCodeLine{print(f\textcolor{stringliteral}{"{}Найдено\ \{len(results)\}\ JMP\ инструкций:"{}})}
+\DoxyCodeLine{\textcolor{keywordflow}{for}\ addr\ \textcolor{keywordflow}{in}\ results:}
+\DoxyCodeLine{\ \ \ \ print(f\textcolor{stringliteral}{"{}\ \ 0x\{addr:04X\}"{}})}
+
+\end{DoxyCode}
+\hypertarget{md__s_c_r_i_p_t_s___g_u_i_d_e_autotoc_md60}{}\doxysubsection{\texorpdfstring{Пример 4\+: Поиск ASCII-\/строки}{Пример 4\+: Поиск ASCII-\/строки}}\label{md__s_c_r_i_p_t_s___g_u_i_d_e_autotoc_md60}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{results\ =\ search(\textcolor{stringliteral}{"{}HELLO"{}},\ \textcolor{stringliteral}{"{}ascii"{}})}
+\DoxyCodeLine{print(f\textcolor{stringliteral}{"{}Найдено\ \{len(results)\}\ совпадений"{}})}
+\DoxyCodeLine{\textcolor{keywordflow}{for}\ addr\ \textcolor{keywordflow}{in}\ results:}
+\DoxyCodeLine{\ \ \ \ print(f\textcolor{stringliteral}{"{}\ \ 0x\{addr:04X\}"{}})}
+
+\end{DoxyCode}
+\hypertarget{md__s_c_r_i_p_t_s___g_u_i_d_e_autotoc_md61}{}\doxysubsection{\texorpdfstring{Пример 5\+: Работа с эмулятором}{Пример 5\+: Работа с эмулятором}}\label{md__s_c_r_i_p_t_s___g_u_i_d_e_autotoc_md61}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{\#\ Сбросить\ эмулятор}}
+\DoxyCodeLine{api.emu\_reset()}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{\#\ Установить\ регистры}}
+\DoxyCodeLine{api.emu\_set\_reg(\textcolor{stringliteral}{"{}A"{}},\ 0x55)}
+\DoxyCodeLine{api.emu\_set\_reg(\textcolor{stringliteral}{"{}BC"{}},\ 0x1234)}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{\#\ Выполнить\ 5\ инструкций}}
+\DoxyCodeLine{\textcolor{keywordflow}{for}\ i\ \textcolor{keywordflow}{in}\ range(5):}
+\DoxyCodeLine{\ \ \ \ api.emu\_step()}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{\#\ Вывести\ состояние}}
+\DoxyCodeLine{state\ =\ api.emu\_get\_state()}
+\DoxyCodeLine{print(f\textcolor{stringliteral}{"{}PC=0x\{state['PC']:04X\},\ A=0x\{state['A']:02X\}"{}})}
+\DoxyCodeLine{print(f\textcolor{stringliteral}{"{}Флаги:\ \{state['flags']\}"{}})}
+
+\end{DoxyCode}
+\hypertarget{md__s_c_r_i_p_t_s___g_u_i_d_e_autotoc_md62}{}\doxysubsection{\texorpdfstring{Пример 6\+: Проверка значения памяти}{Пример 6\+: Проверка значения памяти}}\label{md__s_c_r_i_p_t_s___g_u_i_d_e_autotoc_md62}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{\#\ Проверить\ значение\ по\ адресу\ 0x0100}}
+\DoxyCodeLine{val\ =\ read\_mem(0x0100)}
+\DoxyCodeLine{\textcolor{keywordflow}{if}\ val\ \textcolor{keywordflow}{is}\ \textcolor{keywordtype}{None}:}
+\DoxyCodeLine{\ \ \ \ print(\textcolor{stringliteral}{"{}Адрес\ 0x0100\ не\ инициализирован"{}})}
+\DoxyCodeLine{\textcolor{keywordflow}{else}:}
+\DoxyCodeLine{\ \ \ \ print(f\textcolor{stringliteral}{"{}0x0100\ =\ 0x\{val:02X\}"{}})}
+
+\end{DoxyCode}
+\hypertarget{md__s_c_r_i_p_t_s___g_u_i_d_e_autotoc_md63}{}\doxysubsection{\texorpdfstring{Пример 7\+: Работа с устройством (требует подключения)}{Пример 7\+: Работа с устройством (требует подключения)}}\label{md__s_c_r_i_p_t_s___g_u_i_d_e_autotoc_md63}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{\#\ Захватить\ шину}}
+\DoxyCodeLine{hold\_bus()}
+\DoxyCodeLine{\textcolor{keywordflow}{if}\ \textcolor{keywordflow}{not}\ wait\_bus(5.0):}
+\DoxyCodeLine{\ \ \ \ print(\textcolor{stringliteral}{"{}Не\ удалось\ захватить\ шину"{}})}
+\DoxyCodeLine{\textcolor{keywordflow}{else}:}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{\#\ Прочитать\ байт\ из\ устройства}}
+\DoxyCodeLine{\ \ \ \ val\ =\ dev\_read\_mem(0x0000)}
+\DoxyCodeLine{\ \ \ \ print(f\textcolor{stringliteral}{"{}Устройство\ 0x0000\ =\ 0x\{val:02X\}"{}})}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{\#\ Освободить\ шину}}
+\DoxyCodeLine{\ \ \ \ unhold\_bus()}
+\DoxyCodeLine{\ \ \ \ wait\_unhold(5.0)}
+
+\end{DoxyCode}
+\hypertarget{md__s_c_r_i_p_t_s___g_u_i_d_e_autotoc_md64}{}\doxysubsection{\texorpdfstring{Пример 8\+: Считать память устройства в образ}{Пример 8\+: Считать память устройства в образ}}\label{md__s_c_r_i_p_t_s___g_u_i_d_e_autotoc_md64}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{hold\_bus()}
+\DoxyCodeLine{\textcolor{keywordflow}{if}\ wait\_bus(5.0):}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{\#\ Считать\ 4\ КБ\ с\ адреса\ 0x0000}}
+\DoxyCodeLine{\ \ \ \ data\ =\ download(0x0000,\ 4096)}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ data:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ print(f\textcolor{stringliteral}{"{}Считано\ \{len(data)\}\ байт"{}})}
+\DoxyCodeLine{\ \ \ \ unhold\_bus()}
+\DoxyCodeLine{\ \ \ \ wait\_unhold(5.0)}
+
+\end{DoxyCode}
+\hypertarget{md__s_c_r_i_p_t_s___g_u_i_d_e_autotoc_md65}{}\doxysubsection{\texorpdfstring{Пример 9\+: Состояние программы}{Пример 9\+: Состояние программы}}\label{md__s_c_r_i_p_t_s___g_u_i_d_e_autotoc_md65}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{s\ =\ status()}
+\DoxyCodeLine{print(f\textcolor{stringliteral}{"{}Подключено:\ \{s['connected']\}"{}})}
+\DoxyCodeLine{print(f\textcolor{stringliteral}{"{}Шина\ активна:\ \{s['bus\_active']\}"{}})}
+\DoxyCodeLine{print(f\textcolor{stringliteral}{"{}Размер\ образа:\ \{s['mem\_size']\}\ байт"{}})}
+
+\end{DoxyCode}
+\hypertarget{md__s_c_r_i_p_t_s___g_u_i_d_e_autotoc_md66}{}\doxysubsection{\texorpdfstring{Пример 10\+: Сложный скрипт — анализ диапазона}{Пример 10\+: Сложный скрипт — анализ диапазона}}\label{md__s_c_r_i_p_t_s___g_u_i_d_e_autotoc_md66}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{\#\ Проанализировать\ диапазон\ 0x0000-\/0x00FF}}
+\DoxyCodeLine{print(\textcolor{stringliteral}{"{}===\ Анализ\ диапазона\ 0x0000-\/0x00FF\ ==="{}})}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{\#\ Подсчитать\ количество\ каждого\ байта}}
+\DoxyCodeLine{\textcolor{keyword}{from}\ collections\ \textcolor{keyword}{import}\ Counter}
+\DoxyCodeLine{block\ =\ read\_block(0x0000,\ 256)}
+\DoxyCodeLine{counts\ =\ Counter(block)}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{\#\ Вывести\ самые\ частые\ байты}}
+\DoxyCodeLine{print(\textcolor{stringliteral}{"{}Самые\ частые\ байты:"{}})}
+\DoxyCodeLine{\textcolor{keywordflow}{for}\ val,\ count\ \textcolor{keywordflow}{in}\ counts.most\_common(5):}
+\DoxyCodeLine{\ \ \ \ print(f\textcolor{stringliteral}{"{}\ \ 0x\{val:02X\}:\ \{count\}\ раз"{}})}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{\#\ Дизассемблировать\ диапазон}}
+\DoxyCodeLine{print(\textcolor{stringliteral}{"{}\(\backslash\)nДизассемблирование:"{}})}
+\DoxyCodeLine{\textcolor{keywordflow}{for}\ line\ \textcolor{keywordflow}{in}\ disassemble(0x0000,\ 32):}
+\DoxyCodeLine{\ \ \ \ print(line)}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+\hypertarget{md__s_c_r_i_p_t_s___g_u_i_d_e_autotoc_md68}{}\doxysection{\texorpdfstring{7. Советы и ограничения}{7. Советы и ограничения}}\label{md__s_c_r_i_p_t_s___g_u_i_d_e_autotoc_md68}
+\hypertarget{md__s_c_r_i_p_t_s___g_u_i_d_e_autotoc_md69}{}\doxysubsection{\texorpdfstring{✅ Советы}{✅ Советы}}\label{md__s_c_r_i_p_t_s___g_u_i_d_e_autotoc_md69}
+
+\begin{DoxyItemize}
+\item {\bfseries{Используйте {\ttfamily print()}}} для вывода результатов в окно «Вывод».
+\item {\bfseries{Используйте {\ttfamily log()}}} для записи в журнал программы (вкладка «Управление»).
+\item {\bfseries{Обрабатывайте ошибки}} через {\ttfamily try/except} для надёжности\+:
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordflow}{try}:}
+\DoxyCodeLine{\ \ \ \ val\ =\ read\_mem(0x0000)}
+\DoxyCodeLine{\ \ \ \ print(f\textcolor{stringliteral}{"{}0x0000\ =\ 0x\{val:02X\}"{}})}
+\DoxyCodeLine{\textcolor{keywordflow}{except}\ Exception\ \textcolor{keyword}{as}\ e:}
+\DoxyCodeLine{\ \ \ \ print(f\textcolor{stringliteral}{"{}Ошибка:\ \{e\}"{}})}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item {\bfseries{Используйте {\ttfamily refresh()}}} после изменения памяти, чтобы обновить hex-\/редактор и дизассемблер.
+\end{DoxyItemize}\hypertarget{md__s_c_r_i_p_t_s___g_u_i_d_e_autotoc_md70}{}\doxysubsection{\texorpdfstring{⚠️ Ограничения}{⚠️ Ограничения}}\label{md__s_c_r_i_p_t_s___g_u_i_d_e_autotoc_md70}
+
+\begin{DoxyItemize}
+\item {\bfseries{Скрипты выполняются синхронно}} в главном потоке GUI. Долгие скрипты заблокируют интерфейс.
+\item {\bfseries{Функции устройства}} ({\ttfamily dev\+\_\+\texorpdfstring{$\ast$}{*}}, {\ttfamily download}, {\ttfamily upload}) требуют подключения к устройству и захвата шины.
+\item {\bfseries{Скрипты не имеют доступа к GUI напрямую}} (только через API).
+\item {\bfseries{Скрипты выполняются с правами программы}} — будьте осторожны с записью в память устройства.
+\end{DoxyItemize}\hypertarget{md__s_c_r_i_p_t_s___g_u_i_d_e_autotoc_md71}{}\doxysubsection{\texorpdfstring{🔍 Пример обработки ошибок подключения}{🔍 Пример обработки ошибок подключения}}\label{md__s_c_r_i_p_t_s___g_u_i_d_e_autotoc_md71}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{s\ =\ status()}
+\DoxyCodeLine{\textcolor{keywordflow}{if}\ \textcolor{keywordflow}{not}\ s[\textcolor{stringliteral}{'connected'}]:}
+\DoxyCodeLine{\ \ \ \ print(\textcolor{stringliteral}{"{}Устройство\ не\ подключено.\ Подключитесь\ во\ вкладке\ 'Управление'."{}})}
+\DoxyCodeLine{\textcolor{keywordflow}{else}:}
+\DoxyCodeLine{\ \ \ \ hold\_bus()}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ wait\_bus(5.0):}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ val\ =\ dev\_read\_mem(0x0000)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ print(f\textcolor{stringliteral}{"{}0x0000\ =\ 0x\{val:02X\}"{}}\ \textcolor{keywordflow}{if}\ val\ \textcolor{keywordflow}{is}\ \textcolor{keywordflow}{not}\ \textcolor{keywordtype}{None}\ \textcolor{keywordflow}{else}\ \textcolor{stringliteral}{"{}Ошибка\ чтения"{}})}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ unhold\_bus()}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ wait\_unhold(5.0)}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+
+
+{\itshape Конец документа \doxylink{_s_c_r_i_p_t_s___g_u_i_d_e_8md}{SCRIPTS\+\_\+\+GUIDE.\+md}} 

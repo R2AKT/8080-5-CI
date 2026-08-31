@@ -1,0 +1,21 @@
+digraph "modules.io.i512vi1.I512VI1._is_binary"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="RL";
+  Node1 [id="Node000001",label="modules.io.i512vi1.I512VI1.\l_is_binary",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="modules.io.i512vi1.I512VI1.\l_decode",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1.html#a33719817171057753b5a50dd5da7aee3",tooltip=" "];
+  Node2 -> Node3 [id="edge2_Node000002_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="modules.io.i512vi1.I512VI1.\l_write_reg",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1.html#a38f9522e207385e6e711ca6b81895151",tooltip=" "];
+  Node3 -> Node4 [id="edge3_Node000003_Node000004",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="modules.io.i512vi1.I512VI1.io\l_write",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1.html#a78db73315d170cef6e71684fc27f496f",tooltip=" "];
+  Node1 -> Node5 [id="edge4_Node000001_Node000005",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node5 [id="Node000005",label="modules.io.i512vi1.I512VI1.\l_encode",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1.html#aa08150f72c12df692d3db71c09005ddf",tooltip=" "];
+  Node5 -> Node6 [id="edge5_Node000005_Node000006",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node6 [id="Node000006",label="modules.io.i512vi1.I512VI1.\l_read_reg",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1.html#a3242172c5f234af3ee14e8e06fcf6d4c",tooltip=" "];
+  Node6 -> Node7 [id="edge6_Node000006_Node000007",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node7 [id="Node000007",label="modules.io.i512vi1.I512VI1.io_read",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1.html#ac4d04fb203659d1badcb9660e16819b8",tooltip=" "];
+}

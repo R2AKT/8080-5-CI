@@ -1,0 +1,83 @@
+\doxysection{tests/test\+\_\+ch376s\+\_\+fs.py File Reference}
+\hypertarget{test__ch376s__fs_8py}{}\label{test__ch376s__fs_8py}\index{tests/test\_ch376s\_fs.py@{tests/test\_ch376s\_fs.py}}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacetest__ch376s__fs}{test\+\_\+ch376s\+\_\+fs}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespacetest__ch376s__fs_a8ea77dfc6ad29faa5b0e2bc97cdf4697}{test\+\_\+ch376s\+\_\+fs.\+check}} (name, actual, expected)
+\item 
+\mbox{\hyperlink{namespacetest__ch376s__fs_af640ef71dd75be531da9e5c530b7298c}{test\+\_\+ch376s\+\_\+fs.\+send\+\_\+filename}} (\mbox{\hyperlink{namespacetest__ch376s__fs_a101be93d68bab49108522e110359b939}{usb}}, \mbox{\hyperlink{namespacetest__ch376s__fs_ae99c3867c4af594ed68b968ad729dc0d}{bus}}, name)
+\item 
+\mbox{\hyperlink{namespacetest__ch376s__fs_a5328e18f284c570e8b003752c5b2cc0f}{test\+\_\+ch376s\+\_\+fs.\+read\+\_\+data\+\_\+port}} (\mbox{\hyperlink{namespacetest__ch376s__fs_a101be93d68bab49108522e110359b939}{usb}}, \mbox{\hyperlink{namespacetest__ch376s__fs_ae99c3867c4af594ed68b968ad729dc0d}{bus}}, count)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{namespacetest__ch376s__fs_ae8e63914e50104aefab05b59a79a4aba}{test\+\_\+ch376s\+\_\+fs.\+passed}} = 0
+\item 
+int \mbox{\hyperlink{namespacetest__ch376s__fs_aded7b0728ffdaf66a2ec260cc8447be2}{test\+\_\+ch376s\+\_\+fs.\+failed}} = 0
+\item 
+\mbox{\hyperlink{namespacetest__ch376s__fs_ae99c3867c4af594ed68b968ad729dc0d}{test\+\_\+ch376s\+\_\+fs.\+bus}} = \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus}{Memory\+Bus}}()
+\item 
+\mbox{\hyperlink{namespacetest__ch376s__fs_a101be93d68bab49108522e110359b939}{test\+\_\+ch376s\+\_\+fs.\+usb}} = \mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s}{CH376S}}(base\+\_\+port=0x276)
+\item 
+\mbox{\hyperlink{namespacetest__ch376s__fs_aa26af361e96e97e4cc9e033132b38a11}{test\+\_\+ch376s\+\_\+fs.\+delete}}
+\item 
+\mbox{\hyperlink{namespacetest__ch376s__fs_a578adb14a91050b84223d3cf3e44a032}{test\+\_\+ch376s\+\_\+fs.\+False}}
+\item 
+\mbox{\hyperlink{namespacetest__ch376s__fs_a4570041366ab854313cad21b2b4577bb}{test\+\_\+ch376s\+\_\+fs.\+suffix}}
+\item 
+\mbox{\hyperlink{namespacetest__ch376s__fs_a81d05720b70b45ff68adf33fff1c0b8f}{test\+\_\+ch376s\+\_\+fs.\+disk\+\_\+path}} = f.\+name
+\item 
+\mbox{\hyperlink{namespacetest__ch376s__fs_a94149dec79e3134731c91b373a24c163}{test\+\_\+ch376s\+\_\+fs.\+size\+\_\+mb}}
+\item 
+\mbox{\hyperlink{namespacetest__ch376s__fs_aebd8af02d822b303962c8f1ce72b98c0}{test\+\_\+ch376s\+\_\+fs.\+capacity\+\_\+bytes}} = \mbox{\hyperlink{namespacetest__ch376s__fs_a5328e18f284c570e8b003752c5b2cc0f}{read\+\_\+data\+\_\+port}}(\mbox{\hyperlink{namespacetest__ch376s__fs_a101be93d68bab49108522e110359b939}{usb}}, \mbox{\hyperlink{namespacetest__ch376s__fs_ae99c3867c4af594ed68b968ad729dc0d}{bus}}, 4)
+\item 
+\mbox{\hyperlink{namespacetest__ch376s__fs_aeeae744ff46d5a9f1ebda201e094e5cf}{test\+\_\+ch376s\+\_\+fs.\+capacity}}
+\item 
+\mbox{\hyperlink{namespacetest__ch376s__fs_a50e226da9c730eb973290cd4510e00c4}{test\+\_\+ch376s\+\_\+fs.\+version}} = bus.\+io\+\_\+read(0x276)
+\item 
+\mbox{\hyperlink{namespacetest__ch376s__fs_a34fb6d7b02a040c17851e5110cf8a3e7}{test\+\_\+ch376s\+\_\+fs.\+status\+\_\+byte}} = bus.\+io\+\_\+read(0x276)
+\item 
+\mbox{\hyperlink{namespacetest__ch376s__fs_a839806faafebea0693c73ee1a78ca833}{test\+\_\+ch376s\+\_\+fs.\+header}} = usb.\+\_\+fs\+\_\+read\+\_\+header()
+\item 
+\mbox{\hyperlink{namespacetest__ch376s__fs_a755abd6461dc9ff5e3e8354f34080d84}{test\+\_\+ch376s\+\_\+fs.\+idx}} = usb.\+\_\+fs\+\_\+find\+\_\+file("{}TEST.\+TXT"{})
+\item 
+\mbox{\hyperlink{namespacetest__ch376s__fs_a6ac6ebb83d724656deea877dcd0d2bda}{test\+\_\+ch376s\+\_\+fs.\+test\+\_\+data}} = bytearray(b"{}\+Hello, CH376\+S!"{})
+\item 
+\mbox{\hyperlink{namespacetest__ch376s__fs_aa400af956a96907f91a97895a7d82418}{test\+\_\+ch376s\+\_\+fs.\+data\+\_\+buffer}}
+\item 
+\mbox{\hyperlink{namespacetest__ch376s__fs_ab0b7fcc6a18c12eb3d4307c420f7e283}{test\+\_\+ch376s\+\_\+fs.\+data\+\_\+direction}}
+\item 
+\mbox{\hyperlink{namespacetest__ch376s__fs_af9ee42a54abd5c855bce87870b10e8ff}{test\+\_\+ch376s\+\_\+fs.\+data\+\_\+index}}
+\item 
+\mbox{\hyperlink{namespacetest__ch376s__fs_a65fa919c567227d4815b6a2eb65b7397}{test\+\_\+ch376s\+\_\+fs.\+entry}} = usb.\+\_\+fs\+\_\+read\+\_\+entry(usb.\+file\+\_\+index)
+\item 
+\mbox{\hyperlink{namespacetest__ch376s__fs_aef986bf1fde6c3ce3aa30d7a236a49a6}{test\+\_\+ch376s\+\_\+fs.\+read\+\_\+data}} = \mbox{\hyperlink{namespacetest__ch376s__fs_a5328e18f284c570e8b003752c5b2cc0f}{read\+\_\+data\+\_\+port}}(\mbox{\hyperlink{namespacetest__ch376s__fs_a101be93d68bab49108522e110359b939}{usb}}, \mbox{\hyperlink{namespacetest__ch376s__fs_ae99c3867c4af594ed68b968ad729dc0d}{bus}}, len(\mbox{\hyperlink{namespacetest__ch376s__fs_a6ac6ebb83d724656deea877dcd0d2bda}{test\+\_\+data}}))
+\item 
+\mbox{\hyperlink{namespacetest__ch376s__fs_a5537360e3b64e3ced4461d1722a10df9}{test\+\_\+ch376s\+\_\+fs.\+info}} = \mbox{\hyperlink{namespacetest__ch376s__fs_a5328e18f284c570e8b003752c5b2cc0f}{read\+\_\+data\+\_\+port}}(\mbox{\hyperlink{namespacetest__ch376s__fs_a101be93d68bab49108522e110359b939}{usb}}, \mbox{\hyperlink{namespacetest__ch376s__fs_ae99c3867c4af594ed68b968ad729dc0d}{bus}}, 8)
+\item 
+\mbox{\hyperlink{namespacetest__ch376s__fs_aaac8cfed7d2c019baf548bed061ab2d9}{test\+\_\+ch376s\+\_\+fs.\+file\+\_\+size}} = \mbox{\hyperlink{namespacetest__ch376s__fs_a5537360e3b64e3ced4461d1722a10df9}{info}}\mbox{[}0\mbox{]} \texorpdfstring{$\vert$}{|} (\mbox{\hyperlink{namespacetest__ch376s__fs_a5537360e3b64e3ced4461d1722a10df9}{info}}\mbox{[}1\mbox{]} $<$$<$ 8) \texorpdfstring{$\vert$}{|} (\mbox{\hyperlink{namespacetest__ch376s__fs_a5537360e3b64e3ced4461d1722a10df9}{info}}\mbox{[}2\mbox{]} $<$$<$ 16) \texorpdfstring{$\vert$}{|} (\mbox{\hyperlink{namespacetest__ch376s__fs_a5537360e3b64e3ced4461d1722a10df9}{info}}\mbox{[}3\mbox{]} $<$$<$ 24)
+\item 
+\mbox{\hyperlink{namespacetest__ch376s__fs_a2d2651967848b74f681b15fb26692a8f}{test\+\_\+ch376s\+\_\+fs.\+enum\+\_\+index}}
+\item 
+\mbox{\hyperlink{namespacetest__ch376s__fs_a2407d8f91942d47ae12a2b97efa021ce}{test\+\_\+ch376s\+\_\+fs.\+enum\+\_\+data}} = \mbox{\hyperlink{namespacetest__ch376s__fs_a5328e18f284c570e8b003752c5b2cc0f}{read\+\_\+data\+\_\+port}}(\mbox{\hyperlink{namespacetest__ch376s__fs_a101be93d68bab49108522e110359b939}{usb}}, \mbox{\hyperlink{namespacetest__ch376s__fs_ae99c3867c4af594ed68b968ad729dc0d}{bus}}, 17)
+\item 
+\mbox{\hyperlink{namespacetest__ch376s__fs_a8abd4059cbc74b432e9b3ab377c0854e}{test\+\_\+ch376s\+\_\+fs.\+enum\+\_\+name}} = bytes(\mbox{\hyperlink{namespacetest__ch376s__fs_a2407d8f91942d47ae12a2b97efa021ce}{enum\+\_\+data}}\mbox{[}\+:13\mbox{]}).split(b\textquotesingle{}\textbackslash{}x00\textquotesingle{})\mbox{[}0\mbox{]}.decode(\textquotesingle{}ascii\textquotesingle{})
+\item 
+\mbox{\hyperlink{namespacetest__ch376s__fs_aa56d3d749555b352b91bcec716540643}{test\+\_\+ch376s\+\_\+fs.\+big\+\_\+data}} = bytearray(\mbox{[}i \& 0x\+FF for i in range(600)\mbox{]})
+\item 
+\mbox{\hyperlink{namespacetest__ch376s__fs_aad13f86b53819102401fcb52d9b91ec1}{test\+\_\+ch376s\+\_\+fs.\+read\+\_\+back}} = \mbox{\hyperlink{namespacetest__ch376s__fs_a5328e18f284c570e8b003752c5b2cc0f}{read\+\_\+data\+\_\+port}}(\mbox{\hyperlink{namespacetest__ch376s__fs_a101be93d68bab49108522e110359b939}{usb}}, \mbox{\hyperlink{namespacetest__ch376s__fs_ae99c3867c4af594ed68b968ad729dc0d}{bus}}, 600)
+\item 
+\mbox{\hyperlink{namespacetest__ch376s__fs_ae8e206f470fb693ba8ea826a26448045}{test\+\_\+ch376s\+\_\+fs.\+test\+\_\+sector\+\_\+data}} = bytearray(\mbox{[}i \& 0x\+FF for i in range(512)\mbox{]})
+\item 
+\mbox{\hyperlink{namespacetest__ch376s__fs_a8bed5a8c510ea18405d51109df1f85b2}{test\+\_\+ch376s\+\_\+fs.\+disk\+\_\+data}} = f.\+read(512)
+\item 
+\mbox{\hyperlink{namespacetest__ch376s__fs_af6641577c43b1a6f0a139759c1d5defe}{test\+\_\+ch376s\+\_\+fs.\+read\+\_\+sector}} = \mbox{\hyperlink{namespacetest__ch376s__fs_a5328e18f284c570e8b003752c5b2cc0f}{read\+\_\+data\+\_\+port}}(\mbox{\hyperlink{namespacetest__ch376s__fs_a101be93d68bab49108522e110359b939}{usb}}, \mbox{\hyperlink{namespacetest__ch376s__fs_ae99c3867c4af594ed68b968ad729dc0d}{bus}}, 512)
+\item 
+\mbox{\hyperlink{namespacetest__ch376s__fs_ab1fd977885d80cb56d4b7f82a7ae73b4}{test\+\_\+ch376s\+\_\+fs.\+write\+\_\+protected}}
+\end{DoxyCompactItemize}

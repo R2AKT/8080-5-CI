@@ -1,0 +1,178 @@
+\doxysection{test\+\_\+i8272 Namespace Reference}
+\hypertarget{namespacetest__i8272}{}\label{namespacetest__i8272}\index{test\_i8272@{test\_i8272}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespacetest__i8272_a03b3144405e8d8ad007a5fd166f5150b}{check}} (name, actual, expected)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{namespacetest__i8272_aadf1866fcae8f8eb456c8cad39b8f659}{passed}} = 0
+\item 
+int \mbox{\hyperlink{namespacetest__i8272_a423e071c75bb020bd564b9280bb88127}{failed}} = 0
+\item 
+\mbox{\hyperlink{namespacetest__i8272_afd854083a6801fd120ca4c6f6b687fbe}{bus}} = \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus}{Memory\+Bus}}()
+\item 
+\mbox{\hyperlink{namespacetest__i8272_ad111743a78cccc4d53081875322c1d49}{fdc}} = \mbox{\hyperlink{classmodules_1_1io_1_1i8272_1_1_i8272}{I8272}}(base\+\_\+port=0x\+F0)
+\item 
+\mbox{\hyperlink{namespacetest__i8272_a4afd3bba0518c428544603edab6288a4}{status}} = bus.\+io\+\_\+read(0x\+F2)
+\item 
+\mbox{\hyperlink{namespacetest__i8272_ac926bee6f2cf662c191e086ee3e45f7d}{drive}} = fdc.\+drives\mbox{[}0\mbox{]}
+\item 
+\mbox{\hyperlink{namespacetest__i8272_a1c46f6d38e60352e8b502d36afd7fb16}{sector\+\_\+data}} = drive.\+read\+\_\+sector(0, 0, 1)
+\item 
+\mbox{\hyperlink{namespacetest__i8272_a9cccaf534ead7690ce4f6766bb771e9f}{result}} = bus.\+io\+\_\+read(0x\+F2)
+\item 
+list \mbox{\hyperlink{namespacetest__i8272_a06a3734488b6bbe79c1fff75c0aabb00}{read\+\_\+data}} = \mbox{[}$\,$\mbox{]}
+\item 
+\mbox{\hyperlink{namespacetest__i8272_a98bed51152a08713e217d20d337ec9bd}{st0}} = bus.\+io\+\_\+read(0x\+F2)
+\item 
+\mbox{\hyperlink{namespacetest__i8272_aadf6309a2118a5a9735f19bc100c6581}{cyl}} = bus.\+io\+\_\+read(0x\+F2)
+\item 
+\mbox{\hyperlink{namespacetest__i8272_af995fbdf57dd3f1c2791ab70ac5a0bfb}{version}} = bus.\+io\+\_\+read(0x\+F2)
+\item 
+\mbox{\hyperlink{namespacetest__i8272_a66246a6e27e8faac3a15d554446cf55e}{cylinder}}
+\item 
+\mbox{\hyperlink{namespacetest__i8272_ae26f49aa8b0cc91e33c3b3616b21baf3}{head}} = bus.\+io\+\_\+read(0x\+F2)
+\item 
+\mbox{\hyperlink{namespacetest__i8272_a163cf4ff01b858549578366bd04cc4d8}{sector}}
+\item 
+\mbox{\hyperlink{namespacetest__i8272_a738956cd0df1ab80ce45765d2403a926}{st1}} = bus.\+io\+\_\+read(0x\+F2)
+\item 
+\mbox{\hyperlink{namespacetest__i8272_a8f0160646f83a573287bd14af4b61f00}{st2}} = bus.\+io\+\_\+read(0x\+F2)
+\item 
+\mbox{\hyperlink{namespacetest__i8272_a9a38c9f7decaa27557912ff35341d87f}{sec}} = bus.\+io\+\_\+read(0x\+F2)
+\item 
+\mbox{\hyperlink{namespacetest__i8272_ac7a8f067584ec4abacbffca8c606cda1}{n}} = bus.\+io\+\_\+read(0x\+F2)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Тест I8272 FDC (итерация E5)\end{DoxyVerb}
+ 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespacetest__i8272_a03b3144405e8d8ad007a5fd166f5150b}\index{test\_i8272@{test\_i8272}!check@{check}}
+\index{check@{check}!test\_i8272@{test\_i8272}}
+\doxysubsubsection{\texorpdfstring{check()}{check()}}
+{\footnotesize\ttfamily \label{namespacetest__i8272_a03b3144405e8d8ad007a5fd166f5150b} 
+test\+\_\+i8272.\+check (\begin{DoxyParamCaption}\item[{}]{name}{, }\item[{}]{actual}{, }\item[{}]{expected}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{namespacetest__i8272_afd854083a6801fd120ca4c6f6b687fbe}\index{test\_i8272@{test\_i8272}!bus@{bus}}
+\index{bus@{bus}!test\_i8272@{test\_i8272}}
+\doxysubsubsection{\texorpdfstring{bus}{bus}}
+{\footnotesize\ttfamily \label{namespacetest__i8272_afd854083a6801fd120ca4c6f6b687fbe} 
+test\+\_\+i8272.\+bus = \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus}{Memory\+Bus}}()}
+
+\Hypertarget{namespacetest__i8272_aadf6309a2118a5a9735f19bc100c6581}\index{test\_i8272@{test\_i8272}!cyl@{cyl}}
+\index{cyl@{cyl}!test\_i8272@{test\_i8272}}
+\doxysubsubsection{\texorpdfstring{cyl}{cyl}}
+{\footnotesize\ttfamily \label{namespacetest__i8272_aadf6309a2118a5a9735f19bc100c6581} 
+test\+\_\+i8272.\+cyl = bus.\+io\+\_\+read(0x\+F2)}
+
+\Hypertarget{namespacetest__i8272_a66246a6e27e8faac3a15d554446cf55e}\index{test\_i8272@{test\_i8272}!cylinder@{cylinder}}
+\index{cylinder@{cylinder}!test\_i8272@{test\_i8272}}
+\doxysubsubsection{\texorpdfstring{cylinder}{cylinder}}
+{\footnotesize\ttfamily \label{namespacetest__i8272_a66246a6e27e8faac3a15d554446cf55e} 
+test\+\_\+i8272.\+cylinder}
+
+\Hypertarget{namespacetest__i8272_ac926bee6f2cf662c191e086ee3e45f7d}\index{test\_i8272@{test\_i8272}!drive@{drive}}
+\index{drive@{drive}!test\_i8272@{test\_i8272}}
+\doxysubsubsection{\texorpdfstring{drive}{drive}}
+{\footnotesize\ttfamily \label{namespacetest__i8272_ac926bee6f2cf662c191e086ee3e45f7d} 
+test\+\_\+i8272.\+drive = fdc.\+drives\mbox{[}0\mbox{]}}
+
+\Hypertarget{namespacetest__i8272_a423e071c75bb020bd564b9280bb88127}\index{test\_i8272@{test\_i8272}!failed@{failed}}
+\index{failed@{failed}!test\_i8272@{test\_i8272}}
+\doxysubsubsection{\texorpdfstring{failed}{failed}}
+{\footnotesize\ttfamily \label{namespacetest__i8272_a423e071c75bb020bd564b9280bb88127} 
+int test\+\_\+i8272.\+failed = 0}
+
+\Hypertarget{namespacetest__i8272_ad111743a78cccc4d53081875322c1d49}\index{test\_i8272@{test\_i8272}!fdc@{fdc}}
+\index{fdc@{fdc}!test\_i8272@{test\_i8272}}
+\doxysubsubsection{\texorpdfstring{fdc}{fdc}}
+{\footnotesize\ttfamily \label{namespacetest__i8272_ad111743a78cccc4d53081875322c1d49} 
+test\+\_\+i8272.\+fdc = \mbox{\hyperlink{classmodules_1_1io_1_1i8272_1_1_i8272}{I8272}}(base\+\_\+port=0x\+F0)}
+
+\Hypertarget{namespacetest__i8272_ae26f49aa8b0cc91e33c3b3616b21baf3}\index{test\_i8272@{test\_i8272}!head@{head}}
+\index{head@{head}!test\_i8272@{test\_i8272}}
+\doxysubsubsection{\texorpdfstring{head}{head}}
+{\footnotesize\ttfamily \label{namespacetest__i8272_ae26f49aa8b0cc91e33c3b3616b21baf3} 
+test\+\_\+i8272.\+head = bus.\+io\+\_\+read(0x\+F2)}
+
+\Hypertarget{namespacetest__i8272_ac7a8f067584ec4abacbffca8c606cda1}\index{test\_i8272@{test\_i8272}!n@{n}}
+\index{n@{n}!test\_i8272@{test\_i8272}}
+\doxysubsubsection{\texorpdfstring{n}{n}}
+{\footnotesize\ttfamily \label{namespacetest__i8272_ac7a8f067584ec4abacbffca8c606cda1} 
+test\+\_\+i8272.\+n = bus.\+io\+\_\+read(0x\+F2)}
+
+\Hypertarget{namespacetest__i8272_aadf1866fcae8f8eb456c8cad39b8f659}\index{test\_i8272@{test\_i8272}!passed@{passed}}
+\index{passed@{passed}!test\_i8272@{test\_i8272}}
+\doxysubsubsection{\texorpdfstring{passed}{passed}}
+{\footnotesize\ttfamily \label{namespacetest__i8272_aadf1866fcae8f8eb456c8cad39b8f659} 
+int test\+\_\+i8272.\+passed = 0}
+
+\Hypertarget{namespacetest__i8272_a06a3734488b6bbe79c1fff75c0aabb00}\index{test\_i8272@{test\_i8272}!read\_data@{read\_data}}
+\index{read\_data@{read\_data}!test\_i8272@{test\_i8272}}
+\doxysubsubsection{\texorpdfstring{read\_data}{read\_data}}
+{\footnotesize\ttfamily \label{namespacetest__i8272_a06a3734488b6bbe79c1fff75c0aabb00} 
+list test\+\_\+i8272.\+read\+\_\+data = \mbox{[}$\,$\mbox{]}}
+
+\Hypertarget{namespacetest__i8272_a9cccaf534ead7690ce4f6766bb771e9f}\index{test\_i8272@{test\_i8272}!result@{result}}
+\index{result@{result}!test\_i8272@{test\_i8272}}
+\doxysubsubsection{\texorpdfstring{result}{result}}
+{\footnotesize\ttfamily \label{namespacetest__i8272_a9cccaf534ead7690ce4f6766bb771e9f} 
+test\+\_\+i8272.\+result = bus.\+io\+\_\+read(0x\+F2)}
+
+\Hypertarget{namespacetest__i8272_a9a38c9f7decaa27557912ff35341d87f}\index{test\_i8272@{test\_i8272}!sec@{sec}}
+\index{sec@{sec}!test\_i8272@{test\_i8272}}
+\doxysubsubsection{\texorpdfstring{sec}{sec}}
+{\footnotesize\ttfamily \label{namespacetest__i8272_a9a38c9f7decaa27557912ff35341d87f} 
+test\+\_\+i8272.\+sec = bus.\+io\+\_\+read(0x\+F2)}
+
+\Hypertarget{namespacetest__i8272_a163cf4ff01b858549578366bd04cc4d8}\index{test\_i8272@{test\_i8272}!sector@{sector}}
+\index{sector@{sector}!test\_i8272@{test\_i8272}}
+\doxysubsubsection{\texorpdfstring{sector}{sector}}
+{\footnotesize\ttfamily \label{namespacetest__i8272_a163cf4ff01b858549578366bd04cc4d8} 
+test\+\_\+i8272.\+sector}
+
+\Hypertarget{namespacetest__i8272_a1c46f6d38e60352e8b502d36afd7fb16}\index{test\_i8272@{test\_i8272}!sector\_data@{sector\_data}}
+\index{sector\_data@{sector\_data}!test\_i8272@{test\_i8272}}
+\doxysubsubsection{\texorpdfstring{sector\_data}{sector\_data}}
+{\footnotesize\ttfamily \label{namespacetest__i8272_a1c46f6d38e60352e8b502d36afd7fb16} 
+test\+\_\+i8272.\+sector\+\_\+data = drive.\+read\+\_\+sector(0, 0, 1)}
+
+\Hypertarget{namespacetest__i8272_a98bed51152a08713e217d20d337ec9bd}\index{test\_i8272@{test\_i8272}!st0@{st0}}
+\index{st0@{st0}!test\_i8272@{test\_i8272}}
+\doxysubsubsection{\texorpdfstring{st0}{st0}}
+{\footnotesize\ttfamily \label{namespacetest__i8272_a98bed51152a08713e217d20d337ec9bd} 
+test\+\_\+i8272.\+st0 = bus.\+io\+\_\+read(0x\+F2)}
+
+\Hypertarget{namespacetest__i8272_a738956cd0df1ab80ce45765d2403a926}\index{test\_i8272@{test\_i8272}!st1@{st1}}
+\index{st1@{st1}!test\_i8272@{test\_i8272}}
+\doxysubsubsection{\texorpdfstring{st1}{st1}}
+{\footnotesize\ttfamily \label{namespacetest__i8272_a738956cd0df1ab80ce45765d2403a926} 
+test\+\_\+i8272.\+st1 = bus.\+io\+\_\+read(0x\+F2)}
+
+\Hypertarget{namespacetest__i8272_a8f0160646f83a573287bd14af4b61f00}\index{test\_i8272@{test\_i8272}!st2@{st2}}
+\index{st2@{st2}!test\_i8272@{test\_i8272}}
+\doxysubsubsection{\texorpdfstring{st2}{st2}}
+{\footnotesize\ttfamily \label{namespacetest__i8272_a8f0160646f83a573287bd14af4b61f00} 
+test\+\_\+i8272.\+st2 = bus.\+io\+\_\+read(0x\+F2)}
+
+\Hypertarget{namespacetest__i8272_a4afd3bba0518c428544603edab6288a4}\index{test\_i8272@{test\_i8272}!status@{status}}
+\index{status@{status}!test\_i8272@{test\_i8272}}
+\doxysubsubsection{\texorpdfstring{status}{status}}
+{\footnotesize\ttfamily \label{namespacetest__i8272_a4afd3bba0518c428544603edab6288a4} 
+test\+\_\+i8272.\+status = bus.\+io\+\_\+read(0x\+F2)}
+
+\Hypertarget{namespacetest__i8272_af995fbdf57dd3f1c2791ab70ac5a0bfb}\index{test\_i8272@{test\_i8272}!version@{version}}
+\index{version@{version}!test\_i8272@{test\_i8272}}
+\doxysubsubsection{\texorpdfstring{version}{version}}
+{\footnotesize\ttfamily \label{namespacetest__i8272_af995fbdf57dd3f1c2791ab70ac5a0bfb} 
+test\+\_\+i8272.\+version = bus.\+io\+\_\+read(0x\+F2)}
+

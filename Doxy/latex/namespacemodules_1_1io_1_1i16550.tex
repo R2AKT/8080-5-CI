@@ -1,0 +1,30 @@
+\doxysection{modules.\+io.\+i16550 Namespace Reference}
+\hypertarget{namespacemodules_1_1io_1_1i16550}{}\label{namespacemodules_1_1io_1_1i16550}\index{modules.io.i16550@{modules.io.i16550}}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classmodules_1_1io_1_1i16550_1_1_i16550}{I16550}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}16550 UART — Universal Asynchronous Receiver/Transmitter с FIFO.
+Итерация E5: расширенные IO-устройства.
+
+Регистры (8 портов, base_port + offset):
+  offset 0: RBR (чтение) / THR (запись) / DLL (DLAB=1)
+  offset 1: IER / DLM (DLAB=1)
+  offset 2: IIR (чтение) / FCR (запись)
+  offset 3: LCR (Line Control Register)
+  offset 4: MCR (Modem Control Register)
+  offset 5: LSR (Line Status Register)
+  offset 6: MSR (Modem Status Register)
+  offset 7: SCR (Scratch Register)
+
+Прерывания:
+  Rx Data Available (приоритет 2)
+  Tx Holding Register Empty (приоритет 3)
+  Rx Line Status (приоритет 1, наивысший)
+  Modem Status (приоритет 4, низший)
+\end{DoxyVerb}
+ 

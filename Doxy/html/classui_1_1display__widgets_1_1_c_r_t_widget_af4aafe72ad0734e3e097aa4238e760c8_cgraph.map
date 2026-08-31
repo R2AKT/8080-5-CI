@@ -1,0 +1,9 @@
+<map id="ui.display_widgets.CRTWidget.refresh" name="ui.display_widgets.CRTWidget.refresh">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,80,250,107"/>
+<area shape="rect" id="Node000002" href="$classui_1_1display__widgets_1_1_c_r_t_widget.html#af3a6328a9418f991b85c1e0191fc299a" title=" " alt="" coords="298,5,502,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="185,77,294,50,296,55,186,82"/>
+<area shape="rect" id="Node000003" href="$classui_1_1display__widgets_1_1_l_c_d_widget.html#add6c79a6ec5c63971e6ae7113f0f6dd6" title=" " alt="" coords="298,72,502,115"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="250,91,282,91,282,96,250,96"/>
+<area shape="rect" id="Node000004" href="$classui_1_1display__widgets_1_1_t_f_t_widget.html#a5d0278e161aaef5e71579ed3c468173c" title=" " alt="" coords="299,139,500,181"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="186,105,296,132,294,137,185,110"/>
+</map>

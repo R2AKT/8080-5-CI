@@ -1,0 +1,33 @@
+\doxysection{tests/test\+\_\+dma.py File Reference}
+\hypertarget{test__dma_8py}{}\label{test__dma_8py}\index{tests/test\_dma.py@{tests/test\_dma.py}}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacetest__dma}{test\+\_\+dma}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespacetest__dma_ab84e277152ba628e84193b7991b0b8e6}{test\+\_\+dma.\+check}} (name, actual, expected)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{namespacetest__dma_a2c79e7634f1ca076edfa7620b8359e01}{test\+\_\+dma.\+passed}} = 0
+\item 
+int \mbox{\hyperlink{namespacetest__dma_aad7c80f7aceba9296ff08339204945a5}{test\+\_\+dma.\+failed}} = 0
+\item 
+\mbox{\hyperlink{namespacetest__dma_ab7712accbc04baf82249ac0b91595259}{test\+\_\+dma.\+bus}} = \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus}{Memory\+Bus}}()
+\item 
+\mbox{\hyperlink{namespacetest__dma_a5a94da57b2f2f70a90e5c4754911b251}{test\+\_\+dma.\+ram}} = \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_r_a_m_region}{RAMRegion}}(0x0000, 0x\+FFFF, name="{}RAM"{})
+\item 
+\mbox{\hyperlink{namespacetest__dma_a91e23a4ccfe705f4227c19ac0a98f243}{test\+\_\+dma.\+dma}} = \mbox{\hyperlink{classmodules_1_1io_1_1i8257_1_1_i8237}{I8237}}(base\+\_\+port=0x00, name="{}DMA-\/0"{})
+\item 
+list \mbox{\hyperlink{namespacetest__dma_a5ca7b83e21c48bcdbed4bd48a5f4afb2}{test\+\_\+dma.\+source\+\_\+data}} = \mbox{[}i \& 0x\+FF for i in range(256)\mbox{]}
+\item 
+\mbox{\hyperlink{namespacetest__dma_a38a6c92b494585f0dd931617a754a697}{test\+\_\+dma.\+cycles}}
+\item 
+list \mbox{\hyperlink{namespacetest__dma_a84597d0b678e774dbcbf6f401d5d8d65}{test\+\_\+dma.\+new\+\_\+data}} = \mbox{[}(i \texorpdfstring{$\ast$}{*} 2) \& 0x\+FF for i in range(256)\mbox{]}
+\item 
+\mbox{\hyperlink{namespacetest__dma_a024e92ec9a352e317d866b4c1bdc4d27}{test\+\_\+dma.\+state}} = dma.\+get\+\_\+state()
+\end{DoxyCompactItemize}

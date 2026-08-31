@@ -1,0 +1,114 @@
+\doxysection{modules.\+io.\+ch376s Namespace Reference}
+\hypertarget{namespacemodules_1_1io_1_1ch376s}{}\label{namespacemodules_1_1io_1_1ch376s}\index{modules.io.ch376s@{modules.io.ch376s}}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s}{CH376S}}
+\item 
+class \mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_disk_image}{CH376\+SDisk\+Image}}
+\item 
+class \mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_file}{CH376\+SFile}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+str \mbox{\hyperlink{namespacemodules_1_1io_1_1ch376s_a010468d71f9ab7f946d61db76a8211aa}{FS\+\_\+\+SIGNATURE}} = b"{}\+CH37"{}
+\item 
+int \mbox{\hyperlink{namespacemodules_1_1io_1_1ch376s_a0aa06ae3f42b2c5266b1ec1bfac462b4}{FS\+\_\+\+MAX\+\_\+\+FILES}} = 128
+\item 
+int \mbox{\hyperlink{namespacemodules_1_1io_1_1ch376s_a667c0273da8d96746490ce466ced6b7f}{FS\+\_\+\+ENTRY\+\_\+\+SIZE}} = 32
+\item 
+int \mbox{\hyperlink{namespacemodules_1_1io_1_1ch376s_a6265211500bcfb0191c30f758fc829d5}{FS\+\_\+\+HEADER\+\_\+\+SECTOR}} = 0
+\item 
+int \mbox{\hyperlink{namespacemodules_1_1io_1_1ch376s_a3a98d45ecdaf4b6343747ae7bde3371a}{FS\+\_\+\+TABLE\+\_\+\+START\+\_\+\+SECTOR}} = 1
+\item 
+int \mbox{\hyperlink{namespacemodules_1_1io_1_1ch376s_a420c529d8a0fc87e07ead5b39c9a5281}{FS\+\_\+\+TABLE\+\_\+\+SECTORS}} = 8
+\item 
+int \mbox{\hyperlink{namespacemodules_1_1io_1_1ch376s_adb82cf36dfc50e9ec602724d196b9cca}{FS\+\_\+\+DATA\+\_\+\+START\+\_\+\+SECTOR}} = \mbox{\hyperlink{namespacemodules_1_1io_1_1ch376s_a3a98d45ecdaf4b6343747ae7bde3371a}{FS\+\_\+\+TABLE\+\_\+\+START\+\_\+\+SECTOR}} + \mbox{\hyperlink{namespacemodules_1_1io_1_1ch376s_a420c529d8a0fc87e07ead5b39c9a5281}{FS\+\_\+\+TABLE\+\_\+\+SECTORS}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}CH376S — USB-контроллер для работы с USB Mass Storage устройствами.
+Итерация E6: Хранение.
+
+Возможности:
+- Низкоуровневые операции: чтение/запись секторов, инициализация диска
+- Файловые операции: открытие, чтение, запись, закрытие, перечисление
+- Файловая система
+- Поддержка подключения внешнего файла образа (как в CF IDE)
+
+Регистры (2 порта):
+  offset 0: Data Port (чтение/запись данных и параметров)
+  offset 1: Command/Status Port (запись команд, чтение статуса)
+
+Команды:
+  Диск:
+    0x04: DISK_INIT — инициализация диска
+    0x05: DISK_MOUNT — монтирование диска
+    0x06: DISK_READ — чтение секторов
+    0x07: DISK_WRITE — запись секторов
+    0x08: DISK_CAPACITY — ёмкость диска
+    0x09: DISK_QUERY — статус диска
+    0x0A: DISK_CONNECT — подключение диска
+    0x0B: DISK_DISCONN — отключение диска
+    0x0C: SET_USB_MODE — установка режима USB
+  Файлы:
+    0x0D: FILE_OPEN — открыть файл
+    0x0E: FILE_CLOSE — закрыть файл
+    0x0F: FILE_READ — чтение файла
+    0x10: FILE_WRITE — запись файла
+    0x11: FILE_ENUM — перечисление файлов
+    0x12: FILE_CREATE — создать файл
+    0x13: FILE_ERASE — удалить файл
+    0x14: FILE_QUERY — информация о файле
+    0x15: FILE_LOCATE — позиционирование в файле
+  Общие:
+    0x01: GET_IC_VER — версия чипа
+    0x02: GET_STATUS — статус
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{namespacemodules_1_1io_1_1ch376s_adb82cf36dfc50e9ec602724d196b9cca}\index{modules.io.ch376s@{modules.io.ch376s}!FS\_DATA\_START\_SECTOR@{FS\_DATA\_START\_SECTOR}}
+\index{FS\_DATA\_START\_SECTOR@{FS\_DATA\_START\_SECTOR}!modules.io.ch376s@{modules.io.ch376s}}
+\doxysubsubsection{\texorpdfstring{FS\_DATA\_START\_SECTOR}{FS\_DATA\_START\_SECTOR}}
+{\footnotesize\ttfamily \label{namespacemodules_1_1io_1_1ch376s_adb82cf36dfc50e9ec602724d196b9cca} 
+int modules.\+io.\+ch376s.\+FS\+\_\+\+DATA\+\_\+\+START\+\_\+\+SECTOR = \mbox{\hyperlink{namespacemodules_1_1io_1_1ch376s_a3a98d45ecdaf4b6343747ae7bde3371a}{FS\+\_\+\+TABLE\+\_\+\+START\+\_\+\+SECTOR}} + \mbox{\hyperlink{namespacemodules_1_1io_1_1ch376s_a420c529d8a0fc87e07ead5b39c9a5281}{FS\+\_\+\+TABLE\+\_\+\+SECTORS}}}
+
+\Hypertarget{namespacemodules_1_1io_1_1ch376s_a667c0273da8d96746490ce466ced6b7f}\index{modules.io.ch376s@{modules.io.ch376s}!FS\_ENTRY\_SIZE@{FS\_ENTRY\_SIZE}}
+\index{FS\_ENTRY\_SIZE@{FS\_ENTRY\_SIZE}!modules.io.ch376s@{modules.io.ch376s}}
+\doxysubsubsection{\texorpdfstring{FS\_ENTRY\_SIZE}{FS\_ENTRY\_SIZE}}
+{\footnotesize\ttfamily \label{namespacemodules_1_1io_1_1ch376s_a667c0273da8d96746490ce466ced6b7f} 
+int modules.\+io.\+ch376s.\+FS\+\_\+\+ENTRY\+\_\+\+SIZE = 32}
+
+\Hypertarget{namespacemodules_1_1io_1_1ch376s_a6265211500bcfb0191c30f758fc829d5}\index{modules.io.ch376s@{modules.io.ch376s}!FS\_HEADER\_SECTOR@{FS\_HEADER\_SECTOR}}
+\index{FS\_HEADER\_SECTOR@{FS\_HEADER\_SECTOR}!modules.io.ch376s@{modules.io.ch376s}}
+\doxysubsubsection{\texorpdfstring{FS\_HEADER\_SECTOR}{FS\_HEADER\_SECTOR}}
+{\footnotesize\ttfamily \label{namespacemodules_1_1io_1_1ch376s_a6265211500bcfb0191c30f758fc829d5} 
+int modules.\+io.\+ch376s.\+FS\+\_\+\+HEADER\+\_\+\+SECTOR = 0}
+
+\Hypertarget{namespacemodules_1_1io_1_1ch376s_a0aa06ae3f42b2c5266b1ec1bfac462b4}\index{modules.io.ch376s@{modules.io.ch376s}!FS\_MAX\_FILES@{FS\_MAX\_FILES}}
+\index{FS\_MAX\_FILES@{FS\_MAX\_FILES}!modules.io.ch376s@{modules.io.ch376s}}
+\doxysubsubsection{\texorpdfstring{FS\_MAX\_FILES}{FS\_MAX\_FILES}}
+{\footnotesize\ttfamily \label{namespacemodules_1_1io_1_1ch376s_a0aa06ae3f42b2c5266b1ec1bfac462b4} 
+int modules.\+io.\+ch376s.\+FS\+\_\+\+MAX\+\_\+\+FILES = 128}
+
+\Hypertarget{namespacemodules_1_1io_1_1ch376s_a010468d71f9ab7f946d61db76a8211aa}\index{modules.io.ch376s@{modules.io.ch376s}!FS\_SIGNATURE@{FS\_SIGNATURE}}
+\index{FS\_SIGNATURE@{FS\_SIGNATURE}!modules.io.ch376s@{modules.io.ch376s}}
+\doxysubsubsection{\texorpdfstring{FS\_SIGNATURE}{FS\_SIGNATURE}}
+{\footnotesize\ttfamily \label{namespacemodules_1_1io_1_1ch376s_a010468d71f9ab7f946d61db76a8211aa} 
+str modules.\+io.\+ch376s.\+FS\+\_\+\+SIGNATURE = b"{}\+CH37"{}}
+
+\Hypertarget{namespacemodules_1_1io_1_1ch376s_a420c529d8a0fc87e07ead5b39c9a5281}\index{modules.io.ch376s@{modules.io.ch376s}!FS\_TABLE\_SECTORS@{FS\_TABLE\_SECTORS}}
+\index{FS\_TABLE\_SECTORS@{FS\_TABLE\_SECTORS}!modules.io.ch376s@{modules.io.ch376s}}
+\doxysubsubsection{\texorpdfstring{FS\_TABLE\_SECTORS}{FS\_TABLE\_SECTORS}}
+{\footnotesize\ttfamily \label{namespacemodules_1_1io_1_1ch376s_a420c529d8a0fc87e07ead5b39c9a5281} 
+int modules.\+io.\+ch376s.\+FS\+\_\+\+TABLE\+\_\+\+SECTORS = 8}
+
+\Hypertarget{namespacemodules_1_1io_1_1ch376s_a3a98d45ecdaf4b6343747ae7bde3371a}\index{modules.io.ch376s@{modules.io.ch376s}!FS\_TABLE\_START\_SECTOR@{FS\_TABLE\_START\_SECTOR}}
+\index{FS\_TABLE\_START\_SECTOR@{FS\_TABLE\_START\_SECTOR}!modules.io.ch376s@{modules.io.ch376s}}
+\doxysubsubsection{\texorpdfstring{FS\_TABLE\_START\_SECTOR}{FS\_TABLE\_START\_SECTOR}}
+{\footnotesize\ttfamily \label{namespacemodules_1_1io_1_1ch376s_a3a98d45ecdaf4b6343747ae7bde3371a} 
+int modules.\+io.\+ch376s.\+FS\+\_\+\+TABLE\+\_\+\+START\+\_\+\+SECTOR = 1}
+

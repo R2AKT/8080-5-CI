@@ -1,0 +1,98 @@
+\doxysection{test\+\_\+i8255 Namespace Reference}
+\hypertarget{namespacetest__i8255}{}\label{namespacetest__i8255}\index{test\_i8255@{test\_i8255}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespacetest__i8255_a999236275808a6ab23807d5b746d6674}{check}} (name, actual, expected)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{namespacetest__i8255_a7501bf8727e788bb0f84a8954784bfe7}{passed}} = 0
+\item 
+int \mbox{\hyperlink{namespacetest__i8255_ae6653c8fb010e733984408694cc7ce9b}{failed}} = 0
+\item 
+\mbox{\hyperlink{namespacetest__i8255_a4819956385032d4fc9178cc8b7a53ccb}{bus}} = \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus}{Memory\+Bus}}()
+\item 
+\mbox{\hyperlink{namespacetest__i8255_a8890eb8003736dce037b4d0ec48a5865}{ram}} = \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_r_a_m_region}{RAMRegion}}(0x0000, 0x\+FFFF, name="{}RAM"{})
+\item 
+\mbox{\hyperlink{namespacetest__i8255_ac091ea538828851fcd04725a6d629845}{ppi}} = \mbox{\hyperlink{classmodules_1_1io_1_1i8255_1_1_i8255}{I8255}}(base\+\_\+port=0x00)
+\item 
+list \mbox{\hyperlink{namespacetest__i8255_aca4d655434eefb6d238b76cd352e3780}{interrupts}} = \mbox{[}$\,$\mbox{]}
+\item 
+\mbox{\hyperlink{namespacetest__i8255_aed5c54984e866541842e5df955a2c8e9}{ppi2}} = \mbox{\hyperlink{classmodules_1_1io_1_1i8255_1_1_i8255}{I8255}}(base\+\_\+port=0x10)
+\item 
+\mbox{\hyperlink{namespacetest__i8255_a99923bdd381d26935bdf8cc389e97f2a}{on\+\_\+interrupt}}
+\item 
+\mbox{\hyperlink{namespacetest__i8255_ae274d2f8c41d3e5dd39757e312d0bcdc}{bus2}} = \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus}{Memory\+Bus}}()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Тест I8255 (итерация E3)\end{DoxyVerb}
+ 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespacetest__i8255_a999236275808a6ab23807d5b746d6674}\index{test\_i8255@{test\_i8255}!check@{check}}
+\index{check@{check}!test\_i8255@{test\_i8255}}
+\doxysubsubsection{\texorpdfstring{check()}{check()}}
+{\footnotesize\ttfamily \label{namespacetest__i8255_a999236275808a6ab23807d5b746d6674} 
+test\+\_\+i8255.\+check (\begin{DoxyParamCaption}\item[{}]{name}{, }\item[{}]{actual}{, }\item[{}]{expected}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{namespacetest__i8255_a4819956385032d4fc9178cc8b7a53ccb}\index{test\_i8255@{test\_i8255}!bus@{bus}}
+\index{bus@{bus}!test\_i8255@{test\_i8255}}
+\doxysubsubsection{\texorpdfstring{bus}{bus}}
+{\footnotesize\ttfamily \label{namespacetest__i8255_a4819956385032d4fc9178cc8b7a53ccb} 
+test\+\_\+i8255.\+bus = \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus}{Memory\+Bus}}()}
+
+\Hypertarget{namespacetest__i8255_ae274d2f8c41d3e5dd39757e312d0bcdc}\index{test\_i8255@{test\_i8255}!bus2@{bus2}}
+\index{bus2@{bus2}!test\_i8255@{test\_i8255}}
+\doxysubsubsection{\texorpdfstring{bus2}{bus2}}
+{\footnotesize\ttfamily \label{namespacetest__i8255_ae274d2f8c41d3e5dd39757e312d0bcdc} 
+test\+\_\+i8255.\+bus2 = \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus}{Memory\+Bus}}()}
+
+\Hypertarget{namespacetest__i8255_ae6653c8fb010e733984408694cc7ce9b}\index{test\_i8255@{test\_i8255}!failed@{failed}}
+\index{failed@{failed}!test\_i8255@{test\_i8255}}
+\doxysubsubsection{\texorpdfstring{failed}{failed}}
+{\footnotesize\ttfamily \label{namespacetest__i8255_ae6653c8fb010e733984408694cc7ce9b} 
+int test\+\_\+i8255.\+failed = 0}
+
+\Hypertarget{namespacetest__i8255_aca4d655434eefb6d238b76cd352e3780}\index{test\_i8255@{test\_i8255}!interrupts@{interrupts}}
+\index{interrupts@{interrupts}!test\_i8255@{test\_i8255}}
+\doxysubsubsection{\texorpdfstring{interrupts}{interrupts}}
+{\footnotesize\ttfamily \label{namespacetest__i8255_aca4d655434eefb6d238b76cd352e3780} 
+list test\+\_\+i8255.\+interrupts = \mbox{[}$\,$\mbox{]}}
+
+\Hypertarget{namespacetest__i8255_a99923bdd381d26935bdf8cc389e97f2a}\index{test\_i8255@{test\_i8255}!on\_interrupt@{on\_interrupt}}
+\index{on\_interrupt@{on\_interrupt}!test\_i8255@{test\_i8255}}
+\doxysubsubsection{\texorpdfstring{on\_interrupt}{on\_interrupt}}
+{\footnotesize\ttfamily \label{namespacetest__i8255_a99923bdd381d26935bdf8cc389e97f2a} 
+test\+\_\+i8255.\+on\+\_\+interrupt}
+
+\Hypertarget{namespacetest__i8255_a7501bf8727e788bb0f84a8954784bfe7}\index{test\_i8255@{test\_i8255}!passed@{passed}}
+\index{passed@{passed}!test\_i8255@{test\_i8255}}
+\doxysubsubsection{\texorpdfstring{passed}{passed}}
+{\footnotesize\ttfamily \label{namespacetest__i8255_a7501bf8727e788bb0f84a8954784bfe7} 
+int test\+\_\+i8255.\+passed = 0}
+
+\Hypertarget{namespacetest__i8255_ac091ea538828851fcd04725a6d629845}\index{test\_i8255@{test\_i8255}!ppi@{ppi}}
+\index{ppi@{ppi}!test\_i8255@{test\_i8255}}
+\doxysubsubsection{\texorpdfstring{ppi}{ppi}}
+{\footnotesize\ttfamily \label{namespacetest__i8255_ac091ea538828851fcd04725a6d629845} 
+test\+\_\+i8255.\+ppi = \mbox{\hyperlink{classmodules_1_1io_1_1i8255_1_1_i8255}{I8255}}(base\+\_\+port=0x00)}
+
+\Hypertarget{namespacetest__i8255_aed5c54984e866541842e5df955a2c8e9}\index{test\_i8255@{test\_i8255}!ppi2@{ppi2}}
+\index{ppi2@{ppi2}!test\_i8255@{test\_i8255}}
+\doxysubsubsection{\texorpdfstring{ppi2}{ppi2}}
+{\footnotesize\ttfamily \label{namespacetest__i8255_aed5c54984e866541842e5df955a2c8e9} 
+test\+\_\+i8255.\+ppi2 = \mbox{\hyperlink{classmodules_1_1io_1_1i8255_1_1_i8255}{I8255}}(base\+\_\+port=0x10)}
+
+\Hypertarget{namespacetest__i8255_a8890eb8003736dce037b4d0ec48a5865}\index{test\_i8255@{test\_i8255}!ram@{ram}}
+\index{ram@{ram}!test\_i8255@{test\_i8255}}
+\doxysubsubsection{\texorpdfstring{ram}{ram}}
+{\footnotesize\ttfamily \label{namespacetest__i8255_a8890eb8003736dce037b4d0ec48a5865} 
+test\+\_\+i8255.\+ram = \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_r_a_m_region}{RAMRegion}}(0x0000, 0x\+FFFF, name="{}RAM"{})}
+

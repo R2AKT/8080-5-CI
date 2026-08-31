@@ -1,0 +1,9 @@
+<map id="modules.memory.paged.PagedRegion.write" name="modules.memory.paged.PagedRegion.write">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,72,206,115"/>
+<area shape="rect" id="Node000002" href="$classmodules_1_1memory_1_1paged_1_1_paged_region.html#addbb07445d4dd9a9625f3578a32fca7a" title=" " alt="" coords="254,5,454,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="187,69,256,50,258,55,188,74"/>
+<area shape="rect" id="Node000003" href="$classmodules_1_1memory_1_1paged_1_1_paged_region.html#a207d467cd844fcf76bca49cc487d8350" title=" " alt="" coords="254,72,454,115"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="206,91,238,91,238,96,206,96"/>
+<area shape="rect" id="Node000004" href="$classmodules_1_1memory_1_1memory__bus_1_1_memory_region.html#a900e938846a8971cc3241066efc1329f" title=" " alt="" coords="257,139,451,181"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="188,113,258,131,256,137,187,118"/>
+</map>

@@ -1,0 +1,54 @@
+\doxysection{tests/test\+\_\+integration\+\_\+full.py File Reference}
+\hypertarget{test__integration__full_8py}{}\label{test__integration__full_8py}\index{tests/test\_integration\_full.py@{tests/test\_integration\_full.py}}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classtest__integration__full_1_1_mock_c_p_u}{test\+\_\+integration\+\_\+full.\+Mock\+CPU}}
+\item 
+class \mbox{\hyperlink{classtest__integration__full_1_1_mock_system}{test\+\_\+integration\+\_\+full.\+Mock\+System}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacetest__integration__full}{test\+\_\+integration\+\_\+full}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespacetest__integration__full_a918a5c379675b2b558d3203c06413e9d}{test\+\_\+integration\+\_\+full.\+check}} (name, actual, expected)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{namespacetest__integration__full_a1385805c39dfbbc757571041128a2153}{test\+\_\+integration\+\_\+full.\+passed}} = 0
+\item 
+int \mbox{\hyperlink{namespacetest__integration__full_a878b33888689292de423a056e2334735}{test\+\_\+integration\+\_\+full.\+failed}} = 0
+\item 
+\mbox{\hyperlink{namespacetest__integration__full_abc48a260e4751b00d89a7e0a12add72c}{test\+\_\+integration\+\_\+full.\+bus}} = \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus}{Memory\+Bus}}()
+\item 
+\mbox{\hyperlink{namespacetest__integration__full_a3511fec1186c5a8c4e7e4429e75c6cfe}{test\+\_\+integration\+\_\+full.\+ram}} = \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_r_a_m_region}{RAMRegion}}(0x0000, 0x\+FFFF, name="{}RAM"{})
+\item 
+\mbox{\hyperlink{namespacetest__integration__full_a2549826ac00062c72c3e953cd2bdfcc8}{test\+\_\+integration\+\_\+full.\+cpu}} = \mbox{\hyperlink{classtest__integration__full_1_1_mock_c_p_u}{Mock\+CPU}}(\mbox{\hyperlink{namespacetest__integration__full_abc48a260e4751b00d89a7e0a12add72c}{bus}})
+\item 
+\mbox{\hyperlink{namespacetest__integration__full_a94a4208a185f051f10f0c06415b4ed2b}{test\+\_\+integration\+\_\+full.\+system}} = \mbox{\hyperlink{classtest__integration__full_1_1_mock_system}{Mock\+System}}(\mbox{\hyperlink{namespacetest__integration__full_abc48a260e4751b00d89a7e0a12add72c}{bus}}, \mbox{\hyperlink{namespacetest__integration__full_a2549826ac00062c72c3e953cd2bdfcc8}{cpu}})
+\item 
+\mbox{\hyperlink{namespacetest__integration__full_a8352d2680857a59ca38808c9a721219c}{test\+\_\+integration\+\_\+full.\+apu}} = \mbox{\hyperlink{classmodules_1_1io_1_1am9511_1_1_a_m9511}{AM9511}}(base\+\_\+port=0x80, name="{}APU-\/0"{})
+\item 
+\mbox{\hyperlink{namespacetest__integration__full_ac12c3db88bdbfbb7aad22ac45287c8dc}{test\+\_\+integration\+\_\+full.\+on\+\_\+wait}}
+\item 
+\mbox{\hyperlink{namespacetest__integration__full_a05ec8c8dd66ac17d6e1366c6e6c68e26}{test\+\_\+integration\+\_\+full.\+dma}} = \mbox{\hyperlink{classmodules_1_1io_1_1i8257_1_1_i8237}{I8237}}(base\+\_\+port=0x00, name="{}DMA-\/0"{})
+\item 
+\mbox{\hyperlink{namespacetest__integration__full_a54ff3303964bdc3631a1bf88bd6f389c}{test\+\_\+integration\+\_\+full.\+pit}} = \mbox{\hyperlink{classmodules_1_1io_1_1i8253_1_1_i8253}{I8253}}(base\+\_\+port=0x04, name="{}PIT-\/0"{})
+\item 
+\mbox{\hyperlink{namespacetest__integration__full_a9b930080dce529dcbf639070b58bb957}{test\+\_\+integration\+\_\+full.\+on\+\_\+irq}}
+\item 
+\mbox{\hyperlink{namespacetest__integration__full_ae3d6bc22f1844bd0fe11d2ce523026ea}{test\+\_\+integration\+\_\+full.\+irq\+\_\+flag}}
+\item 
+\mbox{\hyperlink{namespacetest__integration__full_a25680adcc4a4093a650c1ffb2b5747d6}{test\+\_\+integration\+\_\+full.\+dma\+\_\+active}} = system.\+check\+\_\+dma()
+\item 
+\mbox{\hyperlink{namespacetest__integration__full_afd681a85e14fc7c14c974e75573244ce}{test\+\_\+integration\+\_\+full.\+cycles}}
+\item 
+\mbox{\hyperlink{namespacetest__integration__full_a2424de22805546de7a76fc93118916ce}{test\+\_\+integration\+\_\+full.\+wait\+\_\+active}} = system.\+check\+\_\+wait()
+\item 
+\mbox{\hyperlink{namespacetest__integration__full_a6a6d0295be1003c689560ccd3df137e3}{test\+\_\+integration\+\_\+full.\+irq\+\_\+handled}} = system.\+check\+\_\+interrupts()
+\end{DoxyCompactItemize}

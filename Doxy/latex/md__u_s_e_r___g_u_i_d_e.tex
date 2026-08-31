@@ -1,0 +1,686 @@
+\chapter{USER\+\_\+\+GUIDE.\+md — Руководство пользователя i8080-\/5 CI}
+\hypertarget{md__u_s_e_r___g_u_i_d_e}{}\label{md__u_s_e_r___g_u_i_d_e}\index{USER\_GUIDE.md — Руководство пользователя i8080-\/5 CI@{USER\_GUIDE.md — Руководство пользователя i8080-\/5 CI}}
+\label{md__u_s_e_r___g_u_i_d_e_autotoc_md73}%
+\Hypertarget{md__u_s_e_r___g_u_i_d_e_autotoc_md73}%
+
+
+\begin{quote}
+{\bfseries{Версия\+:}} 2.\+0 ~\newline
+ {\bfseries{Дата\+:}} 2026-\/08-\/17 ~\newline
+ {\bfseries{Платформа\+:}} Windows / Linux ~\newline
+ {\bfseries{Языки интерфейса\+:}} Русский, English \end{quote}
+
+
+\DoxyHorRuler{0}
+\hypertarget{md__u_s_e_r___g_u_i_d_e_autotoc_md75}{}\doxysection{\texorpdfstring{Содержание}{Содержание}}\label{md__u_s_e_r___g_u_i_d_e_autotoc_md75}
+
+\begin{DoxyEnumerate}
+\item Обзор программы
+\item Установка и запуск
+\item Обзор интерфейса
+\item Вкладка «Управление»
+\item Вкладка «Данные»
+\item Вкладка «\+Hex Редактор»
+\item Вкладка «Дизассемблер»
+\item Вкладка «Тест Памяти»
+\item Вкладка «\+IO Секвенсор»
+\item Вкладка «Сравнение»
+\item Вкладка «Скрипты»
+\item Вкладка «Эмулятор»
+\item Вкладка «Трассировка»
+\item Горячие клавиши
+\item MCP-\/интеграция
+\item Типовые сценарии работы
+\end{DoxyEnumerate}
+
+\DoxyHorRuler{0}
+\hypertarget{md__u_s_e_r___g_u_i_d_e_autotoc_md77}{}\doxysection{\texorpdfstring{1. Обзор программы}{1. Обзор программы}}\label{md__u_s_e_r___g_u_i_d_e_autotoc_md77}
+{\bfseries{i8080-\/5 CI}} (i8080-\/5 Control Interface) — комплексная среда для работы с процессором Intel 8080 и устройствами на его базе. Программа объединяет\+:
+
+
+\begin{DoxyItemize}
+\item {\bfseries{Эмулятор i8080}} — полная эмуляция процессора со всеми 256 инструкциями, включая недокументированные
+\item {\bfseries{Отладчик}} — breakpoints (обычные и условные), пошаговое выполнение, watch-\/окна, трассировка
+\item {\bfseries{Hex-\/редактор}} — просмотр и редактирование образа памяти
+\item {\bfseries{Дизассемблер}} — со стрелками переходов, подсветкой типов команд
+\item {\bfseries{Работа с реальным устройством}} — чтение/запись памяти и IO-\/портов по COM-\/порту (протокол SLIP)
+\item {\bfseries{Тест памяти}} — тестирование RAM устройства различными паттернами
+\item {\bfseries{IO Секвенсор}} — выполнение последовательности операций ввода-\/вывода
+\item {\bfseries{Сравнение}} — сравнение текущего образа памяти с файлом
+\item {\bfseries{Скрипты}} — автоматизация через Python-\/скрипты
+\item {\bfseries{MCP-\/сервер}} — интеграция с AI-\/ассистентами
+\end{DoxyItemize}
+
+Программа поддерживает {\bfseries{русский и английский}} языки интерфейса и {\bfseries{светлую/тёмную}} темы.
+
+\DoxyHorRuler{0}
+\hypertarget{md__u_s_e_r___g_u_i_d_e_autotoc_md79}{}\doxysection{\texorpdfstring{2. Установка и запуск}{2. Установка и запуск}}\label{md__u_s_e_r___g_u_i_d_e_autotoc_md79}
+\hypertarget{md__u_s_e_r___g_u_i_d_e_autotoc_md80}{}\doxysubsection{\texorpdfstring{2.\+1. Требования}{2.\+1. Требования}}\label{md__u_s_e_r___g_u_i_d_e_autotoc_md80}
+
+\begin{DoxyItemize}
+\item Python 3.\+10+
+\item Py\+Side6
+\item pyserial
+\item Для MCP\+: {\ttfamily mcp}, {\ttfamily uvicorn}, {\ttfamily starlette}, {\ttfamily pydantic}, {\ttfamily pydantic-\/settings}
+\end{DoxyItemize}\hypertarget{md__u_s_e_r___g_u_i_d_e_autotoc_md81}{}\doxysubsection{\texorpdfstring{2.\+2. Установка зависимостей}{2.\+2. Установка зависимостей}}\label{md__u_s_e_r___g_u_i_d_e_autotoc_md81}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{pip\ install\ PySide6\ pyserial}
+\DoxyCodeLine{pip\ install\ mcp\ uvicorn\ starlette\ pydantic\ pydantic-\/settings}
+
+\end{DoxyCode}
+\hypertarget{md__u_s_e_r___g_u_i_d_e_autotoc_md82}{}\doxysubsection{\texorpdfstring{2.\+3. Запуск}{2.\+3. Запуск}}\label{md__u_s_e_r___g_u_i_d_e_autotoc_md82}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{python\ i8080\_CI.py}
+
+\end{DoxyCode}
+
+
+Программа запускается с окном 1280×720. Язык и тема определяются автоматически из системных настроек (можно изменить в интерфейсе).
+
+\DoxyHorRuler{0}
+\hypertarget{md__u_s_e_r___g_u_i_d_e_autotoc_md84}{}\doxysection{\texorpdfstring{3. Обзор интерфейса}{3. Обзор интерфейса}}\label{md__u_s_e_r___g_u_i_d_e_autotoc_md84}
+Главное окно состоит из\+:
+
+
+\begin{DoxyEnumerate}
+\item {\bfseries{Верхняя панель}} — выбор COM-\/порта, скорости, подключение/отключение, выбор языка и темы
+\item {\bfseries{Вкладки}} — 10 вкладок с различными функциями
+\item {\bfseries{Журнал (лог)}} — нижняя панель с журналом операций
+\end{DoxyEnumerate}\hypertarget{md__u_s_e_r___g_u_i_d_e_autotoc_md85}{}\doxysubsection{\texorpdfstring{Порядок вкладок}{Порядок вкладок}}\label{md__u_s_e_r___g_u_i_d_e_autotoc_md85}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ №   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Вкладка   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Назначение    }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ №   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Вкладка   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Назначение    }\\\cline{1-3}
+\endhead
+0   &Управление   &Подключение, шина, файлы    \\\cline{1-3}
+1   &Данные   &Чтение/запись памяти и IO    \\\cline{1-3}
+2   &Hex Редактор   &Просмотр и редактирование памяти    \\\cline{1-3}
+3   &Дизассемблер   &Дизассемблирование кода    \\\cline{1-3}
+4   &Тест Памяти   &Тестирование RAM    \\\cline{1-3}
+5   &IO Секвенсор   &Последовательности IO    \\\cline{1-3}
+6   &Сравнение   &Сравнение образов памяти    \\\cline{1-3}
+7   &Скрипты   &Автоматизация    \\\cline{1-3}
+8   &Эмулятор   &Отладчик i8080    \\\cline{1-3}
+9   &Трассировка   &Просмотр трассировки выполнения   \\\cline{1-3}
+\end{longtabu}
+
+
+\DoxyHorRuler{0}
+\hypertarget{md__u_s_e_r___g_u_i_d_e_autotoc_md87}{}\doxysection{\texorpdfstring{4. Вкладка «Управление»}{4. Вкладка «Управление»}}\label{md__u_s_e_r___g_u_i_d_e_autotoc_md87}
+\hypertarget{md__u_s_e_r___g_u_i_d_e_autotoc_md88}{}\doxysubsection{\texorpdfstring{4.\+1. Подключение к устройству}{4.\+1. Подключение к устройству}}\label{md__u_s_e_r___g_u_i_d_e_autotoc_md88}
+
+\begin{DoxyEnumerate}
+\item Выберите COM-\/порт из выпадающего списка
+\item Выберите скорость (9600, 38400, 57600, 115200)
+\item Нажмите {\bfseries{«Подключиться»}}
+\item Программа отправит NOP для проверки соединения
+\end{DoxyEnumerate}
+
+\begin{quote}
+💡 Если устройство не обнаружено, нажмите {\bfseries{«Обновить»}} для обновления списка портов. \end{quote}
+\hypertarget{md__u_s_e_r___g_u_i_d_e_autotoc_md89}{}\doxysubsection{\texorpdfstring{4.\+2. Управление шиной}{4.\+2. Управление шиной}}\label{md__u_s_e_r___g_u_i_d_e_autotoc_md89}
+Для работы с памятью и IO устройства необходимо захватить шину\+:
+
+
+\begin{DoxyItemize}
+\item {\bfseries{«Захватить шину (HOLD)»}} — отправляет сигнал HOLD процессору. Программа ожидает подтверждения HLDA.
+\item {\bfseries{«Освободить шину (Un\+HOLD)»}} — освобождает шину, процессор продолжает работу.
+\end{DoxyItemize}
+
+\begin{quote}
+⚠️ {\bfseries{Важно\+:}} перед чтением/записью памяти устройства необходимо захватить шину. При закрытии программы шина освобождается автоматически. \end{quote}
+\hypertarget{md__u_s_e_r___g_u_i_d_e_autotoc_md90}{}\doxysubsection{\texorpdfstring{4.\+3. Файлы}{4.\+3. Файлы}}\label{md__u_s_e_r___g_u_i_d_e_autotoc_md90}
+
+\begin{DoxyItemize}
+\item {\bfseries{«Сохранить дамп (.hex)»}} — сохранение текущего образа памяти в Intel HEX или BIN формат
+\item {\bfseries{«Загрузить прошивку (.hex/.bin)»}} — загрузка прошивки в локальный образ памяти. Для BIN-\/файлов запрашивается базовый адрес. После загрузки предлагается записать прошивку в устройство (если подключено и шина захвачена).
+\end{DoxyItemize}\hypertarget{md__u_s_e_r___g_u_i_d_e_autotoc_md91}{}\doxysubsection{\texorpdfstring{4.\+4. MCP-\/сервер}{4.\+4. MCP-\/сервер}}\label{md__u_s_e_r___g_u_i_d_e_autotoc_md91}
+Кнопка {\bfseries{«\+MCP Server\+: OFF/\+ON»}} включает/выключает встроенный MCP-\/сервер для интеграции с AI-\/ассистентами. Подробнее — в разделе MCP-\/интеграция.
+
+\DoxyHorRuler{0}
+\hypertarget{md__u_s_e_r___g_u_i_d_e_autotoc_md93}{}\doxysection{\texorpdfstring{5. Вкладка «Данные»}{5. Вкладка «Данные»}}\label{md__u_s_e_r___g_u_i_d_e_autotoc_md93}
+Позволяет читать и записывать значения в память и IO-\/порты устройства.\hypertarget{md__u_s_e_r___g_u_i_d_e_autotoc_md94}{}\doxysubsection{\texorpdfstring{5.\+1. Память (RAM/\+ROM)}{5.\+1. Память (RAM/\+ROM)}}\label{md__u_s_e_r___g_u_i_d_e_autotoc_md94}
+
+\begin{DoxyItemize}
+\item {\bfseries{Адрес (HEX)}} — адрес в памяти (4 hex-\/цифры)
+\item {\bfseries{Разрядность (бит)}} — 8, 16, 24, 32 бита
+\item {\bfseries{Значение (HEX)}} — значение для записи
+\item {\bfseries{Порядок байтов}} — Little-\/endian или Big-\/endian
+\item Кнопки {\bfseries{«Прочитать»}} и {\bfseries{«Записать»}}
+\end{DoxyItemize}\hypertarget{md__u_s_e_r___g_u_i_d_e_autotoc_md95}{}\doxysubsection{\texorpdfstring{5.\+2. IO-\/порты}{5.\+2. IO-\/порты}}\label{md__u_s_e_r___g_u_i_d_e_autotoc_md95}
+Аналогично памяти, но адрес — это номер порта (2 hex-\/цифры).
+
+\begin{quote}
+⚠️ Для работы с памятью и IO устройства необходимо подключение и захват шины. \end{quote}
+
+
+\DoxyHorRuler{0}
+\hypertarget{md__u_s_e_r___g_u_i_d_e_autotoc_md97}{}\doxysection{\texorpdfstring{6. Вкладка «\+Hex Редактор»}{6. Вкладка «\+Hex Редактор»}}\label{md__u_s_e_r___g_u_i_d_e_autotoc_md97}
+\hypertarget{md__u_s_e_r___g_u_i_d_e_autotoc_md98}{}\doxysubsection{\texorpdfstring{6.\+1. Обзор}{6.\+1. Обзор}}\label{md__u_s_e_r___g_u_i_d_e_autotoc_md98}
+Hex-\/редактор отображает образ памяти в виде таблицы\+:
+\begin{DoxyItemize}
+\item {\bfseries{Колонка 0}} — адрес строки
+\item {\bfseries{Колонки 1-\/16}} — байты (00-\/F)
+\item {\bfseries{Колонка 17}} — ASCII-\/представление
+\end{DoxyItemize}\hypertarget{md__u_s_e_r___g_u_i_d_e_autotoc_md99}{}\doxysubsection{\texorpdfstring{6.\+2. Возможности}{6.\+2. Возможности}}\label{md__u_s_e_r___g_u_i_d_e_autotoc_md99}
+
+\begin{DoxyItemize}
+\item {\bfseries{Редактирование}} — двойной клик по ячейке для редактирования значения
+\item {\bfseries{Подсказки}} — при наведении на байт показывается мнемоника соответствующей инструкции
+\item {\bfseries{Undo/\+Redo}} — Ctrl+Z / Ctrl+Y (до 100 операций)
+\item {\bfseries{Контекстное меню}} (правый клик)\+:
+\begin{DoxyItemize}
+\item Копировать адрес
+\item Копировать значение
+\item Инвертировать байт
+\item Заполнить диапазон
+\item Дизассемблировать отсюда
+\item Перейти к адресу
+\end{DoxyItemize}
+\item {\bfseries{Поиск}} — Ctrl+F (HEX-\/паттерн, ASCII-\/строка, HEX с маской {\ttfamily ??})
+\item {\bfseries{Переход к адресу}} — Ctrl+G
+\item {\bfseries{Чтение блока}} — чтение блока из устройства в образ
+\end{DoxyItemize}\hypertarget{md__u_s_e_r___g_u_i_d_e_autotoc_md100}{}\doxysubsection{\texorpdfstring{6.\+3. Диапазон}{6.\+3. Диапазон}}\label{md__u_s_e_r___g_u_i_d_e_autotoc_md100}
+В верхней части отображается текущий диапазон памяти и количество байт.
+
+\DoxyHorRuler{0}
+\hypertarget{md__u_s_e_r___g_u_i_d_e_autotoc_md102}{}\doxysection{\texorpdfstring{7. Вкладка «Дизассемблер»}{7. Вкладка «Дизассемблер»}}\label{md__u_s_e_r___g_u_i_d_e_autotoc_md102}
+\hypertarget{md__u_s_e_r___g_u_i_d_e_autotoc_md103}{}\doxysubsection{\texorpdfstring{7.\+1. Обзор}{7.\+1. Обзор}}\label{md__u_s_e_r___g_u_i_d_e_autotoc_md103}
+Дизассемблер отображает дизассемблированный код со следующими возможностями\+:
+\begin{DoxyItemize}
+\item {\bfseries{Стрелки переходов}} — цветные стрелки показывают цели переходов (JMP, CALL, Jcc, Ccc, RST)
+\item {\bfseries{Цветовая подсветка типов команд\+:}}
+\begin{DoxyItemize}
+\item 🔵 Синий — переходы (JMP, CALL, Jcc, Ccc, RST)
+\item 🟢 Зелёный — операции с памятью (LDA, STA, LHLD, SHLD, LDAX, STAX, XCHG, XTHL)
+\item 🟣 Фиолетовый — ввод-\/вывод (IN, OUT)
+\item ⚪ Серый — управление (NOP, HLT, DI, EI, RET, PCHL, SPHL)
+\item 🟠 Оранжевый — регистры и данные (MVI, LXI, INR, DCR, MOV, INX, DCX)
+\item 🟡 Жёлтый — арифметика и логика (ADD, ADC, SUB, SBB, ANA, XRA, ORA, CMP и др.)
+\item 🟢 Бирюзовый — стек (PUSH, POP)
+\item 🔴 Красный — недокументированные команды (NOP\texorpdfstring{$\ast$}{*}, RET\texorpdfstring{$\ast$}{*}, CALL\texorpdfstring{$\ast$}{*})
+\end{DoxyItemize}
+\item {\bfseries{Комментарии переходов}} — {\ttfamily ; -\/\texorpdfstring{$>$}{>} XXXXh} показывает цель перехода
+\end{DoxyItemize}\hypertarget{md__u_s_e_r___g_u_i_d_e_autotoc_md104}{}\doxysubsection{\texorpdfstring{7.\+2. Управление}{7.\+2. Управление}}\label{md__u_s_e_r___g_u_i_d_e_autotoc_md104}
+
+\begin{DoxyItemize}
+\item {\bfseries{Start}} — начальный адрес дизассемблирования
+\item {\bfseries{Len}} — длина (количество байт)
+\item {\bfseries{«Дизассемблировать»}} — выполнить дизассемблирование
+\item {\bfseries{Авто при чтении/загрузке}} — автоматическое дизассемблирование при чтении из устройства или загрузке файла
+\item {\bfseries{«Экспорт»}} — экспорт дизассемблированного листинга в файл (.asm / .txt)
+\end{DoxyItemize}\hypertarget{md__u_s_e_r___g_u_i_d_e_autotoc_md105}{}\doxysubsection{\texorpdfstring{7.\+3. Изменение размера шрифта}{7.\+3. Изменение размера шрифта}}\label{md__u_s_e_r___g_u_i_d_e_autotoc_md105}
+{\bfseries{Ctrl + колесо мыши}} — изменение размера шрифта дизассемблера.
+
+\DoxyHorRuler{0}
+\hypertarget{md__u_s_e_r___g_u_i_d_e_autotoc_md107}{}\doxysection{\texorpdfstring{8. Вкладка «Тест Памяти»}{8. Вкладка «Тест Памяти»}}\label{md__u_s_e_r___g_u_i_d_e_autotoc_md107}
+Позволяет тестировать RAM устройства различными паттернами.\hypertarget{md__u_s_e_r___g_u_i_d_e_autotoc_md108}{}\doxysubsection{\texorpdfstring{Параметры}{Параметры}}\label{md__u_s_e_r___g_u_i_d_e_autotoc_md108}
+
+\begin{DoxyItemize}
+\item {\bfseries{Start}} — начальный адрес (HEX)
+\item {\bfseries{End}} — конечный адрес (HEX)
+\item {\bfseries{Паттерн}} — выбор паттерна\+:
+\begin{DoxyItemize}
+\item {\bfseries{Checker}} — шахматный паттерн (55/\+AA)
+\item {\bfseries{Zero}} — все нули
+\item {\bfseries{One}} — все FF
+\item {\bfseries{Addr}} — значение равно адресу
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md__u_s_e_r___g_u_i_d_e_autotoc_md109}{}\doxysubsection{\texorpdfstring{Запуск}{Запуск}}\label{md__u_s_e_r___g_u_i_d_e_autotoc_md109}
+Нажмите {\bfseries{«Запустить тест памяти»}}. Прогресс отображается в прогресс-\/баре. Ошибки записываются в журнал с указанием адреса, ожидаемого и полученного значений.
+
+\begin{quote}
+⚠️ Тест памяти перезаписывает содержимое RAM. Не запускайте тест на области с важными данными. \end{quote}
+
+
+\DoxyHorRuler{0}
+\hypertarget{md__u_s_e_r___g_u_i_d_e_autotoc_md111}{}\doxysection{\texorpdfstring{9. Вкладка «\+IO Секвенсор»}{9. Вкладка «\+IO Секвенсор»}}\label{md__u_s_e_r___g_u_i_d_e_autotoc_md111}
+\hypertarget{md__u_s_e_r___g_u_i_d_e_autotoc_md112}{}\doxysubsection{\texorpdfstring{9.\+1. Одиночные операции IO}{9.\+1. Одиночные операции IO}}\label{md__u_s_e_r___g_u_i_d_e_autotoc_md112}
+
+\begin{DoxyItemize}
+\item {\bfseries{Порт (HEX)}} — номер порта
+\item {\bfseries{Значение (HEX)}} — значение
+\item Кнопки {\bfseries{«Читать (IN)»}} и {\bfseries{«Записать (OUT)»}}
+\end{DoxyItemize}\hypertarget{md__u_s_e_r___g_u_i_d_e_autotoc_md113}{}\doxysubsection{\texorpdfstring{9.\+2. Последовательности}{9.\+2. Последовательности}}\label{md__u_s_e_r___g_u_i_d_e_autotoc_md113}
+Позволяет выполнять последовательность операций ввода-\/вывода.
+
+{\bfseries{Формат последовательности\+:}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{W\ 01\ FF\ ;\ Запись\ в\ порт\ 01h\ значения\ FFh}
+\DoxyCodeLine{R\ 02\ \ \ \ ;\ Чтение\ из\ порта\ 02h}
+\DoxyCodeLine{D\ 10\ \ \ \ ;\ Задержка\ 10\ мс}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item {\bfseries{W PP DD}} — запись в порт PP значения DD
+\item {\bfseries{R PP}} — чтение из порта PP
+\item {\bfseries{D NN}} — задержка NN миллисекунд
+\item Строки, начинающиеся с {\ttfamily ;} или {\ttfamily \#} — комментарии
+\end{DoxyItemize}\hypertarget{md__u_s_e_r___g_u_i_d_e_autotoc_md114}{}\doxysubsection{\texorpdfstring{Управление}{Управление}}\label{md__u_s_e_r___g_u_i_d_e_autotoc_md114}
+
+\begin{DoxyItemize}
+\item {\bfseries{«Загрузить файл...»}} — загрузка последовательности из файла
+\item {\bfseries{«Выполнить последовательность»}} — выполнение последовательности
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+\hypertarget{md__u_s_e_r___g_u_i_d_e_autotoc_md116}{}\doxysection{\texorpdfstring{10. Вкладка «Сравнение»}{10. Вкладка «Сравнение»}}\label{md__u_s_e_r___g_u_i_d_e_autotoc_md116}
+Позволяет сравнить текущий образ памяти с файлом.\hypertarget{md__u_s_e_r___g_u_i_d_e_autotoc_md117}{}\doxysubsection{\texorpdfstring{Использование}{Использование}}\label{md__u_s_e_r___g_u_i_d_e_autotoc_md117}
+
+\begin{DoxyEnumerate}
+\item {\bfseries{«Загрузить файл для сравнения»}} — загрузка файла (.hex / .bin)
+\item {\bfseries{«Сравнить»}} — выполнение сравнения
+\item {\bfseries{«Экспорт отчёта»}} — экспорт результатов в файл (.txt / .csv)
+\end{DoxyEnumerate}\hypertarget{md__u_s_e_r___g_u_i_d_e_autotoc_md118}{}\doxysubsection{\texorpdfstring{Результаты}{Результаты}}\label{md__u_s_e_r___g_u_i_d_e_autotoc_md118}
+Таблица отображает различия\+:
+\begin{DoxyItemize}
+\item {\bfseries{Адрес}} — адрес различия
+\item {\bfseries{Текущий}} — текущее значение
+\item {\bfseries{Файл}} — значение из файла
+\item {\bfseries{Статус}} — тип различия\+:
+\begin{DoxyItemize}
+\item 🟡 {\bfseries{Изменено}} — значение отличается
+\item 🟢 {\bfseries{Добавлено в файле}} — есть в файле, отсутствует в текущем образе
+\item 🔴 {\bfseries{Удалено в файле}} — есть в текущем образе, отсутствует в файле
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+\hypertarget{md__u_s_e_r___g_u_i_d_e_autotoc_md120}{}\doxysection{\texorpdfstring{11. Вкладка «Скрипты»}{11. Вкладка «Скрипты»}}\label{md__u_s_e_r___g_u_i_d_e_autotoc_md120}
+Позволяет выполнять Python-\/скрипты для автоматизации операций.\hypertarget{md__u_s_e_r___g_u_i_d_e_autotoc_md121}{}\doxysubsection{\texorpdfstring{Интерфейс}{Интерфейс}}\label{md__u_s_e_r___g_u_i_d_e_autotoc_md121}
+
+\begin{DoxyItemize}
+\item {\bfseries{Редактор кода}} — редактор Python-\/скрипта
+\item {\bfseries{Вывод}} — вывод скрипта (print)
+\item Кнопки\+:
+\begin{DoxyItemize}
+\item {\bfseries{▶ Выполнить скрипт}} — выполнение скрипта
+\item {\bfseries{Загрузить скрипт}} — загрузка скрипта из файла (.py / .txt)
+\item {\bfseries{Сохранить скрипт}} — сохранение скрипта в файл
+\item {\bfseries{Очистить вывод}} — очистка окна вывода
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md__u_s_e_r___g_u_i_d_e_autotoc_md122}{}\doxysubsection{\texorpdfstring{Доступные функции}{Доступные функции}}\label{md__u_s_e_r___g_u_i_d_e_autotoc_md122}
+В скриптах доступны следующие функции (без префикса {\ttfamily api.})\+:
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Функция   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Назначение    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Функция   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Назначение    }\\\cline{1-2}
+\endhead
+{\ttfamily read\+\_\+mem(addr)}   &Чтение байта из локального образа    \\\cline{1-2}
+{\ttfamily write\+\_\+mem(addr, val)}   &Запись байта в локальный образ    \\\cline{1-2}
+{\ttfamily read\+\_\+block(addr, size)}   &Чтение блока из локального образа    \\\cline{1-2}
+{\ttfamily write\+\_\+block(addr, data)}   &Запись блока в локальный образ    \\\cline{1-2}
+{\ttfamily fill\+\_\+mem(addr, size, val)}   &Заполнение диапазона    \\\cline{1-2}
+{\ttfamily dev\+\_\+read\+\_\+mem(addr)}   &Чтение из памяти устройства    \\\cline{1-2}
+{\ttfamily dev\+\_\+write\+\_\+mem(addr, val)}   &Запись в память устройства    \\\cline{1-2}
+{\ttfamily dev\+\_\+read\+\_\+io(port)}   &Чтение IO-\/порта устройства    \\\cline{1-2}
+{\ttfamily dev\+\_\+write\+\_\+io(port, val)}   &Запись в IO-\/порт устройства    \\\cline{1-2}
+{\ttfamily download(addr, size)}   &Чтение блока из устройства в образ    \\\cline{1-2}
+{\ttfamily upload(addr, size)}   &Запись блока из образа в устройство    \\\cline{1-2}
+{\ttfamily download\+\_\+all(start, end)}   &Чтение всей памяти устройства    \\\cline{1-2}
+{\ttfamily upload\+\_\+all()}   &Запись всего образа в устройство    \\\cline{1-2}
+{\ttfamily hold\+\_\+bus()}   &Захват шины    \\\cline{1-2}
+{\ttfamily unhold\+\_\+bus()}   &Освобождение шины    \\\cline{1-2}
+{\ttfamily wait\+\_\+bus(timeout)}   &Ожидание захвата шины    \\\cline{1-2}
+{\ttfamily wait\+\_\+unhold(timeout)}   &Ожидание освобождения шины    \\\cline{1-2}
+{\ttfamily load\+\_\+file(path, base\+\_\+addr)}   &Загрузка файла в образ    \\\cline{1-2}
+{\ttfamily save\+\_\+file(path)}   &Сохранение образа в файл    \\\cline{1-2}
+{\ttfamily disassemble(addr, length, show)}   &Дизассемблирование    \\\cline{1-2}
+{\ttfamily search(pattern, mode)}   &Поиск в образе    \\\cline{1-2}
+{\ttfamily refresh()}   &Обновление GUI    \\\cline{1-2}
+{\ttfamily log(msg)}   &Вывод в журнал    \\\cline{1-2}
+{\ttfamily status()}   &Текущее состояние    \\\cline{1-2}
+{\ttfamily goto(addr)}   &Переход к адресу   \\\cline{1-2}
+\end{longtabu}
+
+
+Подробное описание — в {\bfseries{\doxylink{_s_c_r_i_p_t_s___g_u_i_d_e_8md}{SCRIPTS\+\_\+\+GUIDE.\+md}}}.
+
+\DoxyHorRuler{0}
+\hypertarget{md__u_s_e_r___g_u_i_d_e_autotoc_md124}{}\doxysection{\texorpdfstring{12. Вкладка «Эмулятор»}{12. Вкладка «Эмулятор»}}\label{md__u_s_e_r___g_u_i_d_e_autotoc_md124}
+Полноценный отладчик процессора i8080. Вкладка разделена на 4 колонки\+:\hypertarget{md__u_s_e_r___g_u_i_d_e_autotoc_md125}{}\doxysubsection{\texorpdfstring{12.\+1. Колонка 1\+: Дизассемблированный код}{12.\+1. Колонка 1\+: Дизассемблированный код}}\label{md__u_s_e_r___g_u_i_d_e_autotoc_md125}
+Отображает дизассемблированный код с\+:
+\begin{DoxyItemize}
+\item {\bfseries{►}} — текущая позиция PC (жёлтая подсветка)
+\item {\bfseries{●}} — точки останова (красный — обычная, оранжевый — условная)
+\item {\bfseries{▷}} — курсор Run to Cursor (зелёный)
+\item Стрелки переходов
+\end{DoxyItemize}
+
+{\bfseries{Взаимодействие с кодом\+:}}
+\begin{DoxyItemize}
+\item {\bfseries{Одинарный клик}} — установка курсора Run to Cursor
+\item {\bfseries{Двойной клик}} — установка/удаление точки останова
+\item {\bfseries{Контекстное меню}} (правый клик)\+:
+\begin{DoxyItemize}
+\item ▶ Run to Cursor (Ctrl+\+F10)
+\item ⤳ Run from Here
+\item ⇢ Jump to Cursor
+\item ● Toggle Breakpoint
+\item ◉ Set Conditional BP...
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md__u_s_e_r___g_u_i_d_e_autotoc_md126}{}\doxysubsection{\texorpdfstring{12.\+2. Колонка 2\+: Watch}{12.\+2. Колонка 2\+: Watch}}\label{md__u_s_e_r___g_u_i_d_e_autotoc_md126}
+Watch-\/окно для наблюдения за значениями памяти и регистров.
+
+{\bfseries{Типы наблюдения\+:}}
+\begin{DoxyItemize}
+\item {\bfseries{Память (байт)}} — наблюдение за байтом памяти
+\item {\bfseries{Память (слово)}} — наблюдение за словом (2 байта)
+\item {\bfseries{Регистр}} — наблюдение за регистром (A, B, C, D, E, H, L, BC, DE, HL, SP, PC, FLAGS)
+\end{DoxyItemize}
+
+{\bfseries{Форматы отображения\+:}} hex, dec, signed, bin, ascii
+
+{\bfseries{Возможности\+:}}
+\begin{DoxyItemize}
+\item Добавление элементов наблюдения
+\item Удаление элементов
+\item Очистка всех элементов
+\item Сохранение/загрузка пресетов (JSON)
+\item Подсветка изменённых значений (красный фон)
+\end{DoxyItemize}\hypertarget{md__u_s_e_r___g_u_i_d_e_autotoc_md127}{}\doxysubsection{\texorpdfstring{12.\+3. Колонка 3\+: Breakpoints}{12.\+3. Колонка 3\+: Breakpoints}}\label{md__u_s_e_r___g_u_i_d_e_autotoc_md127}
+Панель управления точками останова.
+
+{\bfseries{Колонки таблицы\+:}}
+\begin{DoxyItemize}
+\item {\bfseries{Адрес}} — адрес точки останова
+\item {\bfseries{Условие}} — условие срабатывания (для условных BP)
+\item {\bfseries{Вкл}} — включена/выключена (✓/✗)
+\item {\bfseries{Сраб.}} — количество срабатываний
+\end{DoxyItemize}
+
+{\bfseries{Кнопки\+:}}
+\begin{DoxyItemize}
+\item {\bfseries{+}} — добавить точку останова
+\item {\bfseries{🔧}} — редактировать условие (двойной клик по строке)
+\item {\bfseries{🚫}} — включить/выключить
+\item {\bfseries{❌}} — удалить выбранную
+\item {\bfseries{✕}} — очистить все
+\item {\bfseries{💾}} — сохранить пресет BP (JSON)
+\item {\bfseries{📂}} — загрузить пресет BP
+\end{DoxyItemize}\hypertarget{md__u_s_e_r___g_u_i_d_e_autotoc_md128}{}\doxysubsection{\texorpdfstring{12.\+4. Колонка 4\+: Регистры, Флаги, Стек, Статистика}{12.\+4. Колонка 4\+: Регистры, Флаги, Стек, Статистика}}\label{md__u_s_e_r___g_u_i_d_e_autotoc_md128}
+
+\begin{DoxyItemize}
+\item {\bfseries{Регистры}} — A, B, C, D, E, H, L, SP, PC, BC, DE, HL. Изменённые регистры подсвечиваются красным.
+\item {\bfseries{Флаги}} — S, Z, AC, P, CY. Установленные флаги подсвечиваются красным.
+\item {\bfseries{Стек}} — верхние 8 значений стека. Вершина стека подсвечивается красным.
+\item {\bfseries{Статистика}} — количество тактов, состояние (Остановлен / Выполняется / Готов).
+\end{DoxyItemize}\hypertarget{md__u_s_e_r___g_u_i_d_e_autotoc_md129}{}\doxysubsection{\texorpdfstring{12.\+5. Нижняя панель управления}{12.\+5. Нижняя панель управления}}\label{md__u_s_e_r___g_u_i_d_e_autotoc_md129}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Кнопка   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Горячая клавиша   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Назначение    }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Кнопка   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Горячая клавиша   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Назначение    }\\\cline{1-3}
+\endhead
+Reset   &Ctrl+\+F2   &Сброс эмулятора    \\\cline{1-3}
+Set PC...   &—   &Установка PC вручную    \\\cline{1-3}
+Step Into   &F11   &Шаг с заходом в подпрограммы    \\\cline{1-3}
+Step Over   &F10   &Шаг без захода в подпрограммы    \\\cline{1-3}
+▶ Run   &F5   &Запуск выполнения    \\\cline{1-3}
+■ Stop   &F8   &Остановка выполнения    \\\cline{1-3}
+☑ Трассировка   &—   &Включение записи трассировки   \\\cline{1-3}
+\end{longtabu}
+\hypertarget{md__u_s_e_r___g_u_i_d_e_autotoc_md130}{}\doxysubsection{\texorpdfstring{12.\+6. Условные точки останова}{12.\+6. Условные точки останова}}\label{md__u_s_e_r___g_u_i_d_e_autotoc_md130}
+Условные точки останова позволяют останавливать выполнение при выполнении условия.
+
+{\bfseries{Доступные переменные\+:}}
+\begin{DoxyItemize}
+\item Регистры\+: {\ttfamily A}, {\ttfamily B}, {\ttfamily C}, {\ttfamily D}, {\ttfamily E}, {\ttfamily H}, {\ttfamily L}, {\ttfamily BC}, {\ttfamily DE}, {\ttfamily HL}, {\ttfamily SP}, {\ttfamily PC}
+\item Флаги\+: {\ttfamily S}, {\ttfamily Z}, {\ttfamily AC}, {\ttfamily P}, {\ttfamily CY}
+\item Память\+: {\ttfamily mem\mbox{[}0x0100\mbox{]}}
+\item IO-\/порты\+: {\ttfamily io\mbox{[}0x01\mbox{]}}
+\item Такты\+: {\ttfamily cycles}
+\item Операторы\+: {\ttfamily ==}, {\ttfamily !=}, {\ttfamily \texorpdfstring{$<$}{<}}, {\ttfamily \texorpdfstring{$>$}{>}}, {\ttfamily \texorpdfstring{$<$}{<}=}, {\ttfamily \texorpdfstring{$>$}{>}=}, {\ttfamily and}, {\ttfamily or}, {\ttfamily not}
+\end{DoxyItemize}
+
+{\bfseries{Примеры условий\+:}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{A\ ==\ 0x55\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ —\ остановка\ когда\ A\ станет\ 0x55}
+\DoxyCodeLine{HL\ >\ 0x1000\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ —\ когда\ HL\ превысит\ 0x1000}
+\DoxyCodeLine{mem[0x0100]\ ==\ 0xFF\ \ \ \ \ \ \ \ \ \ —\ когда\ ячейка\ памяти\ станет\ FF}
+\DoxyCodeLine{Z\ ==\ 1\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ —\ когда\ флаг\ Zero\ установлен}
+\DoxyCodeLine{cycles\ >\ 10000\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ —\ после\ 10000\ тактов}
+\DoxyCodeLine{HL\ >\ 0x1000\ and\ Z\ ==\ 0\ \ \ \ \ \ \ —\ комбинация\ условий}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+\hypertarget{md__u_s_e_r___g_u_i_d_e_autotoc_md132}{}\doxysection{\texorpdfstring{13. Вкладка «Трассировка»}{13. Вкладка «Трассировка»}}\label{md__u_s_e_r___g_u_i_d_e_autotoc_md132}
+Вкладка трассировки отображает историю выполнения инструкций.\hypertarget{md__u_s_e_r___g_u_i_d_e_autotoc_md133}{}\doxysubsection{\texorpdfstring{13.\+1. Панель управления}{13.\+1. Панель управления}}\label{md__u_s_e_r___g_u_i_d_e_autotoc_md133}
+
+\begin{DoxyItemize}
+\item {\bfseries{🔥 Включить запись}} — включение записи трассировки (чекбокс также на вкладке «Эмулятор»)
+\item {\bfseries{🗑 Очистить}} — очистка буфера трассировки
+\item {\bfseries{💾 Экспорт}} — экспорт трассировки (TXT / CSV / JSON)
+\item {\bfseries{Глубина}} — максимальное количество записей (по умолчанию 10000)
+\item {\bfseries{Записей\+: X / Y}} — текущее количество записей / максимальное
+\end{DoxyItemize}\hypertarget{md__u_s_e_r___g_u_i_d_e_autotoc_md134}{}\doxysubsection{\texorpdfstring{13.\+2. Поиск}{13.\+2. Поиск}}\label{md__u_s_e_r___g_u_i_d_e_autotoc_md134}
+Поле поиска поддерживает\+:
+\begin{DoxyItemize}
+\item {\bfseries{Адрес (HEX)}} — например, {\ttfamily 0010} — поиск по адресу PC
+\item {\bfseries{Регистр OP значение}} — например, {\ttfamily A==55}, {\ttfamily HL\texorpdfstring{$>$}{>}1000}, {\ttfamily SP\texorpdfstring{$<$}{<}=F000}, {\ttfamily Z=1}
+\item {\bfseries{Мнемоника}} — например, {\ttfamily CPI}, {\ttfamily JMP} — поиск по мнемонике
+\end{DoxyItemize}
+
+{\bfseries{Операторы сравнения\+:}} {\ttfamily =}, {\ttfamily ==}, {\ttfamily !=}, {\ttfamily \texorpdfstring{$>$}{>}}, {\ttfamily \texorpdfstring{$<$}{<}}, {\ttfamily \texorpdfstring{$>$}{>}=}, {\ttfamily \texorpdfstring{$<$}{<}=}
+
+Кнопки\+:
+\begin{DoxyItemize}
+\item {\bfseries{🔍}} — выполнить поиск
+\item {\bfseries{❌}} — сбросить фильтр
+\end{DoxyItemize}\hypertarget{md__u_s_e_r___g_u_i_d_e_autotoc_md135}{}\doxysubsection{\texorpdfstring{13.\+3. Таблица трассировки}{13.\+3. Таблица трассировки}}\label{md__u_s_e_r___g_u_i_d_e_autotoc_md135}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Колонка   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Назначение    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Колонка   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Назначение    }\\\cline{1-2}
+\endhead
+\#   &Порядковый номер записи    \\\cline{1-2}
+PC   &Адрес инструкции    \\\cline{1-2}
+Байты   &Байты инструкции    \\\cline{1-2}
+Мнемо   &Мнемоника инструкции    \\\cline{1-2}
+A   &Аккумулятор    \\\cline{1-2}
+BC   &Пара BC    \\\cline{1-2}
+DE   &Пара DE    \\\cline{1-2}
+HL   &Пара HL    \\\cline{1-2}
+SP   &Указатель стека    \\\cline{1-2}
+Флаги   &Флаги (S Z A P C)   \\\cline{1-2}
+\end{longtabu}
+
+
+{\bfseries{Возможности\+:}}
+\begin{DoxyItemize}
+\item {\bfseries{Клик по строке}} — отображение детальной информации
+\item {\bfseries{Контекстное меню}} (правый клик)\+:
+\begin{DoxyItemize}
+\item 👁 Просмотр состояния
+\item ↩ Восстановить состояние — восстановление состояния эмулятора из записи
+\item ➤ Перейти к адресу — переход к адресу в дизассемблере
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md__u_s_e_r___g_u_i_d_e_autotoc_md136}{}\doxysubsection{\texorpdfstring{13.\+4. Экспорт}{13.\+4. Экспорт}}\label{md__u_s_e_r___g_u_i_d_e_autotoc_md136}
+Поддерживаемые форматы\+:
+\begin{DoxyItemize}
+\item {\bfseries{TXT}} — текстовый формат
+\item {\bfseries{CSV}} — CSV для импорта в таблицы
+\item {\bfseries{JSON}} — JSON для программной обработки
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+\hypertarget{md__u_s_e_r___g_u_i_d_e_autotoc_md138}{}\doxysection{\texorpdfstring{14. Горячие клавиши}{14. Горячие клавиши}}\label{md__u_s_e_r___g_u_i_d_e_autotoc_md138}
+\hypertarget{md__u_s_e_r___g_u_i_d_e_autotoc_md139}{}\doxysubsection{\texorpdfstring{Общие}{Общие}}\label{md__u_s_e_r___g_u_i_d_e_autotoc_md139}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Клавиша   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Назначение    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Клавиша   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Назначение    }\\\cline{1-2}
+\endhead
+Ctrl+O   &Загрузить прошивку    \\\cline{1-2}
+Ctrl+S   &Сохранить дамп    \\\cline{1-2}
+Ctrl+E   &Экспорт дизассемблера    \\\cline{1-2}
+Ctrl+Q   &Выход    \\\cline{1-2}
+Ctrl+F   &Поиск в памяти    \\\cline{1-2}
+Ctrl+G   &Переход к адресу    \\\cline{1-2}
+Ctrl+D   &Дизассемблировать    \\\cline{1-2}
+Ctrl+H   &Захватить шину    \\\cline{1-2}
+Ctrl+U   &Освободить шину    \\\cline{1-2}
+Ctrl+R   &Обновить    \\\cline{1-2}
+Ctrl+Z   &Undo    \\\cline{1-2}
+Ctrl+Y / Ctrl+\+Shift+Z   &Redo   \\\cline{1-2}
+\end{longtabu}
+\hypertarget{md__u_s_e_r___g_u_i_d_e_autotoc_md140}{}\doxysubsection{\texorpdfstring{Эмулятор}{Эмулятор}}\label{md__u_s_e_r___g_u_i_d_e_autotoc_md140}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Клавиша   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Назначение    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Клавиша   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Назначение    }\\\cline{1-2}
+\endhead
+F5   &Запуск (Run)    \\\cline{1-2}
+F10   &Шаг без захода (Step Over)    \\\cline{1-2}
+F11   &Шаг с заходом (Step Into)    \\\cline{1-2}
+F8   &Остановка (Stop)    \\\cline{1-2}
+Ctrl+\+F2   &Сброс (Reset)    \\\cline{1-2}
+Ctrl+\+F10   &Run to Cursor   \\\cline{1-2}
+\end{longtabu}
+
+
+\DoxyHorRuler{0}
+\hypertarget{md__u_s_e_r___g_u_i_d_e_autotoc_md142}{}\doxysection{\texorpdfstring{15. MCP-\/интеграция}{15. MCP-\/интеграция}}\label{md__u_s_e_r___g_u_i_d_e_autotoc_md142}
+Программа включает встроенный MCP-\/сервер для интеграции с AI-\/ассистентами (Claude, Cursor, VS Code и др.).\hypertarget{md__u_s_e_r___g_u_i_d_e_autotoc_md143}{}\doxysubsection{\texorpdfstring{Включение MCP-\/сервера}{Включение MCP-\/сервера}}\label{md__u_s_e_r___g_u_i_d_e_autotoc_md143}
+
+\begin{DoxyEnumerate}
+\item Вкладка «Управление»
+\item Нажмите кнопку {\bfseries{«\+MCP Server\+: OFF»}} — она переключится на {\bfseries{«\+MCP Server\+: ON»}}
+\item Сервер доступен по адресу {\ttfamily \href{http://127.0.0.1:8000/sse}{\texttt{ http\+://127.\+0.\+0.\+1\+:8000/sse}}}
+\end{DoxyEnumerate}\hypertarget{md__u_s_e_r___g_u_i_d_e_autotoc_md144}{}\doxysubsection{\texorpdfstring{Конфигурация для Claude Desktop}{Конфигурация для Claude Desktop}}\label{md__u_s_e_r___g_u_i_d_e_autotoc_md144}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ "{}mcpServers"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ "{}i8080-\/ci"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ "{}url"{}:\ "{}http://127.0.0.1:8000/sse"{}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Подробное описание MCP-\/интеграции — в {\bfseries{\doxylink{_m_c_p___g_u_i_d_e_8md}{MCP\+\_\+\+GUIDE.\+md}}}.
+
+\DoxyHorRuler{0}
+\hypertarget{md__u_s_e_r___g_u_i_d_e_autotoc_md146}{}\doxysection{\texorpdfstring{16. Типовые сценарии работы}{16. Типовые сценарии работы}}\label{md__u_s_e_r___g_u_i_d_e_autotoc_md146}
+\hypertarget{md__u_s_e_r___g_u_i_d_e_autotoc_md147}{}\doxysubsection{\texorpdfstring{16.\+1. Загрузка и дизассемблирование прошивки}{16.\+1. Загрузка и дизассемблирование прошивки}}\label{md__u_s_e_r___g_u_i_d_e_autotoc_md147}
+
+\begin{DoxyEnumerate}
+\item Вкладка «Управление» → «Загрузить прошивку» → выберите .hex/.bin файл
+\item Вкладка «Дизассемблер» → «Дизассемблировать»
+\item Изучите код, используя стрелки переходов и цветовую подсветку
+\end{DoxyEnumerate}\hypertarget{md__u_s_e_r___g_u_i_d_e_autotoc_md148}{}\doxysubsection{\texorpdfstring{16.\+2. Отладка программы в эмуляторе}{16.\+2. Отладка программы в эмуляторе}}\label{md__u_s_e_r___g_u_i_d_e_autotoc_md148}
+
+\begin{DoxyEnumerate}
+\item Загрузите прошивку
+\item Вкладка «Эмулятор»
+\item Установите точки останова (двойной клик по строке кода)
+\item Нажмите F5 для запуска или F11 для пошагового выполнения
+\item Наблюдайте за регистрами, флагами и стеком
+\item Используйте Watch-\/окно для наблюдения за памятью
+\end{DoxyEnumerate}\hypertarget{md__u_s_e_r___g_u_i_d_e_autotoc_md149}{}\doxysubsection{\texorpdfstring{16.\+3. Условная отладка}{16.\+3. Условная отладка}}\label{md__u_s_e_r___g_u_i_d_e_autotoc_md149}
+
+\begin{DoxyEnumerate}
+\item Установите точку останова
+\item Двойной клик по точке останова → введите условие
+\item Запустите выполнение — выполнение остановится только при выполнении условия
+\end{DoxyEnumerate}\hypertarget{md__u_s_e_r___g_u_i_d_e_autotoc_md150}{}\doxysubsection{\texorpdfstring{16.\+4. Анализ с трассировкой}{16.\+4. Анализ с трассировкой}}\label{md__u_s_e_r___g_u_i_d_e_autotoc_md150}
+
+\begin{DoxyEnumerate}
+\item Вкладка «Эмулятор» → включите чекбокс «Трассировка»
+\item Выполните программу (F5) или пошагово (F11)
+\item Вкладка «Трассировка» — изучите историю выполнения
+\item Используйте поиск для фильтрации
+\item Экспортируйте трассировку для дальнейшего анализа
+\end{DoxyEnumerate}\hypertarget{md__u_s_e_r___g_u_i_d_e_autotoc_md151}{}\doxysubsection{\texorpdfstring{16.\+5. Работа с реальным устройством}{16.\+5. Работа с реальным устройством}}\label{md__u_s_e_r___g_u_i_d_e_autotoc_md151}
+
+\begin{DoxyEnumerate}
+\item Подключитесь к устройству (COM-\/порт)
+\item Захватите шину (Ctrl+H)
+\item Читайте/записывайте память и IO-\/порты
+\item Освободите шину (Ctrl+U)
+\end{DoxyEnumerate}\hypertarget{md__u_s_e_r___g_u_i_d_e_autotoc_md152}{}\doxysubsection{\texorpdfstring{16.\+6. Тестирование памяти устройства}{16.\+6. Тестирование памяти устройства}}\label{md__u_s_e_r___g_u_i_d_e_autotoc_md152}
+
+\begin{DoxyEnumerate}
+\item Подключитесь к устройству и захватите шину
+\item Вкладка «Тест Памяти»
+\item Укажите диапазон и паттерн
+\item Запустите тест
+\item Изучите результаты в журнале
+\end{DoxyEnumerate}\hypertarget{md__u_s_e_r___g_u_i_d_e_autotoc_md153}{}\doxysubsection{\texorpdfstring{16.\+7. Сравнение образов}{16.\+7. Сравнение образов}}\label{md__u_s_e_r___g_u_i_d_e_autotoc_md153}
+
+\begin{DoxyEnumerate}
+\item Загрузите текущий образ (или подключитесь к устройству и прочитайте память)
+\item Вкладка «Сравнение» → «Загрузить файл для сравнения»
+\item Нажмите «Сравнить»
+\item Изучите различия в таблице
+\end{DoxyEnumerate}
+
+\DoxyHorRuler{0}
+\hypertarget{md__u_s_e_r___g_u_i_d_e_autotoc_md155}{}\doxysection{\texorpdfstring{Приложения}{Приложения}}\label{md__u_s_e_r___g_u_i_d_e_autotoc_md155}
+\hypertarget{md__u_s_e_r___g_u_i_d_e_autotoc_md156}{}\doxysubsection{\texorpdfstring{A. Поддерживаемые инструкции i8080}{A. Поддерживаемые инструкции i8080}}\label{md__u_s_e_r___g_u_i_d_e_autotoc_md156}
+Эмулятор поддерживает все 256 инструкций i8080, включая недокументированные\+:
+\begin{DoxyItemize}
+\item NOP\texorpdfstring{$\ast$}{*} (08, 10, 18, 20, 28, 30, 38, DD, ED, FD)
+\item RET\texorpdfstring{$\ast$}{*} (D9)
+\item CALL\texorpdfstring{$\ast$}{*} (CB)
+\end{DoxyItemize}\hypertarget{md__u_s_e_r___g_u_i_d_e_autotoc_md157}{}\doxysubsection{\texorpdfstring{B. Протокол связи с устройством}{B. Протокол связи с устройством}}\label{md__u_s_e_r___g_u_i_d_e_autotoc_md157}
+Программа использует протокол SLIP через COM-\/порт\+:
+\begin{DoxyItemize}
+\item Скорость\+: 9600, 38400, 57600, 115200
+\item Команды\+: NOP, HOLD, UNHOLD, чтение/запись памяти, чтение/запись IO
+\end{DoxyItemize}\hypertarget{md__u_s_e_r___g_u_i_d_e_autotoc_md158}{}\doxysubsection{\texorpdfstring{C. Форматы файлов}{C. Форматы файлов}}\label{md__u_s_e_r___g_u_i_d_e_autotoc_md158}
+
+\begin{DoxyItemize}
+\item {\bfseries{Intel HEX (.hex)}} — стандартный формат для прошивок
+\item {\bfseries{Binary (.bin)}} — двоичный формат (с указанием базового адреса при загрузке)
+\end{DoxyItemize}\hypertarget{md__u_s_e_r___g_u_i_d_e_autotoc_md159}{}\doxysubsection{\texorpdfstring{D. Форматы пресетов}{D. Форматы пресетов}}\label{md__u_s_e_r___g_u_i_d_e_autotoc_md159}
+
+\begin{DoxyItemize}
+\item {\bfseries{Watch-\/пресеты}} — JSON (watch\+\_\+preset.\+json)
+\item {\bfseries{BP-\/пресеты}} — JSON (bp\+\_\+preset.\+json)
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+
+
+{\itshape Документация сгенерирована для версии 2.\+0 программы i8080-\/5 CI.} 

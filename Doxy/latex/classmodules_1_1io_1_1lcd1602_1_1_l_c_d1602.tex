@@ -1,0 +1,496 @@
+\doxysection{modules.\+io.\+lcd1602.\+LCD1602 Class Reference}
+\hypertarget{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602}{}\label{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602}\index{modules.io.lcd1602.LCD1602@{modules.io.lcd1602.LCD1602}}
+
+
+Inheritance diagram for modules.\+io.\+lcd1602.\+LCD1602\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=227pt]{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for modules.\+io.\+lcd1602.\+LCD1602\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=227pt]{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_a7c6a29d05bee72ca2a08a23e09791e02}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, \mbox{\hyperlink{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602}{base\+\_\+port}}, \mbox{\hyperlink{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602}{name}}="{}LCD1602"{})
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_a43e7706948311f5a6a7f41eba823970b}{reset}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_a0e14a6feebd11a8adec595da921c80eb}{io\+\_\+read}} (self, port)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_a1b0b3a0ef58b12777dd2989e567a2d38}{io\+\_\+write}} (self, port, value)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_a6bfe8e8020b89790080c493906f1771b}{get\+\_\+display\+\_\+text}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_a4eb55c801a36a1f498481cfe865d87d6}{get\+\_\+state}} (self)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device}{modules.\+io.\+iodevice.\+IODevice}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_af44b72c0a1d9f3622b18ce802d33290b}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, \mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_a349db233ca1e3fd7c64e10db67c21aa3}{base\+\_\+port}}, \mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_a2023de274431002e37faef63d740d9e9}{port\+\_\+count}}, \mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_a4ef4b1e055e68877b069410b67b6c90d}{name}}="{}IODevice"{})
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_a15761d8fd686da3088af53bd512045d9}{tick}} (self, cycles=1)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_a8b83e9174621e573851b94cc407ab267}{register\+\_\+to\+\_\+bus}} (self, bus)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_a1636fa580fb8cafd15d2b4b24cdf6e9d}{unregister\+\_\+from\+\_\+bus}} (self, bus)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_ae823127e11a95950595f63dbf9420a56}{cols}} = 16
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_a73790b581393c83057c8491d92d545aa}{rows}} = 2
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_ac77cc13c6adee50683d78a348d7cf4a1}{on\+\_\+display\+\_\+update}} = None
+\item 
+list \mbox{\hyperlink{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_a96fb98b19d04cda74cfdeb4798196331}{ddram}} = \mbox{[}0x20\mbox{]} \texorpdfstring{$\ast$}{*} 128
+\item 
+list \mbox{\hyperlink{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_a1b1834a182d9564cfd85da653271e77e}{cgram}} = \mbox{[}0x00\mbox{]} \texorpdfstring{$\ast$}{*} 64
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_acf0af6a92531c53e13dbd0cdf09aee15}{ddram\+\_\+addr}} = 0x00
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_a2b35646a40a194dae57eb52034c2a7c0}{cgram\+\_\+addr}} = 0x00
+\item 
+bool \mbox{\hyperlink{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_ad09fe4847ef9693cb230f025dbbda526}{entry\+\_\+increment}} = True
+\item 
+bool \mbox{\hyperlink{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_a5f448cff483f6b4350ac893326e7ecb2}{entry\+\_\+shift}} = False
+\item 
+bool \mbox{\hyperlink{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_a5776e8d4b20cccf62b38b59fa9a888d3}{display\+\_\+on}} = True
+\item 
+bool \mbox{\hyperlink{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_a2fb3431efc1ce1a4d5f8222e75c8c997}{cursor\+\_\+on}} = False
+\item 
+bool \mbox{\hyperlink{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_a5249721e5937a7c6d67e9531f72c9f36}{cursor\+\_\+blink}} = False
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_aa34081994b51fd2a842779dcc3c47770}{cursor\+\_\+x}} = 0
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_ae76fea0978c711504ded863067fb205c}{cursor\+\_\+y}} = 0
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device}{modules.\+io.\+iodevice.\+IODevice}}}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_a349db233ca1e3fd7c64e10db67c21aa3}{base\+\_\+port}} = base\+\_\+port \& 0x\+FF
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_a2023de274431002e37faef63d740d9e9}{port\+\_\+count}} = port\+\_\+count
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_a4ef4b1e055e68877b069410b67b6c90d}{name}} = name
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_acf9a10049bf071383c5ed9629849b583}{CMD\+\_\+\+CLEAR}} = 0x01
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_a5245e3a30138d8a9184ea6d054614372}{CMD\+\_\+\+HOME}} = 0x02
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_a8e70fd98e24d05c59ead017dc5c23383}{CMD\+\_\+\+ENTRY\+\_\+\+MODE}} = 0x04
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_a7f7e0d9b60797320d088ea497c38d7d2}{CMD\+\_\+\+DISPLAY\+\_\+\+CTRL}} = 0x08
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_a0899801de2ee2ccd61a9bda8a366912b}{CMD\+\_\+\+SHIFT}} = 0x10
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_a99d2e1b6e00adcf63286ccac06f4a766}{CMD\+\_\+\+FUNCTION\+\_\+\+SET}} = 0x20
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_aab12940220b4eb7d560d2b13ef8f106c}{CMD\+\_\+\+SET\+\_\+\+CGRAM}} = 0x40
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_ae68be5f79b7036c34f8f6e1829c631b4}{CMD\+\_\+\+SET\+\_\+\+DDRAM}} = 0x80
+\item 
+list \mbox{\hyperlink{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_a6fa24de51f7da3d1bdb149eb164a4fec}{LINE\+\_\+\+ADDRS}} = \mbox{[}0x00, 0x40\mbox{]}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_ad6a0a53e0778dce437e78930458572d5}{\+\_\+get\+\_\+status}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_a06705345278b644fcdbc7d30dac25931}{\+\_\+write\+\_\+command}} (self, cmd)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_aba4b71147ce609087832647bf5d8fd96}{\+\_\+write\+\_\+data}} (self, value)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_aa4934106196082efc3dbc39e03723a35}{\+\_\+update\+\_\+cursor\+\_\+from\+\_\+addr}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_a342a6fe4efd4d5d413c03c54b8de7f1c}{\+\_\+notify\+\_\+update}} (self)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_a403edcb7196c31b8ec5215e0825208df}{\+\_\+last\+\_\+cmd}} = 0x00
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}LCD1602 — символьный дисплей 16×2\end{DoxyVerb}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_a7c6a29d05bee72ca2a08a23e09791e02}\index{modules.io.lcd1602.LCD1602@{modules.io.lcd1602.LCD1602}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!modules.io.lcd1602.LCD1602@{modules.io.lcd1602.LCD1602}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_a7c6a29d05bee72ca2a08a23e09791e02} 
+modules.\+io.\+lcd1602.\+LCD1602.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{base\+\_\+port}{, }\item[{}]{name}{ = {\ttfamily "{}LCD1602"{}}}\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=227pt]{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_a7c6a29d05bee72ca2a08a23e09791e02_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=227pt]{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_a7c6a29d05bee72ca2a08a23e09791e02_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_ad6a0a53e0778dce437e78930458572d5}\index{modules.io.lcd1602.LCD1602@{modules.io.lcd1602.LCD1602}!\_get\_status@{\_get\_status}}
+\index{\_get\_status@{\_get\_status}!modules.io.lcd1602.LCD1602@{modules.io.lcd1602.LCD1602}}
+\doxysubsubsection{\texorpdfstring{\_get\_status()}{\_get\_status()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_ad6a0a53e0778dce437e78930458572d5} 
+modules.\+io.\+lcd1602.\+LCD1602.\+\_\+get\+\_\+status (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Статус: бит 7=занят, биты 0-6=адрес\end{DoxyVerb}
+ Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_ad6a0a53e0778dce437e78930458572d5_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_a342a6fe4efd4d5d413c03c54b8de7f1c}\index{modules.io.lcd1602.LCD1602@{modules.io.lcd1602.LCD1602}!\_notify\_update@{\_notify\_update}}
+\index{\_notify\_update@{\_notify\_update}!modules.io.lcd1602.LCD1602@{modules.io.lcd1602.LCD1602}}
+\doxysubsubsection{\texorpdfstring{\_notify\_update()}{\_notify\_update()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_a342a6fe4efd4d5d413c03c54b8de7f1c} 
+modules.\+io.\+lcd1602.\+LCD1602.\+\_\+notify\+\_\+update (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Уведомление об обновлении дисплея\end{DoxyVerb}
+ Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_a342a6fe4efd4d5d413c03c54b8de7f1c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_a342a6fe4efd4d5d413c03c54b8de7f1c_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_aa4934106196082efc3dbc39e03723a35}\index{modules.io.lcd1602.LCD1602@{modules.io.lcd1602.LCD1602}!\_update\_cursor\_from\_addr@{\_update\_cursor\_from\_addr}}
+\index{\_update\_cursor\_from\_addr@{\_update\_cursor\_from\_addr}!modules.io.lcd1602.LCD1602@{modules.io.lcd1602.LCD1602}}
+\doxysubsubsection{\texorpdfstring{\_update\_cursor\_from\_addr()}{\_update\_cursor\_from\_addr()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_aa4934106196082efc3dbc39e03723a35} 
+modules.\+io.\+lcd1602.\+LCD1602.\+\_\+update\+\_\+cursor\+\_\+from\+\_\+addr (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Обновить позицию курсора из адреса\end{DoxyVerb}
+ 
+
+Reimplemented in \mbox{\hyperlink{classmodules_1_1io_1_1lcd2004_1_1_l_c_d2004_ac50395e05fcb41053494368b077613b3}{modules.\+io.\+lcd2004.\+LCD2004}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_aa4934106196082efc3dbc39e03723a35_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_a06705345278b644fcdbc7d30dac25931}\index{modules.io.lcd1602.LCD1602@{modules.io.lcd1602.LCD1602}!\_write\_command@{\_write\_command}}
+\index{\_write\_command@{\_write\_command}!modules.io.lcd1602.LCD1602@{modules.io.lcd1602.LCD1602}}
+\doxysubsubsection{\texorpdfstring{\_write\_command()}{\_write\_command()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_a06705345278b644fcdbc7d30dac25931} 
+modules.\+io.\+lcd1602.\+LCD1602.\+\_\+write\+\_\+command (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{cmd}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_a06705345278b644fcdbc7d30dac25931_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_a06705345278b644fcdbc7d30dac25931_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_aba4b71147ce609087832647bf5d8fd96}\index{modules.io.lcd1602.LCD1602@{modules.io.lcd1602.LCD1602}!\_write\_data@{\_write\_data}}
+\index{\_write\_data@{\_write\_data}!modules.io.lcd1602.LCD1602@{modules.io.lcd1602.LCD1602}}
+\doxysubsubsection{\texorpdfstring{\_write\_data()}{\_write\_data()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_aba4b71147ce609087832647bf5d8fd96} 
+modules.\+io.\+lcd1602.\+LCD1602.\+\_\+write\+\_\+data (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Запись символа в DDRAM\end{DoxyVerb}
+ Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_aba4b71147ce609087832647bf5d8fd96_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_aba4b71147ce609087832647bf5d8fd96_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_a6bfe8e8020b89790080c493906f1771b}\index{modules.io.lcd1602.LCD1602@{modules.io.lcd1602.LCD1602}!get\_display\_text@{get\_display\_text}}
+\index{get\_display\_text@{get\_display\_text}!modules.io.lcd1602.LCD1602@{modules.io.lcd1602.LCD1602}}
+\doxysubsubsection{\texorpdfstring{get\_display\_text()}{get\_display\_text()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_a6bfe8e8020b89790080c493906f1771b} 
+modules.\+io.\+lcd1602.\+LCD1602.\+get\+\_\+display\+\_\+text (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Получить текст дисплея\end{DoxyVerb}
+ 
+
+Reimplemented in \mbox{\hyperlink{classmodules_1_1io_1_1lcd2004_1_1_l_c_d2004_acb1bdfc281adde6f668bd0301cc34ca0}{modules.\+io.\+lcd2004.\+LCD2004}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_a6bfe8e8020b89790080c493906f1771b_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_a4eb55c801a36a1f498481cfe865d87d6}\index{modules.io.lcd1602.LCD1602@{modules.io.lcd1602.LCD1602}!get\_state@{get\_state}}
+\index{get\_state@{get\_state}!modules.io.lcd1602.LCD1602@{modules.io.lcd1602.LCD1602}}
+\doxysubsubsection{\texorpdfstring{get\_state()}{get\_state()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_a4eb55c801a36a1f498481cfe865d87d6} 
+modules.\+io.\+lcd1602.\+LCD1602.\+get\+\_\+state (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Состояние устройства для отладки. Переопределяется подклассами.\end{DoxyVerb}
+ 
+
+Reimplemented from \mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_a17a7a0beff1c642aa1b3763e15bd429f}{modules.\+io.\+iodevice.\+IODevice}}.
+
+\Hypertarget{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_a0e14a6feebd11a8adec595da921c80eb}\index{modules.io.lcd1602.LCD1602@{modules.io.lcd1602.LCD1602}!io\_read@{io\_read}}
+\index{io\_read@{io\_read}!modules.io.lcd1602.LCD1602@{modules.io.lcd1602.LCD1602}}
+\doxysubsubsection{\texorpdfstring{io\_read()}{io\_read()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_a0e14a6feebd11a8adec595da921c80eb} 
+modules.\+io.\+lcd1602.\+LCD1602.\+io\+\_\+read (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{port}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Чтение из порта. Переопределяется подклассами.\end{DoxyVerb}
+ 
+
+Reimplemented from \mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_a48e12c7ac8519e89080b7981c57ae58d}{modules.\+io.\+iodevice.\+IODevice}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_a0e14a6feebd11a8adec595da921c80eb_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_a1b0b3a0ef58b12777dd2989e567a2d38}\index{modules.io.lcd1602.LCD1602@{modules.io.lcd1602.LCD1602}!io\_write@{io\_write}}
+\index{io\_write@{io\_write}!modules.io.lcd1602.LCD1602@{modules.io.lcd1602.LCD1602}}
+\doxysubsubsection{\texorpdfstring{io\_write()}{io\_write()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_a1b0b3a0ef58b12777dd2989e567a2d38} 
+modules.\+io.\+lcd1602.\+LCD1602.\+io\+\_\+write (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{port}{, }\item[{}]{value}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Запись в порт. Переопределяется подклассами.\end{DoxyVerb}
+ 
+
+Reimplemented from \mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_a2957a963b46a5b4179fe85570fc377be}{modules.\+io.\+iodevice.\+IODevice}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_a1b0b3a0ef58b12777dd2989e567a2d38_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_a43e7706948311f5a6a7f41eba823970b}\index{modules.io.lcd1602.LCD1602@{modules.io.lcd1602.LCD1602}!reset@{reset}}
+\index{reset@{reset}!modules.io.lcd1602.LCD1602@{modules.io.lcd1602.LCD1602}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_a43e7706948311f5a6a7f41eba823970b} 
+modules.\+io.\+lcd1602.\+LCD1602.\+reset (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Сброс контроллера\end{DoxyVerb}
+ 
+
+Reimplemented from \mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_afe097230fde568f41b4153ecc99c6f4b}{modules.\+io.\+iodevice.\+IODevice}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{classmodules_1_1io_1_1lcd2004_1_1_l_c_d2004_ab43580d730f4d41fbe76857a5f3a6e34}{modules.\+io.\+lcd2004.\+LCD2004}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_a403edcb7196c31b8ec5215e0825208df}\index{modules.io.lcd1602.LCD1602@{modules.io.lcd1602.LCD1602}!\_last\_cmd@{\_last\_cmd}}
+\index{\_last\_cmd@{\_last\_cmd}!modules.io.lcd1602.LCD1602@{modules.io.lcd1602.LCD1602}}
+\doxysubsubsection{\texorpdfstring{\_last\_cmd}{\_last\_cmd}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_a403edcb7196c31b8ec5215e0825208df} 
+int modules.\+io.\+lcd1602.\+LCD1602.\+\_\+last\+\_\+cmd = 0x00\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_a1b1834a182d9564cfd85da653271e77e}\index{modules.io.lcd1602.LCD1602@{modules.io.lcd1602.LCD1602}!cgram@{cgram}}
+\index{cgram@{cgram}!modules.io.lcd1602.LCD1602@{modules.io.lcd1602.LCD1602}}
+\doxysubsubsection{\texorpdfstring{cgram}{cgram}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_a1b1834a182d9564cfd85da653271e77e} 
+list modules.\+io.\+lcd1602.\+LCD1602.\+cgram = \mbox{[}0x00\mbox{]} \texorpdfstring{$\ast$}{*} 64}
+
+\Hypertarget{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_a2b35646a40a194dae57eb52034c2a7c0}\index{modules.io.lcd1602.LCD1602@{modules.io.lcd1602.LCD1602}!cgram\_addr@{cgram\_addr}}
+\index{cgram\_addr@{cgram\_addr}!modules.io.lcd1602.LCD1602@{modules.io.lcd1602.LCD1602}}
+\doxysubsubsection{\texorpdfstring{cgram\_addr}{cgram\_addr}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_a2b35646a40a194dae57eb52034c2a7c0} 
+int modules.\+io.\+lcd1602.\+LCD1602.\+cgram\+\_\+addr = 0x00}
+
+\Hypertarget{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_acf9a10049bf071383c5ed9629849b583}\index{modules.io.lcd1602.LCD1602@{modules.io.lcd1602.LCD1602}!CMD\_CLEAR@{CMD\_CLEAR}}
+\index{CMD\_CLEAR@{CMD\_CLEAR}!modules.io.lcd1602.LCD1602@{modules.io.lcd1602.LCD1602}}
+\doxysubsubsection{\texorpdfstring{CMD\_CLEAR}{CMD\_CLEAR}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_acf9a10049bf071383c5ed9629849b583} 
+int modules.\+io.\+lcd1602.\+LCD1602.\+CMD\+\_\+\+CLEAR = 0x01\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_a7f7e0d9b60797320d088ea497c38d7d2}\index{modules.io.lcd1602.LCD1602@{modules.io.lcd1602.LCD1602}!CMD\_DISPLAY\_CTRL@{CMD\_DISPLAY\_CTRL}}
+\index{CMD\_DISPLAY\_CTRL@{CMD\_DISPLAY\_CTRL}!modules.io.lcd1602.LCD1602@{modules.io.lcd1602.LCD1602}}
+\doxysubsubsection{\texorpdfstring{CMD\_DISPLAY\_CTRL}{CMD\_DISPLAY\_CTRL}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_a7f7e0d9b60797320d088ea497c38d7d2} 
+int modules.\+io.\+lcd1602.\+LCD1602.\+CMD\+\_\+\+DISPLAY\+\_\+\+CTRL = 0x08\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_a8e70fd98e24d05c59ead017dc5c23383}\index{modules.io.lcd1602.LCD1602@{modules.io.lcd1602.LCD1602}!CMD\_ENTRY\_MODE@{CMD\_ENTRY\_MODE}}
+\index{CMD\_ENTRY\_MODE@{CMD\_ENTRY\_MODE}!modules.io.lcd1602.LCD1602@{modules.io.lcd1602.LCD1602}}
+\doxysubsubsection{\texorpdfstring{CMD\_ENTRY\_MODE}{CMD\_ENTRY\_MODE}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_a8e70fd98e24d05c59ead017dc5c23383} 
+int modules.\+io.\+lcd1602.\+LCD1602.\+CMD\+\_\+\+ENTRY\+\_\+\+MODE = 0x04\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_a99d2e1b6e00adcf63286ccac06f4a766}\index{modules.io.lcd1602.LCD1602@{modules.io.lcd1602.LCD1602}!CMD\_FUNCTION\_SET@{CMD\_FUNCTION\_SET}}
+\index{CMD\_FUNCTION\_SET@{CMD\_FUNCTION\_SET}!modules.io.lcd1602.LCD1602@{modules.io.lcd1602.LCD1602}}
+\doxysubsubsection{\texorpdfstring{CMD\_FUNCTION\_SET}{CMD\_FUNCTION\_SET}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_a99d2e1b6e00adcf63286ccac06f4a766} 
+int modules.\+io.\+lcd1602.\+LCD1602.\+CMD\+\_\+\+FUNCTION\+\_\+\+SET = 0x20\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_a5245e3a30138d8a9184ea6d054614372}\index{modules.io.lcd1602.LCD1602@{modules.io.lcd1602.LCD1602}!CMD\_HOME@{CMD\_HOME}}
+\index{CMD\_HOME@{CMD\_HOME}!modules.io.lcd1602.LCD1602@{modules.io.lcd1602.LCD1602}}
+\doxysubsubsection{\texorpdfstring{CMD\_HOME}{CMD\_HOME}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_a5245e3a30138d8a9184ea6d054614372} 
+int modules.\+io.\+lcd1602.\+LCD1602.\+CMD\+\_\+\+HOME = 0x02\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_aab12940220b4eb7d560d2b13ef8f106c}\index{modules.io.lcd1602.LCD1602@{modules.io.lcd1602.LCD1602}!CMD\_SET\_CGRAM@{CMD\_SET\_CGRAM}}
+\index{CMD\_SET\_CGRAM@{CMD\_SET\_CGRAM}!modules.io.lcd1602.LCD1602@{modules.io.lcd1602.LCD1602}}
+\doxysubsubsection{\texorpdfstring{CMD\_SET\_CGRAM}{CMD\_SET\_CGRAM}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_aab12940220b4eb7d560d2b13ef8f106c} 
+int modules.\+io.\+lcd1602.\+LCD1602.\+CMD\+\_\+\+SET\+\_\+\+CGRAM = 0x40\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_ae68be5f79b7036c34f8f6e1829c631b4}\index{modules.io.lcd1602.LCD1602@{modules.io.lcd1602.LCD1602}!CMD\_SET\_DDRAM@{CMD\_SET\_DDRAM}}
+\index{CMD\_SET\_DDRAM@{CMD\_SET\_DDRAM}!modules.io.lcd1602.LCD1602@{modules.io.lcd1602.LCD1602}}
+\doxysubsubsection{\texorpdfstring{CMD\_SET\_DDRAM}{CMD\_SET\_DDRAM}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_ae68be5f79b7036c34f8f6e1829c631b4} 
+int modules.\+io.\+lcd1602.\+LCD1602.\+CMD\+\_\+\+SET\+\_\+\+DDRAM = 0x80\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_a0899801de2ee2ccd61a9bda8a366912b}\index{modules.io.lcd1602.LCD1602@{modules.io.lcd1602.LCD1602}!CMD\_SHIFT@{CMD\_SHIFT}}
+\index{CMD\_SHIFT@{CMD\_SHIFT}!modules.io.lcd1602.LCD1602@{modules.io.lcd1602.LCD1602}}
+\doxysubsubsection{\texorpdfstring{CMD\_SHIFT}{CMD\_SHIFT}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_a0899801de2ee2ccd61a9bda8a366912b} 
+int modules.\+io.\+lcd1602.\+LCD1602.\+CMD\+\_\+\+SHIFT = 0x10\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_ae823127e11a95950595f63dbf9420a56}\index{modules.io.lcd1602.LCD1602@{modules.io.lcd1602.LCD1602}!cols@{cols}}
+\index{cols@{cols}!modules.io.lcd1602.LCD1602@{modules.io.lcd1602.LCD1602}}
+\doxysubsubsection{\texorpdfstring{cols}{cols}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_ae823127e11a95950595f63dbf9420a56} 
+modules.\+io.\+lcd1602.\+LCD1602.\+cols = 16}
+
+\Hypertarget{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_a5249721e5937a7c6d67e9531f72c9f36}\index{modules.io.lcd1602.LCD1602@{modules.io.lcd1602.LCD1602}!cursor\_blink@{cursor\_blink}}
+\index{cursor\_blink@{cursor\_blink}!modules.io.lcd1602.LCD1602@{modules.io.lcd1602.LCD1602}}
+\doxysubsubsection{\texorpdfstring{cursor\_blink}{cursor\_blink}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_a5249721e5937a7c6d67e9531f72c9f36} 
+bool modules.\+io.\+lcd1602.\+LCD1602.\+cursor\+\_\+blink = False}
+
+\Hypertarget{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_a2fb3431efc1ce1a4d5f8222e75c8c997}\index{modules.io.lcd1602.LCD1602@{modules.io.lcd1602.LCD1602}!cursor\_on@{cursor\_on}}
+\index{cursor\_on@{cursor\_on}!modules.io.lcd1602.LCD1602@{modules.io.lcd1602.LCD1602}}
+\doxysubsubsection{\texorpdfstring{cursor\_on}{cursor\_on}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_a2fb3431efc1ce1a4d5f8222e75c8c997} 
+modules.\+io.\+lcd1602.\+LCD1602.\+cursor\+\_\+on = False}
+
+\Hypertarget{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_aa34081994b51fd2a842779dcc3c47770}\index{modules.io.lcd1602.LCD1602@{modules.io.lcd1602.LCD1602}!cursor\_x@{cursor\_x}}
+\index{cursor\_x@{cursor\_x}!modules.io.lcd1602.LCD1602@{modules.io.lcd1602.LCD1602}}
+\doxysubsubsection{\texorpdfstring{cursor\_x}{cursor\_x}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_aa34081994b51fd2a842779dcc3c47770} 
+modules.\+io.\+lcd1602.\+LCD1602.\+cursor\+\_\+x = 0}
+
+\Hypertarget{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_ae76fea0978c711504ded863067fb205c}\index{modules.io.lcd1602.LCD1602@{modules.io.lcd1602.LCD1602}!cursor\_y@{cursor\_y}}
+\index{cursor\_y@{cursor\_y}!modules.io.lcd1602.LCD1602@{modules.io.lcd1602.LCD1602}}
+\doxysubsubsection{\texorpdfstring{cursor\_y}{cursor\_y}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_ae76fea0978c711504ded863067fb205c} 
+modules.\+io.\+lcd1602.\+LCD1602.\+cursor\+\_\+y = 0}
+
+\Hypertarget{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_a96fb98b19d04cda74cfdeb4798196331}\index{modules.io.lcd1602.LCD1602@{modules.io.lcd1602.LCD1602}!ddram@{ddram}}
+\index{ddram@{ddram}!modules.io.lcd1602.LCD1602@{modules.io.lcd1602.LCD1602}}
+\doxysubsubsection{\texorpdfstring{ddram}{ddram}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_a96fb98b19d04cda74cfdeb4798196331} 
+list modules.\+io.\+lcd1602.\+LCD1602.\+ddram = \mbox{[}0x20\mbox{]} \texorpdfstring{$\ast$}{*} 128}
+
+\Hypertarget{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_acf0af6a92531c53e13dbd0cdf09aee15}\index{modules.io.lcd1602.LCD1602@{modules.io.lcd1602.LCD1602}!ddram\_addr@{ddram\_addr}}
+\index{ddram\_addr@{ddram\_addr}!modules.io.lcd1602.LCD1602@{modules.io.lcd1602.LCD1602}}
+\doxysubsubsection{\texorpdfstring{ddram\_addr}{ddram\_addr}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_acf0af6a92531c53e13dbd0cdf09aee15} 
+int modules.\+io.\+lcd1602.\+LCD1602.\+ddram\+\_\+addr = 0x00}
+
+\Hypertarget{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_a5776e8d4b20cccf62b38b59fa9a888d3}\index{modules.io.lcd1602.LCD1602@{modules.io.lcd1602.LCD1602}!display\_on@{display\_on}}
+\index{display\_on@{display\_on}!modules.io.lcd1602.LCD1602@{modules.io.lcd1602.LCD1602}}
+\doxysubsubsection{\texorpdfstring{display\_on}{display\_on}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_a5776e8d4b20cccf62b38b59fa9a888d3} 
+modules.\+io.\+lcd1602.\+LCD1602.\+display\+\_\+on = True}
+
+\Hypertarget{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_ad09fe4847ef9693cb230f025dbbda526}\index{modules.io.lcd1602.LCD1602@{modules.io.lcd1602.LCD1602}!entry\_increment@{entry\_increment}}
+\index{entry\_increment@{entry\_increment}!modules.io.lcd1602.LCD1602@{modules.io.lcd1602.LCD1602}}
+\doxysubsubsection{\texorpdfstring{entry\_increment}{entry\_increment}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_ad09fe4847ef9693cb230f025dbbda526} 
+bool modules.\+io.\+lcd1602.\+LCD1602.\+entry\+\_\+increment = True}
+
+\Hypertarget{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_a5f448cff483f6b4350ac893326e7ecb2}\index{modules.io.lcd1602.LCD1602@{modules.io.lcd1602.LCD1602}!entry\_shift@{entry\_shift}}
+\index{entry\_shift@{entry\_shift}!modules.io.lcd1602.LCD1602@{modules.io.lcd1602.LCD1602}}
+\doxysubsubsection{\texorpdfstring{entry\_shift}{entry\_shift}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_a5f448cff483f6b4350ac893326e7ecb2} 
+bool modules.\+io.\+lcd1602.\+LCD1602.\+entry\+\_\+shift = False}
+
+\Hypertarget{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_a6fa24de51f7da3d1bdb149eb164a4fec}\index{modules.io.lcd1602.LCD1602@{modules.io.lcd1602.LCD1602}!LINE\_ADDRS@{LINE\_ADDRS}}
+\index{LINE\_ADDRS@{LINE\_ADDRS}!modules.io.lcd1602.LCD1602@{modules.io.lcd1602.LCD1602}}
+\doxysubsubsection{\texorpdfstring{LINE\_ADDRS}{LINE\_ADDRS}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_a6fa24de51f7da3d1bdb149eb164a4fec} 
+list modules.\+io.\+lcd1602.\+LCD1602.\+LINE\+\_\+\+ADDRS = \mbox{[}0x00, 0x40\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_ac77cc13c6adee50683d78a348d7cf4a1}\index{modules.io.lcd1602.LCD1602@{modules.io.lcd1602.LCD1602}!on\_display\_update@{on\_display\_update}}
+\index{on\_display\_update@{on\_display\_update}!modules.io.lcd1602.LCD1602@{modules.io.lcd1602.LCD1602}}
+\doxysubsubsection{\texorpdfstring{on\_display\_update}{on\_display\_update}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_ac77cc13c6adee50683d78a348d7cf4a1} 
+modules.\+io.\+lcd1602.\+LCD1602.\+on\+\_\+display\+\_\+update = None}
+
+\Hypertarget{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_a73790b581393c83057c8491d92d545aa}\index{modules.io.lcd1602.LCD1602@{modules.io.lcd1602.LCD1602}!rows@{rows}}
+\index{rows@{rows}!modules.io.lcd1602.LCD1602@{modules.io.lcd1602.LCD1602}}
+\doxysubsubsection{\texorpdfstring{rows}{rows}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602_a73790b581393c83057c8491d92d545aa} 
+modules.\+io.\+lcd1602.\+LCD1602.\+rows = 2}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+modules/io/\mbox{\hyperlink{lcd1602_8py}{lcd1602.\+py}}\end{DoxyCompactItemize}

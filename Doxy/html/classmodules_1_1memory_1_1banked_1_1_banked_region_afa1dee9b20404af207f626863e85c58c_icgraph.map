@@ -1,0 +1,14 @@
+<map id="modules.memory.banked.BankedRegion.select_bank" name="modules.memory.banked.BankedRegion.select_bank">
+<area shape="rect" id="Node000001" title=" " alt="" coords="506,105,720,148"/>
+<area shape="rect" id="Node000002" href="$classmodules_1_1memory_1_1banked_1_1_banked_region.html#a9ed7fb6d0f842aaf9e4f30bdc4de4bfe" title=" " alt="" coords="244,5,458,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="550,101,457,62,425,51,426,46,459,58,552,96"/>
+<area shape="rect" id="Node000003" href="$classmodules_1_1memory_1_1banked_1_1_banked_r_o_m_region.html#afee05b89049ae3e4683e67b6b72c532a" title=" " alt="" coords="244,72,458,115"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="490,114,458,110,459,104,491,108"/>
+<area shape="rect" id="Node000004" href="$classmodules_1_1memory_1_1banked_1_1_banked_region.html#a5bedd3736bc9a1cf0d9a3cfb56f9f835" title=" " alt="" coords="244,139,458,181"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="491,145,459,149,458,144,490,140"/>
+<area shape="rect" id="Node000006" href="$classmodules_1_1memory_1_1banked_1_1_banked_r_o_m_region.html#a86e01d9adb9f26747fe135bd9cdeb65e" title=" " alt="" coords="244,205,458,248"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="552,157,459,196,426,207,425,202,457,191,550,152"/>
+<area shape="rect" id="Node000005" href="$classmodules_1_1memory_1_1memory__bus_1_1_memory_bus.html#a81becd755ee77fbfa62c37259bb03aff" title=" " alt="" coords="5,172,196,215"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="228,179,196,183,196,178,228,174"/>
+<area shape="poly" id="edge6_Node000006_Node000005" title=" " alt="" coords="228,213,196,209,196,203,228,208"/>
+</map>

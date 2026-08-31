@@ -1,0 +1,9 @@
+<map id="ui.serial_terminal.SerialTerminalWidget._update_counters" name="ui.serial_terminal.SerialTerminalWidget._update_counters">
+<area shape="rect" id="Node000001" title=" " alt="" coords="249,64,410,123"/>
+<area shape="rect" id="Node000002" href="$classui_1_1serial__terminal_1_1_serial_terminal_widget.html#ac65b12c9505391f6791783c36d0190ff" title=" " alt="" coords="5,5,201,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="234,68,177,51,179,46,235,63"/>
+<area shape="rect" id="Node000003" href="$classui_1_1serial__terminal_1_1_serial_terminal_widget.html#a25a261c90d73c0683743c2add4e69404" title=" " alt="" coords="17,72,189,115"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="233,96,189,96,189,91,233,91"/>
+<area shape="rect" id="Node000004" href="$classui_1_1serial__terminal_1_1_serial_terminal_widget.html#a8517bfb5cc3a142709e38b1cff08bc67" title=" " alt="" coords="17,139,189,181"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="235,124,179,141,177,135,234,119"/>
+</map>

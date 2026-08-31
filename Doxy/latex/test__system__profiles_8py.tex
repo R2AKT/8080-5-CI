@@ -1,0 +1,59 @@
+\doxysection{tests/test\+\_\+system\+\_\+profiles.py File Reference}
+\hypertarget{test__system__profiles_8py}{}\label{test__system__profiles_8py}\index{tests/test\_system\_profiles.py@{tests/test\_system\_profiles.py}}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacetest__system__profiles}{test\+\_\+system\+\_\+profiles}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespacetest__system__profiles_a2054aeabe7c2d978940371b73115fdf3}{test\+\_\+system\+\_\+profiles.\+check}} (name, actual, expected)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{namespacetest__system__profiles_a8e2afd675654d33f02172545aee2bced}{test\+\_\+system\+\_\+profiles.\+passed}} = 0
+\item 
+int \mbox{\hyperlink{namespacetest__system__profiles_a5ccd285abc0fa3b5c4c7131fe247b9b8}{test\+\_\+system\+\_\+profiles.\+failed}} = 0
+\item 
+\mbox{\hyperlink{namespacetest__system__profiles_af7957e0d874cd63587e4e8262c948944}{test\+\_\+system\+\_\+profiles.\+profiles}} = get\+\_\+profile\+\_\+names()
+\item 
+\mbox{\hyperlink{namespacetest__system__profiles_a4646ca632f201a12ce557521b35c5b75}{test\+\_\+system\+\_\+profiles.\+profile}} = get\+\_\+profile("{}radio86rk"{})
+\item 
+\mbox{\hyperlink{namespacetest__system__profiles_ae184dffb89682632bde834638c83e253}{test\+\_\+system\+\_\+profiles.\+config}} = \mbox{\hyperlink{classmodules_1_1config_1_1device__config_1_1_device_config}{Device\+Config}}()
+\item 
+\mbox{\hyperlink{namespacetest__system__profiles_a8153e540cd563b935a16f24fc9af0f60}{test\+\_\+system\+\_\+profiles.\+ram\+\_\+region}} = config.\+memory\+\_\+regions\mbox{[}0\mbox{]}
+\item 
+\mbox{\hyperlink{namespacetest__system__profiles_aa42b776ed267f5deef748c1cfc26e12d}{test\+\_\+system\+\_\+profiles.\+rom\+\_\+region}} = config.\+memory\+\_\+regions\mbox{[}1\mbox{]}
+\item 
+\mbox{\hyperlink{namespacetest__system__profiles_a6d89bb491bd84a537b3cca977297f85f}{test\+\_\+system\+\_\+profiles.\+ppi\+\_\+dev}} = config.\+devices\mbox{[}0\mbox{]}
+\item 
+\mbox{\hyperlink{namespacetest__system__profiles_a38706f82ce50f1f8de37cc118fa2371b}{test\+\_\+system\+\_\+profiles.\+pit\+\_\+dev}} = config.\+devices\mbox{[}1\mbox{]}
+\item 
+list \mbox{\hyperlink{namespacetest__system__profiles_ac0044bfa823b9d81a2016d482a411862}{test\+\_\+system\+\_\+profiles.\+device\+\_\+types}} = \mbox{[}d\mbox{[}"{}type"{}\mbox{]} for d in config.\+devices\mbox{]}
+\item 
+\mbox{\hyperlink{namespacetest__system__profiles_afac5c6e82ac3df59cd11e29d19a0af82}{test\+\_\+system\+\_\+profiles.\+errors}} = config.\+validate()
+\item 
+\mbox{\hyperlink{namespacetest__system__profiles_a836828aa8dcffcba18d01866eff8f0c2}{test\+\_\+system\+\_\+profiles.\+bus}} = \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus}{Memory\+Bus}}()
+\item 
+list \mbox{\hyperlink{namespacetest__system__profiles_a4b4360f34016831b249021101940fc72}{test\+\_\+system\+\_\+profiles.\+created\+\_\+devices}} = \mbox{[}$\,$\mbox{]}
+\item 
+\mbox{\hyperlink{namespacetest__system__profiles_ab3c2837c078d73fee8843ab7954ecfa7}{test\+\_\+system\+\_\+profiles.\+device}} = \mbox{\hyperlink{classmodules_1_1config_1_1device__config_1_1_device_factory_a5382ff56a49c3a95bbf9edc6ac9bac37}{Device\+Factory.\+create\+\_\+device}}(dev\+\_\+config, memory\+\_\+bus=\mbox{\hyperlink{namespacetest__system__profiles_a836828aa8dcffcba18d01866eff8f0c2}{bus}})
+\item 
+str \mbox{\hyperlink{namespacetest__system__profiles_af36f8a586f678b1da118136bb363609c}{test\+\_\+system\+\_\+profiles.\+conflict\+\_\+toml}}
+\item 
+\mbox{\hyperlink{namespacetest__system__profiles_a3cb04858aa40947200b234cf6c5a183e}{test\+\_\+system\+\_\+profiles.\+config\+\_\+conflict}} = \mbox{\hyperlink{classmodules_1_1config_1_1device__config_1_1_device_config}{Device\+Config}}()
+\item 
+str \mbox{\hyperlink{namespacetest__system__profiles_a6f2499b5bb21828223feaab1305fca3b}{test\+\_\+system\+\_\+profiles.\+no\+\_\+conflict\+\_\+toml}}
+\item 
+\mbox{\hyperlink{namespacetest__system__profiles_a1f71cad662bc629379340cc47d59a3ff}{test\+\_\+system\+\_\+profiles.\+config\+\_\+no\+\_\+conflict}} = \mbox{\hyperlink{classmodules_1_1config_1_1device__config_1_1_device_config}{Device\+Config}}()
+\item 
+\mbox{\hyperlink{namespacetest__system__profiles_aad16c077f65eb80533a2ca24a7c0ff62}{test\+\_\+system\+\_\+profiles.\+bus2}} = \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus}{Memory\+Bus}}()
+\item 
+\mbox{\hyperlink{namespacetest__system__profiles_ace067524ea11206975fc5778ea8b28aa}{test\+\_\+system\+\_\+profiles.\+region}} = \mbox{\hyperlink{classmodules_1_1config_1_1device__config_1_1_device_factory_a146de97836ee591ab8cb8c421897039f}{Device\+Factory.\+create\+\_\+memory\+\_\+region}}(mem\+\_\+config)
+\item 
+\mbox{\hyperlink{namespacetest__system__profiles_ad5337c415f377442c42072afb28792ec}{test\+\_\+system\+\_\+profiles.\+ram\+\_\+found}} = any(r.\+name == "{}RAM-\/48K"{} for r in bus2.\+memory\+\_\+regions)
+\item 
+\mbox{\hyperlink{namespacetest__system__profiles_a44c0d1be15e7d8489287b14804441022}{test\+\_\+system\+\_\+profiles.\+rom\+\_\+found}} = any(r.\+name == "{}ROM-\/16K"{} for r in bus2.\+memory\+\_\+regions)
+\end{DoxyCompactItemize}

@@ -1,0 +1,178 @@
+\doxysection{test\+\_\+dma\+\_\+device Namespace Reference}
+\hypertarget{namespacetest__dma__device}{}\label{namespacetest__dma__device}\index{test\_dma\_device@{test\_dma\_device}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespacetest__dma__device_aa17fe00ea35ef3dd88200541b231c008}{check}} (name, actual, expected)
+\item 
+\mbox{\hyperlink{namespacetest__dma__device_a2a52d27901d46d71cdd852611697cd13}{read\+\_\+callback}} (ch)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{namespacetest__dma__device_a8acb583de6df31a24bc642567b0bd0cf}{passed}} = 0
+\item 
+int \mbox{\hyperlink{namespacetest__dma__device_a8c9609217dfe4bfc0dac12c14cd72020}{failed}} = 0
+\item 
+\mbox{\hyperlink{namespacetest__dma__device_a3f18a6118f736072cd610b67628942ce}{bus}} = \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus}{Memory\+Bus}}()
+\item 
+\mbox{\hyperlink{namespacetest__dma__device_a9b82c0cc7d49603b277e84931a83328e}{ram}} = \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_r_a_m_region}{RAMRegion}}(0x0000, 0x\+FFFF, name="{}RAM"{})
+\item 
+\mbox{\hyperlink{namespacetest__dma__device_adf34f2f896de8d05640ce6df2786df86}{dma}} = \mbox{\hyperlink{classmodules_1_1io_1_1i8257_1_1_i8257}{I8257}}(base\+\_\+port=0x00, name="{}DMA-\/0"{})
+\item 
+list \mbox{\hyperlink{namespacetest__dma__device_a524b916a82df63016e4748f18df15fc1}{test\+\_\+data}} = \mbox{[}0x\+A0, 0x\+A1, 0x\+A2, 0x\+A3, 0x\+A4\mbox{]}
+\item 
+\mbox{\hyperlink{namespacetest__dma__device_a5ac0ba564d88ae8d8a6adb51e2e12ed2}{mask\+\_\+register}}
+\item 
+list \mbox{\hyperlink{namespacetest__dma__device_ae87546289a02e2d294f91c751a384660}{device\+\_\+received}} = \mbox{[}$\,$\mbox{]}
+\item 
+\mbox{\hyperlink{namespacetest__dma__device_a2ec53a97fe61aecb0a8216163ceb69e7}{on\+\_\+device\+\_\+write}}
+\item 
+\mbox{\hyperlink{namespacetest__dma__device_a2f8609c2aceb82fdc956e00724a11401}{dma2}} = \mbox{\hyperlink{classmodules_1_1io_1_1i8257_1_1_i8257}{I8257}}(base\+\_\+port=0x00, name="{}DMA-\/1"{})
+\item 
+list \mbox{\hyperlink{namespacetest__dma__device_a373006d42b728161568ec491867dfab9}{device\+\_\+data}} = \mbox{[}0x\+B0, 0x\+B1, 0x\+B2\mbox{]}
+\item 
+list \mbox{\hyperlink{namespacetest__dma__device_a3a7803027de1d12b3b09562c601a373f}{read\+\_\+index}} = \mbox{[}0\mbox{]}
+\item 
+\mbox{\hyperlink{namespacetest__dma__device_a44e459082b3555485009e3ca260628a2}{on\+\_\+device\+\_\+read}}
+\item 
+\mbox{\hyperlink{namespacetest__dma__device_a71fe9496c36506b437fb252ac2525da3}{dma3}} = \mbox{\hyperlink{classmodules_1_1io_1_1i8257_1_1_i8257}{I8257}}(base\+\_\+port=0x00, name="{}DMA-\/2"{})
+\item 
+list \mbox{\hyperlink{namespacetest__dma__device_a15ab348444dc60b3ab7087aba00e1b98}{device\+\_\+received3}} = \mbox{[}$\,$\mbox{]}
+\item 
+list \mbox{\hyperlink{namespacetest__dma__device_ad2832c015c4eb10c653488288c690412}{transfer\+\_\+complete}} = \mbox{[}$\,$\mbox{]}
+\item 
+\mbox{\hyperlink{namespacetest__dma__device_aa141bb23bb73fbd72603dd7dd112413b}{on\+\_\+transfer\+\_\+complete}}
+\item 
+\mbox{\hyperlink{namespacetest__dma__device_ab0947e866bfc42fb6be68ad898ed487d}{dma4}} = \mbox{\hyperlink{classmodules_1_1io_1_1i8257_1_1_i8257}{I8257}}(base\+\_\+port=0x00, name="{}DMA-\/2"{})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Тест DMA память↔устройство (итерация 10.2 — дополнение)\end{DoxyVerb}
+ 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespacetest__dma__device_aa17fe00ea35ef3dd88200541b231c008}\index{test\_dma\_device@{test\_dma\_device}!check@{check}}
+\index{check@{check}!test\_dma\_device@{test\_dma\_device}}
+\doxysubsubsection{\texorpdfstring{check()}{check()}}
+{\footnotesize\ttfamily \label{namespacetest__dma__device_aa17fe00ea35ef3dd88200541b231c008} 
+test\+\_\+dma\+\_\+device.\+check (\begin{DoxyParamCaption}\item[{}]{name}{, }\item[{}]{actual}{, }\item[{}]{expected}{}\end{DoxyParamCaption})}
+
+\Hypertarget{namespacetest__dma__device_a2a52d27901d46d71cdd852611697cd13}\index{test\_dma\_device@{test\_dma\_device}!read\_callback@{read\_callback}}
+\index{read\_callback@{read\_callback}!test\_dma\_device@{test\_dma\_device}}
+\doxysubsubsection{\texorpdfstring{read\_callback()}{read\_callback()}}
+{\footnotesize\ttfamily \label{namespacetest__dma__device_a2a52d27901d46d71cdd852611697cd13} 
+test\+\_\+dma\+\_\+device.\+read\+\_\+callback (\begin{DoxyParamCaption}\item[{}]{ch}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{namespacetest__dma__device_a3f18a6118f736072cd610b67628942ce}\index{test\_dma\_device@{test\_dma\_device}!bus@{bus}}
+\index{bus@{bus}!test\_dma\_device@{test\_dma\_device}}
+\doxysubsubsection{\texorpdfstring{bus}{bus}}
+{\footnotesize\ttfamily \label{namespacetest__dma__device_a3f18a6118f736072cd610b67628942ce} 
+test\+\_\+dma\+\_\+device.\+bus = \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus}{Memory\+Bus}}()}
+
+\Hypertarget{namespacetest__dma__device_a373006d42b728161568ec491867dfab9}\index{test\_dma\_device@{test\_dma\_device}!device\_data@{device\_data}}
+\index{device\_data@{device\_data}!test\_dma\_device@{test\_dma\_device}}
+\doxysubsubsection{\texorpdfstring{device\_data}{device\_data}}
+{\footnotesize\ttfamily \label{namespacetest__dma__device_a373006d42b728161568ec491867dfab9} 
+list test\+\_\+dma\+\_\+device.\+device\+\_\+data = \mbox{[}0x\+B0, 0x\+B1, 0x\+B2\mbox{]}}
+
+\Hypertarget{namespacetest__dma__device_ae87546289a02e2d294f91c751a384660}\index{test\_dma\_device@{test\_dma\_device}!device\_received@{device\_received}}
+\index{device\_received@{device\_received}!test\_dma\_device@{test\_dma\_device}}
+\doxysubsubsection{\texorpdfstring{device\_received}{device\_received}}
+{\footnotesize\ttfamily \label{namespacetest__dma__device_ae87546289a02e2d294f91c751a384660} 
+list test\+\_\+dma\+\_\+device.\+device\+\_\+received = \mbox{[}$\,$\mbox{]}}
+
+\Hypertarget{namespacetest__dma__device_a15ab348444dc60b3ab7087aba00e1b98}\index{test\_dma\_device@{test\_dma\_device}!device\_received3@{device\_received3}}
+\index{device\_received3@{device\_received3}!test\_dma\_device@{test\_dma\_device}}
+\doxysubsubsection{\texorpdfstring{device\_received3}{device\_received3}}
+{\footnotesize\ttfamily \label{namespacetest__dma__device_a15ab348444dc60b3ab7087aba00e1b98} 
+list test\+\_\+dma\+\_\+device.\+device\+\_\+received3 = \mbox{[}$\,$\mbox{]}}
+
+\Hypertarget{namespacetest__dma__device_adf34f2f896de8d05640ce6df2786df86}\index{test\_dma\_device@{test\_dma\_device}!dma@{dma}}
+\index{dma@{dma}!test\_dma\_device@{test\_dma\_device}}
+\doxysubsubsection{\texorpdfstring{dma}{dma}}
+{\footnotesize\ttfamily \label{namespacetest__dma__device_adf34f2f896de8d05640ce6df2786df86} 
+test\+\_\+dma\+\_\+device.\+dma = \mbox{\hyperlink{classmodules_1_1io_1_1i8257_1_1_i8257}{I8257}}(base\+\_\+port=0x00, name="{}DMA-\/0"{})}
+
+\Hypertarget{namespacetest__dma__device_a2f8609c2aceb82fdc956e00724a11401}\index{test\_dma\_device@{test\_dma\_device}!dma2@{dma2}}
+\index{dma2@{dma2}!test\_dma\_device@{test\_dma\_device}}
+\doxysubsubsection{\texorpdfstring{dma2}{dma2}}
+{\footnotesize\ttfamily \label{namespacetest__dma__device_a2f8609c2aceb82fdc956e00724a11401} 
+test\+\_\+dma\+\_\+device.\+dma2 = \mbox{\hyperlink{classmodules_1_1io_1_1i8257_1_1_i8257}{I8257}}(base\+\_\+port=0x00, name="{}DMA-\/1"{})}
+
+\Hypertarget{namespacetest__dma__device_a71fe9496c36506b437fb252ac2525da3}\index{test\_dma\_device@{test\_dma\_device}!dma3@{dma3}}
+\index{dma3@{dma3}!test\_dma\_device@{test\_dma\_device}}
+\doxysubsubsection{\texorpdfstring{dma3}{dma3}}
+{\footnotesize\ttfamily \label{namespacetest__dma__device_a71fe9496c36506b437fb252ac2525da3} 
+test\+\_\+dma\+\_\+device.\+dma3 = \mbox{\hyperlink{classmodules_1_1io_1_1i8257_1_1_i8257}{I8257}}(base\+\_\+port=0x00, name="{}DMA-\/2"{})}
+
+\Hypertarget{namespacetest__dma__device_ab0947e866bfc42fb6be68ad898ed487d}\index{test\_dma\_device@{test\_dma\_device}!dma4@{dma4}}
+\index{dma4@{dma4}!test\_dma\_device@{test\_dma\_device}}
+\doxysubsubsection{\texorpdfstring{dma4}{dma4}}
+{\footnotesize\ttfamily \label{namespacetest__dma__device_ab0947e866bfc42fb6be68ad898ed487d} 
+test\+\_\+dma\+\_\+device.\+dma4 = \mbox{\hyperlink{classmodules_1_1io_1_1i8257_1_1_i8257}{I8257}}(base\+\_\+port=0x00, name="{}DMA-\/2"{})}
+
+\Hypertarget{namespacetest__dma__device_a8c9609217dfe4bfc0dac12c14cd72020}\index{test\_dma\_device@{test\_dma\_device}!failed@{failed}}
+\index{failed@{failed}!test\_dma\_device@{test\_dma\_device}}
+\doxysubsubsection{\texorpdfstring{failed}{failed}}
+{\footnotesize\ttfamily \label{namespacetest__dma__device_a8c9609217dfe4bfc0dac12c14cd72020} 
+int test\+\_\+dma\+\_\+device.\+failed = 0}
+
+\Hypertarget{namespacetest__dma__device_a5ac0ba564d88ae8d8a6adb51e2e12ed2}\index{test\_dma\_device@{test\_dma\_device}!mask\_register@{mask\_register}}
+\index{mask\_register@{mask\_register}!test\_dma\_device@{test\_dma\_device}}
+\doxysubsubsection{\texorpdfstring{mask\_register}{mask\_register}}
+{\footnotesize\ttfamily \label{namespacetest__dma__device_a5ac0ba564d88ae8d8a6adb51e2e12ed2} 
+test\+\_\+dma\+\_\+device.\+mask\+\_\+register}
+
+\Hypertarget{namespacetest__dma__device_a44e459082b3555485009e3ca260628a2}\index{test\_dma\_device@{test\_dma\_device}!on\_device\_read@{on\_device\_read}}
+\index{on\_device\_read@{on\_device\_read}!test\_dma\_device@{test\_dma\_device}}
+\doxysubsubsection{\texorpdfstring{on\_device\_read}{on\_device\_read}}
+{\footnotesize\ttfamily \label{namespacetest__dma__device_a44e459082b3555485009e3ca260628a2} 
+test\+\_\+dma\+\_\+device.\+on\+\_\+device\+\_\+read}
+
+\Hypertarget{namespacetest__dma__device_a2ec53a97fe61aecb0a8216163ceb69e7}\index{test\_dma\_device@{test\_dma\_device}!on\_device\_write@{on\_device\_write}}
+\index{on\_device\_write@{on\_device\_write}!test\_dma\_device@{test\_dma\_device}}
+\doxysubsubsection{\texorpdfstring{on\_device\_write}{on\_device\_write}}
+{\footnotesize\ttfamily \label{namespacetest__dma__device_a2ec53a97fe61aecb0a8216163ceb69e7} 
+test\+\_\+dma\+\_\+device.\+on\+\_\+device\+\_\+write}
+
+\Hypertarget{namespacetest__dma__device_aa141bb23bb73fbd72603dd7dd112413b}\index{test\_dma\_device@{test\_dma\_device}!on\_transfer\_complete@{on\_transfer\_complete}}
+\index{on\_transfer\_complete@{on\_transfer\_complete}!test\_dma\_device@{test\_dma\_device}}
+\doxysubsubsection{\texorpdfstring{on\_transfer\_complete}{on\_transfer\_complete}}
+{\footnotesize\ttfamily \label{namespacetest__dma__device_aa141bb23bb73fbd72603dd7dd112413b} 
+test\+\_\+dma\+\_\+device.\+on\+\_\+transfer\+\_\+complete}
+
+\Hypertarget{namespacetest__dma__device_a8acb583de6df31a24bc642567b0bd0cf}\index{test\_dma\_device@{test\_dma\_device}!passed@{passed}}
+\index{passed@{passed}!test\_dma\_device@{test\_dma\_device}}
+\doxysubsubsection{\texorpdfstring{passed}{passed}}
+{\footnotesize\ttfamily \label{namespacetest__dma__device_a8acb583de6df31a24bc642567b0bd0cf} 
+int test\+\_\+dma\+\_\+device.\+passed = 0}
+
+\Hypertarget{namespacetest__dma__device_a9b82c0cc7d49603b277e84931a83328e}\index{test\_dma\_device@{test\_dma\_device}!ram@{ram}}
+\index{ram@{ram}!test\_dma\_device@{test\_dma\_device}}
+\doxysubsubsection{\texorpdfstring{ram}{ram}}
+{\footnotesize\ttfamily \label{namespacetest__dma__device_a9b82c0cc7d49603b277e84931a83328e} 
+test\+\_\+dma\+\_\+device.\+ram = \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_r_a_m_region}{RAMRegion}}(0x0000, 0x\+FFFF, name="{}RAM"{})}
+
+\Hypertarget{namespacetest__dma__device_a3a7803027de1d12b3b09562c601a373f}\index{test\_dma\_device@{test\_dma\_device}!read\_index@{read\_index}}
+\index{read\_index@{read\_index}!test\_dma\_device@{test\_dma\_device}}
+\doxysubsubsection{\texorpdfstring{read\_index}{read\_index}}
+{\footnotesize\ttfamily \label{namespacetest__dma__device_a3a7803027de1d12b3b09562c601a373f} 
+list test\+\_\+dma\+\_\+device.\+read\+\_\+index = \mbox{[}0\mbox{]}}
+
+\Hypertarget{namespacetest__dma__device_a524b916a82df63016e4748f18df15fc1}\index{test\_dma\_device@{test\_dma\_device}!test\_data@{test\_data}}
+\index{test\_data@{test\_data}!test\_dma\_device@{test\_dma\_device}}
+\doxysubsubsection{\texorpdfstring{test\_data}{test\_data}}
+{\footnotesize\ttfamily \label{namespacetest__dma__device_a524b916a82df63016e4748f18df15fc1} 
+list test\+\_\+dma\+\_\+device.\+test\+\_\+data = \mbox{[}0x\+A0, 0x\+A1, 0x\+A2, 0x\+A3, 0x\+A4\mbox{]}}
+
+\Hypertarget{namespacetest__dma__device_ad2832c015c4eb10c653488288c690412}\index{test\_dma\_device@{test\_dma\_device}!transfer\_complete@{transfer\_complete}}
+\index{transfer\_complete@{transfer\_complete}!test\_dma\_device@{test\_dma\_device}}
+\doxysubsubsection{\texorpdfstring{transfer\_complete}{transfer\_complete}}
+{\footnotesize\ttfamily \label{namespacetest__dma__device_ad2832c015c4eb10c653488288c690412} 
+list test\+\_\+dma\+\_\+device.\+transfer\+\_\+complete = \mbox{[}$\,$\mbox{]}}
+

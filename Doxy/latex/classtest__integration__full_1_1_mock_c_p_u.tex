@@ -1,0 +1,141 @@
+\doxysection{test\+\_\+integration\+\_\+full.\+Mock\+CPU Class Reference}
+\hypertarget{classtest__integration__full_1_1_mock_c_p_u}{}\label{classtest__integration__full_1_1_mock_c_p_u}\index{test\_integration\_full.MockCPU@{test\_integration\_full.MockCPU}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classtest__integration__full_1_1_mock_c_p_u_a0412d558863e7817add4153c4c40f95a}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, \mbox{\hyperlink{classtest__integration__full_1_1_mock_c_p_u_a743a5e8aec89a59bf40e916ba047f85f}{memory\+\_\+bus}})
+\item 
+\mbox{\hyperlink{classtest__integration__full_1_1_mock_c_p_u_a169bf73b43ba04f86cef1c593f9a654d}{set\+\_\+wait}} (self, active)
+\item 
+\mbox{\hyperlink{classtest__integration__full_1_1_mock_c_p_u_a3b5d4d78bbf2f253548ad454ef31c6eb}{request\+\_\+interrupt}} (self, vector)
+\item 
+\mbox{\hyperlink{classtest__integration__full_1_1_mock_c_p_u_a9ea8c26213057924d22f659106db5118}{has\+\_\+pending\+\_\+interrupt}} (self)
+\item 
+\mbox{\hyperlink{classtest__integration__full_1_1_mock_c_p_u_a5b9c7450e13981e27be2ff1d37d3705d}{read\+\_\+word}} (self, addr)
+\item 
+\mbox{\hyperlink{classtest__integration__full_1_1_mock_c_p_u_a82a0888fb99264643c15113516201b42}{write\+\_\+byte}} (self, addr, value)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classtest__integration__full_1_1_mock_c_p_u_a743a5e8aec89a59bf40e916ba047f85f}{memory\+\_\+bus}} = memory\+\_\+bus
+\item 
+\mbox{\hyperlink{classtest__integration__full_1_1_mock_c_p_u_ade6a520c459330fa337d22b7e31398e2}{io\+\_\+bus}} = \mbox{\hyperlink{classtest__integration__full_1_1_mock_c_p_u_a743a5e8aec89a59bf40e916ba047f85f}{memory\+\_\+bus}}
+\item 
+bool \mbox{\hyperlink{classtest__integration__full_1_1_mock_c_p_u_a66c9f263dbf3030c26d6f290c908f3c3}{wait\+\_\+signal}} = False
+\item 
+bool \mbox{\hyperlink{classtest__integration__full_1_1_mock_c_p_u_a1353231d79a0f74894846497a85881e6}{int\+\_\+enabled}} = True
+\item 
+int \mbox{\hyperlink{classtest__integration__full_1_1_mock_c_p_u_a1a224f1c46dcaadbbbd19f57da3cedb3}{pc}} = 0x0000
+\item 
+int \mbox{\hyperlink{classtest__integration__full_1_1_mock_c_p_u_a7529b6b92420cc04dc1b4b8197d7f7d9}{sp}} = 0x\+FFFE
+\item 
+int \mbox{\hyperlink{classtest__integration__full_1_1_mock_c_p_u_abbda24f9ae5d2fae8c9079b15c8c1dd1}{cycles}} = 0
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+list \mbox{\hyperlink{classtest__integration__full_1_1_mock_c_p_u_a71973cd056530246c1cb298c230ef09a}{\+\_\+pending\+\_\+interrupts}} = \mbox{[}$\,$\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Мок CPU для сквозного теста\end{DoxyVerb}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classtest__integration__full_1_1_mock_c_p_u_a0412d558863e7817add4153c4c40f95a}\index{test\_integration\_full.MockCPU@{test\_integration\_full.MockCPU}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!test\_integration\_full.MockCPU@{test\_integration\_full.MockCPU}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \label{classtest__integration__full_1_1_mock_c_p_u_a0412d558863e7817add4153c4c40f95a} 
+test\+\_\+integration\+\_\+full.\+Mock\+CPU.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{memory\+\_\+bus}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classtest__integration__full_1_1_mock_c_p_u_a9ea8c26213057924d22f659106db5118}\index{test\_integration\_full.MockCPU@{test\_integration\_full.MockCPU}!has\_pending\_interrupt@{has\_pending\_interrupt}}
+\index{has\_pending\_interrupt@{has\_pending\_interrupt}!test\_integration\_full.MockCPU@{test\_integration\_full.MockCPU}}
+\doxysubsubsection{\texorpdfstring{has\_pending\_interrupt()}{has\_pending\_interrupt()}}
+{\footnotesize\ttfamily \label{classtest__integration__full_1_1_mock_c_p_u_a9ea8c26213057924d22f659106db5118} 
+test\+\_\+integration\+\_\+full.\+Mock\+CPU.\+has\+\_\+pending\+\_\+interrupt (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classtest__integration__full_1_1_mock_c_p_u_a5b9c7450e13981e27be2ff1d37d3705d}\index{test\_integration\_full.MockCPU@{test\_integration\_full.MockCPU}!read\_word@{read\_word}}
+\index{read\_word@{read\_word}!test\_integration\_full.MockCPU@{test\_integration\_full.MockCPU}}
+\doxysubsubsection{\texorpdfstring{read\_word()}{read\_word()}}
+{\footnotesize\ttfamily \label{classtest__integration__full_1_1_mock_c_p_u_a5b9c7450e13981e27be2ff1d37d3705d} 
+test\+\_\+integration\+\_\+full.\+Mock\+CPU.\+read\+\_\+word (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{addr}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classtest__integration__full_1_1_mock_c_p_u_a3b5d4d78bbf2f253548ad454ef31c6eb}\index{test\_integration\_full.MockCPU@{test\_integration\_full.MockCPU}!request\_interrupt@{request\_interrupt}}
+\index{request\_interrupt@{request\_interrupt}!test\_integration\_full.MockCPU@{test\_integration\_full.MockCPU}}
+\doxysubsubsection{\texorpdfstring{request\_interrupt()}{request\_interrupt()}}
+{\footnotesize\ttfamily \label{classtest__integration__full_1_1_mock_c_p_u_a3b5d4d78bbf2f253548ad454ef31c6eb} 
+test\+\_\+integration\+\_\+full.\+Mock\+CPU.\+request\+\_\+interrupt (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{vector}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classtest__integration__full_1_1_mock_c_p_u_a169bf73b43ba04f86cef1c593f9a654d}\index{test\_integration\_full.MockCPU@{test\_integration\_full.MockCPU}!set\_wait@{set\_wait}}
+\index{set\_wait@{set\_wait}!test\_integration\_full.MockCPU@{test\_integration\_full.MockCPU}}
+\doxysubsubsection{\texorpdfstring{set\_wait()}{set\_wait()}}
+{\footnotesize\ttfamily \label{classtest__integration__full_1_1_mock_c_p_u_a169bf73b43ba04f86cef1c593f9a654d} 
+test\+\_\+integration\+\_\+full.\+Mock\+CPU.\+set\+\_\+wait (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{active}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classtest__integration__full_1_1_mock_c_p_u_a82a0888fb99264643c15113516201b42}\index{test\_integration\_full.MockCPU@{test\_integration\_full.MockCPU}!write\_byte@{write\_byte}}
+\index{write\_byte@{write\_byte}!test\_integration\_full.MockCPU@{test\_integration\_full.MockCPU}}
+\doxysubsubsection{\texorpdfstring{write\_byte()}{write\_byte()}}
+{\footnotesize\ttfamily \label{classtest__integration__full_1_1_mock_c_p_u_a82a0888fb99264643c15113516201b42} 
+test\+\_\+integration\+\_\+full.\+Mock\+CPU.\+write\+\_\+byte (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{addr}{, }\item[{}]{value}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classtest__integration__full_1_1_mock_c_p_u_a71973cd056530246c1cb298c230ef09a}\index{test\_integration\_full.MockCPU@{test\_integration\_full.MockCPU}!\_pending\_interrupts@{\_pending\_interrupts}}
+\index{\_pending\_interrupts@{\_pending\_interrupts}!test\_integration\_full.MockCPU@{test\_integration\_full.MockCPU}}
+\doxysubsubsection{\texorpdfstring{\_pending\_interrupts}{\_pending\_interrupts}}
+{\footnotesize\ttfamily \label{classtest__integration__full_1_1_mock_c_p_u_a71973cd056530246c1cb298c230ef09a} 
+test\+\_\+integration\+\_\+full.\+Mock\+CPU.\+\_\+pending\+\_\+interrupts = \mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classtest__integration__full_1_1_mock_c_p_u_abbda24f9ae5d2fae8c9079b15c8c1dd1}\index{test\_integration\_full.MockCPU@{test\_integration\_full.MockCPU}!cycles@{cycles}}
+\index{cycles@{cycles}!test\_integration\_full.MockCPU@{test\_integration\_full.MockCPU}}
+\doxysubsubsection{\texorpdfstring{cycles}{cycles}}
+{\footnotesize\ttfamily \label{classtest__integration__full_1_1_mock_c_p_u_abbda24f9ae5d2fae8c9079b15c8c1dd1} 
+int test\+\_\+integration\+\_\+full.\+Mock\+CPU.\+cycles = 0}
+
+\Hypertarget{classtest__integration__full_1_1_mock_c_p_u_a1353231d79a0f74894846497a85881e6}\index{test\_integration\_full.MockCPU@{test\_integration\_full.MockCPU}!int\_enabled@{int\_enabled}}
+\index{int\_enabled@{int\_enabled}!test\_integration\_full.MockCPU@{test\_integration\_full.MockCPU}}
+\doxysubsubsection{\texorpdfstring{int\_enabled}{int\_enabled}}
+{\footnotesize\ttfamily \label{classtest__integration__full_1_1_mock_c_p_u_a1353231d79a0f74894846497a85881e6} 
+bool test\+\_\+integration\+\_\+full.\+Mock\+CPU.\+int\+\_\+enabled = True}
+
+\Hypertarget{classtest__integration__full_1_1_mock_c_p_u_ade6a520c459330fa337d22b7e31398e2}\index{test\_integration\_full.MockCPU@{test\_integration\_full.MockCPU}!io\_bus@{io\_bus}}
+\index{io\_bus@{io\_bus}!test\_integration\_full.MockCPU@{test\_integration\_full.MockCPU}}
+\doxysubsubsection{\texorpdfstring{io\_bus}{io\_bus}}
+{\footnotesize\ttfamily \label{classtest__integration__full_1_1_mock_c_p_u_ade6a520c459330fa337d22b7e31398e2} 
+test\+\_\+integration\+\_\+full.\+Mock\+CPU.\+io\+\_\+bus = \mbox{\hyperlink{classtest__integration__full_1_1_mock_c_p_u_a743a5e8aec89a59bf40e916ba047f85f}{memory\+\_\+bus}}}
+
+\Hypertarget{classtest__integration__full_1_1_mock_c_p_u_a743a5e8aec89a59bf40e916ba047f85f}\index{test\_integration\_full.MockCPU@{test\_integration\_full.MockCPU}!memory\_bus@{memory\_bus}}
+\index{memory\_bus@{memory\_bus}!test\_integration\_full.MockCPU@{test\_integration\_full.MockCPU}}
+\doxysubsubsection{\texorpdfstring{memory\_bus}{memory\_bus}}
+{\footnotesize\ttfamily \label{classtest__integration__full_1_1_mock_c_p_u_a743a5e8aec89a59bf40e916ba047f85f} 
+test\+\_\+integration\+\_\+full.\+Mock\+CPU.\+memory\+\_\+bus = memory\+\_\+bus}
+
+\Hypertarget{classtest__integration__full_1_1_mock_c_p_u_a1a224f1c46dcaadbbbd19f57da3cedb3}\index{test\_integration\_full.MockCPU@{test\_integration\_full.MockCPU}!pc@{pc}}
+\index{pc@{pc}!test\_integration\_full.MockCPU@{test\_integration\_full.MockCPU}}
+\doxysubsubsection{\texorpdfstring{pc}{pc}}
+{\footnotesize\ttfamily \label{classtest__integration__full_1_1_mock_c_p_u_a1a224f1c46dcaadbbbd19f57da3cedb3} 
+int test\+\_\+integration\+\_\+full.\+Mock\+CPU.\+pc = 0x0000}
+
+\Hypertarget{classtest__integration__full_1_1_mock_c_p_u_a7529b6b92420cc04dc1b4b8197d7f7d9}\index{test\_integration\_full.MockCPU@{test\_integration\_full.MockCPU}!sp@{sp}}
+\index{sp@{sp}!test\_integration\_full.MockCPU@{test\_integration\_full.MockCPU}}
+\doxysubsubsection{\texorpdfstring{sp}{sp}}
+{\footnotesize\ttfamily \label{classtest__integration__full_1_1_mock_c_p_u_a7529b6b92420cc04dc1b4b8197d7f7d9} 
+int test\+\_\+integration\+\_\+full.\+Mock\+CPU.\+sp = 0x\+FFFE}
+
+\Hypertarget{classtest__integration__full_1_1_mock_c_p_u_a66c9f263dbf3030c26d6f290c908f3c3}\index{test\_integration\_full.MockCPU@{test\_integration\_full.MockCPU}!wait\_signal@{wait\_signal}}
+\index{wait\_signal@{wait\_signal}!test\_integration\_full.MockCPU@{test\_integration\_full.MockCPU}}
+\doxysubsubsection{\texorpdfstring{wait\_signal}{wait\_signal}}
+{\footnotesize\ttfamily \label{classtest__integration__full_1_1_mock_c_p_u_a66c9f263dbf3030c26d6f290c908f3c3} 
+bool test\+\_\+integration\+\_\+full.\+Mock\+CPU.\+wait\+\_\+signal = False}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+tests/\mbox{\hyperlink{test__integration__full_8py}{test\+\_\+integration\+\_\+full.\+py}}\end{DoxyCompactItemize}

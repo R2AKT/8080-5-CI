@@ -1,0 +1,26 @@
+\doxysection{modules.\+io.\+i8257 Namespace Reference}
+\hypertarget{namespacemodules_1_1io_1_1i8257}{}\label{namespacemodules_1_1io_1_1i8257}\index{modules.io.i8257@{modules.io.i8257}}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classmodules_1_1io_1_1i8257_1_1_i8237}{I8237}}
+\item 
+class \mbox{\hyperlink{classmodules_1_1io_1_1i8257_1_1_i8257}{I8257}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}8257/8237 — контроллеры ПДП (прямого доступа к памяти).
+Итерация E4: ПДП.
+
+Различия:
+  - 8257 (КР580ВТ57): память ↔ устройство
+  - 8237: память ↔ устройство + память ↔ память + программный запуск
+
+Сигналы:
+  - HOLD → CPU (запрос захвата шины)
+  - HLDA ← CPU (подтверждение захвата)
+  - DREQ0-DREQ3 ← устройства (запрос ПДП)
+  - DACK0-DACK3 → устройства (подтверждение ПДП)
+\end{DoxyVerb}
+ 

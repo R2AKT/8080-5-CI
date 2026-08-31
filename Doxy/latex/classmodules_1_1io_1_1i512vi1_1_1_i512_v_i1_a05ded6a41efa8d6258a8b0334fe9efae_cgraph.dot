@@ -1,0 +1,17 @@
+digraph "modules.io.i512vi1.I512VI1.tick"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="modules.io.i512vi1.I512VI1.tick",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [id="edge5_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="modules.io.i512vi1.I512VI1.\l_update_time",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1.html#a58b9e2d1aa8429bdb63945f16492fb0e",tooltip=" "];
+  Node2 -> Node3 [id="edge6_Node000002_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="modules.io.i512vi1.I512VI1.\l_check_alarm",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1.html#adf2585b302f5aff9ac0beabd662181f4",tooltip=" "];
+  Node2 -> Node4 [id="edge7_Node000002_Node000004",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="modules.io.i512vi1.I512VI1.\l_increment_day",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1.html#aa365315e372773c69c7ceb5022fbcfd4",tooltip=" "];
+  Node4 -> Node5 [id="edge8_Node000004_Node000005",color="steelblue1",style="solid",tooltip=" "];
+  Node5 [id="Node000005",label="modules.io.i512vi1.I512VI1.\l_days_in_month",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1.html#a8b83be3b04c9f2142592fdcbc3b26118",tooltip=" "];
+}

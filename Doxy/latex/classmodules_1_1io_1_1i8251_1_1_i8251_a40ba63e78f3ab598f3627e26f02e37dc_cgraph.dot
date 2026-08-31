@@ -1,0 +1,24 @@
+digraph "modules.io.i8251.I8251.__init__"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="modules.io.i8251.I8251.\l__init__",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node1 [id="edge9_Node000001_Node000001",color="steelblue1",style="solid",tooltip=" "];
+  Node1 -> Node2 [id="edge10_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="i8080_emulator.I8080Emulator.reset",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classi8080__emulator_1_1_i8080_emulator.html#a8db60fcc818c4281f5ca3bb03d8246c9",tooltip=" "];
+  Node1 -> Node3 [id="edge11_Node000001_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="modules.io.am9511.AM9511.reset",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classmodules_1_1io_1_1am9511_1_1_a_m9511.html#af60451ba4c36cc62f72d11c1184e093d",tooltip=" "];
+  Node1 -> Node4 [id="edge12_Node000001_Node000004",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="modules.io.cf_ide.CFIDE.reset",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e.html#ab0ad73522a5ba597b4405576992f8a88",tooltip=" "];
+  Node1 -> Node5 [id="edge13_Node000001_Node000005",color="steelblue1",style="solid",tooltip=" "];
+  Node5 [id="Node000005",label="modules.io.ch376s.CH376S.reset",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classmodules_1_1io_1_1ch376s_1_1_c_h376_s.html#a50aa84fd675760d4949fe662eeb13e8f",tooltip=" "];
+  Node1 -> Node6 [id="edge14_Node000001_Node000006",color="steelblue1",style="solid",tooltip=" "];
+  Node6 [id="Node000006",label="modules.io.i16550.I16550.reset",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classmodules_1_1io_1_1i16550_1_1_i16550.html#aa19322a498920cc01cf0046118d4428f",tooltip=" "];
+  Node1 -> Node7 [id="edge15_Node000001_Node000007",color="steelblue1",style="solid",tooltip=" "];
+  Node7 [id="Node000007",label="modules.io.i512vi1.I512VI1.reset",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1.html#a21684ba1399530311845cd73b3f576b8",tooltip=" "];
+  Node1 -> Node8 [id="edge16_Node000001_Node000008",color="steelblue1",style="solid",tooltip=" "];
+  Node8 [id="Node000008",label="modules.io.i8251.I8251.reset",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classmodules_1_1io_1_1i8251_1_1_i8251.html#a77f161e9976b47012a69e7c03c72afec",tooltip=" "];
+}

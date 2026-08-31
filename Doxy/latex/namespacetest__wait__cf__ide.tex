@@ -1,0 +1,167 @@
+\doxysection{test\+\_\+wait\+\_\+cf\+\_\+ide Namespace Reference}
+\hypertarget{namespacetest__wait__cf__ide}{}\label{namespacetest__wait__cf__ide}\index{test\_wait\_cf\_ide@{test\_wait\_cf\_ide}}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classtest__wait__cf__ide_1_1_mock_c_p_u}{Mock\+CPU}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespacetest__wait__cf__ide_ac0245803644c9df769d6ad454664033a}{check}} (name, actual, expected)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{namespacetest__wait__cf__ide_a4164b42c16630f0059d006438f5a78ce}{passed}} = 0
+\item 
+int \mbox{\hyperlink{namespacetest__wait__cf__ide_a5ddc46e91d69184358f73693a0f86a30}{failed}} = 0
+\item 
+\mbox{\hyperlink{namespacetest__wait__cf__ide_ae4da4f301488c316d6e6077a6cc93ef3}{bus}} = \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus}{Memory\+Bus}}()
+\item 
+\mbox{\hyperlink{namespacetest__wait__cf__ide_a119f370e7486876f12d032765ba98bd2}{cf}} = \mbox{\hyperlink{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e}{CFIDE}}(base\+\_\+port=0x10, name="{}CF-\/0"{})
+\item 
+\mbox{\hyperlink{namespacetest__wait__cf__ide_ac7d4767bbc2a3457d26d160d6db9e34c}{delete}}
+\item 
+\mbox{\hyperlink{namespacetest__wait__cf__ide_a5a35d552bb01c7ce87c99f26d5ccaab7}{False}}
+\item 
+\mbox{\hyperlink{namespacetest__wait__cf__ide_a76c0b549f91b8b23fdf66bb66a32ac57}{suffix}}
+\item 
+\mbox{\hyperlink{namespacetest__wait__cf__ide_aaa6d4abd7b14c7b92d65f3069c8b2b1c}{disk\+\_\+path}} = f.\+name
+\item 
+\mbox{\hyperlink{namespacetest__wait__cf__ide_a5783e74ee80a8a8d6a7584e5837161f4}{size\+\_\+mb}}
+\item 
+list \mbox{\hyperlink{namespacetest__wait__cf__ide_a281a67d9a36dcc317a25626842a37cd1}{irq\+\_\+events}} = \mbox{[}$\,$\mbox{]}
+\item 
+\mbox{\hyperlink{namespacetest__wait__cf__ide_acd2d0b27628999e95148d7987b8bf6d2}{on\+\_\+irq}}
+\item 
+list \mbox{\hyperlink{namespacetest__wait__cf__ide_a44666e207796564f86ea6e26ad8bdba8}{data}} = \mbox{[}cf.\+io\+\_\+read(cf.\+base\+\_\+port + 0) for \+\_\+ in range(10)\mbox{]}
+\item 
+list \mbox{\hyperlink{namespacetest__wait__cf__ide_a118a861b2cde6cd001c27860aa1a91c5}{wait\+\_\+events}} = \mbox{[}$\,$\mbox{]}
+\item 
+\mbox{\hyperlink{namespacetest__wait__cf__ide_a55ef1382dfbe6a39c45f442e1fcd4ebd}{on\+\_\+wait}}
+\item 
+\mbox{\hyperlink{namespacetest__wait__cf__ide_a8952db68ab4baa7b48d049075b73322d}{status}} = cf.\+io\+\_\+read(cf.\+base\+\_\+port + 7)
+\item 
+\mbox{\hyperlink{namespacetest__wait__cf__ide_ad981f5d1c9293eb084a613689783bd9f}{cycles}}
+\item 
+\mbox{\hyperlink{namespacetest__wait__cf__ide_a587e78f6597f07467987b5c8345df2b9}{cpu}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Тест WAIT-сигналов для CF IDE (итерация 10.3)\end{DoxyVerb}
+ 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespacetest__wait__cf__ide_ac0245803644c9df769d6ad454664033a}\index{test\_wait\_cf\_ide@{test\_wait\_cf\_ide}!check@{check}}
+\index{check@{check}!test\_wait\_cf\_ide@{test\_wait\_cf\_ide}}
+\doxysubsubsection{\texorpdfstring{check()}{check()}}
+{\footnotesize\ttfamily \label{namespacetest__wait__cf__ide_ac0245803644c9df769d6ad454664033a} 
+test\+\_\+wait\+\_\+cf\+\_\+ide.\+check (\begin{DoxyParamCaption}\item[{}]{name}{, }\item[{}]{actual}{, }\item[{}]{expected}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{namespacetest__wait__cf__ide_ae4da4f301488c316d6e6077a6cc93ef3}\index{test\_wait\_cf\_ide@{test\_wait\_cf\_ide}!bus@{bus}}
+\index{bus@{bus}!test\_wait\_cf\_ide@{test\_wait\_cf\_ide}}
+\doxysubsubsection{\texorpdfstring{bus}{bus}}
+{\footnotesize\ttfamily \label{namespacetest__wait__cf__ide_ae4da4f301488c316d6e6077a6cc93ef3} 
+test\+\_\+wait\+\_\+cf\+\_\+ide.\+bus = \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus}{Memory\+Bus}}()}
+
+\Hypertarget{namespacetest__wait__cf__ide_a119f370e7486876f12d032765ba98bd2}\index{test\_wait\_cf\_ide@{test\_wait\_cf\_ide}!cf@{cf}}
+\index{cf@{cf}!test\_wait\_cf\_ide@{test\_wait\_cf\_ide}}
+\doxysubsubsection{\texorpdfstring{cf}{cf}}
+{\footnotesize\ttfamily \label{namespacetest__wait__cf__ide_a119f370e7486876f12d032765ba98bd2} 
+test\+\_\+wait\+\_\+cf\+\_\+ide.\+cf = \mbox{\hyperlink{classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e}{CFIDE}}(base\+\_\+port=0x10, name="{}CF-\/0"{})}
+
+\Hypertarget{namespacetest__wait__cf__ide_a587e78f6597f07467987b5c8345df2b9}\index{test\_wait\_cf\_ide@{test\_wait\_cf\_ide}!cpu@{cpu}}
+\index{cpu@{cpu}!test\_wait\_cf\_ide@{test\_wait\_cf\_ide}}
+\doxysubsubsection{\texorpdfstring{cpu}{cpu}}
+{\footnotesize\ttfamily \label{namespacetest__wait__cf__ide_a587e78f6597f07467987b5c8345df2b9} 
+test\+\_\+wait\+\_\+cf\+\_\+ide.\+cpu}
+
+\Hypertarget{namespacetest__wait__cf__ide_ad981f5d1c9293eb084a613689783bd9f}\index{test\_wait\_cf\_ide@{test\_wait\_cf\_ide}!cycles@{cycles}}
+\index{cycles@{cycles}!test\_wait\_cf\_ide@{test\_wait\_cf\_ide}}
+\doxysubsubsection{\texorpdfstring{cycles}{cycles}}
+{\footnotesize\ttfamily \label{namespacetest__wait__cf__ide_ad981f5d1c9293eb084a613689783bd9f} 
+test\+\_\+wait\+\_\+cf\+\_\+ide.\+cycles}
+
+\Hypertarget{namespacetest__wait__cf__ide_a44666e207796564f86ea6e26ad8bdba8}\index{test\_wait\_cf\_ide@{test\_wait\_cf\_ide}!data@{data}}
+\index{data@{data}!test\_wait\_cf\_ide@{test\_wait\_cf\_ide}}
+\doxysubsubsection{\texorpdfstring{data}{data}}
+{\footnotesize\ttfamily \label{namespacetest__wait__cf__ide_a44666e207796564f86ea6e26ad8bdba8} 
+test\+\_\+wait\+\_\+cf\+\_\+ide.\+data = \mbox{[}cf.\+io\+\_\+read(cf.\+base\+\_\+port + 0) for \+\_\+ in range(10)\mbox{]}}
+
+\Hypertarget{namespacetest__wait__cf__ide_ac7d4767bbc2a3457d26d160d6db9e34c}\index{test\_wait\_cf\_ide@{test\_wait\_cf\_ide}!delete@{delete}}
+\index{delete@{delete}!test\_wait\_cf\_ide@{test\_wait\_cf\_ide}}
+\doxysubsubsection{\texorpdfstring{delete}{delete}}
+{\footnotesize\ttfamily \label{namespacetest__wait__cf__ide_ac7d4767bbc2a3457d26d160d6db9e34c} 
+test\+\_\+wait\+\_\+cf\+\_\+ide.\+delete}
+
+\Hypertarget{namespacetest__wait__cf__ide_aaa6d4abd7b14c7b92d65f3069c8b2b1c}\index{test\_wait\_cf\_ide@{test\_wait\_cf\_ide}!disk\_path@{disk\_path}}
+\index{disk\_path@{disk\_path}!test\_wait\_cf\_ide@{test\_wait\_cf\_ide}}
+\doxysubsubsection{\texorpdfstring{disk\_path}{disk\_path}}
+{\footnotesize\ttfamily \label{namespacetest__wait__cf__ide_aaa6d4abd7b14c7b92d65f3069c8b2b1c} 
+test\+\_\+wait\+\_\+cf\+\_\+ide.\+disk\+\_\+path = f.\+name}
+
+\Hypertarget{namespacetest__wait__cf__ide_a5ddc46e91d69184358f73693a0f86a30}\index{test\_wait\_cf\_ide@{test\_wait\_cf\_ide}!failed@{failed}}
+\index{failed@{failed}!test\_wait\_cf\_ide@{test\_wait\_cf\_ide}}
+\doxysubsubsection{\texorpdfstring{failed}{failed}}
+{\footnotesize\ttfamily \label{namespacetest__wait__cf__ide_a5ddc46e91d69184358f73693a0f86a30} 
+int test\+\_\+wait\+\_\+cf\+\_\+ide.\+failed = 0}
+
+\Hypertarget{namespacetest__wait__cf__ide_a5a35d552bb01c7ce87c99f26d5ccaab7}\index{test\_wait\_cf\_ide@{test\_wait\_cf\_ide}!False@{False}}
+\index{False@{False}!test\_wait\_cf\_ide@{test\_wait\_cf\_ide}}
+\doxysubsubsection{\texorpdfstring{False}{False}}
+{\footnotesize\ttfamily \label{namespacetest__wait__cf__ide_a5a35d552bb01c7ce87c99f26d5ccaab7} 
+test\+\_\+wait\+\_\+cf\+\_\+ide.\+False}
+
+\Hypertarget{namespacetest__wait__cf__ide_a281a67d9a36dcc317a25626842a37cd1}\index{test\_wait\_cf\_ide@{test\_wait\_cf\_ide}!irq\_events@{irq\_events}}
+\index{irq\_events@{irq\_events}!test\_wait\_cf\_ide@{test\_wait\_cf\_ide}}
+\doxysubsubsection{\texorpdfstring{irq\_events}{irq\_events}}
+{\footnotesize\ttfamily \label{namespacetest__wait__cf__ide_a281a67d9a36dcc317a25626842a37cd1} 
+list test\+\_\+wait\+\_\+cf\+\_\+ide.\+irq\+\_\+events = \mbox{[}$\,$\mbox{]}}
+
+\Hypertarget{namespacetest__wait__cf__ide_acd2d0b27628999e95148d7987b8bf6d2}\index{test\_wait\_cf\_ide@{test\_wait\_cf\_ide}!on\_irq@{on\_irq}}
+\index{on\_irq@{on\_irq}!test\_wait\_cf\_ide@{test\_wait\_cf\_ide}}
+\doxysubsubsection{\texorpdfstring{on\_irq}{on\_irq}}
+{\footnotesize\ttfamily \label{namespacetest__wait__cf__ide_acd2d0b27628999e95148d7987b8bf6d2} 
+test\+\_\+wait\+\_\+cf\+\_\+ide.\+on\+\_\+irq}
+
+\Hypertarget{namespacetest__wait__cf__ide_a55ef1382dfbe6a39c45f442e1fcd4ebd}\index{test\_wait\_cf\_ide@{test\_wait\_cf\_ide}!on\_wait@{on\_wait}}
+\index{on\_wait@{on\_wait}!test\_wait\_cf\_ide@{test\_wait\_cf\_ide}}
+\doxysubsubsection{\texorpdfstring{on\_wait}{on\_wait}}
+{\footnotesize\ttfamily \label{namespacetest__wait__cf__ide_a55ef1382dfbe6a39c45f442e1fcd4ebd} 
+test\+\_\+wait\+\_\+cf\+\_\+ide.\+on\+\_\+wait}
+
+\Hypertarget{namespacetest__wait__cf__ide_a4164b42c16630f0059d006438f5a78ce}\index{test\_wait\_cf\_ide@{test\_wait\_cf\_ide}!passed@{passed}}
+\index{passed@{passed}!test\_wait\_cf\_ide@{test\_wait\_cf\_ide}}
+\doxysubsubsection{\texorpdfstring{passed}{passed}}
+{\footnotesize\ttfamily \label{namespacetest__wait__cf__ide_a4164b42c16630f0059d006438f5a78ce} 
+int test\+\_\+wait\+\_\+cf\+\_\+ide.\+passed = 0}
+
+\Hypertarget{namespacetest__wait__cf__ide_a5783e74ee80a8a8d6a7584e5837161f4}\index{test\_wait\_cf\_ide@{test\_wait\_cf\_ide}!size\_mb@{size\_mb}}
+\index{size\_mb@{size\_mb}!test\_wait\_cf\_ide@{test\_wait\_cf\_ide}}
+\doxysubsubsection{\texorpdfstring{size\_mb}{size\_mb}}
+{\footnotesize\ttfamily \label{namespacetest__wait__cf__ide_a5783e74ee80a8a8d6a7584e5837161f4} 
+test\+\_\+wait\+\_\+cf\+\_\+ide.\+size\+\_\+mb}
+
+\Hypertarget{namespacetest__wait__cf__ide_a8952db68ab4baa7b48d049075b73322d}\index{test\_wait\_cf\_ide@{test\_wait\_cf\_ide}!status@{status}}
+\index{status@{status}!test\_wait\_cf\_ide@{test\_wait\_cf\_ide}}
+\doxysubsubsection{\texorpdfstring{status}{status}}
+{\footnotesize\ttfamily \label{namespacetest__wait__cf__ide_a8952db68ab4baa7b48d049075b73322d} 
+test\+\_\+wait\+\_\+cf\+\_\+ide.\+status = cf.\+io\+\_\+read(cf.\+base\+\_\+port + 7)}
+
+\Hypertarget{namespacetest__wait__cf__ide_a76c0b549f91b8b23fdf66bb66a32ac57}\index{test\_wait\_cf\_ide@{test\_wait\_cf\_ide}!suffix@{suffix}}
+\index{suffix@{suffix}!test\_wait\_cf\_ide@{test\_wait\_cf\_ide}}
+\doxysubsubsection{\texorpdfstring{suffix}{suffix}}
+{\footnotesize\ttfamily \label{namespacetest__wait__cf__ide_a76c0b549f91b8b23fdf66bb66a32ac57} 
+test\+\_\+wait\+\_\+cf\+\_\+ide.\+suffix}
+
+\Hypertarget{namespacetest__wait__cf__ide_a118a861b2cde6cd001c27860aa1a91c5}\index{test\_wait\_cf\_ide@{test\_wait\_cf\_ide}!wait\_events@{wait\_events}}
+\index{wait\_events@{wait\_events}!test\_wait\_cf\_ide@{test\_wait\_cf\_ide}}
+\doxysubsubsection{\texorpdfstring{wait\_events}{wait\_events}}
+{\footnotesize\ttfamily \label{namespacetest__wait__cf__ide_a118a861b2cde6cd001c27860aa1a91c5} 
+list test\+\_\+wait\+\_\+cf\+\_\+ide.\+wait\+\_\+events = \mbox{[}$\,$\mbox{]}}
+

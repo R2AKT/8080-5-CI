@@ -1,0 +1,217 @@
+\doxysection{modules.\+memory.\+segmented.\+Segmented\+Region Class Reference}
+\hypertarget{classmodules_1_1memory_1_1segmented_1_1_segmented_region}{}\label{classmodules_1_1memory_1_1segmented_1_1_segmented_region}\index{modules.memory.segmented.SegmentedRegion@{modules.memory.segmented.SegmentedRegion}}
+
+
+Inheritance diagram for modules.\+memory.\+segmented.\+Segmented\+Region\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=224pt]{classmodules_1_1memory_1_1segmented_1_1_segmented_region__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for modules.\+memory.\+segmented.\+Segmented\+Region\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=224pt]{classmodules_1_1memory_1_1segmented_1_1_segmented_region__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodules_1_1memory_1_1segmented_1_1_segmented_region_abecfae799490be23e9b4b3847afc4669}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_a43dd15c2b8e11e0e886a94792fdd6880}{start}}, \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_ad9c14b35f4aec59f6494496a4a8881a8}{end}}, \mbox{\hyperlink{classmodules_1_1memory_1_1segmented_1_1_segmented_region_aa5600e0074d9d71ef21bdb5d50d2f090}{num\+\_\+segments}}=16, \mbox{\hyperlink{classmodules_1_1memory_1_1segmented_1_1_segmented_region_aa1f0a612bce03e872fca5f08053bfe64}{switch\+\_\+port}}=None, \mbox{\hyperlink{classmodules_1_1memory_1_1segmented_1_1_segmented_region_abe10d9ba8bb32b9326e269228ab156d5}{switch\+\_\+addr}}=None, \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_a182987f561d8f1276e9ba1458f1a160c}{name}}="{}Segmented\+RAM"{})
+\item 
+\mbox{\hyperlink{classmodules_1_1memory_1_1segmented_1_1_segmented_region_a414318af0e686840507eaa36f138f5c7}{read}} (self, addr)
+\item 
+\mbox{\hyperlink{classmodules_1_1memory_1_1segmented_1_1_segmented_region_a0674d14e0be47c5dbe0904954a79da14}{write}} (self, addr, value)
+\item 
+\mbox{\hyperlink{classmodules_1_1memory_1_1segmented_1_1_segmented_region_a4a0005df1bfcd6020fce1ed109ec76c8}{io\+\_\+write}} (self, port, value)
+\item 
+\mbox{\hyperlink{classmodules_1_1memory_1_1segmented_1_1_segmented_region_af1ff47020c62a28cbd595d767d6c1674}{get\+\_\+state}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1memory_1_1segmented_1_1_segmented_region_a73bb46d197122850965952a0bef5d2df}{reset}} (self)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_region}{modules.\+memory.\+memory\+\_\+bus.\+Memory\+Region}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_aa390a09d4e8f8d0d9ce19232a8625f3b}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_a43dd15c2b8e11e0e886a94792fdd6880}{start}}, \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_ad9c14b35f4aec59f6494496a4a8881a8}{end}}, \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_a182987f561d8f1276e9ba1458f1a160c}{name}}="{}region"{})
+\item 
+\mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_a900e938846a8971cc3241066efc1329f}{contains}} (self, addr)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodules_1_1memory_1_1segmented_1_1_segmented_region_aa5600e0074d9d71ef21bdb5d50d2f090}{num\+\_\+segments}} = num\+\_\+segments
+\item 
+\mbox{\hyperlink{classmodules_1_1memory_1_1segmented_1_1_segmented_region_aa1f0a612bce03e872fca5f08053bfe64}{switch\+\_\+port}} = switch\+\_\+port
+\item 
+\mbox{\hyperlink{classmodules_1_1memory_1_1segmented_1_1_segmented_region_abe10d9ba8bb32b9326e269228ab156d5}{switch\+\_\+addr}} = switch\+\_\+addr
+\item 
+list \mbox{\hyperlink{classmodules_1_1memory_1_1segmented_1_1_segmented_region_a3ff24b1c6c10ca6d708757249468a619}{segments}} = \mbox{[}\{\} for \+\_\+ in range(\mbox{\hyperlink{classmodules_1_1memory_1_1segmented_1_1_segmented_region_aa5600e0074d9d71ef21bdb5d50d2f090}{num\+\_\+segments}})\mbox{]}
+\item 
+int \mbox{\hyperlink{classmodules_1_1memory_1_1segmented_1_1_segmented_region_afa581c285ce28b7eb619842889ca9fd2}{current\+\_\+segment}} = 0
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_region}{modules.\+memory.\+memory\+\_\+bus.\+Memory\+Region}}}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_a43dd15c2b8e11e0e886a94792fdd6880}{start}} = start \& 0x\+FFFF
+\item 
+int \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_ad9c14b35f4aec59f6494496a4a8881a8}{end}} = end \& 0x\+FFFF
+\item 
+\mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_a182987f561d8f1276e9ba1458f1a160c}{name}} = name
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Сегментная память: адресное пространство разбито на сегменты,
+каждый сегмент имеет базовый адрес в физической памяти.
+
+Переключение сегментов:
+- через порт IO (запись в порт выбирает текущий сегмент)
+- через адрес памяти
+
+Пример:
+- Адресное пространство 64КБ
+- Сегментный регистр определяет текущий сегмент
+- Физическая память: 16 сегментов по 64КБ (всего 1МБ)
+- Запись в порт 0x00 выбирает сегмент
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classmodules_1_1memory_1_1segmented_1_1_segmented_region_abecfae799490be23e9b4b3847afc4669}\index{modules.memory.segmented.SegmentedRegion@{modules.memory.segmented.SegmentedRegion}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!modules.memory.segmented.SegmentedRegion@{modules.memory.segmented.SegmentedRegion}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \label{classmodules_1_1memory_1_1segmented_1_1_segmented_region_abecfae799490be23e9b4b3847afc4669} 
+modules.\+memory.\+segmented.\+Segmented\+Region.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{start}{, }\item[{}]{end}{, }\item[{}]{num\+\_\+segments}{ = {\ttfamily 16}, }\item[{}]{switch\+\_\+port}{ = {\ttfamily None}, }\item[{}]{switch\+\_\+addr}{ = {\ttfamily None}, }\item[{}]{name}{ = {\ttfamily "{}SegmentedRAM"{}}}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Args:
+    start, end: окно в адресном пространстве
+    num_segments: количество сегментов в физической памяти
+    switch_port: порт IO для переключения сегмента
+    switch_addr: адрес памяти для переключения сегмента
+\end{DoxyVerb}
+ Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=224pt]{classmodules_1_1memory_1_1segmented_1_1_segmented_region_abecfae799490be23e9b4b3847afc4669_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=224pt]{classmodules_1_1memory_1_1segmented_1_1_segmented_region_abecfae799490be23e9b4b3847afc4669_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classmodules_1_1memory_1_1segmented_1_1_segmented_region_af1ff47020c62a28cbd595d767d6c1674}\index{modules.memory.segmented.SegmentedRegion@{modules.memory.segmented.SegmentedRegion}!get\_state@{get\_state}}
+\index{get\_state@{get\_state}!modules.memory.segmented.SegmentedRegion@{modules.memory.segmented.SegmentedRegion}}
+\doxysubsubsection{\texorpdfstring{get\_state()}{get\_state()}}
+{\footnotesize\ttfamily \label{classmodules_1_1memory_1_1segmented_1_1_segmented_region_af1ff47020c62a28cbd595d767d6c1674} 
+modules.\+memory.\+segmented.\+Segmented\+Region.\+get\+\_\+state (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Текущее состояние\end{DoxyVerb}
+ \Hypertarget{classmodules_1_1memory_1_1segmented_1_1_segmented_region_a4a0005df1bfcd6020fce1ed109ec76c8}\index{modules.memory.segmented.SegmentedRegion@{modules.memory.segmented.SegmentedRegion}!io\_write@{io\_write}}
+\index{io\_write@{io\_write}!modules.memory.segmented.SegmentedRegion@{modules.memory.segmented.SegmentedRegion}}
+\doxysubsubsection{\texorpdfstring{io\_write()}{io\_write()}}
+{\footnotesize\ttfamily \label{classmodules_1_1memory_1_1segmented_1_1_segmented_region_a4a0005df1bfcd6020fce1ed109ec76c8} 
+modules.\+memory.\+segmented.\+Segmented\+Region.\+io\+\_\+write (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{port}{, }\item[{}]{value}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Обработка записи в IO-порт (переключение сегмента)\end{DoxyVerb}
+ \Hypertarget{classmodules_1_1memory_1_1segmented_1_1_segmented_region_a414318af0e686840507eaa36f138f5c7}\index{modules.memory.segmented.SegmentedRegion@{modules.memory.segmented.SegmentedRegion}!read@{read}}
+\index{read@{read}!modules.memory.segmented.SegmentedRegion@{modules.memory.segmented.SegmentedRegion}}
+\doxysubsubsection{\texorpdfstring{read()}{read()}}
+{\footnotesize\ttfamily \label{classmodules_1_1memory_1_1segmented_1_1_segmented_region_a414318af0e686840507eaa36f138f5c7} 
+modules.\+memory.\+segmented.\+Segmented\+Region.\+read (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{addr}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Чтение из текущего сегмента\end{DoxyVerb}
+ 
+
+Reimplemented from \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_aa7586fa5d3bc8133dad3624eebf0d19e}{modules.\+memory.\+memory\+\_\+bus.\+Memory\+Region}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1memory_1_1segmented_1_1_segmented_region_a414318af0e686840507eaa36f138f5c7_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1memory_1_1segmented_1_1_segmented_region_a73bb46d197122850965952a0bef5d2df}\index{modules.memory.segmented.SegmentedRegion@{modules.memory.segmented.SegmentedRegion}!reset@{reset}}
+\index{reset@{reset}!modules.memory.segmented.SegmentedRegion@{modules.memory.segmented.SegmentedRegion}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily \label{classmodules_1_1memory_1_1segmented_1_1_segmented_region_a73bb46d197122850965952a0bef5d2df} 
+modules.\+memory.\+segmented.\+Segmented\+Region.\+reset (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Сброс на сегмент 0\end{DoxyVerb}
+ 
+
+Reimplemented from \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_a5a97354dcc0dca2c264f91f961d30eae}{modules.\+memory.\+memory\+\_\+bus.\+Memory\+Region}}.
+
+\Hypertarget{classmodules_1_1memory_1_1segmented_1_1_segmented_region_a0674d14e0be47c5dbe0904954a79da14}\index{modules.memory.segmented.SegmentedRegion@{modules.memory.segmented.SegmentedRegion}!write@{write}}
+\index{write@{write}!modules.memory.segmented.SegmentedRegion@{modules.memory.segmented.SegmentedRegion}}
+\doxysubsubsection{\texorpdfstring{write()}{write()}}
+{\footnotesize\ttfamily \label{classmodules_1_1memory_1_1segmented_1_1_segmented_region_a0674d14e0be47c5dbe0904954a79da14} 
+modules.\+memory.\+segmented.\+Segmented\+Region.\+write (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{addr}{, }\item[{}]{value}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Запись в текущий сегмент, или переключение сегмента\end{DoxyVerb}
+ 
+
+Reimplemented from \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_a693a7091168e93cd36b98fba8c1a7c28}{modules.\+memory.\+memory\+\_\+bus.\+Memory\+Region}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1memory_1_1segmented_1_1_segmented_region_a0674d14e0be47c5dbe0904954a79da14_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classmodules_1_1memory_1_1segmented_1_1_segmented_region_afa581c285ce28b7eb619842889ca9fd2}\index{modules.memory.segmented.SegmentedRegion@{modules.memory.segmented.SegmentedRegion}!current\_segment@{current\_segment}}
+\index{current\_segment@{current\_segment}!modules.memory.segmented.SegmentedRegion@{modules.memory.segmented.SegmentedRegion}}
+\doxysubsubsection{\texorpdfstring{current\_segment}{current\_segment}}
+{\footnotesize\ttfamily \label{classmodules_1_1memory_1_1segmented_1_1_segmented_region_afa581c285ce28b7eb619842889ca9fd2} 
+modules.\+memory.\+segmented.\+Segmented\+Region.\+current\+\_\+segment = 0}
+
+\Hypertarget{classmodules_1_1memory_1_1segmented_1_1_segmented_region_aa5600e0074d9d71ef21bdb5d50d2f090}\index{modules.memory.segmented.SegmentedRegion@{modules.memory.segmented.SegmentedRegion}!num\_segments@{num\_segments}}
+\index{num\_segments@{num\_segments}!modules.memory.segmented.SegmentedRegion@{modules.memory.segmented.SegmentedRegion}}
+\doxysubsubsection{\texorpdfstring{num\_segments}{num\_segments}}
+{\footnotesize\ttfamily \label{classmodules_1_1memory_1_1segmented_1_1_segmented_region_aa5600e0074d9d71ef21bdb5d50d2f090} 
+modules.\+memory.\+segmented.\+Segmented\+Region.\+num\+\_\+segments = num\+\_\+segments}
+
+\Hypertarget{classmodules_1_1memory_1_1segmented_1_1_segmented_region_a3ff24b1c6c10ca6d708757249468a619}\index{modules.memory.segmented.SegmentedRegion@{modules.memory.segmented.SegmentedRegion}!segments@{segments}}
+\index{segments@{segments}!modules.memory.segmented.SegmentedRegion@{modules.memory.segmented.SegmentedRegion}}
+\doxysubsubsection{\texorpdfstring{segments}{segments}}
+{\footnotesize\ttfamily \label{classmodules_1_1memory_1_1segmented_1_1_segmented_region_a3ff24b1c6c10ca6d708757249468a619} 
+list modules.\+memory.\+segmented.\+Segmented\+Region.\+segments = \mbox{[}\{\} for \+\_\+ in range(\mbox{\hyperlink{classmodules_1_1memory_1_1segmented_1_1_segmented_region_aa5600e0074d9d71ef21bdb5d50d2f090}{num\+\_\+segments}})\mbox{]}}
+
+\Hypertarget{classmodules_1_1memory_1_1segmented_1_1_segmented_region_abe10d9ba8bb32b9326e269228ab156d5}\index{modules.memory.segmented.SegmentedRegion@{modules.memory.segmented.SegmentedRegion}!switch\_addr@{switch\_addr}}
+\index{switch\_addr@{switch\_addr}!modules.memory.segmented.SegmentedRegion@{modules.memory.segmented.SegmentedRegion}}
+\doxysubsubsection{\texorpdfstring{switch\_addr}{switch\_addr}}
+{\footnotesize\ttfamily \label{classmodules_1_1memory_1_1segmented_1_1_segmented_region_abe10d9ba8bb32b9326e269228ab156d5} 
+modules.\+memory.\+segmented.\+Segmented\+Region.\+switch\+\_\+addr = switch\+\_\+addr}
+
+\Hypertarget{classmodules_1_1memory_1_1segmented_1_1_segmented_region_aa1f0a612bce03e872fca5f08053bfe64}\index{modules.memory.segmented.SegmentedRegion@{modules.memory.segmented.SegmentedRegion}!switch\_port@{switch\_port}}
+\index{switch\_port@{switch\_port}!modules.memory.segmented.SegmentedRegion@{modules.memory.segmented.SegmentedRegion}}
+\doxysubsubsection{\texorpdfstring{switch\_port}{switch\_port}}
+{\footnotesize\ttfamily \label{classmodules_1_1memory_1_1segmented_1_1_segmented_region_aa1f0a612bce03e872fca5f08053bfe64} 
+modules.\+memory.\+segmented.\+Segmented\+Region.\+switch\+\_\+port = switch\+\_\+port}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+modules/memory/\mbox{\hyperlink{segmented_8py}{segmented.\+py}}\end{DoxyCompactItemize}

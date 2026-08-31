@@ -1,0 +1,418 @@
+\chapter{MCP\+\_\+\+GUIDE.\+md — Руководство по MCP-\/интеграции i8080-\/5 CI}
+\hypertarget{md__m_c_p___g_u_i_d_e}{}\label{md__m_c_p___g_u_i_d_e}\index{MCP\_GUIDE.md — Руководство по MCP-\/интеграции i8080-\/5 CI@{MCP\_GUIDE.md — Руководство по MCP-\/интеграции i8080-\/5 CI}}
+\label{md__m_c_p___g_u_i_d_e_autotoc_md0}%
+\Hypertarget{md__m_c_p___g_u_i_d_e_autotoc_md0}%
+
+
+\begin{quote}
+{\bfseries{Версия\+:}} 2.\+0 ~\newline
+ {\bfseries{Дата\+:}} 2026-\/08-\/16 ~\newline
+ {\bfseries{Протокол\+:}} MCP (Model Context Protocol), транспорт SSE ~\newline
+ {\bfseries{Адрес сервера\+:}} {\ttfamily \href{http://127.0.0.1:8000/sse}{\texttt{ http\+://127.\+0.\+0.\+1\+:8000/sse}}} ~\newline
+ {\bfseries{Зависимости\+:}} {\ttfamily pip install mcp uvicorn starlette pydantic pydantic-\/settings} \end{quote}
+
+
+\DoxyHorRuler{0}
+\hypertarget{md__m_c_p___g_u_i_d_e_autotoc_md2}{}\doxysection{\texorpdfstring{Содержание}{Содержание}}\label{md__m_c_p___g_u_i_d_e_autotoc_md2}
+
+\begin{DoxyEnumerate}
+\item Обзор
+\item Запуск и подключение
+\item Tools\+: управление эмулятором
+\item Tools\+: состояние эмулятора
+\item Tools\+: точки останова
+\item Tools\+: анализ и трассировка
+\item Tools\+: шина и устройство
+\item Tools\+: память, файлы, утилиты
+\item Resources
+\item Prompts
+\item Типовые сценарии
+\item Устранение неполадок
+\end{DoxyEnumerate}
+
+\DoxyHorRuler{0}
+\hypertarget{md__m_c_p___g_u_i_d_e_autotoc_md4}{}\doxysection{\texorpdfstring{1. Обзор}{1. Обзор}}\label{md__m_c_p___g_u_i_d_e_autotoc_md4}
+{\bfseries{i8080-\/5 CI}} — среда разработки и отладки для процессора Intel 8080\+:
+
+
+\begin{DoxyItemize}
+\item Эмулятор i8080 (полный набор инструкций, флаги, стек, такты)
+\item Отладчик\+: breakpoints, условные breakpoints, Run to Cursor, трассировка
+\item Hex-\/редактор, дизассемблер со стрелками переходов
+\item Работа с реальным устройством по SLIP-\/протоколу (COM-\/порт)
+\item Встроенный MCP-\/сервер для AI-\/ассистентов
+\end{DoxyItemize}
+
+MCP-\/сервер запускается {\bfseries{внутри программы}} (вкладка «Управление», кнопка «\+MCP Server\+: ON») и доступен по SSE.
+
+\DoxyHorRuler{0}
+\hypertarget{md__m_c_p___g_u_i_d_e_autotoc_md6}{}\doxysection{\texorpdfstring{2. Запуск и подключение}{2. Запуск и подключение}}\label{md__m_c_p___g_u_i_d_e_autotoc_md6}
+\hypertarget{md__m_c_p___g_u_i_d_e_autotoc_md7}{}\doxysubsection{\texorpdfstring{Запуск сервера}{Запуск сервера}}\label{md__m_c_p___g_u_i_d_e_autotoc_md7}
+
+\begin{DoxyEnumerate}
+\item Запустите {\ttfamily \doxylink{i8080___c_i_8py}{i8080\+\_\+\+CI.\+py}}
+\item Вкладка «Управление» → кнопка {\bfseries{«\+MCP Server\+: ON»}}
+\item Сервер слушает {\ttfamily \href{http://127.0.0.1:8000/sse}{\texttt{ http\+://127.\+0.\+0.\+1\+:8000/sse}}}
+\end{DoxyEnumerate}\hypertarget{md__m_c_p___g_u_i_d_e_autotoc_md8}{}\doxysubsection{\texorpdfstring{Claude Desktop ({\ttfamily claude\+\_\+desktop\+\_\+config.\+json})}{Claude Desktop ({\ttfamily claude\+\_\+desktop\+\_\+config.\+json})}}\label{md__m_c_p___g_u_i_d_e_autotoc_md8}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ "{}mcpServers"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ "{}i8080-\/ci"{}:\ \{\ "{}url"{}:\ "{}http://127.0.0.1:8000/sse"{}\ \}}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md__m_c_p___g_u_i_d_e_autotoc_md9}{}\doxysubsection{\texorpdfstring{Cursor ({\ttfamily .cursor/mcp.\+json})}{Cursor ({\ttfamily .cursor/mcp.\+json})}}\label{md__m_c_p___g_u_i_d_e_autotoc_md9}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ "{}mcpServers"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ "{}i8080-\/ci"{}:\ \{\ "{}url"{}:\ "{}http://127.0.0.1:8000/sse"{}\ \}}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md__m_c_p___g_u_i_d_e_autotoc_md10}{}\doxysubsection{\texorpdfstring{Python-\/клиент}{Python-\/клиент}}\label{md__m_c_p___g_u_i_d_e_autotoc_md10}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{import}\ asyncio}
+\DoxyCodeLine{\textcolor{keyword}{from}\ mcp.client.sse\ \textcolor{keyword}{import}\ sse\_client}
+\DoxyCodeLine{\textcolor{keyword}{from}\ mcp\ \textcolor{keyword}{import}\ ClientSession}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{async\ def\ }main():}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{async}\ \textcolor{keyword}{with}\ sse\_client(\textcolor{stringliteral}{"{}http://127.0.0.1:8000/sse"{}})\ \textcolor{keyword}{as}\ (read,\ write):}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keyword}{async}\ \textcolor{keyword}{with}\ ClientSession(read,\ write)\ \textcolor{keyword}{as}\ s:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ await\ s.initialize()}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ r\ =\ await\ s.call\_tool(\textcolor{stringliteral}{"{}emu\_get\_state"{}},\ \{\})}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ print(r)}
+\DoxyCodeLine{}
+\DoxyCodeLine{asyncio.run(main())}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+\hypertarget{md__m_c_p___g_u_i_d_e_autotoc_md12}{}\doxysection{\texorpdfstring{3. Tools\+: управление эмулятором}{3. Tools\+: управление эмулятором}}\label{md__m_c_p___g_u_i_d_e_autotoc_md12}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Tool   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Параметры   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Описание    }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Tool   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Параметры   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Описание    }\\\cline{1-3}
+\endhead
+{\ttfamily emu\+\_\+reset}   &—   &Сброс\+: регистры = 0, PC=0x0000, SP=0x\+FFFF    \\\cline{1-3}
+{\ttfamily emu\+\_\+step\+\_\+into}   &—   &Одна инструкция, заходит в CALL    \\\cline{1-3}
+{\ttfamily emu\+\_\+step\+\_\+over}   &—   &Одна инструкция, CALL выполняется целиком    \\\cline{1-3}
+{\ttfamily emu\+\_\+run}   &{\ttfamily max\+\_\+instructions=10000}   &Запуск до BP / HLT / лимита    \\\cline{1-3}
+{\ttfamily emu\+\_\+run\+\_\+to}   &{\ttfamily addr}   &Выполнять до адреса    \\\cline{1-3}
+{\ttfamily emu\+\_\+stop}   &—   &Остановить выполнение   \\\cline{1-3}
+\end{longtabu}
+
+
+Пример\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{\ "{}tool"{}:\ "{}emu\_run"{},\ "{}arguments"{}:\ \{\ "{}max\_instructions"{}:\ 5000\ \}\ \}}
+
+\end{DoxyCode}
+
+
+Ответ\+: {\ttfamily "{}\+Executed 5000 instructions. Status\+: stopped. PC=0x0123"{}}
+
+\DoxyHorRuler{0}
+\hypertarget{md__m_c_p___g_u_i_d_e_autotoc_md14}{}\doxysection{\texorpdfstring{4. Tools\+: состояние эмулятора}{4. Tools\+: состояние эмулятора}}\label{md__m_c_p___g_u_i_d_e_autotoc_md14}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Tool   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Параметры   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Описание    }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Tool   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Параметры   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Описание    }\\\cline{1-3}
+\endhead
+{\ttfamily emu\+\_\+get\+\_\+state}   &—   &Все регистры, флаги, PC, SP, такты    \\\cline{1-3}
+{\ttfamily emu\+\_\+get\+\_\+reg}   &{\ttfamily reg}   &A,B,C,D,E,H,L,BC,DE,HL,SP,PC    \\\cline{1-3}
+{\ttfamily emu\+\_\+set\+\_\+reg}   &{\ttfamily reg, val}   &Установить регистр    \\\cline{1-3}
+{\ttfamily emu\+\_\+get\+\_\+psw}   &—   &PSW (A + флаги)    \\\cline{1-3}
+{\ttfamily emu\+\_\+set\+\_\+psw}   &{\ttfamily val}   &Установить PSW    \\\cline{1-3}
+{\ttfamily emu\+\_\+get\+\_\+flags}   &—   &Флаги S,Z,AC,P,CY    \\\cline{1-3}
+{\ttfamily emu\+\_\+set\+\_\+flag}   &{\ttfamily flag, val}   &Установить флаг (True/\+False)   \\\cline{1-3}
+\end{longtabu}
+
+
+Пример ответа {\ttfamily emu\+\_\+get\+\_\+state}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ "{}A"{}:\ 85,\ "{}B"{}:\ 0,\ "{}C"{}:\ 0,\ "{}D"{}:\ 0,\ "{}E"{}:\ 0,\ "{}H"{}:\ 0,\ "{}L"{}:\ 0,}
+\DoxyCodeLine{\ \ "{}SP"{}:\ 65535,\ "{}PC"{}:\ 1,\ "{}BC"{}:\ 0,\ "{}DE"{}:\ 0,\ "{}HL"{}:\ 0,}
+\DoxyCodeLine{\ \ "{}flags"{}:\ \{\ "{}S"{}:\ 0,\ "{}Z"{}:\ 0,\ "{}AC"{}:\ 0,\ "{}P"{}:\ 1,\ "{}CY"{}:\ 0\ \},}
+\DoxyCodeLine{\ \ "{}cycles"{}:\ 7,\ "{}halted"{}:\ 0,\ "{}running"{}:\ 0,\ "{}interrupts"{}:\ 0}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+\hypertarget{md__m_c_p___g_u_i_d_e_autotoc_md16}{}\doxysection{\texorpdfstring{5. Tools\+: точки останова}{5. Tools\+: точки останова}}\label{md__m_c_p___g_u_i_d_e_autotoc_md16}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Tool   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Параметры   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Описание    }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Tool   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Параметры   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Описание    }\\\cline{1-3}
+\endhead
+{\ttfamily emu\+\_\+add\+\_\+breakpoint}   &{\ttfamily addr}   &Обычная BP    \\\cline{1-3}
+{\ttfamily emu\+\_\+remove\+\_\+breakpoint}   &{\ttfamily addr}   &Удалить BP    \\\cline{1-3}
+{\ttfamily emu\+\_\+list\+\_\+breakpoints}   &—   &Список BP с условиями и счётчиком    \\\cline{1-3}
+{\ttfamily emu\+\_\+clear\+\_\+breakpoints}   &—   &Удалить все BP    \\\cline{1-3}
+{\ttfamily emu\+\_\+add\+\_\+conditional\+\_\+breakpoint}   &{\ttfamily addr, condition}   &Условная BP    \\\cline{1-3}
+{\ttfamily emu\+\_\+set\+\_\+bp\+\_\+condition}   &{\ttfamily addr, condition}   &Изменить условие (пустое = обычная BP)    \\\cline{1-3}
+{\ttfamily emu\+\_\+toggle\+\_\+bp\+\_\+enabled}   &{\ttfamily addr}   &Вкл/выкл BP без удаления    \\\cline{1-3}
+{\ttfamily emu\+\_\+get\+\_\+bp\+\_\+info}   &{\ttfamily addr}   &Адрес, условие, enabled, hit\+\_\+count   \\\cline{1-3}
+\end{longtabu}
+\hypertarget{md__m_c_p___g_u_i_d_e_autotoc_md17}{}\doxysubsection{\texorpdfstring{Переменные условий}{Переменные условий}}\label{md__m_c_p___g_u_i_d_e_autotoc_md17}
+{\ttfamily A B C D E H L BC DE HL SP PC S Z AC P CY cycles mem\mbox{[}addr\mbox{]} io\mbox{[}port\mbox{]}} ~\newline
+ Операторы\+: {\ttfamily == != \texorpdfstring{$<$}{<} \texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}= \texorpdfstring{$>$}{>}= and or not}
+
+Примеры условий\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{A\ ==\ 0x55}
+\DoxyCodeLine{HL\ >\ 0x1000}
+\DoxyCodeLine{mem[0x0100]\ ==\ 0xFF}
+\DoxyCodeLine{Z\ ==\ 1}
+\DoxyCodeLine{cycles\ >\ 10000}
+\DoxyCodeLine{HL\ >\ 0x1000\ and\ Z\ ==\ 0}
+
+\end{DoxyCode}
+
+
+Пример\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{\ "{}tool"{}:\ "{}emu\_add\_conditional\_breakpoint"{},}
+\DoxyCodeLine{\ \ "{}arguments"{}:\ \{\ "{}addr"{}:\ 256,\ "{}condition"{}:\ "{}A\ ==\ 0x55"{}\ \}\ \}}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+\hypertarget{md__m_c_p___g_u_i_d_e_autotoc_md19}{}\doxysection{\texorpdfstring{6. Tools\+: анализ и трассировка}{6. Tools\+: анализ и трассировка}}\label{md__m_c_p___g_u_i_d_e_autotoc_md19}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Tool   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Параметры   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Описание    }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Tool   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Параметры   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Описание    }\\\cline{1-3}
+\endhead
+{\ttfamily emu\+\_\+disassemble}   &{\ttfamily addr=None, length=32}   &Дизассемблирование вокруг адреса (по умолчанию PC)    \\\cline{1-3}
+{\ttfamily emu\+\_\+get\+\_\+stack}   &{\ttfamily depth=8}   &Верхние N слов стека    \\\cline{1-3}
+{\ttfamily emu\+\_\+trace}   &{\ttfamily n=10}   &Выполнить N инструкций, вернуть лог с регистрами    \\\cline{1-3}
+{\ttfamily emu\+\_\+get\+\_\+io\+\_\+ports}   &—   &Состояние IO-\/портов эмулятора    \\\cline{1-3}
+{\ttfamily emu\+\_\+trace\+\_\+start}   &—   &Включить запись трассировки в буфер GUI    \\\cline{1-3}
+{\ttfamily emu\+\_\+trace\+\_\+stop}   &—   &Выключить запись    \\\cline{1-3}
+{\ttfamily emu\+\_\+trace\+\_\+clear}   &—   &Очистить буфер трассировки    \\\cline{1-3}
+{\ttfamily emu\+\_\+trace\+\_\+get}   &{\ttfamily limit=0}   &Записи буфера (0 = все)    \\\cline{1-3}
+{\ttfamily emu\+\_\+trace\+\_\+export}   &{\ttfamily path, format="{}txt"{}}   &Экспорт буфера\+: txt / csv / json   \\\cline{1-3}
+\end{longtabu}
+
+
+Пример сценария трассировки\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{\ "{}tool"{}:\ "{}emu\_trace\_start"{}\ \}}
+\DoxyCodeLine{\{\ "{}tool"{}:\ "{}emu\_run"{},\ "{}arguments"{}:\ \{\ "{}max\_instructions"{}:\ 1000\ \}\ \}}
+\DoxyCodeLine{\{\ "{}tool"{}:\ "{}emu\_trace\_stop"{}\ \}}
+\DoxyCodeLine{\{\ "{}tool"{}:\ "{}emu\_trace\_export"{},\ "{}arguments"{}:\ \{\ "{}path"{}:\ "{}trace.csv"{},\ "{}format"{}:\ "{}csv"{}\ \}\ \}}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+\hypertarget{md__m_c_p___g_u_i_d_e_autotoc_md21}{}\doxysection{\texorpdfstring{7. Tools\+: шина и устройство}{7. Tools\+: шина и устройство}}\label{md__m_c_p___g_u_i_d_e_autotoc_md21}
+Работа с реальным устройством требует захвата шины\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{\ "{}tool"{}:\ "{}hold\_bus"{}\ \}}
+\DoxyCodeLine{\{\ "{}tool"{}:\ "{}wait\_bus"{},\ "{}arguments"{}:\ \{\ "{}timeout"{}:\ 5.0\ \}\ \}}
+\DoxyCodeLine{...\ работа\ с\ устройством\ ...}
+\DoxyCodeLine{\{\ "{}tool"{}:\ "{}unhold\_bus"{}\ \}}
+
+\end{DoxyCode}
+
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Tool   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Параметры   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Описание    }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Tool   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Параметры   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Описание    }\\\cline{1-3}
+\endhead
+{\ttfamily hold\+\_\+bus}   &—   &Захват шины (HOLD)    \\\cline{1-3}
+{\ttfamily unhold\+\_\+bus}   &—   &Освобождение шины    \\\cline{1-3}
+{\ttfamily wait\+\_\+bus}   &{\ttfamily timeout=5.\+0}   &Ждать захвата    \\\cline{1-3}
+{\ttfamily wait\+\_\+unhold}   &{\ttfamily timeout=5.\+0}   &Ждать освобождения    \\\cline{1-3}
+{\ttfamily dev\+\_\+read\+\_\+mem}   &{\ttfamily addr}   &Чтение байта памяти устройства    \\\cline{1-3}
+{\ttfamily dev\+\_\+write\+\_\+mem}   &{\ttfamily addr, val}   &Запись байта в устройство    \\\cline{1-3}
+{\ttfamily dev\+\_\+read\+\_\+io}   &{\ttfamily port}   &Чтение IO-\/порта устройства    \\\cline{1-3}
+{\ttfamily dev\+\_\+write\+\_\+io}   &{\ttfamily port, val}   &Запись IO-\/порта устройства    \\\cline{1-3}
+{\ttfamily download}   &{\ttfamily addr, size}   &Считать блок из устройства в локальный образ    \\\cline{1-3}
+{\ttfamily upload}   &{\ttfamily addr, size}   &Записать блок из образа в устройство   \\\cline{1-3}
+\end{longtabu}
+
+
+\DoxyHorRuler{0}
+\hypertarget{md__m_c_p___g_u_i_d_e_autotoc_md23}{}\doxysection{\texorpdfstring{8. Tools\+: память, файлы, утилиты}{8. Tools\+: память, файлы, утилиты}}\label{md__m_c_p___g_u_i_d_e_autotoc_md23}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Tool   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Параметры   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Описание    }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Tool   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Параметры   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Описание    }\\\cline{1-3}
+\endhead
+{\ttfamily read\+\_\+mem}   &{\ttfamily addr}   &Байт локального образа    \\\cline{1-3}
+{\ttfamily write\+\_\+mem}   &{\ttfamily addr, val}   &Запись байта в образ    \\\cline{1-3}
+{\ttfamily read\+\_\+block}   &{\ttfamily addr, size}   &Блок из образа    \\\cline{1-3}
+{\ttfamily write\+\_\+block}   &{\ttfamily addr, data}   &Запись блока в образ    \\\cline{1-3}
+{\ttfamily fill\+\_\+mem}   &{\ttfamily addr, size, val}   &Заполнить диапазон    \\\cline{1-3}
+{\ttfamily disassemble}   &{\ttfamily addr=None, length=None, show=False}   &Дизассемблировать образ    \\\cline{1-3}
+{\ttfamily search}   &{\ttfamily pattern, mode="{}hex"{}}   &Поиск в образе (hex / ascii)    \\\cline{1-3}
+{\ttfamily load\+\_\+file}   &{\ttfamily path, base\+\_\+addr=0}   &Загрузить .hex / .bin в образ    \\\cline{1-3}
+{\ttfamily save\+\_\+file}   &{\ttfamily path}   &Сохранить образ    \\\cline{1-3}
+{\ttfamily get\+\_\+status}   &—   &connected, bus\+\_\+active, mem\+\_\+size    \\\cline{1-3}
+{\ttfamily refresh}   &—   &Обновить GUI   \\\cline{1-3}
+\end{longtabu}
+
+
+\DoxyHorRuler{0}
+\hypertarget{md__m_c_p___g_u_i_d_e_autotoc_md25}{}\doxysection{\texorpdfstring{9. Resources}{9. Resources}}\label{md__m_c_p___g_u_i_d_e_autotoc_md25}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ URI   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Описание    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ URI   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Описание    }\\\cline{1-2}
+\endhead
+{\ttfamily memory\+://current}   &Дамп памяти в HEX    \\\cline{1-2}
+{\ttfamily memory\+://disassembly}   &Дизассемблированный код образа    \\\cline{1-2}
+{\ttfamily status\+://info}   &Статус программы (JSON)    \\\cline{1-2}
+{\ttfamily emulator\+://state}   &Состояние эмулятора    \\\cline{1-2}
+{\ttfamily emulator\+://stack}   &Стек эмулятора    \\\cline{1-2}
+{\ttfamily emulator\+://breakpoints}   &BP с условиями и счётчиком   \\\cline{1-2}
+\end{longtabu}
+
+
+\DoxyHorRuler{0}
+\hypertarget{md__m_c_p___g_u_i_d_e_autotoc_md27}{}\doxysection{\texorpdfstring{10. Prompts}{10. Prompts}}\label{md__m_c_p___g_u_i_d_e_autotoc_md27}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Prompt   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Параметры   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Назначение    }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Prompt   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Параметры   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Назначение    }\\\cline{1-3}
+\endhead
+{\ttfamily analyze\+\_\+firmware}   &{\ttfamily focus}   &Анализ прошивки    \\\cline{1-3}
+{\ttfamily find\+\_\+bugs}   &—   &Поиск потенциальных багов    \\\cline{1-3}
+{\ttfamily create\+\_\+test\+\_\+program}   &{\ttfamily description}   &Создать тестовую программу    \\\cline{1-3}
+{\ttfamily explain\+\_\+code}   &{\ttfamily addr, length}   &Объяснить участок кода    \\\cline{1-3}
+{\ttfamily debug\+\_\+program}   &{\ttfamily description}   &Комплексная отладка    \\\cline{1-3}
+{\ttfamily find\+\_\+infinite\+\_\+loop}   &—   &Поиск бесконечного цикла    \\\cline{1-3}
+{\ttfamily explain\+\_\+instruction}   &—   &Объяснить текущую инструкцию    \\\cline{1-3}
+{\ttfamily trace\+\_\+execution}   &{\ttfamily num\+\_\+steps}   &Подробная трассировка    \\\cline{1-3}
+{\ttfamily setup\+\_\+conditional\+\_\+debugging}   &—   &Расставить условные BP   \\\cline{1-3}
+\end{longtabu}
+
+
+\DoxyHorRuler{0}
+\hypertarget{md__m_c_p___g_u_i_d_e_autotoc_md29}{}\doxysection{\texorpdfstring{11. Типовые сценарии}{11. Типовые сценарии}}\label{md__m_c_p___g_u_i_d_e_autotoc_md29}
+\hypertarget{md__m_c_p___g_u_i_d_e_autotoc_md30}{}\doxysubsection{\texorpdfstring{Загрузка и анализ прошивки}{Загрузка и анализ прошивки}}\label{md__m_c_p___g_u_i_d_e_autotoc_md30}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{load\_file(path="{}firmware.hex"{})}
+\DoxyCodeLine{disassemble(show=true)}
+\DoxyCodeLine{analyze\_firmware(focus="{}точки\ входа"{})}
+
+\end{DoxyCode}
+\hypertarget{md__m_c_p___g_u_i_d_e_autotoc_md31}{}\doxysubsection{\texorpdfstring{Отладка с условной BP}{Отладка с условной BP}}\label{md__m_c_p___g_u_i_d_e_autotoc_md31}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{emu\_reset()}
+\DoxyCodeLine{emu\_add\_conditional\_breakpoint(addr=256,\ condition="{}A\ ==\ 0x55"{})}
+\DoxyCodeLine{emu\_run()}
+\DoxyCodeLine{emu\_get\_state()}
+
+\end{DoxyCode}
+\hypertarget{md__m_c_p___g_u_i_d_e_autotoc_md32}{}\doxysubsection{\texorpdfstring{Поиск бесконечного цикла}{Поиск бесконечного цикла}}\label{md__m_c_p___g_u_i_d_e_autotoc_md32}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{emu\_reset()}
+\DoxyCodeLine{emu\_trace(n=100)}
+\DoxyCodeLine{find\_infinite\_loop()}
+
+\end{DoxyCode}
+\hypertarget{md__m_c_p___g_u_i_d_e_autotoc_md33}{}\doxysubsection{\texorpdfstring{Дамп устройства}{Дамп устройства}}\label{md__m_c_p___g_u_i_d_e_autotoc_md33}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{hold\_bus()\ →\ wait\_bus()}
+\DoxyCodeLine{download(addr=0,\ size=4096)}
+\DoxyCodeLine{unhold\_bus()}
+\DoxyCodeLine{save\_file(path="{}dump.hex"{})}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+\hypertarget{md__m_c_p___g_u_i_d_e_autotoc_md35}{}\doxysection{\texorpdfstring{12. Устранение неполадок}{12. Устранение неполадок}}\label{md__m_c_p___g_u_i_d_e_autotoc_md35}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Симптом   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Решение    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Симптом   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Решение    }\\\cline{1-2}
+\endhead
+«\+MCP Server недоступен»   &{\ttfamily pip install mcp uvicorn starlette pydantic pydantic-\/settings}    \\\cline{1-2}
+Нет подключения к SSE   &Программа запущена? Кнопка «\+MCP Server\+: ON»? Порт 8000 свободен?    \\\cline{1-2}
+«\+Emulator not initialized»   &Откройте вкладку «Эмулятор»    \\\cline{1-2}
+«\+Device not connected»   &Подключите COM-\/порт во вкладке «Управление»    \\\cline{1-2}
+«\+Bus not active»   &Выполните {\ttfamily hold\+\_\+bus()} + {\ttfamily wait\+\_\+bus()}    \\\cline{1-2}
+«\+Syntax error in condition»   &Проверьте условие\+: {\ttfamily A == 0x55}, а не {\ttfamily A = 0x55}   \\\cline{1-2}
+\end{longtabu}
+
+
+\DoxyHorRuler{0}
+
+
+{\itshape Конец документа.} 

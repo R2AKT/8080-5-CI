@@ -1,0 +1,30 @@
+\doxysection{modules.\+io.\+i8276 Namespace Reference}
+\hypertarget{namespacemodules_1_1io_1_1i8276}{}\label{namespacemodules_1_1io_1_1i8276}\index{modules.io.i8276@{modules.io.i8276}}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classmodules_1_1io_1_1i8276_1_1_i8276}{I8276}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}8276 — CRT-контроллер (контроллер дисплея).
+Итерация E5: расширенные IO-устройства.
+
+Возможности:
+- Управление символьным дисплеем (до 128×64 символов)
+- Программируемые параметры: символы в строке, строки на экране,
+  размер символа (пиксели), вертикальный/горизонтальный sync
+- Встроенный DMA-запрос (DRQ) для чтения видеопамяти
+- Прерывание IRQ: конец кадра (VBLANK), световое перо
+- Атрибуты символов: инверсия, подчёркивание, мигание
+
+Регистры (2 порта):
+  offset 0 (Data):
+    Чтение  — данные видеопамяти / параметры
+    Запись  — данные видеопамяти / параметры
+  offset 1 (Command/Status):
+    Чтение  — Status Register
+    Запись  — Command Register
+\end{DoxyVerb}
+ 

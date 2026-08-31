@@ -1,0 +1,262 @@
+\doxysection{modules.\+memory.\+segmentedpaged.\+Segmented\+Paged\+Region Class Reference}
+\hypertarget{classmodules_1_1memory_1_1segmentedpaged_1_1_segmented_paged_region}{}\label{classmodules_1_1memory_1_1segmentedpaged_1_1_segmented_paged_region}\index{modules.memory.segmentedpaged.SegmentedPagedRegion@{modules.memory.segmentedpaged.SegmentedPagedRegion}}
+
+
+Inheritance diagram for modules.\+memory.\+segmentedpaged.\+Segmented\+Paged\+Region\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=251pt]{classmodules_1_1memory_1_1segmentedpaged_1_1_segmented_paged_region__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for modules.\+memory.\+segmentedpaged.\+Segmented\+Paged\+Region\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=251pt]{classmodules_1_1memory_1_1segmentedpaged_1_1_segmented_paged_region__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodules_1_1memory_1_1segmentedpaged_1_1_segmented_paged_region_a7447a8d8dc7106b006acf5adadeb1faf}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, \mbox{\hyperlink{classmodules_1_1memory_1_1segmentedpaged_1_1_segmented_paged_region}{start}}, \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_ad9c14b35f4aec59f6494496a4a8881a8}{end}}, \mbox{\hyperlink{classmodules_1_1memory_1_1segmentedpaged_1_1_segmented_paged_region_a740b13b090e8d04332d3f7036b8fe699}{segment\+\_\+size}}=16384, \mbox{\hyperlink{classmodules_1_1memory_1_1segmentedpaged_1_1_segmented_paged_region_a73d89b25ce8a5e8a3ac9706b9659fa11}{num\+\_\+physical\+\_\+pages}}=16, \mbox{\hyperlink{classmodules_1_1memory_1_1segmentedpaged_1_1_segmented_paged_region_a9f61f65ca2c8955445415f8a94e51510}{base\+\_\+port}}=0x00, \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_a182987f561d8f1276e9ba1458f1a160c}{name}}="{}Segmented\+Paged\+RAM"{})
+\item 
+\mbox{\hyperlink{classmodules_1_1memory_1_1segmentedpaged_1_1_segmented_paged_region_a8e215334a5eb4542625e1ade30d28bd5}{read}} (self, addr)
+\item 
+\mbox{\hyperlink{classmodules_1_1memory_1_1segmentedpaged_1_1_segmented_paged_region_a6333f3aea22556f29477c7c8fcc36c5c}{write}} (self, addr, value)
+\item 
+\mbox{\hyperlink{classmodules_1_1memory_1_1segmentedpaged_1_1_segmented_paged_region_a10a21b4642f34917d900b982c0ba54db}{io\+\_\+write}} (self, port, value)
+\item 
+\mbox{\hyperlink{classmodules_1_1memory_1_1segmentedpaged_1_1_segmented_paged_region_aa74350f2af69d49c3b4bd56bc38bcbdc}{get\+\_\+state}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1memory_1_1segmentedpaged_1_1_segmented_paged_region_a2db1ec7ffd5c48330fc414ca77f5dc8d}{reset}} (self)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_region}{modules.\+memory.\+memory\+\_\+bus.\+Memory\+Region}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_aa390a09d4e8f8d0d9ce19232a8625f3b}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_a43dd15c2b8e11e0e886a94792fdd6880}{start}}, \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_ad9c14b35f4aec59f6494496a4a8881a8}{end}}, \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_a182987f561d8f1276e9ba1458f1a160c}{name}}="{}region"{})
+\item 
+\mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_a900e938846a8971cc3241066efc1329f}{contains}} (self, addr)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodules_1_1memory_1_1segmentedpaged_1_1_segmented_paged_region_a740b13b090e8d04332d3f7036b8fe699}{segment\+\_\+size}} = segment\+\_\+size
+\item 
+tuple \mbox{\hyperlink{classmodules_1_1memory_1_1segmentedpaged_1_1_segmented_paged_region_af0ce63d9fb6f440404cdbfbe988ac2bb}{num\+\_\+segments}} = (\mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_ad9c14b35f4aec59f6494496a4a8881a8}{end}} -\/ \mbox{\hyperlink{classmodules_1_1memory_1_1segmentedpaged_1_1_segmented_paged_region}{start}} + 1) // \mbox{\hyperlink{classmodules_1_1memory_1_1segmentedpaged_1_1_segmented_paged_region_a740b13b090e8d04332d3f7036b8fe699}{segment\+\_\+size}}
+\item 
+\mbox{\hyperlink{classmodules_1_1memory_1_1segmentedpaged_1_1_segmented_paged_region_a73d89b25ce8a5e8a3ac9706b9659fa11}{num\+\_\+physical\+\_\+pages}} = num\+\_\+physical\+\_\+pages
+\item 
+\mbox{\hyperlink{classmodules_1_1memory_1_1segmentedpaged_1_1_segmented_paged_region_a9f61f65ca2c8955445415f8a94e51510}{base\+\_\+port}} = base\+\_\+port
+\item 
+list \mbox{\hyperlink{classmodules_1_1memory_1_1segmentedpaged_1_1_segmented_paged_region_ab157e37da69e29191354252c525954be}{physical\+\_\+pages}} = \mbox{[}\{\} for \+\_\+ in range(\mbox{\hyperlink{classmodules_1_1memory_1_1segmentedpaged_1_1_segmented_paged_region_a73d89b25ce8a5e8a3ac9706b9659fa11}{num\+\_\+physical\+\_\+pages}})\mbox{]}
+\item 
+list \mbox{\hyperlink{classmodules_1_1memory_1_1segmentedpaged_1_1_segmented_paged_region_a33511694c7f384919128d084291f6842}{segment\+\_\+table}} = \mbox{[}i \% \mbox{\hyperlink{classmodules_1_1memory_1_1segmentedpaged_1_1_segmented_paged_region_a73d89b25ce8a5e8a3ac9706b9659fa11}{num\+\_\+physical\+\_\+pages}} for i in range(self.\+num\+\_\+segments)\mbox{]}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_region}{modules.\+memory.\+memory\+\_\+bus.\+Memory\+Region}}}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_a43dd15c2b8e11e0e886a94792fdd6880}{start}} = start \& 0x\+FFFF
+\item 
+int \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_ad9c14b35f4aec59f6494496a4a8881a8}{end}} = end \& 0x\+FFFF
+\item 
+\mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_a182987f561d8f1276e9ba1458f1a160c}{name}} = name
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodules_1_1memory_1_1segmentedpaged_1_1_segmented_paged_region_a98933fa7160aab3cc6ab0d95388f594d}{\+\_\+get\+\_\+segment}} (self, addr)
+\item 
+\mbox{\hyperlink{classmodules_1_1memory_1_1segmentedpaged_1_1_segmented_paged_region_ae0a143eb0fce241035b9cfbf0d33e67d}{\+\_\+get\+\_\+segment\+\_\+offset}} (self, addr)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Сегментно-страничная память: 64КБ разбиты на сегменты,
+внутри каждого сегмента переключение страниц через порты IO.
+Количество портов соответствует количеству сегментов.
+
+Пример:
+- 64КБ разбиты на 4 сегмента по 16КБ
+- Каждый сегмент имеет свой порт IO для переключения страниц
+- Порт 0x00 для сегмента 0 (0x0000-0x3FFF)
+- Порт 0x01 для сегмента 1 (0x4000-0x7FFF)
+- Порт 0x02 для сегмента 2 (0x8000-0xBFFF)
+- Порт 0x03 для сегмента 3 (0xC000-0xFFFF)
+- Запись в порт выбирает физическую страницу для сегмента
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classmodules_1_1memory_1_1segmentedpaged_1_1_segmented_paged_region_a7447a8d8dc7106b006acf5adadeb1faf}\index{modules.memory.segmentedpaged.SegmentedPagedRegion@{modules.memory.segmentedpaged.SegmentedPagedRegion}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!modules.memory.segmentedpaged.SegmentedPagedRegion@{modules.memory.segmentedpaged.SegmentedPagedRegion}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \label{classmodules_1_1memory_1_1segmentedpaged_1_1_segmented_paged_region_a7447a8d8dc7106b006acf5adadeb1faf} 
+modules.\+memory.\+segmentedpaged.\+Segmented\+Paged\+Region.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{start}{, }\item[{}]{end}{, }\item[{}]{segment\+\_\+size}{ = {\ttfamily 16384}, }\item[{}]{num\+\_\+physical\+\_\+pages}{ = {\ttfamily 16}, }\item[{}]{base\+\_\+port}{ = {\ttfamily 0x00}, }\item[{}]{name}{ = {\ttfamily "{}SegmentedPagedRAM"{}}}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Args:
+    start, end: окно в адресном пространстве (обычно 0x0000-0xFFFF)
+    segment_size: размер сегмента в байтах (обычно 16384)
+    num_physical_pages: количество физических страниц
+    base_port: базовый порт IO (порты base_port..base_port+num_segments-1)
+\end{DoxyVerb}
+ Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=251pt]{classmodules_1_1memory_1_1segmentedpaged_1_1_segmented_paged_region_a7447a8d8dc7106b006acf5adadeb1faf_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=251pt]{classmodules_1_1memory_1_1segmentedpaged_1_1_segmented_paged_region_a7447a8d8dc7106b006acf5adadeb1faf_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classmodules_1_1memory_1_1segmentedpaged_1_1_segmented_paged_region_a98933fa7160aab3cc6ab0d95388f594d}\index{modules.memory.segmentedpaged.SegmentedPagedRegion@{modules.memory.segmentedpaged.SegmentedPagedRegion}!\_get\_segment@{\_get\_segment}}
+\index{\_get\_segment@{\_get\_segment}!modules.memory.segmentedpaged.SegmentedPagedRegion@{modules.memory.segmentedpaged.SegmentedPagedRegion}}
+\doxysubsubsection{\texorpdfstring{\_get\_segment()}{\_get\_segment()}}
+{\footnotesize\ttfamily \label{classmodules_1_1memory_1_1segmentedpaged_1_1_segmented_paged_region_a98933fa7160aab3cc6ab0d95388f594d} 
+modules.\+memory.\+segmentedpaged.\+Segmented\+Paged\+Region.\+\_\+get\+\_\+segment (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{addr}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Определить сегмент для адреса\end{DoxyVerb}
+ Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1memory_1_1segmentedpaged_1_1_segmented_paged_region_a98933fa7160aab3cc6ab0d95388f594d_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1memory_1_1segmentedpaged_1_1_segmented_paged_region_ae0a143eb0fce241035b9cfbf0d33e67d}\index{modules.memory.segmentedpaged.SegmentedPagedRegion@{modules.memory.segmentedpaged.SegmentedPagedRegion}!\_get\_segment\_offset@{\_get\_segment\_offset}}
+\index{\_get\_segment\_offset@{\_get\_segment\_offset}!modules.memory.segmentedpaged.SegmentedPagedRegion@{modules.memory.segmentedpaged.SegmentedPagedRegion}}
+\doxysubsubsection{\texorpdfstring{\_get\_segment\_offset()}{\_get\_segment\_offset()}}
+{\footnotesize\ttfamily \label{classmodules_1_1memory_1_1segmentedpaged_1_1_segmented_paged_region_ae0a143eb0fce241035b9cfbf0d33e67d} 
+modules.\+memory.\+segmentedpaged.\+Segmented\+Paged\+Region.\+\_\+get\+\_\+segment\+\_\+offset (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{addr}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Определить смещение внутри сегмента\end{DoxyVerb}
+ Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1memory_1_1segmentedpaged_1_1_segmented_paged_region_ae0a143eb0fce241035b9cfbf0d33e67d_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1memory_1_1segmentedpaged_1_1_segmented_paged_region_aa74350f2af69d49c3b4bd56bc38bcbdc}\index{modules.memory.segmentedpaged.SegmentedPagedRegion@{modules.memory.segmentedpaged.SegmentedPagedRegion}!get\_state@{get\_state}}
+\index{get\_state@{get\_state}!modules.memory.segmentedpaged.SegmentedPagedRegion@{modules.memory.segmentedpaged.SegmentedPagedRegion}}
+\doxysubsubsection{\texorpdfstring{get\_state()}{get\_state()}}
+{\footnotesize\ttfamily \label{classmodules_1_1memory_1_1segmentedpaged_1_1_segmented_paged_region_aa74350f2af69d49c3b4bd56bc38bcbdc} 
+modules.\+memory.\+segmentedpaged.\+Segmented\+Paged\+Region.\+get\+\_\+state (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Текущее состояние таблицы сегментов\end{DoxyVerb}
+ \Hypertarget{classmodules_1_1memory_1_1segmentedpaged_1_1_segmented_paged_region_a10a21b4642f34917d900b982c0ba54db}\index{modules.memory.segmentedpaged.SegmentedPagedRegion@{modules.memory.segmentedpaged.SegmentedPagedRegion}!io\_write@{io\_write}}
+\index{io\_write@{io\_write}!modules.memory.segmentedpaged.SegmentedPagedRegion@{modules.memory.segmentedpaged.SegmentedPagedRegion}}
+\doxysubsubsection{\texorpdfstring{io\_write()}{io\_write()}}
+{\footnotesize\ttfamily \label{classmodules_1_1memory_1_1segmentedpaged_1_1_segmented_paged_region_a10a21b4642f34917d900b982c0ba54db} 
+modules.\+memory.\+segmentedpaged.\+Segmented\+Paged\+Region.\+io\+\_\+write (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{port}{, }\item[{}]{value}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Обработка записи в IO-порт (переключение страницы сегмента)\end{DoxyVerb}
+ \Hypertarget{classmodules_1_1memory_1_1segmentedpaged_1_1_segmented_paged_region_a8e215334a5eb4542625e1ade30d28bd5}\index{modules.memory.segmentedpaged.SegmentedPagedRegion@{modules.memory.segmentedpaged.SegmentedPagedRegion}!read@{read}}
+\index{read@{read}!modules.memory.segmentedpaged.SegmentedPagedRegion@{modules.memory.segmentedpaged.SegmentedPagedRegion}}
+\doxysubsubsection{\texorpdfstring{read()}{read()}}
+{\footnotesize\ttfamily \label{classmodules_1_1memory_1_1segmentedpaged_1_1_segmented_paged_region_a8e215334a5eb4542625e1ade30d28bd5} 
+modules.\+memory.\+segmentedpaged.\+Segmented\+Paged\+Region.\+read (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{addr}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Чтение из текущей физической страницы сегмента\end{DoxyVerb}
+ 
+
+Reimplemented from \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_aa7586fa5d3bc8133dad3624eebf0d19e}{modules.\+memory.\+memory\+\_\+bus.\+Memory\+Region}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1memory_1_1segmentedpaged_1_1_segmented_paged_region_a8e215334a5eb4542625e1ade30d28bd5_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1memory_1_1segmentedpaged_1_1_segmented_paged_region_a2db1ec7ffd5c48330fc414ca77f5dc8d}\index{modules.memory.segmentedpaged.SegmentedPagedRegion@{modules.memory.segmentedpaged.SegmentedPagedRegion}!reset@{reset}}
+\index{reset@{reset}!modules.memory.segmentedpaged.SegmentedPagedRegion@{modules.memory.segmentedpaged.SegmentedPagedRegion}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily \label{classmodules_1_1memory_1_1segmentedpaged_1_1_segmented_paged_region_a2db1ec7ffd5c48330fc414ca77f5dc8d} 
+modules.\+memory.\+segmentedpaged.\+Segmented\+Paged\+Region.\+reset (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Сброс таблицы сегментов\end{DoxyVerb}
+ 
+
+Reimplemented from \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_a5a97354dcc0dca2c264f91f961d30eae}{modules.\+memory.\+memory\+\_\+bus.\+Memory\+Region}}.
+
+\Hypertarget{classmodules_1_1memory_1_1segmentedpaged_1_1_segmented_paged_region_a6333f3aea22556f29477c7c8fcc36c5c}\index{modules.memory.segmentedpaged.SegmentedPagedRegion@{modules.memory.segmentedpaged.SegmentedPagedRegion}!write@{write}}
+\index{write@{write}!modules.memory.segmentedpaged.SegmentedPagedRegion@{modules.memory.segmentedpaged.SegmentedPagedRegion}}
+\doxysubsubsection{\texorpdfstring{write()}{write()}}
+{\footnotesize\ttfamily \label{classmodules_1_1memory_1_1segmentedpaged_1_1_segmented_paged_region_a6333f3aea22556f29477c7c8fcc36c5c} 
+modules.\+memory.\+segmentedpaged.\+Segmented\+Paged\+Region.\+write (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{addr}{, }\item[{}]{value}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Запись в текущую физическую страницу сегмента\end{DoxyVerb}
+ 
+
+Reimplemented from \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_a693a7091168e93cd36b98fba8c1a7c28}{modules.\+memory.\+memory\+\_\+bus.\+Memory\+Region}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1memory_1_1segmentedpaged_1_1_segmented_paged_region_a6333f3aea22556f29477c7c8fcc36c5c_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classmodules_1_1memory_1_1segmentedpaged_1_1_segmented_paged_region_a9f61f65ca2c8955445415f8a94e51510}\index{modules.memory.segmentedpaged.SegmentedPagedRegion@{modules.memory.segmentedpaged.SegmentedPagedRegion}!base\_port@{base\_port}}
+\index{base\_port@{base\_port}!modules.memory.segmentedpaged.SegmentedPagedRegion@{modules.memory.segmentedpaged.SegmentedPagedRegion}}
+\doxysubsubsection{\texorpdfstring{base\_port}{base\_port}}
+{\footnotesize\ttfamily \label{classmodules_1_1memory_1_1segmentedpaged_1_1_segmented_paged_region_a9f61f65ca2c8955445415f8a94e51510} 
+modules.\+memory.\+segmentedpaged.\+Segmented\+Paged\+Region.\+base\+\_\+port = base\+\_\+port}
+
+\Hypertarget{classmodules_1_1memory_1_1segmentedpaged_1_1_segmented_paged_region_a73d89b25ce8a5e8a3ac9706b9659fa11}\index{modules.memory.segmentedpaged.SegmentedPagedRegion@{modules.memory.segmentedpaged.SegmentedPagedRegion}!num\_physical\_pages@{num\_physical\_pages}}
+\index{num\_physical\_pages@{num\_physical\_pages}!modules.memory.segmentedpaged.SegmentedPagedRegion@{modules.memory.segmentedpaged.SegmentedPagedRegion}}
+\doxysubsubsection{\texorpdfstring{num\_physical\_pages}{num\_physical\_pages}}
+{\footnotesize\ttfamily \label{classmodules_1_1memory_1_1segmentedpaged_1_1_segmented_paged_region_a73d89b25ce8a5e8a3ac9706b9659fa11} 
+modules.\+memory.\+segmentedpaged.\+Segmented\+Paged\+Region.\+num\+\_\+physical\+\_\+pages = num\+\_\+physical\+\_\+pages}
+
+\Hypertarget{classmodules_1_1memory_1_1segmentedpaged_1_1_segmented_paged_region_af0ce63d9fb6f440404cdbfbe988ac2bb}\index{modules.memory.segmentedpaged.SegmentedPagedRegion@{modules.memory.segmentedpaged.SegmentedPagedRegion}!num\_segments@{num\_segments}}
+\index{num\_segments@{num\_segments}!modules.memory.segmentedpaged.SegmentedPagedRegion@{modules.memory.segmentedpaged.SegmentedPagedRegion}}
+\doxysubsubsection{\texorpdfstring{num\_segments}{num\_segments}}
+{\footnotesize\ttfamily \label{classmodules_1_1memory_1_1segmentedpaged_1_1_segmented_paged_region_af0ce63d9fb6f440404cdbfbe988ac2bb} 
+modules.\+memory.\+segmentedpaged.\+Segmented\+Paged\+Region.\+num\+\_\+segments = (\mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_region_ad9c14b35f4aec59f6494496a4a8881a8}{end}} -\/ \mbox{\hyperlink{classmodules_1_1memory_1_1segmentedpaged_1_1_segmented_paged_region}{start}} + 1) // \mbox{\hyperlink{classmodules_1_1memory_1_1segmentedpaged_1_1_segmented_paged_region_a740b13b090e8d04332d3f7036b8fe699}{segment\+\_\+size}}}
+
+\Hypertarget{classmodules_1_1memory_1_1segmentedpaged_1_1_segmented_paged_region_ab157e37da69e29191354252c525954be}\index{modules.memory.segmentedpaged.SegmentedPagedRegion@{modules.memory.segmentedpaged.SegmentedPagedRegion}!physical\_pages@{physical\_pages}}
+\index{physical\_pages@{physical\_pages}!modules.memory.segmentedpaged.SegmentedPagedRegion@{modules.memory.segmentedpaged.SegmentedPagedRegion}}
+\doxysubsubsection{\texorpdfstring{physical\_pages}{physical\_pages}}
+{\footnotesize\ttfamily \label{classmodules_1_1memory_1_1segmentedpaged_1_1_segmented_paged_region_ab157e37da69e29191354252c525954be} 
+list modules.\+memory.\+segmentedpaged.\+Segmented\+Paged\+Region.\+physical\+\_\+pages = \mbox{[}\{\} for \+\_\+ in range(\mbox{\hyperlink{classmodules_1_1memory_1_1segmentedpaged_1_1_segmented_paged_region_a73d89b25ce8a5e8a3ac9706b9659fa11}{num\+\_\+physical\+\_\+pages}})\mbox{]}}
+
+\Hypertarget{classmodules_1_1memory_1_1segmentedpaged_1_1_segmented_paged_region_a740b13b090e8d04332d3f7036b8fe699}\index{modules.memory.segmentedpaged.SegmentedPagedRegion@{modules.memory.segmentedpaged.SegmentedPagedRegion}!segment\_size@{segment\_size}}
+\index{segment\_size@{segment\_size}!modules.memory.segmentedpaged.SegmentedPagedRegion@{modules.memory.segmentedpaged.SegmentedPagedRegion}}
+\doxysubsubsection{\texorpdfstring{segment\_size}{segment\_size}}
+{\footnotesize\ttfamily \label{classmodules_1_1memory_1_1segmentedpaged_1_1_segmented_paged_region_a740b13b090e8d04332d3f7036b8fe699} 
+modules.\+memory.\+segmentedpaged.\+Segmented\+Paged\+Region.\+segment\+\_\+size = segment\+\_\+size}
+
+\Hypertarget{classmodules_1_1memory_1_1segmentedpaged_1_1_segmented_paged_region_a33511694c7f384919128d084291f6842}\index{modules.memory.segmentedpaged.SegmentedPagedRegion@{modules.memory.segmentedpaged.SegmentedPagedRegion}!segment\_table@{segment\_table}}
+\index{segment\_table@{segment\_table}!modules.memory.segmentedpaged.SegmentedPagedRegion@{modules.memory.segmentedpaged.SegmentedPagedRegion}}
+\doxysubsubsection{\texorpdfstring{segment\_table}{segment\_table}}
+{\footnotesize\ttfamily \label{classmodules_1_1memory_1_1segmentedpaged_1_1_segmented_paged_region_a33511694c7f384919128d084291f6842} 
+list modules.\+memory.\+segmentedpaged.\+Segmented\+Paged\+Region.\+segment\+\_\+table = \mbox{[}i \% \mbox{\hyperlink{classmodules_1_1memory_1_1segmentedpaged_1_1_segmented_paged_region_a73d89b25ce8a5e8a3ac9706b9659fa11}{num\+\_\+physical\+\_\+pages}} for i in range(self.\+num\+\_\+segments)\mbox{]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+modules/memory/\mbox{\hyperlink{segmentedpaged_8py}{segmentedpaged.\+py}}\end{DoxyCompactItemize}

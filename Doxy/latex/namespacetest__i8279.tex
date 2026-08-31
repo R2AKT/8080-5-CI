@@ -1,0 +1,106 @@
+\doxysection{test\+\_\+i8279 Namespace Reference}
+\hypertarget{namespacetest__i8279}{}\label{namespacetest__i8279}\index{test\_i8279@{test\_i8279}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespacetest__i8279_a4cbe56a7ca98609a96e9bcc05223731b}{check}} (name, actual, expected)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{namespacetest__i8279_af2ee4bf4b198751ce8a7f6b039bfc714}{passed}} = 0
+\item 
+int \mbox{\hyperlink{namespacetest__i8279_a05e6353260a0f7daceccb697df58d867}{failed}} = 0
+\item 
+\mbox{\hyperlink{namespacetest__i8279_ac8eed48ff8811c1d3a2570da2b3622a8}{bus}} = \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus}{Memory\+Bus}}()
+\item 
+\mbox{\hyperlink{namespacetest__i8279_aa2b54e7849707687b4a7a3bdbd0d2307}{kbd}} = \mbox{\hyperlink{classmodules_1_1io_1_1i8279_1_1_i8279}{I8279}}(base\+\_\+port=0x60)
+\item 
+list \mbox{\hyperlink{namespacetest__i8279_a0dcfa7a2b831e31cbd1d2e1fd04bae72}{irq\+\_\+events}} = \mbox{[}$\,$\mbox{]}
+\item 
+\mbox{\hyperlink{namespacetest__i8279_a4ea2662d0904b7d8fd2e771d3f9b4d99}{on\+\_\+irq}}
+\item 
+\mbox{\hyperlink{namespacetest__i8279_a67479dab99176c4c4d20fae9add25d7c}{status}} = bus.\+io\+\_\+read(0x61)
+\item 
+\mbox{\hyperlink{namespacetest__i8279_a73a55b509decc9b066013dea422dc425}{data}} = bus.\+io\+\_\+read(0x60)
+\item 
+list \mbox{\hyperlink{namespacetest__i8279_a42dfaaf280a2d74964617624c736a5d2}{display\+\_\+updates}} = \mbox{[}$\,$\mbox{]}
+\item 
+\mbox{\hyperlink{namespacetest__i8279_a7cd4a38df9cbbad43959238cc7d0650b}{on\+\_\+display\+\_\+update}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Тест I8279 (итерация E5)\end{DoxyVerb}
+ 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespacetest__i8279_a4cbe56a7ca98609a96e9bcc05223731b}\index{test\_i8279@{test\_i8279}!check@{check}}
+\index{check@{check}!test\_i8279@{test\_i8279}}
+\doxysubsubsection{\texorpdfstring{check()}{check()}}
+{\footnotesize\ttfamily \label{namespacetest__i8279_a4cbe56a7ca98609a96e9bcc05223731b} 
+test\+\_\+i8279.\+check (\begin{DoxyParamCaption}\item[{}]{name}{, }\item[{}]{actual}{, }\item[{}]{expected}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{namespacetest__i8279_ac8eed48ff8811c1d3a2570da2b3622a8}\index{test\_i8279@{test\_i8279}!bus@{bus}}
+\index{bus@{bus}!test\_i8279@{test\_i8279}}
+\doxysubsubsection{\texorpdfstring{bus}{bus}}
+{\footnotesize\ttfamily \label{namespacetest__i8279_ac8eed48ff8811c1d3a2570da2b3622a8} 
+test\+\_\+i8279.\+bus = \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus}{Memory\+Bus}}()}
+
+\Hypertarget{namespacetest__i8279_a73a55b509decc9b066013dea422dc425}\index{test\_i8279@{test\_i8279}!data@{data}}
+\index{data@{data}!test\_i8279@{test\_i8279}}
+\doxysubsubsection{\texorpdfstring{data}{data}}
+{\footnotesize\ttfamily \label{namespacetest__i8279_a73a55b509decc9b066013dea422dc425} 
+test\+\_\+i8279.\+data = bus.\+io\+\_\+read(0x60)}
+
+\Hypertarget{namespacetest__i8279_a42dfaaf280a2d74964617624c736a5d2}\index{test\_i8279@{test\_i8279}!display\_updates@{display\_updates}}
+\index{display\_updates@{display\_updates}!test\_i8279@{test\_i8279}}
+\doxysubsubsection{\texorpdfstring{display\_updates}{display\_updates}}
+{\footnotesize\ttfamily \label{namespacetest__i8279_a42dfaaf280a2d74964617624c736a5d2} 
+list test\+\_\+i8279.\+display\+\_\+updates = \mbox{[}$\,$\mbox{]}}
+
+\Hypertarget{namespacetest__i8279_a05e6353260a0f7daceccb697df58d867}\index{test\_i8279@{test\_i8279}!failed@{failed}}
+\index{failed@{failed}!test\_i8279@{test\_i8279}}
+\doxysubsubsection{\texorpdfstring{failed}{failed}}
+{\footnotesize\ttfamily \label{namespacetest__i8279_a05e6353260a0f7daceccb697df58d867} 
+int test\+\_\+i8279.\+failed = 0}
+
+\Hypertarget{namespacetest__i8279_a0dcfa7a2b831e31cbd1d2e1fd04bae72}\index{test\_i8279@{test\_i8279}!irq\_events@{irq\_events}}
+\index{irq\_events@{irq\_events}!test\_i8279@{test\_i8279}}
+\doxysubsubsection{\texorpdfstring{irq\_events}{irq\_events}}
+{\footnotesize\ttfamily \label{namespacetest__i8279_a0dcfa7a2b831e31cbd1d2e1fd04bae72} 
+list test\+\_\+i8279.\+irq\+\_\+events = \mbox{[}$\,$\mbox{]}}
+
+\Hypertarget{namespacetest__i8279_aa2b54e7849707687b4a7a3bdbd0d2307}\index{test\_i8279@{test\_i8279}!kbd@{kbd}}
+\index{kbd@{kbd}!test\_i8279@{test\_i8279}}
+\doxysubsubsection{\texorpdfstring{kbd}{kbd}}
+{\footnotesize\ttfamily \label{namespacetest__i8279_aa2b54e7849707687b4a7a3bdbd0d2307} 
+test\+\_\+i8279.\+kbd = \mbox{\hyperlink{classmodules_1_1io_1_1i8279_1_1_i8279}{I8279}}(base\+\_\+port=0x60)}
+
+\Hypertarget{namespacetest__i8279_a7cd4a38df9cbbad43959238cc7d0650b}\index{test\_i8279@{test\_i8279}!on\_display\_update@{on\_display\_update}}
+\index{on\_display\_update@{on\_display\_update}!test\_i8279@{test\_i8279}}
+\doxysubsubsection{\texorpdfstring{on\_display\_update}{on\_display\_update}}
+{\footnotesize\ttfamily \label{namespacetest__i8279_a7cd4a38df9cbbad43959238cc7d0650b} 
+test\+\_\+i8279.\+on\+\_\+display\+\_\+update}
+
+\Hypertarget{namespacetest__i8279_a4ea2662d0904b7d8fd2e771d3f9b4d99}\index{test\_i8279@{test\_i8279}!on\_irq@{on\_irq}}
+\index{on\_irq@{on\_irq}!test\_i8279@{test\_i8279}}
+\doxysubsubsection{\texorpdfstring{on\_irq}{on\_irq}}
+{\footnotesize\ttfamily \label{namespacetest__i8279_a4ea2662d0904b7d8fd2e771d3f9b4d99} 
+test\+\_\+i8279.\+on\+\_\+irq}
+
+\Hypertarget{namespacetest__i8279_af2ee4bf4b198751ce8a7f6b039bfc714}\index{test\_i8279@{test\_i8279}!passed@{passed}}
+\index{passed@{passed}!test\_i8279@{test\_i8279}}
+\doxysubsubsection{\texorpdfstring{passed}{passed}}
+{\footnotesize\ttfamily \label{namespacetest__i8279_af2ee4bf4b198751ce8a7f6b039bfc714} 
+int test\+\_\+i8279.\+passed = 0}
+
+\Hypertarget{namespacetest__i8279_a67479dab99176c4c4d20fae9add25d7c}\index{test\_i8279@{test\_i8279}!status@{status}}
+\index{status@{status}!test\_i8279@{test\_i8279}}
+\doxysubsubsection{\texorpdfstring{status}{status}}
+{\footnotesize\ttfamily \label{namespacetest__i8279_a67479dab99176c4c4d20fae9add25d7c} 
+test\+\_\+i8279.\+status = bus.\+io\+\_\+read(0x61)}
+

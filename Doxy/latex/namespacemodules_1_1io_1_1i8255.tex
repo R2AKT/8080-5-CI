@@ -1,0 +1,29 @@
+\doxysection{modules.\+io.\+i8255 Namespace Reference}
+\hypertarget{namespacemodules_1_1io_1_1i8255}{}\label{namespacemodules_1_1io_1_1i8255}\index{modules.io.i8255@{modules.io.i8255}}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classmodules_1_1io_1_1i8255_1_1_i8255}{I8255}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}8255 (КР580ВВ55) — Programmable Peripheral Interface.
+Итерация E3: базовые IO-устройства.
+
+Регистры (4 порта):
+  offset 0: Port A
+  offset 1: Port B
+  offset 2: Port C
+  offset 3: Control Word (бит 7 = 1) / BSR (бит 7 = 0)
+
+Режимы:
+  Mode 0: простой ввод/вывод
+  Mode 1: стробированный ввод/вывод (INTRA/INTRB)
+  Mode 2: двунаправленный стробированный (только порт A)
+
+Сигналы прерываний:
+  INTRA — прерывание порта A (Mode 1/2)
+  INTRB — прерывание порта B (Mode 1)
+\end{DoxyVerb}
+ 

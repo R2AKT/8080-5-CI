@@ -1,0 +1,226 @@
+\doxysection{test\+\_\+i8275 Namespace Reference}
+\hypertarget{namespacetest__i8275}{}\label{namespacetest__i8275}\index{test\_i8275@{test\_i8275}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespacetest__i8275_aeee40ae0539c0cb9a741c160c75066ad}{check}} (name, actual, expected)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{namespacetest__i8275_a74976f966628078267a9807a4ed55a20}{passed}} = 0
+\item 
+int \mbox{\hyperlink{namespacetest__i8275_a25dc2005e0e08a02eea5e5da26562f2d}{failed}} = 0
+\item 
+\mbox{\hyperlink{namespacetest__i8275_ad2efc7f6febad7bdb74697fdc0674bff}{bus}} = \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus}{Memory\+Bus}}()
+\item 
+\mbox{\hyperlink{namespacetest__i8275_aae78ca146cddd01ffc2ce5175d540df2}{crt}} = \mbox{\hyperlink{classmodules_1_1io_1_1i8275_1_1_i8275}{I8275}}(base\+\_\+port=0x70)
+\item 
+list \mbox{\hyperlink{namespacetest__i8275_a60d9ef6496cee7ac911a1cc9e18a576e}{drq\+\_\+events}} = \mbox{[}$\,$\mbox{]}
+\item 
+\mbox{\hyperlink{namespacetest__i8275_a7cf8dda41c7c8009ca6e192bd0ec8291}{on\+\_\+drq}}
+\item 
+dict \mbox{\hyperlink{namespacetest__i8275_ad526c1860ac154fdeeb321b9a1529bbf}{fake\+\_\+video\+\_\+mem}} = \{\}
+\item 
+\mbox{\hyperlink{namespacetest__i8275_a433a51b4dbc31125cf2caeb1ab3da48d}{display\+\_\+buffer\+\_\+addr}}
+\item 
+\mbox{\hyperlink{namespacetest__i8275_af049a5879c55f3ac7d24e55611d59653}{on\+\_\+dma\+\_\+read}}
+\item 
+\mbox{\hyperlink{namespacetest__i8275_a6e44501d2779a629cb7ba852c8281ae5}{char0}}
+\item 
+\mbox{\hyperlink{namespacetest__i8275_a06477dccc04b28e5bcd434fce04b8eba}{attr0}}
+\item 
+\mbox{\hyperlink{namespacetest__i8275_ac3e5553b71ea4ebc7da13b6d173b5fcb}{char1}}
+\item 
+\mbox{\hyperlink{namespacetest__i8275_afbe12c5292433b375c55b0e4bba4bda4}{attr1}}
+\item 
+\mbox{\hyperlink{namespacetest__i8275_a2a41d0153b8f039b37ae215a5632ea55}{enabled}}
+\item 
+\mbox{\hyperlink{namespacetest__i8275_a64905975e7896e167f19ef2305fa0442}{True}}
+\item 
+\mbox{\hyperlink{namespacetest__i8275_a17b4d629bf391816989fae73e07f14a9}{blink}}
+\item 
+\mbox{\hyperlink{namespacetest__i8275_ab621f049583f1b780edc1d2d1f8d5c25}{state\+\_\+before}} = crt.\+cursor\+\_\+blink\+\_\+state
+\item 
+list \mbox{\hyperlink{namespacetest__i8275_a635ea0a761582cc69f7a35456c15e931}{irq\+\_\+events}} = \mbox{[}$\,$\mbox{]}
+\item 
+\mbox{\hyperlink{namespacetest__i8275_ab136da1a5cbabd9a0b3d4ea895018b08}{on\+\_\+irq}}
+\item 
+\mbox{\hyperlink{namespacetest__i8275_abe82fb977a83e54c001caf7b14531a55}{crt2}} = \mbox{\hyperlink{classmodules_1_1io_1_1i8275_1_1_i8275}{I8275}}(base\+\_\+port=0x72)
+\item 
+\mbox{\hyperlink{namespacetest__i8275_a94951df67582e2a29f0fb8b246503180}{chars\+\_\+per\+\_\+line}}
+\item 
+\mbox{\hyperlink{namespacetest__i8275_a31a3aa7be8ad3f681c6a7c565b62d916}{lines\+\_\+per\+\_\+screen}}
+\item 
+\mbox{\hyperlink{namespacetest__i8275_ad1196ffc340aba503b5e30fec0d3d75d}{lines}} = crt2.\+get\+\_\+display\+\_\+text()
+\item 
+\mbox{\hyperlink{namespacetest__i8275_af4b5661a0625dc2c7c066c4263c33ac5}{display\+\_\+enabled}}
+\item 
+\mbox{\hyperlink{namespacetest__i8275_a2b9c91adc3ca58a0646590db93f8744e}{irq\+\_\+flag}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Тест I8275 CRT-контроллера (итерация E5)\end{DoxyVerb}
+ 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespacetest__i8275_aeee40ae0539c0cb9a741c160c75066ad}\index{test\_i8275@{test\_i8275}!check@{check}}
+\index{check@{check}!test\_i8275@{test\_i8275}}
+\doxysubsubsection{\texorpdfstring{check()}{check()}}
+{\footnotesize\ttfamily \label{namespacetest__i8275_aeee40ae0539c0cb9a741c160c75066ad} 
+test\+\_\+i8275.\+check (\begin{DoxyParamCaption}\item[{}]{name}{, }\item[{}]{actual}{, }\item[{}]{expected}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{namespacetest__i8275_a06477dccc04b28e5bcd434fce04b8eba}\index{test\_i8275@{test\_i8275}!attr0@{attr0}}
+\index{attr0@{attr0}!test\_i8275@{test\_i8275}}
+\doxysubsubsection{\texorpdfstring{attr0}{attr0}}
+{\footnotesize\ttfamily \label{namespacetest__i8275_a06477dccc04b28e5bcd434fce04b8eba} 
+test\+\_\+i8275.\+attr0}
+
+\Hypertarget{namespacetest__i8275_afbe12c5292433b375c55b0e4bba4bda4}\index{test\_i8275@{test\_i8275}!attr1@{attr1}}
+\index{attr1@{attr1}!test\_i8275@{test\_i8275}}
+\doxysubsubsection{\texorpdfstring{attr1}{attr1}}
+{\footnotesize\ttfamily \label{namespacetest__i8275_afbe12c5292433b375c55b0e4bba4bda4} 
+test\+\_\+i8275.\+attr1}
+
+\Hypertarget{namespacetest__i8275_a17b4d629bf391816989fae73e07f14a9}\index{test\_i8275@{test\_i8275}!blink@{blink}}
+\index{blink@{blink}!test\_i8275@{test\_i8275}}
+\doxysubsubsection{\texorpdfstring{blink}{blink}}
+{\footnotesize\ttfamily \label{namespacetest__i8275_a17b4d629bf391816989fae73e07f14a9} 
+test\+\_\+i8275.\+blink}
+
+\Hypertarget{namespacetest__i8275_ad2efc7f6febad7bdb74697fdc0674bff}\index{test\_i8275@{test\_i8275}!bus@{bus}}
+\index{bus@{bus}!test\_i8275@{test\_i8275}}
+\doxysubsubsection{\texorpdfstring{bus}{bus}}
+{\footnotesize\ttfamily \label{namespacetest__i8275_ad2efc7f6febad7bdb74697fdc0674bff} 
+test\+\_\+i8275.\+bus = \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus}{Memory\+Bus}}()}
+
+\Hypertarget{namespacetest__i8275_a6e44501d2779a629cb7ba852c8281ae5}\index{test\_i8275@{test\_i8275}!char0@{char0}}
+\index{char0@{char0}!test\_i8275@{test\_i8275}}
+\doxysubsubsection{\texorpdfstring{char0}{char0}}
+{\footnotesize\ttfamily \label{namespacetest__i8275_a6e44501d2779a629cb7ba852c8281ae5} 
+test\+\_\+i8275.\+char0}
+
+\Hypertarget{namespacetest__i8275_ac3e5553b71ea4ebc7da13b6d173b5fcb}\index{test\_i8275@{test\_i8275}!char1@{char1}}
+\index{char1@{char1}!test\_i8275@{test\_i8275}}
+\doxysubsubsection{\texorpdfstring{char1}{char1}}
+{\footnotesize\ttfamily \label{namespacetest__i8275_ac3e5553b71ea4ebc7da13b6d173b5fcb} 
+test\+\_\+i8275.\+char1}
+
+\Hypertarget{namespacetest__i8275_a94951df67582e2a29f0fb8b246503180}\index{test\_i8275@{test\_i8275}!chars\_per\_line@{chars\_per\_line}}
+\index{chars\_per\_line@{chars\_per\_line}!test\_i8275@{test\_i8275}}
+\doxysubsubsection{\texorpdfstring{chars\_per\_line}{chars\_per\_line}}
+{\footnotesize\ttfamily \label{namespacetest__i8275_a94951df67582e2a29f0fb8b246503180} 
+test\+\_\+i8275.\+chars\+\_\+per\+\_\+line}
+
+\Hypertarget{namespacetest__i8275_aae78ca146cddd01ffc2ce5175d540df2}\index{test\_i8275@{test\_i8275}!crt@{crt}}
+\index{crt@{crt}!test\_i8275@{test\_i8275}}
+\doxysubsubsection{\texorpdfstring{crt}{crt}}
+{\footnotesize\ttfamily \label{namespacetest__i8275_aae78ca146cddd01ffc2ce5175d540df2} 
+test\+\_\+i8275.\+crt = \mbox{\hyperlink{classmodules_1_1io_1_1i8275_1_1_i8275}{I8275}}(base\+\_\+port=0x70)}
+
+\Hypertarget{namespacetest__i8275_abe82fb977a83e54c001caf7b14531a55}\index{test\_i8275@{test\_i8275}!crt2@{crt2}}
+\index{crt2@{crt2}!test\_i8275@{test\_i8275}}
+\doxysubsubsection{\texorpdfstring{crt2}{crt2}}
+{\footnotesize\ttfamily \label{namespacetest__i8275_abe82fb977a83e54c001caf7b14531a55} 
+test\+\_\+i8275.\+crt2 = \mbox{\hyperlink{classmodules_1_1io_1_1i8275_1_1_i8275}{I8275}}(base\+\_\+port=0x72)}
+
+\Hypertarget{namespacetest__i8275_a433a51b4dbc31125cf2caeb1ab3da48d}\index{test\_i8275@{test\_i8275}!display\_buffer\_addr@{display\_buffer\_addr}}
+\index{display\_buffer\_addr@{display\_buffer\_addr}!test\_i8275@{test\_i8275}}
+\doxysubsubsection{\texorpdfstring{display\_buffer\_addr}{display\_buffer\_addr}}
+{\footnotesize\ttfamily \label{namespacetest__i8275_a433a51b4dbc31125cf2caeb1ab3da48d} 
+test\+\_\+i8275.\+display\+\_\+buffer\+\_\+addr}
+
+\Hypertarget{namespacetest__i8275_af4b5661a0625dc2c7c066c4263c33ac5}\index{test\_i8275@{test\_i8275}!display\_enabled@{display\_enabled}}
+\index{display\_enabled@{display\_enabled}!test\_i8275@{test\_i8275}}
+\doxysubsubsection{\texorpdfstring{display\_enabled}{display\_enabled}}
+{\footnotesize\ttfamily \label{namespacetest__i8275_af4b5661a0625dc2c7c066c4263c33ac5} 
+test\+\_\+i8275.\+display\+\_\+enabled}
+
+\Hypertarget{namespacetest__i8275_a60d9ef6496cee7ac911a1cc9e18a576e}\index{test\_i8275@{test\_i8275}!drq\_events@{drq\_events}}
+\index{drq\_events@{drq\_events}!test\_i8275@{test\_i8275}}
+\doxysubsubsection{\texorpdfstring{drq\_events}{drq\_events}}
+{\footnotesize\ttfamily \label{namespacetest__i8275_a60d9ef6496cee7ac911a1cc9e18a576e} 
+list test\+\_\+i8275.\+drq\+\_\+events = \mbox{[}$\,$\mbox{]}}
+
+\Hypertarget{namespacetest__i8275_a2a41d0153b8f039b37ae215a5632ea55}\index{test\_i8275@{test\_i8275}!enabled@{enabled}}
+\index{enabled@{enabled}!test\_i8275@{test\_i8275}}
+\doxysubsubsection{\texorpdfstring{enabled}{enabled}}
+{\footnotesize\ttfamily \label{namespacetest__i8275_a2a41d0153b8f039b37ae215a5632ea55} 
+test\+\_\+i8275.\+enabled}
+
+\Hypertarget{namespacetest__i8275_a25dc2005e0e08a02eea5e5da26562f2d}\index{test\_i8275@{test\_i8275}!failed@{failed}}
+\index{failed@{failed}!test\_i8275@{test\_i8275}}
+\doxysubsubsection{\texorpdfstring{failed}{failed}}
+{\footnotesize\ttfamily \label{namespacetest__i8275_a25dc2005e0e08a02eea5e5da26562f2d} 
+int test\+\_\+i8275.\+failed = 0}
+
+\Hypertarget{namespacetest__i8275_ad526c1860ac154fdeeb321b9a1529bbf}\index{test\_i8275@{test\_i8275}!fake\_video\_mem@{fake\_video\_mem}}
+\index{fake\_video\_mem@{fake\_video\_mem}!test\_i8275@{test\_i8275}}
+\doxysubsubsection{\texorpdfstring{fake\_video\_mem}{fake\_video\_mem}}
+{\footnotesize\ttfamily \label{namespacetest__i8275_ad526c1860ac154fdeeb321b9a1529bbf} 
+dict test\+\_\+i8275.\+fake\+\_\+video\+\_\+mem = \{\}}
+
+\Hypertarget{namespacetest__i8275_a635ea0a761582cc69f7a35456c15e931}\index{test\_i8275@{test\_i8275}!irq\_events@{irq\_events}}
+\index{irq\_events@{irq\_events}!test\_i8275@{test\_i8275}}
+\doxysubsubsection{\texorpdfstring{irq\_events}{irq\_events}}
+{\footnotesize\ttfamily \label{namespacetest__i8275_a635ea0a761582cc69f7a35456c15e931} 
+list test\+\_\+i8275.\+irq\+\_\+events = \mbox{[}$\,$\mbox{]}}
+
+\Hypertarget{namespacetest__i8275_a2b9c91adc3ca58a0646590db93f8744e}\index{test\_i8275@{test\_i8275}!irq\_flag@{irq\_flag}}
+\index{irq\_flag@{irq\_flag}!test\_i8275@{test\_i8275}}
+\doxysubsubsection{\texorpdfstring{irq\_flag}{irq\_flag}}
+{\footnotesize\ttfamily \label{namespacetest__i8275_a2b9c91adc3ca58a0646590db93f8744e} 
+test\+\_\+i8275.\+irq\+\_\+flag}
+
+\Hypertarget{namespacetest__i8275_ad1196ffc340aba503b5e30fec0d3d75d}\index{test\_i8275@{test\_i8275}!lines@{lines}}
+\index{lines@{lines}!test\_i8275@{test\_i8275}}
+\doxysubsubsection{\texorpdfstring{lines}{lines}}
+{\footnotesize\ttfamily \label{namespacetest__i8275_ad1196ffc340aba503b5e30fec0d3d75d} 
+test\+\_\+i8275.\+lines = crt2.\+get\+\_\+display\+\_\+text()}
+
+\Hypertarget{namespacetest__i8275_a31a3aa7be8ad3f681c6a7c565b62d916}\index{test\_i8275@{test\_i8275}!lines\_per\_screen@{lines\_per\_screen}}
+\index{lines\_per\_screen@{lines\_per\_screen}!test\_i8275@{test\_i8275}}
+\doxysubsubsection{\texorpdfstring{lines\_per\_screen}{lines\_per\_screen}}
+{\footnotesize\ttfamily \label{namespacetest__i8275_a31a3aa7be8ad3f681c6a7c565b62d916} 
+test\+\_\+i8275.\+lines\+\_\+per\+\_\+screen}
+
+\Hypertarget{namespacetest__i8275_af049a5879c55f3ac7d24e55611d59653}\index{test\_i8275@{test\_i8275}!on\_dma\_read@{on\_dma\_read}}
+\index{on\_dma\_read@{on\_dma\_read}!test\_i8275@{test\_i8275}}
+\doxysubsubsection{\texorpdfstring{on\_dma\_read}{on\_dma\_read}}
+{\footnotesize\ttfamily \label{namespacetest__i8275_af049a5879c55f3ac7d24e55611d59653} 
+test\+\_\+i8275.\+on\+\_\+dma\+\_\+read}
+
+\Hypertarget{namespacetest__i8275_a7cf8dda41c7c8009ca6e192bd0ec8291}\index{test\_i8275@{test\_i8275}!on\_drq@{on\_drq}}
+\index{on\_drq@{on\_drq}!test\_i8275@{test\_i8275}}
+\doxysubsubsection{\texorpdfstring{on\_drq}{on\_drq}}
+{\footnotesize\ttfamily \label{namespacetest__i8275_a7cf8dda41c7c8009ca6e192bd0ec8291} 
+test\+\_\+i8275.\+on\+\_\+drq}
+
+\Hypertarget{namespacetest__i8275_ab136da1a5cbabd9a0b3d4ea895018b08}\index{test\_i8275@{test\_i8275}!on\_irq@{on\_irq}}
+\index{on\_irq@{on\_irq}!test\_i8275@{test\_i8275}}
+\doxysubsubsection{\texorpdfstring{on\_irq}{on\_irq}}
+{\footnotesize\ttfamily \label{namespacetest__i8275_ab136da1a5cbabd9a0b3d4ea895018b08} 
+test\+\_\+i8275.\+on\+\_\+irq}
+
+\Hypertarget{namespacetest__i8275_a74976f966628078267a9807a4ed55a20}\index{test\_i8275@{test\_i8275}!passed@{passed}}
+\index{passed@{passed}!test\_i8275@{test\_i8275}}
+\doxysubsubsection{\texorpdfstring{passed}{passed}}
+{\footnotesize\ttfamily \label{namespacetest__i8275_a74976f966628078267a9807a4ed55a20} 
+int test\+\_\+i8275.\+passed = 0}
+
+\Hypertarget{namespacetest__i8275_ab621f049583f1b780edc1d2d1f8d5c25}\index{test\_i8275@{test\_i8275}!state\_before@{state\_before}}
+\index{state\_before@{state\_before}!test\_i8275@{test\_i8275}}
+\doxysubsubsection{\texorpdfstring{state\_before}{state\_before}}
+{\footnotesize\ttfamily \label{namespacetest__i8275_ab621f049583f1b780edc1d2d1f8d5c25} 
+test\+\_\+i8275.\+state\+\_\+before = crt.\+cursor\+\_\+blink\+\_\+state}
+
+\Hypertarget{namespacetest__i8275_a64905975e7896e167f19ef2305fa0442}\index{test\_i8275@{test\_i8275}!True@{True}}
+\index{True@{True}!test\_i8275@{test\_i8275}}
+\doxysubsubsection{\texorpdfstring{True}{True}}
+{\footnotesize\ttfamily \label{namespacetest__i8275_a64905975e7896e167f19ef2305fa0442} 
+test\+\_\+i8275.\+True}
+

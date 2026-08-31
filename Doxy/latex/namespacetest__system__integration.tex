@@ -1,0 +1,120 @@
+\doxysection{test\+\_\+system\+\_\+integration Namespace Reference}
+\hypertarget{namespacetest__system__integration}{}\label{namespacetest__system__integration}\index{test\_system\_integration@{test\_system\_integration}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespacetest__system__integration_a12aa89a975b9b0b4691c06c59f7b36ad}{check}} (name, actual, expected)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{namespacetest__system__integration_ae062ac1d9acdf4bc70302f584c30da32}{passed}} = 0
+\item 
+int \mbox{\hyperlink{namespacetest__system__integration_ae2743f8323cb6c48a7ff39e882cc7dfc}{failed}} = 0
+\item 
+\mbox{\hyperlink{namespacetest__system__integration_a1ad041b89d2f7ad30519dd4016994871}{system}} = \mbox{\hyperlink{classmodules_1_1system_1_1_computer_system}{Computer\+System}}()
+\item 
+list \mbox{\hyperlink{namespacetest__system__integration_abd54ee139fdc9690184ec23639532f43}{ports}} = \mbox{[}d.\+base\+\_\+port for d in system.\+devices.\+values()\mbox{]}
+\item 
+\mbox{\hyperlink{namespacetest__system__integration_a25a83e1a40a51843234b5b2d2c132151}{ppi}} = system.\+get\+\_\+device("{}PPI-\/0"{})
+\item 
+\mbox{\hyperlink{namespacetest__system__integration_aa942fe3d06ec7bdfabbd8165ba75b566}{pit}} = system.\+get\+\_\+device("{}PIT-\/0"{})
+\item 
+list \mbox{\hyperlink{namespacetest__system__integration_a9db06953b79e67c11f2cc57cd5ef4b6d}{expected\+\_\+devices}} = \mbox{[}"{}PPI-\/0"{}, "{}PIT-\/0"{}, "{}DMA-\/0"{}, "{}FDC-\/0"{}, "{}CRT-\/0"{}, "{}LCD-\/0"{}\mbox{]}
+\item 
+\mbox{\hyperlink{namespacetest__system__integration_a43efdf566d3b1194d90fe45c3bc005f2}{device}} = system.\+get\+\_\+device(dev\+\_\+name)
+\item 
+\mbox{\hyperlink{namespacetest__system__integration_a84c02cfe5ce14519c810278aa4d8dc7e}{errors}} = system.\+config.\+validate()
+\item 
+list \mbox{\hyperlink{namespacetest__system__integration_a71e880f87701de9245da407f48a5bf15}{irq\+\_\+events}} = \mbox{[}$\,$\mbox{]}
+\item 
+\mbox{\hyperlink{namespacetest__system__integration_a95c7626c5a14bb2b3e3287200088a4fa}{result}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Тест интеграции системы (итерация 10.4)\end{DoxyVerb}
+ 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespacetest__system__integration_a12aa89a975b9b0b4691c06c59f7b36ad}\index{test\_system\_integration@{test\_system\_integration}!check@{check}}
+\index{check@{check}!test\_system\_integration@{test\_system\_integration}}
+\doxysubsubsection{\texorpdfstring{check()}{check()}}
+{\footnotesize\ttfamily \label{namespacetest__system__integration_a12aa89a975b9b0b4691c06c59f7b36ad} 
+test\+\_\+system\+\_\+integration.\+check (\begin{DoxyParamCaption}\item[{}]{name}{, }\item[{}]{actual}{, }\item[{}]{expected}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{namespacetest__system__integration_a43efdf566d3b1194d90fe45c3bc005f2}\index{test\_system\_integration@{test\_system\_integration}!device@{device}}
+\index{device@{device}!test\_system\_integration@{test\_system\_integration}}
+\doxysubsubsection{\texorpdfstring{device}{device}}
+{\footnotesize\ttfamily \label{namespacetest__system__integration_a43efdf566d3b1194d90fe45c3bc005f2} 
+test\+\_\+system\+\_\+integration.\+device = system.\+get\+\_\+device(dev\+\_\+name)}
+
+\Hypertarget{namespacetest__system__integration_a84c02cfe5ce14519c810278aa4d8dc7e}\index{test\_system\_integration@{test\_system\_integration}!errors@{errors}}
+\index{errors@{errors}!test\_system\_integration@{test\_system\_integration}}
+\doxysubsubsection{\texorpdfstring{errors}{errors}}
+{\footnotesize\ttfamily \label{namespacetest__system__integration_a84c02cfe5ce14519c810278aa4d8dc7e} 
+test\+\_\+system\+\_\+integration.\+errors = system.\+config.\+validate()}
+
+\Hypertarget{namespacetest__system__integration_a9db06953b79e67c11f2cc57cd5ef4b6d}\index{test\_system\_integration@{test\_system\_integration}!expected\_devices@{expected\_devices}}
+\index{expected\_devices@{expected\_devices}!test\_system\_integration@{test\_system\_integration}}
+\doxysubsubsection{\texorpdfstring{expected\_devices}{expected\_devices}}
+{\footnotesize\ttfamily \label{namespacetest__system__integration_a9db06953b79e67c11f2cc57cd5ef4b6d} 
+list test\+\_\+system\+\_\+integration.\+expected\+\_\+devices = \mbox{[}"{}PPI-\/0"{}, "{}PIT-\/0"{}, "{}DMA-\/0"{}, "{}FDC-\/0"{}, "{}CRT-\/0"{}, "{}LCD-\/0"{}\mbox{]}}
+
+\Hypertarget{namespacetest__system__integration_ae2743f8323cb6c48a7ff39e882cc7dfc}\index{test\_system\_integration@{test\_system\_integration}!failed@{failed}}
+\index{failed@{failed}!test\_system\_integration@{test\_system\_integration}}
+\doxysubsubsection{\texorpdfstring{failed}{failed}}
+{\footnotesize\ttfamily \label{namespacetest__system__integration_ae2743f8323cb6c48a7ff39e882cc7dfc} 
+int test\+\_\+system\+\_\+integration.\+failed = 0}
+
+\Hypertarget{namespacetest__system__integration_a71e880f87701de9245da407f48a5bf15}\index{test\_system\_integration@{test\_system\_integration}!irq\_events@{irq\_events}}
+\index{irq\_events@{irq\_events}!test\_system\_integration@{test\_system\_integration}}
+\doxysubsubsection{\texorpdfstring{irq\_events}{irq\_events}}
+{\footnotesize\ttfamily \label{namespacetest__system__integration_a71e880f87701de9245da407f48a5bf15} 
+list test\+\_\+system\+\_\+integration.\+irq\+\_\+events = \mbox{[}$\,$\mbox{]}}
+
+\Hypertarget{namespacetest__system__integration_ae062ac1d9acdf4bc70302f584c30da32}\index{test\_system\_integration@{test\_system\_integration}!passed@{passed}}
+\index{passed@{passed}!test\_system\_integration@{test\_system\_integration}}
+\doxysubsubsection{\texorpdfstring{passed}{passed}}
+{\footnotesize\ttfamily \label{namespacetest__system__integration_ae062ac1d9acdf4bc70302f584c30da32} 
+int test\+\_\+system\+\_\+integration.\+passed = 0}
+
+\Hypertarget{namespacetest__system__integration_aa942fe3d06ec7bdfabbd8165ba75b566}\index{test\_system\_integration@{test\_system\_integration}!pit@{pit}}
+\index{pit@{pit}!test\_system\_integration@{test\_system\_integration}}
+\doxysubsubsection{\texorpdfstring{pit}{pit}}
+{\footnotesize\ttfamily \label{namespacetest__system__integration_aa942fe3d06ec7bdfabbd8165ba75b566} 
+test\+\_\+system\+\_\+integration.\+pit = system.\+get\+\_\+device("{}PIT-\/0"{})}
+
+\Hypertarget{namespacetest__system__integration_abd54ee139fdc9690184ec23639532f43}\index{test\_system\_integration@{test\_system\_integration}!ports@{ports}}
+\index{ports@{ports}!test\_system\_integration@{test\_system\_integration}}
+\doxysubsubsection{\texorpdfstring{ports}{ports}}
+{\footnotesize\ttfamily \label{namespacetest__system__integration_abd54ee139fdc9690184ec23639532f43} 
+list test\+\_\+system\+\_\+integration.\+ports = \mbox{[}d.\+base\+\_\+port for d in system.\+devices.\+values()\mbox{]}}
+
+\Hypertarget{namespacetest__system__integration_a25a83e1a40a51843234b5b2d2c132151}\index{test\_system\_integration@{test\_system\_integration}!ppi@{ppi}}
+\index{ppi@{ppi}!test\_system\_integration@{test\_system\_integration}}
+\doxysubsubsection{\texorpdfstring{ppi}{ppi}}
+{\footnotesize\ttfamily \label{namespacetest__system__integration_a25a83e1a40a51843234b5b2d2c132151} 
+test\+\_\+system\+\_\+integration.\+ppi = system.\+get\+\_\+device("{}PPI-\/0"{})}
+
+\Hypertarget{namespacetest__system__integration_a95c7626c5a14bb2b3e3287200088a4fa}\index{test\_system\_integration@{test\_system\_integration}!result@{result}}
+\index{result@{result}!test\_system\_integration@{test\_system\_integration}}
+\doxysubsubsection{\texorpdfstring{result}{result}}
+{\footnotesize\ttfamily \label{namespacetest__system__integration_a95c7626c5a14bb2b3e3287200088a4fa} 
+test\+\_\+system\+\_\+integration.\+result}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ =\ \ system.set\_callback(\textcolor{stringliteral}{"{}PIT-\/0"{}},\ \textcolor{stringliteral}{"{}on\_irq"{}},}
+\DoxyCodeLine{00002\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{lambda}\ ch,\ active:\ irq\_events.append((ch,\ active)))}
+
+\end{DoxyCode}
+\Hypertarget{namespacetest__system__integration_a1ad041b89d2f7ad30519dd4016994871}\index{test\_system\_integration@{test\_system\_integration}!system@{system}}
+\index{system@{system}!test\_system\_integration@{test\_system\_integration}}
+\doxysubsubsection{\texorpdfstring{system}{system}}
+{\footnotesize\ttfamily \label{namespacetest__system__integration_a1ad041b89d2f7ad30519dd4016994871} 
+test\+\_\+system\+\_\+integration.\+system = \mbox{\hyperlink{classmodules_1_1system_1_1_computer_system}{Computer\+System}}()}
+

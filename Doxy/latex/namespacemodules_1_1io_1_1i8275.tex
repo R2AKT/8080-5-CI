@@ -1,0 +1,42 @@
+\doxysection{modules.\+io.\+i8275 Namespace Reference}
+\hypertarget{namespacemodules_1_1io_1_1i8275}{}\label{namespacemodules_1_1io_1_1i8275}\index{modules.io.i8275@{modules.io.i8275}}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classmodules_1_1io_1_1i8275_1_1_i8275}{I8275}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}8275 (КР580ВГ75) — программируемый CRT-контроллер.
+Итерация E5: расширенные IO-устройства.
+
+Оригинал: Intel 8275. Советский аналог: КР580ВГ75.
+
+Отличия от 8276:
+- Один регистр параметров (вместо нескольких)
+- Упрощённый набор команд
+- Одинарный буфер параметров
+
+Возможности:
+- Управление символьным дисплеем (до 80 символов × 16 строк)
+- Программируемые параметры: символы в строке, строки на экране,
+  высота символа, общее число строк развёртки
+- Внешняя видеопамять с доступом через DMA (DRQ/DACK)
+- Программируемый курсор (мигающий или неморгающий)
+- Атрибуты символов: яркость, подчёркивание, мигание, инверсия
+- Прерывания: EOF (End-of-Frame), VBLANK, Light Pen
+
+Регистры (2 порта):
+  offset 0 (чтение):  Status Register
+  offset 0 (запись):  Parameter 1 Register (P1)
+  offset 1 (чтение):  Command Register (текущая команда)
+  offset 1 (запись):  Parameter 2 Register (P2) / Command (бит 7=1)
+
+Команды (запись в порт 1 с битом 7 = 1):
+  0x80: Stop Display
+  0x81: Start Display
+  0x82: Reset
+  0x83: Load Cursor Position
+\end{DoxyVerb}
+ 

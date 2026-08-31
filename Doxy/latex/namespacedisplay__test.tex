@@ -1,0 +1,190 @@
+\doxysection{display\+\_\+test Namespace Reference}
+\hypertarget{namespacedisplay__test}{}\label{namespacedisplay__test}\index{display\_test@{display\_test}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespacedisplay__test_afa088264a17b3c44fc115c7c05e7721c}{find\+\_\+device}} (type\+\_\+name, \texorpdfstring{$\ast$}{*}names)
+\item 
+\mbox{\hyperlink{namespacedisplay__test_a9617512662a3a7a0e37396071bf7841a}{dump\+\_\+char\+\_\+bitmap}} (char\+\_\+gen, char\+\_\+code, height=8)
+\item 
+\mbox{\hyperlink{namespacedisplay__test_a321ce5fa20dd3e1af4b9dfa356cda5eb}{print\+\_\+lines}} (lines, label="{}Строки"{})
+\item 
+\mbox{\hyperlink{namespacedisplay__test_a43a115e373a664dfdcaf033af2586a9a}{test\+\_\+lcd1602}} ()
+\item 
+\mbox{\hyperlink{namespacedisplay__test_ad5c1f79630c2b56b342893441f484fa1}{test\+\_\+lcd2004}} ()
+\item 
+\mbox{\hyperlink{namespacedisplay__test_a42c7e87b85002d1a5e64f390eba58869}{test\+\_\+tft8080}} ()
+\item 
+\mbox{\hyperlink{namespacedisplay__test_afef0f4ee8a2ca15cbab88192df0e3926}{test\+\_\+8275}} ()
+\item 
+\mbox{\hyperlink{namespacedisplay__test_a3fd834162b0c205358ed75dfe5a9c65e}{test\+\_\+8276}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespacedisplay__test_a59bd6871063e8d15ea0860627253f4c5}{devices}} = api.\+system.\+list\+\_\+devices()
+\item 
+dict \mbox{\hyperlink{namespacedisplay__test_a5e9629064beb62cb6c153aad2c8ada1b}{results}} = \{\}
+\item 
+\mbox{\hyperlink{namespacedisplay__test_adafe7567e7c45a6f1c10732fce16c44f}{passed}} = sum(1 for v in results.\+values() if v)
+\item 
+\mbox{\hyperlink{namespacedisplay__test_af42e9061c2e203ceaf2a8ce593cf0b73}{total}} = len(\mbox{\hyperlink{namespacedisplay__test_a5e9629064beb62cb6c153aad2c8ada1b}{results}})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Тест всех типов дисплеев.
+Запуск: вкладка "Скрипты" → "Выполнить скрипт".
+
+Тестируемые устройства:
+- LCD1602  — символьный дисплей 16×2
+- LCD2004  — символьный дисплей 20×4
+- TFT8080  — графический дисплей 320×240 (16-бит цвет)
+- I8275    — CRT-контроллер (до 80×16 символов)
+- I8276    — CRT-контроллер (до 128×64 символов)
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespacedisplay__test_a9617512662a3a7a0e37396071bf7841a}\index{display\_test@{display\_test}!dump\_char\_bitmap@{dump\_char\_bitmap}}
+\index{dump\_char\_bitmap@{dump\_char\_bitmap}!display\_test@{display\_test}}
+\doxysubsubsection{\texorpdfstring{dump\_char\_bitmap()}{dump\_char\_bitmap()}}
+{\footnotesize\ttfamily \label{namespacedisplay__test_a9617512662a3a7a0e37396071bf7841a} 
+display\+\_\+test.\+dump\+\_\+char\+\_\+bitmap (\begin{DoxyParamCaption}\item[{}]{char\+\_\+gen}{, }\item[{}]{char\+\_\+code}{, }\item[{}]{height}{ = {\ttfamily 8}}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Выводит битмап символа в консоль.\end{DoxyVerb}
+ Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespacedisplay__test_a9617512662a3a7a0e37396071bf7841a_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{namespacedisplay__test_afa088264a17b3c44fc115c7c05e7721c}\index{display\_test@{display\_test}!find\_device@{find\_device}}
+\index{find\_device@{find\_device}!display\_test@{display\_test}}
+\doxysubsubsection{\texorpdfstring{find\_device()}{find\_device()}}
+{\footnotesize\ttfamily \label{namespacedisplay__test_afa088264a17b3c44fc115c7c05e7721c} 
+display\+\_\+test.\+find\+\_\+device (\begin{DoxyParamCaption}\item[{}]{type\+\_\+name}{, }\item[{\texorpdfstring{$\ast$}{*}}]{names}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Ищет устройство по имени класса или именам экземпляров.\end{DoxyVerb}
+ Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespacedisplay__test_afa088264a17b3c44fc115c7c05e7721c_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{namespacedisplay__test_a321ce5fa20dd3e1af4b9dfa356cda5eb}\index{display\_test@{display\_test}!print\_lines@{print\_lines}}
+\index{print\_lines@{print\_lines}!display\_test@{display\_test}}
+\doxysubsubsection{\texorpdfstring{print\_lines()}{print\_lines()}}
+{\footnotesize\ttfamily \label{namespacedisplay__test_a321ce5fa20dd3e1af4b9dfa356cda5eb} 
+display\+\_\+test.\+print\+\_\+lines (\begin{DoxyParamCaption}\item[{}]{lines}{, }\item[{}]{label}{ = {\ttfamily "{}Строки"{}}}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Выводит строки дисплея.\end{DoxyVerb}
+ Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=333pt]{namespacedisplay__test_a321ce5fa20dd3e1af4b9dfa356cda5eb_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{namespacedisplay__test_afef0f4ee8a2ca15cbab88192df0e3926}\index{display\_test@{display\_test}!test\_8275@{test\_8275}}
+\index{test\_8275@{test\_8275}!display\_test@{display\_test}}
+\doxysubsubsection{\texorpdfstring{test\_8275()}{test\_8275()}}
+{\footnotesize\ttfamily \label{namespacedisplay__test_afef0f4ee8a2ca15cbab88192df0e3926} 
+display\+\_\+test.\+test\+\_\+8275 (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespacedisplay__test_afef0f4ee8a2ca15cbab88192df0e3926_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{namespacedisplay__test_a3fd834162b0c205358ed75dfe5a9c65e}\index{display\_test@{display\_test}!test\_8276@{test\_8276}}
+\index{test\_8276@{test\_8276}!display\_test@{display\_test}}
+\doxysubsubsection{\texorpdfstring{test\_8276()}{test\_8276()}}
+{\footnotesize\ttfamily \label{namespacedisplay__test_a3fd834162b0c205358ed75dfe5a9c65e} 
+display\+\_\+test.\+test\+\_\+8276 (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespacedisplay__test_a3fd834162b0c205358ed75dfe5a9c65e_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{namespacedisplay__test_a43a115e373a664dfdcaf033af2586a9a}\index{display\_test@{display\_test}!test\_lcd1602@{test\_lcd1602}}
+\index{test\_lcd1602@{test\_lcd1602}!display\_test@{display\_test}}
+\doxysubsubsection{\texorpdfstring{test\_lcd1602()}{test\_lcd1602()}}
+{\footnotesize\ttfamily \label{namespacedisplay__test_a43a115e373a664dfdcaf033af2586a9a} 
+display\+\_\+test.\+test\+\_\+lcd1602 (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespacedisplay__test_a43a115e373a664dfdcaf033af2586a9a_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{namespacedisplay__test_ad5c1f79630c2b56b342893441f484fa1}\index{display\_test@{display\_test}!test\_lcd2004@{test\_lcd2004}}
+\index{test\_lcd2004@{test\_lcd2004}!display\_test@{display\_test}}
+\doxysubsubsection{\texorpdfstring{test\_lcd2004()}{test\_lcd2004()}}
+{\footnotesize\ttfamily \label{namespacedisplay__test_ad5c1f79630c2b56b342893441f484fa1} 
+display\+\_\+test.\+test\+\_\+lcd2004 (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespacedisplay__test_ad5c1f79630c2b56b342893441f484fa1_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{namespacedisplay__test_a42c7e87b85002d1a5e64f390eba58869}\index{display\_test@{display\_test}!test\_tft8080@{test\_tft8080}}
+\index{test\_tft8080@{test\_tft8080}!display\_test@{display\_test}}
+\doxysubsubsection{\texorpdfstring{test\_tft8080()}{test\_tft8080()}}
+{\footnotesize\ttfamily \label{namespacedisplay__test_a42c7e87b85002d1a5e64f390eba58869} 
+display\+\_\+test.\+test\+\_\+tft8080 (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespacedisplay__test_a42c7e87b85002d1a5e64f390eba58869_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{namespacedisplay__test_a59bd6871063e8d15ea0860627253f4c5}\index{display\_test@{display\_test}!devices@{devices}}
+\index{devices@{devices}!display\_test@{display\_test}}
+\doxysubsubsection{\texorpdfstring{devices}{devices}}
+{\footnotesize\ttfamily \label{namespacedisplay__test_a59bd6871063e8d15ea0860627253f4c5} 
+display\+\_\+test.\+devices = api.\+system.\+list\+\_\+devices()}
+
+\Hypertarget{namespacedisplay__test_adafe7567e7c45a6f1c10732fce16c44f}\index{display\_test@{display\_test}!passed@{passed}}
+\index{passed@{passed}!display\_test@{display\_test}}
+\doxysubsubsection{\texorpdfstring{passed}{passed}}
+{\footnotesize\ttfamily \label{namespacedisplay__test_adafe7567e7c45a6f1c10732fce16c44f} 
+display\+\_\+test.\+passed = sum(1 for v in results.\+values() if v)}
+
+\Hypertarget{namespacedisplay__test_a5e9629064beb62cb6c153aad2c8ada1b}\index{display\_test@{display\_test}!results@{results}}
+\index{results@{results}!display\_test@{display\_test}}
+\doxysubsubsection{\texorpdfstring{results}{results}}
+{\footnotesize\ttfamily \label{namespacedisplay__test_a5e9629064beb62cb6c153aad2c8ada1b} 
+dict display\+\_\+test.\+results = \{\}}
+
+\Hypertarget{namespacedisplay__test_af42e9061c2e203ceaf2a8ce593cf0b73}\index{display\_test@{display\_test}!total@{total}}
+\index{total@{total}!display\_test@{display\_test}}
+\doxysubsubsection{\texorpdfstring{total}{total}}
+{\footnotesize\ttfamily \label{namespacedisplay__test_af42e9061c2e203ceaf2a8ce593cf0b73} 
+display\+\_\+test.\+total = len(\mbox{\hyperlink{namespacedisplay__test_a5e9629064beb62cb6c153aad2c8ada1b}{results}})}
+

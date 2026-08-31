@@ -1,0 +1,98 @@
+\doxysection{test\+\_\+i8251 Namespace Reference}
+\hypertarget{namespacetest__i8251}{}\label{namespacetest__i8251}\index{test\_i8251@{test\_i8251}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespacetest__i8251_aca82cea11ccd963d0bdbe78eb32e683d}{check}} (name, actual, expected)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{namespacetest__i8251_a67159c1b5020be6a13bb8356f9c089a8}{passed}} = 0
+\item 
+int \mbox{\hyperlink{namespacetest__i8251_a2bb57603cfecaf0530b872c566873871}{failed}} = 0
+\item 
+\mbox{\hyperlink{namespacetest__i8251_a38f0306929d99228ff502e367bfdfb1c}{bus}} = \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus}{Memory\+Bus}}()
+\item 
+\mbox{\hyperlink{namespacetest__i8251_a2825911b14b6d727dd3ef8fb4b0d2993}{usart}} = \mbox{\hyperlink{classmodules_1_1io_1_1i8251_1_1_i8251}{I8251}}(base\+\_\+port=0x00)
+\item 
+list \mbox{\hyperlink{namespacetest__i8251_a3d9a42b87d1083944973663bcd85e0ee}{transmitted}} = \mbox{[}$\,$\mbox{]}
+\item 
+\mbox{\hyperlink{namespacetest__i8251_a5ad4af665332a2bf56b60b933e9ab38a}{on\+\_\+transmit}}
+\item 
+list \mbox{\hyperlink{namespacetest__i8251_ae0073cd6e2cb12517f7446a7788626c4}{interrupts}} = \mbox{[}$\,$\mbox{]}
+\item 
+\mbox{\hyperlink{namespacetest__i8251_a56c5e8ff341e81353c734ae6443659ba}{on\+\_\+interrupt}}
+\item 
+\mbox{\hyperlink{namespacetest__i8251_a6e33595c45af4566cb97d69aa1057166}{data}} = bus.\+io\+\_\+read(0x00)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Тест I8251 USART (итерация E5)\end{DoxyVerb}
+ 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespacetest__i8251_aca82cea11ccd963d0bdbe78eb32e683d}\index{test\_i8251@{test\_i8251}!check@{check}}
+\index{check@{check}!test\_i8251@{test\_i8251}}
+\doxysubsubsection{\texorpdfstring{check()}{check()}}
+{\footnotesize\ttfamily \label{namespacetest__i8251_aca82cea11ccd963d0bdbe78eb32e683d} 
+test\+\_\+i8251.\+check (\begin{DoxyParamCaption}\item[{}]{name}{, }\item[{}]{actual}{, }\item[{}]{expected}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{namespacetest__i8251_a38f0306929d99228ff502e367bfdfb1c}\index{test\_i8251@{test\_i8251}!bus@{bus}}
+\index{bus@{bus}!test\_i8251@{test\_i8251}}
+\doxysubsubsection{\texorpdfstring{bus}{bus}}
+{\footnotesize\ttfamily \label{namespacetest__i8251_a38f0306929d99228ff502e367bfdfb1c} 
+test\+\_\+i8251.\+bus = \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus}{Memory\+Bus}}()}
+
+\Hypertarget{namespacetest__i8251_a6e33595c45af4566cb97d69aa1057166}\index{test\_i8251@{test\_i8251}!data@{data}}
+\index{data@{data}!test\_i8251@{test\_i8251}}
+\doxysubsubsection{\texorpdfstring{data}{data}}
+{\footnotesize\ttfamily \label{namespacetest__i8251_a6e33595c45af4566cb97d69aa1057166} 
+test\+\_\+i8251.\+data = bus.\+io\+\_\+read(0x00)}
+
+\Hypertarget{namespacetest__i8251_a2bb57603cfecaf0530b872c566873871}\index{test\_i8251@{test\_i8251}!failed@{failed}}
+\index{failed@{failed}!test\_i8251@{test\_i8251}}
+\doxysubsubsection{\texorpdfstring{failed}{failed}}
+{\footnotesize\ttfamily \label{namespacetest__i8251_a2bb57603cfecaf0530b872c566873871} 
+int test\+\_\+i8251.\+failed = 0}
+
+\Hypertarget{namespacetest__i8251_ae0073cd6e2cb12517f7446a7788626c4}\index{test\_i8251@{test\_i8251}!interrupts@{interrupts}}
+\index{interrupts@{interrupts}!test\_i8251@{test\_i8251}}
+\doxysubsubsection{\texorpdfstring{interrupts}{interrupts}}
+{\footnotesize\ttfamily \label{namespacetest__i8251_ae0073cd6e2cb12517f7446a7788626c4} 
+list test\+\_\+i8251.\+interrupts = \mbox{[}$\,$\mbox{]}}
+
+\Hypertarget{namespacetest__i8251_a56c5e8ff341e81353c734ae6443659ba}\index{test\_i8251@{test\_i8251}!on\_interrupt@{on\_interrupt}}
+\index{on\_interrupt@{on\_interrupt}!test\_i8251@{test\_i8251}}
+\doxysubsubsection{\texorpdfstring{on\_interrupt}{on\_interrupt}}
+{\footnotesize\ttfamily \label{namespacetest__i8251_a56c5e8ff341e81353c734ae6443659ba} 
+test\+\_\+i8251.\+on\+\_\+interrupt}
+
+\Hypertarget{namespacetest__i8251_a5ad4af665332a2bf56b60b933e9ab38a}\index{test\_i8251@{test\_i8251}!on\_transmit@{on\_transmit}}
+\index{on\_transmit@{on\_transmit}!test\_i8251@{test\_i8251}}
+\doxysubsubsection{\texorpdfstring{on\_transmit}{on\_transmit}}
+{\footnotesize\ttfamily \label{namespacetest__i8251_a5ad4af665332a2bf56b60b933e9ab38a} 
+test\+\_\+i8251.\+on\+\_\+transmit}
+
+\Hypertarget{namespacetest__i8251_a67159c1b5020be6a13bb8356f9c089a8}\index{test\_i8251@{test\_i8251}!passed@{passed}}
+\index{passed@{passed}!test\_i8251@{test\_i8251}}
+\doxysubsubsection{\texorpdfstring{passed}{passed}}
+{\footnotesize\ttfamily \label{namespacetest__i8251_a67159c1b5020be6a13bb8356f9c089a8} 
+int test\+\_\+i8251.\+passed = 0}
+
+\Hypertarget{namespacetest__i8251_a3d9a42b87d1083944973663bcd85e0ee}\index{test\_i8251@{test\_i8251}!transmitted@{transmitted}}
+\index{transmitted@{transmitted}!test\_i8251@{test\_i8251}}
+\doxysubsubsection{\texorpdfstring{transmitted}{transmitted}}
+{\footnotesize\ttfamily \label{namespacetest__i8251_a3d9a42b87d1083944973663bcd85e0ee} 
+list test\+\_\+i8251.\+transmitted = \mbox{[}$\,$\mbox{]}}
+
+\Hypertarget{namespacetest__i8251_a2825911b14b6d727dd3ef8fb4b0d2993}\index{test\_i8251@{test\_i8251}!usart@{usart}}
+\index{usart@{usart}!test\_i8251@{test\_i8251}}
+\doxysubsubsection{\texorpdfstring{usart}{usart}}
+{\footnotesize\ttfamily \label{namespacetest__i8251_a2825911b14b6d727dd3ef8fb4b0d2993} 
+test\+\_\+i8251.\+usart = \mbox{\hyperlink{classmodules_1_1io_1_1i8251_1_1_i8251}{I8251}}(base\+\_\+port=0x00)}
+

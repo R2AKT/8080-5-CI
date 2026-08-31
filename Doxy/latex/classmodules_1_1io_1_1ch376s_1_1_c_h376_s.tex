@@ -1,0 +1,1544 @@
+\doxysection{modules.\+io.\+ch376s.\+CH376S Class Reference}
+\hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s}{}\label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+
+
+Inheritance diagram for modules.\+io.\+ch376s.\+CH376S\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=227pt]{classmodules_1_1io_1_1ch376s_1_1_c_h376_s__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for modules.\+io.\+ch376s.\+CH376S\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=227pt]{classmodules_1_1io_1_1ch376s_1_1_c_h376_s__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a2979b6100f2ff9430c0840db92a3d85c}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, \mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_a349db233ca1e3fd7c64e10db67c21aa3}{base\+\_\+port}}, \mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_a4ef4b1e055e68877b069410b67b6c90d}{name}}="{}CH376\+S"{})
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a50aa84fd675760d4949fe662eeb13e8f}{reset}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a120ad95f7cc58bea700e33a41295a5e2}{set\+\_\+disk\+\_\+image}} (self, path, size\+\_\+mb=32)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_abcebd01744641d512c18dd1c2104803c}{io\+\_\+read}} (self, port)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a94acf57d0dcb6a56b9a540e3dc9c922e}{io\+\_\+write}} (self, port, value)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a0844379ace65a6e35a7bef37009a0e2b}{has\+\_\+interrupt}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_aac4860408156421175081b56dbff034d}{acknowledge\+\_\+interrupt}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_ac94ca42429fe9e84fe720ea1b5d38cea}{set\+\_\+emulate\+\_\+delay}} (self, enabled)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_ae056918424c9d2705d81f7cfcb04ba52}{tick}} (self, cycles=1)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a408f364884f73e8ee2f7c987908778f7}{is\+\_\+busy}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a71028361b3a851fd8c8370e4cfd78d57}{get\+\_\+state}} (self)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device}{modules.\+io.\+iodevice.\+IODevice}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_af44b72c0a1d9f3622b18ce802d33290b}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, \mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_a349db233ca1e3fd7c64e10db67c21aa3}{base\+\_\+port}}, \mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_a2023de274431002e37faef63d740d9e9}{port\+\_\+count}}, \mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_a4ef4b1e055e68877b069410b67b6c90d}{name}}="{}IODevice"{})
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_a8b83e9174621e573851b94cc407ab267}{register\+\_\+to\+\_\+bus}} (self, bus)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_a1636fa580fb8cafd15d2b4b24cdf6e9d}{unregister\+\_\+from\+\_\+bus}} (self, bus)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a22ef200fff2d5947e5fbe6db6463f72f}{on\+\_\+irq}} = None
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a50e552ffdad7ab20d276e7de0d424afb}{on\+\_\+data\+\_\+ready}} = None
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a92358106ca5986da0ac1bf123441461c}{disk}} = None
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_ab32de517e3460daf56d12ecc1b6d773e}{command}} = 0x00
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a3463e019076e7cbbbbcbae34828b0622}{status}} = self.\+STATUS\+\_\+\+OK
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a953befd5c967195391503a40668ebcd9}{data\+\_\+buffer}} = bytearray()
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_aaadd8bba9ce462e635a32cf5e0aca7c2}{data\+\_\+index}} = 0
+\item 
+str \mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a3f57809f10e53c5fe1978fc0e6a34afd}{data\+\_\+direction}} = None
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a0cbba8cfdaf806fa764c1def312bd15a}{pending\+\_\+command}} = None
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a9d3dcfc54dac57394002f6f455873675}{param\+\_\+buffer}} = bytearray()
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a5d97cca1c0ce9b4ba43d009b25742363}{param\+\_\+count}} = 0
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a38f918c725b747c27039bbc7279fb3f0}{param\+\_\+expected}} = 0
+\item 
+bool \mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a07f70f856b17866e24f343e6e57989fa}{disk\+\_\+connected}} = False
+\item 
+bool \mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a75b36024ff0e20bffa8d6548534b6d48}{disk\+\_\+mounted}} = False
+\item 
+bool \mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a8eb49ba1b13d173471d6e1a192ebad3c}{disk\+\_\+initialized}} = False
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a519afe6b15bb9364d8d11cd339ba96b7}{current\+\_\+lba}} = 0
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a1f53ad05173654456e0f986c09c5364d}{sector\+\_\+count}} = 0
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_ac0bbe829b675eb377a2f153738cd0c0e}{disk\+\_\+mode}} = self.\+DISK\+\_\+\+MODE\+\_\+\+IDLE
+\item 
+bool \mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a9acde17799a35b55e682acce8474e412}{file\+\_\+open}} = False
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a76612cfc494a4f309c9ef920616f52bd}{file\+\_\+index}} = None
+\item 
+str \mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_aae6ec7e893328f12e7663a9fc340c5c9}{file\+\_\+path}} = "{}"{}
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a6d4e3e4899e6482fee336badc4720179}{file\+\_\+pos}} = 0
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a8ee6a15264c59e5d8be53e4c4513f348}{file\+\_\+size}} = 0
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_abbe4106b6390897b06e9bad09114935c}{enum\+\_\+index}} = 0
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a658c37d9ee3d24153930870de9260a30}{ic\+\_\+version}} = 0x76
+\item 
+bool \mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_ae32f52e860e62bee14ab3f382bc85cb5}{busy}} = False
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a3d710746cf3259098c01923d75952b64}{busy\+\_\+cycles}} = 0
+\item 
+bool \mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a9c6a0fd33ee820e90ba30f50e6794463}{emulate\+\_\+delay}} = False
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a724d9843ab53bdf8dbc7fb4cdf422650}{usb\+\_\+mode}} = mode
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device}{modules.\+io.\+iodevice.\+IODevice}}}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_a349db233ca1e3fd7c64e10db67c21aa3}{base\+\_\+port}} = base\+\_\+port \& 0x\+FF
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_a2023de274431002e37faef63d740d9e9}{port\+\_\+count}} = port\+\_\+count
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_a4ef4b1e055e68877b069410b67b6c90d}{name}} = name
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_adc8e5d264aa8be9dde0acbb97c0bad48}{CMD\+\_\+\+GET\+\_\+\+IC\+\_\+\+VER}} = 0x01
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_adaac94dd4d4752368a0fd9c14d1b187b}{CMD\+\_\+\+GET\+\_\+\+STATUS}} = 0x02
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a0c9993ed87625492d1ebee56163d8e5b}{CMD\+\_\+\+WR\+\_\+\+OFS\+\_\+\+M\+\_\+\+DATA}} = 0x03
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a74d3931dd9c556cc4ec76ecae1d742fa}{CMD\+\_\+\+DISK\+\_\+\+INIT}} = 0x04
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a17a8a5664c213400560e3caab77ab91f}{CMD\+\_\+\+DISK\+\_\+\+MOUNT}} = 0x05
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a29d6b0f787a6eb26e15f0ef4e63564f6}{CMD\+\_\+\+DISK\+\_\+\+READ}} = 0x06
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a025070f1c52754c7817d71ed609fa974}{CMD\+\_\+\+DISK\+\_\+\+WRITE}} = 0x07
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a12678833727a9a5298e83afc54b7c664}{CMD\+\_\+\+DISK\+\_\+\+CAPACITY}} = 0x08
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a65d34c7d19d90ad04f9deeec3090d09b}{CMD\+\_\+\+DISK\+\_\+\+QUERY}} = 0x09
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a182e1eab50989c9070eb26ca00f786c2}{CMD\+\_\+\+DISK\+\_\+\+CONNECT}} = 0x0A
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a226ea62ef1ff28e2c286517ef88bac13}{CMD\+\_\+\+DISK\+\_\+\+DISCONN}} = 0x0B
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_ad3182b95cd4f29ad2f437d85253e713f}{CMD\+\_\+\+SET\+\_\+\+USB\+\_\+\+MODE}} = 0x0C
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a9da11f5d4d792e7c36075921934bf0a2}{CMD\+\_\+\+FILE\+\_\+\+OPEN}} = 0x0D
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_aa14154f75d9b667b02b3f01f67ac0222}{CMD\+\_\+\+FILE\+\_\+\+CLOSE}} = 0x0E
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a9a5ac3eea5dd295070e8dbf2ff30194e}{CMD\+\_\+\+FILE\+\_\+\+READ}} = 0x0F
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_af12c3633475ad065608c41ddbdc2bdc8}{CMD\+\_\+\+FILE\+\_\+\+WRITE}} = 0x10
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_af2ac82bef14c4f38353aba85493d61ca}{CMD\+\_\+\+FILE\+\_\+\+ENUM}} = 0x11
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_ae8ca75a5aad2b55a71cba0a0b2b25640}{CMD\+\_\+\+FILE\+\_\+\+CREATE}} = 0x12
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a7cc2fb7d42383a1dad41354b272208f5}{CMD\+\_\+\+FILE\+\_\+\+ERASE}} = 0x13
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a473a941fef99f4d7862c60cab44fbb5b}{CMD\+\_\+\+FILE\+\_\+\+QUERY}} = 0x14
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a8c008cf1980e0a31ab262adf70d5e2f1}{CMD\+\_\+\+FILE\+\_\+\+LOCATE}} = 0x15
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a4d10c04394ca4b8f3ad1fa601d74bed6}{STATUS\+\_\+\+OK}} = 0x00
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_aeeef4f79ab17217fbb84c64e68869618}{STATUS\+\_\+\+BUSY}} = 0x01
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_ac7b9da885f0bf5364f44eba658cec6c1}{STATUS\+\_\+\+ERROR}} = 0x02
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_aa5f06bfaf5d72d491bf31672b85ef737}{STATUS\+\_\+\+NO\+\_\+\+DISK}} = 0x03
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a9efc6c92554adadac80ab148b16eb12a}{STATUS\+\_\+\+WRITE\+\_\+\+PROT}} = 0x04
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a266e6aefc5e62d38eed7fa6277d475c3}{STATUS\+\_\+\+NOT\+\_\+\+READY}} = 0x05
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_af8887f8522408f53455a1f5ab3bdffa0}{STATUS\+\_\+\+FILE\+\_\+\+NOT\+\_\+\+FOUND}} = 0x06
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_aa4e4da02012475ac4f3b4d98524bb8df}{DISK\+\_\+\+MODE\+\_\+\+IDLE}} = 0x00
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a32008ed4adedbf972f99111b1ef661a0}{DISK\+\_\+\+MODE\+\_\+\+READING}} = 0x01
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a31841bdd042bbc6a34974df98a777d11}{DISK\+\_\+\+MODE\+\_\+\+WRITING}} = 0x02
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_ab4b6c01ca823ab0f0f6b61c07e929a78}{\+\_\+read\+\_\+data}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_ae246fb9331556750cfea80ee035bb397}{\+\_\+write\+\_\+data}} (self, value)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a1c6f29a8d29fcdf7931da074698a5823}{\+\_\+write\+\_\+command}} (self, value)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a20b03fbf9f55b4c60d15100abf28c532}{\+\_\+get\+\_\+param\+\_\+count}} (self, cmd)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_ade13c3a92c3a4a7a79123f8b49d3a5d4}{\+\_\+execute\+\_\+command}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a0751c7826b513ff27a22ff02df27ab35}{\+\_\+fs\+\_\+init}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a078227e73ea3a1a018015a757034f03a}{\+\_\+fs\+\_\+read\+\_\+header}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_ae95f056b5831727a6258367c497fc751}{\+\_\+fs\+\_\+write\+\_\+header}} (self, header)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a93ee19f521d26a125c5e2cb003d1f462}{\+\_\+fs\+\_\+read\+\_\+entry}} (self, index)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_add2dbb68ed6e848b0dba5e364e4b9f31}{\+\_\+fs\+\_\+write\+\_\+entry}} (self, index, entry)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a640143caf6dd82a6f1d16e301286d78c}{\+\_\+fs\+\_\+find\+\_\+file}} (self, \mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_a4ef4b1e055e68877b069410b67b6c90d}{name}})
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_aa63c4eee827edb7d597693a0bb40908a}{\+\_\+fs\+\_\+find\+\_\+free\+\_\+entry}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a5ac789bff538c0e0b19721c936ac072d}{\+\_\+fs\+\_\+alloc\+\_\+sectors}} (self, count)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a805ea8e5cc69effef6a2a4fac2120ed2}{\+\_\+fs\+\_\+extend\+\_\+file}} (self, entry, needed\+\_\+sectors)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_ae7377d29898e9f9e22be77fc4fcf19d9}{\+\_\+fs\+\_\+read\+\_\+file\+\_\+data}} (self, entry, offset, count)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_ad6e6f80548df1170726bb148e69bc824}{\+\_\+fs\+\_\+write\+\_\+file\+\_\+data}} (self, entry, offset, data)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a08f803153c8e1899ba6f0970e68880c3}{\+\_\+cmd\+\_\+get\+\_\+ic\+\_\+ver}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a05d651b3394e7f213dfa3ab7af717b36}{\+\_\+cmd\+\_\+get\+\_\+status}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_ade8534fe886b23e1dd9c7b96019159e8}{\+\_\+cmd\+\_\+disk\+\_\+init}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a65feeb7d7b6a2e46fe4c21b38a007f99}{\+\_\+cmd\+\_\+disk\+\_\+mount}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a19bbd7e4f7f93f37ace95d99f199cb6a}{\+\_\+cmd\+\_\+disk\+\_\+read}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_ad56d437a20aeeec6cbc1c0920b31fa77}{\+\_\+cmd\+\_\+disk\+\_\+write}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_af26aaac3b455766617c54c3670842f39}{\+\_\+cmd\+\_\+disk\+\_\+capacity}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a2cc18b31fe9832feb2f6813d4b50d5e3}{\+\_\+cmd\+\_\+disk\+\_\+query}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_aa9fb05b89f014c11d6519dc5080eebc0}{\+\_\+cmd\+\_\+disk\+\_\+connect}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a8dbb79cf566effb75db34dc0a4a9e4dc}{\+\_\+cmd\+\_\+disk\+\_\+disconn}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_af6e76d0de3c94e78faad27c2c557b4ca}{\+\_\+cmd\+\_\+set\+\_\+usb\+\_\+mode}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a9bfb6f2c737dd30e0f727bd2344ba6c8}{\+\_\+cmd\+\_\+file\+\_\+open}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a36c601f43bd99c9bb4774cd988714ad6}{\+\_\+cmd\+\_\+file\+\_\+close}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_af23bb9cffd779abbd6a1ba1df0d05a57}{\+\_\+cmd\+\_\+file\+\_\+read}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a2cf5f95e0b510873688d7dd9b15bea56}{\+\_\+cmd\+\_\+file\+\_\+write}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_afa0d986a4718f5a1e61834f7669aba94}{\+\_\+cmd\+\_\+file\+\_\+enum}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a1dc36a69c9c90765716924408fd3359b}{\+\_\+cmd\+\_\+file\+\_\+create}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a7cd8ecd613c01f28b4b878a7e4529b85}{\+\_\+cmd\+\_\+file\+\_\+erase}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a7f5dc4d69c80bdb48be252248681fc7c}{\+\_\+cmd\+\_\+file\+\_\+query}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a124b79a8a39706b3efdb957bb5f11e25}{\+\_\+cmd\+\_\+file\+\_\+locate}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_adf4ba8581587bea288fc8f0b1b83ec37}{\+\_\+start\+\_\+operation}} (self, cycles, final\+\_\+status=None, generate\+\_\+irq=False)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_ab1e60118b58be39494982cba94ab6af8}{\+\_\+get\+\_\+operation\+\_\+duration}} (self, cmd)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a6514872fe6b2e056887166065a088e1a}{\+\_\+command\+\_\+generates\+\_\+irq}} (self, cmd)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a4f2ba30bac16e2b89720c464bc868542}{\+\_\+collecting\+\_\+filename}} = False
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a0f16e405cfbc8a2348a97e2685326ea9}{\+\_\+pending\+\_\+status}} = self.\+STATUS\+\_\+\+OK
+\item 
+bool \mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a8b12c6c9ed5c1be05e302750586df881}{\+\_\+pending\+\_\+irq}} = False
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}CH376S — USB-контроллер для работы с диском\end{DoxyVerb}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a2979b6100f2ff9430c0840db92a3d85c}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a2979b6100f2ff9430c0840db92a3d85c} 
+modules.\+io.\+ch376s.\+CH376\+S.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{base\+\_\+port}{, }\item[{}]{name}{ = {\ttfamily "{}CH376S"{}}}\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a2979b6100f2ff9430c0840db92a3d85c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=221pt]{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a2979b6100f2ff9430c0840db92a3d85c_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_af26aaac3b455766617c54c3670842f39}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!\_cmd\_disk\_capacity@{\_cmd\_disk\_capacity}}
+\index{\_cmd\_disk\_capacity@{\_cmd\_disk\_capacity}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{\_cmd\_disk\_capacity()}{\_cmd\_disk\_capacity()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_af26aaac3b455766617c54c3670842f39} 
+modules.\+io.\+ch376s.\+CH376\+S.\+\_\+cmd\+\_\+disk\+\_\+capacity (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Получить ёмкость диска\end{DoxyVerb}
+ Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_af26aaac3b455766617c54c3670842f39_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_aa9fb05b89f014c11d6519dc5080eebc0}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!\_cmd\_disk\_connect@{\_cmd\_disk\_connect}}
+\index{\_cmd\_disk\_connect@{\_cmd\_disk\_connect}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{\_cmd\_disk\_connect()}{\_cmd\_disk\_connect()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_aa9fb05b89f014c11d6519dc5080eebc0} 
+modules.\+io.\+ch376s.\+CH376\+S.\+\_\+cmd\+\_\+disk\+\_\+connect (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Подключение диска\end{DoxyVerb}
+ Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_aa9fb05b89f014c11d6519dc5080eebc0_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a8dbb79cf566effb75db34dc0a4a9e4dc}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!\_cmd\_disk\_disconn@{\_cmd\_disk\_disconn}}
+\index{\_cmd\_disk\_disconn@{\_cmd\_disk\_disconn}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{\_cmd\_disk\_disconn()}{\_cmd\_disk\_disconn()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a8dbb79cf566effb75db34dc0a4a9e4dc} 
+modules.\+io.\+ch376s.\+CH376\+S.\+\_\+cmd\+\_\+disk\+\_\+disconn (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Отключение диска\end{DoxyVerb}
+ Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a8dbb79cf566effb75db34dc0a4a9e4dc_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_ade8534fe886b23e1dd9c7b96019159e8}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!\_cmd\_disk\_init@{\_cmd\_disk\_init}}
+\index{\_cmd\_disk\_init@{\_cmd\_disk\_init}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{\_cmd\_disk\_init()}{\_cmd\_disk\_init()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_ade8534fe886b23e1dd9c7b96019159e8} 
+modules.\+io.\+ch376s.\+CH376\+S.\+\_\+cmd\+\_\+disk\+\_\+init (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Инициализация диска\end{DoxyVerb}
+ Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_ade8534fe886b23e1dd9c7b96019159e8_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a65feeb7d7b6a2e46fe4c21b38a007f99}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!\_cmd\_disk\_mount@{\_cmd\_disk\_mount}}
+\index{\_cmd\_disk\_mount@{\_cmd\_disk\_mount}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{\_cmd\_disk\_mount()}{\_cmd\_disk\_mount()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a65feeb7d7b6a2e46fe4c21b38a007f99} 
+modules.\+io.\+ch376s.\+CH376\+S.\+\_\+cmd\+\_\+disk\+\_\+mount (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Монтирование диска\end{DoxyVerb}
+ Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a65feeb7d7b6a2e46fe4c21b38a007f99_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a2cc18b31fe9832feb2f6813d4b50d5e3}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!\_cmd\_disk\_query@{\_cmd\_disk\_query}}
+\index{\_cmd\_disk\_query@{\_cmd\_disk\_query}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{\_cmd\_disk\_query()}{\_cmd\_disk\_query()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a2cc18b31fe9832feb2f6813d4b50d5e3} 
+modules.\+io.\+ch376s.\+CH376\+S.\+\_\+cmd\+\_\+disk\+\_\+query (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Запрос статуса диска\end{DoxyVerb}
+ Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a2cc18b31fe9832feb2f6813d4b50d5e3_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a19bbd7e4f7f93f37ace95d99f199cb6a}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!\_cmd\_disk\_read@{\_cmd\_disk\_read}}
+\index{\_cmd\_disk\_read@{\_cmd\_disk\_read}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{\_cmd\_disk\_read()}{\_cmd\_disk\_read()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a19bbd7e4f7f93f37ace95d99f199cb6a} 
+modules.\+io.\+ch376s.\+CH376\+S.\+\_\+cmd\+\_\+disk\+\_\+read (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Чтение секторов с диска\end{DoxyVerb}
+ Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a19bbd7e4f7f93f37ace95d99f199cb6a_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_ad56d437a20aeeec6cbc1c0920b31fa77}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!\_cmd\_disk\_write@{\_cmd\_disk\_write}}
+\index{\_cmd\_disk\_write@{\_cmd\_disk\_write}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{\_cmd\_disk\_write()}{\_cmd\_disk\_write()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_ad56d437a20aeeec6cbc1c0920b31fa77} 
+modules.\+io.\+ch376s.\+CH376\+S.\+\_\+cmd\+\_\+disk\+\_\+write (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Запись секторов на диск\end{DoxyVerb}
+ Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_ad56d437a20aeeec6cbc1c0920b31fa77_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a36c601f43bd99c9bb4774cd988714ad6}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!\_cmd\_file\_close@{\_cmd\_file\_close}}
+\index{\_cmd\_file\_close@{\_cmd\_file\_close}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{\_cmd\_file\_close()}{\_cmd\_file\_close()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a36c601f43bd99c9bb4774cd988714ad6} 
+modules.\+io.\+ch376s.\+CH376\+S.\+\_\+cmd\+\_\+file\+\_\+close (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}FILE_CLOSE: закрыть файл\end{DoxyVerb}
+ Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a36c601f43bd99c9bb4774cd988714ad6_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a1dc36a69c9c90765716924408fd3359b}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!\_cmd\_file\_create@{\_cmd\_file\_create}}
+\index{\_cmd\_file\_create@{\_cmd\_file\_create}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{\_cmd\_file\_create()}{\_cmd\_file\_create()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a1dc36a69c9c90765716924408fd3359b} 
+modules.\+io.\+ch376s.\+CH376\+S.\+\_\+cmd\+\_\+file\+\_\+create (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}FILE_CREATE: создать файл\end{DoxyVerb}
+ Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a1dc36a69c9c90765716924408fd3359b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a1dc36a69c9c90765716924408fd3359b_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_afa0d986a4718f5a1e61834f7669aba94}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!\_cmd\_file\_enum@{\_cmd\_file\_enum}}
+\index{\_cmd\_file\_enum@{\_cmd\_file\_enum}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{\_cmd\_file\_enum()}{\_cmd\_file\_enum()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_afa0d986a4718f5a1e61834f7669aba94} 
+modules.\+io.\+ch376s.\+CH376\+S.\+\_\+cmd\+\_\+file\+\_\+enum (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}FILE_ENUM: перечисление файлов (по одному за вызов)\end{DoxyVerb}
+ Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_afa0d986a4718f5a1e61834f7669aba94_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_afa0d986a4718f5a1e61834f7669aba94_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a7cd8ecd613c01f28b4b878a7e4529b85}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!\_cmd\_file\_erase@{\_cmd\_file\_erase}}
+\index{\_cmd\_file\_erase@{\_cmd\_file\_erase}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{\_cmd\_file\_erase()}{\_cmd\_file\_erase()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a7cd8ecd613c01f28b4b878a7e4529b85} 
+modules.\+io.\+ch376s.\+CH376\+S.\+\_\+cmd\+\_\+file\+\_\+erase (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}FILE_ERASE: удалить файл\end{DoxyVerb}
+ Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a7cd8ecd613c01f28b4b878a7e4529b85_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a7cd8ecd613c01f28b4b878a7e4529b85_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a124b79a8a39706b3efdb957bb5f11e25}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!\_cmd\_file\_locate@{\_cmd\_file\_locate}}
+\index{\_cmd\_file\_locate@{\_cmd\_file\_locate}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{\_cmd\_file\_locate()}{\_cmd\_file\_locate()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a124b79a8a39706b3efdb957bb5f11e25} 
+modules.\+io.\+ch376s.\+CH376\+S.\+\_\+cmd\+\_\+file\+\_\+locate (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}FILE_LOCATE: позиционирование в файле\end{DoxyVerb}
+ Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a124b79a8a39706b3efdb957bb5f11e25_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a124b79a8a39706b3efdb957bb5f11e25_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a9bfb6f2c737dd30e0f727bd2344ba6c8}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!\_cmd\_file\_open@{\_cmd\_file\_open}}
+\index{\_cmd\_file\_open@{\_cmd\_file\_open}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{\_cmd\_file\_open()}{\_cmd\_file\_open()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a9bfb6f2c737dd30e0f727bd2344ba6c8} 
+modules.\+io.\+ch376s.\+CH376\+S.\+\_\+cmd\+\_\+file\+\_\+open (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}FILE_OPEN: открыть файл по имени\end{DoxyVerb}
+ Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a9bfb6f2c737dd30e0f727bd2344ba6c8_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a9bfb6f2c737dd30e0f727bd2344ba6c8_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a7f5dc4d69c80bdb48be252248681fc7c}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!\_cmd\_file\_query@{\_cmd\_file\_query}}
+\index{\_cmd\_file\_query@{\_cmd\_file\_query}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{\_cmd\_file\_query()}{\_cmd\_file\_query()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a7f5dc4d69c80bdb48be252248681fc7c} 
+modules.\+io.\+ch376s.\+CH376\+S.\+\_\+cmd\+\_\+file\+\_\+query (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}FILE_QUERY: информация об открытом файле\end{DoxyVerb}
+ Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a7f5dc4d69c80bdb48be252248681fc7c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a7f5dc4d69c80bdb48be252248681fc7c_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_af23bb9cffd779abbd6a1ba1df0d05a57}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!\_cmd\_file\_read@{\_cmd\_file\_read}}
+\index{\_cmd\_file\_read@{\_cmd\_file\_read}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{\_cmd\_file\_read()}{\_cmd\_file\_read()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_af23bb9cffd779abbd6a1ba1df0d05a57} 
+modules.\+io.\+ch376s.\+CH376\+S.\+\_\+cmd\+\_\+file\+\_\+read (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}FILE_READ: чтение из файла\end{DoxyVerb}
+ Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_af23bb9cffd779abbd6a1ba1df0d05a57_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_af23bb9cffd779abbd6a1ba1df0d05a57_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a2cf5f95e0b510873688d7dd9b15bea56}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!\_cmd\_file\_write@{\_cmd\_file\_write}}
+\index{\_cmd\_file\_write@{\_cmd\_file\_write}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{\_cmd\_file\_write()}{\_cmd\_file\_write()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a2cf5f95e0b510873688d7dd9b15bea56} 
+modules.\+io.\+ch376s.\+CH376\+S.\+\_\+cmd\+\_\+file\+\_\+write (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}FILE_WRITE: запись в файл\end{DoxyVerb}
+ Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a2cf5f95e0b510873688d7dd9b15bea56_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a2cf5f95e0b510873688d7dd9b15bea56_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a08f803153c8e1899ba6f0970e68880c3}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!\_cmd\_get\_ic\_ver@{\_cmd\_get\_ic\_ver}}
+\index{\_cmd\_get\_ic\_ver@{\_cmd\_get\_ic\_ver}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{\_cmd\_get\_ic\_ver()}{\_cmd\_get\_ic\_ver()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a08f803153c8e1899ba6f0970e68880c3} 
+modules.\+io.\+ch376s.\+CH376\+S.\+\_\+cmd\+\_\+get\+\_\+ic\+\_\+ver (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Получить версию чипа\end{DoxyVerb}
+ Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a08f803153c8e1899ba6f0970e68880c3_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a05d651b3394e7f213dfa3ab7af717b36}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!\_cmd\_get\_status@{\_cmd\_get\_status}}
+\index{\_cmd\_get\_status@{\_cmd\_get\_status}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{\_cmd\_get\_status()}{\_cmd\_get\_status()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a05d651b3394e7f213dfa3ab7af717b36} 
+modules.\+io.\+ch376s.\+CH376\+S.\+\_\+cmd\+\_\+get\+\_\+status (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Получить статус\end{DoxyVerb}
+ Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a05d651b3394e7f213dfa3ab7af717b36_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_af6e76d0de3c94e78faad27c2c557b4ca}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!\_cmd\_set\_usb\_mode@{\_cmd\_set\_usb\_mode}}
+\index{\_cmd\_set\_usb\_mode@{\_cmd\_set\_usb\_mode}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{\_cmd\_set\_usb\_mode()}{\_cmd\_set\_usb\_mode()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_af6e76d0de3c94e78faad27c2c557b4ca} 
+modules.\+io.\+ch376s.\+CH376\+S.\+\_\+cmd\+\_\+set\+\_\+usb\+\_\+mode (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Установка режима USB\end{DoxyVerb}
+ Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_af6e76d0de3c94e78faad27c2c557b4ca_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a6514872fe6b2e056887166065a088e1a}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!\_command\_generates\_irq@{\_command\_generates\_irq}}
+\index{\_command\_generates\_irq@{\_command\_generates\_irq}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{\_command\_generates\_irq()}{\_command\_generates\_irq()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a6514872fe6b2e056887166065a088e1a} 
+modules.\+io.\+ch376s.\+CH376\+S.\+\_\+command\+\_\+generates\+\_\+irq (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{cmd}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Генерирует ли команда прерывание по завершении\end{DoxyVerb}
+ Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a6514872fe6b2e056887166065a088e1a_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_ade13c3a92c3a4a7a79123f8b49d3a5d4}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!\_execute\_command@{\_execute\_command}}
+\index{\_execute\_command@{\_execute\_command}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{\_execute\_command()}{\_execute\_command()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_ade13c3a92c3a4a7a79123f8b49d3a5d4} 
+modules.\+io.\+ch376s.\+CH376\+S.\+\_\+execute\+\_\+command (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Выполнение команды\end{DoxyVerb}
+ Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_ade13c3a92c3a4a7a79123f8b49d3a5d4_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_ade13c3a92c3a4a7a79123f8b49d3a5d4_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a5ac789bff538c0e0b19721c936ac072d}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!\_fs\_alloc\_sectors@{\_fs\_alloc\_sectors}}
+\index{\_fs\_alloc\_sectors@{\_fs\_alloc\_sectors}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{\_fs\_alloc\_sectors()}{\_fs\_alloc\_sectors()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a5ac789bff538c0e0b19721c936ac072d} 
+modules.\+io.\+ch376s.\+CH376\+S.\+\_\+fs\+\_\+alloc\+\_\+sectors (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{count}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Выделение секторов для данных файла\end{DoxyVerb}
+ Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a5ac789bff538c0e0b19721c936ac072d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a5ac789bff538c0e0b19721c936ac072d_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a805ea8e5cc69effef6a2a4fac2120ed2}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!\_fs\_extend\_file@{\_fs\_extend\_file}}
+\index{\_fs\_extend\_file@{\_fs\_extend\_file}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{\_fs\_extend\_file()}{\_fs\_extend\_file()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a805ea8e5cc69effef6a2a4fac2120ed2} 
+modules.\+io.\+ch376s.\+CH376\+S.\+\_\+fs\+\_\+extend\+\_\+file (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{entry}{, }\item[{}]{needed\+\_\+sectors}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Расширение файла до нужного количества секторов\end{DoxyVerb}
+ Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a805ea8e5cc69effef6a2a4fac2120ed2_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a805ea8e5cc69effef6a2a4fac2120ed2_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a640143caf6dd82a6f1d16e301286d78c}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!\_fs\_find\_file@{\_fs\_find\_file}}
+\index{\_fs\_find\_file@{\_fs\_find\_file}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{\_fs\_find\_file()}{\_fs\_find\_file()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a640143caf6dd82a6f1d16e301286d78c} 
+modules.\+io.\+ch376s.\+CH376\+S.\+\_\+fs\+\_\+find\+\_\+file (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{name}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Поиск файла по имени\end{DoxyVerb}
+ Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a640143caf6dd82a6f1d16e301286d78c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a640143caf6dd82a6f1d16e301286d78c_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_aa63c4eee827edb7d597693a0bb40908a}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!\_fs\_find\_free\_entry@{\_fs\_find\_free\_entry}}
+\index{\_fs\_find\_free\_entry@{\_fs\_find\_free\_entry}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{\_fs\_find\_free\_entry()}{\_fs\_find\_free\_entry()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_aa63c4eee827edb7d597693a0bb40908a} 
+modules.\+io.\+ch376s.\+CH376\+S.\+\_\+fs\+\_\+find\+\_\+free\+\_\+entry (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Поиск свободной записи в таблице\end{DoxyVerb}
+ Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_aa63c4eee827edb7d597693a0bb40908a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_aa63c4eee827edb7d597693a0bb40908a_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a0751c7826b513ff27a22ff02df27ab35}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!\_fs\_init@{\_fs\_init}}
+\index{\_fs\_init@{\_fs\_init}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{\_fs\_init()}{\_fs\_init()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a0751c7826b513ff27a22ff02df27ab35} 
+modules.\+io.\+ch376s.\+CH376\+S.\+\_\+fs\+\_\+init (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Инициализация ФС на новом образе\end{DoxyVerb}
+ Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a0751c7826b513ff27a22ff02df27ab35_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a0751c7826b513ff27a22ff02df27ab35_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a93ee19f521d26a125c5e2cb003d1f462}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!\_fs\_read\_entry@{\_fs\_read\_entry}}
+\index{\_fs\_read\_entry@{\_fs\_read\_entry}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{\_fs\_read\_entry()}{\_fs\_read\_entry()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a93ee19f521d26a125c5e2cb003d1f462} 
+modules.\+io.\+ch376s.\+CH376\+S.\+\_\+fs\+\_\+read\+\_\+entry (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{index}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Чтение записи файла из таблицы\end{DoxyVerb}
+ Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a93ee19f521d26a125c5e2cb003d1f462_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_ae7377d29898e9f9e22be77fc4fcf19d9}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!\_fs\_read\_file\_data@{\_fs\_read\_file\_data}}
+\index{\_fs\_read\_file\_data@{\_fs\_read\_file\_data}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{\_fs\_read\_file\_data()}{\_fs\_read\_file\_data()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_ae7377d29898e9f9e22be77fc4fcf19d9} 
+modules.\+io.\+ch376s.\+CH376\+S.\+\_\+fs\+\_\+read\+\_\+file\+\_\+data (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{entry}{, }\item[{}]{offset}{, }\item[{}]{count}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Чтение данных файла\end{DoxyVerb}
+ Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_ae7377d29898e9f9e22be77fc4fcf19d9_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a078227e73ea3a1a018015a757034f03a}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!\_fs\_read\_header@{\_fs\_read\_header}}
+\index{\_fs\_read\_header@{\_fs\_read\_header}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{\_fs\_read\_header()}{\_fs\_read\_header()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a078227e73ea3a1a018015a757034f03a} 
+modules.\+io.\+ch376s.\+CH376\+S.\+\_\+fs\+\_\+read\+\_\+header (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Чтение заголовка ФС\end{DoxyVerb}
+ Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a078227e73ea3a1a018015a757034f03a_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_add2dbb68ed6e848b0dba5e364e4b9f31}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!\_fs\_write\_entry@{\_fs\_write\_entry}}
+\index{\_fs\_write\_entry@{\_fs\_write\_entry}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{\_fs\_write\_entry()}{\_fs\_write\_entry()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_add2dbb68ed6e848b0dba5e364e4b9f31} 
+modules.\+io.\+ch376s.\+CH376\+S.\+\_\+fs\+\_\+write\+\_\+entry (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{index}{, }\item[{}]{entry}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Запись записи файла в таблицу\end{DoxyVerb}
+ Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_add2dbb68ed6e848b0dba5e364e4b9f31_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_ad6e6f80548df1170726bb148e69bc824}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!\_fs\_write\_file\_data@{\_fs\_write\_file\_data}}
+\index{\_fs\_write\_file\_data@{\_fs\_write\_file\_data}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{\_fs\_write\_file\_data()}{\_fs\_write\_file\_data()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_ad6e6f80548df1170726bb148e69bc824} 
+modules.\+io.\+ch376s.\+CH376\+S.\+\_\+fs\+\_\+write\+\_\+file\+\_\+data (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{entry}{, }\item[{}]{offset}{, }\item[{}]{data}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Запись данных файла\end{DoxyVerb}
+ Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_ad6e6f80548df1170726bb148e69bc824_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_ae95f056b5831727a6258367c497fc751}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!\_fs\_write\_header@{\_fs\_write\_header}}
+\index{\_fs\_write\_header@{\_fs\_write\_header}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{\_fs\_write\_header()}{\_fs\_write\_header()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_ae95f056b5831727a6258367c497fc751} 
+modules.\+io.\+ch376s.\+CH376\+S.\+\_\+fs\+\_\+write\+\_\+header (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{header}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Запись заголовка ФС\end{DoxyVerb}
+ Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_ae95f056b5831727a6258367c497fc751_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_ab1e60118b58be39494982cba94ab6af8}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!\_get\_operation\_duration@{\_get\_operation\_duration}}
+\index{\_get\_operation\_duration@{\_get\_operation\_duration}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{\_get\_operation\_duration()}{\_get\_operation\_duration()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_ab1e60118b58be39494982cba94ab6af8} 
+modules.\+io.\+ch376s.\+CH376\+S.\+\_\+get\+\_\+operation\+\_\+duration (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{cmd}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Длительность операции в тактах CPU\end{DoxyVerb}
+ Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_ab1e60118b58be39494982cba94ab6af8_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a20b03fbf9f55b4c60d15100abf28c532}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!\_get\_param\_count@{\_get\_param\_count}}
+\index{\_get\_param\_count@{\_get\_param\_count}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{\_get\_param\_count()}{\_get\_param\_count()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a20b03fbf9f55b4c60d15100abf28c532} 
+modules.\+io.\+ch376s.\+CH376\+S.\+\_\+get\+\_\+param\+\_\+count (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{cmd}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Количество параметров для команды\end{DoxyVerb}
+ Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a20b03fbf9f55b4c60d15100abf28c532_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_ab4b6c01ca823ab0f0f6b61c07e929a78}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!\_read\_data@{\_read\_data}}
+\index{\_read\_data@{\_read\_data}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{\_read\_data()}{\_read\_data()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_ab4b6c01ca823ab0f0f6b61c07e929a78} 
+modules.\+io.\+ch376s.\+CH376\+S.\+\_\+read\+\_\+data (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Чтение данных из буфера\end{DoxyVerb}
+ Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_ab4b6c01ca823ab0f0f6b61c07e929a78_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_adf4ba8581587bea288fc8f0b1b83ec37}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!\_start\_operation@{\_start\_operation}}
+\index{\_start\_operation@{\_start\_operation}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{\_start\_operation()}{\_start\_operation()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_adf4ba8581587bea288fc8f0b1b83ec37} 
+modules.\+io.\+ch376s.\+CH376\+S.\+\_\+start\+\_\+operation (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{cycles}{, }\item[{}]{final\+\_\+status}{ = {\ttfamily None}, }\item[{}]{generate\+\_\+irq}{ = {\ttfamily False}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Запуск операции с задержкой.
+Если emulate_delay выключен, операция завершается мгновенно.\end{DoxyVerb}
+ Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_adf4ba8581587bea288fc8f0b1b83ec37_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a1c6f29a8d29fcdf7931da074698a5823}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!\_write\_command@{\_write\_command}}
+\index{\_write\_command@{\_write\_command}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{\_write\_command()}{\_write\_command()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a1c6f29a8d29fcdf7931da074698a5823} 
+modules.\+io.\+ch376s.\+CH376\+S.\+\_\+write\+\_\+command (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Запись команды\end{DoxyVerb}
+ Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a1c6f29a8d29fcdf7931da074698a5823_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a1c6f29a8d29fcdf7931da074698a5823_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_ae246fb9331556750cfea80ee035bb397}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!\_write\_data@{\_write\_data}}
+\index{\_write\_data@{\_write\_data}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{\_write\_data()}{\_write\_data()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_ae246fb9331556750cfea80ee035bb397} 
+modules.\+io.\+ch376s.\+CH376\+S.\+\_\+write\+\_\+data (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Запись данных/параметров\end{DoxyVerb}
+ Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_ae246fb9331556750cfea80ee035bb397_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_ae246fb9331556750cfea80ee035bb397_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_aac4860408156421175081b56dbff034d}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!acknowledge\_interrupt@{acknowledge\_interrupt}}
+\index{acknowledge\_interrupt@{acknowledge\_interrupt}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{acknowledge\_interrupt()}{acknowledge\_interrupt()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_aac4860408156421175081b56dbff034d} 
+modules.\+io.\+ch376s.\+CH376\+S.\+acknowledge\+\_\+interrupt (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Подтверждение прерывания\end{DoxyVerb}
+ \Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a71028361b3a851fd8c8370e4cfd78d57}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!get\_state@{get\_state}}
+\index{get\_state@{get\_state}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{get\_state()}{get\_state()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a71028361b3a851fd8c8370e4cfd78d57} 
+modules.\+io.\+ch376s.\+CH376\+S.\+get\+\_\+state (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Состояние для отладки\end{DoxyVerb}
+ 
+
+Reimplemented from \mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_a17a7a0beff1c642aa1b3763e15bd429f}{modules.\+io.\+iodevice.\+IODevice}}.
+
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a0844379ace65a6e35a7bef37009a0e2b}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!has\_interrupt@{has\_interrupt}}
+\index{has\_interrupt@{has\_interrupt}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{has\_interrupt()}{has\_interrupt()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a0844379ace65a6e35a7bef37009a0e2b} 
+modules.\+io.\+ch376s.\+CH376\+S.\+has\+\_\+interrupt (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Есть ли активное прерывание\end{DoxyVerb}
+ \Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_abcebd01744641d512c18dd1c2104803c}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!io\_read@{io\_read}}
+\index{io\_read@{io\_read}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{io\_read()}{io\_read()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_abcebd01744641d512c18dd1c2104803c} 
+modules.\+io.\+ch376s.\+CH376\+S.\+io\+\_\+read (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{port}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Чтение из порта\end{DoxyVerb}
+ 
+
+Reimplemented from \mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_a48e12c7ac8519e89080b7981c57ae58d}{modules.\+io.\+iodevice.\+IODevice}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_abcebd01744641d512c18dd1c2104803c_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a94acf57d0dcb6a56b9a540e3dc9c922e}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!io\_write@{io\_write}}
+\index{io\_write@{io\_write}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{io\_write()}{io\_write()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a94acf57d0dcb6a56b9a540e3dc9c922e} 
+modules.\+io.\+ch376s.\+CH376\+S.\+io\+\_\+write (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{port}{, }\item[{}]{value}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Запись в порт\end{DoxyVerb}
+ 
+
+Reimplemented from \mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_a2957a963b46a5b4179fe85570fc377be}{modules.\+io.\+iodevice.\+IODevice}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a94acf57d0dcb6a56b9a540e3dc9c922e_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a408f364884f73e8ee2f7c987908778f7}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!is\_busy@{is\_busy}}
+\index{is\_busy@{is\_busy}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{is\_busy()}{is\_busy()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a408f364884f73e8ee2f7c987908778f7} 
+modules.\+io.\+ch376s.\+CH376\+S.\+is\+\_\+busy (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Проверка занятости устройства\end{DoxyVerb}
+ \Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a50aa84fd675760d4949fe662eeb13e8f}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!reset@{reset}}
+\index{reset@{reset}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a50aa84fd675760d4949fe662eeb13e8f} 
+modules.\+io.\+ch376s.\+CH376\+S.\+reset (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Сброс контроллера\end{DoxyVerb}
+ 
+
+Reimplemented from \mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_afe097230fde568f41b4153ecc99c6f4b}{modules.\+io.\+iodevice.\+IODevice}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a50aa84fd675760d4949fe662eeb13e8f_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a120ad95f7cc58bea700e33a41295a5e2}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!set\_disk\_image@{set\_disk\_image}}
+\index{set\_disk\_image@{set\_disk\_image}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{set\_disk\_image()}{set\_disk\_image()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a120ad95f7cc58bea700e33a41295a5e2} 
+modules.\+io.\+ch376s.\+CH376\+S.\+set\+\_\+disk\+\_\+image (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{path}{, }\item[{}]{size\+\_\+mb}{ = {\ttfamily 32}}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Установить образ диска.
+Если файл не существует или пуст — создаётся и инициализируется ФС.\end{DoxyVerb}
+ Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a120ad95f7cc58bea700e33a41295a5e2_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_ac94ca42429fe9e84fe720ea1b5d38cea}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!set\_emulate\_delay@{set\_emulate\_delay}}
+\index{set\_emulate\_delay@{set\_emulate\_delay}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{set\_emulate\_delay()}{set\_emulate\_delay()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_ac94ca42429fe9e84fe720ea1b5d38cea} 
+modules.\+io.\+ch376s.\+CH376\+S.\+set\+\_\+emulate\+\_\+delay (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{enabled}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Включить/выключить эмуляцию задержки операций\end{DoxyVerb}
+ \Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_ae056918424c9d2705d81f7cfcb04ba52}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!tick@{tick}}
+\index{tick@{tick}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{tick()}{tick()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_ae056918424c9d2705d81f7cfcb04ba52} 
+modules.\+io.\+ch376s.\+CH376\+S.\+tick (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{cycles}{ = {\ttfamily 1}}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Вызывается каждый такт. Обработка занятости.\end{DoxyVerb}
+ 
+
+Reimplemented from \mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_a15761d8fd686da3088af53bd512045d9}{modules.\+io.\+iodevice.\+IODevice}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_ae056918424c9d2705d81f7cfcb04ba52_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a4f2ba30bac16e2b89720c464bc868542}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!\_collecting\_filename@{\_collecting\_filename}}
+\index{\_collecting\_filename@{\_collecting\_filename}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{\_collecting\_filename}{\_collecting\_filename}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a4f2ba30bac16e2b89720c464bc868542} 
+bool modules.\+io.\+ch376s.\+CH376\+S.\+\_\+collecting\+\_\+filename = False\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a8b12c6c9ed5c1be05e302750586df881}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!\_pending\_irq@{\_pending\_irq}}
+\index{\_pending\_irq@{\_pending\_irq}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{\_pending\_irq}{\_pending\_irq}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a8b12c6c9ed5c1be05e302750586df881} 
+bool modules.\+io.\+ch376s.\+CH376\+S.\+\_\+pending\+\_\+irq = False\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a0f16e405cfbc8a2348a97e2685326ea9}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!\_pending\_status@{\_pending\_status}}
+\index{\_pending\_status@{\_pending\_status}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{\_pending\_status}{\_pending\_status}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a0f16e405cfbc8a2348a97e2685326ea9} 
+int modules.\+io.\+ch376s.\+CH376\+S.\+\_\+pending\+\_\+status = self.\+STATUS\+\_\+\+OK\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_ae32f52e860e62bee14ab3f382bc85cb5}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!busy@{busy}}
+\index{busy@{busy}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{busy}{busy}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_ae32f52e860e62bee14ab3f382bc85cb5} 
+bool modules.\+io.\+ch376s.\+CH376\+S.\+busy = False}
+
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a3d710746cf3259098c01923d75952b64}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!busy\_cycles@{busy\_cycles}}
+\index{busy\_cycles@{busy\_cycles}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{busy\_cycles}{busy\_cycles}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a3d710746cf3259098c01923d75952b64} 
+int modules.\+io.\+ch376s.\+CH376\+S.\+busy\+\_\+cycles = 0}
+
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a12678833727a9a5298e83afc54b7c664}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!CMD\_DISK\_CAPACITY@{CMD\_DISK\_CAPACITY}}
+\index{CMD\_DISK\_CAPACITY@{CMD\_DISK\_CAPACITY}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{CMD\_DISK\_CAPACITY}{CMD\_DISK\_CAPACITY}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a12678833727a9a5298e83afc54b7c664} 
+modules.\+io.\+ch376s.\+CH376\+S.\+CMD\+\_\+\+DISK\+\_\+\+CAPACITY = 0x08\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a182e1eab50989c9070eb26ca00f786c2}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!CMD\_DISK\_CONNECT@{CMD\_DISK\_CONNECT}}
+\index{CMD\_DISK\_CONNECT@{CMD\_DISK\_CONNECT}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{CMD\_DISK\_CONNECT}{CMD\_DISK\_CONNECT}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a182e1eab50989c9070eb26ca00f786c2} 
+int modules.\+io.\+ch376s.\+CH376\+S.\+CMD\+\_\+\+DISK\+\_\+\+CONNECT = 0x0A\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a226ea62ef1ff28e2c286517ef88bac13}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!CMD\_DISK\_DISCONN@{CMD\_DISK\_DISCONN}}
+\index{CMD\_DISK\_DISCONN@{CMD\_DISK\_DISCONN}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{CMD\_DISK\_DISCONN}{CMD\_DISK\_DISCONN}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a226ea62ef1ff28e2c286517ef88bac13} 
+int modules.\+io.\+ch376s.\+CH376\+S.\+CMD\+\_\+\+DISK\+\_\+\+DISCONN = 0x0B\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a74d3931dd9c556cc4ec76ecae1d742fa}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!CMD\_DISK\_INIT@{CMD\_DISK\_INIT}}
+\index{CMD\_DISK\_INIT@{CMD\_DISK\_INIT}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{CMD\_DISK\_INIT}{CMD\_DISK\_INIT}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a74d3931dd9c556cc4ec76ecae1d742fa} 
+modules.\+io.\+ch376s.\+CH376\+S.\+CMD\+\_\+\+DISK\+\_\+\+INIT = 0x04\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a17a8a5664c213400560e3caab77ab91f}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!CMD\_DISK\_MOUNT@{CMD\_DISK\_MOUNT}}
+\index{CMD\_DISK\_MOUNT@{CMD\_DISK\_MOUNT}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{CMD\_DISK\_MOUNT}{CMD\_DISK\_MOUNT}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a17a8a5664c213400560e3caab77ab91f} 
+int modules.\+io.\+ch376s.\+CH376\+S.\+CMD\+\_\+\+DISK\+\_\+\+MOUNT = 0x05\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a65d34c7d19d90ad04f9deeec3090d09b}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!CMD\_DISK\_QUERY@{CMD\_DISK\_QUERY}}
+\index{CMD\_DISK\_QUERY@{CMD\_DISK\_QUERY}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{CMD\_DISK\_QUERY}{CMD\_DISK\_QUERY}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a65d34c7d19d90ad04f9deeec3090d09b} 
+modules.\+io.\+ch376s.\+CH376\+S.\+CMD\+\_\+\+DISK\+\_\+\+QUERY = 0x09\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a29d6b0f787a6eb26e15f0ef4e63564f6}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!CMD\_DISK\_READ@{CMD\_DISK\_READ}}
+\index{CMD\_DISK\_READ@{CMD\_DISK\_READ}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{CMD\_DISK\_READ}{CMD\_DISK\_READ}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a29d6b0f787a6eb26e15f0ef4e63564f6} 
+modules.\+io.\+ch376s.\+CH376\+S.\+CMD\+\_\+\+DISK\+\_\+\+READ = 0x06\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a025070f1c52754c7817d71ed609fa974}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!CMD\_DISK\_WRITE@{CMD\_DISK\_WRITE}}
+\index{CMD\_DISK\_WRITE@{CMD\_DISK\_WRITE}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{CMD\_DISK\_WRITE}{CMD\_DISK\_WRITE}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a025070f1c52754c7817d71ed609fa974} 
+modules.\+io.\+ch376s.\+CH376\+S.\+CMD\+\_\+\+DISK\+\_\+\+WRITE = 0x07\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_aa14154f75d9b667b02b3f01f67ac0222}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!CMD\_FILE\_CLOSE@{CMD\_FILE\_CLOSE}}
+\index{CMD\_FILE\_CLOSE@{CMD\_FILE\_CLOSE}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{CMD\_FILE\_CLOSE}{CMD\_FILE\_CLOSE}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_aa14154f75d9b667b02b3f01f67ac0222} 
+int modules.\+io.\+ch376s.\+CH376\+S.\+CMD\+\_\+\+FILE\+\_\+\+CLOSE = 0x0E\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_ae8ca75a5aad2b55a71cba0a0b2b25640}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!CMD\_FILE\_CREATE@{CMD\_FILE\_CREATE}}
+\index{CMD\_FILE\_CREATE@{CMD\_FILE\_CREATE}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{CMD\_FILE\_CREATE}{CMD\_FILE\_CREATE}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_ae8ca75a5aad2b55a71cba0a0b2b25640} 
+modules.\+io.\+ch376s.\+CH376\+S.\+CMD\+\_\+\+FILE\+\_\+\+CREATE = 0x12\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_af2ac82bef14c4f38353aba85493d61ca}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!CMD\_FILE\_ENUM@{CMD\_FILE\_ENUM}}
+\index{CMD\_FILE\_ENUM@{CMD\_FILE\_ENUM}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{CMD\_FILE\_ENUM}{CMD\_FILE\_ENUM}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_af2ac82bef14c4f38353aba85493d61ca} 
+int modules.\+io.\+ch376s.\+CH376\+S.\+CMD\+\_\+\+FILE\+\_\+\+ENUM = 0x11\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a7cc2fb7d42383a1dad41354b272208f5}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!CMD\_FILE\_ERASE@{CMD\_FILE\_ERASE}}
+\index{CMD\_FILE\_ERASE@{CMD\_FILE\_ERASE}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{CMD\_FILE\_ERASE}{CMD\_FILE\_ERASE}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a7cc2fb7d42383a1dad41354b272208f5} 
+modules.\+io.\+ch376s.\+CH376\+S.\+CMD\+\_\+\+FILE\+\_\+\+ERASE = 0x13\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a8c008cf1980e0a31ab262adf70d5e2f1}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!CMD\_FILE\_LOCATE@{CMD\_FILE\_LOCATE}}
+\index{CMD\_FILE\_LOCATE@{CMD\_FILE\_LOCATE}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{CMD\_FILE\_LOCATE}{CMD\_FILE\_LOCATE}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a8c008cf1980e0a31ab262adf70d5e2f1} 
+modules.\+io.\+ch376s.\+CH376\+S.\+CMD\+\_\+\+FILE\+\_\+\+LOCATE = 0x15\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a9da11f5d4d792e7c36075921934bf0a2}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!CMD\_FILE\_OPEN@{CMD\_FILE\_OPEN}}
+\index{CMD\_FILE\_OPEN@{CMD\_FILE\_OPEN}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{CMD\_FILE\_OPEN}{CMD\_FILE\_OPEN}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a9da11f5d4d792e7c36075921934bf0a2} 
+modules.\+io.\+ch376s.\+CH376\+S.\+CMD\+\_\+\+FILE\+\_\+\+OPEN = 0x0D\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a473a941fef99f4d7862c60cab44fbb5b}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!CMD\_FILE\_QUERY@{CMD\_FILE\_QUERY}}
+\index{CMD\_FILE\_QUERY@{CMD\_FILE\_QUERY}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{CMD\_FILE\_QUERY}{CMD\_FILE\_QUERY}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a473a941fef99f4d7862c60cab44fbb5b} 
+int modules.\+io.\+ch376s.\+CH376\+S.\+CMD\+\_\+\+FILE\+\_\+\+QUERY = 0x14\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a9a5ac3eea5dd295070e8dbf2ff30194e}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!CMD\_FILE\_READ@{CMD\_FILE\_READ}}
+\index{CMD\_FILE\_READ@{CMD\_FILE\_READ}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{CMD\_FILE\_READ}{CMD\_FILE\_READ}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a9a5ac3eea5dd295070e8dbf2ff30194e} 
+modules.\+io.\+ch376s.\+CH376\+S.\+CMD\+\_\+\+FILE\+\_\+\+READ = 0x0F\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_af12c3633475ad065608c41ddbdc2bdc8}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!CMD\_FILE\_WRITE@{CMD\_FILE\_WRITE}}
+\index{CMD\_FILE\_WRITE@{CMD\_FILE\_WRITE}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{CMD\_FILE\_WRITE}{CMD\_FILE\_WRITE}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_af12c3633475ad065608c41ddbdc2bdc8} 
+modules.\+io.\+ch376s.\+CH376\+S.\+CMD\+\_\+\+FILE\+\_\+\+WRITE = 0x10\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_adc8e5d264aa8be9dde0acbb97c0bad48}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!CMD\_GET\_IC\_VER@{CMD\_GET\_IC\_VER}}
+\index{CMD\_GET\_IC\_VER@{CMD\_GET\_IC\_VER}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{CMD\_GET\_IC\_VER}{CMD\_GET\_IC\_VER}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_adc8e5d264aa8be9dde0acbb97c0bad48} 
+modules.\+io.\+ch376s.\+CH376\+S.\+CMD\+\_\+\+GET\+\_\+\+IC\+\_\+\+VER = 0x01\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_adaac94dd4d4752368a0fd9c14d1b187b}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!CMD\_GET\_STATUS@{CMD\_GET\_STATUS}}
+\index{CMD\_GET\_STATUS@{CMD\_GET\_STATUS}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{CMD\_GET\_STATUS}{CMD\_GET\_STATUS}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_adaac94dd4d4752368a0fd9c14d1b187b} 
+modules.\+io.\+ch376s.\+CH376\+S.\+CMD\+\_\+\+GET\+\_\+\+STATUS = 0x02\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_ad3182b95cd4f29ad2f437d85253e713f}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!CMD\_SET\_USB\_MODE@{CMD\_SET\_USB\_MODE}}
+\index{CMD\_SET\_USB\_MODE@{CMD\_SET\_USB\_MODE}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{CMD\_SET\_USB\_MODE}{CMD\_SET\_USB\_MODE}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_ad3182b95cd4f29ad2f437d85253e713f} 
+int modules.\+io.\+ch376s.\+CH376\+S.\+CMD\+\_\+\+SET\+\_\+\+USB\+\_\+\+MODE = 0x0C\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a0c9993ed87625492d1ebee56163d8e5b}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!CMD\_WR\_OFS\_M\_DATA@{CMD\_WR\_OFS\_M\_DATA}}
+\index{CMD\_WR\_OFS\_M\_DATA@{CMD\_WR\_OFS\_M\_DATA}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{CMD\_WR\_OFS\_M\_DATA}{CMD\_WR\_OFS\_M\_DATA}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a0c9993ed87625492d1ebee56163d8e5b} 
+int modules.\+io.\+ch376s.\+CH376\+S.\+CMD\+\_\+\+WR\+\_\+\+OFS\+\_\+\+M\+\_\+\+DATA = 0x03\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_ab32de517e3460daf56d12ecc1b6d773e}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!command@{command}}
+\index{command@{command}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{command}{command}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_ab32de517e3460daf56d12ecc1b6d773e} 
+int modules.\+io.\+ch376s.\+CH376\+S.\+command = 0x00}
+
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a519afe6b15bb9364d8d11cd339ba96b7}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!current\_lba@{current\_lba}}
+\index{current\_lba@{current\_lba}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{current\_lba}{current\_lba}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a519afe6b15bb9364d8d11cd339ba96b7} 
+int modules.\+io.\+ch376s.\+CH376\+S.\+current\+\_\+lba = 0}
+
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a953befd5c967195391503a40668ebcd9}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!data\_buffer@{data\_buffer}}
+\index{data\_buffer@{data\_buffer}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{data\_buffer}{data\_buffer}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a953befd5c967195391503a40668ebcd9} 
+modules.\+io.\+ch376s.\+CH376\+S.\+data\+\_\+buffer = bytearray()}
+
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a3f57809f10e53c5fe1978fc0e6a34afd}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!data\_direction@{data\_direction}}
+\index{data\_direction@{data\_direction}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{data\_direction}{data\_direction}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a3f57809f10e53c5fe1978fc0e6a34afd} 
+str modules.\+io.\+ch376s.\+CH376\+S.\+data\+\_\+direction = None}
+
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_aaadd8bba9ce462e635a32cf5e0aca7c2}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!data\_index@{data\_index}}
+\index{data\_index@{data\_index}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{data\_index}{data\_index}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_aaadd8bba9ce462e635a32cf5e0aca7c2} 
+int modules.\+io.\+ch376s.\+CH376\+S.\+data\+\_\+index = 0}
+
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a92358106ca5986da0ac1bf123441461c}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!disk@{disk}}
+\index{disk@{disk}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{disk}{disk}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a92358106ca5986da0ac1bf123441461c} 
+modules.\+io.\+ch376s.\+CH376\+S.\+disk = None}
+
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a07f70f856b17866e24f343e6e57989fa}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!disk\_connected@{disk\_connected}}
+\index{disk\_connected@{disk\_connected}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{disk\_connected}{disk\_connected}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a07f70f856b17866e24f343e6e57989fa} 
+bool modules.\+io.\+ch376s.\+CH376\+S.\+disk\+\_\+connected = False}
+
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a8eb49ba1b13d173471d6e1a192ebad3c}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!disk\_initialized@{disk\_initialized}}
+\index{disk\_initialized@{disk\_initialized}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{disk\_initialized}{disk\_initialized}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a8eb49ba1b13d173471d6e1a192ebad3c} 
+bool modules.\+io.\+ch376s.\+CH376\+S.\+disk\+\_\+initialized = False}
+
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_ac0bbe829b675eb377a2f153738cd0c0e}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!disk\_mode@{disk\_mode}}
+\index{disk\_mode@{disk\_mode}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{disk\_mode}{disk\_mode}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_ac0bbe829b675eb377a2f153738cd0c0e} 
+int modules.\+io.\+ch376s.\+CH376\+S.\+disk\+\_\+mode = self.\+DISK\+\_\+\+MODE\+\_\+\+IDLE}
+
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_aa4e4da02012475ac4f3b4d98524bb8df}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!DISK\_MODE\_IDLE@{DISK\_MODE\_IDLE}}
+\index{DISK\_MODE\_IDLE@{DISK\_MODE\_IDLE}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{DISK\_MODE\_IDLE}{DISK\_MODE\_IDLE}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_aa4e4da02012475ac4f3b4d98524bb8df} 
+int modules.\+io.\+ch376s.\+CH376\+S.\+DISK\+\_\+\+MODE\+\_\+\+IDLE = 0x00\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a32008ed4adedbf972f99111b1ef661a0}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!DISK\_MODE\_READING@{DISK\_MODE\_READING}}
+\index{DISK\_MODE\_READING@{DISK\_MODE\_READING}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{DISK\_MODE\_READING}{DISK\_MODE\_READING}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a32008ed4adedbf972f99111b1ef661a0} 
+int modules.\+io.\+ch376s.\+CH376\+S.\+DISK\+\_\+\+MODE\+\_\+\+READING = 0x01\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a31841bdd042bbc6a34974df98a777d11}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!DISK\_MODE\_WRITING@{DISK\_MODE\_WRITING}}
+\index{DISK\_MODE\_WRITING@{DISK\_MODE\_WRITING}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{DISK\_MODE\_WRITING}{DISK\_MODE\_WRITING}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a31841bdd042bbc6a34974df98a777d11} 
+int modules.\+io.\+ch376s.\+CH376\+S.\+DISK\+\_\+\+MODE\+\_\+\+WRITING = 0x02\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a75b36024ff0e20bffa8d6548534b6d48}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!disk\_mounted@{disk\_mounted}}
+\index{disk\_mounted@{disk\_mounted}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{disk\_mounted}{disk\_mounted}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a75b36024ff0e20bffa8d6548534b6d48} 
+bool modules.\+io.\+ch376s.\+CH376\+S.\+disk\+\_\+mounted = False}
+
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a9c6a0fd33ee820e90ba30f50e6794463}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!emulate\_delay@{emulate\_delay}}
+\index{emulate\_delay@{emulate\_delay}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{emulate\_delay}{emulate\_delay}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a9c6a0fd33ee820e90ba30f50e6794463} 
+bool modules.\+io.\+ch376s.\+CH376\+S.\+emulate\+\_\+delay = False}
+
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_abbe4106b6390897b06e9bad09114935c}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!enum\_index@{enum\_index}}
+\index{enum\_index@{enum\_index}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{enum\_index}{enum\_index}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_abbe4106b6390897b06e9bad09114935c} 
+int modules.\+io.\+ch376s.\+CH376\+S.\+enum\+\_\+index = 0}
+
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a76612cfc494a4f309c9ef920616f52bd}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!file\_index@{file\_index}}
+\index{file\_index@{file\_index}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{file\_index}{file\_index}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a76612cfc494a4f309c9ef920616f52bd} 
+modules.\+io.\+ch376s.\+CH376\+S.\+file\+\_\+index = None}
+
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a9acde17799a35b55e682acce8474e412}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!file\_open@{file\_open}}
+\index{file\_open@{file\_open}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{file\_open}{file\_open}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a9acde17799a35b55e682acce8474e412} 
+bool modules.\+io.\+ch376s.\+CH376\+S.\+file\+\_\+open = False}
+
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_aae6ec7e893328f12e7663a9fc340c5c9}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!file\_path@{file\_path}}
+\index{file\_path@{file\_path}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{file\_path}{file\_path}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_aae6ec7e893328f12e7663a9fc340c5c9} 
+str modules.\+io.\+ch376s.\+CH376\+S.\+file\+\_\+path = "{}"{}}
+
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a6d4e3e4899e6482fee336badc4720179}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!file\_pos@{file\_pos}}
+\index{file\_pos@{file\_pos}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{file\_pos}{file\_pos}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a6d4e3e4899e6482fee336badc4720179} 
+modules.\+io.\+ch376s.\+CH376\+S.\+file\+\_\+pos = 0}
+
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a8ee6a15264c59e5d8be53e4c4513f348}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!file\_size@{file\_size}}
+\index{file\_size@{file\_size}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{file\_size}{file\_size}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a8ee6a15264c59e5d8be53e4c4513f348} 
+int modules.\+io.\+ch376s.\+CH376\+S.\+file\+\_\+size = 0}
+
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a658c37d9ee3d24153930870de9260a30}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!ic\_version@{ic\_version}}
+\index{ic\_version@{ic\_version}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{ic\_version}{ic\_version}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a658c37d9ee3d24153930870de9260a30} 
+int modules.\+io.\+ch376s.\+CH376\+S.\+ic\+\_\+version = 0x76}
+
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a50e552ffdad7ab20d276e7de0d424afb}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!on\_data\_ready@{on\_data\_ready}}
+\index{on\_data\_ready@{on\_data\_ready}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{on\_data\_ready}{on\_data\_ready}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a50e552ffdad7ab20d276e7de0d424afb} 
+modules.\+io.\+ch376s.\+CH376\+S.\+on\+\_\+data\+\_\+ready = None}
+
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a22ef200fff2d5947e5fbe6db6463f72f}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!on\_irq@{on\_irq}}
+\index{on\_irq@{on\_irq}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{on\_irq}{on\_irq}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a22ef200fff2d5947e5fbe6db6463f72f} 
+modules.\+io.\+ch376s.\+CH376\+S.\+on\+\_\+irq = None}
+
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a9d3dcfc54dac57394002f6f455873675}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!param\_buffer@{param\_buffer}}
+\index{param\_buffer@{param\_buffer}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{param\_buffer}{param\_buffer}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a9d3dcfc54dac57394002f6f455873675} 
+modules.\+io.\+ch376s.\+CH376\+S.\+param\+\_\+buffer = bytearray()}
+
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a5d97cca1c0ce9b4ba43d009b25742363}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!param\_count@{param\_count}}
+\index{param\_count@{param\_count}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{param\_count}{param\_count}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a5d97cca1c0ce9b4ba43d009b25742363} 
+int modules.\+io.\+ch376s.\+CH376\+S.\+param\+\_\+count = 0}
+
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a38f918c725b747c27039bbc7279fb3f0}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!param\_expected@{param\_expected}}
+\index{param\_expected@{param\_expected}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{param\_expected}{param\_expected}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a38f918c725b747c27039bbc7279fb3f0} 
+int modules.\+io.\+ch376s.\+CH376\+S.\+param\+\_\+expected = 0}
+
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a0cbba8cfdaf806fa764c1def312bd15a}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!pending\_command@{pending\_command}}
+\index{pending\_command@{pending\_command}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{pending\_command}{pending\_command}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a0cbba8cfdaf806fa764c1def312bd15a} 
+modules.\+io.\+ch376s.\+CH376\+S.\+pending\+\_\+command = None}
+
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a1f53ad05173654456e0f986c09c5364d}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!sector\_count@{sector\_count}}
+\index{sector\_count@{sector\_count}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{sector\_count}{sector\_count}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a1f53ad05173654456e0f986c09c5364d} 
+int modules.\+io.\+ch376s.\+CH376\+S.\+sector\+\_\+count = 0}
+
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a3463e019076e7cbbbbcbae34828b0622}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!status@{status}}
+\index{status@{status}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{status}{status}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a3463e019076e7cbbbbcbae34828b0622} 
+int modules.\+io.\+ch376s.\+CH376\+S.\+status = self.\+STATUS\+\_\+\+OK}
+
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_aeeef4f79ab17217fbb84c64e68869618}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!STATUS\_BUSY@{STATUS\_BUSY}}
+\index{STATUS\_BUSY@{STATUS\_BUSY}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{STATUS\_BUSY}{STATUS\_BUSY}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_aeeef4f79ab17217fbb84c64e68869618} 
+int modules.\+io.\+ch376s.\+CH376\+S.\+STATUS\+\_\+\+BUSY = 0x01\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_ac7b9da885f0bf5364f44eba658cec6c1}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!STATUS\_ERROR@{STATUS\_ERROR}}
+\index{STATUS\_ERROR@{STATUS\_ERROR}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{STATUS\_ERROR}{STATUS\_ERROR}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_ac7b9da885f0bf5364f44eba658cec6c1} 
+int modules.\+io.\+ch376s.\+CH376\+S.\+STATUS\+\_\+\+ERROR = 0x02\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_af8887f8522408f53455a1f5ab3bdffa0}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!STATUS\_FILE\_NOT\_FOUND@{STATUS\_FILE\_NOT\_FOUND}}
+\index{STATUS\_FILE\_NOT\_FOUND@{STATUS\_FILE\_NOT\_FOUND}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{STATUS\_FILE\_NOT\_FOUND}{STATUS\_FILE\_NOT\_FOUND}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_af8887f8522408f53455a1f5ab3bdffa0} 
+int modules.\+io.\+ch376s.\+CH376\+S.\+STATUS\+\_\+\+FILE\+\_\+\+NOT\+\_\+\+FOUND = 0x06\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_aa5f06bfaf5d72d491bf31672b85ef737}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!STATUS\_NO\_DISK@{STATUS\_NO\_DISK}}
+\index{STATUS\_NO\_DISK@{STATUS\_NO\_DISK}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{STATUS\_NO\_DISK}{STATUS\_NO\_DISK}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_aa5f06bfaf5d72d491bf31672b85ef737} 
+int modules.\+io.\+ch376s.\+CH376\+S.\+STATUS\+\_\+\+NO\+\_\+\+DISK = 0x03\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a266e6aefc5e62d38eed7fa6277d475c3}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!STATUS\_NOT\_READY@{STATUS\_NOT\_READY}}
+\index{STATUS\_NOT\_READY@{STATUS\_NOT\_READY}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{STATUS\_NOT\_READY}{STATUS\_NOT\_READY}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a266e6aefc5e62d38eed7fa6277d475c3} 
+int modules.\+io.\+ch376s.\+CH376\+S.\+STATUS\+\_\+\+NOT\+\_\+\+READY = 0x05\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a4d10c04394ca4b8f3ad1fa601d74bed6}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!STATUS\_OK@{STATUS\_OK}}
+\index{STATUS\_OK@{STATUS\_OK}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{STATUS\_OK}{STATUS\_OK}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a4d10c04394ca4b8f3ad1fa601d74bed6} 
+int modules.\+io.\+ch376s.\+CH376\+S.\+STATUS\+\_\+\+OK = 0x00\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a9efc6c92554adadac80ab148b16eb12a}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!STATUS\_WRITE\_PROT@{STATUS\_WRITE\_PROT}}
+\index{STATUS\_WRITE\_PROT@{STATUS\_WRITE\_PROT}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{STATUS\_WRITE\_PROT}{STATUS\_WRITE\_PROT}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a9efc6c92554adadac80ab148b16eb12a} 
+int modules.\+io.\+ch376s.\+CH376\+S.\+STATUS\+\_\+\+WRITE\+\_\+\+PROT = 0x04\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a724d9843ab53bdf8dbc7fb4cdf422650}\index{modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}!usb\_mode@{usb\_mode}}
+\index{usb\_mode@{usb\_mode}!modules.io.ch376s.CH376S@{modules.io.ch376s.CH376S}}
+\doxysubsubsection{\texorpdfstring{usb\_mode}{usb\_mode}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1ch376s_1_1_c_h376_s_a724d9843ab53bdf8dbc7fb4cdf422650} 
+modules.\+io.\+ch376s.\+CH376\+S.\+usb\+\_\+mode = mode}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+modules/io/\mbox{\hyperlink{ch376s_8py}{ch376s.\+py}}\end{DoxyCompactItemize}

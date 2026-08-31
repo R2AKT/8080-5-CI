@@ -1,0 +1,24 @@
+\doxysection{modules.\+io.\+i8259 Namespace Reference}
+\hypertarget{namespacemodules_1_1io_1_1i8259}{}\label{namespacemodules_1_1io_1_1i8259}\index{modules.io.i8259@{modules.io.i8259}}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classmodules_1_1io_1_1i8259_1_1_i8259}{I8259}}
+\item 
+class \mbox{\hyperlink{classmodules_1_1io_1_1i8259_1_1_i8259_a}{I8259A}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}8259/8259A — Programmable Interrupt Controller.
+Итерация E3: базовые IO-устройства.
+
+Различия:
+  - 8259  (КР580ВН59):  ICW1, ICW2, ICW3. НЕТ ICW4. Только режим 8080.
+  - 8259A (КР1810ВН59): ICW1, ICW2, ICW3, ICW4. Режимы 8080/8086,
+                        Auto-EOI, Fully Nested Mode.
+
+8 линий IRQ0-IRQ7, фиксированный приоритет с ротацией,
+маскирование (IMR), EOI (специфический/неспецифический).
+\end{DoxyVerb}
+ 

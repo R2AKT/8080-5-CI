@@ -1,0 +1,205 @@
+\doxysection{i8080\+\_\+\+CI.\+Bus\+Worker Class Reference}
+\hypertarget{classi8080___c_i_1_1_bus_worker}{}\label{classi8080___c_i_1_1_bus_worker}\index{i8080\_CI.BusWorker@{i8080\_CI.BusWorker}}
+
+
+Inheritance diagram for i8080\+\_\+\+CI.\+Bus\+Worker\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=186pt]{classi8080___c_i_1_1_bus_worker__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for i8080\+\_\+\+CI.\+Bus\+Worker\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=186pt]{classi8080___c_i_1_1_bus_worker__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classi8080___c_i_1_1_bus_worker_a2df72e36373ba6c3ed3f493e207e801b}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, serial\+\_\+port, \mbox{\hyperlink{classi8080___c_i_1_1_bus_worker_a57cf481ac5b867bf5995f38435d9eff0}{task}}, \mbox{\hyperlink{classi8080___c_i_1_1_bus_worker_ab664f3bd012952d437fa00e39032be4b}{params}}, \mbox{\hyperlink{classi8080___c_i_1_1_bus_worker_a7e1aa6c687324cdea6f3786a75c1b618}{lang}}="{}en"{}, \mbox{\hyperlink{classi8080___c_i_1_1_bus_worker_a5957b7a39fe4afaa7643f56e79ef2fdf}{max\+\_\+block\+\_\+size}}=128)
+\item 
+\mbox{\hyperlink{classi8080___c_i_1_1_bus_worker_a3b73e30da48dabd6f353c478ca0f7053}{stop}} (self)
+\item 
+\mbox{\hyperlink{classi8080___c_i_1_1_bus_worker_af317abac0392231bdff76e1d5685e242}{tr}} (self, key)
+\item 
+\mbox{\hyperlink{classi8080___c_i_1_1_bus_worker_a742542ecc1da8e273fc2a5eb7068922b}{run}} (self)
+\item 
+\mbox{\hyperlink{classi8080___c_i_1_1_bus_worker_a1046ab4e356d0d2c2913ed11333916aa}{send\+\_\+and\+\_\+recv}} (self, payload, timeout=2.\+0)
+\item 
+\mbox{\hyperlink{classi8080___c_i_1_1_bus_worker_aea40a29269bb23dcdd458fc108cc909a}{do\+\_\+read\+\_\+block}} (self)
+\item 
+\mbox{\hyperlink{classi8080___c_i_1_1_bus_worker_a987b920bc0e47589c8b1bb8733599eda}{do\+\_\+write\+\_\+block}} (self)
+\item 
+\mbox{\hyperlink{classi8080___c_i_1_1_bus_worker_a351c936baacfdaf3b2b93f999d356d16}{do\+\_\+read\+\_\+io\+\_\+block}} (self)
+\item 
+\mbox{\hyperlink{classi8080___c_i_1_1_bus_worker_aa6f1286918e509160f0e9b9bc43c5d6d}{do\+\_\+write\+\_\+io\+\_\+block}} (self)
+\item 
+\mbox{\hyperlink{classi8080___c_i_1_1_bus_worker_a1ab6cb40b044000f2ef94cee034ccc7c}{do\+\_\+test\+\_\+mem}} (self)
+\item 
+\mbox{\hyperlink{classi8080___c_i_1_1_bus_worker_a005128b367757c84a0ee23aada94bbda}{do\+\_\+run\+\_\+io\+\_\+sequence}} (self)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classi8080___c_i_1_1_bus_worker_ab3517ad7a78d2cbb7d85ab09c4f33f0b}{ser}} = serial\+\_\+port
+\item 
+str \mbox{\hyperlink{classi8080___c_i_1_1_bus_worker_a57cf481ac5b867bf5995f38435d9eff0}{task}} = task
+\item 
+\mbox{\hyperlink{classi8080___c_i_1_1_bus_worker_ab664f3bd012952d437fa00e39032be4b}{params}} = params
+\item 
+bool \mbox{\hyperlink{classi8080___c_i_1_1_bus_worker_a36c0955f69f8bbd0c1cc14cc72f2154d}{is\+\_\+running}} = True
+\item 
+\mbox{\hyperlink{classi8080___c_i_1_1_bus_worker_a7e1aa6c687324cdea6f3786a75c1b618}{lang}} = lang
+\item 
+\mbox{\hyperlink{classi8080___c_i_1_1_bus_worker_a5957b7a39fe4afaa7643f56e79ef2fdf}{max\+\_\+block\+\_\+size}} = max\+\_\+block\+\_\+size
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classi8080___c_i_1_1_bus_worker_a6584a8bee990d1e1ae9d9aa69414ea0c}{progress}} = Signal(int)
+\item 
+\mbox{\hyperlink{classi8080___c_i_1_1_bus_worker_adda6776ee751ddb8a5d79fa77e5000b4}{log}} = Signal(str)
+\item 
+\mbox{\hyperlink{classi8080___c_i_1_1_bus_worker_a1b5abead39fcd4b01ed2fc3bec3770ff}{finished}} = Signal(dict)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classi8080___c_i_1_1_bus_worker_a2df72e36373ba6c3ed3f493e207e801b}\index{i8080\_CI.BusWorker@{i8080\_CI.BusWorker}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!i8080\_CI.BusWorker@{i8080\_CI.BusWorker}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_bus_worker_a2df72e36373ba6c3ed3f493e207e801b} 
+i8080\+\_\+\+CI.\+Bus\+Worker.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{serial\+\_\+port}{, }\item[{}]{task}{, }\item[{}]{params}{, }\item[{}]{lang}{ = {\ttfamily "{}en"{}}, }\item[{}]{max\+\_\+block\+\_\+size}{ = {\ttfamily 128}}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classi8080___c_i_1_1_bus_worker_aea40a29269bb23dcdd458fc108cc909a}\index{i8080\_CI.BusWorker@{i8080\_CI.BusWorker}!do\_read\_block@{do\_read\_block}}
+\index{do\_read\_block@{do\_read\_block}!i8080\_CI.BusWorker@{i8080\_CI.BusWorker}}
+\doxysubsubsection{\texorpdfstring{do\_read\_block()}{do\_read\_block()}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_bus_worker_aea40a29269bb23dcdd458fc108cc909a} 
+i8080\+\_\+\+CI.\+Bus\+Worker.\+do\+\_\+read\+\_\+block (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classi8080___c_i_1_1_bus_worker_a351c936baacfdaf3b2b93f999d356d16}\index{i8080\_CI.BusWorker@{i8080\_CI.BusWorker}!do\_read\_io\_block@{do\_read\_io\_block}}
+\index{do\_read\_io\_block@{do\_read\_io\_block}!i8080\_CI.BusWorker@{i8080\_CI.BusWorker}}
+\doxysubsubsection{\texorpdfstring{do\_read\_io\_block()}{do\_read\_io\_block()}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_bus_worker_a351c936baacfdaf3b2b93f999d356d16} 
+i8080\+\_\+\+CI.\+Bus\+Worker.\+do\+\_\+read\+\_\+io\+\_\+block (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classi8080___c_i_1_1_bus_worker_a005128b367757c84a0ee23aada94bbda}\index{i8080\_CI.BusWorker@{i8080\_CI.BusWorker}!do\_run\_io\_sequence@{do\_run\_io\_sequence}}
+\index{do\_run\_io\_sequence@{do\_run\_io\_sequence}!i8080\_CI.BusWorker@{i8080\_CI.BusWorker}}
+\doxysubsubsection{\texorpdfstring{do\_run\_io\_sequence()}{do\_run\_io\_sequence()}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_bus_worker_a005128b367757c84a0ee23aada94bbda} 
+i8080\+\_\+\+CI.\+Bus\+Worker.\+do\+\_\+run\+\_\+io\+\_\+sequence (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classi8080___c_i_1_1_bus_worker_a1ab6cb40b044000f2ef94cee034ccc7c}\index{i8080\_CI.BusWorker@{i8080\_CI.BusWorker}!do\_test\_mem@{do\_test\_mem}}
+\index{do\_test\_mem@{do\_test\_mem}!i8080\_CI.BusWorker@{i8080\_CI.BusWorker}}
+\doxysubsubsection{\texorpdfstring{do\_test\_mem()}{do\_test\_mem()}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_bus_worker_a1ab6cb40b044000f2ef94cee034ccc7c} 
+i8080\+\_\+\+CI.\+Bus\+Worker.\+do\+\_\+test\+\_\+mem (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classi8080___c_i_1_1_bus_worker_a987b920bc0e47589c8b1bb8733599eda}\index{i8080\_CI.BusWorker@{i8080\_CI.BusWorker}!do\_write\_block@{do\_write\_block}}
+\index{do\_write\_block@{do\_write\_block}!i8080\_CI.BusWorker@{i8080\_CI.BusWorker}}
+\doxysubsubsection{\texorpdfstring{do\_write\_block()}{do\_write\_block()}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_bus_worker_a987b920bc0e47589c8b1bb8733599eda} 
+i8080\+\_\+\+CI.\+Bus\+Worker.\+do\+\_\+write\+\_\+block (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classi8080___c_i_1_1_bus_worker_aa6f1286918e509160f0e9b9bc43c5d6d}\index{i8080\_CI.BusWorker@{i8080\_CI.BusWorker}!do\_write\_io\_block@{do\_write\_io\_block}}
+\index{do\_write\_io\_block@{do\_write\_io\_block}!i8080\_CI.BusWorker@{i8080\_CI.BusWorker}}
+\doxysubsubsection{\texorpdfstring{do\_write\_io\_block()}{do\_write\_io\_block()}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_bus_worker_aa6f1286918e509160f0e9b9bc43c5d6d} 
+i8080\+\_\+\+CI.\+Bus\+Worker.\+do\+\_\+write\+\_\+io\+\_\+block (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classi8080___c_i_1_1_bus_worker_a742542ecc1da8e273fc2a5eb7068922b}\index{i8080\_CI.BusWorker@{i8080\_CI.BusWorker}!run@{run}}
+\index{run@{run}!i8080\_CI.BusWorker@{i8080\_CI.BusWorker}}
+\doxysubsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_bus_worker_a742542ecc1da8e273fc2a5eb7068922b} 
+i8080\+\_\+\+CI.\+Bus\+Worker.\+run (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classi8080___c_i_1_1_bus_worker_a1046ab4e356d0d2c2913ed11333916aa}\index{i8080\_CI.BusWorker@{i8080\_CI.BusWorker}!send\_and\_recv@{send\_and\_recv}}
+\index{send\_and\_recv@{send\_and\_recv}!i8080\_CI.BusWorker@{i8080\_CI.BusWorker}}
+\doxysubsubsection{\texorpdfstring{send\_and\_recv()}{send\_and\_recv()}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_bus_worker_a1046ab4e356d0d2c2913ed11333916aa} 
+i8080\+\_\+\+CI.\+Bus\+Worker.\+send\+\_\+and\+\_\+recv (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{payload}{, }\item[{}]{timeout}{ = {\ttfamily 2.0}}\end{DoxyParamCaption})}
+
+\Hypertarget{classi8080___c_i_1_1_bus_worker_a3b73e30da48dabd6f353c478ca0f7053}\index{i8080\_CI.BusWorker@{i8080\_CI.BusWorker}!stop@{stop}}
+\index{stop@{stop}!i8080\_CI.BusWorker@{i8080\_CI.BusWorker}}
+\doxysubsubsection{\texorpdfstring{stop()}{stop()}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_bus_worker_a3b73e30da48dabd6f353c478ca0f7053} 
+i8080\+\_\+\+CI.\+Bus\+Worker.\+stop (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classi8080___c_i_1_1_bus_worker_af317abac0392231bdff76e1d5685e242}\index{i8080\_CI.BusWorker@{i8080\_CI.BusWorker}!tr@{tr}}
+\index{tr@{tr}!i8080\_CI.BusWorker@{i8080\_CI.BusWorker}}
+\doxysubsubsection{\texorpdfstring{tr()}{tr()}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_bus_worker_af317abac0392231bdff76e1d5685e242} 
+i8080\+\_\+\+CI.\+Bus\+Worker.\+tr (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{key}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classi8080___c_i_1_1_bus_worker_a1b5abead39fcd4b01ed2fc3bec3770ff}\index{i8080\_CI.BusWorker@{i8080\_CI.BusWorker}!finished@{finished}}
+\index{finished@{finished}!i8080\_CI.BusWorker@{i8080\_CI.BusWorker}}
+\doxysubsubsection{\texorpdfstring{finished}{finished}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_bus_worker_a1b5abead39fcd4b01ed2fc3bec3770ff} 
+i8080\+\_\+\+CI.\+Bus\+Worker.\+finished = Signal(dict)\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classi8080___c_i_1_1_bus_worker_a36c0955f69f8bbd0c1cc14cc72f2154d}\index{i8080\_CI.BusWorker@{i8080\_CI.BusWorker}!is\_running@{is\_running}}
+\index{is\_running@{is\_running}!i8080\_CI.BusWorker@{i8080\_CI.BusWorker}}
+\doxysubsubsection{\texorpdfstring{is\_running}{is\_running}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_bus_worker_a36c0955f69f8bbd0c1cc14cc72f2154d} 
+bool i8080\+\_\+\+CI.\+Bus\+Worker.\+is\+\_\+running = True}
+
+\Hypertarget{classi8080___c_i_1_1_bus_worker_a7e1aa6c687324cdea6f3786a75c1b618}\index{i8080\_CI.BusWorker@{i8080\_CI.BusWorker}!lang@{lang}}
+\index{lang@{lang}!i8080\_CI.BusWorker@{i8080\_CI.BusWorker}}
+\doxysubsubsection{\texorpdfstring{lang}{lang}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_bus_worker_a7e1aa6c687324cdea6f3786a75c1b618} 
+i8080\+\_\+\+CI.\+Bus\+Worker.\+lang = lang}
+
+\Hypertarget{classi8080___c_i_1_1_bus_worker_adda6776ee751ddb8a5d79fa77e5000b4}\index{i8080\_CI.BusWorker@{i8080\_CI.BusWorker}!log@{log}}
+\index{log@{log}!i8080\_CI.BusWorker@{i8080\_CI.BusWorker}}
+\doxysubsubsection{\texorpdfstring{log}{log}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_bus_worker_adda6776ee751ddb8a5d79fa77e5000b4} 
+i8080\+\_\+\+CI.\+Bus\+Worker.\+log = Signal(str)\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classi8080___c_i_1_1_bus_worker_a5957b7a39fe4afaa7643f56e79ef2fdf}\index{i8080\_CI.BusWorker@{i8080\_CI.BusWorker}!max\_block\_size@{max\_block\_size}}
+\index{max\_block\_size@{max\_block\_size}!i8080\_CI.BusWorker@{i8080\_CI.BusWorker}}
+\doxysubsubsection{\texorpdfstring{max\_block\_size}{max\_block\_size}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_bus_worker_a5957b7a39fe4afaa7643f56e79ef2fdf} 
+i8080\+\_\+\+CI.\+Bus\+Worker.\+max\+\_\+block\+\_\+size = max\+\_\+block\+\_\+size}
+
+\Hypertarget{classi8080___c_i_1_1_bus_worker_ab664f3bd012952d437fa00e39032be4b}\index{i8080\_CI.BusWorker@{i8080\_CI.BusWorker}!params@{params}}
+\index{params@{params}!i8080\_CI.BusWorker@{i8080\_CI.BusWorker}}
+\doxysubsubsection{\texorpdfstring{params}{params}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_bus_worker_ab664f3bd012952d437fa00e39032be4b} 
+i8080\+\_\+\+CI.\+Bus\+Worker.\+params = params}
+
+\Hypertarget{classi8080___c_i_1_1_bus_worker_a6584a8bee990d1e1ae9d9aa69414ea0c}\index{i8080\_CI.BusWorker@{i8080\_CI.BusWorker}!progress@{progress}}
+\index{progress@{progress}!i8080\_CI.BusWorker@{i8080\_CI.BusWorker}}
+\doxysubsubsection{\texorpdfstring{progress}{progress}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_bus_worker_a6584a8bee990d1e1ae9d9aa69414ea0c} 
+i8080\+\_\+\+CI.\+Bus\+Worker.\+progress = Signal(int)\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classi8080___c_i_1_1_bus_worker_ab3517ad7a78d2cbb7d85ab09c4f33f0b}\index{i8080\_CI.BusWorker@{i8080\_CI.BusWorker}!ser@{ser}}
+\index{ser@{ser}!i8080\_CI.BusWorker@{i8080\_CI.BusWorker}}
+\doxysubsubsection{\texorpdfstring{ser}{ser}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_bus_worker_ab3517ad7a78d2cbb7d85ab09c4f33f0b} 
+i8080\+\_\+\+CI.\+Bus\+Worker.\+ser = serial\+\_\+port}
+
+\Hypertarget{classi8080___c_i_1_1_bus_worker_a57cf481ac5b867bf5995f38435d9eff0}\index{i8080\_CI.BusWorker@{i8080\_CI.BusWorker}!task@{task}}
+\index{task@{task}!i8080\_CI.BusWorker@{i8080\_CI.BusWorker}}
+\doxysubsubsection{\texorpdfstring{task}{task}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_bus_worker_a57cf481ac5b867bf5995f38435d9eff0} 
+str i8080\+\_\+\+CI.\+Bus\+Worker.\+task = task}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{i8080___c_i_8py}{i8080\+\_\+\+CI.\+py}}\end{DoxyCompactItemize}

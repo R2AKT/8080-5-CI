@@ -1,0 +1,45 @@
+\doxysection{modules.\+io.\+i512vi1 Namespace Reference}
+\hypertarget{namespacemodules_1_1io_1_1i512vi1}{}\label{namespacemodules_1_1io_1_1i512vi1}\index{modules.io.i512vi1@{modules.io.i512vi1}}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classmodules_1_1io_1_1i512vi1_1_1_i512_v_i1}{I512\+VI1}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}512ВИ1 (КР512ВИ1) — часы реального времени с энергонезависимой памятью.
+Аналог Dallas DS1287 / Motorola MC146818.
+Итерация E6: Хранение.
+
+Возможности:
+- Часы реального времени (секунды, минуты, часы, день, месяц, год)
+- Календарь с автоматической корректировкой високосных годов
+- Энергонезависимая RAM (50 байт, адреса 0x0E-0x3F)
+- Регистры A, B, C, D для управления
+- Прерывания (обновление времени, будильник)
+- Инициализация времени по системным часам при старте
+- Опциональная загрузка/сохранение NVM во внешний файл (путь из TOML)
+
+Регистры (2 порта):
+  offset 0: Address Register (запись номера регистра 0x00-0x3F)
+  offset 1: Data Register (чтение/запись данных)
+
+Карта регистров:
+  0x00: Секунды (0-59)
+  0x01: Будильник секунды
+  0x02: Минуты (0-59)
+  0x03: Будильник минуты
+  0x04: Часы (0-23 или 1-12 AM/PM)
+  0x05: Будильник часы
+  0x06: День недели (1-7)
+  0x07: День месяца (1-31)
+  0x08: Месяц (1-12)
+  0x09: Год (0-99)
+  0x0A: Регистр A (UIP, DV, RS)
+  0x0B: Регистр B (SET, PIE, AIE, UIE, SQWE, DM, 24/12, DSE)
+  0x0C: Регистр C (IRQF, PF, AF, UF) — только чтение
+  0x0D: Регистр D (VRT) — только чтение
+  0x0E-0x3F: Энергонезависимая RAM (50 байт)
+\end{DoxyVerb}
+ 

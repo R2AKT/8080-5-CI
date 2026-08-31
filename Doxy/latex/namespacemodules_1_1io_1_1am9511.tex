@@ -1,0 +1,51 @@
+\doxysection{modules.\+io.\+am9511 Namespace Reference}
+\hypertarget{namespacemodules_1_1io_1_1am9511}{}\label{namespacemodules_1_1io_1_1am9511}\index{modules.io.am9511@{modules.io.am9511}}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classmodules_1_1io_1_1am9511_1_1_a_m9511}{AM9511}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}AM9511 — Арифметический сопроцессор (APU).
+Итерация E7: Сопроцессоры и спец-устройства.
+
+Возможности:
+- 16-битный целочисленный стековый сопроцессор
+- Стек из 4 регистров (TOS, NOS, B, C)
+- Арифметические, логические операции и сдвиги
+- 3 режима синхронизации с CPU:
+  1. Wait State (READY/WAIT) — CPU ждёт завершения
+  2. IRQ — прерывание по завершении
+  3. DMA+IRQ — запрос DMA для передачи данных
+
+Регистры (2 порта):
+  offset 0: Data Port (чтение/запись TOS, 16-bit little-endian)
+  offset 1: Command/Status Port (запись команд, чтение статуса)
+
+Команды:
+  0x00: NOP
+  0x01: POP  — удалить TOS
+  0x02: PTOS — дублировать TOS (Push TOS)
+  0x60: ADD  — TOS = NOS + TOS
+  0x61: SUB  — TOS = NOS - TOS
+  0x62: MUL  — [NOS:TOS] = NOS * TOS (32-bit результат)
+  0x63: DIV  — NOS = NOS / TOS, TOS = NOS % TOS
+  0x70: AND  — TOS = NOS & TOS
+  0x71: OR   — TOS = NOS | TOS
+  0x72: XOR  — TOS = NOS ^ TOS
+  0x74: SL   — TOS = TOS << 1
+  0x75: SR   — TOS = TOS >> 1 (логический)
+  0x76: SRA  — TOS = TOS >> 1 (арифметический)
+
+Статус (Status Register):
+  Bit 7: BUSY     (1 = операция выполняется)
+  Bit 6: END      (1 = операция завершена, сбрасывается при чтении)
+  Bit 5: CARRY    (перенос/заём)
+  Bit 4: ZERO     (результат = 0)
+  Bit 3: SIGN     (бит 15 результата = 1)
+  Bit 2: OVERFLOW (знаковое переполнение)
+  Bit 1-0: DIVIDE ERROR / SHIFT ERROR
+\end{DoxyVerb}
+ 

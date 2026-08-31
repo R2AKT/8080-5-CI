@@ -1,0 +1,75 @@
+\doxysection{tests/test\+\_\+config.py File Reference}
+\hypertarget{test__config_8py}{}\label{test__config_8py}\index{tests/test\_config.py@{tests/test\_config.py}}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacetest__config}{test\+\_\+config}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespacetest__config_aa255f46e372e433e36a0b1b49d5019c2}{test\+\_\+config.\+check}} (name, actual, expected)
+\item 
+\mbox{\hyperlink{namespacetest__config_aca289b22d3587821b6104acfbca72eda}{test\+\_\+config.\+skip}} (name, reason)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespacetest__config_adca23b412dba3b1457af3c072dab9ab2}{test\+\_\+config.\+tomllib}} = None
+\item 
+int \mbox{\hyperlink{namespacetest__config_a6f0018e5d814eb11c1c69beb780e3bc4}{test\+\_\+config.\+passed}} = 0
+\item 
+int \mbox{\hyperlink{namespacetest__config_aeb74b3b77d85b8b1a02c6fb9fbae3dae}{test\+\_\+config.\+failed}} = 0
+\item 
+int \mbox{\hyperlink{namespacetest__config_a6333629513b2c22735d35c9e732c9fad}{test\+\_\+config.\+skipped}} = 0
+\item 
+str \mbox{\hyperlink{namespacetest__config_ac3d7976c4342688c992ed9467ca44470}{test\+\_\+config.\+toml\+\_\+str}}
+\item 
+\mbox{\hyperlink{namespacetest__config_ad6e29991e2cd19ea2927a54520cf7dd4}{test\+\_\+config.\+config}} = \mbox{\hyperlink{classmodules_1_1config_1_1device__config_1_1_device_config}{Device\+Config}}()
+\item 
+str \mbox{\hyperlink{namespacetest__config_aa8cf4be76a758c3b15d4c27af409e067}{test\+\_\+config.\+toml\+\_\+conflict}}
+\item 
+\mbox{\hyperlink{namespacetest__config_ac21c89d355a523bc6b435a1ee26ddcdd}{test\+\_\+config.\+config\+\_\+conflict}} = \mbox{\hyperlink{classmodules_1_1config_1_1device__config_1_1_device_config}{Device\+Config}}()
+\item 
+\mbox{\hyperlink{namespacetest__config_ad2b88264daf059134fd49a13c5019e2b}{test\+\_\+config.\+errors}} = config\+\_\+conflict.\+validate()
+\item 
+str \mbox{\hyperlink{namespacetest__config_aba635be7f7e7bd28a9e3c8e6bbbf75e7}{test\+\_\+config.\+toml\+\_\+ok}}
+\item 
+\mbox{\hyperlink{namespacetest__config_a20dc020f442e0dc99c77ed2b3c0de0ec}{test\+\_\+config.\+config\+\_\+ok}} = \mbox{\hyperlink{classmodules_1_1config_1_1device__config_1_1_device_config}{Device\+Config}}()
+\item 
+\mbox{\hyperlink{namespacetest__config_afe1944e467ca96e09fbf5ee94798ced1}{test\+\_\+config.\+errors\+\_\+ok}} = config\+\_\+ok.\+validate()
+\item 
+\mbox{\hyperlink{namespacetest__config_aa6d2670942a763e61e4d0b06c269364b}{test\+\_\+config.\+bus}} = \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus}{Memory\+Bus}}()
+\item 
+list \mbox{\hyperlink{namespacetest__config_a39a43eb7d0c1b44e164f640c63290a73}{test\+\_\+config.\+created}} = \mbox{[}$\,$\mbox{]}
+\item 
+\mbox{\hyperlink{namespacetest__config_a711f073f4cc9e6f443d8925bf5bf450a}{test\+\_\+config.\+device}} = \mbox{\hyperlink{classmodules_1_1config_1_1device__config_1_1_device_factory_a5382ff56a49c3a95bbf9edc6ac9bac37}{Device\+Factory.\+create\+\_\+device}}(dev\+\_\+config, memory\+\_\+bus=\mbox{\hyperlink{namespacetest__config_aa6d2670942a763e61e4d0b06c269364b}{bus}})
+\item 
+\mbox{\hyperlink{namespacetest__config_a7c16522aa07503abc1c716d6221acc04}{test\+\_\+config.\+unknown}} = \mbox{\hyperlink{classmodules_1_1config_1_1device__config_1_1_device_factory_a5382ff56a49c3a95bbf9edc6ac9bac37}{Device\+Factory.\+create\+\_\+device}}(\{"{}type"{}\+: "{}unknown"{}, "{}name"{}\+: "{}X"{}, "{}base\+\_\+port"{}\+: 0x50\})
+\item 
+\mbox{\hyperlink{namespacetest__config_ac4e68bf220de849a5f68f72b1bf75a0f}{test\+\_\+config.\+profiles}} = get\+\_\+profile\+\_\+names()
+\item 
+\mbox{\hyperlink{namespacetest__config_a2b034d03cda61499e284325a368f349f}{test\+\_\+config.\+profile}} = get\+\_\+profile("{}radio86rk"{})
+\item 
+\mbox{\hyperlink{namespacetest__config_ab422208519ad9bffdb5838b8beae4a0c}{test\+\_\+config.\+config5}} = \mbox{\hyperlink{classmodules_1_1config_1_1device__config_1_1_device_config}{Device\+Config}}()
+\item 
+\mbox{\hyperlink{namespacetest__config_a71acd9d3b21dcbf2d9e4d11b28adde52}{test\+\_\+config.\+profile6}} = get\+\_\+profile("{}micro80"{})
+\item 
+\mbox{\hyperlink{namespacetest__config_ac7d9e916ec6ff04910deced749249ad5}{test\+\_\+config.\+config6}} = \mbox{\hyperlink{classmodules_1_1config_1_1device__config_1_1_device_config}{Device\+Config}}()
+\item 
+\mbox{\hyperlink{namespacetest__config_a64ed426bd4c31c0a21eaca93c13c8657}{test\+\_\+config.\+profile7}} = get\+\_\+profile("{}vector06c"{})
+\item 
+\mbox{\hyperlink{namespacetest__config_a653fc679323f1fcc7b38470644d52103}{test\+\_\+config.\+config7}} = \mbox{\hyperlink{classmodules_1_1config_1_1device__config_1_1_device_config}{Device\+Config}}()
+\item 
+list \mbox{\hyperlink{namespacetest__config_a610b176e73c7738223129a38a1a2545b}{test\+\_\+config.\+device\+\_\+types}} = \mbox{[}d\mbox{[}"{}type"{}\mbox{]} for d in config7.\+devices\mbox{]}
+\item 
+\mbox{\hyperlink{namespacetest__config_a878d08b7587d55b7214967aa5053d3a1}{test\+\_\+config.\+bus8}} = \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus}{Memory\+Bus}}()
+\item 
+\mbox{\hyperlink{namespacetest__config_a43d674e3f822cbb85c339f1da469af47}{test\+\_\+config.\+region}} = \mbox{\hyperlink{classmodules_1_1config_1_1device__config_1_1_device_factory_a146de97836ee591ab8cb8c421897039f}{Device\+Factory.\+create\+\_\+memory\+\_\+region}}(mem\+\_\+config)
+\item 
+\mbox{\hyperlink{namespacetest__config_afcd88f4f50805ad5659e8f30b95b6519}{test\+\_\+config.\+bus9}} = \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus}{Memory\+Bus}}()
+\item 
+list \mbox{\hyperlink{namespacetest__config_aece8aaf87f10f8a9a292ad6ea7a4eb30}{test\+\_\+config.\+created9}} = \mbox{[}$\,$\mbox{]}
+\item 
+list \mbox{\hyperlink{namespacetest__config_a5cf6fdfced0cdaa41fa34845de0e1e31}{test\+\_\+config.\+ports}} = \mbox{[}d.\+base\+\_\+port for d in \mbox{\hyperlink{namespacetest__config_aece8aaf87f10f8a9a292ad6ea7a4eb30}{created9}}\mbox{]}
+\end{DoxyCompactItemize}

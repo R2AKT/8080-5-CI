@@ -1,0 +1,39 @@
+\doxysection{tests/test\+\_\+am9511.py File Reference}
+\hypertarget{test__am9511_8py}{}\label{test__am9511_8py}\index{tests/test\_am9511.py@{tests/test\_am9511.py}}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacetest__am9511}{test\+\_\+am9511}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespacetest__am9511_a03d07b99ef47f962215304ffd73b2fd6}{test\+\_\+am9511.\+check}} (name, actual, expected)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{namespacetest__am9511_aa9efce38eedbd14b070fa4bbc665bd33}{test\+\_\+am9511.\+passed}} = 0
+\item 
+int \mbox{\hyperlink{namespacetest__am9511_aa9d5da18b438ac41d46d3a96e103123a}{test\+\_\+am9511.\+failed}} = 0
+\item 
+\mbox{\hyperlink{namespacetest__am9511_a521165a658bab70e386d62af9edb8e64}{test\+\_\+am9511.\+bus}} = \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus}{Memory\+Bus}}()
+\item 
+\mbox{\hyperlink{namespacetest__am9511_a2707189d552b4a141a59bf8f7317ee2e}{test\+\_\+am9511.\+apu}} = \mbox{\hyperlink{classmodules_1_1io_1_1am9511_1_1_a_m9511}{AM9511}}(base\+\_\+port=0x80)
+\item 
+\mbox{\hyperlink{namespacetest__am9511_abde378d907476e07ba1bd23f7717e21b}{test\+\_\+am9511.\+status}} = bus.\+io\+\_\+read(0x81)
+\item 
+\mbox{\hyperlink{namespacetest__am9511_a8b54ad78e7c51532f7768677676c92e8}{test\+\_\+am9511.\+lsb}} = bus.\+io\+\_\+read(0x80)
+\item 
+\mbox{\hyperlink{namespacetest__am9511_a99d2cba5535df36217b3bd497f203e22}{test\+\_\+am9511.\+msb}} = bus.\+io\+\_\+read(0x80)
+\item 
+list \mbox{\hyperlink{namespacetest__am9511_a93cc38047028d0ed8359d56fe6845d57}{test\+\_\+am9511.\+irq\+\_\+events}} = \mbox{[}$\,$\mbox{]}
+\item 
+\mbox{\hyperlink{namespacetest__am9511_aa1f7a94519791eda047c0e418f70d440}{test\+\_\+am9511.\+sync\+\_\+mode}}
+\item 
+\mbox{\hyperlink{namespacetest__am9511_adad6da97810ede9a1ca2ee41ef8810fa}{test\+\_\+am9511.\+on\+\_\+irq}}
+\item 
+list \mbox{\hyperlink{namespacetest__am9511_a07e94681463d4a9f9c6b5d90fd5b7bf3}{test\+\_\+am9511.\+wait\+\_\+events}} = \mbox{[}$\,$\mbox{]}
+\item 
+\mbox{\hyperlink{namespacetest__am9511_afbbc1c53058bb5ff26f7cab980977710}{test\+\_\+am9511.\+on\+\_\+wait}}
+\end{DoxyCompactItemize}

@@ -536,16 +536,25 @@ CMD_MEM_READ_BYTE = 0x10; CMD_MEM_READ_BLOCK = 0x11
 CMD_MEM_WRITE_BYTE = 0x12; CMD_MEM_WRITE_BLOCK = 0x13
 CMD_IO_READ_BYTE = 0x20; CMD_IO_READ_BLOCK = 0x21
 CMD_IO_WRITE_BYTE = 0x22; CMD_IO_WRITE_BLOCK = 0x23
+CMD_EEPROM_WRITE_BYTE = 0x32
+CMD_EEPROM_WRITE_BLOCK = 0x33
 ACK_NOP = 0x00
+ACK_HOLD_WAIT_LOW = 0x00          # ожидание HLDA low
+ACK_HOLD_WAIT_HIGH = 0x01         # ожидание HLDA high
+ACK_HOLD_ACTIVE = 0x03
+ACK_WAIT_UNHOLD = 0xF1            # ожидание освобождения
+ACK_UNHOLD = 0xF2 
 ACK_MEM_READ_BYTE = 0x10; ACK_MEM_READ_BLOCK = 0x11
 ACK_MEM_WRITE_BYTE = 0x12; ACK_MEM_WRITE_BLOCK = 0x13
 ACK_IO_READ_BYTE = 0x20; ACK_IO_READ_BLOCK = 0x21
 ACK_IO_WRITE_BYTE = 0x22; ACK_IO_WRITE_BLOCK = 0x23
+ACK_EEPROM_READ_BYTE = 0x30
+ACK_EEPROM_READ_BLOCK = 0x31
+ACK_EEPROM_WRITE_BYTE = 0x32
+ACK_EEPROM_WRITE_BLOCK = 0x33
 ACK_ERROR = 0xFF
 CMD_GET_SIZE_SETUP = 0x40
-CMD_SET_POLARITY_SETUP = 0x41
 ACK_GET_SIZE_SETUP = 0x40
-ACK_SET_POLARITY_SETUP = 0x41
 # ==================== ПРОТОКОЛ SLIP ====================
 class SlipProtocol:
     @staticmethod
@@ -1616,6 +1625,24 @@ class AutomationAPI:
         resp = self.mw.sync_send_and_recv(payload)
         return resp is not None and resp[0] == ACK_IO_WRITE_BYTE
         
+    def dev_write_eeprom_byte(self, addr, val):
+        """Записать байт в EEPROM устройства"""
+        self._check_bus()
+        payload = bytes([CMD_EEPROM_WRITE_BYTE, (addr >> 8) & 0xFF, addr & 0xFF, val & 0xFF])
+        resp = self.mw.sync_send_and_recv(payload)
+        return resp is not None and resp[0] == ACK_EEPROM_WRITE_BYTE
+
+    def dev_write_eeprom_block(self, addr, data):
+        """Записать блок в EEPROM устройства"""
+        self._check_bus()
+        if len(data) > self.mw.max_block_size:
+            raise ValueError(f"Block size {len(data)} exceeds max {self.mw.max_block_size}")
+        cmd = bytearray([CMD_EEPROM_WRITE_BLOCK, len(data) & 0xFF,
+                         (addr >> 8) & 0xFF, addr & 0xFF])
+        cmd.extend(data)
+        resp = self.mw.sync_send_and_recv(bytes(cmd))
+        return resp is not None and resp[0] == ACK_EEPROM_WRITE_BLOCK
+        
     # =============================================
     # СИНХРОНИЗАЦИЯ (устройство ↔ локальный образ)
     # =============================================
@@ -2075,12 +2102,27 @@ class BusWorker(QObject):
             try:
                 if self.ser.in_waiting:
                     buffer.extend(self.ser.read(self.ser.in_waiting))
+                    # if _FEND in buffer:
+                        # end_idx = buffer.index(_FEND)
+                        # if end_idx > 0:
+                            # raw = buffer[:end_idx]
+                            # self.ser.reset_input_buffer()
+                            # return SlipProtocol.decode(raw)
                     if _FEND in buffer:
-                        end_idx = buffer.index(_FEND)
-                        if end_idx > 0:
-                            raw = buffer[:end_idx]
-                            self.ser.reset_input_buffer()
-                            return SlipProtocol.decode(raw)
+                        # Пропускаем начальные FEND (маркеры начала пакета)
+                        start_idx = 0
+                        while start_idx < len(buffer) and buffer[start_idx] == _FEND:
+                            start_idx += 1
+                        if start_idx < len(buffer):
+                            # Ищем конечный FEND после данных
+                            try:
+                                end_idx = buffer.index(_FEND, start_idx)
+                                raw = buffer[start_idx:end_idx]
+                                if raw:
+                                    self.ser.reset_input_buffer()
+                                    return SlipProtocol.decode(raw)
+                            except ValueError:
+                                pass  # Конечный FEND ещё не пришёл, ждём
             except serial.SerialException as e:
                 self.log.emit(f"{self.tr('err_read_port')} {e}")
                 return None
@@ -3838,51 +3880,110 @@ class MainWindow(QMainWindow):
                 if packet_raw:
                     self.process_response(SlipProtocol.decode(packet_raw))
 
+    # def process_response(self, data):
+        # if not data: return
+        # self.log(f"RX <- {data.hex(' ').upper()}")
+        
+        # cmd = data[0]
+        
+        # # Определяем, является ли ответ финальным
+        # is_final = True
+        # if cmd == CMD_HOLD and len(data) >= 2:
+            # ack = data[1]
+            # if ack in [0x00, 0x01]:  # AckHoldWaitLow, AckHoldWaitHigh
+                # is_final = False
+        # elif cmd == CMD_UNHOLD and len(data) >= 2:
+            # ack = data[1]
+            # if ack == 0xF1:  # AckWaitUnHold
+                # is_final = False
+        
+        # # === СНАЧАЛА обработка ответа ===
+        # if cmd == ACK_NOP:
+            # self.log(f"  [{self.tr('ok')}] {self.tr('conn_est')}")
+            
+        # elif cmd == ACK_GET_SIZE_SETUP and len(data) >= 2:
+            # self.max_block_size = data[1]
+            # self.log(f"  [{self.tr('ok')}] Max block size: {self.max_block_size}")
+            
+        # elif cmd == CMD_HOLD and len(data) >= 2:
+            # ack = data[1]
+            # if ack == 0x03:
+                # self.bus_active = True
+                # self.update_ui_state()
+                # self.log(f"  [{self.tr('ok')}] Bus HOLD active.")
+            # elif ack == 0x00:
+                # self.log(f"  [WAIT] HLDA low...")
+            # elif ack == 0x01:
+                # self.log(f"  [WAIT] HLDA high...")
+                
+        # elif cmd == CMD_UNHOLD and len(data) >= 2:
+            # ack = data[1]
+            # if ack == 0xF2:
+                # self.bus_active = False
+                # self.update_ui_state()
+                # self.log(f"  [{self.tr('ok')}] Bus UNHOLD. CPU running.")
+            # elif ack == 0xF1:
+                # self.log(f"  [WAIT] HLDA high...")
+                
+        # elif cmd == ACK_MEM_READ_BYTE and len(data) >= 4:
+            # addr = (data[1] << 8) | data[2]
+            # self.mem_data[addr] = data[3]
+            # self.hex_model.update_data(self.mem_data)
+            # self.update_range_label()
+            # self.log(f"  [{self.tr('ok')}] 0x{addr:04X}: 0x{data[3]:02X}")
+        # elif cmd == ACK_IO_READ_BYTE and len(data) >= 4:
+            # addr = (data[1] << 8) | data[2]
+            # val = data[3]
+            # self.log(f"  [{self.tr('ok')}] IO Read 0x{addr:02X}: 0x{val:02X}")
+        # elif cmd == ACK_IO_WRITE_BYTE:
+            # self.log(f"  [{self.tr('ok')}] {self.tr('write_io')}.")
+        # elif cmd == ACK_ERROR:
+            # self.log(f"  [{self.tr('error')}] {self.tr('err_ack')}")
+        
+        # # === ЗАТЕМ снимаем флаг и отправляем следующую команду ===
+        # if is_final:
+            # self.waiting_response = False
+            # self.process_command_queue()
     def process_response(self, data):
         if not data: return
         self.log(f"RX <- {data.hex(' ').upper()}")
-        
         cmd = data[0]
         
         # Определяем, является ли ответ финальным
         is_final = True
         if cmd == CMD_HOLD and len(data) >= 2:
             ack = data[1]
-            if ack in [0x00, 0x01]:  # AckHoldWaitLow, AckHoldWaitHigh
+            if ack in [ACK_HOLD_WAIT_LOW, ACK_HOLD_WAIT_HIGH]:
                 is_final = False
         elif cmd == CMD_UNHOLD and len(data) >= 2:
             ack = data[1]
-            if ack == 0xF1:  # AckWaitUnHold
+            if ack == ACK_WAIT_UNHOLD:
                 is_final = False
         
-        # === СНАЧАЛА обработка ответа ===
+        # === Обработка ответа ===
         if cmd == ACK_NOP:
             self.log(f"  [{self.tr('ok')}] {self.tr('conn_est')}")
-            
         elif cmd == ACK_GET_SIZE_SETUP and len(data) >= 2:
             self.max_block_size = data[1]
             self.log(f"  [{self.tr('ok')}] Max block size: {self.max_block_size}")
-            
         elif cmd == CMD_HOLD and len(data) >= 2:
             ack = data[1]
-            if ack == 0x03:
+            if ack == ACK_HOLD_ACTIVE:
                 self.bus_active = True
                 self.update_ui_state()
                 self.log(f"  [{self.tr('ok')}] Bus HOLD active.")
-            elif ack == 0x00:
+            elif ack == ACK_HOLD_WAIT_LOW:
                 self.log(f"  [WAIT] HLDA low...")
-            elif ack == 0x01:
+            elif ack == ACK_HOLD_WAIT_HIGH:
                 self.log(f"  [WAIT] HLDA high...")
-                
         elif cmd == CMD_UNHOLD and len(data) >= 2:
             ack = data[1]
-            if ack == 0xF2:
+            if ack == ACK_UNHOLD:
                 self.bus_active = False
                 self.update_ui_state()
                 self.log(f"  [{self.tr('ok')}] Bus UNHOLD. CPU running.")
-            elif ack == 0xF1:
+            elif ack == ACK_WAIT_UNHOLD:
                 self.log(f"  [WAIT] HLDA high...")
-                
         elif cmd == ACK_MEM_READ_BYTE and len(data) >= 4:
             addr = (data[1] << 8) | data[2]
             self.mem_data[addr] = data[3]
@@ -3895,14 +3996,18 @@ class MainWindow(QMainWindow):
             self.log(f"  [{self.tr('ok')}] IO Read 0x{addr:02X}: 0x{val:02X}")
         elif cmd == ACK_IO_WRITE_BYTE:
             self.log(f"  [{self.tr('ok')}] {self.tr('write_io')}.")
+        elif cmd == ACK_EEPROM_WRITE_BYTE:
+            self.log(f"  [{self.tr('ok')}] EEPROM write complete.")
+        elif cmd == ACK_EEPROM_WRITE_BLOCK:
+            self.log(f"  [{self.tr('ok')}] EEPROM block write complete.")
         elif cmd == ACK_ERROR:
             self.log(f"  [{self.tr('error')}] {self.tr('err_ack')}")
         
-        # === ЗАТЕМ снимаем флаг и отправляем следующую команду ===
+        # === Снимаем флаг и отправляем следующую команду ===
         if is_final:
             self.waiting_response = False
             self.process_command_queue()
-			
+        
     def update_range_label(self):
         if self.mem_data:
             mn = min(self.mem_data.keys()); mx = max(self.mem_data.keys())
@@ -4150,6 +4255,8 @@ class MainWindow(QMainWindow):
             
         # Блокируем очередь на время работы worker
         self.worker_active = True
+        self.poll_timer.stop()          # ← ДОБАВЛЕНО: не даём poll_timer читать порт
+        self.serial_port.reset_input_buffer()  # ← ДОБАВЛЕНО: очищаем мусор из буфера
             
         self.worker_thread = QThread()
         self.worker = BusWorker(self.serial_port, task, params, 
@@ -4169,6 +4276,7 @@ class MainWindow(QMainWindow):
     def on_worker_finished(self, result):
         # Разблокируем очередь
         self.worker_active = False
+        self.poll_timer.start(50)       # ← ДОБАВЛЕНО: возобновляем опрос
         self.process_command_queue()
         
         if isinstance(result, dict) and result:
@@ -4409,7 +4517,9 @@ class MainWindow(QMainWindow):
                 pass
                 
         if self.serial_port and self.serial_port.is_open:
-            self.serial_port.close()
+            self.poll_timer.stop()          # ← ДОБАВЛЕНО
+            if self.serial_port and self.serial_port.is_open:
+                self.serial_port.close()
 			
         # Останавливаем MCP Server
         if self.mcp_server is not None and self.mcp_server.running:
@@ -4799,6 +4909,8 @@ class MainWindow(QMainWindow):
             'log': api.log,
             'status': api.status,
             'goto': api.goto,
+            'dev_write_eeprom_byte': api.dev_write_eeprom_byte,
+            'dev_write_eeprom_block': api.dev_write_eeprom_block,
         }
         
         try:

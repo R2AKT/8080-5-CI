@@ -1,0 +1,364 @@
+\doxysection{modules.\+io.\+i8253.\+I8253 Class Reference}
+\hypertarget{classmodules_1_1io_1_1i8253_1_1_i8253}{}\label{classmodules_1_1io_1_1i8253_1_1_i8253}\index{modules.io.i8253.I8253@{modules.io.i8253.I8253}}
+
+
+Inheritance diagram for modules.\+io.\+i8253.\+I8253\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=227pt]{classmodules_1_1io_1_1i8253_1_1_i8253__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for modules.\+io.\+i8253.\+I8253\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=227pt]{classmodules_1_1io_1_1i8253_1_1_i8253__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1i8253_1_1_i8253_a7ffcf8bc5be7bff653ea29cdb165d318}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, \mbox{\hyperlink{classmodules_1_1io_1_1i8253_1_1_i8253}{base\+\_\+port}}, \mbox{\hyperlink{classmodules_1_1io_1_1i8253_1_1_i8253}{name}}="{}I8253"{})
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1i8253_1_1_i8253_a40e9174e40626574dd6b8612d10e4572}{reset}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1i8253_1_1_i8253_af5129cb6c855a3547d2457137024e777}{io\+\_\+read}} (self, port)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1i8253_1_1_i8253_a8576785e1bd5eacb29b75e2567df5e86}{io\+\_\+write}} (self, port, value)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1i8253_1_1_i8253_ae963522f4f1d025539c4437cb8c2d506}{tick}} (self, cycles=1)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1i8253_1_1_i8253_a3c3891fa909969eb48c38c5de0627fe7}{set\+\_\+gate}} (self, ch\+\_\+num, active)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1i8253_1_1_i8253_ad0a490ad60cafbc9d35ef6333f8a55a3}{get\+\_\+out}} (self, ch\+\_\+num)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1i8253_1_1_i8253_a2e5b4b73d6605acb06a7498b79a1dc93}{get\+\_\+state}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1i8253_1_1_i8253_a4799a23032e765f9b999af623da727ce}{has\+\_\+interrupt}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1i8253_1_1_i8253_a5b439beb975d4a89408914498bd10bd0}{acknowledge\+\_\+interrupt}} (self)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device}{modules.\+io.\+iodevice.\+IODevice}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_af44b72c0a1d9f3622b18ce802d33290b}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, \mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_a349db233ca1e3fd7c64e10db67c21aa3}{base\+\_\+port}}, \mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_a2023de274431002e37faef63d740d9e9}{port\+\_\+count}}, \mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_a4ef4b1e055e68877b069410b67b6c90d}{name}}="{}IODevice"{})
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_a8b83e9174621e573851b94cc407ab267}{register\+\_\+to\+\_\+bus}} (self, bus)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_a1636fa580fb8cafd15d2b4b24cdf6e9d}{unregister\+\_\+from\+\_\+bus}} (self, bus)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+list \mbox{\hyperlink{classmodules_1_1io_1_1i8253_1_1_i8253_a67405f3b1e7266eca83858b9d33df092}{channels}} = \mbox{[}\mbox{\hyperlink{classmodules_1_1io_1_1i8253_1_1_i8253_channel}{I8253\+Channel}}(i) for i in range(3)\mbox{]}
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1i8253_1_1_i8253_aedfae374da3d3e45119979e713f95c72}{on\+\_\+out}} = None
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1i8253_1_1_i8253_a625f9b140c538690b5da189a46989ce7}{on\+\_\+irq}} = None
+\item 
+bool \mbox{\hyperlink{classmodules_1_1io_1_1i8253_1_1_i8253_ac603a790a924818a6d3aa1b64abee396}{irq\+\_\+flag}} = False
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device}{modules.\+io.\+iodevice.\+IODevice}}}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_a349db233ca1e3fd7c64e10db67c21aa3}{base\+\_\+port}} = base\+\_\+port \& 0x\+FF
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_a2023de274431002e37faef63d740d9e9}{port\+\_\+count}} = port\+\_\+count
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_a4ef4b1e055e68877b069410b67b6c90d}{name}} = name
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1i8253_1_1_i8253_ae55517fce585000c3862ec11397f131b}{\+\_\+write\+\_\+control}} (self, cw)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1i8253_1_1_i8253_aab3c5b6ad8c65088395235aa26c041a7}{\+\_\+read\+\_\+channel}} (self, ch\+\_\+num)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1i8253_1_1_i8253_a8c384574cb44bd7b098fe25d796c4fb7}{\+\_\+write\+\_\+channel}} (self, ch\+\_\+num, value)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1i8253_1_1_i8253_aa07505c55271cbc0ad59f747f98c99e9}{\+\_\+load\+\_\+channel}} (self, ch)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1i8253_1_1_i8253_a28ff2816dad2b4298a9fa30ce583b34b}{\+\_\+tick\+\_\+channel}} (self, ch)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}8253 PIT — 3 канала таймера.\end{DoxyVerb}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classmodules_1_1io_1_1i8253_1_1_i8253_a7ffcf8bc5be7bff653ea29cdb165d318}\index{modules.io.i8253.I8253@{modules.io.i8253.I8253}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!modules.io.i8253.I8253@{modules.io.i8253.I8253}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i8253_1_1_i8253_a7ffcf8bc5be7bff653ea29cdb165d318} 
+modules.\+io.\+i8253.\+I8253.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{base\+\_\+port}{, }\item[{}]{name}{ = {\ttfamily "{}I8253"{}}}\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=200pt]{classmodules_1_1io_1_1i8253_1_1_i8253_a7ffcf8bc5be7bff653ea29cdb165d318_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=200pt]{classmodules_1_1io_1_1i8253_1_1_i8253_a7ffcf8bc5be7bff653ea29cdb165d318_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classmodules_1_1io_1_1i8253_1_1_i8253_aa07505c55271cbc0ad59f747f98c99e9}\index{modules.io.i8253.I8253@{modules.io.i8253.I8253}!\_load\_channel@{\_load\_channel}}
+\index{\_load\_channel@{\_load\_channel}!modules.io.i8253.I8253@{modules.io.i8253.I8253}}
+\doxysubsubsection{\texorpdfstring{\_load\_channel()}{\_load\_channel()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i8253_1_1_i8253_aa07505c55271cbc0ad59f747f98c99e9} 
+modules.\+io.\+i8253.\+I8253.\+\_\+load\+\_\+channel (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{ch}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Загрузка значения в канал.\end{DoxyVerb}
+ Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1i8253_1_1_i8253_aa07505c55271cbc0ad59f747f98c99e9_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1i8253_1_1_i8253_aab3c5b6ad8c65088395235aa26c041a7}\index{modules.io.i8253.I8253@{modules.io.i8253.I8253}!\_read\_channel@{\_read\_channel}}
+\index{\_read\_channel@{\_read\_channel}!modules.io.i8253.I8253@{modules.io.i8253.I8253}}
+\doxysubsubsection{\texorpdfstring{\_read\_channel()}{\_read\_channel()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i8253_1_1_i8253_aab3c5b6ad8c65088395235aa26c041a7} 
+modules.\+io.\+i8253.\+I8253.\+\_\+read\+\_\+channel (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{ch\+\_\+num}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Чтение значения канала.\end{DoxyVerb}
+ Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1i8253_1_1_i8253_aab3c5b6ad8c65088395235aa26c041a7_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1i8253_1_1_i8253_a28ff2816dad2b4298a9fa30ce583b34b}\index{modules.io.i8253.I8253@{modules.io.i8253.I8253}!\_tick\_channel@{\_tick\_channel}}
+\index{\_tick\_channel@{\_tick\_channel}!modules.io.i8253.I8253@{modules.io.i8253.I8253}}
+\doxysubsubsection{\texorpdfstring{\_tick\_channel()}{\_tick\_channel()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i8253_1_1_i8253_a28ff2816dad2b4298a9fa30ce583b34b} 
+modules.\+io.\+i8253.\+I8253.\+\_\+tick\+\_\+channel (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{ch}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Один такт для канала.\end{DoxyVerb}
+ Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1i8253_1_1_i8253_a28ff2816dad2b4298a9fa30ce583b34b_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1i8253_1_1_i8253_a8c384574cb44bd7b098fe25d796c4fb7}\index{modules.io.i8253.I8253@{modules.io.i8253.I8253}!\_write\_channel@{\_write\_channel}}
+\index{\_write\_channel@{\_write\_channel}!modules.io.i8253.I8253@{modules.io.i8253.I8253}}
+\doxysubsubsection{\texorpdfstring{\_write\_channel()}{\_write\_channel()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i8253_1_1_i8253_a8c384574cb44bd7b098fe25d796c4fb7} 
+modules.\+io.\+i8253.\+I8253.\+\_\+write\+\_\+channel (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{ch\+\_\+num}{, }\item[{}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Запись значения в канал.\end{DoxyVerb}
+ Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1i8253_1_1_i8253_a8c384574cb44bd7b098fe25d796c4fb7_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1i8253_1_1_i8253_a8c384574cb44bd7b098fe25d796c4fb7_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1i8253_1_1_i8253_ae55517fce585000c3862ec11397f131b}\index{modules.io.i8253.I8253@{modules.io.i8253.I8253}!\_write\_control@{\_write\_control}}
+\index{\_write\_control@{\_write\_control}!modules.io.i8253.I8253@{modules.io.i8253.I8253}}
+\doxysubsubsection{\texorpdfstring{\_write\_control()}{\_write\_control()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i8253_1_1_i8253_ae55517fce585000c3862ec11397f131b} 
+modules.\+io.\+i8253.\+I8253.\+\_\+write\+\_\+control (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{cw}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Запись Control Word.
+Биты 7-6: выбор канала (00=Ch0, 01=Ch1, 10=Ch2, 11=Read-back)
+Биты 5-4: формат доступа (00=Latch, 01=LSB, 10=MSB, 11=LSB/MSB)
+Биты 3-1: режим (000-101 = Mode 0-5)
+Бит 0: формат счёта (0=binary, 1=BCD)
+\end{DoxyVerb}
+ Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1i8253_1_1_i8253_ae55517fce585000c3862ec11397f131b_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1i8253_1_1_i8253_a5b439beb975d4a89408914498bd10bd0}\index{modules.io.i8253.I8253@{modules.io.i8253.I8253}!acknowledge\_interrupt@{acknowledge\_interrupt}}
+\index{acknowledge\_interrupt@{acknowledge\_interrupt}!modules.io.i8253.I8253@{modules.io.i8253.I8253}}
+\doxysubsubsection{\texorpdfstring{acknowledge\_interrupt()}{acknowledge\_interrupt()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i8253_1_1_i8253_a5b439beb975d4a89408914498bd10bd0} 
+modules.\+io.\+i8253.\+I8253.\+acknowledge\+\_\+interrupt (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Подтверждение прерывания\end{DoxyVerb}
+ \Hypertarget{classmodules_1_1io_1_1i8253_1_1_i8253_ad0a490ad60cafbc9d35ef6333f8a55a3}\index{modules.io.i8253.I8253@{modules.io.i8253.I8253}!get\_out@{get\_out}}
+\index{get\_out@{get\_out}!modules.io.i8253.I8253@{modules.io.i8253.I8253}}
+\doxysubsubsection{\texorpdfstring{get\_out()}{get\_out()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i8253_1_1_i8253_ad0a490ad60cafbc9d35ef6333f8a55a3} 
+modules.\+io.\+i8253.\+I8253.\+get\+\_\+out (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{ch\+\_\+num}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Получить выход OUT канала.\end{DoxyVerb}
+ \Hypertarget{classmodules_1_1io_1_1i8253_1_1_i8253_a2e5b4b73d6605acb06a7498b79a1dc93}\index{modules.io.i8253.I8253@{modules.io.i8253.I8253}!get\_state@{get\_state}}
+\index{get\_state@{get\_state}!modules.io.i8253.I8253@{modules.io.i8253.I8253}}
+\doxysubsubsection{\texorpdfstring{get\_state()}{get\_state()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i8253_1_1_i8253_a2e5b4b73d6605acb06a7498b79a1dc93} 
+modules.\+io.\+i8253.\+I8253.\+get\+\_\+state (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Состояние для отладки.\end{DoxyVerb}
+ 
+
+Reimplemented from \mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_a17a7a0beff1c642aa1b3763e15bd429f}{modules.\+io.\+iodevice.\+IODevice}}.
+
+\Hypertarget{classmodules_1_1io_1_1i8253_1_1_i8253_a4799a23032e765f9b999af623da727ce}\index{modules.io.i8253.I8253@{modules.io.i8253.I8253}!has\_interrupt@{has\_interrupt}}
+\index{has\_interrupt@{has\_interrupt}!modules.io.i8253.I8253@{modules.io.i8253.I8253}}
+\doxysubsubsection{\texorpdfstring{has\_interrupt()}{has\_interrupt()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i8253_1_1_i8253_a4799a23032e765f9b999af623da727ce} 
+modules.\+io.\+i8253.\+I8253.\+has\+\_\+interrupt (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Есть ли активное прерывание\end{DoxyVerb}
+ \Hypertarget{classmodules_1_1io_1_1i8253_1_1_i8253_af5129cb6c855a3547d2457137024e777}\index{modules.io.i8253.I8253@{modules.io.i8253.I8253}!io\_read@{io\_read}}
+\index{io\_read@{io\_read}!modules.io.i8253.I8253@{modules.io.i8253.I8253}}
+\doxysubsubsection{\texorpdfstring{io\_read()}{io\_read()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i8253_1_1_i8253_af5129cb6c855a3547d2457137024e777} 
+modules.\+io.\+i8253.\+I8253.\+io\+\_\+read (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{port}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Чтение из порта.\end{DoxyVerb}
+ 
+
+Reimplemented from \mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_a48e12c7ac8519e89080b7981c57ae58d}{modules.\+io.\+iodevice.\+IODevice}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1i8253_1_1_i8253_af5129cb6c855a3547d2457137024e777_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1i8253_1_1_i8253_a8576785e1bd5eacb29b75e2567df5e86}\index{modules.io.i8253.I8253@{modules.io.i8253.I8253}!io\_write@{io\_write}}
+\index{io\_write@{io\_write}!modules.io.i8253.I8253@{modules.io.i8253.I8253}}
+\doxysubsubsection{\texorpdfstring{io\_write()}{io\_write()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i8253_1_1_i8253_a8576785e1bd5eacb29b75e2567df5e86} 
+modules.\+io.\+i8253.\+I8253.\+io\+\_\+write (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{port}{, }\item[{}]{value}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Запись в порт.\end{DoxyVerb}
+ 
+
+Reimplemented from \mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_a2957a963b46a5b4179fe85570fc377be}{modules.\+io.\+iodevice.\+IODevice}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1i8253_1_1_i8253_a8576785e1bd5eacb29b75e2567df5e86_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1i8253_1_1_i8253_a40e9174e40626574dd6b8612d10e4572}\index{modules.io.i8253.I8253@{modules.io.i8253.I8253}!reset@{reset}}
+\index{reset@{reset}!modules.io.i8253.I8253@{modules.io.i8253.I8253}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i8253_1_1_i8253_a40e9174e40626574dd6b8612d10e4572} 
+modules.\+io.\+i8253.\+I8253.\+reset (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Сброс всех каналов.\end{DoxyVerb}
+ 
+
+Reimplemented from \mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_afe097230fde568f41b4153ecc99c6f4b}{modules.\+io.\+iodevice.\+IODevice}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1i8253_1_1_i8253_a40e9174e40626574dd6b8612d10e4572_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1i8253_1_1_i8253_a3c3891fa909969eb48c38c5de0627fe7}\index{modules.io.i8253.I8253@{modules.io.i8253.I8253}!set\_gate@{set\_gate}}
+\index{set\_gate@{set\_gate}!modules.io.i8253.I8253@{modules.io.i8253.I8253}}
+\doxysubsubsection{\texorpdfstring{set\_gate()}{set\_gate()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i8253_1_1_i8253_a3c3891fa909969eb48c38c5de0627fe7} 
+modules.\+io.\+i8253.\+I8253.\+set\+\_\+gate (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{ch\+\_\+num}{, }\item[{}]{active}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Установить вход GATE канала.\end{DoxyVerb}
+ \Hypertarget{classmodules_1_1io_1_1i8253_1_1_i8253_ae963522f4f1d025539c4437cb8c2d506}\index{modules.io.i8253.I8253@{modules.io.i8253.I8253}!tick@{tick}}
+\index{tick@{tick}!modules.io.i8253.I8253@{modules.io.i8253.I8253}}
+\doxysubsubsection{\texorpdfstring{tick()}{tick()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i8253_1_1_i8253_ae963522f4f1d025539c4437cb8c2d506} 
+modules.\+io.\+i8253.\+I8253.\+tick (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{cycles}{ = {\ttfamily 1}}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Вызывается каждый такт процессора.
+Уменьшает счётчики активных каналов.
+\end{DoxyVerb}
+ 
+
+Reimplemented from \mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_a15761d8fd686da3088af53bd512045d9}{modules.\+io.\+iodevice.\+IODevice}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1i8253_1_1_i8253_ae963522f4f1d025539c4437cb8c2d506_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1i8253_1_1_i8253_ae963522f4f1d025539c4437cb8c2d506_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classmodules_1_1io_1_1i8253_1_1_i8253_a67405f3b1e7266eca83858b9d33df092}\index{modules.io.i8253.I8253@{modules.io.i8253.I8253}!channels@{channels}}
+\index{channels@{channels}!modules.io.i8253.I8253@{modules.io.i8253.I8253}}
+\doxysubsubsection{\texorpdfstring{channels}{channels}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i8253_1_1_i8253_a67405f3b1e7266eca83858b9d33df092} 
+list modules.\+io.\+i8253.\+I8253.\+channels = \mbox{[}\mbox{\hyperlink{classmodules_1_1io_1_1i8253_1_1_i8253_channel}{I8253\+Channel}}(i) for i in range(3)\mbox{]}}
+
+\Hypertarget{classmodules_1_1io_1_1i8253_1_1_i8253_ac603a790a924818a6d3aa1b64abee396}\index{modules.io.i8253.I8253@{modules.io.i8253.I8253}!irq\_flag@{irq\_flag}}
+\index{irq\_flag@{irq\_flag}!modules.io.i8253.I8253@{modules.io.i8253.I8253}}
+\doxysubsubsection{\texorpdfstring{irq\_flag}{irq\_flag}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i8253_1_1_i8253_ac603a790a924818a6d3aa1b64abee396} 
+bool modules.\+io.\+i8253.\+I8253.\+irq\+\_\+flag = False}
+
+\Hypertarget{classmodules_1_1io_1_1i8253_1_1_i8253_a625f9b140c538690b5da189a46989ce7}\index{modules.io.i8253.I8253@{modules.io.i8253.I8253}!on\_irq@{on\_irq}}
+\index{on\_irq@{on\_irq}!modules.io.i8253.I8253@{modules.io.i8253.I8253}}
+\doxysubsubsection{\texorpdfstring{on\_irq}{on\_irq}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i8253_1_1_i8253_a625f9b140c538690b5da189a46989ce7} 
+modules.\+io.\+i8253.\+I8253.\+on\+\_\+irq = None}
+
+\Hypertarget{classmodules_1_1io_1_1i8253_1_1_i8253_aedfae374da3d3e45119979e713f95c72}\index{modules.io.i8253.I8253@{modules.io.i8253.I8253}!on\_out@{on\_out}}
+\index{on\_out@{on\_out}!modules.io.i8253.I8253@{modules.io.i8253.I8253}}
+\doxysubsubsection{\texorpdfstring{on\_out}{on\_out}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1i8253_1_1_i8253_aedfae374da3d3e45119979e713f95c72} 
+modules.\+io.\+i8253.\+I8253.\+on\+\_\+out = None}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+modules/io/\mbox{\hyperlink{i8253_8py}{i8253.\+py}}\end{DoxyCompactItemize}

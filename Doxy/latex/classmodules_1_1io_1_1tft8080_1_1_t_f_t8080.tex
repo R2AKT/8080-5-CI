@@ -1,0 +1,364 @@
+\doxysection{modules.\+io.\+tft8080.\+TFT8080 Class Reference}
+\hypertarget{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080}{}\label{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080}\index{modules.io.tft8080.TFT8080@{modules.io.tft8080.TFT8080}}
+
+
+Inheritance diagram for modules.\+io.\+tft8080.\+TFT8080\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=227pt]{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for modules.\+io.\+tft8080.\+TFT8080\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=227pt]{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_a0aa266f7bb1bf8b62cb2434b7e8b41f5}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, \mbox{\hyperlink{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080}{base\+\_\+port}}, \mbox{\hyperlink{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080}{name}}="{}TFT8080"{}, \mbox{\hyperlink{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_a2a99d255cf29389102331c479793a06f}{width}}=320, \mbox{\hyperlink{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_adaee87dd6418929a3b7116d551aea8bf}{height}}=240)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_a44050b1ce1f1a8822dad224fa9d1cc03}{reset}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_ab500963160ea411fcb5911c292a5fd5c}{io\+\_\+read}} (self, port)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_ad04a5370c5fb244ce4275f557b0a73b5}{io\+\_\+write}} (self, port, value)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_a5bcfcf24ea830834c819b0fd816898fb}{get\+\_\+framebuffer}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_ad1b1cc1b0218211fa24bb355b48bdcd8}{get\+\_\+state}} (self)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device}{modules.\+io.\+iodevice.\+IODevice}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_af44b72c0a1d9f3622b18ce802d33290b}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, \mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_a349db233ca1e3fd7c64e10db67c21aa3}{base\+\_\+port}}, \mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_a2023de274431002e37faef63d740d9e9}{port\+\_\+count}}, \mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_a4ef4b1e055e68877b069410b67b6c90d}{name}}="{}IODevice"{})
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_a15761d8fd686da3088af53bd512045d9}{tick}} (self, cycles=1)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_a8b83e9174621e573851b94cc407ab267}{register\+\_\+to\+\_\+bus}} (self, bus)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_a1636fa580fb8cafd15d2b4b24cdf6e9d}{unregister\+\_\+from\+\_\+bus}} (self, bus)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_a2a99d255cf29389102331c479793a06f}{width}} = width
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_adaee87dd6418929a3b7116d551aea8bf}{height}} = height
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_a7494a52b887d65380eb4b656b7684a55}{on\+\_\+display\+\_\+update}} = None
+\item 
+list \mbox{\hyperlink{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_a847099a5933aa1ab1ff587d7df468a19}{framebuffer}} = \mbox{[}0\mbox{]} \texorpdfstring{$\ast$}{*} (self.\+width \texorpdfstring{$\ast$}{*} self.\+height)
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_a911d12affe5c61c95ab9c9259259f0cc}{current\+\_\+reg}} = 0x00
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_ac5569c12fdc3f9898a37bdc2d81584dd}{col\+\_\+addr}} = 0
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_aeeeebe52a1b2ef746f83903abca32c81}{row\+\_\+addr}} = 0
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device}{modules.\+io.\+iodevice.\+IODevice}}}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_a349db233ca1e3fd7c64e10db67c21aa3}{base\+\_\+port}} = base\+\_\+port \& 0x\+FF
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_a2023de274431002e37faef63d740d9e9}{port\+\_\+count}} = port\+\_\+count
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_a4ef4b1e055e68877b069410b67b6c90d}{name}} = name
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_ae80f82185ed10bc6f084d349afac910a}{CMD\+\_\+\+SET\+\_\+\+COLUMN}} = 0x21
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_a3e38cc58ea9db8d935d7b3dcb613ca28}{CMD\+\_\+\+SET\+\_\+\+ROW}} = 0x22
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_a2be7e72140ab53b40c1c2e53d0be1372}{CMD\+\_\+\+MEM\+\_\+\+WRITE}} = 0x2C
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_a97a3d950d54a3d47076af52c7acc301c}{CMD\+\_\+\+MEM\+\_\+\+READ}} = 0x2E
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_a011a051a1058b34311dfd45959875f58}{\+\_\+read\+\_\+data}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_a674ab12176359ec5bb532cffa7d9d8b8}{\+\_\+write\+\_\+data}} (self, value)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_aeba10158ac27824f3c3b9ed23fb8291a}{\+\_\+execute\+\_\+command}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_aa634c7b9484b3c42c7066802b1637172}{\+\_\+notify\+\_\+update}} (self)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_a9063d21df52a2579fefa83b1bede2902}{\+\_\+last\+\_\+cmd}} = 0x00
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_a4410e7ecf705544e7884e46db0d290be}{\+\_\+byte\+\_\+latch}} = None
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_aa236b674981289a2abb5a25c3e8686e3}{\+\_\+byte\+\_\+count}} = 0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}TFT8080 — графический дисплей с 8080-интерфейсом\end{DoxyVerb}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_a0aa266f7bb1bf8b62cb2434b7e8b41f5}\index{modules.io.tft8080.TFT8080@{modules.io.tft8080.TFT8080}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!modules.io.tft8080.TFT8080@{modules.io.tft8080.TFT8080}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_a0aa266f7bb1bf8b62cb2434b7e8b41f5} 
+modules.\+io.\+tft8080.\+TFT8080.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{base\+\_\+port}{, }\item[{}]{name}{ = {\ttfamily "{}TFT8080"{}}, }\item[{}]{width}{ = {\ttfamily 320}, }\item[{}]{height}{ = {\ttfamily 240}}\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=221pt]{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_a0aa266f7bb1bf8b62cb2434b7e8b41f5_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=221pt]{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_a0aa266f7bb1bf8b62cb2434b7e8b41f5_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_aeba10158ac27824f3c3b9ed23fb8291a}\index{modules.io.tft8080.TFT8080@{modules.io.tft8080.TFT8080}!\_execute\_command@{\_execute\_command}}
+\index{\_execute\_command@{\_execute\_command}!modules.io.tft8080.TFT8080@{modules.io.tft8080.TFT8080}}
+\doxysubsubsection{\texorpdfstring{\_execute\_command()}{\_execute\_command()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_aeba10158ac27824f3c3b9ed23fb8291a} 
+modules.\+io.\+tft8080.\+TFT8080.\+\_\+execute\+\_\+command (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Выполнение команды\end{DoxyVerb}
+ Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_aeba10158ac27824f3c3b9ed23fb8291a_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_aa634c7b9484b3c42c7066802b1637172}\index{modules.io.tft8080.TFT8080@{modules.io.tft8080.TFT8080}!\_notify\_update@{\_notify\_update}}
+\index{\_notify\_update@{\_notify\_update}!modules.io.tft8080.TFT8080@{modules.io.tft8080.TFT8080}}
+\doxysubsubsection{\texorpdfstring{\_notify\_update()}{\_notify\_update()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_aa634c7b9484b3c42c7066802b1637172} 
+modules.\+io.\+tft8080.\+TFT8080.\+\_\+notify\+\_\+update (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Уведомление об обновлении дисплея\end{DoxyVerb}
+ Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_aa634c7b9484b3c42c7066802b1637172_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_a011a051a1058b34311dfd45959875f58}\index{modules.io.tft8080.TFT8080@{modules.io.tft8080.TFT8080}!\_read\_data@{\_read\_data}}
+\index{\_read\_data@{\_read\_data}!modules.io.tft8080.TFT8080@{modules.io.tft8080.TFT8080}}
+\doxysubsubsection{\texorpdfstring{\_read\_data()}{\_read\_data()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_a011a051a1058b34311dfd45959875f58} 
+modules.\+io.\+tft8080.\+TFT8080.\+\_\+read\+\_\+data (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Чтение данных из видеопамяти\end{DoxyVerb}
+ Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_a011a051a1058b34311dfd45959875f58_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_a674ab12176359ec5bb532cffa7d9d8b8}\index{modules.io.tft8080.TFT8080@{modules.io.tft8080.TFT8080}!\_write\_data@{\_write\_data}}
+\index{\_write\_data@{\_write\_data}!modules.io.tft8080.TFT8080@{modules.io.tft8080.TFT8080}}
+\doxysubsubsection{\texorpdfstring{\_write\_data()}{\_write\_data()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_a674ab12176359ec5bb532cffa7d9d8b8} 
+modules.\+io.\+tft8080.\+TFT8080.\+\_\+write\+\_\+data (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Запись данных в видеопамять (побайтно, 2 байта на пиксель)\end{DoxyVerb}
+ Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_a674ab12176359ec5bb532cffa7d9d8b8_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_a674ab12176359ec5bb532cffa7d9d8b8_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_a5bcfcf24ea830834c819b0fd816898fb}\index{modules.io.tft8080.TFT8080@{modules.io.tft8080.TFT8080}!get\_framebuffer@{get\_framebuffer}}
+\index{get\_framebuffer@{get\_framebuffer}!modules.io.tft8080.TFT8080@{modules.io.tft8080.TFT8080}}
+\doxysubsubsection{\texorpdfstring{get\_framebuffer()}{get\_framebuffer()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_a5bcfcf24ea830834c819b0fd816898fb} 
+modules.\+io.\+tft8080.\+TFT8080.\+get\+\_\+framebuffer (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Получить содержимое видеопамяти\end{DoxyVerb}
+ \Hypertarget{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_ad1b1cc1b0218211fa24bb355b48bdcd8}\index{modules.io.tft8080.TFT8080@{modules.io.tft8080.TFT8080}!get\_state@{get\_state}}
+\index{get\_state@{get\_state}!modules.io.tft8080.TFT8080@{modules.io.tft8080.TFT8080}}
+\doxysubsubsection{\texorpdfstring{get\_state()}{get\_state()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_ad1b1cc1b0218211fa24bb355b48bdcd8} 
+modules.\+io.\+tft8080.\+TFT8080.\+get\+\_\+state (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Состояние устройства для отладки. Переопределяется подклассами.\end{DoxyVerb}
+ 
+
+Reimplemented from \mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_a17a7a0beff1c642aa1b3763e15bd429f}{modules.\+io.\+iodevice.\+IODevice}}.
+
+\Hypertarget{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_ab500963160ea411fcb5911c292a5fd5c}\index{modules.io.tft8080.TFT8080@{modules.io.tft8080.TFT8080}!io\_read@{io\_read}}
+\index{io\_read@{io\_read}!modules.io.tft8080.TFT8080@{modules.io.tft8080.TFT8080}}
+\doxysubsubsection{\texorpdfstring{io\_read()}{io\_read()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_ab500963160ea411fcb5911c292a5fd5c} 
+modules.\+io.\+tft8080.\+TFT8080.\+io\+\_\+read (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{port}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Чтение из порта\end{DoxyVerb}
+ 
+
+Reimplemented from \mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_a48e12c7ac8519e89080b7981c57ae58d}{modules.\+io.\+iodevice.\+IODevice}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_ab500963160ea411fcb5911c292a5fd5c_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_ad04a5370c5fb244ce4275f557b0a73b5}\index{modules.io.tft8080.TFT8080@{modules.io.tft8080.TFT8080}!io\_write@{io\_write}}
+\index{io\_write@{io\_write}!modules.io.tft8080.TFT8080@{modules.io.tft8080.TFT8080}}
+\doxysubsubsection{\texorpdfstring{io\_write()}{io\_write()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_ad04a5370c5fb244ce4275f557b0a73b5} 
+modules.\+io.\+tft8080.\+TFT8080.\+io\+\_\+write (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{port}{, }\item[{}]{value}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Запись в порт\end{DoxyVerb}
+ 
+
+Reimplemented from \mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_a2957a963b46a5b4179fe85570fc377be}{modules.\+io.\+iodevice.\+IODevice}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_ad04a5370c5fb244ce4275f557b0a73b5_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_a44050b1ce1f1a8822dad224fa9d1cc03}\index{modules.io.tft8080.TFT8080@{modules.io.tft8080.TFT8080}!reset@{reset}}
+\index{reset@{reset}!modules.io.tft8080.TFT8080@{modules.io.tft8080.TFT8080}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_a44050b1ce1f1a8822dad224fa9d1cc03} 
+modules.\+io.\+tft8080.\+TFT8080.\+reset (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Сброс контроллера\end{DoxyVerb}
+ 
+
+Reimplemented from \mbox{\hyperlink{classmodules_1_1io_1_1iodevice_1_1_i_o_device_afe097230fde568f41b4153ecc99c6f4b}{modules.\+io.\+iodevice.\+IODevice}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_aa236b674981289a2abb5a25c3e8686e3}\index{modules.io.tft8080.TFT8080@{modules.io.tft8080.TFT8080}!\_byte\_count@{\_byte\_count}}
+\index{\_byte\_count@{\_byte\_count}!modules.io.tft8080.TFT8080@{modules.io.tft8080.TFT8080}}
+\doxysubsubsection{\texorpdfstring{\_byte\_count}{\_byte\_count}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_aa236b674981289a2abb5a25c3e8686e3} 
+int modules.\+io.\+tft8080.\+TFT8080.\+\_\+byte\+\_\+count = 0\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_a4410e7ecf705544e7884e46db0d290be}\index{modules.io.tft8080.TFT8080@{modules.io.tft8080.TFT8080}!\_byte\_latch@{\_byte\_latch}}
+\index{\_byte\_latch@{\_byte\_latch}!modules.io.tft8080.TFT8080@{modules.io.tft8080.TFT8080}}
+\doxysubsubsection{\texorpdfstring{\_byte\_latch}{\_byte\_latch}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_a4410e7ecf705544e7884e46db0d290be} 
+modules.\+io.\+tft8080.\+TFT8080.\+\_\+byte\+\_\+latch = None\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_a9063d21df52a2579fefa83b1bede2902}\index{modules.io.tft8080.TFT8080@{modules.io.tft8080.TFT8080}!\_last\_cmd@{\_last\_cmd}}
+\index{\_last\_cmd@{\_last\_cmd}!modules.io.tft8080.TFT8080@{modules.io.tft8080.TFT8080}}
+\doxysubsubsection{\texorpdfstring{\_last\_cmd}{\_last\_cmd}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_a9063d21df52a2579fefa83b1bede2902} 
+int modules.\+io.\+tft8080.\+TFT8080.\+\_\+last\+\_\+cmd = 0x00\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_a97a3d950d54a3d47076af52c7acc301c}\index{modules.io.tft8080.TFT8080@{modules.io.tft8080.TFT8080}!CMD\_MEM\_READ@{CMD\_MEM\_READ}}
+\index{CMD\_MEM\_READ@{CMD\_MEM\_READ}!modules.io.tft8080.TFT8080@{modules.io.tft8080.TFT8080}}
+\doxysubsubsection{\texorpdfstring{CMD\_MEM\_READ}{CMD\_MEM\_READ}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_a97a3d950d54a3d47076af52c7acc301c} 
+int modules.\+io.\+tft8080.\+TFT8080.\+CMD\+\_\+\+MEM\+\_\+\+READ = 0x2E\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_a2be7e72140ab53b40c1c2e53d0be1372}\index{modules.io.tft8080.TFT8080@{modules.io.tft8080.TFT8080}!CMD\_MEM\_WRITE@{CMD\_MEM\_WRITE}}
+\index{CMD\_MEM\_WRITE@{CMD\_MEM\_WRITE}!modules.io.tft8080.TFT8080@{modules.io.tft8080.TFT8080}}
+\doxysubsubsection{\texorpdfstring{CMD\_MEM\_WRITE}{CMD\_MEM\_WRITE}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_a2be7e72140ab53b40c1c2e53d0be1372} 
+int modules.\+io.\+tft8080.\+TFT8080.\+CMD\+\_\+\+MEM\+\_\+\+WRITE = 0x2C\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_ae80f82185ed10bc6f084d349afac910a}\index{modules.io.tft8080.TFT8080@{modules.io.tft8080.TFT8080}!CMD\_SET\_COLUMN@{CMD\_SET\_COLUMN}}
+\index{CMD\_SET\_COLUMN@{CMD\_SET\_COLUMN}!modules.io.tft8080.TFT8080@{modules.io.tft8080.TFT8080}}
+\doxysubsubsection{\texorpdfstring{CMD\_SET\_COLUMN}{CMD\_SET\_COLUMN}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_ae80f82185ed10bc6f084d349afac910a} 
+int modules.\+io.\+tft8080.\+TFT8080.\+CMD\+\_\+\+SET\+\_\+\+COLUMN = 0x21\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_a3e38cc58ea9db8d935d7b3dcb613ca28}\index{modules.io.tft8080.TFT8080@{modules.io.tft8080.TFT8080}!CMD\_SET\_ROW@{CMD\_SET\_ROW}}
+\index{CMD\_SET\_ROW@{CMD\_SET\_ROW}!modules.io.tft8080.TFT8080@{modules.io.tft8080.TFT8080}}
+\doxysubsubsection{\texorpdfstring{CMD\_SET\_ROW}{CMD\_SET\_ROW}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_a3e38cc58ea9db8d935d7b3dcb613ca28} 
+int modules.\+io.\+tft8080.\+TFT8080.\+CMD\+\_\+\+SET\+\_\+\+ROW = 0x22\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_ac5569c12fdc3f9898a37bdc2d81584dd}\index{modules.io.tft8080.TFT8080@{modules.io.tft8080.TFT8080}!col\_addr@{col\_addr}}
+\index{col\_addr@{col\_addr}!modules.io.tft8080.TFT8080@{modules.io.tft8080.TFT8080}}
+\doxysubsubsection{\texorpdfstring{col\_addr}{col\_addr}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_ac5569c12fdc3f9898a37bdc2d81584dd} 
+modules.\+io.\+tft8080.\+TFT8080.\+col\+\_\+addr = 0}
+
+\Hypertarget{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_a911d12affe5c61c95ab9c9259259f0cc}\index{modules.io.tft8080.TFT8080@{modules.io.tft8080.TFT8080}!current\_reg@{current\_reg}}
+\index{current\_reg@{current\_reg}!modules.io.tft8080.TFT8080@{modules.io.tft8080.TFT8080}}
+\doxysubsubsection{\texorpdfstring{current\_reg}{current\_reg}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_a911d12affe5c61c95ab9c9259259f0cc} 
+int modules.\+io.\+tft8080.\+TFT8080.\+current\+\_\+reg = 0x00}
+
+\Hypertarget{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_a847099a5933aa1ab1ff587d7df468a19}\index{modules.io.tft8080.TFT8080@{modules.io.tft8080.TFT8080}!framebuffer@{framebuffer}}
+\index{framebuffer@{framebuffer}!modules.io.tft8080.TFT8080@{modules.io.tft8080.TFT8080}}
+\doxysubsubsection{\texorpdfstring{framebuffer}{framebuffer}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_a847099a5933aa1ab1ff587d7df468a19} 
+modules.\+io.\+tft8080.\+TFT8080.\+framebuffer = \mbox{[}0\mbox{]} \texorpdfstring{$\ast$}{*} (self.\+width \texorpdfstring{$\ast$}{*} self.\+height)}
+
+\Hypertarget{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_adaee87dd6418929a3b7116d551aea8bf}\index{modules.io.tft8080.TFT8080@{modules.io.tft8080.TFT8080}!height@{height}}
+\index{height@{height}!modules.io.tft8080.TFT8080@{modules.io.tft8080.TFT8080}}
+\doxysubsubsection{\texorpdfstring{height}{height}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_adaee87dd6418929a3b7116d551aea8bf} 
+modules.\+io.\+tft8080.\+TFT8080.\+height = height}
+
+\Hypertarget{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_a7494a52b887d65380eb4b656b7684a55}\index{modules.io.tft8080.TFT8080@{modules.io.tft8080.TFT8080}!on\_display\_update@{on\_display\_update}}
+\index{on\_display\_update@{on\_display\_update}!modules.io.tft8080.TFT8080@{modules.io.tft8080.TFT8080}}
+\doxysubsubsection{\texorpdfstring{on\_display\_update}{on\_display\_update}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_a7494a52b887d65380eb4b656b7684a55} 
+modules.\+io.\+tft8080.\+TFT8080.\+on\+\_\+display\+\_\+update = None}
+
+\Hypertarget{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_aeeeebe52a1b2ef746f83903abca32c81}\index{modules.io.tft8080.TFT8080@{modules.io.tft8080.TFT8080}!row\_addr@{row\_addr}}
+\index{row\_addr@{row\_addr}!modules.io.tft8080.TFT8080@{modules.io.tft8080.TFT8080}}
+\doxysubsubsection{\texorpdfstring{row\_addr}{row\_addr}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_aeeeebe52a1b2ef746f83903abca32c81} 
+modules.\+io.\+tft8080.\+TFT8080.\+row\+\_\+addr = 0}
+
+\Hypertarget{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_a2a99d255cf29389102331c479793a06f}\index{modules.io.tft8080.TFT8080@{modules.io.tft8080.TFT8080}!width@{width}}
+\index{width@{width}!modules.io.tft8080.TFT8080@{modules.io.tft8080.TFT8080}}
+\doxysubsubsection{\texorpdfstring{width}{width}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1tft8080_1_1_t_f_t8080_a2a99d255cf29389102331c479793a06f} 
+modules.\+io.\+tft8080.\+TFT8080.\+width = width}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+modules/io/\mbox{\hyperlink{tft8080_8py}{tft8080.\+py}}\end{DoxyCompactItemize}

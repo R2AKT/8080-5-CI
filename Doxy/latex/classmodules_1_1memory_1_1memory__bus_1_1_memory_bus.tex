@@ -1,0 +1,251 @@
+\doxysection{modules.\+memory.\+memory\+\_\+bus.\+Memory\+Bus Class Reference}
+\hypertarget{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus}{}\label{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus}\index{modules.memory.memory\_bus.MemoryBus@{modules.memory.memory\_bus.MemoryBus}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_ab4d41053e857b5860d51390539a637e4}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_a656d367411b3836ef37813d3428de789}{size}}=0x10000)
+\item 
+\mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_aafa0b30f6aa17d2f7e27e0773f88f761}{register\+\_\+memory}} (self, region)
+\item 
+\mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_a016dda4d565de9020112ec15ba430d17}{unregister\+\_\+memory}} (self, region)
+\item 
+\mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_aa0dad0665d8c2184cf1337664204d0b7}{register\+\_\+io}} (self, port, device)
+\item 
+\mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_ae9548fc4f4519a0b6d19e503dba88a1d}{unregister\+\_\+io}} (self, port)
+\item 
+\mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_a1a84e61a4de106a59ab991800fee6b42}{read}} (self, addr)
+\item 
+\mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_a847bb90c4a539c6b4f90befe7f59e7f2}{write}} (self, addr, value)
+\item 
+\mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_acbbc348df03d0c48d5c60aea1cb2af1b}{read\+\_\+word}} (self, addr)
+\item 
+\mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_a81becd755ee77fbfa62c37259bb03aff}{write\+\_\+word}} (self, addr, value)
+\item 
+\mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_ad95f832e91f586a03596e0884dfb8345}{io\+\_\+read}} (self, port)
+\item 
+\mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_ac0219a6875fd3b91fa1437c62f60fcde}{io\+\_\+write}} (self, port, value)
+\item 
+\mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_abcc2928c689183b189cce70d6d9d0c43}{reset}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_a4f5e902eafc7c1d5c63d19add7a929d6}{get\+\_\+memory\+\_\+map}} (self)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_a656d367411b3836ef37813d3428de789}{size}} = size
+\item 
+list \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_a22d41db4e91eaa41c6eb70d70d2631bb}{memory\+\_\+regions}} = \mbox{[}$\,$\mbox{]}
+\item 
+dict \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_a12eb7bac14232370a66ffdcca8018342}{io\+\_\+devices}} = \{\}
+\item 
+list \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_ab4d69ca854ef8b0b7426892ce81c2218}{io\+\_\+range\+\_\+devices}} = \mbox{[}$\,$\mbox{]}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_a8c2c6c6eb1f6ff7ab240f5057a3b8671}{\+\_\+unmapped\+\_\+read}} = 0x\+FF
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Шина памяти и IO.
+Маршрутизирует обращения по адресу к соответствующему модулю.
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_ab4d41053e857b5860d51390539a637e4}\index{modules.memory.memory\_bus.MemoryBus@{modules.memory.memory\_bus.MemoryBus}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!modules.memory.memory\_bus.MemoryBus@{modules.memory.memory\_bus.MemoryBus}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \label{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_ab4d41053e857b5860d51390539a637e4} 
+modules.\+memory.\+memory\+\_\+bus.\+Memory\+Bus.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{size}{ = {\ttfamily 0x10000}}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_a4f5e902eafc7c1d5c63d19add7a929d6}\index{modules.memory.memory\_bus.MemoryBus@{modules.memory.memory\_bus.MemoryBus}!get\_memory\_map@{get\_memory\_map}}
+\index{get\_memory\_map@{get\_memory\_map}!modules.memory.memory\_bus.MemoryBus@{modules.memory.memory\_bus.MemoryBus}}
+\doxysubsubsection{\texorpdfstring{get\_memory\_map()}{get\_memory\_map()}}
+{\footnotesize\ttfamily \label{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_a4f5e902eafc7c1d5c63d19add7a929d6} 
+modules.\+memory.\+memory\+\_\+bus.\+Memory\+Bus.\+get\+\_\+memory\+\_\+map (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Вернуть карту памяти для отображения/отладки\end{DoxyVerb}
+ \Hypertarget{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_ad95f832e91f586a03596e0884dfb8345}\index{modules.memory.memory\_bus.MemoryBus@{modules.memory.memory\_bus.MemoryBus}!io\_read@{io\_read}}
+\index{io\_read@{io\_read}!modules.memory.memory\_bus.MemoryBus@{modules.memory.memory\_bus.MemoryBus}}
+\doxysubsubsection{\texorpdfstring{io\_read()}{io\_read()}}
+{\footnotesize\ttfamily \label{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_ad95f832e91f586a03596e0884dfb8345} 
+modules.\+memory.\+memory\+\_\+bus.\+Memory\+Bus.\+io\+\_\+read (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{port}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Чтение из IO-порта\end{DoxyVerb}
+ Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=209pt]{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_ad95f832e91f586a03596e0884dfb8345_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=209pt]{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_ad95f832e91f586a03596e0884dfb8345_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_ac0219a6875fd3b91fa1437c62f60fcde}\index{modules.memory.memory\_bus.MemoryBus@{modules.memory.memory\_bus.MemoryBus}!io\_write@{io\_write}}
+\index{io\_write@{io\_write}!modules.memory.memory\_bus.MemoryBus@{modules.memory.memory\_bus.MemoryBus}}
+\doxysubsubsection{\texorpdfstring{io\_write()}{io\_write()}}
+{\footnotesize\ttfamily \label{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_ac0219a6875fd3b91fa1437c62f60fcde} 
+modules.\+memory.\+memory\+\_\+bus.\+Memory\+Bus.\+io\+\_\+write (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{port}{, }\item[{}]{value}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Запись в IO-порт\end{DoxyVerb}
+ Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=209pt]{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_ac0219a6875fd3b91fa1437c62f60fcde_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=209pt]{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_ac0219a6875fd3b91fa1437c62f60fcde_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_a1a84e61a4de106a59ab991800fee6b42}\index{modules.memory.memory\_bus.MemoryBus@{modules.memory.memory\_bus.MemoryBus}!read@{read}}
+\index{read@{read}!modules.memory.memory\_bus.MemoryBus@{modules.memory.memory\_bus.MemoryBus}}
+\doxysubsubsection{\texorpdfstring{read()}{read()}}
+{\footnotesize\ttfamily \label{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_a1a84e61a4de106a59ab991800fee6b42} 
+modules.\+memory.\+memory\+\_\+bus.\+Memory\+Bus.\+read (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{addr}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Чтение байта из памяти\end{DoxyVerb}
+ Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_a1a84e61a4de106a59ab991800fee6b42_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_acbbc348df03d0c48d5c60aea1cb2af1b}\index{modules.memory.memory\_bus.MemoryBus@{modules.memory.memory\_bus.MemoryBus}!read\_word@{read\_word}}
+\index{read\_word@{read\_word}!modules.memory.memory\_bus.MemoryBus@{modules.memory.memory\_bus.MemoryBus}}
+\doxysubsubsection{\texorpdfstring{read\_word()}{read\_word()}}
+{\footnotesize\ttfamily \label{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_acbbc348df03d0c48d5c60aea1cb2af1b} 
+modules.\+memory.\+memory\+\_\+bus.\+Memory\+Bus.\+read\+\_\+word (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{addr}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Чтение слова (little-endian)\end{DoxyVerb}
+ Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_acbbc348df03d0c48d5c60aea1cb2af1b_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_aa0dad0665d8c2184cf1337664204d0b7}\index{modules.memory.memory\_bus.MemoryBus@{modules.memory.memory\_bus.MemoryBus}!register\_io@{register\_io}}
+\index{register\_io@{register\_io}!modules.memory.memory\_bus.MemoryBus@{modules.memory.memory\_bus.MemoryBus}}
+\doxysubsubsection{\texorpdfstring{register\_io()}{register\_io()}}
+{\footnotesize\ttfamily \label{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_aa0dad0665d8c2184cf1337664204d0b7} 
+modules.\+memory.\+memory\+\_\+bus.\+Memory\+Bus.\+register\+\_\+io (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{port}{, }\item[{}]{device}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Зарегистрировать IO-устройство по порту\end{DoxyVerb}
+ \Hypertarget{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_aafa0b30f6aa17d2f7e27e0773f88f761}\index{modules.memory.memory\_bus.MemoryBus@{modules.memory.memory\_bus.MemoryBus}!register\_memory@{register\_memory}}
+\index{register\_memory@{register\_memory}!modules.memory.memory\_bus.MemoryBus@{modules.memory.memory\_bus.MemoryBus}}
+\doxysubsubsection{\texorpdfstring{register\_memory()}{register\_memory()}}
+{\footnotesize\ttfamily \label{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_aafa0b30f6aa17d2f7e27e0773f88f761} 
+modules.\+memory.\+memory\+\_\+bus.\+Memory\+Bus.\+register\+\_\+memory (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{region}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Зарегистрировать регион памяти.\end{DoxyVerb}
+ \Hypertarget{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_abcc2928c689183b189cce70d6d9d0c43}\index{modules.memory.memory\_bus.MemoryBus@{modules.memory.memory\_bus.MemoryBus}!reset@{reset}}
+\index{reset@{reset}!modules.memory.memory\_bus.MemoryBus@{modules.memory.memory\_bus.MemoryBus}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily \label{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_abcc2928c689183b189cce70d6d9d0c43} 
+modules.\+memory.\+memory\+\_\+bus.\+Memory\+Bus.\+reset (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Сброс всех модулей шины\end{DoxyVerb}
+ \Hypertarget{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_ae9548fc4f4519a0b6d19e503dba88a1d}\index{modules.memory.memory\_bus.MemoryBus@{modules.memory.memory\_bus.MemoryBus}!unregister\_io@{unregister\_io}}
+\index{unregister\_io@{unregister\_io}!modules.memory.memory\_bus.MemoryBus@{modules.memory.memory\_bus.MemoryBus}}
+\doxysubsubsection{\texorpdfstring{unregister\_io()}{unregister\_io()}}
+{\footnotesize\ttfamily \label{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_ae9548fc4f4519a0b6d19e503dba88a1d} 
+modules.\+memory.\+memory\+\_\+bus.\+Memory\+Bus.\+unregister\+\_\+io (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{port}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Удалить IO-устройство\end{DoxyVerb}
+ \Hypertarget{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_a016dda4d565de9020112ec15ba430d17}\index{modules.memory.memory\_bus.MemoryBus@{modules.memory.memory\_bus.MemoryBus}!unregister\_memory@{unregister\_memory}}
+\index{unregister\_memory@{unregister\_memory}!modules.memory.memory\_bus.MemoryBus@{modules.memory.memory\_bus.MemoryBus}}
+\doxysubsubsection{\texorpdfstring{unregister\_memory()}{unregister\_memory()}}
+{\footnotesize\ttfamily \label{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_a016dda4d565de9020112ec15ba430d17} 
+modules.\+memory.\+memory\+\_\+bus.\+Memory\+Bus.\+unregister\+\_\+memory (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{region}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Удалить регион памяти\end{DoxyVerb}
+ \Hypertarget{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_a847bb90c4a539c6b4f90befe7f59e7f2}\index{modules.memory.memory\_bus.MemoryBus@{modules.memory.memory\_bus.MemoryBus}!write@{write}}
+\index{write@{write}!modules.memory.memory\_bus.MemoryBus@{modules.memory.memory\_bus.MemoryBus}}
+\doxysubsubsection{\texorpdfstring{write()}{write()}}
+{\footnotesize\ttfamily \label{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_a847bb90c4a539c6b4f90befe7f59e7f2} 
+modules.\+memory.\+memory\+\_\+bus.\+Memory\+Bus.\+write (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{addr}{, }\item[{}]{value}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Запись байта в память\end{DoxyVerb}
+ Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_a847bb90c4a539c6b4f90befe7f59e7f2_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_a81becd755ee77fbfa62c37259bb03aff}\index{modules.memory.memory\_bus.MemoryBus@{modules.memory.memory\_bus.MemoryBus}!write\_word@{write\_word}}
+\index{write\_word@{write\_word}!modules.memory.memory\_bus.MemoryBus@{modules.memory.memory\_bus.MemoryBus}}
+\doxysubsubsection{\texorpdfstring{write\_word()}{write\_word()}}
+{\footnotesize\ttfamily \label{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_a81becd755ee77fbfa62c37259bb03aff} 
+modules.\+memory.\+memory\+\_\+bus.\+Memory\+Bus.\+write\+\_\+word (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{addr}{, }\item[{}]{value}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Запись слова (little-endian)\end{DoxyVerb}
+ Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_a81becd755ee77fbfa62c37259bb03aff_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_a8c2c6c6eb1f6ff7ab240f5057a3b8671}\index{modules.memory.memory\_bus.MemoryBus@{modules.memory.memory\_bus.MemoryBus}!\_unmapped\_read@{\_unmapped\_read}}
+\index{\_unmapped\_read@{\_unmapped\_read}!modules.memory.memory\_bus.MemoryBus@{modules.memory.memory\_bus.MemoryBus}}
+\doxysubsubsection{\texorpdfstring{\_unmapped\_read}{\_unmapped\_read}}
+{\footnotesize\ttfamily \label{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_a8c2c6c6eb1f6ff7ab240f5057a3b8671} 
+int modules.\+memory.\+memory\+\_\+bus.\+Memory\+Bus.\+\_\+unmapped\+\_\+read = 0x\+FF\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_a12eb7bac14232370a66ffdcca8018342}\index{modules.memory.memory\_bus.MemoryBus@{modules.memory.memory\_bus.MemoryBus}!io\_devices@{io\_devices}}
+\index{io\_devices@{io\_devices}!modules.memory.memory\_bus.MemoryBus@{modules.memory.memory\_bus.MemoryBus}}
+\doxysubsubsection{\texorpdfstring{io\_devices}{io\_devices}}
+{\footnotesize\ttfamily \label{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_a12eb7bac14232370a66ffdcca8018342} 
+dict modules.\+memory.\+memory\+\_\+bus.\+Memory\+Bus.\+io\+\_\+devices = \{\}}
+
+\Hypertarget{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_ab4d69ca854ef8b0b7426892ce81c2218}\index{modules.memory.memory\_bus.MemoryBus@{modules.memory.memory\_bus.MemoryBus}!io\_range\_devices@{io\_range\_devices}}
+\index{io\_range\_devices@{io\_range\_devices}!modules.memory.memory\_bus.MemoryBus@{modules.memory.memory\_bus.MemoryBus}}
+\doxysubsubsection{\texorpdfstring{io\_range\_devices}{io\_range\_devices}}
+{\footnotesize\ttfamily \label{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_ab4d69ca854ef8b0b7426892ce81c2218} 
+list modules.\+memory.\+memory\+\_\+bus.\+Memory\+Bus.\+io\+\_\+range\+\_\+devices = \mbox{[}$\,$\mbox{]}}
+
+\Hypertarget{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_a22d41db4e91eaa41c6eb70d70d2631bb}\index{modules.memory.memory\_bus.MemoryBus@{modules.memory.memory\_bus.MemoryBus}!memory\_regions@{memory\_regions}}
+\index{memory\_regions@{memory\_regions}!modules.memory.memory\_bus.MemoryBus@{modules.memory.memory\_bus.MemoryBus}}
+\doxysubsubsection{\texorpdfstring{memory\_regions}{memory\_regions}}
+{\footnotesize\ttfamily \label{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_a22d41db4e91eaa41c6eb70d70d2631bb} 
+list modules.\+memory.\+memory\+\_\+bus.\+Memory\+Bus.\+memory\+\_\+regions = \mbox{[}$\,$\mbox{]}}
+
+\Hypertarget{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_a656d367411b3836ef37813d3428de789}\index{modules.memory.memory\_bus.MemoryBus@{modules.memory.memory\_bus.MemoryBus}!size@{size}}
+\index{size@{size}!modules.memory.memory\_bus.MemoryBus@{modules.memory.memory\_bus.MemoryBus}}
+\doxysubsubsection{\texorpdfstring{size}{size}}
+{\footnotesize\ttfamily \label{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_a656d367411b3836ef37813d3428de789} 
+modules.\+memory.\+memory\+\_\+bus.\+Memory\+Bus.\+size = size}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+modules/memory/\mbox{\hyperlink{memory__bus_8py}{memory\+\_\+bus.\+py}}\end{DoxyCompactItemize}

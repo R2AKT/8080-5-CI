@@ -85,6 +85,12 @@
 //#define Debug
 //#define DirectPortManipulation
 ///
+uint16_t StartAddr = 0;
+int16_t Rx_Len = 0;
+uint8_t Rx_Buff[(MAX_DATA_SIZE+3)*2] = {};
+uint8_t Tx_Buff[(MAX_DATA_SIZE+3)*2] = {};
+bool Active = false;
+///
 void setup() {
   ///
   #ifdef Debug
@@ -183,15 +189,11 @@ void setup() {
     __asm__("nop\n\t");   // Задержка 1 такт
     PORTB &= ~(1 << PB1); // Установить LOW
   #endif
+  //
+  Active = false;
 }
 ///
 void loop() {
-  //
-  bool Active = false;
-  uint16_t StartAddr = 0;
-  int16_t Rx_Len = 0;
-  uint8_t Rx_Buff[(MAX_DATA_SIZE+3)*2];
-  uint8_t Tx_Buff[(MAX_DATA_SIZE+3)*2];
   //
   Rx_Len = receive_packet (Rx_Buff, true, 100);
   ///
@@ -217,116 +219,136 @@ void loop() {
         break;
       case CmdHold:
         //
-        #ifdef Debug
-          Serial.println("Check BUS...'HLDA' pin LOW?");
-        #endif
-        while (digitalRead (HLDAPin)) {
+        if (!Active) {
           #ifdef Debug
-            Serial.println("Wait LOW 'HLDA' pin...");
+            Serial.println("Check BUS...'HLDA' pin LOW?");
+          #endif
+          while (digitalRead (HLDAPin)) {
+            #ifdef Debug
+              Serial.println("Wait LOW 'HLDA' pin...");
+            #endif
+            //
+            Tx_Buff[0] = CmdHold;
+            Tx_Buff[1] = AckHoldWaitLow;
+            send_packet (Tx_Buff, 2);
+            //
+            delay (10);
+          }
+          //
+          #ifdef Debug
+            Serial.println("Set 'HOLD' pin to HIGH. Wait CPU...");
+          #endif
+          //
+          pinMode (HOLDPin, OUTPUT);
+          digitalWrite(HOLDPin, HIGH); // Try HOLD bus
+          //
+          while (!digitalRead (HLDAPin)) {
+            #ifdef Debug
+              Serial.println("Wait HIGH 'HLDA' pin...");
+            #endif
+            Tx_Buff[0] = CmdHold;
+            Tx_Buff[1] = AckHoldWaitHigh;
+            send_packet (Tx_Buff, 2);
+            //
+            delay (10);
+          }
+          #ifdef Debug
+            Serial.println("'HLDA' pin is HIGH.");
+          #endif
+          //
+          pinMode (BUSInUse, OUTPUT);
+          digitalWrite(BUSInUse, HIGH); // Disable bus
+          //
+          #ifdef Debug
+            Serial.println("'~BusEn' pin is HIGH.");
           #endif
           //
           Tx_Buff[0] = CmdHold;
-          Tx_Buff[1] = AckHoldWaitLow;
+          Tx_Buff[1] = AckHoldActive;
           send_packet (Tx_Buff, 2);
           //
-          delay (10);
-        }
-        //
-        #ifdef Debug
-          Serial.println("Set 'HOLD' pin to HIGH. Wait CPU...");
-        #endif
-        //
-        pinMode (HOLDPin, OUTPUT);
-        digitalWrite(HOLDPin, HIGH); // Try HOLD bus
-        //
-        while (!digitalRead (HLDAPin)) {
+          Active = true;
+          //
+          pinMode (DataOutEn, OUTPUT);
+          digitalWrite (DataOutEn, LOW); // Active-state DataBus
+          //
+          pinMode (AddressOutEn, OUTPUT);
+          digitalWrite (AddressOutEn, LOW); // Active-state AddressBus
+          //
           #ifdef Debug
-            Serial.println("Wait HIGH 'HLDA' pin...");
+            Serial.println("RUN...");
           #endif
-          Tx_Buff[0] = CmdHold;
-          Tx_Buff[1] = AckHoldWaitHigh;
-          send_packet (Tx_Buff, 2);
+        } else {
+          #ifdef Debug
+            Serial.println("Allready HOLD...");
+          #endif
           //
-          delay (10);
+          Tx_Buff[0] = CmdHold;
+          Tx_Buff[1] = AckHoldActive;
+          send_packet (Tx_Buff, 2);
         }
-        #ifdef Debug
-          Serial.println("'HLDA' pin is HIGH.");
-        #endif
-        //
-        pinMode (BUSInUse, OUTPUT);
-        digitalWrite(BUSInUse, HIGH); // Disable bus
-        //
-        #ifdef Debug
-          Serial.println("'~BusEn' pin is HIGH.");
-        #endif
-        //
-        Tx_Buff[0] = CmdHold;
-        Tx_Buff[1] = AckHoldActive;
-        send_packet (Tx_Buff, 2);
-        //
-        Active = true;
-        //
-        pinMode (DataOutEn, OUTPUT);
-        digitalWrite (DataOutEn, LOW); // Active-state DataBus
-        //
-        pinMode (AddressOutEn, OUTPUT);
-        digitalWrite (AddressOutEn, LOW); // Active-state AddressBus
-        //
-        #ifdef Debug
-          Serial.println("RUN...");
-        #endif
         //
         break;
       //
       case CmdUnHold:
         //
-        pinMode (DataOutEn, OUTPUT);
-        digitalWrite (DataOutEn, HIGH); // Z-state DataBus
-        //
-        pinMode (AddressOutEn, OUTPUT);
-        digitalWrite (AddressOutEn, HIGH); // Z-state AddressBus
-        //
-        digitalWrite(BUSInUse, LOW); // Enable bus
-        pinMode (BUSInUse, INPUT);
-        //
-        #ifdef Debug
-          Serial.println("'~BusEn' pin is LOW.");
-        #endif
-        //
-        digitalWrite(HOLDPin, LOW); // Try UnHOLD bus
-        //
-        #ifdef Debug
-          Serial.println("Set 'HOLD' pin to LOW.");
-        #endif
-        //
-        while (digitalRead (HLDAPin)) {
+        if (Active) {
+          pinMode (DataOutEn, OUTPUT);
+          digitalWrite (DataOutEn, HIGH); // Z-state DataBus
+          //
+          pinMode (AddressOutEn, OUTPUT);
+          digitalWrite (AddressOutEn, HIGH); // Z-state AddressBus
+          //
+          digitalWrite(BUSInUse, LOW); // Enable bus
+          pinMode (BUSInUse, INPUT);
+          //
           #ifdef Debug
-            Serial.println("'HLDA' pin HIGH !");
+            Serial.println("'~BusEn' pin is LOW.");
+          #endif
+          //
+          digitalWrite(HOLDPin, LOW); // Try UnHOLD bus
+          //
+          #ifdef Debug
+            Serial.println("Set 'HOLD' pin to LOW.");
+          #endif
+          //
+          while (digitalRead (HLDAPin)) {
+            #ifdef Debug
+              Serial.println("'HLDA' pin HIGH !");
+            #endif
+            //
+            Tx_Buff[0] = CmdUnHold;
+            Tx_Buff[1] = AckWaitUnHold;
+            send_packet (Tx_Buff, 2);
+            //
+            delay (50);
+          }
+          //
+          #ifdef Debug
+              Serial.println("'HLDA' pin LOW !");
+          #endif
+          //
+          pinMode (HOLDPin, INPUT);
+          digitalWrite (HOLDPin, LOW);
+          //
+          Tx_Buff[0] = CmdUnHold;
+          Tx_Buff[1] = AckUnHold;
+          send_packet (Tx_Buff, 2);
+          //
+          Active = false;
+          //      
+          #ifdef Debug
+            Serial.println ("CPU RUN...");
+          #endif
+        } else {
+          #ifdef Debug
+            Serial.println("Allready UnHOLD...");
           #endif
           //
           Tx_Buff[0] = CmdUnHold;
-          Tx_Buff[1] = AckWaitUnHold;
+          Tx_Buff[1] = AckUnHold;
           send_packet (Tx_Buff, 2);
-          //
-          delay (50);
         }
-        //
-        #ifdef Debug
-            Serial.println("'HLDA' pin LOW !");
-        #endif
-        //
-        pinMode (HOLDPin, INPUT);
-        digitalWrite (HOLDPin, LOW);
-        //
-        Tx_Buff[0] = CmdUnHold;
-        Tx_Buff[1] = AckUnHold;
-        send_packet (Tx_Buff, 2);
-        //
-        Active = false;
-        //      
-        #ifdef Debug
-          Serial.println ("CPU RUN...");
-        #endif
         //
         break;
       //
@@ -379,7 +401,7 @@ void loop() {
           return;
         }
         //
-        StartAddr = (Rx_Buff[2]<<8) + Rx_Buff[3];
+        StartAddr = (((Rx_Buff[2]<<8)&0xFF00) + (Rx_Buff[3]&0xFF))&0xFFFF;
         //
         #ifdef Debug
           Serial.println ("Read memory block...");
@@ -389,13 +411,14 @@ void loop() {
         digitalWrite (DataOutEn, HIGH); // Z-state DataBus
         //
         for (uint8_t Index = 0; Index < Rx_Buff[1]; Index++) {
-          Tx_Buff[3+Index] = MemRead (StartAddr + Index);
+          Tx_Buff[Index + 4] = MemRead (StartAddr + Index);
         }
         //
         Tx_Buff[0] = AckMemReadBlock;
         Tx_Buff[1] = Rx_Buff[1];
         Tx_Buff[2] = Rx_Buff[2];
-        send_packet (Tx_Buff, 3 + Rx_Buff[1]);
+        Tx_Buff[3] = Rx_Buff[3];
+        send_packet (Tx_Buff, 4 + Rx_Buff[1]);
         //
         break;
       //
@@ -460,7 +483,7 @@ void loop() {
           return;
         }
         //
-        StartAddr = (Rx_Buff[2]<<8) + Rx_Buff[3];
+        StartAddr = (((Rx_Buff[2]<<8)&0xFF00) + (Rx_Buff[3]&0xFF))&0xFFFF;
         //
         #ifdef Debug
           Serial.println ("Write memory block...");
@@ -545,7 +568,7 @@ void loop() {
           return;
         }
         //
-        StartAddr = (Rx_Buff[2]<<8) + Rx_Buff[3];
+        StartAddr = (((Rx_Buff[2]<<8)&0xFF00) + (Rx_Buff[3]&0xFF))&0xFFFF;
         //
         #ifdef Debug
           Serial.println ("Write EEPROM block...");
@@ -618,7 +641,7 @@ void loop() {
           return;
         }
         //
-        StartAddr = (Rx_Buff[2]<<8) + Rx_Buff[3];
+        StartAddr = (((Rx_Buff[2]<<8)&0xFF00) + (Rx_Buff[3]&0xFF))&0xFFFF;
         //
         #ifdef Debug
           Serial.println ("Read IO block...");
@@ -628,13 +651,14 @@ void loop() {
         digitalWrite (DataOutEn, HIGH); // Z-state DataBus
         //
         for (uint8_t Index = 0; Index < Rx_Buff[1]; Index++) {
-          Tx_Buff[3+Index] = IORead (StartAddr + Index);
+          Tx_Buff[Index + 4] = IORead (StartAddr + Index);
         }
         //
         Tx_Buff[0] = AckIOReadBlock;
         Tx_Buff[1] = Rx_Buff[1];
         Tx_Buff[2] = Rx_Buff[2];
-        send_packet (Tx_Buff, 3 + Rx_Buff[1]);
+        Tx_Buff[3] = Rx_Buff[3];
+        send_packet (Tx_Buff, 4 + Rx_Buff[1]);
         //
         break;
       //
@@ -699,7 +723,7 @@ void loop() {
           return;
         }
         //
-        StartAddr = (Rx_Buff[2]<<8) + Rx_Buff[3];
+        StartAddr = (((Rx_Buff[2]<<8)&0xFF00) + (Rx_Buff[3]&0xFF))&0xFFFF;
         //
         #ifdef Debug
           Serial.println ("Write IO block...");

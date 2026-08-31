@@ -1,0 +1,281 @@
+\doxysection{ui.\+device\+\_\+manager.\+Device\+Manager\+Dialog Class Reference}
+\hypertarget{classui_1_1device__manager_1_1_device_manager_dialog}{}\label{classui_1_1device__manager_1_1_device_manager_dialog}\index{ui.device\_manager.DeviceManagerDialog@{ui.device\_manager.DeviceManagerDialog}}
+
+
+Inheritance diagram for ui.\+device\+\_\+manager.\+Device\+Manager\+Dialog\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=212pt]{classui_1_1device__manager_1_1_device_manager_dialog__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for ui.\+device\+\_\+manager.\+Device\+Manager\+Dialog\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=212pt]{classui_1_1device__manager_1_1_device_manager_dialog__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classui_1_1device__manager_1_1_device_manager_dialog_a7e0ecccf54fa876ac4e6ba00ceaa49b2}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, \mbox{\hyperlink{classui_1_1device__manager_1_1_device_manager_dialog_a331c8e1dc4d4081b051b4d88dbbd0fc4}{system}}, parent=None)
+\item 
+\mbox{\hyperlink{classui_1_1device__manager_1_1_device_manager_dialog_aeeb915f8047a40c309347f0766e36d32}{refresh\+\_\+devices}} (self)
+\item 
+\mbox{\hyperlink{classui_1_1device__manager_1_1_device_manager_dialog_a1a97b90b79cdb0a9c30191fa2773b8dc}{close\+\_\+all\+\_\+windows}} (self)
+\item 
+\mbox{\hyperlink{classui_1_1device__manager_1_1_device_manager_dialog_a2a8fe4411d645101205032df01362b42}{on\+\_\+profile\+\_\+changed}} (self)
+\item 
+\mbox{\hyperlink{classui_1_1device__manager_1_1_device_manager_dialog_a7b75760e29ea67efce30ab7e5c53dc52}{close\+Event}} (self, event)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classui_1_1device__manager_1_1_device_manager_dialog_a331c8e1dc4d4081b051b4d88dbbd0fc4}{system}} = system
+\item 
+dict \mbox{\hyperlink{classui_1_1device__manager_1_1_device_manager_dialog_a7c7b3e90c35f0b5aa4faaecf015952d0}{device\+\_\+windows}} = \{\}
+\item 
+\mbox{\hyperlink{classui_1_1device__manager_1_1_device_manager_dialog_a3db1bc42f5013c9c988689e94107957c}{device\+\_\+list}} = QList\+Widget()
+\item 
+\mbox{\hyperlink{classui_1_1device__manager_1_1_device_manager_dialog_a1cc4de702514570f0697633a35785fcc}{btn\+\_\+open}} = QPush\+Button("{}Открыть окно"{})
+\item 
+\mbox{\hyperlink{classui_1_1device__manager_1_1_device_manager_dialog_acd290d8b768d5021b4eb8fe6f5005ff5}{btn\+\_\+close\+\_\+all}} = QPush\+Button("{}Закрыть все"{})
+\item 
+\mbox{\hyperlink{classui_1_1device__manager_1_1_device_manager_dialog_ab23a8f72b965c42020d3509ac85d5348}{close\+\_\+all\+\_\+windows}}
+\item 
+\mbox{\hyperlink{classui_1_1device__manager_1_1_device_manager_dialog_aa7ed36304eba99242e04c9aa7011536e}{btn\+\_\+refresh}} = QPush\+Button("{}Обновить"{})
+\item 
+\mbox{\hyperlink{classui_1_1device__manager_1_1_device_manager_dialog_ab814feefdab8d3c9bf1a2322edcf1d94}{refresh\+\_\+devices}}
+\item 
+\mbox{\hyperlink{classui_1_1device__manager_1_1_device_manager_dialog_a6ce8b1cfb865234e3389dc6cb20db5fa}{chk\+\_\+always\+\_\+on\+\_\+top}} = QCheck\+Box("{}Окна устройств всегда поверх всех"{})
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classui_1_1device__manager_1_1_device_manager_dialog_a1c6a3df908c2fe889de76d9e71224357}{\+\_\+init\+\_\+ui}} (self)
+\item 
+\mbox{\hyperlink{classui_1_1device__manager_1_1_device_manager_dialog_a8c784d8045d6a97d94be999ad4d280bc}{\+\_\+on\+\_\+item\+\_\+double\+\_\+clicked}} (self, item)
+\item 
+\mbox{\hyperlink{classui_1_1device__manager_1_1_device_manager_dialog_a86bfcba58e42056780cd716455a5b3e9}{\+\_\+open\+\_\+selected}} (self)
+\item 
+\mbox{\hyperlink{classui_1_1device__manager_1_1_device_manager_dialog_a63d81f29e113f89b1dd867a044e02b3c}{\+\_\+open\+\_\+device\+\_\+window}} (self, device\+\_\+name)
+\item 
+\mbox{\hyperlink{classui_1_1device__manager_1_1_device_manager_dialog_a0737e2860101c2cc7cb185ad79050268}{\+\_\+toggle\+\_\+always\+\_\+on\+\_\+top}} (self, checked)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classui_1_1device__manager_1_1_device_manager_dialog_a5eab8d34c9e5eece5439137575c77460}{\+\_\+always\+\_\+on\+\_\+top}} = False
+\item 
+\mbox{\hyperlink{classui_1_1device__manager_1_1_device_manager_dialog_a946880317c6d4cee2bb9974e26128eb2}{\+\_\+on\+\_\+item\+\_\+double\+\_\+clicked}}
+\item 
+\mbox{\hyperlink{classui_1_1device__manager_1_1_device_manager_dialog_a301b3f5db69c164dd37f2d0acb9ab0e2}{\+\_\+open\+\_\+selected}}
+\item 
+\mbox{\hyperlink{classui_1_1device__manager_1_1_device_manager_dialog_a3833abad87e1e5737bd4d1e549d5edfb}{\+\_\+toggle\+\_\+always\+\_\+on\+\_\+top}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Диспетчер устройств: список + открытие индивидуальных окон\end{DoxyVerb}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classui_1_1device__manager_1_1_device_manager_dialog_a7e0ecccf54fa876ac4e6ba00ceaa49b2}\index{ui.device\_manager.DeviceManagerDialog@{ui.device\_manager.DeviceManagerDialog}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!ui.device\_manager.DeviceManagerDialog@{ui.device\_manager.DeviceManagerDialog}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \label{classui_1_1device__manager_1_1_device_manager_dialog_a7e0ecccf54fa876ac4e6ba00ceaa49b2} 
+ui.\+device\+\_\+manager.\+Device\+Manager\+Dialog.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{system}{, }\item[{}]{parent}{ = {\ttfamily None}}\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=212pt]{classui_1_1device__manager_1_1_device_manager_dialog_a7e0ecccf54fa876ac4e6ba00ceaa49b2_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=212pt]{classui_1_1device__manager_1_1_device_manager_dialog_a7e0ecccf54fa876ac4e6ba00ceaa49b2_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classui_1_1device__manager_1_1_device_manager_dialog_a1c6a3df908c2fe889de76d9e71224357}\index{ui.device\_manager.DeviceManagerDialog@{ui.device\_manager.DeviceManagerDialog}!\_init\_ui@{\_init\_ui}}
+\index{\_init\_ui@{\_init\_ui}!ui.device\_manager.DeviceManagerDialog@{ui.device\_manager.DeviceManagerDialog}}
+\doxysubsubsection{\texorpdfstring{\_init\_ui()}{\_init\_ui()}}
+{\footnotesize\ttfamily \label{classui_1_1device__manager_1_1_device_manager_dialog_a1c6a3df908c2fe889de76d9e71224357} 
+ui.\+device\+\_\+manager.\+Device\+Manager\+Dialog.\+\_\+init\+\_\+ui (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classui_1_1device__manager_1_1_device_manager_dialog_a8c784d8045d6a97d94be999ad4d280bc}\index{ui.device\_manager.DeviceManagerDialog@{ui.device\_manager.DeviceManagerDialog}!\_on\_item\_double\_clicked@{\_on\_item\_double\_clicked}}
+\index{\_on\_item\_double\_clicked@{\_on\_item\_double\_clicked}!ui.device\_manager.DeviceManagerDialog@{ui.device\_manager.DeviceManagerDialog}}
+\doxysubsubsection{\texorpdfstring{\_on\_item\_double\_clicked()}{\_on\_item\_double\_clicked()}}
+{\footnotesize\ttfamily \label{classui_1_1device__manager_1_1_device_manager_dialog_a8c784d8045d6a97d94be999ad4d280bc} 
+ui.\+device\+\_\+manager.\+Device\+Manager\+Dialog.\+\_\+on\+\_\+item\+\_\+double\+\_\+clicked (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{item}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classui_1_1device__manager_1_1_device_manager_dialog_a8c784d8045d6a97d94be999ad4d280bc_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classui_1_1device__manager_1_1_device_manager_dialog_a63d81f29e113f89b1dd867a044e02b3c}\index{ui.device\_manager.DeviceManagerDialog@{ui.device\_manager.DeviceManagerDialog}!\_open\_device\_window@{\_open\_device\_window}}
+\index{\_open\_device\_window@{\_open\_device\_window}!ui.device\_manager.DeviceManagerDialog@{ui.device\_manager.DeviceManagerDialog}}
+\doxysubsubsection{\texorpdfstring{\_open\_device\_window()}{\_open\_device\_window()}}
+{\footnotesize\ttfamily \label{classui_1_1device__manager_1_1_device_manager_dialog_a63d81f29e113f89b1dd867a044e02b3c} 
+ui.\+device\+\_\+manager.\+Device\+Manager\+Dialog.\+\_\+open\+\_\+device\+\_\+window (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{device\+\_\+name}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Открыть/показать окно устройства\end{DoxyVerb}
+ Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classui_1_1device__manager_1_1_device_manager_dialog_a63d81f29e113f89b1dd867a044e02b3c_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classui_1_1device__manager_1_1_device_manager_dialog_a86bfcba58e42056780cd716455a5b3e9}\index{ui.device\_manager.DeviceManagerDialog@{ui.device\_manager.DeviceManagerDialog}!\_open\_selected@{\_open\_selected}}
+\index{\_open\_selected@{\_open\_selected}!ui.device\_manager.DeviceManagerDialog@{ui.device\_manager.DeviceManagerDialog}}
+\doxysubsubsection{\texorpdfstring{\_open\_selected()}{\_open\_selected()}}
+{\footnotesize\ttfamily \label{classui_1_1device__manager_1_1_device_manager_dialog_a86bfcba58e42056780cd716455a5b3e9} 
+ui.\+device\+\_\+manager.\+Device\+Manager\+Dialog.\+\_\+open\+\_\+selected (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classui_1_1device__manager_1_1_device_manager_dialog_a86bfcba58e42056780cd716455a5b3e9_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classui_1_1device__manager_1_1_device_manager_dialog_a0737e2860101c2cc7cb185ad79050268}\index{ui.device\_manager.DeviceManagerDialog@{ui.device\_manager.DeviceManagerDialog}!\_toggle\_always\_on\_top@{\_toggle\_always\_on\_top}}
+\index{\_toggle\_always\_on\_top@{\_toggle\_always\_on\_top}!ui.device\_manager.DeviceManagerDialog@{ui.device\_manager.DeviceManagerDialog}}
+\doxysubsubsection{\texorpdfstring{\_toggle\_always\_on\_top()}{\_toggle\_always\_on\_top()}}
+{\footnotesize\ttfamily \label{classui_1_1device__manager_1_1_device_manager_dialog_a0737e2860101c2cc7cb185ad79050268} 
+ui.\+device\+\_\+manager.\+Device\+Manager\+Dialog.\+\_\+toggle\+\_\+always\+\_\+on\+\_\+top (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{checked}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Применить флаг ко всем открытым окнам\end{DoxyVerb}
+ \Hypertarget{classui_1_1device__manager_1_1_device_manager_dialog_a1a97b90b79cdb0a9c30191fa2773b8dc}\index{ui.device\_manager.DeviceManagerDialog@{ui.device\_manager.DeviceManagerDialog}!close\_all\_windows@{close\_all\_windows}}
+\index{close\_all\_windows@{close\_all\_windows}!ui.device\_manager.DeviceManagerDialog@{ui.device\_manager.DeviceManagerDialog}}
+\doxysubsubsection{\texorpdfstring{close\_all\_windows()}{close\_all\_windows()}}
+{\footnotesize\ttfamily \label{classui_1_1device__manager_1_1_device_manager_dialog_a1a97b90b79cdb0a9c30191fa2773b8dc} 
+ui.\+device\+\_\+manager.\+Device\+Manager\+Dialog.\+close\+\_\+all\+\_\+windows (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Закрыть все окна устройств\end{DoxyVerb}
+ \Hypertarget{classui_1_1device__manager_1_1_device_manager_dialog_a7b75760e29ea67efce30ab7e5c53dc52}\index{ui.device\_manager.DeviceManagerDialog@{ui.device\_manager.DeviceManagerDialog}!closeEvent@{closeEvent}}
+\index{closeEvent@{closeEvent}!ui.device\_manager.DeviceManagerDialog@{ui.device\_manager.DeviceManagerDialog}}
+\doxysubsubsection{\texorpdfstring{closeEvent()}{closeEvent()}}
+{\footnotesize\ttfamily \label{classui_1_1device__manager_1_1_device_manager_dialog_a7b75760e29ea67efce30ab7e5c53dc52} 
+ui.\+device\+\_\+manager.\+Device\+Manager\+Dialog.\+close\+Event (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{event}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classui_1_1device__manager_1_1_device_manager_dialog_a2a8fe4411d645101205032df01362b42}\index{ui.device\_manager.DeviceManagerDialog@{ui.device\_manager.DeviceManagerDialog}!on\_profile\_changed@{on\_profile\_changed}}
+\index{on\_profile\_changed@{on\_profile\_changed}!ui.device\_manager.DeviceManagerDialog@{ui.device\_manager.DeviceManagerDialog}}
+\doxysubsubsection{\texorpdfstring{on\_profile\_changed()}{on\_profile\_changed()}}
+{\footnotesize\ttfamily \label{classui_1_1device__manager_1_1_device_manager_dialog_a2a8fe4411d645101205032df01362b42} 
+ui.\+device\+\_\+manager.\+Device\+Manager\+Dialog.\+on\+\_\+profile\+\_\+changed (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Вызывается при смене профиля — закрываем все окна\end{DoxyVerb}
+ \Hypertarget{classui_1_1device__manager_1_1_device_manager_dialog_aeeb915f8047a40c309347f0766e36d32}\index{ui.device\_manager.DeviceManagerDialog@{ui.device\_manager.DeviceManagerDialog}!refresh\_devices@{refresh\_devices}}
+\index{refresh\_devices@{refresh\_devices}!ui.device\_manager.DeviceManagerDialog@{ui.device\_manager.DeviceManagerDialog}}
+\doxysubsubsection{\texorpdfstring{refresh\_devices()}{refresh\_devices()}}
+{\footnotesize\ttfamily \label{classui_1_1device__manager_1_1_device_manager_dialog_aeeb915f8047a40c309347f0766e36d32} 
+ui.\+device\+\_\+manager.\+Device\+Manager\+Dialog.\+refresh\+\_\+devices (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Обновить список устройств из профиля\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classui_1_1device__manager_1_1_device_manager_dialog_a5eab8d34c9e5eece5439137575c77460}\index{ui.device\_manager.DeviceManagerDialog@{ui.device\_manager.DeviceManagerDialog}!\_always\_on\_top@{\_always\_on\_top}}
+\index{\_always\_on\_top@{\_always\_on\_top}!ui.device\_manager.DeviceManagerDialog@{ui.device\_manager.DeviceManagerDialog}}
+\doxysubsubsection{\texorpdfstring{\_always\_on\_top}{\_always\_on\_top}}
+{\footnotesize\ttfamily \label{classui_1_1device__manager_1_1_device_manager_dialog_a5eab8d34c9e5eece5439137575c77460} 
+bool ui.\+device\+\_\+manager.\+Device\+Manager\+Dialog.\+\_\+always\+\_\+on\+\_\+top = False\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classui_1_1device__manager_1_1_device_manager_dialog_a946880317c6d4cee2bb9974e26128eb2}\index{ui.device\_manager.DeviceManagerDialog@{ui.device\_manager.DeviceManagerDialog}!\_on\_item\_double\_clicked@{\_on\_item\_double\_clicked}}
+\index{\_on\_item\_double\_clicked@{\_on\_item\_double\_clicked}!ui.device\_manager.DeviceManagerDialog@{ui.device\_manager.DeviceManagerDialog}}
+\doxysubsubsection{\texorpdfstring{\_on\_item\_double\_clicked}{\_on\_item\_double\_clicked}}
+{\footnotesize\ttfamily \label{classui_1_1device__manager_1_1_device_manager_dialog_a946880317c6d4cee2bb9974e26128eb2} 
+ui.\+device\+\_\+manager.\+Device\+Manager\+Dialog.\+\_\+on\+\_\+item\+\_\+double\+\_\+clicked\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classui_1_1device__manager_1_1_device_manager_dialog_a301b3f5db69c164dd37f2d0acb9ab0e2}\index{ui.device\_manager.DeviceManagerDialog@{ui.device\_manager.DeviceManagerDialog}!\_open\_selected@{\_open\_selected}}
+\index{\_open\_selected@{\_open\_selected}!ui.device\_manager.DeviceManagerDialog@{ui.device\_manager.DeviceManagerDialog}}
+\doxysubsubsection{\texorpdfstring{\_open\_selected}{\_open\_selected}}
+{\footnotesize\ttfamily \label{classui_1_1device__manager_1_1_device_manager_dialog_a301b3f5db69c164dd37f2d0acb9ab0e2} 
+ui.\+device\+\_\+manager.\+Device\+Manager\+Dialog.\+\_\+open\+\_\+selected\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classui_1_1device__manager_1_1_device_manager_dialog_a3833abad87e1e5737bd4d1e549d5edfb}\index{ui.device\_manager.DeviceManagerDialog@{ui.device\_manager.DeviceManagerDialog}!\_toggle\_always\_on\_top@{\_toggle\_always\_on\_top}}
+\index{\_toggle\_always\_on\_top@{\_toggle\_always\_on\_top}!ui.device\_manager.DeviceManagerDialog@{ui.device\_manager.DeviceManagerDialog}}
+\doxysubsubsection{\texorpdfstring{\_toggle\_always\_on\_top}{\_toggle\_always\_on\_top}}
+{\footnotesize\ttfamily \label{classui_1_1device__manager_1_1_device_manager_dialog_a3833abad87e1e5737bd4d1e549d5edfb} 
+ui.\+device\+\_\+manager.\+Device\+Manager\+Dialog.\+\_\+toggle\+\_\+always\+\_\+on\+\_\+top\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classui_1_1device__manager_1_1_device_manager_dialog_acd290d8b768d5021b4eb8fe6f5005ff5}\index{ui.device\_manager.DeviceManagerDialog@{ui.device\_manager.DeviceManagerDialog}!btn\_close\_all@{btn\_close\_all}}
+\index{btn\_close\_all@{btn\_close\_all}!ui.device\_manager.DeviceManagerDialog@{ui.device\_manager.DeviceManagerDialog}}
+\doxysubsubsection{\texorpdfstring{btn\_close\_all}{btn\_close\_all}}
+{\footnotesize\ttfamily \label{classui_1_1device__manager_1_1_device_manager_dialog_acd290d8b768d5021b4eb8fe6f5005ff5} 
+ui.\+device\+\_\+manager.\+Device\+Manager\+Dialog.\+btn\+\_\+close\+\_\+all = QPush\+Button("{}Закрыть все"{})}
+
+\Hypertarget{classui_1_1device__manager_1_1_device_manager_dialog_a1cc4de702514570f0697633a35785fcc}\index{ui.device\_manager.DeviceManagerDialog@{ui.device\_manager.DeviceManagerDialog}!btn\_open@{btn\_open}}
+\index{btn\_open@{btn\_open}!ui.device\_manager.DeviceManagerDialog@{ui.device\_manager.DeviceManagerDialog}}
+\doxysubsubsection{\texorpdfstring{btn\_open}{btn\_open}}
+{\footnotesize\ttfamily \label{classui_1_1device__manager_1_1_device_manager_dialog_a1cc4de702514570f0697633a35785fcc} 
+ui.\+device\+\_\+manager.\+Device\+Manager\+Dialog.\+btn\+\_\+open = QPush\+Button("{}Открыть окно"{})}
+
+\Hypertarget{classui_1_1device__manager_1_1_device_manager_dialog_aa7ed36304eba99242e04c9aa7011536e}\index{ui.device\_manager.DeviceManagerDialog@{ui.device\_manager.DeviceManagerDialog}!btn\_refresh@{btn\_refresh}}
+\index{btn\_refresh@{btn\_refresh}!ui.device\_manager.DeviceManagerDialog@{ui.device\_manager.DeviceManagerDialog}}
+\doxysubsubsection{\texorpdfstring{btn\_refresh}{btn\_refresh}}
+{\footnotesize\ttfamily \label{classui_1_1device__manager_1_1_device_manager_dialog_aa7ed36304eba99242e04c9aa7011536e} 
+ui.\+device\+\_\+manager.\+Device\+Manager\+Dialog.\+btn\+\_\+refresh = QPush\+Button("{}Обновить"{})}
+
+\Hypertarget{classui_1_1device__manager_1_1_device_manager_dialog_a6ce8b1cfb865234e3389dc6cb20db5fa}\index{ui.device\_manager.DeviceManagerDialog@{ui.device\_manager.DeviceManagerDialog}!chk\_always\_on\_top@{chk\_always\_on\_top}}
+\index{chk\_always\_on\_top@{chk\_always\_on\_top}!ui.device\_manager.DeviceManagerDialog@{ui.device\_manager.DeviceManagerDialog}}
+\doxysubsubsection{\texorpdfstring{chk\_always\_on\_top}{chk\_always\_on\_top}}
+{\footnotesize\ttfamily \label{classui_1_1device__manager_1_1_device_manager_dialog_a6ce8b1cfb865234e3389dc6cb20db5fa} 
+ui.\+device\+\_\+manager.\+Device\+Manager\+Dialog.\+chk\+\_\+always\+\_\+on\+\_\+top = QCheck\+Box("{}Окна устройств всегда поверх всех"{})}
+
+\Hypertarget{classui_1_1device__manager_1_1_device_manager_dialog_ab23a8f72b965c42020d3509ac85d5348}\index{ui.device\_manager.DeviceManagerDialog@{ui.device\_manager.DeviceManagerDialog}!close\_all\_windows@{close\_all\_windows}}
+\index{close\_all\_windows@{close\_all\_windows}!ui.device\_manager.DeviceManagerDialog@{ui.device\_manager.DeviceManagerDialog}}
+\doxysubsubsection{\texorpdfstring{close\_all\_windows}{close\_all\_windows}}
+{\footnotesize\ttfamily \label{classui_1_1device__manager_1_1_device_manager_dialog_ab23a8f72b965c42020d3509ac85d5348} 
+ui.\+device\+\_\+manager.\+Device\+Manager\+Dialog.\+close\+\_\+all\+\_\+windows}
+
+\Hypertarget{classui_1_1device__manager_1_1_device_manager_dialog_a3db1bc42f5013c9c988689e94107957c}\index{ui.device\_manager.DeviceManagerDialog@{ui.device\_manager.DeviceManagerDialog}!device\_list@{device\_list}}
+\index{device\_list@{device\_list}!ui.device\_manager.DeviceManagerDialog@{ui.device\_manager.DeviceManagerDialog}}
+\doxysubsubsection{\texorpdfstring{device\_list}{device\_list}}
+{\footnotesize\ttfamily \label{classui_1_1device__manager_1_1_device_manager_dialog_a3db1bc42f5013c9c988689e94107957c} 
+ui.\+device\+\_\+manager.\+Device\+Manager\+Dialog.\+device\+\_\+list = QList\+Widget()}
+
+\Hypertarget{classui_1_1device__manager_1_1_device_manager_dialog_a7c7b3e90c35f0b5aa4faaecf015952d0}\index{ui.device\_manager.DeviceManagerDialog@{ui.device\_manager.DeviceManagerDialog}!device\_windows@{device\_windows}}
+\index{device\_windows@{device\_windows}!ui.device\_manager.DeviceManagerDialog@{ui.device\_manager.DeviceManagerDialog}}
+\doxysubsubsection{\texorpdfstring{device\_windows}{device\_windows}}
+{\footnotesize\ttfamily \label{classui_1_1device__manager_1_1_device_manager_dialog_a7c7b3e90c35f0b5aa4faaecf015952d0} 
+dict ui.\+device\+\_\+manager.\+Device\+Manager\+Dialog.\+device\+\_\+windows = \{\}}
+
+\Hypertarget{classui_1_1device__manager_1_1_device_manager_dialog_ab814feefdab8d3c9bf1a2322edcf1d94}\index{ui.device\_manager.DeviceManagerDialog@{ui.device\_manager.DeviceManagerDialog}!refresh\_devices@{refresh\_devices}}
+\index{refresh\_devices@{refresh\_devices}!ui.device\_manager.DeviceManagerDialog@{ui.device\_manager.DeviceManagerDialog}}
+\doxysubsubsection{\texorpdfstring{refresh\_devices}{refresh\_devices}}
+{\footnotesize\ttfamily \label{classui_1_1device__manager_1_1_device_manager_dialog_ab814feefdab8d3c9bf1a2322edcf1d94} 
+ui.\+device\+\_\+manager.\+Device\+Manager\+Dialog.\+refresh\+\_\+devices}
+
+\Hypertarget{classui_1_1device__manager_1_1_device_manager_dialog_a331c8e1dc4d4081b051b4d88dbbd0fc4}\index{ui.device\_manager.DeviceManagerDialog@{ui.device\_manager.DeviceManagerDialog}!system@{system}}
+\index{system@{system}!ui.device\_manager.DeviceManagerDialog@{ui.device\_manager.DeviceManagerDialog}}
+\doxysubsubsection{\texorpdfstring{system}{system}}
+{\footnotesize\ttfamily \label{classui_1_1device__manager_1_1_device_manager_dialog_a331c8e1dc4d4081b051b4d88dbbd0fc4} 
+ui.\+device\+\_\+manager.\+Device\+Manager\+Dialog.\+system = system}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+ui/\mbox{\hyperlink{device__manager_8py}{device\+\_\+manager.\+py}}\end{DoxyCompactItemize}

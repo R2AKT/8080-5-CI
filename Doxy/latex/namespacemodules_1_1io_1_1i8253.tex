@@ -1,0 +1,34 @@
+\doxysection{modules.\+io.\+i8253 Namespace Reference}
+\hypertarget{namespacemodules_1_1io_1_1i8253}{}\label{namespacemodules_1_1io_1_1i8253}\index{modules.io.i8253@{modules.io.i8253}}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classmodules_1_1io_1_1i8253_1_1_i8253}{I8253}}
+\item 
+class \mbox{\hyperlink{classmodules_1_1io_1_1i8253_1_1_i8253_channel}{I8253\+Channel}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}8253 (КР580ВИ53) — Programmable Interval Timer.
+Итерация E3: базовые IO-устройства.
+
+3 независимых канала (0, 1, 2).
+Каждый канал: вход CLK, выход OUT, вход GATE.
+Выходы OUT могут подключаться к IRQ контроллера 8259.
+
+Регистры (4 порта):
+  offset 0: Channel 0
+  offset 1: Channel 1
+  offset 2: Channel 2
+  offset 3: Control Word
+
+Режимы:
+  Mode 0: Interrupt on Terminal Count
+  Mode 1: Hardware Retriggerable One-Shot
+  Mode 2: Rate Generator
+  Mode 3: Square Wave Generator
+  Mode 4: Software Triggered Strobe
+  Mode 5: Hardware Triggered Strobe
+\end{DoxyVerb}
+ 

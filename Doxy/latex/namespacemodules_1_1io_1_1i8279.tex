@@ -1,0 +1,29 @@
+\doxysection{modules.\+io.\+i8279 Namespace Reference}
+\hypertarget{namespacemodules_1_1io_1_1i8279}{}\label{namespacemodules_1_1io_1_1i8279}\index{modules.io.i8279@{modules.io.i8279}}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classmodules_1_1io_1_1i8279_1_1_i8279}{I8279}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}8279 (КР580ВВ79) — программируемый контроллер клавиатуры/дисплея.
+Итерация E5: расширенные IO-устройства.
+
+Возможности:
+- Клавиатура: матричная до 64 клавиш (8x8), FIFO на 8 байт
+- Дисплей: RAM на 16 байт (до 16 семисегментных цифр)
+- Режимы: 2-клавишный lockout, N-key rollover
+- Сканирование: encoded / decoded
+- Прерывание IRQ при нажатии клавиши
+
+Регистры (2 порта):
+  offset 0 (Data):
+    Чтение  — FIFO клавиатуры
+    Запись  — RAM дисплея
+  offset 1 (Control/Status):
+    Чтение  — Status Register
+    Запись  — Command Register
+\end{DoxyVerb}
+ 

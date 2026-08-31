@@ -1,0 +1,192 @@
+\doxysection{ui.\+display\+\_\+widgets.\+CRTWidget Class Reference}
+\hypertarget{classui_1_1display__widgets_1_1_c_r_t_widget}{}\label{classui_1_1display__widgets_1_1_c_r_t_widget}\index{ui.display\_widgets.CRTWidget@{ui.display\_widgets.CRTWidget}}
+
+
+Inheritance diagram for ui.\+display\+\_\+widgets.\+CRTWidget\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=230pt]{classui_1_1display__widgets_1_1_c_r_t_widget__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for ui.\+display\+\_\+widgets.\+CRTWidget\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=230pt]{classui_1_1display__widgets_1_1_c_r_t_widget__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classui_1_1display__widgets_1_1_c_r_t_widget_ad0b34bd1021ec504ca4d4fe9440e7315}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, \mbox{\hyperlink{classui_1_1display__widgets_1_1_c_r_t_widget_aad158d856abbc943e4d53cbe3777319d}{device}}, parent=None)
+\item 
+\mbox{\hyperlink{classui_1_1display__widgets_1_1_c_r_t_widget_af4aafe72ad0734e3e097aa4238e760c8}{refresh}} (self)
+\item 
+\mbox{\hyperlink{classui_1_1display__widgets_1_1_c_r_t_widget_a34f1184f03e869c726102d084cd90f9b}{paint\+Event}} (self, event)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classui_1_1display__widgets_1_1_c_r_t_widget_aad158d856abbc943e4d53cbe3777319d}{device}} = device
+\item 
+int \mbox{\hyperlink{classui_1_1display__widgets_1_1_c_r_t_widget_a7af913e9655deebbab651a7f1b486e7f}{scale}} = 2
+\item 
+bool \mbox{\hyperlink{classui_1_1display__widgets_1_1_c_r_t_widget_a89b6852da7bfe6bd6293c720d13224e1}{blink\+\_\+state}} = False
+\item 
+int \mbox{\hyperlink{classui_1_1display__widgets_1_1_c_r_t_widget_a98c039a9341c577573548fa3b2036ce6}{char\+\_\+cell\+\_\+height}} = 8
+\item 
+int \mbox{\hyperlink{classui_1_1display__widgets_1_1_c_r_t_widget_ad0c8d0496ee3f8c503fb209fcda61ae1}{display\+\_\+scale\+\_\+v}} = max(1, getattr(self.\+device, \textquotesingle{}char\+\_\+height\textquotesingle{}, 8) // 8)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classui_1_1display__widgets_1_1_c_r_t_widget_a427167a18eff67fc5bc8d337fdcbfda5}{ATTR\+\_\+\+BLINK}}
+\item 
+\mbox{\hyperlink{classui_1_1display__widgets_1_1_c_r_t_widget_ac9ad606524724cc68c55b2416be2de1b}{ATTR\+\_\+\+INVERSE}}
+\item 
+\mbox{\hyperlink{classui_1_1display__widgets_1_1_c_r_t_widget_a4da3e62cd59dc9afefb2ca82a9def83c}{ATTR\+\_\+\+UNDERLINE}} = bm\mbox{[}r\mbox{]}
+\item 
+\mbox{\hyperlink{classui_1_1display__widgets_1_1_c_r_t_widget_a1745ecb9ab7ac8161da2e648955ba9d1}{ATTR\+\_\+\+BRIGHT}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classui_1_1display__widgets_1_1_c_r_t_widget_af3a6328a9418f991b85c1e0191fc299a}{\+\_\+recalc\+\_\+size}} (self)
+\item 
+\mbox{\hyperlink{classui_1_1display__widgets_1_1_c_r_t_widget_a6f9bc892c9262353b7bae05eec14c6c9}{\+\_\+blink}} (self)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classui_1_1display__widgets_1_1_c_r_t_widget_ad0b34bd1021ec504ca4d4fe9440e7315}\index{ui.display\_widgets.CRTWidget@{ui.display\_widgets.CRTWidget}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!ui.display\_widgets.CRTWidget@{ui.display\_widgets.CRTWidget}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \label{classui_1_1display__widgets_1_1_c_r_t_widget_ad0b34bd1021ec504ca4d4fe9440e7315} 
+ui.\+display\+\_\+widgets.\+CRTWidget.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{device}{, }\item[{}]{parent}{ = {\ttfamily None}}\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=233pt]{classui_1_1display__widgets_1_1_c_r_t_widget_ad0b34bd1021ec504ca4d4fe9440e7315_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=233pt]{classui_1_1display__widgets_1_1_c_r_t_widget_ad0b34bd1021ec504ca4d4fe9440e7315_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classui_1_1display__widgets_1_1_c_r_t_widget_a6f9bc892c9262353b7bae05eec14c6c9}\index{ui.display\_widgets.CRTWidget@{ui.display\_widgets.CRTWidget}!\_blink@{\_blink}}
+\index{\_blink@{\_blink}!ui.display\_widgets.CRTWidget@{ui.display\_widgets.CRTWidget}}
+\doxysubsubsection{\texorpdfstring{\_blink()}{\_blink()}}
+{\footnotesize\ttfamily \label{classui_1_1display__widgets_1_1_c_r_t_widget_a6f9bc892c9262353b7bae05eec14c6c9} 
+ui.\+display\+\_\+widgets.\+CRTWidget.\+\_\+blink (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classui_1_1display__widgets_1_1_c_r_t_widget_af3a6328a9418f991b85c1e0191fc299a}\index{ui.display\_widgets.CRTWidget@{ui.display\_widgets.CRTWidget}!\_recalc\_size@{\_recalc\_size}}
+\index{\_recalc\_size@{\_recalc\_size}!ui.display\_widgets.CRTWidget@{ui.display\_widgets.CRTWidget}}
+\doxysubsubsection{\texorpdfstring{\_recalc\_size()}{\_recalc\_size()}}
+{\footnotesize\ttfamily \label{classui_1_1display__widgets_1_1_c_r_t_widget_af3a6328a9418f991b85c1e0191fc299a} 
+ui.\+display\+\_\+widgets.\+CRTWidget.\+\_\+recalc\+\_\+size (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classui_1_1display__widgets_1_1_c_r_t_widget_af3a6328a9418f991b85c1e0191fc299a_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classui_1_1display__widgets_1_1_c_r_t_widget_a34f1184f03e869c726102d084cd90f9b}\index{ui.display\_widgets.CRTWidget@{ui.display\_widgets.CRTWidget}!paintEvent@{paintEvent}}
+\index{paintEvent@{paintEvent}!ui.display\_widgets.CRTWidget@{ui.display\_widgets.CRTWidget}}
+\doxysubsubsection{\texorpdfstring{paintEvent()}{paintEvent()}}
+{\footnotesize\ttfamily \label{classui_1_1display__widgets_1_1_c_r_t_widget_a34f1184f03e869c726102d084cd90f9b} 
+ui.\+display\+\_\+widgets.\+CRTWidget.\+paint\+Event (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{event}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classui_1_1display__widgets_1_1_c_r_t_widget_af4aafe72ad0734e3e097aa4238e760c8}\index{ui.display\_widgets.CRTWidget@{ui.display\_widgets.CRTWidget}!refresh@{refresh}}
+\index{refresh@{refresh}!ui.display\_widgets.CRTWidget@{ui.display\_widgets.CRTWidget}}
+\doxysubsubsection{\texorpdfstring{refresh()}{refresh()}}
+{\footnotesize\ttfamily \label{classui_1_1display__widgets_1_1_c_r_t_widget_af4aafe72ad0734e3e097aa4238e760c8} 
+ui.\+display\+\_\+widgets.\+CRTWidget.\+refresh (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classui_1_1display__widgets_1_1_c_r_t_widget_af4aafe72ad0734e3e097aa4238e760c8_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classui_1_1display__widgets_1_1_c_r_t_widget_a427167a18eff67fc5bc8d337fdcbfda5}\index{ui.display\_widgets.CRTWidget@{ui.display\_widgets.CRTWidget}!ATTR\_BLINK@{ATTR\_BLINK}}
+\index{ATTR\_BLINK@{ATTR\_BLINK}!ui.display\_widgets.CRTWidget@{ui.display\_widgets.CRTWidget}}
+\doxysubsubsection{\texorpdfstring{ATTR\_BLINK}{ATTR\_BLINK}}
+{\footnotesize\ttfamily \label{classui_1_1display__widgets_1_1_c_r_t_widget_a427167a18eff67fc5bc8d337fdcbfda5} 
+ui.\+display\+\_\+widgets.\+CRTWidget.\+ATTR\+\_\+\+BLINK\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classui_1_1display__widgets_1_1_c_r_t_widget_a1745ecb9ab7ac8161da2e648955ba9d1}\index{ui.display\_widgets.CRTWidget@{ui.display\_widgets.CRTWidget}!ATTR\_BRIGHT@{ATTR\_BRIGHT}}
+\index{ATTR\_BRIGHT@{ATTR\_BRIGHT}!ui.display\_widgets.CRTWidget@{ui.display\_widgets.CRTWidget}}
+\doxysubsubsection{\texorpdfstring{ATTR\_BRIGHT}{ATTR\_BRIGHT}}
+{\footnotesize\ttfamily \label{classui_1_1display__widgets_1_1_c_r_t_widget_a1745ecb9ab7ac8161da2e648955ba9d1} 
+ui.\+display\+\_\+widgets.\+CRTWidget.\+ATTR\+\_\+\+BRIGHT\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classui_1_1display__widgets_1_1_c_r_t_widget_ac9ad606524724cc68c55b2416be2de1b}\index{ui.display\_widgets.CRTWidget@{ui.display\_widgets.CRTWidget}!ATTR\_INVERSE@{ATTR\_INVERSE}}
+\index{ATTR\_INVERSE@{ATTR\_INVERSE}!ui.display\_widgets.CRTWidget@{ui.display\_widgets.CRTWidget}}
+\doxysubsubsection{\texorpdfstring{ATTR\_INVERSE}{ATTR\_INVERSE}}
+{\footnotesize\ttfamily \label{classui_1_1display__widgets_1_1_c_r_t_widget_ac9ad606524724cc68c55b2416be2de1b} 
+ui.\+display\+\_\+widgets.\+CRTWidget.\+ATTR\+\_\+\+INVERSE\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classui_1_1display__widgets_1_1_c_r_t_widget_a4da3e62cd59dc9afefb2ca82a9def83c}\index{ui.display\_widgets.CRTWidget@{ui.display\_widgets.CRTWidget}!ATTR\_UNDERLINE@{ATTR\_UNDERLINE}}
+\index{ATTR\_UNDERLINE@{ATTR\_UNDERLINE}!ui.display\_widgets.CRTWidget@{ui.display\_widgets.CRTWidget}}
+\doxysubsubsection{\texorpdfstring{ATTR\_UNDERLINE}{ATTR\_UNDERLINE}}
+{\footnotesize\ttfamily \label{classui_1_1display__widgets_1_1_c_r_t_widget_a4da3e62cd59dc9afefb2ca82a9def83c} 
+ui.\+display\+\_\+widgets.\+CRTWidget.\+ATTR\+\_\+\+UNDERLINE = bm\mbox{[}r\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classui_1_1display__widgets_1_1_c_r_t_widget_a89b6852da7bfe6bd6293c720d13224e1}\index{ui.display\_widgets.CRTWidget@{ui.display\_widgets.CRTWidget}!blink\_state@{blink\_state}}
+\index{blink\_state@{blink\_state}!ui.display\_widgets.CRTWidget@{ui.display\_widgets.CRTWidget}}
+\doxysubsubsection{\texorpdfstring{blink\_state}{blink\_state}}
+{\footnotesize\ttfamily \label{classui_1_1display__widgets_1_1_c_r_t_widget_a89b6852da7bfe6bd6293c720d13224e1} 
+bool ui.\+display\+\_\+widgets.\+CRTWidget.\+blink\+\_\+state = False}
+
+\Hypertarget{classui_1_1display__widgets_1_1_c_r_t_widget_a98c039a9341c577573548fa3b2036ce6}\index{ui.display\_widgets.CRTWidget@{ui.display\_widgets.CRTWidget}!char\_cell\_height@{char\_cell\_height}}
+\index{char\_cell\_height@{char\_cell\_height}!ui.display\_widgets.CRTWidget@{ui.display\_widgets.CRTWidget}}
+\doxysubsubsection{\texorpdfstring{char\_cell\_height}{char\_cell\_height}}
+{\footnotesize\ttfamily \label{classui_1_1display__widgets_1_1_c_r_t_widget_a98c039a9341c577573548fa3b2036ce6} 
+int ui.\+display\+\_\+widgets.\+CRTWidget.\+char\+\_\+cell\+\_\+height = 8}
+
+\Hypertarget{classui_1_1display__widgets_1_1_c_r_t_widget_aad158d856abbc943e4d53cbe3777319d}\index{ui.display\_widgets.CRTWidget@{ui.display\_widgets.CRTWidget}!device@{device}}
+\index{device@{device}!ui.display\_widgets.CRTWidget@{ui.display\_widgets.CRTWidget}}
+\doxysubsubsection{\texorpdfstring{device}{device}}
+{\footnotesize\ttfamily \label{classui_1_1display__widgets_1_1_c_r_t_widget_aad158d856abbc943e4d53cbe3777319d} 
+ui.\+display\+\_\+widgets.\+CRTWidget.\+device = device}
+
+\Hypertarget{classui_1_1display__widgets_1_1_c_r_t_widget_ad0c8d0496ee3f8c503fb209fcda61ae1}\index{ui.display\_widgets.CRTWidget@{ui.display\_widgets.CRTWidget}!display\_scale\_v@{display\_scale\_v}}
+\index{display\_scale\_v@{display\_scale\_v}!ui.display\_widgets.CRTWidget@{ui.display\_widgets.CRTWidget}}
+\doxysubsubsection{\texorpdfstring{display\_scale\_v}{display\_scale\_v}}
+{\footnotesize\ttfamily \label{classui_1_1display__widgets_1_1_c_r_t_widget_ad0c8d0496ee3f8c503fb209fcda61ae1} 
+ui.\+display\+\_\+widgets.\+CRTWidget.\+display\+\_\+scale\+\_\+v = max(1, getattr(self.\+device, \textquotesingle{}char\+\_\+height\textquotesingle{}, 8) // 8)}
+
+\Hypertarget{classui_1_1display__widgets_1_1_c_r_t_widget_a7af913e9655deebbab651a7f1b486e7f}\index{ui.display\_widgets.CRTWidget@{ui.display\_widgets.CRTWidget}!scale@{scale}}
+\index{scale@{scale}!ui.display\_widgets.CRTWidget@{ui.display\_widgets.CRTWidget}}
+\doxysubsubsection{\texorpdfstring{scale}{scale}}
+{\footnotesize\ttfamily \label{classui_1_1display__widgets_1_1_c_r_t_widget_a7af913e9655deebbab651a7f1b486e7f} 
+ui.\+display\+\_\+widgets.\+CRTWidget.\+scale = 2}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+ui/\mbox{\hyperlink{display__widgets_8py}{display\+\_\+widgets.\+py}}\end{DoxyCompactItemize}

@@ -1,0 +1,11 @@
+digraph "modules.io.ch376s.CH376SDiskImage.read_sector"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="RL";
+  Node1 [id="Node000001",label="modules.io.ch376s.CH376SDisk\lImage.read_sector",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="modules.io.ch376s.CH376SDisk\lImage.read_sectors",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classmodules_1_1io_1_1ch376s_1_1_c_h376_s_disk_image.html#a5ecdbfa79b6c62a2bf57c9fd46a85675",tooltip=" "];
+}

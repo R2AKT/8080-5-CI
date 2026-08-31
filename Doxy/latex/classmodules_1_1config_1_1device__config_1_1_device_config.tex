@@ -1,0 +1,183 @@
+\doxysection{modules.\+config.\+device\+\_\+config.\+Device\+Config Class Reference}
+\hypertarget{classmodules_1_1config_1_1device__config_1_1_device_config}{}\label{classmodules_1_1config_1_1device__config_1_1_device_config}\index{modules.config.device\_config.DeviceConfig@{modules.config.device\_config.DeviceConfig}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodules_1_1config_1_1device__config_1_1_device_config_ae1266d448f72acd3f2f1b1de58972d91}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1config_1_1device__config_1_1_device_config_a4c8f0da30d4d87d4c674aceeb04da519}{load\+\_\+from\+\_\+dict}} (self, config\+\_\+dict)
+\item 
+\mbox{\hyperlink{classmodules_1_1config_1_1device__config_1_1_device_config_acac199f941c81124700aae9d94d751d4}{load\+\_\+from\+\_\+file}} (self, path)
+\item 
+\mbox{\hyperlink{classmodules_1_1config_1_1device__config_1_1_device_config_a1ef1a711f0c936bb72f27c4cde395a0e}{load\+\_\+from\+\_\+string}} (self, toml\+\_\+string)
+\item 
+\mbox{\hyperlink{classmodules_1_1config_1_1device__config_1_1_device_config_a4807a46b07446daa34252d28706ca4d8}{validate}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1config_1_1device__config_1_1_device_config_af932a5c68b9f724340e7f560fa2e5647}{to\+\_\+dict}} (self)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+str \mbox{\hyperlink{classmodules_1_1config_1_1device__config_1_1_device_config_af167276c2e7030335a4ab4dede8ff8d7}{system\+\_\+name}} = "{}"{}
+\item 
+str \mbox{\hyperlink{classmodules_1_1config_1_1device__config_1_1_device_config_ad8e3dbc8f488c4e0186a46b50bc37c91}{cpu}} = "{}i8080"{}
+\item 
+float \mbox{\hyperlink{classmodules_1_1config_1_1device__config_1_1_device_config_a940c20fa3db3bc3dc953e4196e680a2c}{clock\+\_\+mhz}} = 2.\+5
+\item 
+list \mbox{\hyperlink{classmodules_1_1config_1_1device__config_1_1_device_config_a6b67d73a9f1b5ceeba565b47f7c1bc80}{memory\+\_\+regions}} = \mbox{[}$\,$\mbox{]}
+\item 
+list \mbox{\hyperlink{classmodules_1_1config_1_1device__config_1_1_device_config_a3c18ebd87c9a857daf8018e459a3c3f7}{devices}} = \mbox{[}$\,$\mbox{]}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodules_1_1config_1_1device__config_1_1_device_config_aec3198c3e872bc8609320cea15f74b36}{\+\_\+parse}} (self, data)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodules_1_1config_1_1device__config_1_1_device_config_a0250fe846d33a4fc46ec4bdf99ce02af}{\+\_\+parse\+\_\+addr}} (value)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Парсер TOML-конфигурации устройств\end{DoxyVerb}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classmodules_1_1config_1_1device__config_1_1_device_config_ae1266d448f72acd3f2f1b1de58972d91}\index{modules.config.device\_config.DeviceConfig@{modules.config.device\_config.DeviceConfig}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!modules.config.device\_config.DeviceConfig@{modules.config.device\_config.DeviceConfig}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \label{classmodules_1_1config_1_1device__config_1_1_device_config_ae1266d448f72acd3f2f1b1de58972d91} 
+modules.\+config.\+device\+\_\+config.\+Device\+Config.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classmodules_1_1config_1_1device__config_1_1_device_config_aec3198c3e872bc8609320cea15f74b36}\index{modules.config.device\_config.DeviceConfig@{modules.config.device\_config.DeviceConfig}!\_parse@{\_parse}}
+\index{\_parse@{\_parse}!modules.config.device\_config.DeviceConfig@{modules.config.device\_config.DeviceConfig}}
+\doxysubsubsection{\texorpdfstring{\_parse()}{\_parse()}}
+{\footnotesize\ttfamily \label{classmodules_1_1config_1_1device__config_1_1_device_config_aec3198c3e872bc8609320cea15f74b36} 
+modules.\+config.\+device\+\_\+config.\+Device\+Config.\+\_\+parse (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{data}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Парсинг конфигурации из словаря\end{DoxyVerb}
+ Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1config_1_1device__config_1_1_device_config_aec3198c3e872bc8609320cea15f74b36_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1config_1_1device__config_1_1_device_config_a0250fe846d33a4fc46ec4bdf99ce02af}\index{modules.config.device\_config.DeviceConfig@{modules.config.device\_config.DeviceConfig}!\_parse\_addr@{\_parse\_addr}}
+\index{\_parse\_addr@{\_parse\_addr}!modules.config.device\_config.DeviceConfig@{modules.config.device\_config.DeviceConfig}}
+\doxysubsubsection{\texorpdfstring{\_parse\_addr()}{\_parse\_addr()}}
+{\footnotesize\ttfamily \label{classmodules_1_1config_1_1device__config_1_1_device_config_a0250fe846d33a4fc46ec4bdf99ce02af} 
+modules.\+config.\+device\+\_\+config.\+Device\+Config.\+\_\+parse\+\_\+addr (\begin{DoxyParamCaption}\item[{}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+\begin{DoxyVerb}Парсинг адреса: '0x1234', '0X1234', 0x1234, 4660\end{DoxyVerb}
+ \Hypertarget{classmodules_1_1config_1_1device__config_1_1_device_config_a4c8f0da30d4d87d4c674aceeb04da519}\index{modules.config.device\_config.DeviceConfig@{modules.config.device\_config.DeviceConfig}!load\_from\_dict@{load\_from\_dict}}
+\index{load\_from\_dict@{load\_from\_dict}!modules.config.device\_config.DeviceConfig@{modules.config.device\_config.DeviceConfig}}
+\doxysubsubsection{\texorpdfstring{load\_from\_dict()}{load\_from\_dict()}}
+{\footnotesize\ttfamily \label{classmodules_1_1config_1_1device__config_1_1_device_config_a4c8f0da30d4d87d4c674aceeb04da519} 
+modules.\+config.\+device\+\_\+config.\+Device\+Config.\+load\+\_\+from\+\_\+dict (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{config\+\_\+dict}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Загрузить конфигурацию из dict (внешний профиль)\end{DoxyVerb}
+ Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1config_1_1device__config_1_1_device_config_a4c8f0da30d4d87d4c674aceeb04da519_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1config_1_1device__config_1_1_device_config_acac199f941c81124700aae9d94d751d4}\index{modules.config.device\_config.DeviceConfig@{modules.config.device\_config.DeviceConfig}!load\_from\_file@{load\_from\_file}}
+\index{load\_from\_file@{load\_from\_file}!modules.config.device\_config.DeviceConfig@{modules.config.device\_config.DeviceConfig}}
+\doxysubsubsection{\texorpdfstring{load\_from\_file()}{load\_from\_file()}}
+{\footnotesize\ttfamily \label{classmodules_1_1config_1_1device__config_1_1_device_config_acac199f941c81124700aae9d94d751d4} 
+modules.\+config.\+device\+\_\+config.\+Device\+Config.\+load\+\_\+from\+\_\+file (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{path}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Загрузить конфигурацию из TOML-файла\end{DoxyVerb}
+ Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1config_1_1device__config_1_1_device_config_acac199f941c81124700aae9d94d751d4_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1config_1_1device__config_1_1_device_config_a1ef1a711f0c936bb72f27c4cde395a0e}\index{modules.config.device\_config.DeviceConfig@{modules.config.device\_config.DeviceConfig}!load\_from\_string@{load\_from\_string}}
+\index{load\_from\_string@{load\_from\_string}!modules.config.device\_config.DeviceConfig@{modules.config.device\_config.DeviceConfig}}
+\doxysubsubsection{\texorpdfstring{load\_from\_string()}{load\_from\_string()}}
+{\footnotesize\ttfamily \label{classmodules_1_1config_1_1device__config_1_1_device_config_a1ef1a711f0c936bb72f27c4cde395a0e} 
+modules.\+config.\+device\+\_\+config.\+Device\+Config.\+load\+\_\+from\+\_\+string (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{toml\+\_\+string}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Загрузить конфигурацию из TOML-строки\end{DoxyVerb}
+ Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1config_1_1device__config_1_1_device_config_a1ef1a711f0c936bb72f27c4cde395a0e_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1config_1_1device__config_1_1_device_config_af932a5c68b9f724340e7f560fa2e5647}\index{modules.config.device\_config.DeviceConfig@{modules.config.device\_config.DeviceConfig}!to\_dict@{to\_dict}}
+\index{to\_dict@{to\_dict}!modules.config.device\_config.DeviceConfig@{modules.config.device\_config.DeviceConfig}}
+\doxysubsubsection{\texorpdfstring{to\_dict()}{to\_dict()}}
+{\footnotesize\ttfamily \label{classmodules_1_1config_1_1device__config_1_1_device_config_af932a5c68b9f724340e7f560fa2e5647} 
+modules.\+config.\+device\+\_\+config.\+Device\+Config.\+to\+\_\+dict (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Конфигурация в виде словаря (для отладки)\end{DoxyVerb}
+ \Hypertarget{classmodules_1_1config_1_1device__config_1_1_device_config_a4807a46b07446daa34252d28706ca4d8}\index{modules.config.device\_config.DeviceConfig@{modules.config.device\_config.DeviceConfig}!validate@{validate}}
+\index{validate@{validate}!modules.config.device\_config.DeviceConfig@{modules.config.device\_config.DeviceConfig}}
+\doxysubsubsection{\texorpdfstring{validate()}{validate()}}
+{\footnotesize\ttfamily \label{classmodules_1_1config_1_1device__config_1_1_device_config_a4807a46b07446daa34252d28706ca4d8} 
+modules.\+config.\+device\+\_\+config.\+Device\+Config.\+validate (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Проверка конфигурации на конфликты адресов\end{DoxyVerb}
+ Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1config_1_1device__config_1_1_device_config_a4807a46b07446daa34252d28706ca4d8_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classmodules_1_1config_1_1device__config_1_1_device_config_a940c20fa3db3bc3dc953e4196e680a2c}\index{modules.config.device\_config.DeviceConfig@{modules.config.device\_config.DeviceConfig}!clock\_mhz@{clock\_mhz}}
+\index{clock\_mhz@{clock\_mhz}!modules.config.device\_config.DeviceConfig@{modules.config.device\_config.DeviceConfig}}
+\doxysubsubsection{\texorpdfstring{clock\_mhz}{clock\_mhz}}
+{\footnotesize\ttfamily \label{classmodules_1_1config_1_1device__config_1_1_device_config_a940c20fa3db3bc3dc953e4196e680a2c} 
+modules.\+config.\+device\+\_\+config.\+Device\+Config.\+clock\+\_\+mhz = 2.\+5}
+
+\Hypertarget{classmodules_1_1config_1_1device__config_1_1_device_config_ad8e3dbc8f488c4e0186a46b50bc37c91}\index{modules.config.device\_config.DeviceConfig@{modules.config.device\_config.DeviceConfig}!cpu@{cpu}}
+\index{cpu@{cpu}!modules.config.device\_config.DeviceConfig@{modules.config.device\_config.DeviceConfig}}
+\doxysubsubsection{\texorpdfstring{cpu}{cpu}}
+{\footnotesize\ttfamily \label{classmodules_1_1config_1_1device__config_1_1_device_config_ad8e3dbc8f488c4e0186a46b50bc37c91} 
+modules.\+config.\+device\+\_\+config.\+Device\+Config.\+cpu = "{}i8080"{}}
+
+\Hypertarget{classmodules_1_1config_1_1device__config_1_1_device_config_a3c18ebd87c9a857daf8018e459a3c3f7}\index{modules.config.device\_config.DeviceConfig@{modules.config.device\_config.DeviceConfig}!devices@{devices}}
+\index{devices@{devices}!modules.config.device\_config.DeviceConfig@{modules.config.device\_config.DeviceConfig}}
+\doxysubsubsection{\texorpdfstring{devices}{devices}}
+{\footnotesize\ttfamily \label{classmodules_1_1config_1_1device__config_1_1_device_config_a3c18ebd87c9a857daf8018e459a3c3f7} 
+modules.\+config.\+device\+\_\+config.\+Device\+Config.\+devices = \mbox{[}$\,$\mbox{]}}
+
+\Hypertarget{classmodules_1_1config_1_1device__config_1_1_device_config_a6b67d73a9f1b5ceeba565b47f7c1bc80}\index{modules.config.device\_config.DeviceConfig@{modules.config.device\_config.DeviceConfig}!memory\_regions@{memory\_regions}}
+\index{memory\_regions@{memory\_regions}!modules.config.device\_config.DeviceConfig@{modules.config.device\_config.DeviceConfig}}
+\doxysubsubsection{\texorpdfstring{memory\_regions}{memory\_regions}}
+{\footnotesize\ttfamily \label{classmodules_1_1config_1_1device__config_1_1_device_config_a6b67d73a9f1b5ceeba565b47f7c1bc80} 
+modules.\+config.\+device\+\_\+config.\+Device\+Config.\+memory\+\_\+regions = \mbox{[}$\,$\mbox{]}}
+
+\Hypertarget{classmodules_1_1config_1_1device__config_1_1_device_config_af167276c2e7030335a4ab4dede8ff8d7}\index{modules.config.device\_config.DeviceConfig@{modules.config.device\_config.DeviceConfig}!system\_name@{system\_name}}
+\index{system\_name@{system\_name}!modules.config.device\_config.DeviceConfig@{modules.config.device\_config.DeviceConfig}}
+\doxysubsubsection{\texorpdfstring{system\_name}{system\_name}}
+{\footnotesize\ttfamily \label{classmodules_1_1config_1_1device__config_1_1_device_config_af167276c2e7030335a4ab4dede8ff8d7} 
+modules.\+config.\+device\+\_\+config.\+Device\+Config.\+system\+\_\+name = "{}"{}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+modules/config/\mbox{\hyperlink{device__config_8py}{device\+\_\+config.\+py}}\end{DoxyCompactItemize}

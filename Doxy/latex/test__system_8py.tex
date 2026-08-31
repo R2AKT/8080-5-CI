@@ -1,0 +1,65 @@
+\doxysection{tests/test\+\_\+system.py File Reference}
+\hypertarget{test__system_8py}{}\label{test__system_8py}\index{tests/test\_system.py@{tests/test\_system.py}}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacetest__system}{test\+\_\+system}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespacetest__system_aeda088fec4ce49408e92dc6e2b458bc0}{test\+\_\+system.\+check}} (\mbox{\hyperlink{namespacetest__system_a890b973c00a3b24584a5a12118af0865}{name}}, actual, expected)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{namespacetest__system_a2886e0e3ceb92e38a3bd4e4ed3e27da8}{test\+\_\+system.\+passed}} = 0
+\item 
+int \mbox{\hyperlink{namespacetest__system_adcb5826c1e4c1b3fffb8899ac1880241}{test\+\_\+system.\+failed}} = 0
+\item 
+\mbox{\hyperlink{namespacetest__system_a382eedea7f4736e77a27c8df6c729222}{test\+\_\+system.\+system}} = \mbox{\hyperlink{classmodules_1_1system_1_1_computer_system}{Computer\+System}}()
+\item 
+\mbox{\hyperlink{namespacetest__system_a47f6f830aa78cd808d9d8c00b27ae975}{test\+\_\+system.\+system2}} = \mbox{\hyperlink{classmodules_1_1system_1_1_computer_system}{Computer\+System}}()
+\item 
+list \mbox{\hyperlink{namespacetest__system_a6d9ef9c1266588b231fdbf13a9b38c71}{test\+\_\+system.\+device\+\_\+types}} = \mbox{[}d.\+\_\+\+\_\+class\+\_\+\+\_\+.\+\_\+\+\_\+name\+\_\+\+\_\+ for d in system2.\+devices.\+values()\mbox{]}
+\item 
+\mbox{\hyperlink{namespacetest__system_aa3bc6c2aabb12220cd3554f64d4c464d}{test\+\_\+system.\+system3}} = \mbox{\hyperlink{classmodules_1_1system_1_1_computer_system}{Computer\+System}}()
+\item 
+\mbox{\hyperlink{namespacetest__system_a2aab16a85b2ffd2e942ac900bd6afdb8}{test\+\_\+system.\+ppi}} = system2.\+get\+\_\+device("{}PPI-\/0"{})
+\item 
+\mbox{\hyperlink{namespacetest__system_afa0a91bcc14c426b79ace4e4b33b574d}{test\+\_\+system.\+pit}} = system2.\+get\+\_\+device("{}PIT-\/0"{})
+\item 
+\mbox{\hyperlink{namespacetest__system_ad91fe09bf4a58795d182fd566f99fc7e}{test\+\_\+system.\+unknown}} = system2.\+get\+\_\+device("{}UNKNOWN"{})
+\item 
+\mbox{\hyperlink{namespacetest__system_a751dc463d5902c7f1fd310460a75e798}{test\+\_\+system.\+ppis}} = system2.\+get\+\_\+devices\+\_\+by\+\_\+type("{}I8255"{})
+\item 
+\mbox{\hyperlink{namespacetest__system_adb8cf522d7b8def364c9e51da1e52218}{test\+\_\+system.\+lcds}} = system3.\+get\+\_\+devices\+\_\+by\+\_\+type("{}LCD1602"{})
+\item 
+\mbox{\hyperlink{namespacetest__system_a31103a909c8779f5b13fb11301f8d864}{test\+\_\+system.\+val}} = system2.\+bus.\+read(0x\+C100)
+\item 
+\mbox{\hyperlink{namespacetest__system_a1438ab6d18493cfdb7e388ba408f4e58}{test\+\_\+system.\+device\+\_\+list}} = system2.\+list\+\_\+devices()
+\item 
+list \mbox{\hyperlink{namespacetest__system_a2f51e5d16766ae03959e0dee8c114af2}{test\+\_\+system.\+irq\+\_\+events}} = \mbox{[}$\,$\mbox{]}
+\item 
+\mbox{\hyperlink{namespacetest__system_a4a84efb4e5ec1d0a6bc5da1094c85342}{test\+\_\+system.\+result}}
+\item 
+\mbox{\hyperlink{namespacetest__system_a223f4e13f954c294c5557f70b222f655}{test\+\_\+system.\+result2}} = system2.\+set\+\_\+callback("{}PIT-\/0"{}, "{}unknown\+\_\+callback"{}, lambda\+: None)
+\item 
+\mbox{\hyperlink{namespacetest__system_a29f520957ac0b77b12fb299b0d363295}{test\+\_\+system.\+result3}} = system2.\+set\+\_\+callback("{}UNKNOWN"{}, "{}on\+\_\+irq"{}, lambda\+: None)
+\item 
+\mbox{\hyperlink{namespacetest__system_af9c4b70aa3bf72f5a6e7b80bbedf975a}{test\+\_\+system.\+state}} = system2.\+get\+\_\+state()
+\item 
+\mbox{\hyperlink{namespacetest__system_aca1dc0b48b26dc206a89362e01020454}{test\+\_\+system.\+system4}} = \mbox{\hyperlink{classmodules_1_1system_1_1_computer_system}{Computer\+System}}()
+\item 
+str \mbox{\hyperlink{namespacetest__system_abe0ad476a43c13944b90508ada2b3fce}{test\+\_\+system.\+custom\+\_\+toml}}
+\item 
+\mbox{\hyperlink{namespacetest__system_a7566b73b161873327ac9b7c07a65a320}{test\+\_\+system.\+system5}} = \mbox{\hyperlink{classmodules_1_1system_1_1_computer_system}{Computer\+System}}()
+\item 
+\mbox{\hyperlink{namespacetest__system_a890b973c00a3b24584a5a12118af0865}{test\+\_\+system.\+name}}
+\item 
+str \mbox{\hyperlink{namespacetest__system_add23f0c358b0a48fc23749e7fbc1010f}{test\+\_\+system.\+conflict\+\_\+toml}}
+\item 
+\mbox{\hyperlink{namespacetest__system_a055e3985b7806db7e286e476068d960e}{test\+\_\+system.\+system6}} = \mbox{\hyperlink{classmodules_1_1system_1_1_computer_system}{Computer\+System}}()
+\item 
+\mbox{\hyperlink{namespacetest__system_ae73deed82a086926cf12f6f113f59852}{test\+\_\+system.\+system7}} = \mbox{\hyperlink{classmodules_1_1system_1_1_computer_system}{Computer\+System}}()
+\end{DoxyCompactItemize}

@@ -1,0 +1,33 @@
+\doxysection{modules.\+io.\+i8272 Namespace Reference}
+\hypertarget{namespacemodules_1_1io_1_1i8272}{}\label{namespacemodules_1_1io_1_1i8272}\index{modules.io.i8272@{modules.io.i8272}}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classmodules_1_1io_1_1i8272_1_1_i8272}{I8272}}
+\item 
+class \mbox{\hyperlink{classmodules_1_1io_1_1i8272_1_1_i8272_f_d_d}{I8272\+FDD}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}8272 (КР580ВГ72) — контроллер гибких дисков (FDC).
+Итерация E5: расширенные IO-устройства.
+
+Возможности:
+- Поддержка до 4 дисководов (A, B, C, D)
+- FIFO для команд и результатов (16 байт)
+- Команды: Read Data, Write Data, Seek, Recalibrate, Sense Status, Specify, Read ID, Format Track
+- Прерывания (IRQ) при завершении операций
+- DMA-запросы (DRQ) для передачи данных (эмуляция через PIO)
+- Эмуляция данных дисков в памяти
+
+Регистры (4 порта):
+  offset 0: Digital Output Register (DOR) — запись
+  offset 1: Main Status Register (MSR) — чтение
+  offset 2: Data Register (FIFO) — чтение/запись
+  offset 3: Digital Input Register (DIR) — чтение / Configuration Control Register (CCR) — запись
+
+Формат данных диска:
+  {(cylinder, head, sector): [512 байт]}
+\end{DoxyVerb}
+ 

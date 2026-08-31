@@ -1,0 +1,5 @@
+<map id="ui.device_manager.DeviceManagerDialog" name="ui.device_manager.DeviceManagerDialog">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,80,181,123"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="59,5,127,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="96,48,96,80,90,80,90,48"/>
+</map>

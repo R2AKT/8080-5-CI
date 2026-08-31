@@ -1,0 +1,36 @@
+\doxysection{modules.\+io.\+lcd1602 Namespace Reference}
+\hypertarget{namespacemodules_1_1io_1_1lcd1602}{}\label{namespacemodules_1_1io_1_1lcd1602}\index{modules.io.lcd1602@{modules.io.lcd1602}}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classmodules_1_1io_1_1lcd1602_1_1_l_c_d1602}{LCD1602}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}LCD1602 — символьный дисплей 16×2.
+Контроллер: HD44780.
+Итерация 8: Дисплеи.
+
+Возможности:
+- 16 символов × 2 строки
+- Память дисплея (DDRAM) на 32 символа
+- Память знакогенератора (CGRAM) на 8 символов
+- Команды: очистка, курсор, сдвиг, режимы
+- Автоинкремент/декремент адреса
+
+Регистры (2 порта):
+  offset 0 (Data):    Чтение/запись данных
+  offset 1 (Control): Запись команд / чтение статуса
+
+Команды:
+  0x01: Clear Display
+  0x02: Return Home
+  0x04-0x05: Entry Mode Set
+  0x08-0x0F: Display On/Off Control
+  0x10-0x1F: Cursor/Display Shift
+  0x20-0x3F: Function Set
+  0x40-0x7F: Set CGRAM Address
+  0x80-0xBF: Set DDRAM Address
+\end{DoxyVerb}
+ 

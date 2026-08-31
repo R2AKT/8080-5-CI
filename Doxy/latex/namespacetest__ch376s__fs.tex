@@ -1,0 +1,306 @@
+\doxysection{test\+\_\+ch376s\+\_\+fs Namespace Reference}
+\hypertarget{namespacetest__ch376s__fs}{}\label{namespacetest__ch376s__fs}\index{test\_ch376s\_fs@{test\_ch376s\_fs}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespacetest__ch376s__fs_a8ea77dfc6ad29faa5b0e2bc97cdf4697}{check}} (name, actual, expected)
+\item 
+\mbox{\hyperlink{namespacetest__ch376s__fs_af640ef71dd75be531da9e5c530b7298c}{send\+\_\+filename}} (\mbox{\hyperlink{namespacetest__ch376s__fs_a101be93d68bab49108522e110359b939}{usb}}, \mbox{\hyperlink{namespacetest__ch376s__fs_ae99c3867c4af594ed68b968ad729dc0d}{bus}}, name)
+\item 
+\mbox{\hyperlink{namespacetest__ch376s__fs_a5328e18f284c570e8b003752c5b2cc0f}{read\+\_\+data\+\_\+port}} (\mbox{\hyperlink{namespacetest__ch376s__fs_a101be93d68bab49108522e110359b939}{usb}}, \mbox{\hyperlink{namespacetest__ch376s__fs_ae99c3867c4af594ed68b968ad729dc0d}{bus}}, count)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{namespacetest__ch376s__fs_ae8e63914e50104aefab05b59a79a4aba}{passed}} = 0
+\item 
+int \mbox{\hyperlink{namespacetest__ch376s__fs_aded7b0728ffdaf66a2ec260cc8447be2}{failed}} = 0
+\item 
+\mbox{\hyperlink{namespacetest__ch376s__fs_ae99c3867c4af594ed68b968ad729dc0d}{bus}} = \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus}{Memory\+Bus}}()
+\item 
+\mbox{\hyperlink{namespacetest__ch376s__fs_a101be93d68bab49108522e110359b939}{usb}} = \mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s}{CH376S}}(base\+\_\+port=0x276)
+\item 
+\mbox{\hyperlink{namespacetest__ch376s__fs_aa26af361e96e97e4cc9e033132b38a11}{delete}}
+\item 
+\mbox{\hyperlink{namespacetest__ch376s__fs_a578adb14a91050b84223d3cf3e44a032}{False}}
+\item 
+\mbox{\hyperlink{namespacetest__ch376s__fs_a4570041366ab854313cad21b2b4577bb}{suffix}}
+\item 
+\mbox{\hyperlink{namespacetest__ch376s__fs_a81d05720b70b45ff68adf33fff1c0b8f}{disk\+\_\+path}} = f.\+name
+\item 
+\mbox{\hyperlink{namespacetest__ch376s__fs_a94149dec79e3134731c91b373a24c163}{size\+\_\+mb}}
+\item 
+\mbox{\hyperlink{namespacetest__ch376s__fs_aebd8af02d822b303962c8f1ce72b98c0}{capacity\+\_\+bytes}} = \mbox{\hyperlink{namespacetest__ch376s__fs_a5328e18f284c570e8b003752c5b2cc0f}{read\+\_\+data\+\_\+port}}(\mbox{\hyperlink{namespacetest__ch376s__fs_a101be93d68bab49108522e110359b939}{usb}}, \mbox{\hyperlink{namespacetest__ch376s__fs_ae99c3867c4af594ed68b968ad729dc0d}{bus}}, 4)
+\item 
+\mbox{\hyperlink{namespacetest__ch376s__fs_aeeae744ff46d5a9f1ebda201e094e5cf}{capacity}}
+\item 
+\mbox{\hyperlink{namespacetest__ch376s__fs_a50e226da9c730eb973290cd4510e00c4}{version}} = bus.\+io\+\_\+read(0x276)
+\item 
+\mbox{\hyperlink{namespacetest__ch376s__fs_a34fb6d7b02a040c17851e5110cf8a3e7}{status\+\_\+byte}} = bus.\+io\+\_\+read(0x276)
+\item 
+\mbox{\hyperlink{namespacetest__ch376s__fs_a839806faafebea0693c73ee1a78ca833}{header}} = usb.\+\_\+fs\+\_\+read\+\_\+header()
+\item 
+\mbox{\hyperlink{namespacetest__ch376s__fs_a755abd6461dc9ff5e3e8354f34080d84}{idx}} = usb.\+\_\+fs\+\_\+find\+\_\+file("{}TEST.\+TXT"{})
+\item 
+\mbox{\hyperlink{namespacetest__ch376s__fs_a6ac6ebb83d724656deea877dcd0d2bda}{test\+\_\+data}} = bytearray(b"{}\+Hello, CH376\+S!"{})
+\item 
+\mbox{\hyperlink{namespacetest__ch376s__fs_aa400af956a96907f91a97895a7d82418}{data\+\_\+buffer}}
+\item 
+\mbox{\hyperlink{namespacetest__ch376s__fs_ab0b7fcc6a18c12eb3d4307c420f7e283}{data\+\_\+direction}}
+\item 
+\mbox{\hyperlink{namespacetest__ch376s__fs_af9ee42a54abd5c855bce87870b10e8ff}{data\+\_\+index}}
+\item 
+\mbox{\hyperlink{namespacetest__ch376s__fs_a65fa919c567227d4815b6a2eb65b7397}{entry}} = usb.\+\_\+fs\+\_\+read\+\_\+entry(usb.\+file\+\_\+index)
+\item 
+\mbox{\hyperlink{namespacetest__ch376s__fs_aef986bf1fde6c3ce3aa30d7a236a49a6}{read\+\_\+data}} = \mbox{\hyperlink{namespacetest__ch376s__fs_a5328e18f284c570e8b003752c5b2cc0f}{read\+\_\+data\+\_\+port}}(\mbox{\hyperlink{namespacetest__ch376s__fs_a101be93d68bab49108522e110359b939}{usb}}, \mbox{\hyperlink{namespacetest__ch376s__fs_ae99c3867c4af594ed68b968ad729dc0d}{bus}}, len(\mbox{\hyperlink{namespacetest__ch376s__fs_a6ac6ebb83d724656deea877dcd0d2bda}{test\+\_\+data}}))
+\item 
+\mbox{\hyperlink{namespacetest__ch376s__fs_a5537360e3b64e3ced4461d1722a10df9}{info}} = \mbox{\hyperlink{namespacetest__ch376s__fs_a5328e18f284c570e8b003752c5b2cc0f}{read\+\_\+data\+\_\+port}}(\mbox{\hyperlink{namespacetest__ch376s__fs_a101be93d68bab49108522e110359b939}{usb}}, \mbox{\hyperlink{namespacetest__ch376s__fs_ae99c3867c4af594ed68b968ad729dc0d}{bus}}, 8)
+\item 
+\mbox{\hyperlink{namespacetest__ch376s__fs_aaac8cfed7d2c019baf548bed061ab2d9}{file\+\_\+size}} = \mbox{\hyperlink{namespacetest__ch376s__fs_a5537360e3b64e3ced4461d1722a10df9}{info}}\mbox{[}0\mbox{]} \texorpdfstring{$\vert$}{|} (\mbox{\hyperlink{namespacetest__ch376s__fs_a5537360e3b64e3ced4461d1722a10df9}{info}}\mbox{[}1\mbox{]} $<$$<$ 8) \texorpdfstring{$\vert$}{|} (\mbox{\hyperlink{namespacetest__ch376s__fs_a5537360e3b64e3ced4461d1722a10df9}{info}}\mbox{[}2\mbox{]} $<$$<$ 16) \texorpdfstring{$\vert$}{|} (\mbox{\hyperlink{namespacetest__ch376s__fs_a5537360e3b64e3ced4461d1722a10df9}{info}}\mbox{[}3\mbox{]} $<$$<$ 24)
+\item 
+\mbox{\hyperlink{namespacetest__ch376s__fs_a2d2651967848b74f681b15fb26692a8f}{enum\+\_\+index}}
+\item 
+\mbox{\hyperlink{namespacetest__ch376s__fs_a2407d8f91942d47ae12a2b97efa021ce}{enum\+\_\+data}} = \mbox{\hyperlink{namespacetest__ch376s__fs_a5328e18f284c570e8b003752c5b2cc0f}{read\+\_\+data\+\_\+port}}(\mbox{\hyperlink{namespacetest__ch376s__fs_a101be93d68bab49108522e110359b939}{usb}}, \mbox{\hyperlink{namespacetest__ch376s__fs_ae99c3867c4af594ed68b968ad729dc0d}{bus}}, 17)
+\item 
+\mbox{\hyperlink{namespacetest__ch376s__fs_a8abd4059cbc74b432e9b3ab377c0854e}{enum\+\_\+name}} = bytes(\mbox{\hyperlink{namespacetest__ch376s__fs_a2407d8f91942d47ae12a2b97efa021ce}{enum\+\_\+data}}\mbox{[}\+:13\mbox{]}).split(b\textquotesingle{}\textbackslash{}x00\textquotesingle{})\mbox{[}0\mbox{]}.decode(\textquotesingle{}ascii\textquotesingle{})
+\item 
+\mbox{\hyperlink{namespacetest__ch376s__fs_aa56d3d749555b352b91bcec716540643}{big\+\_\+data}} = bytearray(\mbox{[}i \& 0x\+FF for i in range(600)\mbox{]})
+\item 
+\mbox{\hyperlink{namespacetest__ch376s__fs_aad13f86b53819102401fcb52d9b91ec1}{read\+\_\+back}} = \mbox{\hyperlink{namespacetest__ch376s__fs_a5328e18f284c570e8b003752c5b2cc0f}{read\+\_\+data\+\_\+port}}(\mbox{\hyperlink{namespacetest__ch376s__fs_a101be93d68bab49108522e110359b939}{usb}}, \mbox{\hyperlink{namespacetest__ch376s__fs_ae99c3867c4af594ed68b968ad729dc0d}{bus}}, 600)
+\item 
+\mbox{\hyperlink{namespacetest__ch376s__fs_ae8e206f470fb693ba8ea826a26448045}{test\+\_\+sector\+\_\+data}} = bytearray(\mbox{[}i \& 0x\+FF for i in range(512)\mbox{]})
+\item 
+\mbox{\hyperlink{namespacetest__ch376s__fs_a8bed5a8c510ea18405d51109df1f85b2}{disk\+\_\+data}} = f.\+read(512)
+\item 
+\mbox{\hyperlink{namespacetest__ch376s__fs_af6641577c43b1a6f0a139759c1d5defe}{read\+\_\+sector}} = \mbox{\hyperlink{namespacetest__ch376s__fs_a5328e18f284c570e8b003752c5b2cc0f}{read\+\_\+data\+\_\+port}}(\mbox{\hyperlink{namespacetest__ch376s__fs_a101be93d68bab49108522e110359b939}{usb}}, \mbox{\hyperlink{namespacetest__ch376s__fs_ae99c3867c4af594ed68b968ad729dc0d}{bus}}, 512)
+\item 
+\mbox{\hyperlink{namespacetest__ch376s__fs_ab1fd977885d80cb56d4b7f82a7ae73b4}{write\+\_\+protected}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Тест CH376S файловых команд — расширенный (итерация E6)\end{DoxyVerb}
+ 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespacetest__ch376s__fs_a8ea77dfc6ad29faa5b0e2bc97cdf4697}\index{test\_ch376s\_fs@{test\_ch376s\_fs}!check@{check}}
+\index{check@{check}!test\_ch376s\_fs@{test\_ch376s\_fs}}
+\doxysubsubsection{\texorpdfstring{check()}{check()}}
+{\footnotesize\ttfamily \label{namespacetest__ch376s__fs_a8ea77dfc6ad29faa5b0e2bc97cdf4697} 
+test\+\_\+ch376s\+\_\+fs.\+check (\begin{DoxyParamCaption}\item[{}]{name}{, }\item[{}]{actual}{, }\item[{}]{expected}{}\end{DoxyParamCaption})}
+
+\Hypertarget{namespacetest__ch376s__fs_a5328e18f284c570e8b003752c5b2cc0f}\index{test\_ch376s\_fs@{test\_ch376s\_fs}!read\_data\_port@{read\_data\_port}}
+\index{read\_data\_port@{read\_data\_port}!test\_ch376s\_fs@{test\_ch376s\_fs}}
+\doxysubsubsection{\texorpdfstring{read\_data\_port()}{read\_data\_port()}}
+{\footnotesize\ttfamily \label{namespacetest__ch376s__fs_a5328e18f284c570e8b003752c5b2cc0f} 
+test\+\_\+ch376s\+\_\+fs.\+read\+\_\+data\+\_\+port (\begin{DoxyParamCaption}\item[{}]{usb}{, }\item[{}]{bus}{, }\item[{}]{count}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Прочитать count байт из Data Port\end{DoxyVerb}
+ \Hypertarget{namespacetest__ch376s__fs_af640ef71dd75be531da9e5c530b7298c}\index{test\_ch376s\_fs@{test\_ch376s\_fs}!send\_filename@{send\_filename}}
+\index{send\_filename@{send\_filename}!test\_ch376s\_fs@{test\_ch376s\_fs}}
+\doxysubsubsection{\texorpdfstring{send\_filename()}{send\_filename()}}
+{\footnotesize\ttfamily \label{namespacetest__ch376s__fs_af640ef71dd75be531da9e5c530b7298c} 
+test\+\_\+ch376s\+\_\+fs.\+send\+\_\+filename (\begin{DoxyParamCaption}\item[{}]{usb}{, }\item[{}]{bus}{, }\item[{}]{name}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Отправить имя файла через Data Port\end{DoxyVerb}
+ 
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{namespacetest__ch376s__fs_aa56d3d749555b352b91bcec716540643}\index{test\_ch376s\_fs@{test\_ch376s\_fs}!big\_data@{big\_data}}
+\index{big\_data@{big\_data}!test\_ch376s\_fs@{test\_ch376s\_fs}}
+\doxysubsubsection{\texorpdfstring{big\_data}{big\_data}}
+{\footnotesize\ttfamily \label{namespacetest__ch376s__fs_aa56d3d749555b352b91bcec716540643} 
+test\+\_\+ch376s\+\_\+fs.\+big\+\_\+data = bytearray(\mbox{[}i \& 0x\+FF for i in range(600)\mbox{]})}
+
+\Hypertarget{namespacetest__ch376s__fs_ae99c3867c4af594ed68b968ad729dc0d}\index{test\_ch376s\_fs@{test\_ch376s\_fs}!bus@{bus}}
+\index{bus@{bus}!test\_ch376s\_fs@{test\_ch376s\_fs}}
+\doxysubsubsection{\texorpdfstring{bus}{bus}}
+{\footnotesize\ttfamily \label{namespacetest__ch376s__fs_ae99c3867c4af594ed68b968ad729dc0d} 
+test\+\_\+ch376s\+\_\+fs.\+bus = \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus}{Memory\+Bus}}()}
+
+\Hypertarget{namespacetest__ch376s__fs_aeeae744ff46d5a9f1ebda201e094e5cf}\index{test\_ch376s\_fs@{test\_ch376s\_fs}!capacity@{capacity}}
+\index{capacity@{capacity}!test\_ch376s\_fs@{test\_ch376s\_fs}}
+\doxysubsubsection{\texorpdfstring{capacity}{capacity}}
+{\footnotesize\ttfamily \label{namespacetest__ch376s__fs_aeeae744ff46d5a9f1ebda201e094e5cf} 
+test\+\_\+ch376s\+\_\+fs.\+capacity}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ =\ \ capacity\_bytes[0]\ |\ (capacity\_bytes[1]\ <<\ 8)\ |\ \(\backslash\)}
+\DoxyCodeLine{00002\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (capacity\_bytes[2]\ <<\ 16)\ |\ (capacity\_bytes[3]\ <<\ 24)}
+
+\end{DoxyCode}
+\Hypertarget{namespacetest__ch376s__fs_aebd8af02d822b303962c8f1ce72b98c0}\index{test\_ch376s\_fs@{test\_ch376s\_fs}!capacity\_bytes@{capacity\_bytes}}
+\index{capacity\_bytes@{capacity\_bytes}!test\_ch376s\_fs@{test\_ch376s\_fs}}
+\doxysubsubsection{\texorpdfstring{capacity\_bytes}{capacity\_bytes}}
+{\footnotesize\ttfamily \label{namespacetest__ch376s__fs_aebd8af02d822b303962c8f1ce72b98c0} 
+test\+\_\+ch376s\+\_\+fs.\+capacity\+\_\+bytes = \mbox{\hyperlink{namespacetest__ch376s__fs_a5328e18f284c570e8b003752c5b2cc0f}{read\+\_\+data\+\_\+port}}(\mbox{\hyperlink{namespacetest__ch376s__fs_a101be93d68bab49108522e110359b939}{usb}}, \mbox{\hyperlink{namespacetest__ch376s__fs_ae99c3867c4af594ed68b968ad729dc0d}{bus}}, 4)}
+
+\Hypertarget{namespacetest__ch376s__fs_aa400af956a96907f91a97895a7d82418}\index{test\_ch376s\_fs@{test\_ch376s\_fs}!data\_buffer@{data\_buffer}}
+\index{data\_buffer@{data\_buffer}!test\_ch376s\_fs@{test\_ch376s\_fs}}
+\doxysubsubsection{\texorpdfstring{data\_buffer}{data\_buffer}}
+{\footnotesize\ttfamily \label{namespacetest__ch376s__fs_aa400af956a96907f91a97895a7d82418} 
+test\+\_\+ch376s\+\_\+fs.\+data\+\_\+buffer}
+
+\Hypertarget{namespacetest__ch376s__fs_ab0b7fcc6a18c12eb3d4307c420f7e283}\index{test\_ch376s\_fs@{test\_ch376s\_fs}!data\_direction@{data\_direction}}
+\index{data\_direction@{data\_direction}!test\_ch376s\_fs@{test\_ch376s\_fs}}
+\doxysubsubsection{\texorpdfstring{data\_direction}{data\_direction}}
+{\footnotesize\ttfamily \label{namespacetest__ch376s__fs_ab0b7fcc6a18c12eb3d4307c420f7e283} 
+test\+\_\+ch376s\+\_\+fs.\+data\+\_\+direction}
+
+\Hypertarget{namespacetest__ch376s__fs_af9ee42a54abd5c855bce87870b10e8ff}\index{test\_ch376s\_fs@{test\_ch376s\_fs}!data\_index@{data\_index}}
+\index{data\_index@{data\_index}!test\_ch376s\_fs@{test\_ch376s\_fs}}
+\doxysubsubsection{\texorpdfstring{data\_index}{data\_index}}
+{\footnotesize\ttfamily \label{namespacetest__ch376s__fs_af9ee42a54abd5c855bce87870b10e8ff} 
+test\+\_\+ch376s\+\_\+fs.\+data\+\_\+index}
+
+\Hypertarget{namespacetest__ch376s__fs_aa26af361e96e97e4cc9e033132b38a11}\index{test\_ch376s\_fs@{test\_ch376s\_fs}!delete@{delete}}
+\index{delete@{delete}!test\_ch376s\_fs@{test\_ch376s\_fs}}
+\doxysubsubsection{\texorpdfstring{delete}{delete}}
+{\footnotesize\ttfamily \label{namespacetest__ch376s__fs_aa26af361e96e97e4cc9e033132b38a11} 
+test\+\_\+ch376s\+\_\+fs.\+delete}
+
+\Hypertarget{namespacetest__ch376s__fs_a8bed5a8c510ea18405d51109df1f85b2}\index{test\_ch376s\_fs@{test\_ch376s\_fs}!disk\_data@{disk\_data}}
+\index{disk\_data@{disk\_data}!test\_ch376s\_fs@{test\_ch376s\_fs}}
+\doxysubsubsection{\texorpdfstring{disk\_data}{disk\_data}}
+{\footnotesize\ttfamily \label{namespacetest__ch376s__fs_a8bed5a8c510ea18405d51109df1f85b2} 
+test\+\_\+ch376s\+\_\+fs.\+disk\+\_\+data = f.\+read(512)}
+
+\Hypertarget{namespacetest__ch376s__fs_a81d05720b70b45ff68adf33fff1c0b8f}\index{test\_ch376s\_fs@{test\_ch376s\_fs}!disk\_path@{disk\_path}}
+\index{disk\_path@{disk\_path}!test\_ch376s\_fs@{test\_ch376s\_fs}}
+\doxysubsubsection{\texorpdfstring{disk\_path}{disk\_path}}
+{\footnotesize\ttfamily \label{namespacetest__ch376s__fs_a81d05720b70b45ff68adf33fff1c0b8f} 
+test\+\_\+ch376s\+\_\+fs.\+disk\+\_\+path = f.\+name}
+
+\Hypertarget{namespacetest__ch376s__fs_a65fa919c567227d4815b6a2eb65b7397}\index{test\_ch376s\_fs@{test\_ch376s\_fs}!entry@{entry}}
+\index{entry@{entry}!test\_ch376s\_fs@{test\_ch376s\_fs}}
+\doxysubsubsection{\texorpdfstring{entry}{entry}}
+{\footnotesize\ttfamily \label{namespacetest__ch376s__fs_a65fa919c567227d4815b6a2eb65b7397} 
+test\+\_\+ch376s\+\_\+fs.\+entry = usb.\+\_\+fs\+\_\+read\+\_\+entry(usb.\+file\+\_\+index)}
+
+\Hypertarget{namespacetest__ch376s__fs_a2407d8f91942d47ae12a2b97efa021ce}\index{test\_ch376s\_fs@{test\_ch376s\_fs}!enum\_data@{enum\_data}}
+\index{enum\_data@{enum\_data}!test\_ch376s\_fs@{test\_ch376s\_fs}}
+\doxysubsubsection{\texorpdfstring{enum\_data}{enum\_data}}
+{\footnotesize\ttfamily \label{namespacetest__ch376s__fs_a2407d8f91942d47ae12a2b97efa021ce} 
+test\+\_\+ch376s\+\_\+fs.\+enum\+\_\+data = \mbox{\hyperlink{namespacetest__ch376s__fs_a5328e18f284c570e8b003752c5b2cc0f}{read\+\_\+data\+\_\+port}}(\mbox{\hyperlink{namespacetest__ch376s__fs_a101be93d68bab49108522e110359b939}{usb}}, \mbox{\hyperlink{namespacetest__ch376s__fs_ae99c3867c4af594ed68b968ad729dc0d}{bus}}, 17)}
+
+\Hypertarget{namespacetest__ch376s__fs_a2d2651967848b74f681b15fb26692a8f}\index{test\_ch376s\_fs@{test\_ch376s\_fs}!enum\_index@{enum\_index}}
+\index{enum\_index@{enum\_index}!test\_ch376s\_fs@{test\_ch376s\_fs}}
+\doxysubsubsection{\texorpdfstring{enum\_index}{enum\_index}}
+{\footnotesize\ttfamily \label{namespacetest__ch376s__fs_a2d2651967848b74f681b15fb26692a8f} 
+test\+\_\+ch376s\+\_\+fs.\+enum\+\_\+index}
+
+\Hypertarget{namespacetest__ch376s__fs_a8abd4059cbc74b432e9b3ab377c0854e}\index{test\_ch376s\_fs@{test\_ch376s\_fs}!enum\_name@{enum\_name}}
+\index{enum\_name@{enum\_name}!test\_ch376s\_fs@{test\_ch376s\_fs}}
+\doxysubsubsection{\texorpdfstring{enum\_name}{enum\_name}}
+{\footnotesize\ttfamily \label{namespacetest__ch376s__fs_a8abd4059cbc74b432e9b3ab377c0854e} 
+test\+\_\+ch376s\+\_\+fs.\+enum\+\_\+name = bytes(\mbox{\hyperlink{namespacetest__ch376s__fs_a2407d8f91942d47ae12a2b97efa021ce}{enum\+\_\+data}}\mbox{[}\+:13\mbox{]}).split(b\textquotesingle{}\textbackslash{}x00\textquotesingle{})\mbox{[}0\mbox{]}.decode(\textquotesingle{}ascii\textquotesingle{})}
+
+\Hypertarget{namespacetest__ch376s__fs_aded7b0728ffdaf66a2ec260cc8447be2}\index{test\_ch376s\_fs@{test\_ch376s\_fs}!failed@{failed}}
+\index{failed@{failed}!test\_ch376s\_fs@{test\_ch376s\_fs}}
+\doxysubsubsection{\texorpdfstring{failed}{failed}}
+{\footnotesize\ttfamily \label{namespacetest__ch376s__fs_aded7b0728ffdaf66a2ec260cc8447be2} 
+int test\+\_\+ch376s\+\_\+fs.\+failed = 0}
+
+\Hypertarget{namespacetest__ch376s__fs_a578adb14a91050b84223d3cf3e44a032}\index{test\_ch376s\_fs@{test\_ch376s\_fs}!False@{False}}
+\index{False@{False}!test\_ch376s\_fs@{test\_ch376s\_fs}}
+\doxysubsubsection{\texorpdfstring{False}{False}}
+{\footnotesize\ttfamily \label{namespacetest__ch376s__fs_a578adb14a91050b84223d3cf3e44a032} 
+test\+\_\+ch376s\+\_\+fs.\+False}
+
+\Hypertarget{namespacetest__ch376s__fs_aaac8cfed7d2c019baf548bed061ab2d9}\index{test\_ch376s\_fs@{test\_ch376s\_fs}!file\_size@{file\_size}}
+\index{file\_size@{file\_size}!test\_ch376s\_fs@{test\_ch376s\_fs}}
+\doxysubsubsection{\texorpdfstring{file\_size}{file\_size}}
+{\footnotesize\ttfamily \label{namespacetest__ch376s__fs_aaac8cfed7d2c019baf548bed061ab2d9} 
+test\+\_\+ch376s\+\_\+fs.\+file\+\_\+size = \mbox{\hyperlink{namespacetest__ch376s__fs_a5537360e3b64e3ced4461d1722a10df9}{info}}\mbox{[}0\mbox{]} \texorpdfstring{$\vert$}{|} (\mbox{\hyperlink{namespacetest__ch376s__fs_a5537360e3b64e3ced4461d1722a10df9}{info}}\mbox{[}1\mbox{]} $<$$<$ 8) \texorpdfstring{$\vert$}{|} (\mbox{\hyperlink{namespacetest__ch376s__fs_a5537360e3b64e3ced4461d1722a10df9}{info}}\mbox{[}2\mbox{]} $<$$<$ 16) \texorpdfstring{$\vert$}{|} (\mbox{\hyperlink{namespacetest__ch376s__fs_a5537360e3b64e3ced4461d1722a10df9}{info}}\mbox{[}3\mbox{]} $<$$<$ 24)}
+
+\Hypertarget{namespacetest__ch376s__fs_a839806faafebea0693c73ee1a78ca833}\index{test\_ch376s\_fs@{test\_ch376s\_fs}!header@{header}}
+\index{header@{header}!test\_ch376s\_fs@{test\_ch376s\_fs}}
+\doxysubsubsection{\texorpdfstring{header}{header}}
+{\footnotesize\ttfamily \label{namespacetest__ch376s__fs_a839806faafebea0693c73ee1a78ca833} 
+test\+\_\+ch376s\+\_\+fs.\+header = usb.\+\_\+fs\+\_\+read\+\_\+header()}
+
+\Hypertarget{namespacetest__ch376s__fs_a755abd6461dc9ff5e3e8354f34080d84}\index{test\_ch376s\_fs@{test\_ch376s\_fs}!idx@{idx}}
+\index{idx@{idx}!test\_ch376s\_fs@{test\_ch376s\_fs}}
+\doxysubsubsection{\texorpdfstring{idx}{idx}}
+{\footnotesize\ttfamily \label{namespacetest__ch376s__fs_a755abd6461dc9ff5e3e8354f34080d84} 
+test\+\_\+ch376s\+\_\+fs.\+idx = usb.\+\_\+fs\+\_\+find\+\_\+file("{}TEST.\+TXT"{})}
+
+\Hypertarget{namespacetest__ch376s__fs_a5537360e3b64e3ced4461d1722a10df9}\index{test\_ch376s\_fs@{test\_ch376s\_fs}!info@{info}}
+\index{info@{info}!test\_ch376s\_fs@{test\_ch376s\_fs}}
+\doxysubsubsection{\texorpdfstring{info}{info}}
+{\footnotesize\ttfamily \label{namespacetest__ch376s__fs_a5537360e3b64e3ced4461d1722a10df9} 
+test\+\_\+ch376s\+\_\+fs.\+info = \mbox{\hyperlink{namespacetest__ch376s__fs_a5328e18f284c570e8b003752c5b2cc0f}{read\+\_\+data\+\_\+port}}(\mbox{\hyperlink{namespacetest__ch376s__fs_a101be93d68bab49108522e110359b939}{usb}}, \mbox{\hyperlink{namespacetest__ch376s__fs_ae99c3867c4af594ed68b968ad729dc0d}{bus}}, 8)}
+
+\Hypertarget{namespacetest__ch376s__fs_ae8e63914e50104aefab05b59a79a4aba}\index{test\_ch376s\_fs@{test\_ch376s\_fs}!passed@{passed}}
+\index{passed@{passed}!test\_ch376s\_fs@{test\_ch376s\_fs}}
+\doxysubsubsection{\texorpdfstring{passed}{passed}}
+{\footnotesize\ttfamily \label{namespacetest__ch376s__fs_ae8e63914e50104aefab05b59a79a4aba} 
+int test\+\_\+ch376s\+\_\+fs.\+passed = 0}
+
+\Hypertarget{namespacetest__ch376s__fs_aad13f86b53819102401fcb52d9b91ec1}\index{test\_ch376s\_fs@{test\_ch376s\_fs}!read\_back@{read\_back}}
+\index{read\_back@{read\_back}!test\_ch376s\_fs@{test\_ch376s\_fs}}
+\doxysubsubsection{\texorpdfstring{read\_back}{read\_back}}
+{\footnotesize\ttfamily \label{namespacetest__ch376s__fs_aad13f86b53819102401fcb52d9b91ec1} 
+test\+\_\+ch376s\+\_\+fs.\+read\+\_\+back = \mbox{\hyperlink{namespacetest__ch376s__fs_a5328e18f284c570e8b003752c5b2cc0f}{read\+\_\+data\+\_\+port}}(\mbox{\hyperlink{namespacetest__ch376s__fs_a101be93d68bab49108522e110359b939}{usb}}, \mbox{\hyperlink{namespacetest__ch376s__fs_ae99c3867c4af594ed68b968ad729dc0d}{bus}}, 600)}
+
+\Hypertarget{namespacetest__ch376s__fs_aef986bf1fde6c3ce3aa30d7a236a49a6}\index{test\_ch376s\_fs@{test\_ch376s\_fs}!read\_data@{read\_data}}
+\index{read\_data@{read\_data}!test\_ch376s\_fs@{test\_ch376s\_fs}}
+\doxysubsubsection{\texorpdfstring{read\_data}{read\_data}}
+{\footnotesize\ttfamily \label{namespacetest__ch376s__fs_aef986bf1fde6c3ce3aa30d7a236a49a6} 
+test\+\_\+ch376s\+\_\+fs.\+read\+\_\+data = \mbox{\hyperlink{namespacetest__ch376s__fs_a5328e18f284c570e8b003752c5b2cc0f}{read\+\_\+data\+\_\+port}}(\mbox{\hyperlink{namespacetest__ch376s__fs_a101be93d68bab49108522e110359b939}{usb}}, \mbox{\hyperlink{namespacetest__ch376s__fs_ae99c3867c4af594ed68b968ad729dc0d}{bus}}, len(\mbox{\hyperlink{namespacetest__ch376s__fs_a6ac6ebb83d724656deea877dcd0d2bda}{test\+\_\+data}}))}
+
+\Hypertarget{namespacetest__ch376s__fs_af6641577c43b1a6f0a139759c1d5defe}\index{test\_ch376s\_fs@{test\_ch376s\_fs}!read\_sector@{read\_sector}}
+\index{read\_sector@{read\_sector}!test\_ch376s\_fs@{test\_ch376s\_fs}}
+\doxysubsubsection{\texorpdfstring{read\_sector}{read\_sector}}
+{\footnotesize\ttfamily \label{namespacetest__ch376s__fs_af6641577c43b1a6f0a139759c1d5defe} 
+test\+\_\+ch376s\+\_\+fs.\+read\+\_\+sector = \mbox{\hyperlink{namespacetest__ch376s__fs_a5328e18f284c570e8b003752c5b2cc0f}{read\+\_\+data\+\_\+port}}(\mbox{\hyperlink{namespacetest__ch376s__fs_a101be93d68bab49108522e110359b939}{usb}}, \mbox{\hyperlink{namespacetest__ch376s__fs_ae99c3867c4af594ed68b968ad729dc0d}{bus}}, 512)}
+
+\Hypertarget{namespacetest__ch376s__fs_a94149dec79e3134731c91b373a24c163}\index{test\_ch376s\_fs@{test\_ch376s\_fs}!size\_mb@{size\_mb}}
+\index{size\_mb@{size\_mb}!test\_ch376s\_fs@{test\_ch376s\_fs}}
+\doxysubsubsection{\texorpdfstring{size\_mb}{size\_mb}}
+{\footnotesize\ttfamily \label{namespacetest__ch376s__fs_a94149dec79e3134731c91b373a24c163} 
+test\+\_\+ch376s\+\_\+fs.\+size\+\_\+mb}
+
+\Hypertarget{namespacetest__ch376s__fs_a34fb6d7b02a040c17851e5110cf8a3e7}\index{test\_ch376s\_fs@{test\_ch376s\_fs}!status\_byte@{status\_byte}}
+\index{status\_byte@{status\_byte}!test\_ch376s\_fs@{test\_ch376s\_fs}}
+\doxysubsubsection{\texorpdfstring{status\_byte}{status\_byte}}
+{\footnotesize\ttfamily \label{namespacetest__ch376s__fs_a34fb6d7b02a040c17851e5110cf8a3e7} 
+test\+\_\+ch376s\+\_\+fs.\+status\+\_\+byte = bus.\+io\+\_\+read(0x276)}
+
+\Hypertarget{namespacetest__ch376s__fs_a4570041366ab854313cad21b2b4577bb}\index{test\_ch376s\_fs@{test\_ch376s\_fs}!suffix@{suffix}}
+\index{suffix@{suffix}!test\_ch376s\_fs@{test\_ch376s\_fs}}
+\doxysubsubsection{\texorpdfstring{suffix}{suffix}}
+{\footnotesize\ttfamily \label{namespacetest__ch376s__fs_a4570041366ab854313cad21b2b4577bb} 
+test\+\_\+ch376s\+\_\+fs.\+suffix}
+
+\Hypertarget{namespacetest__ch376s__fs_a6ac6ebb83d724656deea877dcd0d2bda}\index{test\_ch376s\_fs@{test\_ch376s\_fs}!test\_data@{test\_data}}
+\index{test\_data@{test\_data}!test\_ch376s\_fs@{test\_ch376s\_fs}}
+\doxysubsubsection{\texorpdfstring{test\_data}{test\_data}}
+{\footnotesize\ttfamily \label{namespacetest__ch376s__fs_a6ac6ebb83d724656deea877dcd0d2bda} 
+test\+\_\+ch376s\+\_\+fs.\+test\+\_\+data = bytearray(b"{}\+Hello, CH376\+S!"{})}
+
+\Hypertarget{namespacetest__ch376s__fs_ae8e206f470fb693ba8ea826a26448045}\index{test\_ch376s\_fs@{test\_ch376s\_fs}!test\_sector\_data@{test\_sector\_data}}
+\index{test\_sector\_data@{test\_sector\_data}!test\_ch376s\_fs@{test\_ch376s\_fs}}
+\doxysubsubsection{\texorpdfstring{test\_sector\_data}{test\_sector\_data}}
+{\footnotesize\ttfamily \label{namespacetest__ch376s__fs_ae8e206f470fb693ba8ea826a26448045} 
+test\+\_\+ch376s\+\_\+fs.\+test\+\_\+sector\+\_\+data = bytearray(\mbox{[}i \& 0x\+FF for i in range(512)\mbox{]})}
+
+\Hypertarget{namespacetest__ch376s__fs_a101be93d68bab49108522e110359b939}\index{test\_ch376s\_fs@{test\_ch376s\_fs}!usb@{usb}}
+\index{usb@{usb}!test\_ch376s\_fs@{test\_ch376s\_fs}}
+\doxysubsubsection{\texorpdfstring{usb}{usb}}
+{\footnotesize\ttfamily \label{namespacetest__ch376s__fs_a101be93d68bab49108522e110359b939} 
+test\+\_\+ch376s\+\_\+fs.\+usb = \mbox{\hyperlink{classmodules_1_1io_1_1ch376s_1_1_c_h376_s}{CH376S}}(base\+\_\+port=0x276)}
+
+\Hypertarget{namespacetest__ch376s__fs_a50e226da9c730eb973290cd4510e00c4}\index{test\_ch376s\_fs@{test\_ch376s\_fs}!version@{version}}
+\index{version@{version}!test\_ch376s\_fs@{test\_ch376s\_fs}}
+\doxysubsubsection{\texorpdfstring{version}{version}}
+{\footnotesize\ttfamily \label{namespacetest__ch376s__fs_a50e226da9c730eb973290cd4510e00c4} 
+test\+\_\+ch376s\+\_\+fs.\+version = bus.\+io\+\_\+read(0x276)}
+
+\Hypertarget{namespacetest__ch376s__fs_ab1fd977885d80cb56d4b7f82a7ae73b4}\index{test\_ch376s\_fs@{test\_ch376s\_fs}!write\_protected@{write\_protected}}
+\index{write\_protected@{write\_protected}!test\_ch376s\_fs@{test\_ch376s\_fs}}
+\doxysubsubsection{\texorpdfstring{write\_protected}{write\_protected}}
+{\footnotesize\ttfamily \label{namespacetest__ch376s__fs_ab1fd977885d80cb56d4b7f82a7ae73b4} 
+test\+\_\+ch376s\+\_\+fs.\+write\+\_\+protected}
+
