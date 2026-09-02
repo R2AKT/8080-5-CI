@@ -15,6 +15,7 @@ from PySide6.QtGui import QFont
 
 from .device_window import DeviceWindow
 
+from .cube3d_widget import Cube3DWidget
 
 class DeviceManagerDialog(QDialog):
     """Диспетчер устройств: список + открытие индивидуальных окон"""
@@ -101,12 +102,40 @@ class DeviceManagerDialog(QDialog):
             if name:
                 self._open_device_window(name)
 
+    # def _open_device_window(self, device_name):
+        # """Открыть/показать окно устройства"""
+        # device = self.system.get_device(device_name)
+        # if device is None:
+            # return
+        
+        # # Пропускаем виртуальные устройства, не имеющие собственных окон
+        # if type(device).__name__ == 'Keyboard8x8':
+            # return  # Клавиатура открывается через виджет в окне 8255
+        
+        # if device_name in self.device_windows:
+            # win = self.device_windows[device_name]
+            # if win.isVisible():
+                # win.raise_()
+                # win.activateWindow()
+                # return
+        # else:
+            # win = DeviceWindow(
+                # device, device_name,
+                # always_on_top=self._always_on_top,
+                # parent=self
+            # )
+            # self.device_windows[device_name] = win
+
+        # win.show()
+        # win.raise_()
+        # self.refresh_devices()
     def _open_device_window(self, device_name):
         """Открыть/показать окно устройства"""
         device = self.system.get_device(device_name)
         if device is None:
             return
 
+        # Уже открыто — просто поднять
         if device_name in self.device_windows:
             win = self.device_windows[device_name]
             if win.isVisible():
@@ -114,11 +143,19 @@ class DeviceManagerDialog(QDialog):
                 win.activateWindow()
                 return
         else:
-            win = DeviceWindow(
-                device, device_name,
-                always_on_top=self._always_on_top,
-                parent=self
-            )
+            # Для Cube3D — чистое окно с виджетом, без полей регистров
+            if type(device).__name__ == 'Cube3D':
+                win = Cube3DWidget(device)
+                win.setWindowTitle(f"3D Куб 8×8×8 — {device_name}")
+                win.resize(640, 600)
+                if self._always_on_top:
+                    win.setWindowFlags(win.windowFlags() | Qt.WindowStaysOnTopHint)
+            else:
+                win = DeviceWindow(
+                    device, device_name,
+                    always_on_top=self._always_on_top,
+                    parent=self
+                )
             self.device_windows[device_name] = win
 
         win.show()

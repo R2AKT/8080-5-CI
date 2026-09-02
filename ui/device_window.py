@@ -17,6 +17,10 @@ from .display_widgets import create_display_widget
 
 from .serial_terminal import create_terminal_widget
 
+from .gpio_widget import GPIO8255Widget
+
+from .cube3d_widget import Cube3DWidget
+
 class DeviceWindow(QWidget):
     """Индивидуальное окно устройства с автообновлением состояния"""
 
@@ -70,6 +74,18 @@ class DeviceWindow(QWidget):
         if self.terminal_widget is not None:
             layout.addWidget(self.terminal_widget, 1)
         
+        # === Виджет GPIO (если устройство — 8255) ===
+        self.gpio_widget = None
+        if type(self.device).__name__ == 'I8255':
+            self.gpio_widget = GPIO8255Widget(self.device)
+            layout.addWidget(self.gpio_widget)
+        
+        # === Виджет 3D-куба (если устройство — Cube3D) ===
+        self.cube_widget = None
+        if type(self.device).__name__ == 'Cube3D':
+            self.cube_widget = Cube3DWidget(self.device)
+            layout.addWidget(self.cube_widget, 1)
+        
         # Прокручиваемая область с регистрами
         scroll = QScrollArea()
         scroll.setWidgetResizable(True)
@@ -101,6 +117,8 @@ class DeviceWindow(QWidget):
 
     def _format_value(self, val):
         """Форматировать значение для отображения"""
+        if val is None:
+            return "-"
         if isinstance(val, bool):
             return "Да" if val else "Нет"
         if isinstance(val, int):
@@ -112,28 +130,44 @@ class DeviceWindow(QWidget):
                 return f"0x{val:04X} ({val})"
             return f"0x{val:08X} ({val})"
         if isinstance(val, dict):
-            return str(val)
-        if isinstance(val, list):
-            return ", ".join(str(v) for v in val)
+            # Вложенный словарь — форматируем компактно
+            parts = []
+            for k, v in val.items():
+                if isinstance(v, bool):
+                    parts.append(f"{k}={'1' if v else '0'}")
+                elif isinstance(v, int):
+                    parts.append(f"{k}={v:02X}")
+                else:
+                    parts.append(f"{k}={v}")
+            return " | ".join(parts)
+        if isinstance(val, (list, tuple)):
+            # Список/кортеж — форматируем каждый элемент
+            parts = []
+            for v in val:
+                if isinstance(v, dict):
+                    parts.append(str(v))
+                else:
+                    parts.append(str(v))
+            return ", ".join(parts)
         return str(val)
 
     def refresh(self):
         """Обновить значения регистров"""
-        state = self._get_state()
-
-        # Если ключей стало больше/меньше — перестраиваем форму
+        try:
+            state = self._get_state()
+        except Exception:
+            return
+        if not state:
+            return
         new_keys = set(state.keys())
         old_keys = set(self._fields.keys())
-
         if new_keys != old_keys:
-            # Перестраиваем форму
             while self.regs_layout.count():
                 item = self.regs_layout.takeAt(0)
                 w = item.widget()
                 if w:
                     w.deleteLater()
             self._fields.clear()
-
             for key, value in state.items():
                 if key in ('name', 'base_port'):
                     continue
@@ -144,17 +178,18 @@ class DeviceWindow(QWidget):
                 self.regs_layout.addRow(label, field)
                 self._fields[key] = field
         else:
-            # Просто обновляем значения
             for key, value in state.items():
                 if key in self._fields:
                     self._fields[key].setText(self._format_value(value))
-
+                
     def _auto_refresh(self):
         if self.chk_auto.isChecked() and self.isVisible():
             if self.display_widget is not None:
                 self.display_widget.refresh()
+            if self.gpio_widget is not None:
+                self.gpio_widget.refresh()
             self.refresh()
-
+        
     def set_always_on_top(self, enabled):
         """Установить/снять флаг поверх всех окон"""
         flags = self.windowFlags()

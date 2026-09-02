@@ -135,6 +135,33 @@ class ComputerSystem:
                 # Применяем дополнительные параметры
                 self._apply_device_params(device, dev_config)
 
+        # Виджет клавиатуры
+        for dev_config in self.config.devices:
+            if dev_config.get("type") == "keyboard8x8":
+                ppi_name = dev_config.get("ppi_device", "PPI")
+                ppi = self.devices.get(ppi_name)
+                if ppi:
+                    kbd = Keyboard8x8(name=dev_config.get("name", "Keyboard"))
+                    output_port = dev_config.get("output_port", 0)
+                    input_port = dev_config.get("input_port", 1)
+                    kbd.connect_to_8255(ppi, output_port, input_port)
+                    self.keyboards[dev_config.get("name", "kbd")] = kbd
+
+        # === Подключаем виртуальные устройства к 8255 ===
+        for dev_config in self.config.devices:
+            dev_type = dev_config.get("type", "")
+            dev_name = dev_config.get("name", "")
+            
+            if dev_type == "cube3d":
+                ppi_name = dev_config.get("ppi_device", "PPI")
+                ppi = self.devices.get(ppi_name)
+                cube = self.devices.get(dev_name)
+                if ppi and cube:
+                    port_x = dev_config.get("port_x", 0)
+                    port_y = dev_config.get("port_y", 1)
+                    port_z = dev_config.get("port_z", 2)
+                    cube.connect_to_ppi(ppi, port_x, port_y, port_z)
+
     def _apply_device_params(self, device, config):
         """Применение дополнительных параметров устройства"""
         # Подключение образа диска (для CFIDE, CH376S)
@@ -193,17 +220,19 @@ class ComputerSystem:
         return result
 
     def list_devices(self):
-        """Список устройств с основной информацией"""
+        """Список устройств для Диспетчера устройств"""
         result = []
         for name, device in self.devices.items():
-            info = {
+            base_port = getattr(device, 'base_port', -1)
+            if base_port >= 0:
+                port_str = f"0x{base_port:02X}"
+            else:
+                port_str = "-"  # Виртуальные устройства без портов
+            result.append({
                 "name": name,
-                "type": device.__class__.__name__,
-                "base_port": f"0x{device.base_port:02X}",
-            }
-            if hasattr(device, 'get_state'):
-                info.update(device.get_state())
-            result.append(info)
+                "type": type(device).__name__,
+                "base_port": port_str,
+            })
         return result
 
     def set_callback(self, device_name, callback_name, callback):

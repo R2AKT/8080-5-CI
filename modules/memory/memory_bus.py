@@ -56,13 +56,6 @@ class MemoryBus:
     # =============================================
     # ЧТЕНИЕ / ЗАПИСЬ ПАМЯТИ
     # =============================================
-    # def read(self, addr):
-        # """Чтение байта из памяти"""
-        # addr &= 0xFFFF
-        # for region in self.memory_regions:
-            # if region.contains(addr):
-                # return region.read(addr)
-        # return self._unmapped_read
     def read(self, addr):
         """Чтение байта из памяти"""
         addr &= 0xFFFF
@@ -78,13 +71,6 @@ class MemoryBus:
                 return region.read(addr)
         return self._unmapped_read
 
-    # def write(self, addr, value):
-        # """Запись байта в память"""
-        # addr &= 0xFFFF
-        # for region in self.memory_regions:
-            # if region.contains(addr):
-                # region.write(addr, value)
-                # return
     def write(self, addr, value):
         """Запись байта в память"""
         addr &= 0xFFFF
@@ -116,12 +102,6 @@ class MemoryBus:
     # =============================================
     # ЧТЕНИЕ / ЗАПИСЬ IO
     # =============================================
-    # def io_read(self, port):
-        # """Чтение из IO-порта"""
-        # port &= 0xFF
-        # if port in self.io_devices:
-            # return self.io_devices[port].io_read(port)
-        # return 0xFF
     def io_read(self, port):
         """Чтение из IO-порта"""
         port &= 0xFF
@@ -138,17 +118,6 @@ class MemoryBus:
             return self.io_devices[port].io_read(port)
         return 0xFF
 
-    # def io_write(self, port, value):
-        # """Запись в IO-порт. Сначала проверяет регионы памяти
-        # (для переключения банков), затем IO-устройства."""
-        # port &= 0xFF
-        # # Сначала проверяем регионы памяти (переключение банков)
-        # for region in self.memory_regions:
-            # if hasattr(region, 'io_write') and region.io_write(port, value):
-                # return  # Банк переключён, дальше не идём
-        # # Затем IO-устройства
-        # if port in self.io_devices:
-            # self.io_devices[port].io_write(port, value)    
     def io_write(self, port, value):
         """Запись в IO-порт"""
         port &= 0xFF

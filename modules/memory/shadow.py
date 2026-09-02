@@ -83,24 +83,6 @@ class ShadowROMRegion(MemoryRegion):
     # =============================================
     # ЧТЕНИЕ
     # =============================================
-    # def read(self, addr):
-        # """Чтение байта из ROM. Может вызвать переключение."""
-        # if self.state == self.STATE_LOW:
-            # if self.low_addr <= addr < self.low_addr + self.size:
-                # offset = addr - self.low_addr
-                # # Режим M1: считаем чтения
-                # if self.mode == self.MODE_M1:
-                    # self._read_counter += 1
-                    # if self._read_counter >= self.m1_count:
-                        # self._do_switch()
-                # return self.data.get(offset, 0xFF)
-            # return 0xFF
-        # elif self.state == self.STATE_HIGH:
-            # if self.high_addr <= addr < self.high_addr + self.size:
-                # offset = addr - self.high_addr
-                # return self.data.get(offset, 0xFF)
-            # return 0xFF
-        # return 0xFF  # STATE_DISABLED
     def read(self, addr):
         """Чтение байта из ROM"""
         if self.state == self.STATE_LOW:
@@ -127,21 +109,6 @@ class ShadowROMRegion(MemoryRegion):
     # =============================================
     # ЗАПИСЬ (ROM не пишется, но может быть триггером)
     # =============================================
-    # def write(self, addr, value):
-        # """Запись в ROM. ROM не пишется, но запись может быть триггером.
-        # Возвращает True, если запись обработана (триггер сработал).
-        # Возвращает False, если запись должна пройти в другой регион.
-        # """
-        # if self.state != self.STATE_LOW:
-            # return False  # После переключения ROM не участвует в записи
-        
-        # # Проверяем триггер по записи в память
-        # if self.mode in (self.MODE_MEM_WRITE, self.MODE_MEM_RW):
-            # if self.trigger_addr is not None and addr == self.trigger_addr:
-                # self._do_switch()
-                # return True  # Запись обработана как триггер
-        
-        # return False  # ROM не пишется, запись должна пройти в другой регион
     def write(self, addr, value):
         """Запись в ROM (игнорируется, но может быть триггером)"""
         if self.state != self.STATE_LOW:

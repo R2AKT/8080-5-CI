@@ -323,10 +323,6 @@ class CFIDE(IODevice):
         self.data_direction = 'read'
         self.status = self.STATUS_DRDY | self.STATUS_DRQ
 
-        # # Прерывание для команды с прерыванием
-        # if self.command == self.CMD_IDENTIFY_DEVICE and self.on_irq:
-            # self.on_irq(True)
-
     def _cmd_read_sectors(self):
         """READ SECTORS (0x20/0x21)"""
         lba = self._get_lba()

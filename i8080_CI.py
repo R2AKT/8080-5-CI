@@ -2056,7 +2056,7 @@ class AutomationAPI:
 class BusWorker(QObject):
     progress = Signal(int)
     log = Signal(str)
-    finished = Signal(dict)
+    finished = Signal(object)
     
     def __init__(self, serial_port, task, params, lang="en", max_block_size=128):
         super().__init__()
@@ -2102,12 +2102,6 @@ class BusWorker(QObject):
             try:
                 if self.ser.in_waiting:
                     buffer.extend(self.ser.read(self.ser.in_waiting))
-                    # if _FEND in buffer:
-                        # end_idx = buffer.index(_FEND)
-                        # if end_idx > 0:
-                            # raw = buffer[:end_idx]
-                            # self.ser.reset_input_buffer()
-                            # return SlipProtocol.decode(raw)
                     if _FEND in buffer:
                         # Пропускаем начальные FEND (маркеры начала пакета)
                         start_idx = 0
@@ -3880,70 +3874,6 @@ class MainWindow(QMainWindow):
                 if packet_raw:
                     self.process_response(SlipProtocol.decode(packet_raw))
 
-    # def process_response(self, data):
-        # if not data: return
-        # self.log(f"RX <- {data.hex(' ').upper()}")
-        
-        # cmd = data[0]
-        
-        # # Определяем, является ли ответ финальным
-        # is_final = True
-        # if cmd == CMD_HOLD and len(data) >= 2:
-            # ack = data[1]
-            # if ack in [0x00, 0x01]:  # AckHoldWaitLow, AckHoldWaitHigh
-                # is_final = False
-        # elif cmd == CMD_UNHOLD and len(data) >= 2:
-            # ack = data[1]
-            # if ack == 0xF1:  # AckWaitUnHold
-                # is_final = False
-        
-        # # === СНАЧАЛА обработка ответа ===
-        # if cmd == ACK_NOP:
-            # self.log(f"  [{self.tr('ok')}] {self.tr('conn_est')}")
-            
-        # elif cmd == ACK_GET_SIZE_SETUP and len(data) >= 2:
-            # self.max_block_size = data[1]
-            # self.log(f"  [{self.tr('ok')}] Max block size: {self.max_block_size}")
-            
-        # elif cmd == CMD_HOLD and len(data) >= 2:
-            # ack = data[1]
-            # if ack == 0x03:
-                # self.bus_active = True
-                # self.update_ui_state()
-                # self.log(f"  [{self.tr('ok')}] Bus HOLD active.")
-            # elif ack == 0x00:
-                # self.log(f"  [WAIT] HLDA low...")
-            # elif ack == 0x01:
-                # self.log(f"  [WAIT] HLDA high...")
-                
-        # elif cmd == CMD_UNHOLD and len(data) >= 2:
-            # ack = data[1]
-            # if ack == 0xF2:
-                # self.bus_active = False
-                # self.update_ui_state()
-                # self.log(f"  [{self.tr('ok')}] Bus UNHOLD. CPU running.")
-            # elif ack == 0xF1:
-                # self.log(f"  [WAIT] HLDA high...")
-                
-        # elif cmd == ACK_MEM_READ_BYTE and len(data) >= 4:
-            # addr = (data[1] << 8) | data[2]
-            # self.mem_data[addr] = data[3]
-            # self.hex_model.update_data(self.mem_data)
-            # self.update_range_label()
-            # self.log(f"  [{self.tr('ok')}] 0x{addr:04X}: 0x{data[3]:02X}")
-        # elif cmd == ACK_IO_READ_BYTE and len(data) >= 4:
-            # addr = (data[1] << 8) | data[2]
-            # val = data[3]
-            # self.log(f"  [{self.tr('ok')}] IO Read 0x{addr:02X}: 0x{val:02X}")
-        # elif cmd == ACK_IO_WRITE_BYTE:
-            # self.log(f"  [{self.tr('ok')}] {self.tr('write_io')}.")
-        # elif cmd == ACK_ERROR:
-            # self.log(f"  [{self.tr('error')}] {self.tr('err_ack')}")
-        
-        # # === ЗАТЕМ снимаем флаг и отправляем следующую команду ===
-        # if is_final:
-            # self.waiting_response = False
-            # self.process_command_queue()
     def process_response(self, data):
         if not data: return
         self.log(f"RX <- {data.hex(' ').upper()}")
@@ -5809,7 +5739,7 @@ class MainWindow(QMainWindow):
             else:
                 QMessageBox.warning(self, self.tr("error"), self.tr("watch_preset_load_err"))
 				
-        # =============================================
+    # =============================================
     # BREAKPOINTS: Диалоги и управление (ИТЕРАЦИЯ C)
     # =============================================
     
@@ -6502,7 +6432,16 @@ class MainWindow(QMainWindow):
 
             # Эмулятор видит правильный bus
             self.emulator.memory_bus = self.memory_bus
-
+            
+            # === Копируем данные из ПЗУ в mem_data для HEX-редактора ===
+            from modules.memory.memory_bus import ROMRegion
+            for region in self.memory_bus.memory_regions:
+                if isinstance(region, ROMRegion) and hasattr(region, 'data'):
+                    for addr, byte in region.data.items():
+                        self.mem_data[addr] = byte
+            self.hex_model.update_data(self.mem_data)
+            self.update_range_label()
+            
             # Сбрасываем состояние эмулятора
             self.emulator.halted = False
             self.emulator.wait_signal = False

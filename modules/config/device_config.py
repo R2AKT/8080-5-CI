@@ -113,7 +113,7 @@ class DeviceConfig:
                 "start": mem.get("start", 0),
                 "end": mem.get("end", 0xFFFF),
                 "name": mem.get("name", "RAM"),
-                "image_file": mem.get("image_file", None),
+                "file": mem.get("file", None),
             })
 
         # Секция [devices]
@@ -200,6 +200,8 @@ class DeviceFactory:
         "lcd1602": 2,    # LCD: Data + Control
         "lcd2004": 2,    # LCD: Data + Control
         "tft8080": 2,    # TFT: 2 порта
+        "keyboard8x8": 0,  # Клавиатура: не занимает порты (подключается к 8255)
+        "cube3d": 0,  # Куб 8×8×8: не занимает порты (подключается к 8255)
     }
 
     @classmethod
@@ -288,6 +290,12 @@ class DeviceFactory:
             elif dev_type == "tft8080":
                 from modules.io.tft8080 import TFT8080
                 return TFT8080(base_port=base_port, name=name)
+            elif dev_type == "keyboard8x8":
+                from modules.io.keyboard8x8 import Keyboard8x8
+                return Keyboard8x8(name=name)
+            elif dev_type == "cube3d":
+                from modules.io.cube3d import Cube3D
+                return Cube3D(name=name)
             else:
                 return None
         except ImportError:

@@ -1,0 +1,43 @@
+# Микро-80 (1982)
+# Процессор: КР580ВМ80А @ 1.78 МГц
+# ОЗУ: 16 КБ (0000-3FFF)
+# ПЗУ: 2 КБ монитор (F800-FFFF)
+# Клавиатура: матрица через порт
+# В оригинале — дискретная логика, эмулируем через 8255
+
+[profiles.micro80]
+description = "Микро-80 (1982) — одноплатный микрокомпьютер"
+
+[profiles.micro80.system]
+name = "Микро-80"
+cpu = "i8080"
+clock_mhz = 1.78
+
+# ОЗУ 16 КБ
+[[profiles.micro80.memory.regions]]
+type = "ram"
+start = 0x0000
+end = 0x3FFF
+name = "RAM 16KB"
+
+# ПЗУ монитора 2 КБ
+[[profiles.micro80.memory.regions]]
+type = "rom"
+start = 0xF800
+end = 0xFFFF
+name = "Monitor ROM"
+file = "roms/micro80_monitor.bin"
+
+# 8255 для клавиатуры/дисплея
+[[profiles.micro80.devices]]
+type = "i8255"
+name = "PPI Keyboard/Display"
+base_port = 0x00
+
+[[profiles.micro80.devices]]
+type = "keyboard8x8"
+name = "Keyboard"
+ppi_device = "PPI"
+output_port = 0    # Порт A — выбор строки
+input_port = 1     # Порт B — чтение столбцов
+

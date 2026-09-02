@@ -54,35 +54,99 @@ class I8255(IODevice):
         # Флаги прерываний
         self.intra = False
         self.intrb = False
+        # Внешние данные для входных портов (подаются извне: клавиатура, переключатели)
+        self.external_input = [0xFF, 0xFF, 0xFF]  # Port A, B, C
+        # Callback при изменении выходных портов: on_port_change(port_num, value)
+        self.on_port_change = None
     
+    # def io_read(self, port):
+        # """Чтение из порта"""
+        # offset = port - self.base_port
+        # ctrl = self.control
+        
+        # if offset == 0:  # Port A
+            # if (ctrl >> 4) & 1:  # Порт A = вход
+                # return self.external_input[0]
+            # return self.port_a
+        # elif offset == 1:  # Port B
+            # if (ctrl >> 1) & 1:  # Порт B = вход
+                # return self.external_input[1]
+            # return self.port_b
+        # elif offset == 2:  # Port C
+            # result = 0
+            # if ctrl & 1:  # Порт C нижняя половина = вход
+                # result |= (self.external_input[2] & 0x0F)
+            # else:
+                # result |= (self.port_c & 0x0F)
+            # if (ctrl >> 3) & 1:  # Порт C верхняя половина = вход
+                # result |= (self.external_input[2] & 0xF0)
+            # else:
+                # result |= (self.port_c & 0xF0)
+            # return result
+        # elif offset == 3:  # Control
+            # return self.control
+        # return 0xFF
     def io_read(self, port):
-        """Чтение из порта."""
+        """Чтение из порта с учётом режима"""
         offset = port - self.base_port
-        if offset == 0:
-            return self.port_a
-        elif offset == 1:
-            return self.port_b
-        elif offset == 2:
-            return self.port_c
-        elif offset == 3:
+        ctrl = self.control
+        
+        if offset == 0:  # Port A
+            a_mode_bits = (ctrl >> 5) & 0x03
+            if a_mode_bits >= 2:
+                # Режим 2: двунаправленный — чтение возвращает входные данные
+                return self.external_input[0]
+            elif (ctrl >> 4) & 1:  # Режим 0/1, вход
+                return self.external_input[0]
+            else:  # Режим 0/1, выход
+                return self.port_a
+        elif offset == 1:  # Port B
+            if (ctrl >> 1) & 1:  # Вход
+                return self.external_input[1]
+            else:  # Выход
+                return self.port_b
+        elif offset == 2:  # Port C
+            result = 0
+            # Нижняя половина (биты 0-3)
+            if ctrl & 1:  # Вход
+                result |= (self.external_input[2] & 0x0F)
+            else:  # Выход
+                result |= (self.port_c & 0x0F)
+            # Верхняя половина (биты 4-7)
+            if (ctrl >> 3) & 1:  # Вход
+                result |= (self.external_input[2] & 0xF0)
+            else:  # Выход
+                result |= (self.port_c & 0xF0)
+            return result
+        elif offset == 3:  # Control
             return self.control
         return 0xFF
-    
+
     def io_write(self, port, value):
         """Запись в порт."""
         value &= 0xFF
         offset = port - self.base_port
         if offset == 0:
             self.port_a = value
+            if self.on_port_change:
+                self.on_port_change(0, value)
             self._check_interrupt_a()
         elif offset == 1:
             self.port_b = value
+            if self.on_port_change:
+                self.on_port_change(1, value)
             self._check_interrupt_b()
         elif offset == 2:
             self.port_c = value
+            if self.on_port_change:
+                self.on_port_change(2, value)
         elif offset == 3:
-            self._write_control(value)
-    
+            if value & 0x80:
+                self.control = value
+                self._write_control(value)
+            else:
+                self._bit_set_reset(value)
+
     def _write_control(self, value):
         """Запись в Control Word / BSR."""
         self.control = value
@@ -200,3 +264,66 @@ class I8255(IODevice):
             "intra": self.intra,
             "intrb": self.intrb,
         }
+
+    def set_external_input(self, port_num, value):
+        """Установить внешние данные для входного порта.
+        
+        Вызывается из виджета GPIO или модуля клавиатуры.
+        """
+        if 0 <= port_num <= 2:
+            self.external_input[port_num] = value & 0xFF
+
+    def get_port_direction(self):
+        """Получить направление портов: (a_in, b_in, c_low_in, c_high_in)
+        
+        Определяется из управляющего слова (биты контрольного слова 8255):
+        - Бит 4: порт A (1=вход, 0=выход)
+        - Бит 3: порт C верхняя половина (1=вход, 0=выход)
+        - Бит 1: порт B (1=вход, 0=выход)
+        - Бит 0: порт C нижняя половина (1=вход, 0=выход)
+        """
+        ctrl = self.control
+        a_in = bool((ctrl >> 4) & 1)
+        b_in = bool((ctrl >> 1) & 1)
+        c_low_in = bool(ctrl & 1)
+        c_high_in = bool((ctrl >> 3) & 1)
+        return (a_in, b_in, c_low_in, c_high_in)
+
+    def get_port_modes(self):
+        """Получить режимы и направления портов.
+        
+        Возвращает словарь с режимами и направлениями:
+        - a_mode: 0, 1 или 2 (режим порта A)
+        - a_direction: 'in', 'out' или 'bidir'
+        - b_mode: 0 или 1
+        - b_direction: 'in' или 'out'
+        - c_low_direction, c_high_direction: 'in' или 'out'
+        """
+        ctrl = self.control
+        
+        # === Порт A (биты 6-5: режим) ===
+        a_mode_bits = (ctrl >> 5) & 0x03
+        if a_mode_bits <= 1:  # Режим 0 или 1
+            a_mode = a_mode_bits
+            a_direction = 'in' if (ctrl >> 4) & 1 else 'out'
+        else:  # Биты 6-5 = 1x → режим 2 (двунаправленный)
+            a_mode = 2
+            a_direction = 'bidir'
+        
+        # === Порт B (бит 2: режим) ===
+        b_mode = 1 if (ctrl >> 2) & 1 else 0
+        b_direction = 'in' if (ctrl >> 1) & 1 else 'out'
+        
+        # === Порт C (бит 3: верх, бит 0: низ) ===
+        c_high_direction = 'in' if (ctrl >> 3) & 1 else 'out'
+        c_low_direction = 'in' if ctrl & 1 else 'out'
+        
+        return {
+            'a_mode': a_mode,
+            'a_direction': a_direction,
+            'b_mode': b_mode,
+            'b_direction': b_direction,
+            'c_low_direction': c_low_direction,
+            'c_high_direction': c_high_direction,
+        }
+
