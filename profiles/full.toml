@@ -24,7 +24,7 @@ base_port = 0x04
 
 [[profiles.full_system.devices]]
 type = "i8255"
-name = "PPA"
+name = "PPI"
 base_port = 0x08
 
 [[profiles.full_system.devices]]
@@ -42,6 +42,11 @@ base_port = 0x10
 type = "i8279"
 name = "KBD"
 base_port = 0x16
+
+[[profiles.full_system.devices]]
+type = "keyboard8279"
+name = "Keyboard"
+i8279_device = "KBD"
 
 [[profiles.full_system.devices]]
 type = "i8272"
@@ -87,3 +92,11 @@ type = "cf_ide"
 name = "IDE8"
 base_port = 0x70
 #image_file = "images/cf_ide.bin"
+
+[[profiles.full_system.devices]]
+type = "cube3d"
+name = "Cube3D"
+ppi_device = "PPI"
+port_x = 0
+port_y = 1
+port_z = 2

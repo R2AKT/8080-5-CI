@@ -31,7 +31,7 @@ file = "roms/radio86rk_monitor.bin"
 # 8255 для клавиатуры/дисплея
 [[profiles.radio86rk.devices]]
 type = "i8255"
-name = "PPI Keyboard/Display"
+name = "PPI"
 base_port = 0x00
 
 [[profiles.radio86rk.devices]]

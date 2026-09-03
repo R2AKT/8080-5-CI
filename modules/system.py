@@ -136,17 +136,27 @@ class ComputerSystem:
                 self._apply_device_params(device, dev_config)
 
         # Виджет клавиатуры
+        # === Подключаем клавиатуру к 8255 ===
         for dev_config in self.config.devices:
-            if dev_config.get("type") == "keyboard8x8":
+            dev_type = dev_config.get("type", "")
+            dev_name = dev_config.get("name", "")
+            
+            if dev_type == "keyboard8x8":
                 ppi_name = dev_config.get("ppi_device", "PPI")
                 ppi = self.devices.get(ppi_name)
-                if ppi:
-                    kbd = Keyboard8x8(name=dev_config.get("name", "Keyboard"))
+                kbd = self.devices.get(dev_name)
+                if ppi and kbd:
                     output_port = dev_config.get("output_port", 0)
                     input_port = dev_config.get("input_port", 1)
-                    kbd.connect_to_8255(ppi, output_port, input_port)
-                    self.keyboards[dev_config.get("name", "kbd")] = kbd
-
+                    kbd.connect_to_ppi(ppi, output_port, input_port)
+            
+            if dev_type == "keyboard8279":
+                i8279_name = dev_config.get("i8279_device", "KBD")
+                i8279 = self.devices.get(i8279_name)
+                kbd = self.devices.get(dev_name)
+                if i8279 and kbd:
+                    kbd.connect_to_8279(i8279)
+        
         # === Подключаем виртуальные устройства к 8255 ===
         for dev_config in self.config.devices:
             dev_type = dev_config.get("type", "")

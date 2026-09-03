@@ -4432,6 +4432,23 @@ class MainWindow(QMainWindow):
             self.status_label_conn.setText(f"{self.tr('connected')} | BUS FREE")
 			
     def closeEvent(self, event):
+        """Принудительное закрытие всех окон и виджетов"""
+        # Закрываем диспетчер устройств и все окна устройств
+        if hasattr(self, 'device_manager') and self.device_manager is not None:
+            try:
+                self.device_manager.close_all_windows()
+                self.device_manager.close()
+            except Exception:
+                pass
+            self.device_manager = None
+        
+        # Закрываем виджет 3D-куба (если создан скриптом)
+        if hasattr(self, '_cube3d_widget') and self._cube3d_widget is not None:
+            try:
+                self._cube3d_widget.close()
+            except Exception:
+                pass
+            self._cube3d_widget = None
         """Освобождение шины при закрытии программы"""
         # Очищаем очередь
         self.command_queue.clear()
@@ -4447,7 +4464,7 @@ class MainWindow(QMainWindow):
                 pass
                 
         if self.serial_port and self.serial_port.is_open:
-            self.poll_timer.stop()          # ← ДОБАВЛЕНО
+            self.poll_timer.stop()
             if self.serial_port and self.serial_port.is_open:
                 self.serial_port.close()
 			
@@ -6476,12 +6493,11 @@ class MainWindow(QMainWindow):
                 self.device_list_widget.addItem(item)    
     
     def show_device_manager(self):
-        """Открыть/показать диспетчер устройств"""
-        if self.device_manager is None:
+        if self.device_manager is None or not self.device_manager.isVisible():
             self.device_manager = DeviceManagerDialog(self.system, parent=self)
-        self.device_manager.refresh_devices()
         self.device_manager.show()
         self.device_manager.raise_()
+        self.device_manager.activateWindow()
     
 if __name__ == "__main__":
     app = QApplication(sys.argv)
