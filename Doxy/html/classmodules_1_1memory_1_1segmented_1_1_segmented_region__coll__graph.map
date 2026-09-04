@@ -1,5 +1,5 @@
-<map id="modules.memory.segmented.SegmentedRegion" name="modules.memory.segmented.SegmentedRegion">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,96,198,139"/>
-<area shape="rect" id="Node000002" href="$classmodules_1_1memory_1_1memory__bus_1_1_memory_region.html" title=" " alt="" coords="16,5,187,48"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="104,64,104,96,99,96,99,64"/>
+<map id="SegmentedRegion" name="SegmentedRegion">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,80,134,107"/>
+<area shape="rect" id="Node000002" href="$classmodules_1_1memory_1_1memory__bus_1_1_memory_region.html" title=" " alt="" coords="15,5,124,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="72,48,72,80,67,80,67,48"/>
 </map>

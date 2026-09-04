@@ -1,0 +1,24 @@
+\doxysection{ui.\+cube3d\+\_\+widget Namespace Reference}
+\hypertarget{namespaceui_1_1cube3d__widget}{}\label{namespaceui_1_1cube3d__widget}\index{ui.cube3d\_widget@{ui.cube3d\_widget}}
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classui_1_1cube3d__widget_1_1_cube3_d_widget}{Cube3\+DWidget}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Виджет 3D-куба 8×8×8 — ЧЕСТНЫЙ 3D.
+Итерация 12.3: демонстрационная визуализация.
+
+- Реальная 3D-проекция с перспективой
+- Вращение мышью (ЛКМ), зум (колесо), сброс вида (двойной клик)
+- Сортировка по глубине (алгоритм художника) — дальние светодиоды
+  рисуются первыми, ближние перекрывают их
+- Режим мультиплексирования (инерционность зрения): светодиоды
+  зажигаются при смене портов и плавно гаснут
+- Управление: set_led, set_layer, clear, fill_all, set_persist
+
+Подключение к 8255: порт A = X, порт B = Y, порт C = Z (биты 0-2)
+\end{DoxyVerb}
+ 

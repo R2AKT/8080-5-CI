@@ -1,0 +1,5 @@
+<map id="set_led" name="set_led">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,69,32"/>
+<area shape="rect" id="Node000002" href="$classui_1_1gpio__widget_1_1_bit_indicator.html#ae998e47f19fa9e1d5487992d1d66df11" title=" " alt="" coords="117,5,208,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="69,16,101,16,101,21,69,21"/>
+</map>

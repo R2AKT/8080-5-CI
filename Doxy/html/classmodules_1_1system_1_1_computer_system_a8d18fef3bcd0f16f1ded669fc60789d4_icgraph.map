@@ -1,0 +1,12 @@
+<map id="_apply_device_params" name="_apply_device_params">
+<area shape="rect" id="Node000001" title=" " alt="" coords="487,56,642,83"/>
+<area shape="rect" id="Node000002" href="$classmodules_1_1system_1_1_computer_system.html#a3c0918ef892b05182afac212893811fb" title=" " alt="" coords="338,56,439,83"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="472,72,440,72,440,67,472,67"/>
+<area shape="rect" id="Node000003" href="$classmodules_1_1system_1_1_computer_system.html#a24a119476dac0bf745b5cb6cb4174178" title=" " alt="" coords="148,5,282,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="325,54,263,35,264,30,327,48"/>
+<area shape="rect" id="Node000004" href="$classmodules_1_1system_1_1_computer_system.html#aba476d7d17a4dd09d11ce2441502a536" title=" " alt="" coords="141,56,290,83"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="323,72,290,72,290,67,323,67"/>
+<area shape="rect" id="Node000005" href="$classmodules_1_1system_1_1_computer_system.html#a8dcf5242baa6f4709fab9745f61d9e63" title=" " alt="" coords="5,81,93,108"/>
+<area shape="poly" id="edge5_Node000002_Node000005" title=" " alt="" coords="330,90,290,97,184,103,93,101,93,95,184,98,290,92,329,84"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="126,86,94,91,93,85,125,80"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="press_key" name="press_key">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,87,32"/>
+<area shape="rect" id="Node000002" href="$classmodules_1_1io_1_1keyboard8x8_1_1_keyboard8x8.html#aebad46778248ce87710ba367b5966133" title=" " alt="" coords="135,5,266,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="87,16,119,16,119,21,87,21"/>
+<area shape="rect" id="Node000003" href="$classmodules_1_1io_1_1keyboard8x8_1_1_keyboard8x8.html#aad5d553b1f65815c7b708083e1992331" title=" " alt="" coords="314,5,391,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="266,16,298,16,298,21,266,21"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="write" name="write">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,43,55,69"/>
+<area shape="rect" id="Node000002" href="$classmodules_1_1memory_1_1memory__bus_1_1_memory_region.html#a27f2cd270e85bcd391e6ea2601e9ae0f" title=" " alt="" coords="103,5,297,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="55,49,87,44,88,49,56,54"/>
+<area shape="rect" id="Node000003" href="$classmodules_1_1memory_1_1banked_1_1_banked_region.html#a14c9c698e1ad0bdfef3e5b885541aa96" title=" " alt="" coords="154,72,246,99"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="56,58,139,72,138,77,55,63"/>
+</map>

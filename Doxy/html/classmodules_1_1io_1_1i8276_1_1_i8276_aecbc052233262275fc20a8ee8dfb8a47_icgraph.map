@@ -1,0 +1,15 @@
+<map id="reset" name="reset">
+<area shape="rect" id="Node000001" title=" " alt="" coords="484,145,534,172"/>
+<area shape="rect" id="Node000002" href="$classmodules_1_1io_1_1i8276_1_1_i8276.html#a19688f640d18ce6444c31b8079308d02" title=" " alt="" coords="307,29,374,56"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="491,133,467,100,435,70,404,56,373,49,375,44,406,51,437,66,471,97,495,130"/>
+<area shape="rect" id="Node000003" href="$classmodules_1_1io_1_1i8279_1_1_i8279.html#a78ba1ee5fb7ee81024376daefcff6051" title=" " alt="" coords="261,104,420,147"/>
+<area shape="poly" id="edge3_Node000001_Node000003" title=" " alt="" coords="468,153,420,144,421,138,470,148"/>
+<area shape="rect" id="Node000004" href="$class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d.html#abdd362d5f799ad16b5d6700efe590290" title=" " alt="" coords="245,171,436,213"/>
+<area shape="poly" id="edge5_Node000001_Node000004" title=" " alt="" coords="469,169,437,176,436,170,468,164"/>
+<area shape="rect" id="Node000005" href="$class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d.html#a28a6e435e828ffadf79b895638c7779a" title=" " alt="" coords="245,237,436,280"/>
+<area shape="poly" id="edge6_Node000001_Node000005" title=" " alt="" coords="488,185,465,207,437,228,415,239,412,234,435,223,461,203,484,181"/>
+<area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="369,16,359,10,340,8,323,10,314,15,311,20,316,28,311,30,306,21,310,11,321,5,340,3,361,5,372,12"/>
+<area shape="poly" id="edge4_Node000003_Node000003" title=" " alt="" coords="367,91,357,85,340,83,325,84,315,89,312,95,313,103,308,104,306,94,312,85,323,79,340,77,359,80,370,86"/>
+<area shape="rect" id="Node000006" href="$class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d.html#a69435232b14c0b0cbcdae3dc0a91b4be" title=" " alt="" coords="5,237,197,280"/>
+<area shape="poly" id="edge7_Node000005_Node000006" title=" " alt="" coords="229,261,197,261,197,256,229,256"/>
+</map>

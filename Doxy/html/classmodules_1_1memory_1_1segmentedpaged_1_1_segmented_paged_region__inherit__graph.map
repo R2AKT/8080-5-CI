@@ -1,5 +1,5 @@
-<map id="modules.memory.segmentedpaged.SegmentedPagedRegion" name="modules.memory.segmentedpaged.SegmentedPagedRegion">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,96,233,139"/>
-<area shape="rect" id="Node000002" href="$classmodules_1_1memory_1_1memory__bus_1_1_memory_region.html" title=" " alt="" coords="33,5,205,48"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="122,64,122,96,116,96,116,64"/>
+<map id="SegmentedPagedRegion" name="SegmentedPagedRegion">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,80,171,107"/>
+<area shape="rect" id="Node000002" href="$classmodules_1_1memory_1_1memory__bus_1_1_memory_region.html" title=" " alt="" coords="33,5,143,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="91,48,91,80,85,80,85,48"/>
 </map>

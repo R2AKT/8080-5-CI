@@ -1,0 +1,18 @@
+digraph "_apply_device_params"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="RL";
+  Node1 [id="Node000001",label="_apply_device_params",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="_apply_config",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classmodules_1_1system_1_1_computer_system.html#a3c0918ef892b05182afac212893811fb",tooltip=" "];
+  Node2 -> Node3 [id="edge2_Node000002_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="load_from_toml_file",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classmodules_1_1system_1_1_computer_system.html#a24a119476dac0bf745b5cb6cb4174178",tooltip=" "];
+  Node2 -> Node4 [id="edge3_Node000002_Node000004",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="load_from_toml_string",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classmodules_1_1system_1_1_computer_system.html#aba476d7d17a4dd09d11ce2441502a536",tooltip=" "];
+  Node4 -> Node5 [id="edge4_Node000004_Node000005",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node5 [id="Node000005",label="load_profile",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classmodules_1_1system_1_1_computer_system.html#a8dcf5242baa6f4709fab9745f61d9e63",tooltip=" "];
+  Node2 -> Node5 [id="edge5_Node000002_Node000005",dir="back",color="steelblue1",style="solid",tooltip=" "];
+}

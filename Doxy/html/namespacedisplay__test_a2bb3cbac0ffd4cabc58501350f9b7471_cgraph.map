@@ -1,0 +1,7 @@
+<map id="test_lcd2004" name="test_lcd2004">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,101,57"/>
+<area shape="rect" id="Node000002" href="$namespacedisplay__test.html#a4997dc348c6819e81ad17c82d8936b7b" title=" " alt="" coords="149,5,236,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="100,33,133,27,134,32,101,38"/>
+<area shape="rect" id="Node000003" href="$namespacedisplay__test.html#a7045c6c7b528e9c222a111a09abe7a47" title=" " alt="" coords="152,56,232,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="101,50,137,57,136,62,100,55"/>
+</map>

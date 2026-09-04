@@ -1,0 +1,312 @@
+\doxysection{Tetris3D Class Reference}
+\hypertarget{class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d}{}\label{class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d}\index{Tetris3D@{Tetris3D}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d_abdd362d5f799ad16b5d6700efe590290}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self)
+\item 
+\mbox{\hyperlink{class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d_aecbc052233262275fc20a8ee8dfb8a47}{reset}} (self)
+\item 
+\mbox{\hyperlink{class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d_a808bda8ead85e3c0d9687f82d0c57722}{collides}} (self, cells, px, py, pz)
+\item 
+\mbox{\hyperlink{class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d_a1ca394242419a74e12a5785bb9b98e0c}{drop\+\_\+y}} (self, cells, px, pz)
+\item 
+\mbox{\hyperlink{class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d_a80e7e1c4631b4c2fbc1fc78e7a4b119a}{evaluate}} (self, cells, px, py, pz)
+\item 
+\mbox{\hyperlink{class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d_ae6cbccd0cc38bb28a2ba2c17a352d7c9}{find\+\_\+best\+\_\+placement}} (self, cells)
+\item 
+\mbox{\hyperlink{class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d_a28a6e435e828ffadf79b895638c7779a}{new\+\_\+piece}} (self)
+\item 
+\mbox{\hyperlink{class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d_a42419cc287b486a9bf0e37de70c3f34b}{lock\+\_\+piece}} (self)
+\item 
+\mbox{\hyperlink{class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d_aef3be32969dc9c100fd863598fc64729}{plane\+\_\+full}} (self, y)
+\item 
+\mbox{\hyperlink{class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d_adaaedb9f023405ea22fcc5f749c33144}{remove\+\_\+planes}} (self, ys)
+\item 
+\mbox{\hyperlink{class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d_a0eb483bdacc88c5ecf53ffc350c31773}{clear\+\_\+full\+\_\+planes}} (self)
+\item 
+\mbox{\hyperlink{class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d_a69435232b14c0b0cbcdae3dc0a91b4be}{step}} (self)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+list \mbox{\hyperlink{class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d_a257fdb19345e041d27c2a08015a637ee}{field}} = \mbox{[}\mbox{[}\mbox{[}0\mbox{]}\texorpdfstring{$\ast$}{*}\mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___tetris_a121b8bab5c0ceda3e33140d406f4887e}{SIZE}} for \+\_\+ in range(\mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___tetris_a121b8bab5c0ceda3e33140d406f4887e}{SIZE}})\mbox{]} for \+\_\+ in range(\mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___tetris_a121b8bab5c0ceda3e33140d406f4887e}{SIZE}})\mbox{]}
+\item 
+int \mbox{\hyperlink{class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d_aef160b7437d94056f1dc59646cd5b87d}{score}} = 0
+\item 
+int \mbox{\hyperlink{class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d_aa148ce994662a613a4301603312aa5ea}{planes\+\_\+cleared}} = 0
+\item 
+int \mbox{\hyperlink{class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d_a3fc99ed4c0b2e6fadf57e71499659c67}{pieces\+\_\+placed}} = 0
+\item 
+\mbox{\hyperlink{class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d_ae8b515cceb310a575b6c2677ba93ea7e}{current}} = None
+\item 
+tuple \mbox{\hyperlink{class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d_a5f1ea489dc6b80451c36fcf95852a49a}{cur\+\_\+pos}} = None
+\item 
+\mbox{\hyperlink{class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d_a450449fdb553a2d213214a92ae40defb}{target\+\_\+y}} = None
+\item 
+str \mbox{\hyperlink{class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d_a6088c8c59fe700ddf03d1e3bd414dc71}{state}} = \textquotesingle{}NEW\+\_\+\+PIECE\textquotesingle{}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d_abdd362d5f799ad16b5d6700efe590290}\index{Tetris3D@{Tetris3D}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!Tetris3D@{Tetris3D}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \label{class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d_abdd362d5f799ad16b5d6700efe590290} 
+\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d_abdd362d5f799ad16b5d6700efe590290_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d_a0eb483bdacc88c5ecf53ffc350c31773}\index{Tetris3D@{Tetris3D}!clear\_full\_planes@{clear\_full\_planes}}
+\index{clear\_full\_planes@{clear\_full\_planes}!Tetris3D@{Tetris3D}}
+\doxysubsubsection{\texorpdfstring{clear\_full\_planes()}{clear\_full\_planes()}}
+{\footnotesize\ttfamily \label{class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d_a0eb483bdacc88c5ecf53ffc350c31773} 
+clear\+\_\+full\+\_\+planes (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Сразу удалить заполненные плоскости (без вспышки)\end{DoxyVerb}
+ Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=287pt]{class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d_a0eb483bdacc88c5ecf53ffc350c31773_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=240pt]{class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d_a0eb483bdacc88c5ecf53ffc350c31773_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d_a808bda8ead85e3c0d9687f82d0c57722}\index{Tetris3D@{Tetris3D}!collides@{collides}}
+\index{collides@{collides}!Tetris3D@{Tetris3D}}
+\doxysubsubsection{\texorpdfstring{collides()}{collides()}}
+{\footnotesize\ttfamily \label{class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d_a808bda8ead85e3c0d9687f82d0c57722} 
+collides (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{cells}{, }\item[{}]{px}{, }\item[{}]{py}{, }\item[{}]{pz}{}\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d_a808bda8ead85e3c0d9687f82d0c57722_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d_a1ca394242419a74e12a5785bb9b98e0c}\index{Tetris3D@{Tetris3D}!drop\_y@{drop\_y}}
+\index{drop\_y@{drop\_y}!Tetris3D@{Tetris3D}}
+\doxysubsubsection{\texorpdfstring{drop\_y()}{drop\_y()}}
+{\footnotesize\ttfamily \label{class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d_a1ca394242419a74e12a5785bb9b98e0c} 
+drop\+\_\+y (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{cells}{, }\item[{}]{px}{, }\item[{}]{pz}{}\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=210pt]{class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d_a1ca394242419a74e12a5785bb9b98e0c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d_a1ca394242419a74e12a5785bb9b98e0c_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d_a80e7e1c4631b4c2fbc1fc78e7a4b119a}\index{Tetris3D@{Tetris3D}!evaluate@{evaluate}}
+\index{evaluate@{evaluate}!Tetris3D@{Tetris3D}}
+\doxysubsubsection{\texorpdfstring{evaluate()}{evaluate()}}
+{\footnotesize\ttfamily \label{class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d_a80e7e1c4631b4c2fbc1fc78e7a4b119a} 
+evaluate (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{cells}{, }\item[{}]{px}{, }\item[{}]{py}{, }\item[{}]{pz}{}\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d_a80e7e1c4631b4c2fbc1fc78e7a4b119a_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d_ae6cbccd0cc38bb28a2ba2c17a352d7c9}\index{Tetris3D@{Tetris3D}!find\_best\_placement@{find\_best\_placement}}
+\index{find\_best\_placement@{find\_best\_placement}!Tetris3D@{Tetris3D}}
+\doxysubsubsection{\texorpdfstring{find\_best\_placement()}{find\_best\_placement()}}
+{\footnotesize\ttfamily \label{class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d_ae6cbccd0cc38bb28a2ba2c17a352d7c9} 
+find\+\_\+best\+\_\+placement (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{cells}{}\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d_ae6cbccd0cc38bb28a2ba2c17a352d7c9_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d_ae6cbccd0cc38bb28a2ba2c17a352d7c9_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d_a42419cc287b486a9bf0e37de70c3f34b}\index{Tetris3D@{Tetris3D}!lock\_piece@{lock\_piece}}
+\index{lock\_piece@{lock\_piece}!Tetris3D@{Tetris3D}}
+\doxysubsubsection{\texorpdfstring{lock\_piece()}{lock\_piece()}}
+{\footnotesize\ttfamily \label{class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d_a42419cc287b486a9bf0e37de70c3f34b} 
+lock\+\_\+piece (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=213pt]{class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d_a42419cc287b486a9bf0e37de70c3f34b_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d_a28a6e435e828ffadf79b895638c7779a}\index{Tetris3D@{Tetris3D}!new\_piece@{new\_piece}}
+\index{new\_piece@{new\_piece}!Tetris3D@{Tetris3D}}
+\doxysubsubsection{\texorpdfstring{new\_piece()}{new\_piece()}}
+{\footnotesize\ttfamily \label{class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d_a28a6e435e828ffadf79b895638c7779a} 
+new\+\_\+piece (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d_a28a6e435e828ffadf79b895638c7779a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=213pt]{class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d_a28a6e435e828ffadf79b895638c7779a_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d_aef3be32969dc9c100fd863598fc64729}\index{Tetris3D@{Tetris3D}!plane\_full@{plane\_full}}
+\index{plane\_full@{plane\_full}!Tetris3D@{Tetris3D}}
+\doxysubsubsection{\texorpdfstring{plane\_full()}{plane\_full()}}
+{\footnotesize\ttfamily \label{class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d_aef3be32969dc9c100fd863598fc64729} 
+plane\+\_\+full (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{y}{}\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=333pt]{class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d_aef3be32969dc9c100fd863598fc64729_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d_adaaedb9f023405ea22fcc5f749c33144}\index{Tetris3D@{Tetris3D}!remove\_planes@{remove\_planes}}
+\index{remove\_planes@{remove\_planes}!Tetris3D@{Tetris3D}}
+\doxysubsubsection{\texorpdfstring{remove\_planes()}{remove\_planes()}}
+{\footnotesize\ttfamily \label{class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d_adaaedb9f023405ea22fcc5f749c33144} 
+remove\+\_\+planes (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{ys}{}\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d_adaaedb9f023405ea22fcc5f749c33144_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d_aecbc052233262275fc20a8ee8dfb8a47}\index{Tetris3D@{Tetris3D}!reset@{reset}}
+\index{reset@{reset}!Tetris3D@{Tetris3D}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily \label{class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d_aecbc052233262275fc20a8ee8dfb8a47} 
+reset (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Полный сброс игры\end{DoxyVerb}
+ Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=287pt]{class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d_aecbc052233262275fc20a8ee8dfb8a47_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d_a69435232b14c0b0cbcdae3dc0a91b4be}\index{Tetris3D@{Tetris3D}!step@{step}}
+\index{step@{step}!Tetris3D@{Tetris3D}}
+\doxysubsubsection{\texorpdfstring{step()}{step()}}
+{\footnotesize\ttfamily \label{class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d_a69435232b14c0b0cbcdae3dc0a91b4be} 
+step (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d_a69435232b14c0b0cbcdae3dc0a91b4be_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Field Documentation}
+\Hypertarget{class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d_a5f1ea489dc6b80451c36fcf95852a49a}\index{Tetris3D@{Tetris3D}!cur\_pos@{cur\_pos}}
+\index{cur\_pos@{cur\_pos}!Tetris3D@{Tetris3D}}
+\doxysubsubsection{\texorpdfstring{cur\_pos}{cur\_pos}}
+{\footnotesize\ttfamily \label{class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d_a5f1ea489dc6b80451c36fcf95852a49a} 
+tuple cur\+\_\+pos = None}
+
+\Hypertarget{class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d_ae8b515cceb310a575b6c2677ba93ea7e}\index{Tetris3D@{Tetris3D}!current@{current}}
+\index{current@{current}!Tetris3D@{Tetris3D}}
+\doxysubsubsection{\texorpdfstring{current}{current}}
+{\footnotesize\ttfamily \label{class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d_ae8b515cceb310a575b6c2677ba93ea7e} 
+current = None}
+
+\Hypertarget{class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d_a257fdb19345e041d27c2a08015a637ee}\index{Tetris3D@{Tetris3D}!field@{field}}
+\index{field@{field}!Tetris3D@{Tetris3D}}
+\doxysubsubsection{\texorpdfstring{field}{field}}
+{\footnotesize\ttfamily \label{class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d_a257fdb19345e041d27c2a08015a637ee} 
+list field = \mbox{[}\mbox{[}\mbox{[}0\mbox{]}\texorpdfstring{$\ast$}{*}\mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___tetris_a121b8bab5c0ceda3e33140d406f4887e}{SIZE}} for \+\_\+ in range(\mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___tetris_a121b8bab5c0ceda3e33140d406f4887e}{SIZE}})\mbox{]} for \+\_\+ in range(\mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___tetris_a121b8bab5c0ceda3e33140d406f4887e}{SIZE}})\mbox{]}}
+
+\Hypertarget{class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d_a3fc99ed4c0b2e6fadf57e71499659c67}\index{Tetris3D@{Tetris3D}!pieces\_placed@{pieces\_placed}}
+\index{pieces\_placed@{pieces\_placed}!Tetris3D@{Tetris3D}}
+\doxysubsubsection{\texorpdfstring{pieces\_placed}{pieces\_placed}}
+{\footnotesize\ttfamily \label{class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d_a3fc99ed4c0b2e6fadf57e71499659c67} 
+int pieces\+\_\+placed = 0}
+
+\Hypertarget{class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d_aa148ce994662a613a4301603312aa5ea}\index{Tetris3D@{Tetris3D}!planes\_cleared@{planes\_cleared}}
+\index{planes\_cleared@{planes\_cleared}!Tetris3D@{Tetris3D}}
+\doxysubsubsection{\texorpdfstring{planes\_cleared}{planes\_cleared}}
+{\footnotesize\ttfamily \label{class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d_aa148ce994662a613a4301603312aa5ea} 
+int planes\+\_\+cleared = 0}
+
+\Hypertarget{class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d_aef160b7437d94056f1dc59646cd5b87d}\index{Tetris3D@{Tetris3D}!score@{score}}
+\index{score@{score}!Tetris3D@{Tetris3D}}
+\doxysubsubsection{\texorpdfstring{score}{score}}
+{\footnotesize\ttfamily \label{class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d_aef160b7437d94056f1dc59646cd5b87d} 
+int score = 0}
+
+\Hypertarget{class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d_a6088c8c59fe700ddf03d1e3bd414dc71}\index{Tetris3D@{Tetris3D}!state@{state}}
+\index{state@{state}!Tetris3D@{Tetris3D}}
+\doxysubsubsection{\texorpdfstring{state}{state}}
+{\footnotesize\ttfamily \label{class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d_a6088c8c59fe700ddf03d1e3bd414dc71} 
+str state = \textquotesingle{}NEW\+\_\+\+PIECE\textquotesingle{}}
+
+\Hypertarget{class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d_a450449fdb553a2d213214a92ae40defb}\index{Tetris3D@{Tetris3D}!target\_y@{target\_y}}
+\index{target\_y@{target\_y}!Tetris3D@{Tetris3D}}
+\doxysubsubsection{\texorpdfstring{target\_y}{target\_y}}
+{\footnotesize\ttfamily \label{class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d_a450449fdb553a2d213214a92ae40defb} 
+target\+\_\+y = None}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+tests/\mbox{\hyperlink{_p_p_i__3_d__8x8x8___tetris_8py}{PPI\+\_\+3\+D\+\_\+8x8x8\+\_\+\+Tetris.\+py}}\end{DoxyCompactItemize}

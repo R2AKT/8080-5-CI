@@ -1,0 +1,7 @@
+<map id="clear_full_planes" name="clear_full_planes">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,124,57"/>
+<area shape="rect" id="Node000002" href="$class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d.html#aef3be32969dc9c100fd863598fc64729" title=" " alt="" coords="188,5,264,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="124,32,173,24,173,30,125,37"/>
+<area shape="rect" id="Node000003" href="$class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d.html#adaaedb9f023405ea22fcc5f749c33144" title=" " alt="" coords="172,56,281,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="125,51,157,56,156,61,124,56"/>
+</map>

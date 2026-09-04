@@ -14,18 +14,20 @@ from PySide6.QtCore import Qt
 from PySide6.QtGui import QFont
 
 from .device_window import DeviceWindow
-
+from .keyboard_widget import KeyboardWidget
 from .cube3d_widget import Cube3DWidget
 
 class DeviceManagerDialog(QDialog):
     """Диспетчер устройств: список + открытие индивидуальных окон"""
 
     def __init__(self, system, parent=None):
-        super().__init__(parent)
+        super().__init__()  # Диспетчер без родителя — независим
+        self.setWindowFlags(Qt.Window | Qt.WindowCloseButtonHint | Qt.WindowMinimizeButtonHint)
+        self._main_window = parent  # ← Ссылка на ГЛАВНОЕ окно (для виджетов)
         self.system = system
-        self.device_windows = {}  # name -> DeviceWindow
+        self.device_windows = {}
         self._always_on_top = False
-
+        
         self.setWindowTitle("Диспетчер устройств")
         self.setMinimumSize(420, 500)
         self.resize(440, 520)
@@ -102,33 +104,6 @@ class DeviceManagerDialog(QDialog):
             if name:
                 self._open_device_window(name)
 
-    # def _open_device_window(self, device_name):
-        # """Открыть/показать окно устройства"""
-        # device = self.system.get_device(device_name)
-        # if device is None:
-            # return
-        
-        # # Пропускаем виртуальные устройства, не имеющие собственных окон
-        # if type(device).__name__ == 'Keyboard8x8':
-            # return  # Клавиатура открывается через виджет в окне 8255
-        
-        # if device_name in self.device_windows:
-            # win = self.device_windows[device_name]
-            # if win.isVisible():
-                # win.raise_()
-                # win.activateWindow()
-                # return
-        # else:
-            # win = DeviceWindow(
-                # device, device_name,
-                # always_on_top=self._always_on_top,
-                # parent=self
-            # )
-            # self.device_windows[device_name] = win
-
-        # win.show()
-        # win.raise_()
-        # self.refresh_devices()
     def _open_device_window(self, device_name):
         """Открыть/показать окно устройства"""
         device = self.system.get_device(device_name)
@@ -143,23 +118,30 @@ class DeviceManagerDialog(QDialog):
                 win.activateWindow()
                 return
         else:
-            # Для Cube3D — чистое окно с виджетом, без полей регистров
             if type(device).__name__ == 'Cube3D':
-                win = Cube3DWidget(device)
+                # Для Cube3D — чистое окно с виджетом, без полей регистров
+                win = Cube3DWidget(device, parent=self._main_window)
                 win.setWindowTitle(f"3D Куб 8×8×8 — {device_name}")
                 win.resize(640, 600)
+                if self._always_on_top:
+                    win.setWindowFlags(win.windowFlags() | Qt.WindowStaysOnTopHint)
+            elif type(device).__name__ in ('Keyboard8x8', 'Keyboard8279Adapter'):
+                # Для клавиатуры — чистое окно с виджетом, без полей
+                win = KeyboardWidget(device, parent=self._main_window)
+                win.setWindowTitle(f"Клавиатура — {device_name}")
                 if self._always_on_top:
                     win.setWindowFlags(win.windowFlags() | Qt.WindowStaysOnTopHint)
             else:
                 win = DeviceWindow(
                     device, device_name,
                     always_on_top=self._always_on_top,
-                    parent=self
+                    parent=self._main_window  # ← ГЛАВНОЕ окно
                 )
             self.device_windows[device_name] = win
 
         win.show()
         win.raise_()
+        win.activateWindow()
         self.refresh_devices()
 
     def _toggle_always_on_top(self, checked):

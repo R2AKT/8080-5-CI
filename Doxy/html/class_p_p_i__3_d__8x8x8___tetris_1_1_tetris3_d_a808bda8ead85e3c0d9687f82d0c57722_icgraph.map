@@ -1,0 +1,11 @@
+<map id="collides" name="collides">
+<area shape="rect" id="Node000001" title=" " alt="" coords="529,5,594,32"/>
+<area shape="rect" id="Node000002" href="$class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d.html#a1ca394242419a74e12a5785bb9b98e0c" title=" " alt="" coords="420,5,481,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="513,21,481,21,481,16,513,16"/>
+<area shape="rect" id="Node000003" href="$class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d.html#ae6cbccd0cc38bb28a2ba2c17a352d7c9" title=" " alt="" coords="231,5,372,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="405,21,373,21,373,16,405,16"/>
+<area shape="rect" id="Node000004" href="$class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d.html#a28a6e435e828ffadf79b895638c7779a" title=" " alt="" coords="100,5,183,32"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="215,21,183,21,183,16,215,16"/>
+<area shape="rect" id="Node000005" href="$class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d.html#a69435232b14c0b0cbcdae3dc0a91b4be" title=" " alt="" coords="5,5,52,32"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="84,21,52,21,52,16,84,16"/>
+</map>

@@ -1,0 +1,27 @@
+var classmodules_1_1io_1_1i8272_1_1_i8272_f_d_d =
+[
+    [ "__init__", "classmodules_1_1io_1_1i8272_1_1_i8272_f_d_d.html#a10d70ea22285291ac108572fb5b0cdf8", null ],
+    [ "format_disk", "classmodules_1_1io_1_1i8272_1_1_i8272_f_d_d.html#a5f16e07c1b14ab8e8403d63e13ca72b6", null ],
+    [ "format_disk", "classmodules_1_1io_1_1i8272_1_1_i8272_f_d_d.html#a2a83402707362b39d28a837decc464a2", null ],
+    [ "get_geometry", "classmodules_1_1io_1_1i8272_1_1_i8272_f_d_d.html#af3294970941afabd2d5acfec7bbc5618", null ],
+    [ "get_status", "classmodules_1_1io_1_1i8272_1_1_i8272_f_d_d.html#a052a9289ad7870f242cfadeae428382f", null ],
+    [ "load_from_file", "classmodules_1_1io_1_1i8272_1_1_i8272_f_d_d.html#a9bc4f015298fa46506b7b0dc2d9bfafe", null ],
+    [ "read_sector", "classmodules_1_1io_1_1i8272_1_1_i8272_f_d_d.html#ae836bf45bbc136532f82fe5b3bceab05", null ],
+    [ "save_to_file", "classmodules_1_1io_1_1i8272_1_1_i8272_f_d_d.html#a7e5d42759fb044c1e545e0e362c45bfc", null ],
+    [ "write_sector", "classmodules_1_1io_1_1i8272_1_1_i8272_f_d_d.html#a5925c7a1e64e5be6dfb4f58278392d8f", null ],
+    [ "cylinder", "classmodules_1_1io_1_1i8272_1_1_i8272_f_d_d.html#af8e977f77674d1b29a44b4bbe9dca4d7", null ],
+    [ "data", "classmodules_1_1io_1_1i8272_1_1_i8272_f_d_d.html#adf374424c2cdd923b5646cc29b68562d", null ],
+    [ "drive_num", "classmodules_1_1io_1_1i8272_1_1_i8272_f_d_d.html#ac208cf395b48cb9536c56f33e38a3e25", null ],
+    [ "head", "classmodules_1_1io_1_1i8272_1_1_i8272_f_d_d.html#a20358970b1abaf992eb85e071e454653", null ],
+    [ "max_cylinder", "classmodules_1_1io_1_1i8272_1_1_i8272_f_d_d.html#aeb492c3a80df2e9b97b98999caae5e43", null ],
+    [ "max_head", "classmodules_1_1io_1_1i8272_1_1_i8272_f_d_d.html#adc4745849da5da4f2ebc9501e0ae6a03", null ],
+    [ "motor_on", "classmodules_1_1io_1_1i8272_1_1_i8272_f_d_d.html#a63c9f380a49c025d84aabf847b799ffc", null ],
+    [ "name", "classmodules_1_1io_1_1i8272_1_1_i8272_f_d_d.html#ae057a05edfbf71fef52477aeb25af27f", null ],
+    [ "ready", "classmodules_1_1io_1_1i8272_1_1_i8272_f_d_d.html#a65cf7d7f8e531611b245355ab91fd749", null ],
+    [ "sector", "classmodules_1_1io_1_1i8272_1_1_i8272_f_d_d.html#a0118676709591aeabc16e71e13cb4ff1", null ],
+    [ "sector_size", "classmodules_1_1io_1_1i8272_1_1_i8272_f_d_d.html#a899bd44f308b677e8cfd391eb8f1465b", null ],
+    [ "sectors_per_track", "classmodules_1_1io_1_1i8272_1_1_i8272_f_d_d.html#a6b14b3eaa14a6198d405f125597ae862", null ],
+    [ "track0", "classmodules_1_1io_1_1i8272_1_1_i8272_f_d_d.html#ac0fd46ec9dcd35d59ae47b669b6eefaa", null ],
+    [ "two_sided", "classmodules_1_1io_1_1i8272_1_1_i8272_f_d_d.html#a97fdea3ded6eb8a7e16effd961a61f42", null ],
+    [ "write_protect", "classmodules_1_1io_1_1i8272_1_1_i8272_f_d_d.html#a8c8c3614c4eb833e6f5c6c0a1d6a81bc", null ]
+];

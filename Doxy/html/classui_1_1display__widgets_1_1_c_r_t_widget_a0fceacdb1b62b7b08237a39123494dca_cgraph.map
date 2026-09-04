@@ -1,0 +1,9 @@
+<map id="refresh" name="refresh">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,64,67,91"/>
+<area shape="rect" id="Node000002" href="$classui_1_1display__widgets_1_1_c_r_t_widget.html#a12240a078f1920cbb5782aff5ce240f5" title=" " alt="" coords="170,5,264,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="66,61,114,41,154,30,155,35,116,47,68,66"/>
+<area shape="rect" id="Node000003" href="$classui_1_1display__widgets_1_1_l_c_d_widget.html#a12240a078f1920cbb5782aff5ce240f5" title=" " alt="" coords="115,56,319,99"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="67,75,99,75,99,80,67,80"/>
+<area shape="rect" id="Node000004" href="$classui_1_1display__widgets_1_1_t_f_t_widget.html#a12240a078f1920cbb5782aff5ce240f5" title=" " alt="" coords="116,123,318,165"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="68,88,116,108,133,115,131,120,114,113,66,93"/>
+</map>

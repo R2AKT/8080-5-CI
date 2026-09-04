@@ -1,0 +1,18 @@
+<map id="write_word" name="write_word">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,147,90,173"/>
+<area shape="rect" id="Node000002" href="$classmodules_1_1memory_1_1banked_1_1_banked_region.html#afe713dd4164248c237f57830a0d64a98" title=" " alt="" coords="138,39,352,81"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="62,144,95,118,136,91,148,85,151,90,139,96,98,122,65,149"/>
+<area shape="rect" id="Node000005" href="$classmodules_1_1memory_1_1banked_1_1_banked_r_o_m_region.html#afe713dd4164248c237f57830a0d64a98" title=" " alt="" coords="138,105,352,148"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="90,150,122,145,123,150,91,156"/>
+<area shape="rect" id="Node000007" href="$classmodules_1_1memory_1_1memory__bus_1_1_i_o_bus.html#ae9608d2ae7a92f0526b68752ce746a9d" title=" " alt="" coords="159,172,330,215"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="91,164,144,174,143,179,90,170"/>
+<area shape="rect" id="Node000008" href="$classmodules_1_1memory_1_1memory__bus_1_1_memory_bus.html#afe713dd4164248c237f57830a0d64a98" title=" " alt="" coords="220,239,270,265"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="65,172,97,199,139,224,172,236,206,244,205,249,171,242,137,229,94,203,62,176"/>
+<area shape="rect" id="Node000003" href="$classmodules_1_1memory_1_1memory__bus_1_1_memory_region.html#a27f2cd270e85bcd391e6ea2601e9ae0f" title=" " alt="" coords="410,5,604,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="352,44,394,38,395,44,353,49"/>
+<area shape="rect" id="Node000004" href="$classmodules_1_1memory_1_1banked_1_1_banked_region.html#a14c9c698e1ad0bdfef3e5b885541aa96" title=" " alt="" coords="400,72,614,115"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="353,71,385,75,384,80,352,76"/>
+<area shape="poly" id="edge5_Node000005_Node000004" title=" " alt="" coords="352,110,384,106,385,112,353,116"/>
+<area shape="rect" id="Node000006" href="$classmodules_1_1memory_1_1banked_1_1_banked_r_o_m_region.html#a14c9c698e1ad0bdfef3e5b885541aa96" title=" " alt="" coords="400,139,614,181"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="353,138,385,142,384,147,352,143"/>
+</map>

@@ -1,0 +1,296 @@
+\doxysection{PPI\+\_\+3\+D\+\_\+8x8x8\+\_\+\+Pong Namespace Reference}
+\hypertarget{namespace_p_p_i__3_d__8x8x8___pong}{}\label{namespace_p_p_i__3_d__8x8x8___pong}\index{PPI\_3D\_8x8x8\_Pong@{PPI\_3D\_8x8x8\_Pong}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___pong_a81219d612b6dad42ce28aed34ed32d0a}{update\+\_\+game}} ()
+\item 
+\mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___pong_a989e9452282528756d02b4b2fedb18ae}{is\+\_\+on\+\_\+paddle}} (bx, bz, paddle)
+\item 
+\mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___pong_a314561e7300bbbd4873adb40a89c8f36}{add\+\_\+spin}} (paddle)
+\item 
+\mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___pong_ac74c3ca9807d5c549d3d4ce4974dccdd}{render\+\_\+pong}} ()
+\item 
+\mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___pong_afcd7cf1082c10f1b831c2cdfcacdfb62}{draw\+\_\+paddle}} (paddle, y\+\_\+pos)
+\item 
+\mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___pong_add153c28222d9a2594a84ff87c5ff659}{next\+\_\+frame}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___pong_a343e78fb6e36c1ee55ef943361746f6e}{ppi}} = None
+\item 
+\mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___pong_a63e2970710932188a4748c00bc0cc686}{cube\+\_\+dev}} = None
+\item 
+\mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___pong_a5111f8f1b8eef28b2f15aa7dff548677}{cls}} = type(d).\+\_\+\+\_\+name\+\_\+\+\_\+
+\item 
+\mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___pong_a1c0eb42c54d3a2253feb3e3bea56708f}{cube\+\_\+widget}} = api.\+mw.\+\_\+cube3d\+\_\+widget
+\item 
+\mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___pong_a5d2c023108742a1ce78ba9823c06ea35}{target}} = \mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___pong_a63e2970710932188a4748c00bc0cc686}{cube\+\_\+dev}} if \mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___pong_a63e2970710932188a4748c00bc0cc686}{cube\+\_\+dev}} is not None else \mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___pong_a343e78fb6e36c1ee55ef943361746f6e}{ppi}}
+\item 
+\mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___pong_a7deec1d5cde04673f4696a17ccd745fb}{\+\_\+cube3d\+\_\+widget}}
+\item 
+\mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___pong_a42221ae13c427234b08a21d229eb2ad9}{base}} = ppi.\+base\+\_\+port
+\item 
+int \mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___pong_a0b42f983546e1ad7e6ed8b442513882d}{PONG\+\_\+\+SPEED}} = 60
+\item 
+float \mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___pong_a292d1b4fe49dbe4fe3d58b895e9b09ec}{BALL\+\_\+\+SPEED}} = 0.\+4
+\item 
+int \mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___pong_a362de692160eaa97b48291ee411da593}{PADDLE\+\_\+\+SIZE}} = 3
+\item 
+int \mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___pong_ad59476dbbd43acc7c157fbd6829c9afe}{TRAIL\+\_\+\+LENGTH}} = 8
+\item 
+float \mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___pong_a7766e6490586c292688495118bca8ec9}{PADDLE\+\_\+\+FOLLOW}} = 0.\+25
+\item 
+dict \mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___pong_a6b377d6a2543ef4af107776cd72983ae}{ball}}
+\item 
+dict \mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___pong_ad71e57840970e6a36e0c801aeb405fa8}{paddle1}} = \{\textquotesingle{}x\textquotesingle{}\+: 3.\+5, \textquotesingle{}z\textquotesingle{}\+: 3.\+5\}
+\item 
+dict \mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___pong_ac20c4d8f7683d90db9fe0be4960dcd3b}{paddle2}} = \{\textquotesingle{}x\textquotesingle{}\+: 3.\+5, \textquotesingle{}z\textquotesingle{}\+: 3.\+5\}
+\item 
+list \mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___pong_a4461b47762bc5e0ad093df9b90a73d96}{trail}} = \mbox{[}$\,$\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}3D Пинг-понг на кубе 8×8×8.
+Итерация 12.7: классический пинг-понг в 3D.
+
+Особенности:
+- Шарик летает между двумя ракетками (внизу и вверху по оси Y)
+- Ракетки автоматически следуют за шариком и отбивают его
+- Шарик отскакивает от боковых стен (по осям X и Z)
+- Затухающий след за шариком (рисуется напрямую с градиентом яркости)
+- Ракетки и шарик рисуются через порты 8255 (окно 8255 показывает изменения)
+
+Управление:
+  api.mw._cube3d_timer.stop()   — остановить пинг-понг
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespace_p_p_i__3_d__8x8x8___pong_a314561e7300bbbd4873adb40a89c8f36}\index{PPI\_3D\_8x8x8\_Pong@{PPI\_3D\_8x8x8\_Pong}!add\_spin@{add\_spin}}
+\index{add\_spin@{add\_spin}!PPI\_3D\_8x8x8\_Pong@{PPI\_3D\_8x8x8\_Pong}}
+\doxysubsubsection{\texorpdfstring{add\_spin()}{add\_spin()}}
+{\footnotesize\ttfamily \label{namespace_p_p_i__3_d__8x8x8___pong_a314561e7300bbbd4873adb40a89c8f36} 
+add\+\_\+spin (\begin{DoxyParamCaption}\item[{}]{paddle}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Добавить вращение шарика в зависимости от точки удара о ракетку.
+Удар не в центр ракетки меняет горизонтальную скорость.
+\end{DoxyVerb}
+ Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=346pt]{namespace_p_p_i__3_d__8x8x8___pong_a314561e7300bbbd4873adb40a89c8f36_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{namespace_p_p_i__3_d__8x8x8___pong_afcd7cf1082c10f1b831c2cdfcacdfb62}\index{PPI\_3D\_8x8x8\_Pong@{PPI\_3D\_8x8x8\_Pong}!draw\_paddle@{draw\_paddle}}
+\index{draw\_paddle@{draw\_paddle}!PPI\_3D\_8x8x8\_Pong@{PPI\_3D\_8x8x8\_Pong}}
+\doxysubsubsection{\texorpdfstring{draw\_paddle()}{draw\_paddle()}}
+{\footnotesize\ttfamily \label{namespace_p_p_i__3_d__8x8x8___pong_afcd7cf1082c10f1b831c2cdfcacdfb62} 
+draw\+\_\+paddle (\begin{DoxyParamCaption}\item[{}]{paddle}{, }\item[{}]{y\+\_\+pos}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Нарисовать ракетку как плоскость в плоскости X-Z\end{DoxyVerb}
+ Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespace_p_p_i__3_d__8x8x8___pong_afcd7cf1082c10f1b831c2cdfcacdfb62_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{namespace_p_p_i__3_d__8x8x8___pong_a989e9452282528756d02b4b2fedb18ae}\index{PPI\_3D\_8x8x8\_Pong@{PPI\_3D\_8x8x8\_Pong}!is\_on\_paddle@{is\_on\_paddle}}
+\index{is\_on\_paddle@{is\_on\_paddle}!PPI\_3D\_8x8x8\_Pong@{PPI\_3D\_8x8x8\_Pong}}
+\doxysubsubsection{\texorpdfstring{is\_on\_paddle()}{is\_on\_paddle()}}
+{\footnotesize\ttfamily \label{namespace_p_p_i__3_d__8x8x8___pong_a989e9452282528756d02b4b2fedb18ae} 
+is\+\_\+on\+\_\+paddle (\begin{DoxyParamCaption}\item[{}]{bx}{, }\item[{}]{bz}{, }\item[{}]{paddle}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Проверить, попадает ли шарик в ракетку (в плоскости X-Z)\end{DoxyVerb}
+ Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespace_p_p_i__3_d__8x8x8___pong_a989e9452282528756d02b4b2fedb18ae_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{namespace_p_p_i__3_d__8x8x8___pong_add153c28222d9a2594a84ff87c5ff659}\index{PPI\_3D\_8x8x8\_Pong@{PPI\_3D\_8x8x8\_Pong}!next\_frame@{next\_frame}}
+\index{next\_frame@{next\_frame}!PPI\_3D\_8x8x8\_Pong@{PPI\_3D\_8x8x8\_Pong}}
+\doxysubsubsection{\texorpdfstring{next\_frame()}{next\_frame()}}
+{\footnotesize\ttfamily \label{namespace_p_p_i__3_d__8x8x8___pong_add153c28222d9a2594a84ff87c5ff659} 
+next\+\_\+frame (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Один кадр анимации пинг-понга\end{DoxyVerb}
+ Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespace_p_p_i__3_d__8x8x8___pong_add153c28222d9a2594a84ff87c5ff659_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=145pt]{namespace_p_p_i__3_d__8x8x8___pong_add153c28222d9a2594a84ff87c5ff659_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{namespace_p_p_i__3_d__8x8x8___pong_ac74c3ca9807d5c549d3d4ce4974dccdd}\index{PPI\_3D\_8x8x8\_Pong@{PPI\_3D\_8x8x8\_Pong}!render\_pong@{render\_pong}}
+\index{render\_pong@{render\_pong}!PPI\_3D\_8x8x8\_Pong@{PPI\_3D\_8x8x8\_Pong}}
+\doxysubsubsection{\texorpdfstring{render\_pong()}{render\_pong()}}
+{\footnotesize\ttfamily \label{namespace_p_p_i__3_d__8x8x8___pong_ac74c3ca9807d5c549d3d4ce4974dccdd} 
+render\+\_\+pong (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Отрисовать игру: след (напрямую), шарик и ракетки (через порты)\end{DoxyVerb}
+ Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=256pt]{namespace_p_p_i__3_d__8x8x8___pong_ac74c3ca9807d5c549d3d4ce4974dccdd_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=250pt]{namespace_p_p_i__3_d__8x8x8___pong_ac74c3ca9807d5c549d3d4ce4974dccdd_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{namespace_p_p_i__3_d__8x8x8___pong_a81219d612b6dad42ce28aed34ed32d0a}\index{PPI\_3D\_8x8x8\_Pong@{PPI\_3D\_8x8x8\_Pong}!update\_game@{update\_game}}
+\index{update\_game@{update\_game}!PPI\_3D\_8x8x8\_Pong@{PPI\_3D\_8x8x8\_Pong}}
+\doxysubsubsection{\texorpdfstring{update\_game()}{update\_game()}}
+{\footnotesize\ttfamily \label{namespace_p_p_i__3_d__8x8x8___pong_a81219d612b6dad42ce28aed34ed32d0a} 
+update\+\_\+game (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Обновить состояние игры: движение шарика, отскоки, ракетки\end{DoxyVerb}
+ Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=264pt]{namespace_p_p_i__3_d__8x8x8___pong_a81219d612b6dad42ce28aed34ed32d0a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=255pt]{namespace_p_p_i__3_d__8x8x8___pong_a81219d612b6dad42ce28aed34ed32d0a_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{namespace_p_p_i__3_d__8x8x8___pong_a7deec1d5cde04673f4696a17ccd745fb}\index{PPI\_3D\_8x8x8\_Pong@{PPI\_3D\_8x8x8\_Pong}!\_cube3d\_widget@{\_cube3d\_widget}}
+\index{\_cube3d\_widget@{\_cube3d\_widget}!PPI\_3D\_8x8x8\_Pong@{PPI\_3D\_8x8x8\_Pong}}
+\doxysubsubsection{\texorpdfstring{\_cube3d\_widget}{\_cube3d\_widget}}
+{\footnotesize\ttfamily \label{namespace_p_p_i__3_d__8x8x8___pong_a7deec1d5cde04673f4696a17ccd745fb} 
+\+\_\+cube3d\+\_\+widget\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{namespace_p_p_i__3_d__8x8x8___pong_a6b377d6a2543ef4af107776cd72983ae}\index{PPI\_3D\_8x8x8\_Pong@{PPI\_3D\_8x8x8\_Pong}!ball@{ball}}
+\index{ball@{ball}!PPI\_3D\_8x8x8\_Pong@{PPI\_3D\_8x8x8\_Pong}}
+\doxysubsubsection{\texorpdfstring{ball}{ball}}
+{\footnotesize\ttfamily \label{namespace_p_p_i__3_d__8x8x8___pong_a6b377d6a2543ef4af107776cd72983ae} 
+dict ball}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ =\ \ \{}
+\DoxyCodeLine{00002\ \ \ \ \ \textcolor{stringliteral}{'x'}:\ 3.5,\ \textcolor{stringliteral}{'y'}:\ 3.5,\ \textcolor{stringliteral}{'z'}:\ 3.5,\ \ \ \ \ \textcolor{comment}{\#\ Позиция\ (дробная\ для\ плавности)}}
+\DoxyCodeLine{00003\ \ \ \ \ \textcolor{stringliteral}{'vx'}:\ BALL\_SPEED\ *\ 0.7,\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Скорость\ по\ осям}}
+\DoxyCodeLine{00004\ \ \ \ \ \textcolor{stringliteral}{'vy'}:\ BALL\_SPEED,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Основная\ ось\ игры\ —\ Y\ (вертикаль)}}
+\DoxyCodeLine{00005\ \ \ \ \ \textcolor{stringliteral}{'vz'}:\ BALL\_SPEED\ *\ 0.5,}
+\DoxyCodeLine{00006\ \}}
+
+\end{DoxyCode}
+\Hypertarget{namespace_p_p_i__3_d__8x8x8___pong_a292d1b4fe49dbe4fe3d58b895e9b09ec}\index{PPI\_3D\_8x8x8\_Pong@{PPI\_3D\_8x8x8\_Pong}!BALL\_SPEED@{BALL\_SPEED}}
+\index{BALL\_SPEED@{BALL\_SPEED}!PPI\_3D\_8x8x8\_Pong@{PPI\_3D\_8x8x8\_Pong}}
+\doxysubsubsection{\texorpdfstring{BALL\_SPEED}{BALL\_SPEED}}
+{\footnotesize\ttfamily \label{namespace_p_p_i__3_d__8x8x8___pong_a292d1b4fe49dbe4fe3d58b895e9b09ec} 
+float BALL\+\_\+\+SPEED = 0.\+4}
+
+\Hypertarget{namespace_p_p_i__3_d__8x8x8___pong_a42221ae13c427234b08a21d229eb2ad9}\index{PPI\_3D\_8x8x8\_Pong@{PPI\_3D\_8x8x8\_Pong}!base@{base}}
+\index{base@{base}!PPI\_3D\_8x8x8\_Pong@{PPI\_3D\_8x8x8\_Pong}}
+\doxysubsubsection{\texorpdfstring{base}{base}}
+{\footnotesize\ttfamily \label{namespace_p_p_i__3_d__8x8x8___pong_a42221ae13c427234b08a21d229eb2ad9} 
+base = ppi.\+base\+\_\+port}
+
+\Hypertarget{namespace_p_p_i__3_d__8x8x8___pong_a5111f8f1b8eef28b2f15aa7dff548677}\index{PPI\_3D\_8x8x8\_Pong@{PPI\_3D\_8x8x8\_Pong}!cls@{cls}}
+\index{cls@{cls}!PPI\_3D\_8x8x8\_Pong@{PPI\_3D\_8x8x8\_Pong}}
+\doxysubsubsection{\texorpdfstring{cls}{cls}}
+{\footnotesize\ttfamily \label{namespace_p_p_i__3_d__8x8x8___pong_a5111f8f1b8eef28b2f15aa7dff548677} 
+cls = type(d).\+\_\+\+\_\+name\+\_\+\+\_\+}
+
+\Hypertarget{namespace_p_p_i__3_d__8x8x8___pong_a63e2970710932188a4748c00bc0cc686}\index{PPI\_3D\_8x8x8\_Pong@{PPI\_3D\_8x8x8\_Pong}!cube\_dev@{cube\_dev}}
+\index{cube\_dev@{cube\_dev}!PPI\_3D\_8x8x8\_Pong@{PPI\_3D\_8x8x8\_Pong}}
+\doxysubsubsection{\texorpdfstring{cube\_dev}{cube\_dev}}
+{\footnotesize\ttfamily \label{namespace_p_p_i__3_d__8x8x8___pong_a63e2970710932188a4748c00bc0cc686} 
+cube\+\_\+dev = None}
+
+\Hypertarget{namespace_p_p_i__3_d__8x8x8___pong_a1c0eb42c54d3a2253feb3e3bea56708f}\index{PPI\_3D\_8x8x8\_Pong@{PPI\_3D\_8x8x8\_Pong}!cube\_widget@{cube\_widget}}
+\index{cube\_widget@{cube\_widget}!PPI\_3D\_8x8x8\_Pong@{PPI\_3D\_8x8x8\_Pong}}
+\doxysubsubsection{\texorpdfstring{cube\_widget}{cube\_widget}}
+{\footnotesize\ttfamily \label{namespace_p_p_i__3_d__8x8x8___pong_a1c0eb42c54d3a2253feb3e3bea56708f} 
+cube\+\_\+widget = api.\+mw.\+\_\+cube3d\+\_\+widget}
+
+\Hypertarget{namespace_p_p_i__3_d__8x8x8___pong_ad71e57840970e6a36e0c801aeb405fa8}\index{PPI\_3D\_8x8x8\_Pong@{PPI\_3D\_8x8x8\_Pong}!paddle1@{paddle1}}
+\index{paddle1@{paddle1}!PPI\_3D\_8x8x8\_Pong@{PPI\_3D\_8x8x8\_Pong}}
+\doxysubsubsection{\texorpdfstring{paddle1}{paddle1}}
+{\footnotesize\ttfamily \label{namespace_p_p_i__3_d__8x8x8___pong_ad71e57840970e6a36e0c801aeb405fa8} 
+dict paddle1 = \{\textquotesingle{}x\textquotesingle{}\+: 3.\+5, \textquotesingle{}z\textquotesingle{}\+: 3.\+5\}}
+
+\Hypertarget{namespace_p_p_i__3_d__8x8x8___pong_ac20c4d8f7683d90db9fe0be4960dcd3b}\index{PPI\_3D\_8x8x8\_Pong@{PPI\_3D\_8x8x8\_Pong}!paddle2@{paddle2}}
+\index{paddle2@{paddle2}!PPI\_3D\_8x8x8\_Pong@{PPI\_3D\_8x8x8\_Pong}}
+\doxysubsubsection{\texorpdfstring{paddle2}{paddle2}}
+{\footnotesize\ttfamily \label{namespace_p_p_i__3_d__8x8x8___pong_ac20c4d8f7683d90db9fe0be4960dcd3b} 
+dict paddle2 = \{\textquotesingle{}x\textquotesingle{}\+: 3.\+5, \textquotesingle{}z\textquotesingle{}\+: 3.\+5\}}
+
+\Hypertarget{namespace_p_p_i__3_d__8x8x8___pong_a7766e6490586c292688495118bca8ec9}\index{PPI\_3D\_8x8x8\_Pong@{PPI\_3D\_8x8x8\_Pong}!PADDLE\_FOLLOW@{PADDLE\_FOLLOW}}
+\index{PADDLE\_FOLLOW@{PADDLE\_FOLLOW}!PPI\_3D\_8x8x8\_Pong@{PPI\_3D\_8x8x8\_Pong}}
+\doxysubsubsection{\texorpdfstring{PADDLE\_FOLLOW}{PADDLE\_FOLLOW}}
+{\footnotesize\ttfamily \label{namespace_p_p_i__3_d__8x8x8___pong_a7766e6490586c292688495118bca8ec9} 
+float PADDLE\+\_\+\+FOLLOW = 0.\+25}
+
+\Hypertarget{namespace_p_p_i__3_d__8x8x8___pong_a362de692160eaa97b48291ee411da593}\index{PPI\_3D\_8x8x8\_Pong@{PPI\_3D\_8x8x8\_Pong}!PADDLE\_SIZE@{PADDLE\_SIZE}}
+\index{PADDLE\_SIZE@{PADDLE\_SIZE}!PPI\_3D\_8x8x8\_Pong@{PPI\_3D\_8x8x8\_Pong}}
+\doxysubsubsection{\texorpdfstring{PADDLE\_SIZE}{PADDLE\_SIZE}}
+{\footnotesize\ttfamily \label{namespace_p_p_i__3_d__8x8x8___pong_a362de692160eaa97b48291ee411da593} 
+int PADDLE\+\_\+\+SIZE = 3}
+
+\Hypertarget{namespace_p_p_i__3_d__8x8x8___pong_a0b42f983546e1ad7e6ed8b442513882d}\index{PPI\_3D\_8x8x8\_Pong@{PPI\_3D\_8x8x8\_Pong}!PONG\_SPEED@{PONG\_SPEED}}
+\index{PONG\_SPEED@{PONG\_SPEED}!PPI\_3D\_8x8x8\_Pong@{PPI\_3D\_8x8x8\_Pong}}
+\doxysubsubsection{\texorpdfstring{PONG\_SPEED}{PONG\_SPEED}}
+{\footnotesize\ttfamily \label{namespace_p_p_i__3_d__8x8x8___pong_a0b42f983546e1ad7e6ed8b442513882d} 
+int PONG\+\_\+\+SPEED = 60}
+
+\Hypertarget{namespace_p_p_i__3_d__8x8x8___pong_a343e78fb6e36c1ee55ef943361746f6e}\index{PPI\_3D\_8x8x8\_Pong@{PPI\_3D\_8x8x8\_Pong}!ppi@{ppi}}
+\index{ppi@{ppi}!PPI\_3D\_8x8x8\_Pong@{PPI\_3D\_8x8x8\_Pong}}
+\doxysubsubsection{\texorpdfstring{ppi}{ppi}}
+{\footnotesize\ttfamily \label{namespace_p_p_i__3_d__8x8x8___pong_a343e78fb6e36c1ee55ef943361746f6e} 
+ppi = None}
+
+\Hypertarget{namespace_p_p_i__3_d__8x8x8___pong_a5d2c023108742a1ce78ba9823c06ea35}\index{PPI\_3D\_8x8x8\_Pong@{PPI\_3D\_8x8x8\_Pong}!target@{target}}
+\index{target@{target}!PPI\_3D\_8x8x8\_Pong@{PPI\_3D\_8x8x8\_Pong}}
+\doxysubsubsection{\texorpdfstring{target}{target}}
+{\footnotesize\ttfamily \label{namespace_p_p_i__3_d__8x8x8___pong_a5d2c023108742a1ce78ba9823c06ea35} 
+target = \mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___pong_a63e2970710932188a4748c00bc0cc686}{cube\+\_\+dev}} if \mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___pong_a63e2970710932188a4748c00bc0cc686}{cube\+\_\+dev}} is not None else \mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___pong_a343e78fb6e36c1ee55ef943361746f6e}{ppi}}}
+
+\Hypertarget{namespace_p_p_i__3_d__8x8x8___pong_a4461b47762bc5e0ad093df9b90a73d96}\index{PPI\_3D\_8x8x8\_Pong@{PPI\_3D\_8x8x8\_Pong}!trail@{trail}}
+\index{trail@{trail}!PPI\_3D\_8x8x8\_Pong@{PPI\_3D\_8x8x8\_Pong}}
+\doxysubsubsection{\texorpdfstring{trail}{trail}}
+{\footnotesize\ttfamily \label{namespace_p_p_i__3_d__8x8x8___pong_a4461b47762bc5e0ad093df9b90a73d96} 
+list trail = \mbox{[}$\,$\mbox{]}}
+
+\Hypertarget{namespace_p_p_i__3_d__8x8x8___pong_ad59476dbbd43acc7c157fbd6829c9afe}\index{PPI\_3D\_8x8x8\_Pong@{PPI\_3D\_8x8x8\_Pong}!TRAIL\_LENGTH@{TRAIL\_LENGTH}}
+\index{TRAIL\_LENGTH@{TRAIL\_LENGTH}!PPI\_3D\_8x8x8\_Pong@{PPI\_3D\_8x8x8\_Pong}}
+\doxysubsubsection{\texorpdfstring{TRAIL\_LENGTH}{TRAIL\_LENGTH}}
+{\footnotesize\ttfamily \label{namespace_p_p_i__3_d__8x8x8___pong_ad59476dbbd43acc7c157fbd6829c9afe} 
+int TRAIL\+\_\+\+LENGTH = 8}
+

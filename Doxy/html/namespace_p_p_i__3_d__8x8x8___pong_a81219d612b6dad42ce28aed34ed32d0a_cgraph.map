@@ -1,0 +1,7 @@
+<map id="update_game" name="update_game">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,105,57"/>
+<area shape="rect" id="Node000002" href="$namespace_p_p_i__3_d__8x8x8___pong.html#a314561e7300bbbd4873adb40a89c8f36" title=" " alt="" coords="165,5,238,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="105,33,149,25,150,30,105,38"/>
+<area shape="rect" id="Node000003" href="$namespace_p_p_i__3_d__8x8x8___pong.html#a989e9452282528756d02b4b2fedb18ae" title=" " alt="" coords="153,56,250,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="105,50,138,56,137,61,105,55"/>
+</map>

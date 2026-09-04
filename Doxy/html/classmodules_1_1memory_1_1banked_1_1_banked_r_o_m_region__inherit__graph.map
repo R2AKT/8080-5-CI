@@ -1,5 +1,5 @@
-<map id="modules.memory.banked.BankedROMRegion" name="modules.memory.banked.BankedROMRegion">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,96,220,139"/>
-<area shape="rect" id="Node000002" href="$classmodules_1_1memory_1_1memory__bus_1_1_memory_region.html" title=" " alt="" coords="27,5,198,48"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="115,64,115,96,110,96,110,64"/>
+<map id="BankedROMRegion" name="BankedROMRegion">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,80,143,107"/>
+<area shape="rect" id="Node000002" href="$classmodules_1_1memory_1_1memory__bus_1_1_memory_region.html" title=" " alt="" coords="19,5,129,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="77,48,77,80,71,80,71,48"/>
 </map>

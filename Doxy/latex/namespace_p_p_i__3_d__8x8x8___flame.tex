@@ -1,0 +1,241 @@
+\doxysection{PPI\+\_\+3\+D\+\_\+8x8x8\+\_\+\+Flame Namespace Reference}
+\hypertarget{namespace_p_p_i__3_d__8x8x8___flame}{}\label{namespace_p_p_i__3_d__8x8x8___flame}\index{PPI\_3D\_8x8x8\_Flame@{PPI\_3D\_8x8x8\_Flame}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___flame_a7f6b653895f80e14e45a5348be49748a}{distance\+\_\+from\+\_\+center\+\_\+xz}} (x, z)
+\item 
+\mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___flame_ae4bca89a55ca3375acbd0788de6f7c82}{update\+\_\+flame}} ()
+\item 
+\mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___flame_aa1ad01f960d92ddea36a565f0f0275e5}{update\+\_\+sparks}} ()
+\item 
+\mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___flame_a78114930cb5374238270c25d592c6d22}{render\+\_\+flame\+\_\+via\+\_\+ports}} ()
+\item 
+\mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___flame_add153c28222d9a2594a84ff87c5ff659}{next\+\_\+frame}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___flame_a343e78fb6e36c1ee55ef943361746f6e}{ppi}} = None
+\item 
+\mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___flame_a63e2970710932188a4748c00bc0cc686}{cube\+\_\+dev}} = None
+\item 
+\mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___flame_a5111f8f1b8eef28b2f15aa7dff548677}{cls}} = type(d).\+\_\+\+\_\+name\+\_\+\+\_\+
+\item 
+\mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___flame_a1c0eb42c54d3a2253feb3e3bea56708f}{cube\+\_\+widget}} = api.\+mw.\+\_\+cube3d\+\_\+widget
+\item 
+\mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___flame_a5d2c023108742a1ce78ba9823c06ea35}{target}} = \mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___flame_a63e2970710932188a4748c00bc0cc686}{cube\+\_\+dev}} if \mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___flame_a63e2970710932188a4748c00bc0cc686}{cube\+\_\+dev}} is not None else \mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___flame_a343e78fb6e36c1ee55ef943361746f6e}{ppi}}
+\item 
+\mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___flame_a7deec1d5cde04673f4696a17ccd745fb}{\+\_\+cube3d\+\_\+widget}}
+\item 
+\mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___flame_a42221ae13c427234b08a21d229eb2ad9}{base}} = ppi.\+base\+\_\+port
+\item 
+list \mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___flame_a9894739a1dd5d7a6f8451e936b7025bf}{flame\+\_\+height}} = \mbox{[}\mbox{[}0.\+0\mbox{]}\texorpdfstring{$\ast$}{*}8 for \+\_\+ in range(8)\mbox{]}
+\item 
+dict \mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___flame_af2f1ef26896688aa67b998a0bcfc5dee}{spark\+\_\+timers}} = \{\}
+\item 
+list \mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___flame_afda0ce10ce751e8063ec4f2a9e8c7bf9}{flare\+\_\+state}} = \mbox{[}0\mbox{]}
+\item 
+int \mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___flame_a59a8aca48b83c3f0714959666f42554f}{FLAME\+\_\+\+SPEED}} = 70
+\item 
+float \mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___flame_a271bf64f7cde89a497a2b549e287845b}{SMOOTHING}} = 0.\+35
+\item 
+float \mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___flame_a78d4549b7a9ecfad76a8fe067c35d91c}{SPARK\+\_\+\+CHANCE}} = 0.\+15
+\item 
+int \mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___flame_aa136566ecd810279e9126dc3d9768d85}{FLARE\+\_\+\+INTERVAL}} = 40
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Эмуляция пламени на 3D-кубе 8×8×8.
+Итерация 12.5: пламя на нижней плоскости, вывод через 8255.
+
+Особенности:
+- Основание пламени на НИЖНЕЙ плоскости (плоскость X-Z при Y=0)
+- Пламя растёт ВВЕРХ по оси Y
+- Вывод через порты 8255 (окно 8255 показывает изменения)
+- Порт A = X, Порт B = Y, Порт C = Z (строб)
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespace_p_p_i__3_d__8x8x8___flame_a7f6b653895f80e14e45a5348be49748a}\index{PPI\_3D\_8x8x8\_Flame@{PPI\_3D\_8x8x8\_Flame}!distance\_from\_center\_xz@{distance\_from\_center\_xz}}
+\index{distance\_from\_center\_xz@{distance\_from\_center\_xz}!PPI\_3D\_8x8x8\_Flame@{PPI\_3D\_8x8x8\_Flame}}
+\doxysubsubsection{\texorpdfstring{distance\_from\_center\_xz()}{distance\_from\_center\_xz()}}
+{\footnotesize\ttfamily \label{namespace_p_p_i__3_d__8x8x8___flame_a7f6b653895f80e14e45a5348be49748a} 
+distance\+\_\+from\+\_\+center\+\_\+xz (\begin{DoxyParamCaption}\item[{}]{x}{, }\item[{}]{z}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Расстояние от центра в плоскости X-Z (нормализованное 0..1)\end{DoxyVerb}
+ Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespace_p_p_i__3_d__8x8x8___flame_a7f6b653895f80e14e45a5348be49748a_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{namespace_p_p_i__3_d__8x8x8___flame_add153c28222d9a2594a84ff87c5ff659}\index{PPI\_3D\_8x8x8\_Flame@{PPI\_3D\_8x8x8\_Flame}!next\_frame@{next\_frame}}
+\index{next\_frame@{next\_frame}!PPI\_3D\_8x8x8\_Flame@{PPI\_3D\_8x8x8\_Flame}}
+\doxysubsubsection{\texorpdfstring{next\_frame()}{next\_frame()}}
+{\footnotesize\ttfamily \label{namespace_p_p_i__3_d__8x8x8___flame_add153c28222d9a2594a84ff87c5ff659} 
+next\+\_\+frame (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Один кадр анимации пламени\end{DoxyVerb}
+ Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespace_p_p_i__3_d__8x8x8___flame_add153c28222d9a2594a84ff87c5ff659_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=145pt]{namespace_p_p_i__3_d__8x8x8___flame_add153c28222d9a2594a84ff87c5ff659_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{namespace_p_p_i__3_d__8x8x8___flame_a78114930cb5374238270c25d592c6d22}\index{PPI\_3D\_8x8x8\_Flame@{PPI\_3D\_8x8x8\_Flame}!render\_flame\_via\_ports@{render\_flame\_via\_ports}}
+\index{render\_flame\_via\_ports@{render\_flame\_via\_ports}!PPI\_3D\_8x8x8\_Flame@{PPI\_3D\_8x8x8\_Flame}}
+\doxysubsubsection{\texorpdfstring{render\_flame\_via\_ports()}{render\_flame\_via\_ports()}}
+{\footnotesize\ttfamily \label{namespace_p_p_i__3_d__8x8x8___flame_a78114930cb5374238270c25d592c6d22} 
+render\+\_\+flame\+\_\+via\+\_\+ports (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Отрисовать пламя через порты 8255.
+Окно 8255 показывает изменения портов.
+\end{DoxyVerb}
+ Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=298pt]{namespace_p_p_i__3_d__8x8x8___flame_a78114930cb5374238270c25d592c6d22_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{namespace_p_p_i__3_d__8x8x8___flame_ae4bca89a55ca3375acbd0788de6f7c82}\index{PPI\_3D\_8x8x8\_Flame@{PPI\_3D\_8x8x8\_Flame}!update\_flame@{update\_flame}}
+\index{update\_flame@{update\_flame}!PPI\_3D\_8x8x8\_Flame@{PPI\_3D\_8x8x8\_Flame}}
+\doxysubsubsection{\texorpdfstring{update\_flame()}{update\_flame()}}
+{\footnotesize\ttfamily \label{namespace_p_p_i__3_d__8x8x8___flame_ae4bca89a55ca3375acbd0788de6f7c82} 
+update\+\_\+flame (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Обновить высоты языков пламени\end{DoxyVerb}
+ Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=316pt]{namespace_p_p_i__3_d__8x8x8___flame_ae4bca89a55ca3375acbd0788de6f7c82_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=255pt]{namespace_p_p_i__3_d__8x8x8___flame_ae4bca89a55ca3375acbd0788de6f7c82_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{namespace_p_p_i__3_d__8x8x8___flame_aa1ad01f960d92ddea36a565f0f0275e5}\index{PPI\_3D\_8x8x8\_Flame@{PPI\_3D\_8x8x8\_Flame}!update\_sparks@{update\_sparks}}
+\index{update\_sparks@{update\_sparks}!PPI\_3D\_8x8x8\_Flame@{PPI\_3D\_8x8x8\_Flame}}
+\doxysubsubsection{\texorpdfstring{update\_sparks()}{update\_sparks()}}
+{\footnotesize\ttfamily \label{namespace_p_p_i__3_d__8x8x8___flame_aa1ad01f960d92ddea36a565f0f0275e5} 
+update\+\_\+sparks (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Обновить искры\end{DoxyVerb}
+ Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=261pt]{namespace_p_p_i__3_d__8x8x8___flame_aa1ad01f960d92ddea36a565f0f0275e5_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{namespace_p_p_i__3_d__8x8x8___flame_a7deec1d5cde04673f4696a17ccd745fb}\index{PPI\_3D\_8x8x8\_Flame@{PPI\_3D\_8x8x8\_Flame}!\_cube3d\_widget@{\_cube3d\_widget}}
+\index{\_cube3d\_widget@{\_cube3d\_widget}!PPI\_3D\_8x8x8\_Flame@{PPI\_3D\_8x8x8\_Flame}}
+\doxysubsubsection{\texorpdfstring{\_cube3d\_widget}{\_cube3d\_widget}}
+{\footnotesize\ttfamily \label{namespace_p_p_i__3_d__8x8x8___flame_a7deec1d5cde04673f4696a17ccd745fb} 
+\+\_\+cube3d\+\_\+widget\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{namespace_p_p_i__3_d__8x8x8___flame_a42221ae13c427234b08a21d229eb2ad9}\index{PPI\_3D\_8x8x8\_Flame@{PPI\_3D\_8x8x8\_Flame}!base@{base}}
+\index{base@{base}!PPI\_3D\_8x8x8\_Flame@{PPI\_3D\_8x8x8\_Flame}}
+\doxysubsubsection{\texorpdfstring{base}{base}}
+{\footnotesize\ttfamily \label{namespace_p_p_i__3_d__8x8x8___flame_a42221ae13c427234b08a21d229eb2ad9} 
+base = ppi.\+base\+\_\+port}
+
+\Hypertarget{namespace_p_p_i__3_d__8x8x8___flame_a5111f8f1b8eef28b2f15aa7dff548677}\index{PPI\_3D\_8x8x8\_Flame@{PPI\_3D\_8x8x8\_Flame}!cls@{cls}}
+\index{cls@{cls}!PPI\_3D\_8x8x8\_Flame@{PPI\_3D\_8x8x8\_Flame}}
+\doxysubsubsection{\texorpdfstring{cls}{cls}}
+{\footnotesize\ttfamily \label{namespace_p_p_i__3_d__8x8x8___flame_a5111f8f1b8eef28b2f15aa7dff548677} 
+cls = type(d).\+\_\+\+\_\+name\+\_\+\+\_\+}
+
+\Hypertarget{namespace_p_p_i__3_d__8x8x8___flame_a63e2970710932188a4748c00bc0cc686}\index{PPI\_3D\_8x8x8\_Flame@{PPI\_3D\_8x8x8\_Flame}!cube\_dev@{cube\_dev}}
+\index{cube\_dev@{cube\_dev}!PPI\_3D\_8x8x8\_Flame@{PPI\_3D\_8x8x8\_Flame}}
+\doxysubsubsection{\texorpdfstring{cube\_dev}{cube\_dev}}
+{\footnotesize\ttfamily \label{namespace_p_p_i__3_d__8x8x8___flame_a63e2970710932188a4748c00bc0cc686} 
+cube\+\_\+dev = None}
+
+\Hypertarget{namespace_p_p_i__3_d__8x8x8___flame_a1c0eb42c54d3a2253feb3e3bea56708f}\index{PPI\_3D\_8x8x8\_Flame@{PPI\_3D\_8x8x8\_Flame}!cube\_widget@{cube\_widget}}
+\index{cube\_widget@{cube\_widget}!PPI\_3D\_8x8x8\_Flame@{PPI\_3D\_8x8x8\_Flame}}
+\doxysubsubsection{\texorpdfstring{cube\_widget}{cube\_widget}}
+{\footnotesize\ttfamily \label{namespace_p_p_i__3_d__8x8x8___flame_a1c0eb42c54d3a2253feb3e3bea56708f} 
+cube\+\_\+widget = api.\+mw.\+\_\+cube3d\+\_\+widget}
+
+\Hypertarget{namespace_p_p_i__3_d__8x8x8___flame_a9894739a1dd5d7a6f8451e936b7025bf}\index{PPI\_3D\_8x8x8\_Flame@{PPI\_3D\_8x8x8\_Flame}!flame\_height@{flame\_height}}
+\index{flame\_height@{flame\_height}!PPI\_3D\_8x8x8\_Flame@{PPI\_3D\_8x8x8\_Flame}}
+\doxysubsubsection{\texorpdfstring{flame\_height}{flame\_height}}
+{\footnotesize\ttfamily \label{namespace_p_p_i__3_d__8x8x8___flame_a9894739a1dd5d7a6f8451e936b7025bf} 
+list flame\+\_\+height = \mbox{[}\mbox{[}0.\+0\mbox{]}\texorpdfstring{$\ast$}{*}8 for \+\_\+ in range(8)\mbox{]}}
+
+\Hypertarget{namespace_p_p_i__3_d__8x8x8___flame_a59a8aca48b83c3f0714959666f42554f}\index{PPI\_3D\_8x8x8\_Flame@{PPI\_3D\_8x8x8\_Flame}!FLAME\_SPEED@{FLAME\_SPEED}}
+\index{FLAME\_SPEED@{FLAME\_SPEED}!PPI\_3D\_8x8x8\_Flame@{PPI\_3D\_8x8x8\_Flame}}
+\doxysubsubsection{\texorpdfstring{FLAME\_SPEED}{FLAME\_SPEED}}
+{\footnotesize\ttfamily \label{namespace_p_p_i__3_d__8x8x8___flame_a59a8aca48b83c3f0714959666f42554f} 
+int FLAME\+\_\+\+SPEED = 70}
+
+\Hypertarget{namespace_p_p_i__3_d__8x8x8___flame_aa136566ecd810279e9126dc3d9768d85}\index{PPI\_3D\_8x8x8\_Flame@{PPI\_3D\_8x8x8\_Flame}!FLARE\_INTERVAL@{FLARE\_INTERVAL}}
+\index{FLARE\_INTERVAL@{FLARE\_INTERVAL}!PPI\_3D\_8x8x8\_Flame@{PPI\_3D\_8x8x8\_Flame}}
+\doxysubsubsection{\texorpdfstring{FLARE\_INTERVAL}{FLARE\_INTERVAL}}
+{\footnotesize\ttfamily \label{namespace_p_p_i__3_d__8x8x8___flame_aa136566ecd810279e9126dc3d9768d85} 
+int FLARE\+\_\+\+INTERVAL = 40}
+
+\Hypertarget{namespace_p_p_i__3_d__8x8x8___flame_afda0ce10ce751e8063ec4f2a9e8c7bf9}\index{PPI\_3D\_8x8x8\_Flame@{PPI\_3D\_8x8x8\_Flame}!flare\_state@{flare\_state}}
+\index{flare\_state@{flare\_state}!PPI\_3D\_8x8x8\_Flame@{PPI\_3D\_8x8x8\_Flame}}
+\doxysubsubsection{\texorpdfstring{flare\_state}{flare\_state}}
+{\footnotesize\ttfamily \label{namespace_p_p_i__3_d__8x8x8___flame_afda0ce10ce751e8063ec4f2a9e8c7bf9} 
+list flare\+\_\+state = \mbox{[}0\mbox{]}}
+
+\Hypertarget{namespace_p_p_i__3_d__8x8x8___flame_a343e78fb6e36c1ee55ef943361746f6e}\index{PPI\_3D\_8x8x8\_Flame@{PPI\_3D\_8x8x8\_Flame}!ppi@{ppi}}
+\index{ppi@{ppi}!PPI\_3D\_8x8x8\_Flame@{PPI\_3D\_8x8x8\_Flame}}
+\doxysubsubsection{\texorpdfstring{ppi}{ppi}}
+{\footnotesize\ttfamily \label{namespace_p_p_i__3_d__8x8x8___flame_a343e78fb6e36c1ee55ef943361746f6e} 
+ppi = None}
+
+\Hypertarget{namespace_p_p_i__3_d__8x8x8___flame_a271bf64f7cde89a497a2b549e287845b}\index{PPI\_3D\_8x8x8\_Flame@{PPI\_3D\_8x8x8\_Flame}!SMOOTHING@{SMOOTHING}}
+\index{SMOOTHING@{SMOOTHING}!PPI\_3D\_8x8x8\_Flame@{PPI\_3D\_8x8x8\_Flame}}
+\doxysubsubsection{\texorpdfstring{SMOOTHING}{SMOOTHING}}
+{\footnotesize\ttfamily \label{namespace_p_p_i__3_d__8x8x8___flame_a271bf64f7cde89a497a2b549e287845b} 
+float SMOOTHING = 0.\+35}
+
+\Hypertarget{namespace_p_p_i__3_d__8x8x8___flame_a78d4549b7a9ecfad76a8fe067c35d91c}\index{PPI\_3D\_8x8x8\_Flame@{PPI\_3D\_8x8x8\_Flame}!SPARK\_CHANCE@{SPARK\_CHANCE}}
+\index{SPARK\_CHANCE@{SPARK\_CHANCE}!PPI\_3D\_8x8x8\_Flame@{PPI\_3D\_8x8x8\_Flame}}
+\doxysubsubsection{\texorpdfstring{SPARK\_CHANCE}{SPARK\_CHANCE}}
+{\footnotesize\ttfamily \label{namespace_p_p_i__3_d__8x8x8___flame_a78d4549b7a9ecfad76a8fe067c35d91c} 
+float SPARK\+\_\+\+CHANCE = 0.\+15}
+
+\Hypertarget{namespace_p_p_i__3_d__8x8x8___flame_af2f1ef26896688aa67b998a0bcfc5dee}\index{PPI\_3D\_8x8x8\_Flame@{PPI\_3D\_8x8x8\_Flame}!spark\_timers@{spark\_timers}}
+\index{spark\_timers@{spark\_timers}!PPI\_3D\_8x8x8\_Flame@{PPI\_3D\_8x8x8\_Flame}}
+\doxysubsubsection{\texorpdfstring{spark\_timers}{spark\_timers}}
+{\footnotesize\ttfamily \label{namespace_p_p_i__3_d__8x8x8___flame_af2f1ef26896688aa67b998a0bcfc5dee} 
+dict spark\+\_\+timers = \{\}}
+
+\Hypertarget{namespace_p_p_i__3_d__8x8x8___flame_a5d2c023108742a1ce78ba9823c06ea35}\index{PPI\_3D\_8x8x8\_Flame@{PPI\_3D\_8x8x8\_Flame}!target@{target}}
+\index{target@{target}!PPI\_3D\_8x8x8\_Flame@{PPI\_3D\_8x8x8\_Flame}}
+\doxysubsubsection{\texorpdfstring{target}{target}}
+{\footnotesize\ttfamily \label{namespace_p_p_i__3_d__8x8x8___flame_a5d2c023108742a1ce78ba9823c06ea35} 
+target = \mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___flame_a63e2970710932188a4748c00bc0cc686}{cube\+\_\+dev}} if \mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___flame_a63e2970710932188a4748c00bc0cc686}{cube\+\_\+dev}} is not None else \mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___flame_a343e78fb6e36c1ee55ef943361746f6e}{ppi}}}
+

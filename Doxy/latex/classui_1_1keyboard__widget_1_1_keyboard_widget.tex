@@ -1,0 +1,207 @@
+\doxysection{Keyboard\+Widget Class Reference}
+\hypertarget{classui_1_1keyboard__widget_1_1_keyboard_widget}{}\label{classui_1_1keyboard__widget_1_1_keyboard_widget}\index{KeyboardWidget@{KeyboardWidget}}
+
+
+Inheritance diagram for Keyboard\+Widget\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=168pt]{classui_1_1keyboard__widget_1_1_keyboard_widget__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Keyboard\+Widget\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=168pt]{classui_1_1keyboard__widget_1_1_keyboard_widget__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classui_1_1keyboard__widget_1_1_keyboard_widget_a5e315b4c99fe3e25565aff482ac94016}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, \mbox{\hyperlink{classui_1_1keyboard__widget_1_1_keyboard_widget_a9976f3faad68f981f425583e48b03252}{keyboard}}, parent=None)
+\item 
+\mbox{\hyperlink{classui_1_1keyboard__widget_1_1_keyboard_widget_a8e9b7cd2c3eee7e04e02325d4125daee}{close\+Event}} (self, event)
+\item 
+\mbox{\hyperlink{classui_1_1keyboard__widget_1_1_keyboard_widget_a59adc2b5cbd531589de01f1c23b3ca9e}{show\+Event}} (self, event)
+\item 
+\mbox{\hyperlink{classui_1_1keyboard__widget_1_1_keyboard_widget_a237da4538927ac648f13a1a2764d7003}{set\+\_\+always\+\_\+on\+\_\+top}} (self, enabled)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classui_1_1keyboard__widget_1_1_keyboard_widget_a9976f3faad68f981f425583e48b03252}{keyboard}} = keyboard
+\item 
+dict \mbox{\hyperlink{classui_1_1keyboard__widget_1_1_keyboard_widget_a4ed2fc6e01468f86ba5440e3927a21d8}{buttons}} = \{\}
+\item 
+\mbox{\hyperlink{classui_1_1keyboard__widget_1_1_keyboard_widget_a3bf66fc67d373627b525c2ba0e60385a}{lbl\+\_\+status}} = QLabel("{}Нет нажатых клавиш"{})
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classui_1_1keyboard__widget_1_1_keyboard_widget_a9751c15069af123bed4a56bae2d9c024}{\+\_\+init\+\_\+ui}} (self)
+\item 
+\mbox{\hyperlink{classui_1_1keyboard__widget_1_1_keyboard_widget_ab17b57a0c29cff3078fb39375ac787d9}{\+\_\+format\+\_\+label}} (self, char1, char2, row, col)
+\item 
+\mbox{\hyperlink{classui_1_1keyboard__widget_1_1_keyboard_widget_a59706f1afcaed5af3749ad5fb58522aa}{\+\_\+on\+\_\+press}} (self, row, col)
+\item 
+\mbox{\hyperlink{classui_1_1keyboard__widget_1_1_keyboard_widget_abae40cbda9f1c7e4170326c95e3b5d98}{\+\_\+on\+\_\+release}} (self, row, col)
+\item 
+\mbox{\hyperlink{classui_1_1keyboard__widget_1_1_keyboard_widget_a9297a0a8e10c35616e906b27de76ff30}{\+\_\+update\+\_\+status}} (self)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Виджет клавиатуры: сетка кнопок 8×8\end{DoxyVerb}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classui_1_1keyboard__widget_1_1_keyboard_widget_a5e315b4c99fe3e25565aff482ac94016}\index{KeyboardWidget@{KeyboardWidget}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!KeyboardWidget@{KeyboardWidget}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \label{classui_1_1keyboard__widget_1_1_keyboard_widget_a5e315b4c99fe3e25565aff482ac94016} 
+\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{keyboard}{, }\item[{}]{parent}{ = {\ttfamily None}}\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=130pt]{classui_1_1keyboard__widget_1_1_keyboard_widget_a5e315b4c99fe3e25565aff482ac94016_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=130pt]{classui_1_1keyboard__widget_1_1_keyboard_widget_a5e315b4c99fe3e25565aff482ac94016_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classui_1_1keyboard__widget_1_1_keyboard_widget_ab17b57a0c29cff3078fb39375ac787d9}\index{KeyboardWidget@{KeyboardWidget}!\_format\_label@{\_format\_label}}
+\index{\_format\_label@{\_format\_label}!KeyboardWidget@{KeyboardWidget}}
+\doxysubsubsection{\texorpdfstring{\_format\_label()}{\_format\_label()}}
+{\footnotesize\ttfamily \label{classui_1_1keyboard__widget_1_1_keyboard_widget_ab17b57a0c29cff3078fb39375ac787d9} 
+\+\_\+format\+\_\+label (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{char1}{, }\item[{}]{char2}{, }\item[{}]{row}{, }\item[{}]{col}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Форматировать подпись кнопки\end{DoxyVerb}
+ \Hypertarget{classui_1_1keyboard__widget_1_1_keyboard_widget_a9751c15069af123bed4a56bae2d9c024}\index{KeyboardWidget@{KeyboardWidget}!\_init\_ui@{\_init\_ui}}
+\index{\_init\_ui@{\_init\_ui}!KeyboardWidget@{KeyboardWidget}}
+\doxysubsubsection{\texorpdfstring{\_init\_ui()}{\_init\_ui()}}
+{\footnotesize\ttfamily \label{classui_1_1keyboard__widget_1_1_keyboard_widget_a9751c15069af123bed4a56bae2d9c024} 
+\+\_\+init\+\_\+ui (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classui_1_1keyboard__widget_1_1_keyboard_widget_a59706f1afcaed5af3749ad5fb58522aa}\index{KeyboardWidget@{KeyboardWidget}!\_on\_press@{\_on\_press}}
+\index{\_on\_press@{\_on\_press}!KeyboardWidget@{KeyboardWidget}}
+\doxysubsubsection{\texorpdfstring{\_on\_press()}{\_on\_press()}}
+{\footnotesize\ttfamily \label{classui_1_1keyboard__widget_1_1_keyboard_widget_a59706f1afcaed5af3749ad5fb58522aa} 
+\+\_\+on\+\_\+press (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{row}{, }\item[{}]{col}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Кнопка мыши нажата\end{DoxyVerb}
+ Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=260pt]{classui_1_1keyboard__widget_1_1_keyboard_widget_a59706f1afcaed5af3749ad5fb58522aa_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classui_1_1keyboard__widget_1_1_keyboard_widget_abae40cbda9f1c7e4170326c95e3b5d98}\index{KeyboardWidget@{KeyboardWidget}!\_on\_release@{\_on\_release}}
+\index{\_on\_release@{\_on\_release}!KeyboardWidget@{KeyboardWidget}}
+\doxysubsubsection{\texorpdfstring{\_on\_release()}{\_on\_release()}}
+{\footnotesize\ttfamily \label{classui_1_1keyboard__widget_1_1_keyboard_widget_abae40cbda9f1c7e4170326c95e3b5d98} 
+\+\_\+on\+\_\+release (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{row}{, }\item[{}]{col}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Кнопка мыши отпущена\end{DoxyVerb}
+ Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=267pt]{classui_1_1keyboard__widget_1_1_keyboard_widget_abae40cbda9f1c7e4170326c95e3b5d98_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classui_1_1keyboard__widget_1_1_keyboard_widget_a9297a0a8e10c35616e906b27de76ff30}\index{KeyboardWidget@{KeyboardWidget}!\_update\_status@{\_update\_status}}
+\index{\_update\_status@{\_update\_status}!KeyboardWidget@{KeyboardWidget}}
+\doxysubsubsection{\texorpdfstring{\_update\_status()}{\_update\_status()}}
+{\footnotesize\ttfamily \label{classui_1_1keyboard__widget_1_1_keyboard_widget_a9297a0a8e10c35616e906b27de76ff30} 
+\+\_\+update\+\_\+status (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Обновить индикатор состояния\end{DoxyVerb}
+ Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=267pt]{classui_1_1keyboard__widget_1_1_keyboard_widget_a9297a0a8e10c35616e906b27de76ff30_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classui_1_1keyboard__widget_1_1_keyboard_widget_a8e9b7cd2c3eee7e04e02325d4125daee}\index{KeyboardWidget@{KeyboardWidget}!closeEvent@{closeEvent}}
+\index{closeEvent@{closeEvent}!KeyboardWidget@{KeyboardWidget}}
+\doxysubsubsection{\texorpdfstring{closeEvent()}{closeEvent()}}
+{\footnotesize\ttfamily \label{classui_1_1keyboard__widget_1_1_keyboard_widget_a8e9b7cd2c3eee7e04e02325d4125daee} 
+close\+Event (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{event}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classui_1_1keyboard__widget_1_1_keyboard_widget_a237da4538927ac648f13a1a2764d7003}\index{KeyboardWidget@{KeyboardWidget}!set\_always\_on\_top@{set\_always\_on\_top}}
+\index{set\_always\_on\_top@{set\_always\_on\_top}!KeyboardWidget@{KeyboardWidget}}
+\doxysubsubsection{\texorpdfstring{set\_always\_on\_top()}{set\_always\_on\_top()}}
+{\footnotesize\ttfamily \label{classui_1_1keyboard__widget_1_1_keyboard_widget_a237da4538927ac648f13a1a2764d7003} 
+set\+\_\+always\+\_\+on\+\_\+top (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{enabled}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Установить/снять флаг поверх всех окон\end{DoxyVerb}
+ \Hypertarget{classui_1_1keyboard__widget_1_1_keyboard_widget_a59adc2b5cbd531589de01f1c23b3ca9e}\index{KeyboardWidget@{KeyboardWidget}!showEvent@{showEvent}}
+\index{showEvent@{showEvent}!KeyboardWidget@{KeyboardWidget}}
+\doxysubsubsection{\texorpdfstring{showEvent()}{showEvent()}}
+{\footnotesize\ttfamily \label{classui_1_1keyboard__widget_1_1_keyboard_widget_a59adc2b5cbd531589de01f1c23b3ca9e} 
+show\+Event (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{event}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Получить фокус при показе окна\end{DoxyVerb}
+ Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=145pt]{classui_1_1keyboard__widget_1_1_keyboard_widget_a59adc2b5cbd531589de01f1c23b3ca9e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=145pt]{classui_1_1keyboard__widget_1_1_keyboard_widget_a59adc2b5cbd531589de01f1c23b3ca9e_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Field Documentation}
+\Hypertarget{classui_1_1keyboard__widget_1_1_keyboard_widget_a4ed2fc6e01468f86ba5440e3927a21d8}\index{KeyboardWidget@{KeyboardWidget}!buttons@{buttons}}
+\index{buttons@{buttons}!KeyboardWidget@{KeyboardWidget}}
+\doxysubsubsection{\texorpdfstring{buttons}{buttons}}
+{\footnotesize\ttfamily \label{classui_1_1keyboard__widget_1_1_keyboard_widget_a4ed2fc6e01468f86ba5440e3927a21d8} 
+dict buttons = \{\}}
+
+\Hypertarget{classui_1_1keyboard__widget_1_1_keyboard_widget_a9976f3faad68f981f425583e48b03252}\index{KeyboardWidget@{KeyboardWidget}!keyboard@{keyboard}}
+\index{keyboard@{keyboard}!KeyboardWidget@{KeyboardWidget}}
+\doxysubsubsection{\texorpdfstring{keyboard}{keyboard}}
+{\footnotesize\ttfamily \label{classui_1_1keyboard__widget_1_1_keyboard_widget_a9976f3faad68f981f425583e48b03252} 
+keyboard = keyboard}
+
+\Hypertarget{classui_1_1keyboard__widget_1_1_keyboard_widget_a3bf66fc67d373627b525c2ba0e60385a}\index{KeyboardWidget@{KeyboardWidget}!lbl\_status@{lbl\_status}}
+\index{lbl\_status@{lbl\_status}!KeyboardWidget@{KeyboardWidget}}
+\doxysubsubsection{\texorpdfstring{lbl\_status}{lbl\_status}}
+{\footnotesize\ttfamily \label{classui_1_1keyboard__widget_1_1_keyboard_widget_a3bf66fc67d373627b525c2ba0e60385a} 
+lbl\+\_\+status = QLabel("{}Нет нажатых клавиш"{})}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+ui/\mbox{\hyperlink{keyboard__widget_8py}{keyboard\+\_\+widget.\+py}}\end{DoxyCompactItemize}

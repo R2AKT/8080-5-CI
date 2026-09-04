@@ -1,0 +1,9 @@
+<map id="write" name="write">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,56,55,83"/>
+<area shape="rect" id="Node000002" href="$classmodules_1_1memory_1_1segmentedpaged_1_1_segmented_paged_region.html#ac0aceece272576925277f7b41bb3c6ad" title=" " alt="" coords="148,5,252,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="54,58,102,41,132,33,134,38,103,47,56,63"/>
+<area shape="rect" id="Node000003" href="$classmodules_1_1memory_1_1segmentedpaged_1_1_segmented_paged_region.html#a0a43643c1f023e151bd4954a57e6e1c8" title=" " alt="" coords="129,56,271,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="55,67,114,67,114,72,55,72"/>
+<area shape="rect" id="Node000004" href="$classmodules_1_1memory_1_1memory__bus_1_1_memory_region.html#a27f2cd270e85bcd391e6ea2601e9ae0f" title=" " alt="" coords="103,107,297,149"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="56,75,104,92,122,98,120,104,102,97,54,80"/>
+</map>

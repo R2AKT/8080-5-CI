@@ -1,0 +1,25 @@
+var classui_1_1device__window_1_1_device_window =
+[
+    [ "__init__", "classui_1_1device__window_1_1_device_window.html#aa0e3f0120e952b6e857b4d1988fcba4a", null ],
+    [ "_auto_refresh", "classui_1_1device__window_1_1_device_window.html#a1608d3a60eeec387ebc24c6b26cc2e47", null ],
+    [ "_format_value", "classui_1_1device__window_1_1_device_window.html#a8d38c4a51e30e55cd057d1f30efd3d58", null ],
+    [ "_get_state", "classui_1_1device__window_1_1_device_window.html#ad94433cc5798478369ada095014ea0c8", null ],
+    [ "_init_ui", "classui_1_1device__window_1_1_device_window.html#a9751c15069af123bed4a56bae2d9c024", null ],
+    [ "closeEvent", "classui_1_1device__window_1_1_device_window.html#a8e9b7cd2c3eee7e04e02325d4125daee", null ],
+    [ "refresh", "classui_1_1device__window_1_1_device_window.html#a0fceacdb1b62b7b08237a39123494dca", null ],
+    [ "set_always_on_top", "classui_1_1device__window_1_1_device_window.html#a237da4538927ac648f13a1a2764d7003", null ],
+    [ "_auto_refresh", "classui_1_1device__window_1_1_device_window.html#a346db5793c7d018831208b89a7e452e2", null ],
+    [ "_fields", "classui_1_1device__window_1_1_device_window.html#acba54c8b61844026bf46c784e9686b53", null ],
+    [ "btn_refresh", "classui_1_1device__window_1_1_device_window.html#a0292659d0d8fe56e4419ee0f6905e144", null ],
+    [ "chk_auto", "classui_1_1device__window_1_1_device_window.html#a49f9e2d52d28607b1d47c7c952a6d6d4", null ],
+    [ "cube_widget", "classui_1_1device__window_1_1_device_window.html#a1c0eb42c54d3a2253feb3e3bea56708f", null ],
+    [ "device", "classui_1_1device__window_1_1_device_window.html#adbdec58595587fea1750c91cd18315fb", null ],
+    [ "device_name", "classui_1_1device__window_1_1_device_window.html#adc6d2edd8ca755f93b1762d06e3c0406", null ],
+    [ "display_widget", "classui_1_1device__window_1_1_device_window.html#a13a15034dfff7d066584b8ccf00cb207", null ],
+    [ "gpio_widget", "classui_1_1device__window_1_1_device_window.html#a54a6a25a24c8fbdedf78ec5007456c47", null ],
+    [ "lang", "classui_1_1device__window_1_1_device_window.html#aca5b8ca8386eba15f56cd899dca7a819", null ],
+    [ "refresh", "classui_1_1device__window_1_1_device_window.html#a264748b6f225c63ce8c55ee71b9efb42", null ],
+    [ "refresh_timer", "classui_1_1device__window_1_1_device_window.html#a841ca5ce0d4db24fd2b5177f1f825f29", null ],
+    [ "regs_layout", "classui_1_1device__window_1_1_device_window.html#adb80cc4c4ca245ed3d067d83f7c5cbae", null ],
+    [ "terminal_widget", "classui_1_1device__window_1_1_device_window.html#a7834d9da0f814c175dd3ea4238a66ec5", null ]
+];

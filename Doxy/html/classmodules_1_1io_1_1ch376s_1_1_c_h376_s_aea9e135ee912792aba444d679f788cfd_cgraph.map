@@ -1,0 +1,9 @@
+<map id="set_disk_image" name="set_disk_image">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,118,57"/>
+<area shape="rect" id="Node000002" href="$classmodules_1_1io_1_1ch376s_1_1_c_h376_s.html#a228d292638c52a53104103ae3805ee29" title=" " alt="" coords="166,31,229,57"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="118,41,150,41,150,47,118,47"/>
+<area shape="rect" id="Node000003" href="$classmodules_1_1io_1_1ch376s_1_1_c_h376_s.html#a571a9808a1bde058463a740a72d8049d" title=" " alt="" coords="282,5,392,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="229,36,266,29,267,34,230,41"/>
+<area shape="rect" id="Node000004" href="$classmodules_1_1io_1_1ch376s_1_1_c_h376_s.html#a8a09b491ac26bec08b4993fd8460d2cc" title=" " alt="" coords="277,56,397,83"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="230,47,262,53,261,58,229,52"/>
+</map>

@@ -1,21 +1,21 @@
-<map id="modules.memory.memory_bus.MemoryRegion" name="modules.memory.memory_bus.MemoryRegion">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,272,177,315"/>
-<area shape="rect" id="Node000002" href="$classmodules_1_1memory_1_1banked_1_1_banked_r_o_m_region.html" title=" " alt="" coords="231,5,446,48"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="101,256,118,211,144,157,178,104,199,79,223,58,241,46,244,51,226,62,203,83,183,107,148,160,123,213,106,258"/>
-<area shape="rect" id="Node000003" href="$classmodules_1_1memory_1_1banked_1_1_banked_region.html" title=" " alt="" coords="231,72,446,115"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="109,257,155,190,187,154,223,124,244,113,247,118,226,129,191,158,159,193,113,260"/>
-<area shape="rect" id="Node000004" href="$classmodules_1_1memory_1_1memory__bus_1_1_r_a_m_region.html" title=" " alt="" coords="253,139,424,181"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="125,260,170,224,223,191,251,179,253,184,226,196,173,228,128,264"/>
-<area shape="rect" id="Node000005" href="$classmodules_1_1memory_1_1memory__bus_1_1_r_o_m_region.html" title=" " alt="" coords="253,205,424,248"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="187,265,256,246,257,251,188,270"/>
-<area shape="rect" id="Node000006" href="$classmodules_1_1memory_1_1paged_1_1_paged_region.html" title=" " alt="" coords="238,272,438,315"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="193,291,238,291,238,296,193,296"/>
-<area shape="rect" id="Node000007" href="$classmodules_1_1memory_1_1segmented_1_1_segmented_region.html" title=" " alt="" coords="242,339,434,381"/>
-<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="188,317,257,335,256,341,187,322"/>
-<area shape="rect" id="Node000008" href="$classmodules_1_1memory_1_1segmentedpaged_1_1_segmented_paged_region.html" title=" " alt="" coords="225,405,452,448"/>
-<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="128,323,173,358,226,391,252,402,250,407,223,396,170,363,125,327"/>
-<area shape="rect" id="Node000009" href="$classmodules_1_1memory_1_1shadow_1_1_shadow_r_o_m_region.html" title=" " alt="" coords="229,472,448,515"/>
-<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="113,327,159,394,191,428,226,458,247,469,244,474,223,462,187,432,155,397,109,330"/>
-<area shape="rect" id="Node000010" href="$classtest__memory__bus_1_1_test_r_a_m.html" title=" " alt="" coords="246,539,430,565"/>
-<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="105,328,121,374,147,427,182,480,203,504,226,524,247,536,244,541,223,529,199,508,177,484,142,430,117,376,100,330"/>
+<map id="MemoryRegion" name="MemoryRegion">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,208,115,235"/>
+<area shape="rect" id="Node000002" href="$classmodules_1_1memory_1_1banked_1_1_banked_r_o_m_region.html" title=" " alt="" coords="177,5,314,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="68,192,81,158,101,118,127,77,161,42,181,30,183,35,164,46,131,80,105,120,86,160,73,194"/>
+<area shape="rect" id="Node000003" href="$classmodules_1_1memory_1_1banked_1_1_banked_region.html" title=" " alt="" coords="192,56,298,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="74,193,109,142,134,115,161,92,190,78,193,83,164,97,137,119,113,145,78,196"/>
+<area shape="rect" id="Node000004" href="$classmodules_1_1memory_1_1memory__bus_1_1_r_a_m_region.html" title=" " alt="" coords="199,107,292,133"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="86,196,121,168,161,143,198,129,200,134,164,148,124,173,89,200"/>
+<area shape="rect" id="Node000005" href="$classmodules_1_1memory_1_1memory__bus_1_1_r_o_m_region.html" title=" " alt="" coords="199,157,292,184"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="126,201,197,181,199,186,127,206"/>
+<area shape="rect" id="Node000006" href="$classmodules_1_1memory_1_1paged_1_1_paged_region.html" title=" " alt="" coords="196,208,295,235"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="130,219,196,219,196,224,130,224"/>
+<area shape="rect" id="Node000007" href="$classmodules_1_1memory_1_1segmented_1_1_segmented_region.html" title=" " alt="" coords="181,259,310,285"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="127,237,194,255,193,261,125,242"/>
+<area shape="rect" id="Node000008" href="$classmodules_1_1memory_1_1segmentedpaged_1_1_segmented_paged_region.html" title=" " alt="" coords="163,309,328,336"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="89,243,124,270,164,295,191,306,189,311,161,300,121,274,86,247"/>
+<area shape="rect" id="Node000009" href="$classmodules_1_1memory_1_1shadow_1_1_shadow_r_o_m_region.html" title=" " alt="" coords="175,360,316,387"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="78,246,113,297,137,323,164,346,186,357,184,362,161,350,134,327,109,301,74,250"/>
+<area shape="rect" id="Node000010" href="$classtest__memory__bus_1_1_test_r_a_m.html" title=" " alt="" coords="207,411,284,437"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="73,248,86,283,105,323,131,362,164,397,185,409,208,416,206,421,183,413,161,401,127,366,101,325,81,285,68,250"/>
 </map>

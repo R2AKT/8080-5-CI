@@ -1,0 +1,26 @@
+<map id="contains" name="contains">
+<area shape="rect" id="Node000001" title=" " alt="" coords="519,280,589,307"/>
+<area shape="rect" id="Node000002" href="$classmodules_1_1memory_1_1banked_1_1_banked_region.html#a1c3988915dc70213dcb52f6a81c80ca6" title=" " alt="" coords="250,5,464,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="548,265,542,220,529,165,505,110,489,84,469,62,454,51,457,46,473,58,493,81,510,107,534,164,547,219,554,264"/>
+<area shape="rect" id="Node000004" href="$classmodules_1_1memory_1_1banked_1_1_banked_r_o_m_region.html#a1c3988915dc70213dcb52f6a81c80ca6" title=" " alt="" coords="250,72,464,115"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="544,266,534,234,519,197,497,160,469,129,453,117,456,113,473,125,502,157,524,194,539,232,549,264"/>
+<area shape="rect" id="Node000005" href="$classmodules_1_1memory_1_1paged_1_1_paged_region.html#a1c3988915dc70213dcb52f6a81c80ca6" title=" " alt="" coords="257,139,458,181"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="535,268,508,230,469,196,448,184,451,179,473,191,511,227,540,265"/>
+<area shape="rect" id="Node000006" href="$classmodules_1_1memory_1_1segmented_1_1_segmented_region.html#a1c3988915dc70213dcb52f6a81c80ca6" title=" " alt="" coords="261,205,454,248"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="506,276,470,263,436,251,437,246,472,257,508,271"/>
+<area shape="rect" id="Node000007" href="$classmodules_1_1memory_1_1segmentedpaged_1_1_segmented_paged_region.html#a1c3988915dc70213dcb52f6a81c80ca6" title=" " alt="" coords="244,272,471,315"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="503,296,471,296,471,291,503,291"/>
+<area shape="rect" id="Node000008" href="$classmodules_1_1memory_1_1banked_1_1_banked_region.html#afe713dd4164248c237f57830a0d64a98" title=" " alt="" coords="250,339,464,381"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="508,316,472,329,437,341,436,336,470,324,506,311"/>
+<area shape="rect" id="Node000010" href="$classmodules_1_1memory_1_1paged_1_1_paged_region.html#afe713dd4164248c237f57830a0d64a98" title=" " alt="" coords="257,405,458,448"/>
+<area shape="poly" id="edge10_Node000001_Node000010" title=" " alt="" coords="540,321,511,360,473,396,451,407,448,403,469,391,508,356,535,318"/>
+<area shape="rect" id="Node000011" href="$classmodules_1_1memory_1_1segmented_1_1_segmented_region.html#afe713dd4164248c237f57830a0d64a98" title=" " alt="" coords="261,472,454,515"/>
+<area shape="poly" id="edge11_Node000001_Node000011" title=" " alt="" coords="549,323,539,355,524,392,502,430,473,462,455,474,452,469,469,458,497,427,519,390,534,353,544,321"/>
+<area shape="rect" id="Node000012" href="$classmodules_1_1memory_1_1segmentedpaged_1_1_segmented_paged_region.html#afe713dd4164248c237f57830a0d64a98" title=" " alt="" coords="244,539,471,581"/>
+<area shape="poly" id="edge12_Node000001_Node000012" title=" " alt="" coords="554,323,547,368,534,423,510,479,493,506,473,529,457,540,454,536,469,525,489,502,505,477,529,421,542,367,548,322"/>
+<area shape="rect" id="Node000003" href="$classmodules_1_1memory_1_1memory__bus_1_1_memory_bus.html#a45dd80bd17757ff49bad89e1909d509d" title=" " alt="" coords="7,39,194,81"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="235,45,195,50,194,45,234,40"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="234,80,194,75,195,70,235,75"/>
+<area shape="rect" id="Node000009" href="$classmodules_1_1memory_1_1memory__bus_1_1_memory_bus.html#a97b94d34058c23d8ca079ac2b2532010" title=" " alt="" coords="5,339,196,381"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="235,363,196,363,196,357,235,357"/>
+</map>

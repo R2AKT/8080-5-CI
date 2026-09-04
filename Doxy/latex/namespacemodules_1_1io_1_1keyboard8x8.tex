@@ -1,0 +1,35 @@
+\doxysection{modules.\+io.\+keyboard8x8 Namespace Reference}
+\hypertarget{namespacemodules_1_1io_1_1keyboard8x8}{}\label{namespacemodules_1_1io_1_1keyboard8x8}\index{modules.io.keyboard8x8@{modules.io.keyboard8x8}}
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classmodules_1_1io_1_1keyboard8x8_1_1_keyboard8x8}{Keyboard8x8}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+dict \mbox{\hyperlink{namespacemodules_1_1io_1_1keyboard8x8_a5625f08a20fc9b32e5500ebe4e54a7b7}{RADIO86\+RK\+\_\+\+KEYMAP}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Клавиатурная матрица 8×8 для Радио-86РК / Микро-80.
+Подключается к 8255 как внешний модуль.
+Не изменяет сам 8255.
+
+Принцип работы:
+- 8255 записывает номер строки в выходной порт (обычно Port A)
+- Клавиатура возвращает состояние столбцов через входной порт (обычно Port B)
+- Нажатая клавиша замыкает строку на столбец → бит столбца = 0
+
+Кодировка: KOI-7, набор 2.
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{namespacemodules_1_1io_1_1keyboard8x8_a5625f08a20fc9b32e5500ebe4e54a7b7}\index{modules.io.keyboard8x8@{modules.io.keyboard8x8}!RADIO86RK\_KEYMAP@{RADIO86RK\_KEYMAP}}
+\index{RADIO86RK\_KEYMAP@{RADIO86RK\_KEYMAP}!modules.io.keyboard8x8@{modules.io.keyboard8x8}}
+\doxysubsubsection{\texorpdfstring{RADIO86RK\_KEYMAP}{RADIO86RK\_KEYMAP}}
+{\footnotesize\ttfamily \label{namespacemodules_1_1io_1_1keyboard8x8_a5625f08a20fc9b32e5500ebe4e54a7b7} 
+dict RADIO86\+RK\+\_\+\+KEYMAP}
+

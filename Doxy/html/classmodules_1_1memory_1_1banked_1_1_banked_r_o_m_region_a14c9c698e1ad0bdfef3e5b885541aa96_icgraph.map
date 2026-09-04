@@ -1,0 +1,9 @@
+<map id="select_bank" name="select_bank">
+<area shape="rect" id="Node000001" title=" " alt="" coords="358,31,449,57"/>
+<area shape="rect" id="Node000002" href="$classmodules_1_1memory_1_1banked_1_1_banked_r_o_m_region.html#a595dbc61f56666a111e6eeb684b370ca" title=" " alt="" coords="244,5,310,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="342,34,310,28,311,23,343,29"/>
+<area shape="rect" id="Node000003" href="$classmodules_1_1memory_1_1banked_1_1_banked_r_o_m_region.html#afe713dd4164248c237f57830a0d64a98" title=" " alt="" coords="252,56,302,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="343,59,303,67,301,62,342,54"/>
+<area shape="rect" id="Node000004" href="$classmodules_1_1memory_1_1memory__bus_1_1_memory_bus.html#a97b94d34058c23d8ca079ac2b2532010" title=" " alt="" coords="5,48,196,91"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="236,72,196,72,196,67,236,67"/>
+</map>

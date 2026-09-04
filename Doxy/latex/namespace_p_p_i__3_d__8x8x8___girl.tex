@@ -1,0 +1,294 @@
+\doxysection{PPI\+\_\+3\+D\+\_\+8x8x8\+\_\+\+Girl Namespace Reference}
+\hypertarget{namespace_p_p_i__3_d__8x8x8___girl}{}\label{namespace_p_p_i__3_d__8x8x8___girl}\index{PPI\_3D\_8x8x8\_Girl@{PPI\_3D\_8x8x8\_Girl}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___girl_a9c40ffe7e4cf3bb1341289f31f2426c1}{render\+\_\+frame}} (frame)
+\item 
+\mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___girl_add153c28222d9a2594a84ff87c5ff659}{next\+\_\+frame}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___girl_a343e78fb6e36c1ee55ef943361746f6e}{ppi}} = None
+\item 
+\mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___girl_a63e2970710932188a4748c00bc0cc686}{cube\+\_\+dev}} = None
+\item 
+\mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___girl_a5111f8f1b8eef28b2f15aa7dff548677}{cls}} = type(d).\+\_\+\+\_\+name\+\_\+\+\_\+
+\item 
+\mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___girl_a1c0eb42c54d3a2253feb3e3bea56708f}{cube\+\_\+widget}} = api.\+mw.\+\_\+cube3d\+\_\+widget
+\item 
+\mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___girl_a5d2c023108742a1ce78ba9823c06ea35}{target}} = \mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___girl_a63e2970710932188a4748c00bc0cc686}{cube\+\_\+dev}} if \mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___girl_a63e2970710932188a4748c00bc0cc686}{cube\+\_\+dev}} is not None else \mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___girl_a343e78fb6e36c1ee55ef943361746f6e}{ppi}}
+\item 
+\mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___girl_a7deec1d5cde04673f4696a17ccd745fb}{\+\_\+cube3d\+\_\+widget}}
+\item 
+\mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___girl_a42221ae13c427234b08a21d229eb2ad9}{base}} = ppi.\+base\+\_\+port
+\item 
+dict \mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___girl_ae852168346b9c8dcb06e100d96310421}{FRAME\+\_\+0}}
+\item 
+dict \mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___girl_a56c6434c47b60900350215f03fac5574}{FRAME\+\_\+1}}
+\item 
+dict \mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___girl_a712cd417d8327e504132f338e8f6da09}{FRAME\+\_\+2}}
+\item 
+dict \mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___girl_ae48317b8e25d69ab87a86f8b3359c370}{FRAME\+\_\+3}}
+\item 
+list \mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___girl_aff81f1cf67743f007ea4063fe755c962}{DANCE\+\_\+\+SEQUENCE}} = \mbox{[}\mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___girl_ae852168346b9c8dcb06e100d96310421}{FRAME\+\_\+0}}, \mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___girl_a56c6434c47b60900350215f03fac5574}{FRAME\+\_\+1}}, \mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___girl_a712cd417d8327e504132f338e8f6da09}{FRAME\+\_\+2}}, \mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___girl_ae48317b8e25d69ab87a86f8b3359c370}{FRAME\+\_\+3}}\mbox{]}
+\item 
+int \mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___girl_a098c7e633c74c8e36ed8dcfedfdaaeb9}{DANCE\+\_\+\+SPEED}} = 320
+\item 
+list \mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___girl_a6e94cece2a4cd0fb020a9d99bebe3dee}{DEPTH\+\_\+\+LAYERS}} = \mbox{[}3, 4, 5\mbox{]}
+\item 
+float \mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___girl_aa1e81305dceaa331a3896ece513bbb03}{BODY\+\_\+\+BRIGHTNESS}} = 0.\+35
+\item 
+list \mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___girl_a383419043e9fa0a2ee40a77c34e6819b}{frame\+\_\+idx}} = \mbox{[}0\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Пляжный танец: силуэт девушки в бикини на 3D-кубе 8×8×8.
+Итерация 12.9.
+
+Особенности:
+- Двухтональный силуэт: тело (яркость 0.35) и бикини (яркость 1.0)
+- 4 кадра пляжной хулы: руки и бёдра двигаются
+- Объём: силуэт в 3 слоях по глубине
+- Тело рисуется напрямую, бикини — через порты 8255 (окно 8255 показывает активность)
+
+Управление:
+  api.mw._cube3d_timer.stop()   — остановить танец
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespace_p_p_i__3_d__8x8x8___girl_add153c28222d9a2594a84ff87c5ff659}\index{PPI\_3D\_8x8x8\_Girl@{PPI\_3D\_8x8x8\_Girl}!next\_frame@{next\_frame}}
+\index{next\_frame@{next\_frame}!PPI\_3D\_8x8x8\_Girl@{PPI\_3D\_8x8x8\_Girl}}
+\doxysubsubsection{\texorpdfstring{next\_frame()}{next\_frame()}}
+{\footnotesize\ttfamily \label{namespace_p_p_i__3_d__8x8x8___girl_add153c28222d9a2594a84ff87c5ff659} 
+next\+\_\+frame (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Один кадр анимации\end{DoxyVerb}
+ Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=254pt]{namespace_p_p_i__3_d__8x8x8___girl_add153c28222d9a2594a84ff87c5ff659_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=145pt]{namespace_p_p_i__3_d__8x8x8___girl_add153c28222d9a2594a84ff87c5ff659_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{namespace_p_p_i__3_d__8x8x8___girl_a9c40ffe7e4cf3bb1341289f31f2426c1}\index{PPI\_3D\_8x8x8\_Girl@{PPI\_3D\_8x8x8\_Girl}!render\_frame@{render\_frame}}
+\index{render\_frame@{render\_frame}!PPI\_3D\_8x8x8\_Girl@{PPI\_3D\_8x8x8\_Girl}}
+\doxysubsubsection{\texorpdfstring{render\_frame()}{render\_frame()}}
+{\footnotesize\ttfamily \label{namespace_p_p_i__3_d__8x8x8___girl_a9c40ffe7e4cf3bb1341289f31f2426c1} 
+render\+\_\+frame (\begin{DoxyParamCaption}\item[{}]{frame}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Отрисовать кадр: тело напрямую (тускло), бикини через порты (ярко)\end{DoxyVerb}
+ Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=254pt]{namespace_p_p_i__3_d__8x8x8___girl_a9c40ffe7e4cf3bb1341289f31f2426c1_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{namespace_p_p_i__3_d__8x8x8___girl_a7deec1d5cde04673f4696a17ccd745fb}\index{PPI\_3D\_8x8x8\_Girl@{PPI\_3D\_8x8x8\_Girl}!\_cube3d\_widget@{\_cube3d\_widget}}
+\index{\_cube3d\_widget@{\_cube3d\_widget}!PPI\_3D\_8x8x8\_Girl@{PPI\_3D\_8x8x8\_Girl}}
+\doxysubsubsection{\texorpdfstring{\_cube3d\_widget}{\_cube3d\_widget}}
+{\footnotesize\ttfamily \label{namespace_p_p_i__3_d__8x8x8___girl_a7deec1d5cde04673f4696a17ccd745fb} 
+\+\_\+cube3d\+\_\+widget\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{namespace_p_p_i__3_d__8x8x8___girl_a42221ae13c427234b08a21d229eb2ad9}\index{PPI\_3D\_8x8x8\_Girl@{PPI\_3D\_8x8x8\_Girl}!base@{base}}
+\index{base@{base}!PPI\_3D\_8x8x8\_Girl@{PPI\_3D\_8x8x8\_Girl}}
+\doxysubsubsection{\texorpdfstring{base}{base}}
+{\footnotesize\ttfamily \label{namespace_p_p_i__3_d__8x8x8___girl_a42221ae13c427234b08a21d229eb2ad9} 
+base = ppi.\+base\+\_\+port}
+
+\Hypertarget{namespace_p_p_i__3_d__8x8x8___girl_aa1e81305dceaa331a3896ece513bbb03}\index{PPI\_3D\_8x8x8\_Girl@{PPI\_3D\_8x8x8\_Girl}!BODY\_BRIGHTNESS@{BODY\_BRIGHTNESS}}
+\index{BODY\_BRIGHTNESS@{BODY\_BRIGHTNESS}!PPI\_3D\_8x8x8\_Girl@{PPI\_3D\_8x8x8\_Girl}}
+\doxysubsubsection{\texorpdfstring{BODY\_BRIGHTNESS}{BODY\_BRIGHTNESS}}
+{\footnotesize\ttfamily \label{namespace_p_p_i__3_d__8x8x8___girl_aa1e81305dceaa331a3896ece513bbb03} 
+float BODY\+\_\+\+BRIGHTNESS = 0.\+35}
+
+\Hypertarget{namespace_p_p_i__3_d__8x8x8___girl_a5111f8f1b8eef28b2f15aa7dff548677}\index{PPI\_3D\_8x8x8\_Girl@{PPI\_3D\_8x8x8\_Girl}!cls@{cls}}
+\index{cls@{cls}!PPI\_3D\_8x8x8\_Girl@{PPI\_3D\_8x8x8\_Girl}}
+\doxysubsubsection{\texorpdfstring{cls}{cls}}
+{\footnotesize\ttfamily \label{namespace_p_p_i__3_d__8x8x8___girl_a5111f8f1b8eef28b2f15aa7dff548677} 
+cls = type(d).\+\_\+\+\_\+name\+\_\+\+\_\+}
+
+\Hypertarget{namespace_p_p_i__3_d__8x8x8___girl_a63e2970710932188a4748c00bc0cc686}\index{PPI\_3D\_8x8x8\_Girl@{PPI\_3D\_8x8x8\_Girl}!cube\_dev@{cube\_dev}}
+\index{cube\_dev@{cube\_dev}!PPI\_3D\_8x8x8\_Girl@{PPI\_3D\_8x8x8\_Girl}}
+\doxysubsubsection{\texorpdfstring{cube\_dev}{cube\_dev}}
+{\footnotesize\ttfamily \label{namespace_p_p_i__3_d__8x8x8___girl_a63e2970710932188a4748c00bc0cc686} 
+cube\+\_\+dev = None}
+
+\Hypertarget{namespace_p_p_i__3_d__8x8x8___girl_a1c0eb42c54d3a2253feb3e3bea56708f}\index{PPI\_3D\_8x8x8\_Girl@{PPI\_3D\_8x8x8\_Girl}!cube\_widget@{cube\_widget}}
+\index{cube\_widget@{cube\_widget}!PPI\_3D\_8x8x8\_Girl@{PPI\_3D\_8x8x8\_Girl}}
+\doxysubsubsection{\texorpdfstring{cube\_widget}{cube\_widget}}
+{\footnotesize\ttfamily \label{namespace_p_p_i__3_d__8x8x8___girl_a1c0eb42c54d3a2253feb3e3bea56708f} 
+cube\+\_\+widget = api.\+mw.\+\_\+cube3d\+\_\+widget}
+
+\Hypertarget{namespace_p_p_i__3_d__8x8x8___girl_aff81f1cf67743f007ea4063fe755c962}\index{PPI\_3D\_8x8x8\_Girl@{PPI\_3D\_8x8x8\_Girl}!DANCE\_SEQUENCE@{DANCE\_SEQUENCE}}
+\index{DANCE\_SEQUENCE@{DANCE\_SEQUENCE}!PPI\_3D\_8x8x8\_Girl@{PPI\_3D\_8x8x8\_Girl}}
+\doxysubsubsection{\texorpdfstring{DANCE\_SEQUENCE}{DANCE\_SEQUENCE}}
+{\footnotesize\ttfamily \label{namespace_p_p_i__3_d__8x8x8___girl_aff81f1cf67743f007ea4063fe755c962} 
+list DANCE\+\_\+\+SEQUENCE = \mbox{[}\mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___girl_ae852168346b9c8dcb06e100d96310421}{FRAME\+\_\+0}}, \mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___girl_a56c6434c47b60900350215f03fac5574}{FRAME\+\_\+1}}, \mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___girl_a712cd417d8327e504132f338e8f6da09}{FRAME\+\_\+2}}, \mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___girl_ae48317b8e25d69ab87a86f8b3359c370}{FRAME\+\_\+3}}\mbox{]}}
+
+\Hypertarget{namespace_p_p_i__3_d__8x8x8___girl_a098c7e633c74c8e36ed8dcfedfdaaeb9}\index{PPI\_3D\_8x8x8\_Girl@{PPI\_3D\_8x8x8\_Girl}!DANCE\_SPEED@{DANCE\_SPEED}}
+\index{DANCE\_SPEED@{DANCE\_SPEED}!PPI\_3D\_8x8x8\_Girl@{PPI\_3D\_8x8x8\_Girl}}
+\doxysubsubsection{\texorpdfstring{DANCE\_SPEED}{DANCE\_SPEED}}
+{\footnotesize\ttfamily \label{namespace_p_p_i__3_d__8x8x8___girl_a098c7e633c74c8e36ed8dcfedfdaaeb9} 
+int DANCE\+\_\+\+SPEED = 320}
+
+\Hypertarget{namespace_p_p_i__3_d__8x8x8___girl_a6e94cece2a4cd0fb020a9d99bebe3dee}\index{PPI\_3D\_8x8x8\_Girl@{PPI\_3D\_8x8x8\_Girl}!DEPTH\_LAYERS@{DEPTH\_LAYERS}}
+\index{DEPTH\_LAYERS@{DEPTH\_LAYERS}!PPI\_3D\_8x8x8\_Girl@{PPI\_3D\_8x8x8\_Girl}}
+\doxysubsubsection{\texorpdfstring{DEPTH\_LAYERS}{DEPTH\_LAYERS}}
+{\footnotesize\ttfamily \label{namespace_p_p_i__3_d__8x8x8___girl_a6e94cece2a4cd0fb020a9d99bebe3dee} 
+list DEPTH\+\_\+\+LAYERS = \mbox{[}3, 4, 5\mbox{]}}
+
+\Hypertarget{namespace_p_p_i__3_d__8x8x8___girl_ae852168346b9c8dcb06e100d96310421}\index{PPI\_3D\_8x8x8\_Girl@{PPI\_3D\_8x8x8\_Girl}!FRAME\_0@{FRAME\_0}}
+\index{FRAME\_0@{FRAME\_0}!PPI\_3D\_8x8x8\_Girl@{PPI\_3D\_8x8x8\_Girl}}
+\doxysubsubsection{\texorpdfstring{FRAME\_0}{FRAME\_0}}
+{\footnotesize\ttfamily \label{namespace_p_p_i__3_d__8x8x8___girl_ae852168346b9c8dcb06e100d96310421} 
+dict FRAME\+\_\+0}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ =\ \ \{}
+\DoxyCodeLine{00002\ \ \ \ \ \textcolor{stringliteral}{'body'}:\ [}
+\DoxyCodeLine{00003\ \ \ \ \ \ \ \ \ 0b00111100,\ \ \textcolor{comment}{\#\ голова}}
+\DoxyCodeLine{00004\ \ \ \ \ \ \ \ \ 0b01111110,\ \ \textcolor{comment}{\#\ плечи\ +\ руки}}
+\DoxyCodeLine{00005\ \ \ \ \ \ \ \ \ 0b00111100,\ \ \textcolor{comment}{\#\ торс}}
+\DoxyCodeLine{00006\ \ \ \ \ \ \ \ \ 0b00111100,\ \ \textcolor{comment}{\#\ талия}}
+\DoxyCodeLine{00007\ \ \ \ \ \ \ \ \ 0b01111110,\ \ \textcolor{comment}{\#\ бёдра}}
+\DoxyCodeLine{00008\ \ \ \ \ \ \ \ \ 0b00100100,\ \ \textcolor{comment}{\#\ ноги}}
+\DoxyCodeLine{00009\ \ \ \ \ \ \ \ \ 0b00100100,\ \ \textcolor{comment}{\#\ ноги}}
+\DoxyCodeLine{00010\ \ \ \ \ \ \ \ \ 0b01100110,\ \ \textcolor{comment}{\#\ ступни}}
+\DoxyCodeLine{00011\ \ \ \ \ ],}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{stringliteral}{'bikini'}:\ [}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ 0b00000000,}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ 0b00000000,}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ 0b00111100,\ \ \textcolor{comment}{\#\ верх\ купальника\ (грудь)}}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ 0b00000000,}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ 0b00111100,\ \ \textcolor{comment}{\#\ низ\ купальника\ (бёдра)}}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ 0b00000000,}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ 0b00000000,}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ 0b00000000,}
+\DoxyCodeLine{00021\ \ \ \ \ ],}
+\DoxyCodeLine{00022\ \}}
+
+\end{DoxyCode}
+\Hypertarget{namespace_p_p_i__3_d__8x8x8___girl_a56c6434c47b60900350215f03fac5574}\index{PPI\_3D\_8x8x8\_Girl@{PPI\_3D\_8x8x8\_Girl}!FRAME\_1@{FRAME\_1}}
+\index{FRAME\_1@{FRAME\_1}!PPI\_3D\_8x8x8\_Girl@{PPI\_3D\_8x8x8\_Girl}}
+\doxysubsubsection{\texorpdfstring{FRAME\_1}{FRAME\_1}}
+{\footnotesize\ttfamily \label{namespace_p_p_i__3_d__8x8x8___girl_a56c6434c47b60900350215f03fac5574} 
+dict FRAME\+\_\+1}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ =\ \ \{}
+\DoxyCodeLine{00002\ \ \ \ \ \textcolor{stringliteral}{'body'}:\ [}
+\DoxyCodeLine{00003\ \ \ \ \ \ \ \ \ 0b10011001,\ \ \textcolor{comment}{\#\ руки\ вверх\ +\ голова}}
+\DoxyCodeLine{00004\ \ \ \ \ \ \ \ \ 0b01111110,\ \ \textcolor{comment}{\#\ плечи}}
+\DoxyCodeLine{00005\ \ \ \ \ \ \ \ \ 0b00111100,\ \ \textcolor{comment}{\#\ торс}}
+\DoxyCodeLine{00006\ \ \ \ \ \ \ \ \ 0b00111100,\ \ \textcolor{comment}{\#\ талия}}
+\DoxyCodeLine{00007\ \ \ \ \ \ \ \ \ 0b01111110,\ \ \textcolor{comment}{\#\ бёдра}}
+\DoxyCodeLine{00008\ \ \ \ \ \ \ \ \ 0b00100100,\ \ \textcolor{comment}{\#\ ноги}}
+\DoxyCodeLine{00009\ \ \ \ \ \ \ \ \ 0b00100100,\ \ \textcolor{comment}{\#\ ноги}}
+\DoxyCodeLine{00010\ \ \ \ \ \ \ \ \ 0b01100110,\ \ \textcolor{comment}{\#\ ступни}}
+\DoxyCodeLine{00011\ \ \ \ \ ],}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{stringliteral}{'bikini'}:\ FRAME\_0[\textcolor{stringliteral}{'bikini'}],}
+\DoxyCodeLine{00013\ \}}
+
+\end{DoxyCode}
+\Hypertarget{namespace_p_p_i__3_d__8x8x8___girl_a712cd417d8327e504132f338e8f6da09}\index{PPI\_3D\_8x8x8\_Girl@{PPI\_3D\_8x8x8\_Girl}!FRAME\_2@{FRAME\_2}}
+\index{FRAME\_2@{FRAME\_2}!PPI\_3D\_8x8x8\_Girl@{PPI\_3D\_8x8x8\_Girl}}
+\doxysubsubsection{\texorpdfstring{FRAME\_2}{FRAME\_2}}
+{\footnotesize\ttfamily \label{namespace_p_p_i__3_d__8x8x8___girl_a712cd417d8327e504132f338e8f6da09} 
+dict FRAME\+\_\+2}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ =\ \ \{}
+\DoxyCodeLine{00002\ \ \ \ \ \textcolor{stringliteral}{'body'}:\ [}
+\DoxyCodeLine{00003\ \ \ \ \ \ \ \ \ 0b00111100,\ \ \textcolor{comment}{\#\ голова}}
+\DoxyCodeLine{00004\ \ \ \ \ \ \ \ \ 0b00111111,\ \ \textcolor{comment}{\#\ руки\ вправо}}
+\DoxyCodeLine{00005\ \ \ \ \ \ \ \ \ 0b00111100,\ \ \textcolor{comment}{\#\ торс}}
+\DoxyCodeLine{00006\ \ \ \ \ \ \ \ \ 0b00111100,\ \ \textcolor{comment}{\#\ талия}}
+\DoxyCodeLine{00007\ \ \ \ \ \ \ \ \ 0b01111100,\ \ \textcolor{comment}{\#\ бёдра\ влево}}
+\DoxyCodeLine{00008\ \ \ \ \ \ \ \ \ 0b00100100,\ \ \textcolor{comment}{\#\ ноги}}
+\DoxyCodeLine{00009\ \ \ \ \ \ \ \ \ 0b00100100,\ \ \textcolor{comment}{\#\ ноги}}
+\DoxyCodeLine{00010\ \ \ \ \ \ \ \ \ 0b01100110,\ \ \textcolor{comment}{\#\ ступни}}
+\DoxyCodeLine{00011\ \ \ \ \ ],}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{stringliteral}{'bikini'}:\ [}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ 0b00000000,}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ 0b00000000,}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ 0b00111100,\ \ \textcolor{comment}{\#\ верх}}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ 0b00000000,}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ 0b01111000,\ \ \textcolor{comment}{\#\ низ\ (смещён\ с\ бёдрами)}}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ 0b00000000,}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ 0b00000000,}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ 0b00000000,}
+\DoxyCodeLine{00021\ \ \ \ \ ],}
+\DoxyCodeLine{00022\ \}}
+
+\end{DoxyCode}
+\Hypertarget{namespace_p_p_i__3_d__8x8x8___girl_ae48317b8e25d69ab87a86f8b3359c370}\index{PPI\_3D\_8x8x8\_Girl@{PPI\_3D\_8x8x8\_Girl}!FRAME\_3@{FRAME\_3}}
+\index{FRAME\_3@{FRAME\_3}!PPI\_3D\_8x8x8\_Girl@{PPI\_3D\_8x8x8\_Girl}}
+\doxysubsubsection{\texorpdfstring{FRAME\_3}{FRAME\_3}}
+{\footnotesize\ttfamily \label{namespace_p_p_i__3_d__8x8x8___girl_ae48317b8e25d69ab87a86f8b3359c370} 
+dict FRAME\+\_\+3}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ =\ \ \{}
+\DoxyCodeLine{00002\ \ \ \ \ \textcolor{stringliteral}{'body'}:\ [}
+\DoxyCodeLine{00003\ \ \ \ \ \ \ \ \ 0b00111100,\ \ \textcolor{comment}{\#\ голова}}
+\DoxyCodeLine{00004\ \ \ \ \ \ \ \ \ 0b11111100,\ \ \textcolor{comment}{\#\ руки\ влево}}
+\DoxyCodeLine{00005\ \ \ \ \ \ \ \ \ 0b00111100,\ \ \textcolor{comment}{\#\ торс}}
+\DoxyCodeLine{00006\ \ \ \ \ \ \ \ \ 0b00111100,\ \ \textcolor{comment}{\#\ талия}}
+\DoxyCodeLine{00007\ \ \ \ \ \ \ \ \ 0b00111110,\ \ \textcolor{comment}{\#\ бёдра\ вправо}}
+\DoxyCodeLine{00008\ \ \ \ \ \ \ \ \ 0b00100100,\ \ \textcolor{comment}{\#\ ноги}}
+\DoxyCodeLine{00009\ \ \ \ \ \ \ \ \ 0b00100100,\ \ \textcolor{comment}{\#\ ноги}}
+\DoxyCodeLine{00010\ \ \ \ \ \ \ \ \ 0b01100110,\ \ \textcolor{comment}{\#\ ступни}}
+\DoxyCodeLine{00011\ \ \ \ \ ],}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{stringliteral}{'bikini'}:\ [}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ 0b00000000,}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ 0b00000000,}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ 0b00111100,\ \ \textcolor{comment}{\#\ верх}}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ 0b00000000,}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ 0b00111100,\ \ \textcolor{comment}{\#\ низ\ (смещён\ с\ бёдрами)}}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ 0b00000000,}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ 0b00000000,}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ 0b00000000,}
+\DoxyCodeLine{00021\ \ \ \ \ ],}
+\DoxyCodeLine{00022\ \}}
+
+\end{DoxyCode}
+\Hypertarget{namespace_p_p_i__3_d__8x8x8___girl_a383419043e9fa0a2ee40a77c34e6819b}\index{PPI\_3D\_8x8x8\_Girl@{PPI\_3D\_8x8x8\_Girl}!frame\_idx@{frame\_idx}}
+\index{frame\_idx@{frame\_idx}!PPI\_3D\_8x8x8\_Girl@{PPI\_3D\_8x8x8\_Girl}}
+\doxysubsubsection{\texorpdfstring{frame\_idx}{frame\_idx}}
+{\footnotesize\ttfamily \label{namespace_p_p_i__3_d__8x8x8___girl_a383419043e9fa0a2ee40a77c34e6819b} 
+list frame\+\_\+idx = \mbox{[}0\mbox{]}}
+
+\Hypertarget{namespace_p_p_i__3_d__8x8x8___girl_a343e78fb6e36c1ee55ef943361746f6e}\index{PPI\_3D\_8x8x8\_Girl@{PPI\_3D\_8x8x8\_Girl}!ppi@{ppi}}
+\index{ppi@{ppi}!PPI\_3D\_8x8x8\_Girl@{PPI\_3D\_8x8x8\_Girl}}
+\doxysubsubsection{\texorpdfstring{ppi}{ppi}}
+{\footnotesize\ttfamily \label{namespace_p_p_i__3_d__8x8x8___girl_a343e78fb6e36c1ee55ef943361746f6e} 
+ppi = None}
+
+\Hypertarget{namespace_p_p_i__3_d__8x8x8___girl_a5d2c023108742a1ce78ba9823c06ea35}\index{PPI\_3D\_8x8x8\_Girl@{PPI\_3D\_8x8x8\_Girl}!target@{target}}
+\index{target@{target}!PPI\_3D\_8x8x8\_Girl@{PPI\_3D\_8x8x8\_Girl}}
+\doxysubsubsection{\texorpdfstring{target}{target}}
+{\footnotesize\ttfamily \label{namespace_p_p_i__3_d__8x8x8___girl_a5d2c023108742a1ce78ba9823c06ea35} 
+target = \mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___girl_a63e2970710932188a4748c00bc0cc686}{cube\+\_\+dev}} if \mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___girl_a63e2970710932188a4748c00bc0cc686}{cube\+\_\+dev}} is not None else \mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___girl_a343e78fb6e36c1ee55ef943361746f6e}{ppi}}}
+

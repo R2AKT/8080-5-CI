@@ -1,130 +1,130 @@
-\doxysection{i8080\+\_\+\+CI.\+I8080\+Disassembler Class Reference}
-\hypertarget{classi8080___c_i_1_1_i8080_disassembler}{}\label{classi8080___c_i_1_1_i8080_disassembler}\index{i8080\_CI.I8080Disassembler@{i8080\_CI.I8080Disassembler}}
+\doxysection{I8080\+Disassembler Class Reference}
+\hypertarget{classi8080___c_i_1_1_i8080_disassembler}{}\label{classi8080___c_i_1_1_i8080_disassembler}\index{I8080Disassembler@{I8080Disassembler}}
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classi8080___c_i_1_1_i8080_disassembler_a3fbe3fbcc83fa89986281fd3077359dd}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self)
+\mbox{\hyperlink{classi8080___c_i_1_1_i8080_disassembler_abdd362d5f799ad16b5d6700efe590290}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self)
 \item 
-\mbox{\hyperlink{classi8080___c_i_1_1_i8080_disassembler_a3219664b3d6548280c79f9e4ce81b4eb}{get\+\_\+target}} (self, op, args)
+\mbox{\hyperlink{classi8080___c_i_1_1_i8080_disassembler_ad34d8843c1bb7819a6ce3932ebbe09d3}{get\+\_\+target}} (self, op, args)
 \item 
-\mbox{\hyperlink{classi8080___c_i_1_1_i8080_disassembler_acbce29d19595c2f9ddf344210b150b95}{get\+\_\+mnemonic}} (self, byte\+\_\+val)
+\mbox{\hyperlink{classi8080___c_i_1_1_i8080_disassembler_abbcdd7fe5a09521e769a5149d7fb6b0e}{get\+\_\+mnemonic}} (self, byte\+\_\+val)
 \item 
-\mbox{\hyperlink{classi8080___c_i_1_1_i8080_disassembler_a23a80cef8e3ac7c9adec677cec370a65}{disassemble}} (self, mem\+\_\+dict, start\+\_\+addr, length)
+\mbox{\hyperlink{classi8080___c_i_1_1_i8080_disassembler_a62fa24b8b437b69464ea36d46fe86ca7}{disassemble}} (self, mem\+\_\+dict, start\+\_\+addr, length)
 \end{DoxyCompactItemize}
-\doxysubsubsection*{Public Attributes}
+\doxysubsubsection*{Data Fields}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classi8080___c_i_1_1_i8080_disassembler_a80fe3f9a9c5d4c81a60a80b7bab00e0e}{table}} = self.\+\_\+generate\+\_\+table()
+\mbox{\hyperlink{classi8080___c_i_1_1_i8080_disassembler_ab172ed3d3d31ff02fc5f798fe7e1bfb8}{table}} = self.\+\_\+generate\+\_\+table()
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Static Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-list \mbox{\hyperlink{classi8080___c_i_1_1_i8080_disassembler_a0038949ed23e4c11181a5beb17bc5e61}{REGS}} = \mbox{[}\textquotesingle{}B\textquotesingle{}, \textquotesingle{}C\textquotesingle{}, \textquotesingle{}D\textquotesingle{}, \textquotesingle{}E\textquotesingle{}, \textquotesingle{}H\textquotesingle{}, \textquotesingle{}L\textquotesingle{}, \textquotesingle{}M\textquotesingle{}, \textquotesingle{}A\textquotesingle{}\mbox{]}
+list \mbox{\hyperlink{classi8080___c_i_1_1_i8080_disassembler_ae09169f8ebaf5f2b5cd78b4edf3c067f}{REGS}} = \mbox{[}\textquotesingle{}B\textquotesingle{}, \textquotesingle{}C\textquotesingle{}, \textquotesingle{}D\textquotesingle{}, \textquotesingle{}E\textquotesingle{}, \textquotesingle{}H\textquotesingle{}, \textquotesingle{}L\textquotesingle{}, \textquotesingle{}M\textquotesingle{}, \textquotesingle{}A\textquotesingle{}\mbox{]}
 \item 
-list \mbox{\hyperlink{classi8080___c_i_1_1_i8080_disassembler_a5fe0e1a61cc0add48878c87940dae159}{ALUS}} = \mbox{[}\textquotesingle{}ADD\textquotesingle{}, \textquotesingle{}ADC\textquotesingle{}, \textquotesingle{}SUB\textquotesingle{}, \textquotesingle{}SBB\textquotesingle{}, \textquotesingle{}ANA\textquotesingle{}, \textquotesingle{}XRA\textquotesingle{}, \textquotesingle{}ORA\textquotesingle{}, \textquotesingle{}CMP\textquotesingle{}\mbox{]}
+list \mbox{\hyperlink{classi8080___c_i_1_1_i8080_disassembler_af6380ea2c7ff36789891515482c893b2}{ALUS}} = \mbox{[}\textquotesingle{}ADD\textquotesingle{}, \textquotesingle{}ADC\textquotesingle{}, \textquotesingle{}SUB\textquotesingle{}, \textquotesingle{}SBB\textquotesingle{}, \textquotesingle{}ANA\textquotesingle{}, \textquotesingle{}XRA\textquotesingle{}, \textquotesingle{}ORA\textquotesingle{}, \textquotesingle{}CMP\textquotesingle{}\mbox{]}
 \item 
-list \mbox{\hyperlink{classi8080___c_i_1_1_i8080_disassembler_a40109a6ef8b56ac58048d0e6332e9e32}{RP}} = \mbox{[}\textquotesingle{}B\textquotesingle{}, \textquotesingle{}D\textquotesingle{}, \textquotesingle{}H\textquotesingle{}, \textquotesingle{}SP\textquotesingle{}\mbox{]}
+list \mbox{\hyperlink{classi8080___c_i_1_1_i8080_disassembler_acdece1ce8bbfee7728d854341b2b30e7}{RP}} = \mbox{[}\textquotesingle{}B\textquotesingle{}, \textquotesingle{}D\textquotesingle{}, \textquotesingle{}H\textquotesingle{}, \textquotesingle{}SP\textquotesingle{}\mbox{]}
 \item 
-list \mbox{\hyperlink{classi8080___c_i_1_1_i8080_disassembler_a8ec414692f0e249ec0d3b30f3bb6441e}{RP\+\_\+\+PUSH}} = \mbox{[}\textquotesingle{}B\textquotesingle{}, \textquotesingle{}D\textquotesingle{}, \textquotesingle{}H\textquotesingle{}, \textquotesingle{}PSW\textquotesingle{}\mbox{]}
+list \mbox{\hyperlink{classi8080___c_i_1_1_i8080_disassembler_a6a65ce1e64844c72be1d34f142992572}{RP\+\_\+\+PUSH}} = \mbox{[}\textquotesingle{}B\textquotesingle{}, \textquotesingle{}D\textquotesingle{}, \textquotesingle{}H\textquotesingle{}, \textquotesingle{}PSW\textquotesingle{}\mbox{]}
 \item 
-list \mbox{\hyperlink{classi8080___c_i_1_1_i8080_disassembler_ac8ae7fd9e75363df29d4014b2b3dd097}{CC}} = \mbox{[}\textquotesingle{}NZ\textquotesingle{}, \textquotesingle{}Z\textquotesingle{}, \textquotesingle{}NC\textquotesingle{}, \textquotesingle{}C\textquotesingle{}, \textquotesingle{}PO\textquotesingle{}, \textquotesingle{}PE\textquotesingle{}, \textquotesingle{}P\textquotesingle{}, \textquotesingle{}M\textquotesingle{}\mbox{]}
+list \mbox{\hyperlink{classi8080___c_i_1_1_i8080_disassembler_ac4d64803300bd7bcb89c41ca0b5d6978}{CC}} = \mbox{[}\textquotesingle{}NZ\textquotesingle{}, \textquotesingle{}Z\textquotesingle{}, \textquotesingle{}NC\textquotesingle{}, \textquotesingle{}C\textquotesingle{}, \textquotesingle{}PO\textquotesingle{}, \textquotesingle{}PE\textquotesingle{}, \textquotesingle{}P\textquotesingle{}, \textquotesingle{}M\textquotesingle{}\mbox{]}
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classi8080___c_i_1_1_i8080_disassembler_a1f4c7e96a45155a0311e3771ed23b34c}{\+\_\+generate\+\_\+table}} (self)
+\mbox{\hyperlink{classi8080___c_i_1_1_i8080_disassembler_a5d5a4eaac322672f5e5a69e3fcab98af}{\+\_\+generate\+\_\+table}} (self)
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\Hypertarget{classi8080___c_i_1_1_i8080_disassembler_a3fbe3fbcc83fa89986281fd3077359dd}\index{i8080\_CI.I8080Disassembler@{i8080\_CI.I8080Disassembler}!\_\_init\_\_@{\_\_init\_\_}}
-\index{\_\_init\_\_@{\_\_init\_\_}!i8080\_CI.I8080Disassembler@{i8080\_CI.I8080Disassembler}}
+\Hypertarget{classi8080___c_i_1_1_i8080_disassembler_abdd362d5f799ad16b5d6700efe590290}\index{I8080Disassembler@{I8080Disassembler}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!I8080Disassembler@{I8080Disassembler}}
 \doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
-{\footnotesize\ttfamily \label{classi8080___c_i_1_1_i8080_disassembler_a3fbe3fbcc83fa89986281fd3077359dd} 
-i8080\+\_\+\+CI.\+I8080\+Disassembler.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_i8080_disassembler_abdd362d5f799ad16b5d6700efe590290} 
+\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
 
 
 
 \doxysubsection{Member Function Documentation}
-\Hypertarget{classi8080___c_i_1_1_i8080_disassembler_a1f4c7e96a45155a0311e3771ed23b34c}\index{i8080\_CI.I8080Disassembler@{i8080\_CI.I8080Disassembler}!\_generate\_table@{\_generate\_table}}
-\index{\_generate\_table@{\_generate\_table}!i8080\_CI.I8080Disassembler@{i8080\_CI.I8080Disassembler}}
+\Hypertarget{classi8080___c_i_1_1_i8080_disassembler_a5d5a4eaac322672f5e5a69e3fcab98af}\index{I8080Disassembler@{I8080Disassembler}!\_generate\_table@{\_generate\_table}}
+\index{\_generate\_table@{\_generate\_table}!I8080Disassembler@{I8080Disassembler}}
 \doxysubsubsection{\texorpdfstring{\_generate\_table()}{\_generate\_table()}}
-{\footnotesize\ttfamily \label{classi8080___c_i_1_1_i8080_disassembler_a1f4c7e96a45155a0311e3771ed23b34c} 
-i8080\+\_\+\+CI.\+I8080\+Disassembler.\+\_\+generate\+\_\+table (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_i8080_disassembler_a5d5a4eaac322672f5e5a69e3fcab98af} 
+\+\_\+generate\+\_\+table (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
-\Hypertarget{classi8080___c_i_1_1_i8080_disassembler_a23a80cef8e3ac7c9adec677cec370a65}\index{i8080\_CI.I8080Disassembler@{i8080\_CI.I8080Disassembler}!disassemble@{disassemble}}
-\index{disassemble@{disassemble}!i8080\_CI.I8080Disassembler@{i8080\_CI.I8080Disassembler}}
+\Hypertarget{classi8080___c_i_1_1_i8080_disassembler_a62fa24b8b437b69464ea36d46fe86ca7}\index{I8080Disassembler@{I8080Disassembler}!disassemble@{disassemble}}
+\index{disassemble@{disassemble}!I8080Disassembler@{I8080Disassembler}}
 \doxysubsubsection{\texorpdfstring{disassemble()}{disassemble()}}
-{\footnotesize\ttfamily \label{classi8080___c_i_1_1_i8080_disassembler_a23a80cef8e3ac7c9adec677cec370a65} 
-i8080\+\_\+\+CI.\+I8080\+Disassembler.\+disassemble (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{mem\+\_\+dict}{, }\item[{}]{start\+\_\+addr}{, }\item[{}]{length}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_i8080_disassembler_a62fa24b8b437b69464ea36d46fe86ca7} 
+disassemble (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{mem\+\_\+dict}{, }\item[{}]{start\+\_\+addr}{, }\item[{}]{length}{}\end{DoxyParamCaption})}
 
 Here is the call graph for this function\+:
 \nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classi8080___c_i_1_1_i8080_disassembler_a23a80cef8e3ac7c9adec677cec370a65_cgraph}
+\includegraphics[width=246pt]{classi8080___c_i_1_1_i8080_disassembler_a62fa24b8b437b69464ea36d46fe86ca7_cgraph}
 \end{center}
 \end{figure}
-\Hypertarget{classi8080___c_i_1_1_i8080_disassembler_acbce29d19595c2f9ddf344210b150b95}\index{i8080\_CI.I8080Disassembler@{i8080\_CI.I8080Disassembler}!get\_mnemonic@{get\_mnemonic}}
-\index{get\_mnemonic@{get\_mnemonic}!i8080\_CI.I8080Disassembler@{i8080\_CI.I8080Disassembler}}
+\Hypertarget{classi8080___c_i_1_1_i8080_disassembler_abbcdd7fe5a09521e769a5149d7fb6b0e}\index{I8080Disassembler@{I8080Disassembler}!get\_mnemonic@{get\_mnemonic}}
+\index{get\_mnemonic@{get\_mnemonic}!I8080Disassembler@{I8080Disassembler}}
 \doxysubsubsection{\texorpdfstring{get\_mnemonic()}{get\_mnemonic()}}
-{\footnotesize\ttfamily \label{classi8080___c_i_1_1_i8080_disassembler_acbce29d19595c2f9ddf344210b150b95} 
-i8080\+\_\+\+CI.\+I8080\+Disassembler.\+get\+\_\+mnemonic (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{byte\+\_\+val}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_i8080_disassembler_abbcdd7fe5a09521e769a5149d7fb6b0e} 
+get\+\_\+mnemonic (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{byte\+\_\+val}{}\end{DoxyParamCaption})}
 
 \begin{DoxyVerb}Возвращает мнемонику для одного байта (для подсказок)\end{DoxyVerb}
- \Hypertarget{classi8080___c_i_1_1_i8080_disassembler_a3219664b3d6548280c79f9e4ce81b4eb}\index{i8080\_CI.I8080Disassembler@{i8080\_CI.I8080Disassembler}!get\_target@{get\_target}}
-\index{get\_target@{get\_target}!i8080\_CI.I8080Disassembler@{i8080\_CI.I8080Disassembler}}
+ \Hypertarget{classi8080___c_i_1_1_i8080_disassembler_ad34d8843c1bb7819a6ce3932ebbe09d3}\index{I8080Disassembler@{I8080Disassembler}!get\_target@{get\_target}}
+\index{get\_target@{get\_target}!I8080Disassembler@{I8080Disassembler}}
 \doxysubsubsection{\texorpdfstring{get\_target()}{get\_target()}}
-{\footnotesize\ttfamily \label{classi8080___c_i_1_1_i8080_disassembler_a3219664b3d6548280c79f9e4ce81b4eb} 
-i8080\+\_\+\+CI.\+I8080\+Disassembler.\+get\+\_\+target (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{op}{, }\item[{}]{args}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_i8080_disassembler_ad34d8843c1bb7819a6ce3932ebbe09d3} 
+get\+\_\+target (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{op}{, }\item[{}]{args}{}\end{DoxyParamCaption})}
 
 Here is the caller graph for this function\+:
 \nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classi8080___c_i_1_1_i8080_disassembler_a3219664b3d6548280c79f9e4ce81b4eb_icgraph}
+\includegraphics[width=246pt]{classi8080___c_i_1_1_i8080_disassembler_ad34d8843c1bb7819a6ce3932ebbe09d3_icgraph}
 \end{center}
 \end{figure}
 
 
-\doxysubsection{Member Data Documentation}
-\Hypertarget{classi8080___c_i_1_1_i8080_disassembler_a5fe0e1a61cc0add48878c87940dae159}\index{i8080\_CI.I8080Disassembler@{i8080\_CI.I8080Disassembler}!ALUS@{ALUS}}
-\index{ALUS@{ALUS}!i8080\_CI.I8080Disassembler@{i8080\_CI.I8080Disassembler}}
+\doxysubsection{Field Documentation}
+\Hypertarget{classi8080___c_i_1_1_i8080_disassembler_af6380ea2c7ff36789891515482c893b2}\index{I8080Disassembler@{I8080Disassembler}!ALUS@{ALUS}}
+\index{ALUS@{ALUS}!I8080Disassembler@{I8080Disassembler}}
 \doxysubsubsection{\texorpdfstring{ALUS}{ALUS}}
-{\footnotesize\ttfamily \label{classi8080___c_i_1_1_i8080_disassembler_a5fe0e1a61cc0add48878c87940dae159} 
-list i8080\+\_\+\+CI.\+I8080\+Disassembler.\+ALUS = \mbox{[}\textquotesingle{}ADD\textquotesingle{}, \textquotesingle{}ADC\textquotesingle{}, \textquotesingle{}SUB\textquotesingle{}, \textquotesingle{}SBB\textquotesingle{}, \textquotesingle{}ANA\textquotesingle{}, \textquotesingle{}XRA\textquotesingle{}, \textquotesingle{}ORA\textquotesingle{}, \textquotesingle{}CMP\textquotesingle{}\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_i8080_disassembler_af6380ea2c7ff36789891515482c893b2} 
+list ALUS = \mbox{[}\textquotesingle{}ADD\textquotesingle{}, \textquotesingle{}ADC\textquotesingle{}, \textquotesingle{}SUB\textquotesingle{}, \textquotesingle{}SBB\textquotesingle{}, \textquotesingle{}ANA\textquotesingle{}, \textquotesingle{}XRA\textquotesingle{}, \textquotesingle{}ORA\textquotesingle{}, \textquotesingle{}CMP\textquotesingle{}\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
 
-\Hypertarget{classi8080___c_i_1_1_i8080_disassembler_ac8ae7fd9e75363df29d4014b2b3dd097}\index{i8080\_CI.I8080Disassembler@{i8080\_CI.I8080Disassembler}!CC@{CC}}
-\index{CC@{CC}!i8080\_CI.I8080Disassembler@{i8080\_CI.I8080Disassembler}}
+\Hypertarget{classi8080___c_i_1_1_i8080_disassembler_ac4d64803300bd7bcb89c41ca0b5d6978}\index{I8080Disassembler@{I8080Disassembler}!CC@{CC}}
+\index{CC@{CC}!I8080Disassembler@{I8080Disassembler}}
 \doxysubsubsection{\texorpdfstring{CC}{CC}}
-{\footnotesize\ttfamily \label{classi8080___c_i_1_1_i8080_disassembler_ac8ae7fd9e75363df29d4014b2b3dd097} 
-list i8080\+\_\+\+CI.\+I8080\+Disassembler.\+CC = \mbox{[}\textquotesingle{}NZ\textquotesingle{}, \textquotesingle{}Z\textquotesingle{}, \textquotesingle{}NC\textquotesingle{}, \textquotesingle{}C\textquotesingle{}, \textquotesingle{}PO\textquotesingle{}, \textquotesingle{}PE\textquotesingle{}, \textquotesingle{}P\textquotesingle{}, \textquotesingle{}M\textquotesingle{}\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_i8080_disassembler_ac4d64803300bd7bcb89c41ca0b5d6978} 
+list CC = \mbox{[}\textquotesingle{}NZ\textquotesingle{}, \textquotesingle{}Z\textquotesingle{}, \textquotesingle{}NC\textquotesingle{}, \textquotesingle{}C\textquotesingle{}, \textquotesingle{}PO\textquotesingle{}, \textquotesingle{}PE\textquotesingle{}, \textquotesingle{}P\textquotesingle{}, \textquotesingle{}M\textquotesingle{}\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
 
-\Hypertarget{classi8080___c_i_1_1_i8080_disassembler_a0038949ed23e4c11181a5beb17bc5e61}\index{i8080\_CI.I8080Disassembler@{i8080\_CI.I8080Disassembler}!REGS@{REGS}}
-\index{REGS@{REGS}!i8080\_CI.I8080Disassembler@{i8080\_CI.I8080Disassembler}}
+\Hypertarget{classi8080___c_i_1_1_i8080_disassembler_ae09169f8ebaf5f2b5cd78b4edf3c067f}\index{I8080Disassembler@{I8080Disassembler}!REGS@{REGS}}
+\index{REGS@{REGS}!I8080Disassembler@{I8080Disassembler}}
 \doxysubsubsection{\texorpdfstring{REGS}{REGS}}
-{\footnotesize\ttfamily \label{classi8080___c_i_1_1_i8080_disassembler_a0038949ed23e4c11181a5beb17bc5e61} 
-list i8080\+\_\+\+CI.\+I8080\+Disassembler.\+REGS = \mbox{[}\textquotesingle{}B\textquotesingle{}, \textquotesingle{}C\textquotesingle{}, \textquotesingle{}D\textquotesingle{}, \textquotesingle{}E\textquotesingle{}, \textquotesingle{}H\textquotesingle{}, \textquotesingle{}L\textquotesingle{}, \textquotesingle{}M\textquotesingle{}, \textquotesingle{}A\textquotesingle{}\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_i8080_disassembler_ae09169f8ebaf5f2b5cd78b4edf3c067f} 
+list REGS = \mbox{[}\textquotesingle{}B\textquotesingle{}, \textquotesingle{}C\textquotesingle{}, \textquotesingle{}D\textquotesingle{}, \textquotesingle{}E\textquotesingle{}, \textquotesingle{}H\textquotesingle{}, \textquotesingle{}L\textquotesingle{}, \textquotesingle{}M\textquotesingle{}, \textquotesingle{}A\textquotesingle{}\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
 
-\Hypertarget{classi8080___c_i_1_1_i8080_disassembler_a40109a6ef8b56ac58048d0e6332e9e32}\index{i8080\_CI.I8080Disassembler@{i8080\_CI.I8080Disassembler}!RP@{RP}}
-\index{RP@{RP}!i8080\_CI.I8080Disassembler@{i8080\_CI.I8080Disassembler}}
+\Hypertarget{classi8080___c_i_1_1_i8080_disassembler_acdece1ce8bbfee7728d854341b2b30e7}\index{I8080Disassembler@{I8080Disassembler}!RP@{RP}}
+\index{RP@{RP}!I8080Disassembler@{I8080Disassembler}}
 \doxysubsubsection{\texorpdfstring{RP}{RP}}
-{\footnotesize\ttfamily \label{classi8080___c_i_1_1_i8080_disassembler_a40109a6ef8b56ac58048d0e6332e9e32} 
-list i8080\+\_\+\+CI.\+I8080\+Disassembler.\+RP = \mbox{[}\textquotesingle{}B\textquotesingle{}, \textquotesingle{}D\textquotesingle{}, \textquotesingle{}H\textquotesingle{}, \textquotesingle{}SP\textquotesingle{}\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_i8080_disassembler_acdece1ce8bbfee7728d854341b2b30e7} 
+list RP = \mbox{[}\textquotesingle{}B\textquotesingle{}, \textquotesingle{}D\textquotesingle{}, \textquotesingle{}H\textquotesingle{}, \textquotesingle{}SP\textquotesingle{}\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
 
-\Hypertarget{classi8080___c_i_1_1_i8080_disassembler_a8ec414692f0e249ec0d3b30f3bb6441e}\index{i8080\_CI.I8080Disassembler@{i8080\_CI.I8080Disassembler}!RP\_PUSH@{RP\_PUSH}}
-\index{RP\_PUSH@{RP\_PUSH}!i8080\_CI.I8080Disassembler@{i8080\_CI.I8080Disassembler}}
+\Hypertarget{classi8080___c_i_1_1_i8080_disassembler_a6a65ce1e64844c72be1d34f142992572}\index{I8080Disassembler@{I8080Disassembler}!RP\_PUSH@{RP\_PUSH}}
+\index{RP\_PUSH@{RP\_PUSH}!I8080Disassembler@{I8080Disassembler}}
 \doxysubsubsection{\texorpdfstring{RP\_PUSH}{RP\_PUSH}}
-{\footnotesize\ttfamily \label{classi8080___c_i_1_1_i8080_disassembler_a8ec414692f0e249ec0d3b30f3bb6441e} 
-list i8080\+\_\+\+CI.\+I8080\+Disassembler.\+RP\+\_\+\+PUSH = \mbox{[}\textquotesingle{}B\textquotesingle{}, \textquotesingle{}D\textquotesingle{}, \textquotesingle{}H\textquotesingle{}, \textquotesingle{}PSW\textquotesingle{}\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_i8080_disassembler_a6a65ce1e64844c72be1d34f142992572} 
+list RP\+\_\+\+PUSH = \mbox{[}\textquotesingle{}B\textquotesingle{}, \textquotesingle{}D\textquotesingle{}, \textquotesingle{}H\textquotesingle{}, \textquotesingle{}PSW\textquotesingle{}\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
 
-\Hypertarget{classi8080___c_i_1_1_i8080_disassembler_a80fe3f9a9c5d4c81a60a80b7bab00e0e}\index{i8080\_CI.I8080Disassembler@{i8080\_CI.I8080Disassembler}!table@{table}}
-\index{table@{table}!i8080\_CI.I8080Disassembler@{i8080\_CI.I8080Disassembler}}
+\Hypertarget{classi8080___c_i_1_1_i8080_disassembler_ab172ed3d3d31ff02fc5f798fe7e1bfb8}\index{I8080Disassembler@{I8080Disassembler}!table@{table}}
+\index{table@{table}!I8080Disassembler@{I8080Disassembler}}
 \doxysubsubsection{\texorpdfstring{table}{table}}
-{\footnotesize\ttfamily \label{classi8080___c_i_1_1_i8080_disassembler_a80fe3f9a9c5d4c81a60a80b7bab00e0e} 
-i8080\+\_\+\+CI.\+I8080\+Disassembler.\+table = self.\+\_\+generate\+\_\+table()}
+{\footnotesize\ttfamily \label{classi8080___c_i_1_1_i8080_disassembler_ab172ed3d3d31ff02fc5f798fe7e1bfb8} 
+table = self.\+\_\+generate\+\_\+table()}
 
 
 

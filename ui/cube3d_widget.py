@@ -67,6 +67,7 @@ class Cube3DWidget(QWidget):
         self.setMinimumSize(480, 480)
         self.setMouseTracking(True)
         self.setFocusPolicy(Qt.StrongFocus)
+        self.setWindowFlags(Qt.Window)
 
         # Подключение к 8255 только если нет устройства Cube3D
         if self.cube is None and self.device is not None:
@@ -183,14 +184,18 @@ class Cube3DWidget(QWidget):
     # МУЛЬТИПЛЕКСИРОВАНИЕ ЧЕРЕЗ 8255
     # =============================================
     def _connect_to_8255(self):
-        """Порты 8255 задают координату: A=X, B=Y, C=Z"""
+        """Порты 8255 задают координату: A=X, B=Y, C=Z.
+        Светодиод зажигается ТОЛЬКО при записи в порт Z (строб).
+        """
         original = self.device.on_port_change
 
         def on_port_change(port_num, value):
-            x = self.device.port_a & 0x07
-            y = self.device.port_b & 0x07
-            z = self.device.port_c & 0x07
-            self.brightness[z][y][x] = 1.0
+            # Зажигаем только при записи в порт C (Z = строб)
+            if port_num == 2:
+                x = self.device.port_a & 0x07
+                y = self.device.port_b & 0x07
+                z = self.device.port_c & 0x07
+                self.brightness[z][y][x] = 1.0
             if original:
                 original(port_num, value)
 
@@ -385,6 +390,12 @@ class Cube3DWidget(QWidget):
     # =============================================
     # СЛУЖЕБНОЕ
     # =============================================
+    def showEvent(self, event):
+        """Получить фокус при показе окна"""
+        super().showEvent(event)
+        self.raise_()
+        self.activateWindow()
+
     def refresh(self):
         self.update()
 

@@ -1,0 +1,12 @@
+<map id="reset" name="reset">
+<area shape="rect" id="Node000001" title=" " alt="" coords="484,88,534,115"/>
+<area shape="rect" id="Node000002" href="$classmodules_1_1io_1_1i8279_1_1_i8279.html#a78ba1ee5fb7ee81024376daefcff6051" title=" " alt="" coords="307,29,374,56"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="469,85,435,71,373,52,375,47,437,65,471,80"/>
+<area shape="rect" id="Node000003" href="$class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d.html#abdd362d5f799ad16b5d6700efe590290" title=" " alt="" coords="245,80,436,123"/>
+<area shape="poly" id="edge3_Node000001_Node000003" title=" " alt="" coords="468,104,437,104,437,99,468,99"/>
+<area shape="rect" id="Node000004" href="$class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d.html#a28a6e435e828ffadf79b895638c7779a" title=" " alt="" coords="245,147,436,189"/>
+<area shape="poly" id="edge4_Node000001_Node000004" title=" " alt="" coords="471,122,437,137,407,149,405,144,435,132,469,117"/>
+<area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="369,16,359,10,340,8,323,10,314,15,311,20,316,28,311,30,306,21,310,11,321,5,340,3,361,5,372,12"/>
+<area shape="rect" id="Node000005" href="$class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d.html#a69435232b14c0b0cbcdae3dc0a91b4be" title=" " alt="" coords="5,147,197,189"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="229,171,197,171,197,165,229,165"/>
+</map>

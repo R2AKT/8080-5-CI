@@ -1,0 +1,274 @@
+\doxysection{PPI\+\_\+3\+D\+\_\+8x8x8\+\_\+\+Rain Namespace Reference}
+\hypertarget{namespace_p_p_i__3_d__8x8x8___rain}{}\label{namespace_p_p_i__3_d__8x8x8___rain}\index{PPI\_3D\_8x8x8\_Rain@{PPI\_3D\_8x8x8\_Rain}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___rain_ad203c9018fb0b04e3189fe115e3b32e7}{spawn\+\_\+drops}} ()
+\item 
+\mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___rain_a3f08df6437eca51d3c9ad7132ab5b2e3}{update\+\_\+drops}} ()
+\item 
+\mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___rain_acd0fc3eb844e8bf5dcd9e17a36edc84d}{update\+\_\+splashes}} ()
+\item 
+\mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___rain_a3d620459cfe06ea6052cb957d063f456}{update\+\_\+lightning}} ()
+\item 
+\mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___rain_aaf65e120631888f32b031fb3d97e1de4}{render\+\_\+rain}} ()
+\item 
+\mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___rain_add153c28222d9a2594a84ff87c5ff659}{next\+\_\+frame}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___rain_a343e78fb6e36c1ee55ef943361746f6e}{ppi}} = None
+\item 
+\mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___rain_a63e2970710932188a4748c00bc0cc686}{cube\+\_\+dev}} = None
+\item 
+\mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___rain_a5111f8f1b8eef28b2f15aa7dff548677}{cls}} = type(d).\+\_\+\+\_\+name\+\_\+\+\_\+
+\item 
+\mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___rain_a1c0eb42c54d3a2253feb3e3bea56708f}{cube\+\_\+widget}} = api.\+mw.\+\_\+cube3d\+\_\+widget
+\item 
+\mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___rain_a5d2c023108742a1ce78ba9823c06ea35}{target}} = \mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___rain_a63e2970710932188a4748c00bc0cc686}{cube\+\_\+dev}} if \mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___rain_a63e2970710932188a4748c00bc0cc686}{cube\+\_\+dev}} is not None else \mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___rain_a343e78fb6e36c1ee55ef943361746f6e}{ppi}}
+\item 
+\mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___rain_a7deec1d5cde04673f4696a17ccd745fb}{\+\_\+cube3d\+\_\+widget}}
+\item 
+\mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___rain_a42221ae13c427234b08a21d229eb2ad9}{base}} = ppi.\+base\+\_\+port
+\item 
+int \mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___rain_a15660ff76836eea1078536a2c65521c2}{RAIN\+\_\+\+SPEED}} = 80
+\item 
+float \mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___rain_afc13e1e7600c7b1b492ebe7494bf6aa3}{DROP\+\_\+\+SPAWN\+\_\+\+CHANCE}} = 0.\+4
+\item 
+int \mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___rain_aff6c03be8714be7f4279d41d69dbc165}{LIGHTNING\+\_\+\+INTERVAL}} = 60
+\item 
+int \mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___rain_aa3ae999ecdcfc2ba471f81eb746b540a}{SPLASH\+\_\+\+MAX\+\_\+\+AGE}} = 2
+\item 
+list \mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___rain_a2401c4c7fc44585d8aa3ee0796971d6f}{CLOUD\+\_\+\+PATTERN}}
+\item 
+list \mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___rain_a1aff1428ab69c293b9131932f5ae7406}{drops}} = \mbox{[}$\,$\mbox{]}
+\item 
+list \mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___rain_a92e14c3194c251f65803e1d035321b2b}{splashes}} = \mbox{[}$\,$\mbox{]}
+\item 
+list \mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___rain_a883fc0b0c44c1d563e0e1ed1feac71f4}{lightning}} = \mbox{[}0\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Эмуляция дождя из облака на 3D-кубе 8×8×8.
+Итерация 12.6: демонстрационный эффект.
+
+Особенности:
+- Облако в верхней части (плоскость X-Z при Y=6,7)
+- Капли падают ВНИЗ по оси Y (от облака ко дну)
+- Всплески на дне (плоскость X-Z при Y=0)
+- Редкие молнии (вспышка облака)
+- Вывод через порты 8255 (окно 8255 показывает изменения)
+
+Управление:
+  api.mw._cube3d_timer.stop()   — остановить дождь
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespace_p_p_i__3_d__8x8x8___rain_add153c28222d9a2594a84ff87c5ff659}\index{PPI\_3D\_8x8x8\_Rain@{PPI\_3D\_8x8x8\_Rain}!next\_frame@{next\_frame}}
+\index{next\_frame@{next\_frame}!PPI\_3D\_8x8x8\_Rain@{PPI\_3D\_8x8x8\_Rain}}
+\doxysubsubsection{\texorpdfstring{next\_frame()}{next\_frame()}}
+{\footnotesize\ttfamily \label{namespace_p_p_i__3_d__8x8x8___rain_add153c28222d9a2594a84ff87c5ff659} 
+next\+\_\+frame (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Один кадр анимации дождя\end{DoxyVerb}
+ Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=270pt]{namespace_p_p_i__3_d__8x8x8___rain_add153c28222d9a2594a84ff87c5ff659_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=145pt]{namespace_p_p_i__3_d__8x8x8___rain_add153c28222d9a2594a84ff87c5ff659_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{namespace_p_p_i__3_d__8x8x8___rain_aaf65e120631888f32b031fb3d97e1de4}\index{PPI\_3D\_8x8x8\_Rain@{PPI\_3D\_8x8x8\_Rain}!render\_rain@{render\_rain}}
+\index{render\_rain@{render\_rain}!PPI\_3D\_8x8x8\_Rain@{PPI\_3D\_8x8x8\_Rain}}
+\doxysubsubsection{\texorpdfstring{render\_rain()}{render\_rain()}}
+{\footnotesize\ttfamily \label{namespace_p_p_i__3_d__8x8x8___rain_aaf65e120631888f32b031fb3d97e1de4} 
+render\+\_\+rain (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Нарисовать дождь через порты 8255\end{DoxyVerb}
+ Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=245pt]{namespace_p_p_i__3_d__8x8x8___rain_aaf65e120631888f32b031fb3d97e1de4_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{namespace_p_p_i__3_d__8x8x8___rain_ad203c9018fb0b04e3189fe115e3b32e7}\index{PPI\_3D\_8x8x8\_Rain@{PPI\_3D\_8x8x8\_Rain}!spawn\_drops@{spawn\_drops}}
+\index{spawn\_drops@{spawn\_drops}!PPI\_3D\_8x8x8\_Rain@{PPI\_3D\_8x8x8\_Rain}}
+\doxysubsubsection{\texorpdfstring{spawn\_drops()}{spawn\_drops()}}
+{\footnotesize\ttfamily \label{namespace_p_p_i__3_d__8x8x8___rain_ad203c9018fb0b04e3189fe115e3b32e7} 
+spawn\+\_\+drops (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Породить новые капли из облака\end{DoxyVerb}
+ Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=255pt]{namespace_p_p_i__3_d__8x8x8___rain_ad203c9018fb0b04e3189fe115e3b32e7_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{namespace_p_p_i__3_d__8x8x8___rain_a3f08df6437eca51d3c9ad7132ab5b2e3}\index{PPI\_3D\_8x8x8\_Rain@{PPI\_3D\_8x8x8\_Rain}!update\_drops@{update\_drops}}
+\index{update\_drops@{update\_drops}!PPI\_3D\_8x8x8\_Rain@{PPI\_3D\_8x8x8\_Rain}}
+\doxysubsubsection{\texorpdfstring{update\_drops()}{update\_drops()}}
+{\footnotesize\ttfamily \label{namespace_p_p_i__3_d__8x8x8___rain_a3f08df6437eca51d3c9ad7132ab5b2e3} 
+update\+\_\+drops (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Двигать капли вниз, создавать всплески на дне\end{DoxyVerb}
+ Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=255pt]{namespace_p_p_i__3_d__8x8x8___rain_a3f08df6437eca51d3c9ad7132ab5b2e3_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{namespace_p_p_i__3_d__8x8x8___rain_a3d620459cfe06ea6052cb957d063f456}\index{PPI\_3D\_8x8x8\_Rain@{PPI\_3D\_8x8x8\_Rain}!update\_lightning@{update\_lightning}}
+\index{update\_lightning@{update\_lightning}!PPI\_3D\_8x8x8\_Rain@{PPI\_3D\_8x8x8\_Rain}}
+\doxysubsubsection{\texorpdfstring{update\_lightning()}{update\_lightning()}}
+{\footnotesize\ttfamily \label{namespace_p_p_i__3_d__8x8x8___rain_a3d620459cfe06ea6052cb957d063f456} 
+update\+\_\+lightning (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Обновить состояние молнии\end{DoxyVerb}
+ Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=267pt]{namespace_p_p_i__3_d__8x8x8___rain_a3d620459cfe06ea6052cb957d063f456_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{namespace_p_p_i__3_d__8x8x8___rain_acd0fc3eb844e8bf5dcd9e17a36edc84d}\index{PPI\_3D\_8x8x8\_Rain@{PPI\_3D\_8x8x8\_Rain}!update\_splashes@{update\_splashes}}
+\index{update\_splashes@{update\_splashes}!PPI\_3D\_8x8x8\_Rain@{PPI\_3D\_8x8x8\_Rain}}
+\doxysubsubsection{\texorpdfstring{update\_splashes()}{update\_splashes()}}
+{\footnotesize\ttfamily \label{namespace_p_p_i__3_d__8x8x8___rain_acd0fc3eb844e8bf5dcd9e17a36edc84d} 
+update\+\_\+splashes (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Старить всплески, удалять старые\end{DoxyVerb}
+ Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=270pt]{namespace_p_p_i__3_d__8x8x8___rain_acd0fc3eb844e8bf5dcd9e17a36edc84d_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{namespace_p_p_i__3_d__8x8x8___rain_a7deec1d5cde04673f4696a17ccd745fb}\index{PPI\_3D\_8x8x8\_Rain@{PPI\_3D\_8x8x8\_Rain}!\_cube3d\_widget@{\_cube3d\_widget}}
+\index{\_cube3d\_widget@{\_cube3d\_widget}!PPI\_3D\_8x8x8\_Rain@{PPI\_3D\_8x8x8\_Rain}}
+\doxysubsubsection{\texorpdfstring{\_cube3d\_widget}{\_cube3d\_widget}}
+{\footnotesize\ttfamily \label{namespace_p_p_i__3_d__8x8x8___rain_a7deec1d5cde04673f4696a17ccd745fb} 
+\+\_\+cube3d\+\_\+widget\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{namespace_p_p_i__3_d__8x8x8___rain_a42221ae13c427234b08a21d229eb2ad9}\index{PPI\_3D\_8x8x8\_Rain@{PPI\_3D\_8x8x8\_Rain}!base@{base}}
+\index{base@{base}!PPI\_3D\_8x8x8\_Rain@{PPI\_3D\_8x8x8\_Rain}}
+\doxysubsubsection{\texorpdfstring{base}{base}}
+{\footnotesize\ttfamily \label{namespace_p_p_i__3_d__8x8x8___rain_a42221ae13c427234b08a21d229eb2ad9} 
+base = ppi.\+base\+\_\+port}
+
+\Hypertarget{namespace_p_p_i__3_d__8x8x8___rain_a2401c4c7fc44585d8aa3ee0796971d6f}\index{PPI\_3D\_8x8x8\_Rain@{PPI\_3D\_8x8x8\_Rain}!CLOUD\_PATTERN@{CLOUD\_PATTERN}}
+\index{CLOUD\_PATTERN@{CLOUD\_PATTERN}!PPI\_3D\_8x8x8\_Rain@{PPI\_3D\_8x8x8\_Rain}}
+\doxysubsubsection{\texorpdfstring{CLOUD\_PATTERN}{CLOUD\_PATTERN}}
+{\footnotesize\ttfamily \label{namespace_p_p_i__3_d__8x8x8___rain_a2401c4c7fc44585d8aa3ee0796971d6f} 
+list CLOUD\+\_\+\+PATTERN}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ =\ \ [}
+\DoxyCodeLine{00002\ \ \ \ \ [0,0,1,1,1,1,0,0],\ \ \textcolor{comment}{\#\ z=0}}
+\DoxyCodeLine{00003\ \ \ \ \ [0,1,1,1,1,1,1,0],\ \ \textcolor{comment}{\#\ z=1}}
+\DoxyCodeLine{00004\ \ \ \ \ [1,1,1,1,1,1,1,1],\ \ \textcolor{comment}{\#\ z=2}}
+\DoxyCodeLine{00005\ \ \ \ \ [1,1,1,1,1,1,1,1],\ \ \textcolor{comment}{\#\ z=3}}
+\DoxyCodeLine{00006\ \ \ \ \ [0,1,1,1,1,1,1,0],\ \ \textcolor{comment}{\#\ z=4}}
+\DoxyCodeLine{00007\ \ \ \ \ [0,0,1,1,1,1,0,0],\ \ \textcolor{comment}{\#\ z=5}}
+\DoxyCodeLine{00008\ \ \ \ \ [0,0,0,1,1,0,0,0],\ \ \textcolor{comment}{\#\ z=6}}
+\DoxyCodeLine{00009\ \ \ \ \ [0,0,0,0,0,0,0,0],\ \ \textcolor{comment}{\#\ z=7}}
+\DoxyCodeLine{00010\ ]}
+
+\end{DoxyCode}
+\Hypertarget{namespace_p_p_i__3_d__8x8x8___rain_a5111f8f1b8eef28b2f15aa7dff548677}\index{PPI\_3D\_8x8x8\_Rain@{PPI\_3D\_8x8x8\_Rain}!cls@{cls}}
+\index{cls@{cls}!PPI\_3D\_8x8x8\_Rain@{PPI\_3D\_8x8x8\_Rain}}
+\doxysubsubsection{\texorpdfstring{cls}{cls}}
+{\footnotesize\ttfamily \label{namespace_p_p_i__3_d__8x8x8___rain_a5111f8f1b8eef28b2f15aa7dff548677} 
+cls = type(d).\+\_\+\+\_\+name\+\_\+\+\_\+}
+
+\Hypertarget{namespace_p_p_i__3_d__8x8x8___rain_a63e2970710932188a4748c00bc0cc686}\index{PPI\_3D\_8x8x8\_Rain@{PPI\_3D\_8x8x8\_Rain}!cube\_dev@{cube\_dev}}
+\index{cube\_dev@{cube\_dev}!PPI\_3D\_8x8x8\_Rain@{PPI\_3D\_8x8x8\_Rain}}
+\doxysubsubsection{\texorpdfstring{cube\_dev}{cube\_dev}}
+{\footnotesize\ttfamily \label{namespace_p_p_i__3_d__8x8x8___rain_a63e2970710932188a4748c00bc0cc686} 
+cube\+\_\+dev = None}
+
+\Hypertarget{namespace_p_p_i__3_d__8x8x8___rain_a1c0eb42c54d3a2253feb3e3bea56708f}\index{PPI\_3D\_8x8x8\_Rain@{PPI\_3D\_8x8x8\_Rain}!cube\_widget@{cube\_widget}}
+\index{cube\_widget@{cube\_widget}!PPI\_3D\_8x8x8\_Rain@{PPI\_3D\_8x8x8\_Rain}}
+\doxysubsubsection{\texorpdfstring{cube\_widget}{cube\_widget}}
+{\footnotesize\ttfamily \label{namespace_p_p_i__3_d__8x8x8___rain_a1c0eb42c54d3a2253feb3e3bea56708f} 
+cube\+\_\+widget = api.\+mw.\+\_\+cube3d\+\_\+widget}
+
+\Hypertarget{namespace_p_p_i__3_d__8x8x8___rain_afc13e1e7600c7b1b492ebe7494bf6aa3}\index{PPI\_3D\_8x8x8\_Rain@{PPI\_3D\_8x8x8\_Rain}!DROP\_SPAWN\_CHANCE@{DROP\_SPAWN\_CHANCE}}
+\index{DROP\_SPAWN\_CHANCE@{DROP\_SPAWN\_CHANCE}!PPI\_3D\_8x8x8\_Rain@{PPI\_3D\_8x8x8\_Rain}}
+\doxysubsubsection{\texorpdfstring{DROP\_SPAWN\_CHANCE}{DROP\_SPAWN\_CHANCE}}
+{\footnotesize\ttfamily \label{namespace_p_p_i__3_d__8x8x8___rain_afc13e1e7600c7b1b492ebe7494bf6aa3} 
+float DROP\+\_\+\+SPAWN\+\_\+\+CHANCE = 0.\+4}
+
+\Hypertarget{namespace_p_p_i__3_d__8x8x8___rain_a1aff1428ab69c293b9131932f5ae7406}\index{PPI\_3D\_8x8x8\_Rain@{PPI\_3D\_8x8x8\_Rain}!drops@{drops}}
+\index{drops@{drops}!PPI\_3D\_8x8x8\_Rain@{PPI\_3D\_8x8x8\_Rain}}
+\doxysubsubsection{\texorpdfstring{drops}{drops}}
+{\footnotesize\ttfamily \label{namespace_p_p_i__3_d__8x8x8___rain_a1aff1428ab69c293b9131932f5ae7406} 
+list drops = \mbox{[}$\,$\mbox{]}}
+
+\Hypertarget{namespace_p_p_i__3_d__8x8x8___rain_a883fc0b0c44c1d563e0e1ed1feac71f4}\index{PPI\_3D\_8x8x8\_Rain@{PPI\_3D\_8x8x8\_Rain}!lightning@{lightning}}
+\index{lightning@{lightning}!PPI\_3D\_8x8x8\_Rain@{PPI\_3D\_8x8x8\_Rain}}
+\doxysubsubsection{\texorpdfstring{lightning}{lightning}}
+{\footnotesize\ttfamily \label{namespace_p_p_i__3_d__8x8x8___rain_a883fc0b0c44c1d563e0e1ed1feac71f4} 
+list lightning = \mbox{[}0\mbox{]}}
+
+\Hypertarget{namespace_p_p_i__3_d__8x8x8___rain_aff6c03be8714be7f4279d41d69dbc165}\index{PPI\_3D\_8x8x8\_Rain@{PPI\_3D\_8x8x8\_Rain}!LIGHTNING\_INTERVAL@{LIGHTNING\_INTERVAL}}
+\index{LIGHTNING\_INTERVAL@{LIGHTNING\_INTERVAL}!PPI\_3D\_8x8x8\_Rain@{PPI\_3D\_8x8x8\_Rain}}
+\doxysubsubsection{\texorpdfstring{LIGHTNING\_INTERVAL}{LIGHTNING\_INTERVAL}}
+{\footnotesize\ttfamily \label{namespace_p_p_i__3_d__8x8x8___rain_aff6c03be8714be7f4279d41d69dbc165} 
+int LIGHTNING\+\_\+\+INTERVAL = 60}
+
+\Hypertarget{namespace_p_p_i__3_d__8x8x8___rain_a343e78fb6e36c1ee55ef943361746f6e}\index{PPI\_3D\_8x8x8\_Rain@{PPI\_3D\_8x8x8\_Rain}!ppi@{ppi}}
+\index{ppi@{ppi}!PPI\_3D\_8x8x8\_Rain@{PPI\_3D\_8x8x8\_Rain}}
+\doxysubsubsection{\texorpdfstring{ppi}{ppi}}
+{\footnotesize\ttfamily \label{namespace_p_p_i__3_d__8x8x8___rain_a343e78fb6e36c1ee55ef943361746f6e} 
+ppi = None}
+
+\Hypertarget{namespace_p_p_i__3_d__8x8x8___rain_a15660ff76836eea1078536a2c65521c2}\index{PPI\_3D\_8x8x8\_Rain@{PPI\_3D\_8x8x8\_Rain}!RAIN\_SPEED@{RAIN\_SPEED}}
+\index{RAIN\_SPEED@{RAIN\_SPEED}!PPI\_3D\_8x8x8\_Rain@{PPI\_3D\_8x8x8\_Rain}}
+\doxysubsubsection{\texorpdfstring{RAIN\_SPEED}{RAIN\_SPEED}}
+{\footnotesize\ttfamily \label{namespace_p_p_i__3_d__8x8x8___rain_a15660ff76836eea1078536a2c65521c2} 
+int RAIN\+\_\+\+SPEED = 80}
+
+\Hypertarget{namespace_p_p_i__3_d__8x8x8___rain_aa3ae999ecdcfc2ba471f81eb746b540a}\index{PPI\_3D\_8x8x8\_Rain@{PPI\_3D\_8x8x8\_Rain}!SPLASH\_MAX\_AGE@{SPLASH\_MAX\_AGE}}
+\index{SPLASH\_MAX\_AGE@{SPLASH\_MAX\_AGE}!PPI\_3D\_8x8x8\_Rain@{PPI\_3D\_8x8x8\_Rain}}
+\doxysubsubsection{\texorpdfstring{SPLASH\_MAX\_AGE}{SPLASH\_MAX\_AGE}}
+{\footnotesize\ttfamily \label{namespace_p_p_i__3_d__8x8x8___rain_aa3ae999ecdcfc2ba471f81eb746b540a} 
+int SPLASH\+\_\+\+MAX\+\_\+\+AGE = 2}
+
+\Hypertarget{namespace_p_p_i__3_d__8x8x8___rain_a92e14c3194c251f65803e1d035321b2b}\index{PPI\_3D\_8x8x8\_Rain@{PPI\_3D\_8x8x8\_Rain}!splashes@{splashes}}
+\index{splashes@{splashes}!PPI\_3D\_8x8x8\_Rain@{PPI\_3D\_8x8x8\_Rain}}
+\doxysubsubsection{\texorpdfstring{splashes}{splashes}}
+{\footnotesize\ttfamily \label{namespace_p_p_i__3_d__8x8x8___rain_a92e14c3194c251f65803e1d035321b2b} 
+list splashes = \mbox{[}$\,$\mbox{]}}
+
+\Hypertarget{namespace_p_p_i__3_d__8x8x8___rain_a5d2c023108742a1ce78ba9823c06ea35}\index{PPI\_3D\_8x8x8\_Rain@{PPI\_3D\_8x8x8\_Rain}!target@{target}}
+\index{target@{target}!PPI\_3D\_8x8x8\_Rain@{PPI\_3D\_8x8x8\_Rain}}
+\doxysubsubsection{\texorpdfstring{target}{target}}
+{\footnotesize\ttfamily \label{namespace_p_p_i__3_d__8x8x8___rain_a5d2c023108742a1ce78ba9823c06ea35} 
+target = \mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___rain_a63e2970710932188a4748c00bc0cc686}{cube\+\_\+dev}} if \mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___rain_a63e2970710932188a4748c00bc0cc686}{cube\+\_\+dev}} is not None else \mbox{\hyperlink{namespace_p_p_i__3_d__8x8x8___rain_a343e78fb6e36c1ee55ef943361746f6e}{ppi}}}
+

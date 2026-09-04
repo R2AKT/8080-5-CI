@@ -1,0 +1,14 @@
+<map id="read_word" name="read_word">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,113,87,140"/>
+<area shape="rect" id="Node000002" href="$classmodules_1_1memory_1_1banked_1_1_banked_region.html#a1c3988915dc70213dcb52f6a81c80ca6" title=" " alt="" coords="135,5,349,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="60,111,92,84,133,58,145,52,148,57,136,62,95,89,63,115"/>
+<area shape="rect" id="Node000004" href="$classmodules_1_1memory_1_1banked_1_1_banked_r_o_m_region.html#a1c3988915dc70213dcb52f6a81c80ca6" title=" " alt="" coords="135,72,349,115"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="86,117,119,112,120,117,87,122"/>
+<area shape="rect" id="Node000005" href="$classmodules_1_1memory_1_1memory__bus_1_1_i_o_bus.html#a45bc6024498a4f477e9e7b2653433345" title=" " alt="" coords="156,139,328,181"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="87,131,141,140,140,145,86,136"/>
+<area shape="rect" id="Node000006" href="$classmodules_1_1memory_1_1memory__bus_1_1_memory_bus.html#a1c3988915dc70213dcb52f6a81c80ca6" title=" " alt="" coords="219,205,265,232"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="63,139,95,165,136,191,170,203,204,211,203,216,169,209,133,196,92,170,60,143"/>
+<area shape="rect" id="Node000003" href="$classmodules_1_1memory_1_1memory__bus_1_1_memory_region.html#a27f2cd270e85bcd391e6ea2601e9ae0f" title=" " alt="" coords="397,39,591,81"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="350,38,382,43,381,48,349,43"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="349,77,381,72,382,77,350,82"/>
+</map>

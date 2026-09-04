@@ -1,5 +1,5 @@
-<map id="i8080_CI.TraceModel" name="i8080_CI.TraceModel">
-<area shape="rect" id="Node000001" title=" " alt="" coords="6,80,151,107"/>
+<map id="TraceModel" name="TraceModel">
+<area shape="rect" id="Node000001" title=" " alt="" coords="34,80,123,107"/>
 <area shape="rect" id="Node000002" title=" " alt="" coords="5,5,152,32"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="81,48,81,80,76,80,76,48"/>
 </map>

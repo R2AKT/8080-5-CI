@@ -1,0 +1,174 @@
+\doxysection{GPIO8255\+Widget Class Reference}
+\hypertarget{classui_1_1gpio__widget_1_1_g_p_i_o8255_widget}{}\label{classui_1_1gpio__widget_1_1_g_p_i_o8255_widget}\index{GPIO8255Widget@{GPIO8255Widget}}
+
+
+Inheritance diagram for GPIO8255\+Widget\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=173pt]{classui_1_1gpio__widget_1_1_g_p_i_o8255_widget__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for GPIO8255\+Widget\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=173pt]{classui_1_1gpio__widget_1_1_g_p_i_o8255_widget__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classui_1_1gpio__widget_1_1_g_p_i_o8255_widget_aaa8600ab07a4529b6f5f249695dfcd60}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, \mbox{\hyperlink{classui_1_1gpio__widget_1_1_g_p_i_o8255_widget_adbdec58595587fea1750c91cd18315fb}{device}}, parent=None)
+\item 
+\mbox{\hyperlink{classui_1_1gpio__widget_1_1_g_p_i_o8255_widget_a0fceacdb1b62b7b08237a39123494dca}{refresh}} (self)
+\item 
+\mbox{\hyperlink{classui_1_1gpio__widget_1_1_g_p_i_o8255_widget_a8e9b7cd2c3eee7e04e02325d4125daee}{close\+Event}} (self, event)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classui_1_1gpio__widget_1_1_g_p_i_o8255_widget_adbdec58595587fea1750c91cd18315fb}{device}} = device
+\item 
+\mbox{\hyperlink{classui_1_1gpio__widget_1_1_g_p_i_o8255_widget_a841ca5ce0d4db24fd2b5177f1f825f29}{refresh\+\_\+timer}} = QTimer(self)
+\item 
+\mbox{\hyperlink{classui_1_1gpio__widget_1_1_g_p_i_o8255_widget_a09833469bf678f0742f5155e0094001f}{port\+\_\+a}} = \mbox{\hyperlink{classui_1_1gpio__widget_1_1_port_group}{Port\+Group}}("{}Port A"{})
+\item 
+\mbox{\hyperlink{classui_1_1gpio__widget_1_1_g_p_i_o8255_widget_a703762fd8a69dbd3fad5f8bbe3238863}{port\+\_\+b}} = \mbox{\hyperlink{classui_1_1gpio__widget_1_1_port_group}{Port\+Group}}("{}Port B"{})
+\item 
+\mbox{\hyperlink{classui_1_1gpio__widget_1_1_g_p_i_o8255_widget_accce57aabae5d7c4562d7a219009a566}{port\+\_\+c}} = \mbox{\hyperlink{classui_1_1gpio__widget_1_1_port_group}{Port\+Group}}("{}Port C"{})
+\item 
+\mbox{\hyperlink{classui_1_1gpio__widget_1_1_g_p_i_o8255_widget_a39f10ceaa4b21aae4281a357f7690170}{lbl\+\_\+direction}} = QLabel("{}"{})
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classui_1_1gpio__widget_1_1_g_p_i_o8255_widget_a9751c15069af123bed4a56bae2d9c024}{\+\_\+init\+\_\+ui}} (self)
+\item 
+\mbox{\hyperlink{classui_1_1gpio__widget_1_1_g_p_i_o8255_widget_a1608d3a60eeec387ebc24c6b26cc2e47}{\+\_\+auto\+\_\+refresh}} (self)
+\item 
+\mbox{\hyperlink{classui_1_1gpio__widget_1_1_g_p_i_o8255_widget_a06cc1db1551d58c6e72726439f0fe821}{\+\_\+on\+\_\+bit\+\_\+toggle}} (self, port\+\_\+id, bit\+\_\+num, state)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classui_1_1gpio__widget_1_1_g_p_i_o8255_widget_a346db5793c7d018831208b89a7e452e2}{\+\_\+auto\+\_\+refresh}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Виджет GPIO для 8255\end{DoxyVerb}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classui_1_1gpio__widget_1_1_g_p_i_o8255_widget_aaa8600ab07a4529b6f5f249695dfcd60}\index{GPIO8255Widget@{GPIO8255Widget}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!GPIO8255Widget@{GPIO8255Widget}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \label{classui_1_1gpio__widget_1_1_g_p_i_o8255_widget_aaa8600ab07a4529b6f5f249695dfcd60} 
+\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{device}{, }\item[{}]{parent}{ = {\ttfamily None}}\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=130pt]{classui_1_1gpio__widget_1_1_g_p_i_o8255_widget_aaa8600ab07a4529b6f5f249695dfcd60_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=130pt]{classui_1_1gpio__widget_1_1_g_p_i_o8255_widget_aaa8600ab07a4529b6f5f249695dfcd60_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classui_1_1gpio__widget_1_1_g_p_i_o8255_widget_a1608d3a60eeec387ebc24c6b26cc2e47}\index{GPIO8255Widget@{GPIO8255Widget}!\_auto\_refresh@{\_auto\_refresh}}
+\index{\_auto\_refresh@{\_auto\_refresh}!GPIO8255Widget@{GPIO8255Widget}}
+\doxysubsubsection{\texorpdfstring{\_auto\_refresh()}{\_auto\_refresh()}}
+{\footnotesize\ttfamily \label{classui_1_1gpio__widget_1_1_g_p_i_o8255_widget_a1608d3a60eeec387ebc24c6b26cc2e47} 
+\+\_\+auto\+\_\+refresh (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Автообновление состояния портов\end{DoxyVerb}
+ \Hypertarget{classui_1_1gpio__widget_1_1_g_p_i_o8255_widget_a9751c15069af123bed4a56bae2d9c024}\index{GPIO8255Widget@{GPIO8255Widget}!\_init\_ui@{\_init\_ui}}
+\index{\_init\_ui@{\_init\_ui}!GPIO8255Widget@{GPIO8255Widget}}
+\doxysubsubsection{\texorpdfstring{\_init\_ui()}{\_init\_ui()}}
+{\footnotesize\ttfamily \label{classui_1_1gpio__widget_1_1_g_p_i_o8255_widget_a9751c15069af123bed4a56bae2d9c024} 
+\+\_\+init\+\_\+ui (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classui_1_1gpio__widget_1_1_g_p_i_o8255_widget_a06cc1db1551d58c6e72726439f0fe821}\index{GPIO8255Widget@{GPIO8255Widget}!\_on\_bit\_toggle@{\_on\_bit\_toggle}}
+\index{\_on\_bit\_toggle@{\_on\_bit\_toggle}!GPIO8255Widget@{GPIO8255Widget}}
+\doxysubsubsection{\texorpdfstring{\_on\_bit\_toggle()}{\_on\_bit\_toggle()}}
+{\footnotesize\ttfamily \label{classui_1_1gpio__widget_1_1_g_p_i_o8255_widget_a06cc1db1551d58c6e72726439f0fe821} 
+\+\_\+on\+\_\+bit\+\_\+toggle (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{port\+\_\+id}{, }\item[{}]{bit\+\_\+num}{, }\item[{}]{state}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Пользователь переключил чекбокс → меняем внешний сигнал\end{DoxyVerb}
+ \Hypertarget{classui_1_1gpio__widget_1_1_g_p_i_o8255_widget_a8e9b7cd2c3eee7e04e02325d4125daee}\index{GPIO8255Widget@{GPIO8255Widget}!closeEvent@{closeEvent}}
+\index{closeEvent@{closeEvent}!GPIO8255Widget@{GPIO8255Widget}}
+\doxysubsubsection{\texorpdfstring{closeEvent()}{closeEvent()}}
+{\footnotesize\ttfamily \label{classui_1_1gpio__widget_1_1_g_p_i_o8255_widget_a8e9b7cd2c3eee7e04e02325d4125daee} 
+close\+Event (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{event}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classui_1_1gpio__widget_1_1_g_p_i_o8255_widget_a0fceacdb1b62b7b08237a39123494dca}\index{GPIO8255Widget@{GPIO8255Widget}!refresh@{refresh}}
+\index{refresh@{refresh}!GPIO8255Widget@{GPIO8255Widget}}
+\doxysubsubsection{\texorpdfstring{refresh()}{refresh()}}
+{\footnotesize\ttfamily \label{classui_1_1gpio__widget_1_1_g_p_i_o8255_widget_a0fceacdb1b62b7b08237a39123494dca} 
+refresh (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Field Documentation}
+\Hypertarget{classui_1_1gpio__widget_1_1_g_p_i_o8255_widget_a346db5793c7d018831208b89a7e452e2}\index{GPIO8255Widget@{GPIO8255Widget}!\_auto\_refresh@{\_auto\_refresh}}
+\index{\_auto\_refresh@{\_auto\_refresh}!GPIO8255Widget@{GPIO8255Widget}}
+\doxysubsubsection{\texorpdfstring{\_auto\_refresh}{\_auto\_refresh}}
+{\footnotesize\ttfamily \label{classui_1_1gpio__widget_1_1_g_p_i_o8255_widget_a346db5793c7d018831208b89a7e452e2} 
+\+\_\+auto\+\_\+refresh\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classui_1_1gpio__widget_1_1_g_p_i_o8255_widget_adbdec58595587fea1750c91cd18315fb}\index{GPIO8255Widget@{GPIO8255Widget}!device@{device}}
+\index{device@{device}!GPIO8255Widget@{GPIO8255Widget}}
+\doxysubsubsection{\texorpdfstring{device}{device}}
+{\footnotesize\ttfamily \label{classui_1_1gpio__widget_1_1_g_p_i_o8255_widget_adbdec58595587fea1750c91cd18315fb} 
+device = device}
+
+\Hypertarget{classui_1_1gpio__widget_1_1_g_p_i_o8255_widget_a39f10ceaa4b21aae4281a357f7690170}\index{GPIO8255Widget@{GPIO8255Widget}!lbl\_direction@{lbl\_direction}}
+\index{lbl\_direction@{lbl\_direction}!GPIO8255Widget@{GPIO8255Widget}}
+\doxysubsubsection{\texorpdfstring{lbl\_direction}{lbl\_direction}}
+{\footnotesize\ttfamily \label{classui_1_1gpio__widget_1_1_g_p_i_o8255_widget_a39f10ceaa4b21aae4281a357f7690170} 
+lbl\+\_\+direction = QLabel("{}"{})}
+
+\Hypertarget{classui_1_1gpio__widget_1_1_g_p_i_o8255_widget_a09833469bf678f0742f5155e0094001f}\index{GPIO8255Widget@{GPIO8255Widget}!port\_a@{port\_a}}
+\index{port\_a@{port\_a}!GPIO8255Widget@{GPIO8255Widget}}
+\doxysubsubsection{\texorpdfstring{port\_a}{port\_a}}
+{\footnotesize\ttfamily \label{classui_1_1gpio__widget_1_1_g_p_i_o8255_widget_a09833469bf678f0742f5155e0094001f} 
+port\+\_\+a = \mbox{\hyperlink{classui_1_1gpio__widget_1_1_port_group}{Port\+Group}}("{}Port A"{})}
+
+\Hypertarget{classui_1_1gpio__widget_1_1_g_p_i_o8255_widget_a703762fd8a69dbd3fad5f8bbe3238863}\index{GPIO8255Widget@{GPIO8255Widget}!port\_b@{port\_b}}
+\index{port\_b@{port\_b}!GPIO8255Widget@{GPIO8255Widget}}
+\doxysubsubsection{\texorpdfstring{port\_b}{port\_b}}
+{\footnotesize\ttfamily \label{classui_1_1gpio__widget_1_1_g_p_i_o8255_widget_a703762fd8a69dbd3fad5f8bbe3238863} 
+port\+\_\+b = \mbox{\hyperlink{classui_1_1gpio__widget_1_1_port_group}{Port\+Group}}("{}Port B"{})}
+
+\Hypertarget{classui_1_1gpio__widget_1_1_g_p_i_o8255_widget_accce57aabae5d7c4562d7a219009a566}\index{GPIO8255Widget@{GPIO8255Widget}!port\_c@{port\_c}}
+\index{port\_c@{port\_c}!GPIO8255Widget@{GPIO8255Widget}}
+\doxysubsubsection{\texorpdfstring{port\_c}{port\_c}}
+{\footnotesize\ttfamily \label{classui_1_1gpio__widget_1_1_g_p_i_o8255_widget_accce57aabae5d7c4562d7a219009a566} 
+port\+\_\+c = \mbox{\hyperlink{classui_1_1gpio__widget_1_1_port_group}{Port\+Group}}("{}Port C"{})}
+
+\Hypertarget{classui_1_1gpio__widget_1_1_g_p_i_o8255_widget_a841ca5ce0d4db24fd2b5177f1f825f29}\index{GPIO8255Widget@{GPIO8255Widget}!refresh\_timer@{refresh\_timer}}
+\index{refresh\_timer@{refresh\_timer}!GPIO8255Widget@{GPIO8255Widget}}
+\doxysubsubsection{\texorpdfstring{refresh\_timer}{refresh\_timer}}
+{\footnotesize\ttfamily \label{classui_1_1gpio__widget_1_1_g_p_i_o8255_widget_a841ca5ce0d4db24fd2b5177f1f825f29} 
+refresh\+\_\+timer = QTimer(self)}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+ui/\mbox{\hyperlink{gpio__widget_8py}{gpio\+\_\+widget.\+py}}\end{DoxyCompactItemize}

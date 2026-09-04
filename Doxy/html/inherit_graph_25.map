@@ -1,3 +1,5 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" href="$classtest__wait__cf__ide_1_1_mock_c_p_u.html" title=" " alt="" coords="5,5,187,32"/>
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,5,95,32"/>
+<area shape="rect" id="Node000001" href="$classui_1_1gpio__widget_1_1_port_group.html" title=" " alt="" coords="143,5,223,32"/>
+<area shape="poly" id="edge35_Node000000_Node000001" title=" " alt="" coords="110,16,142,16,142,21,110,21"/>
 </map>

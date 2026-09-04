@@ -1,5 +1,5 @@
-<map id="i8080_CI.BreakpointModel" name="i8080_CI.BreakpointModel">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,80,180,107"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="19,5,166,32"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="95,48,95,80,90,80,90,48"/>
+<map id="BreakpointModel" name="BreakpointModel">
+<area shape="rect" id="Node000001" title=" " alt="" coords="19,80,138,107"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,152,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="81,48,81,80,76,80,76,48"/>
 </map>

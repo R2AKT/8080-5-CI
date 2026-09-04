@@ -1,0 +1,7 @@
+<map id="find_best_placement" name="find_best_placement">
+<area shape="rect" id="Node000001" title=" " alt="" coords="231,5,372,32"/>
+<area shape="rect" id="Node000002" href="$class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d.html#a28a6e435e828ffadf79b895638c7779a" title=" " alt="" coords="100,5,183,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="215,21,183,21,183,16,215,16"/>
+<area shape="rect" id="Node000003" href="$class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d.html#a69435232b14c0b0cbcdae3dc0a91b4be" title=" " alt="" coords="5,5,52,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="84,21,52,21,52,16,84,16"/>
+</map>

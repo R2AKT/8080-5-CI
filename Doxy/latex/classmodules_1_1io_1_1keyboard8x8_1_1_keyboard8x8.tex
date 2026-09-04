@@ -1,0 +1,271 @@
+\doxysection{Keyboard8x8 Class Reference}
+\hypertarget{classmodules_1_1io_1_1keyboard8x8_1_1_keyboard8x8}{}\label{classmodules_1_1io_1_1keyboard8x8_1_1_keyboard8x8}\index{Keyboard8x8@{Keyboard8x8}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1keyboard8x8_1_1_keyboard8x8_a403427ce14f94212f0ecc94ed8855f0b}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, \mbox{\hyperlink{classmodules_1_1io_1_1keyboard8x8_1_1_keyboard8x8_ab74e6bf80237ddc4109968cedc58c151}{name}}="{}Keyboard 8x8"{})
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1keyboard8x8_1_1_keyboard8x8_a9eb351be1eaaca0864f5c8ba0858a362}{connect\+\_\+to\+\_\+ppi}} (self, ppi, output\+\_\+port=0, input\+\_\+port=1)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1keyboard8x8_1_1_keyboard8x8_aad5d553b1f65815c7b708083e1992331}{scan\+\_\+row}} (self, row)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1keyboard8x8_1_1_keyboard8x8_a4a76e62e39f9d27833b1bd7daa92eb15}{press\+\_\+key}} (self, row, col)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1keyboard8x8_1_1_keyboard8x8_aada7802104d9b2b925391d0221dbd43e}{release\+\_\+key}} (self, row, col)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1keyboard8x8_1_1_keyboard8x8_a1b00b2e211463e77270de9b841421c23}{release\+\_\+all}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1keyboard8x8_1_1_keyboard8x8_a280dee5a77814fd4b4d6e3528b8bdb0e}{get\+\_\+char\+\_\+at}} (self, row, col)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1keyboard8x8_1_1_keyboard8x8_aec846d0e51f21a83da9ab30d5d5cacd5}{get\+\_\+state}} (self)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1keyboard8x8_1_1_keyboard8x8_ab74e6bf80237ddc4109968cedc58c151}{name}} = name
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1keyboard8x8_1_1_keyboard8x8_aa4d3d7d7047086ca2547737909c4e968}{base\+\_\+port}} = -\/1
+\item 
+list \mbox{\hyperlink{classmodules_1_1io_1_1keyboard8x8_1_1_keyboard8x8_a3015773c74de04633e98923b57da3143}{matrix}} = \mbox{[}\mbox{[}False\mbox{]} \texorpdfstring{$\ast$}{*} 8 for \+\_\+ in range(8)\mbox{]}
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1keyboard8x8_1_1_keyboard8x8_ab1c71ea67aedbe0a4693720e04a8e8d7}{current\+\_\+row}} = 0
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1keyboard8x8_1_1_keyboard8x8_a221d8a1194209d62293364b50d1f2ac7}{keymap}} = dict(\mbox{\hyperlink{namespacemodules_1_1io_1_1keyboard8x8_a5625f08a20fc9b32e5500ebe4e54a7b7}{RADIO86\+RK\+\_\+\+KEYMAP}})
+\item 
+bool \mbox{\hyperlink{classmodules_1_1io_1_1keyboard8x8_1_1_keyboard8x8_a7158210990a0beccaa81283d2d87c619}{shift\+\_\+active}} = False
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1keyboard8x8_1_1_keyboard8x8_aebad46778248ce87710ba367b5966133}{\+\_\+update\+\_\+input\+\_\+port}} (self)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1keyboard8x8_1_1_keyboard8x8_a7afb98168b6e39640756e33981db4434}{\+\_\+ppi}} = None
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1keyboard8x8_1_1_keyboard8x8_acaa3f83e2ab51e3578d46dc2220e879a}{\+\_\+output\+\_\+port}} = 0
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1keyboard8x8_1_1_keyboard8x8_a2622c5187e7663c76a5ae6aee492136f}{\+\_\+input\+\_\+port}} = 1
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Клавиатурная матрица 8×8.
+
+Подключается к портам 8255:
+- Выходной порт (обычно A) — выбор строки (биты 0-2)
+- Входной порт (обычно B) — чтение столбцов (биты 0-7)
+
+Активный уровень: нажатая клавиша = 0 (низкий уровень).
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classmodules_1_1io_1_1keyboard8x8_1_1_keyboard8x8_a403427ce14f94212f0ecc94ed8855f0b}\index{Keyboard8x8@{Keyboard8x8}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!Keyboard8x8@{Keyboard8x8}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1keyboard8x8_1_1_keyboard8x8_a403427ce14f94212f0ecc94ed8855f0b} 
+\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{name}{ = {\ttfamily "{}Keyboard~8x8"{}}}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classmodules_1_1io_1_1keyboard8x8_1_1_keyboard8x8_aebad46778248ce87710ba367b5966133}\index{Keyboard8x8@{Keyboard8x8}!\_update\_input\_port@{\_update\_input\_port}}
+\index{\_update\_input\_port@{\_update\_input\_port}!Keyboard8x8@{Keyboard8x8}}
+\doxysubsubsection{\texorpdfstring{\_update\_input\_port()}{\_update\_input\_port()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1keyboard8x8_1_1_keyboard8x8_aebad46778248ce87710ba367b5966133} 
+\+\_\+update\+\_\+input\+\_\+port (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Обновить данные на входном порте 8255\end{DoxyVerb}
+ Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=273pt]{classmodules_1_1io_1_1keyboard8x8_1_1_keyboard8x8_aebad46778248ce87710ba367b5966133_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=297pt]{classmodules_1_1io_1_1keyboard8x8_1_1_keyboard8x8_aebad46778248ce87710ba367b5966133_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1keyboard8x8_1_1_keyboard8x8_a9eb351be1eaaca0864f5c8ba0858a362}\index{Keyboard8x8@{Keyboard8x8}!connect\_to\_ppi@{connect\_to\_ppi}}
+\index{connect\_to\_ppi@{connect\_to\_ppi}!Keyboard8x8@{Keyboard8x8}}
+\doxysubsubsection{\texorpdfstring{connect\_to\_ppi()}{connect\_to\_ppi()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1keyboard8x8_1_1_keyboard8x8_a9eb351be1eaaca0864f5c8ba0858a362} 
+connect\+\_\+to\+\_\+ppi (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{ppi}{, }\item[{}]{output\+\_\+port}{ = {\ttfamily 0}, }\item[{}]{input\+\_\+port}{ = {\ttfamily 1}}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Подключить клавиатуру к 8255.
+
+После подключения клавиатура:
+- Следит за записями в выходной порт (выбор строки)
+- Подаёт данные столбцов на входной порт
+\end{DoxyVerb}
+ Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1keyboard8x8_1_1_keyboard8x8_a9eb351be1eaaca0864f5c8ba0858a362_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1keyboard8x8_1_1_keyboard8x8_a280dee5a77814fd4b4d6e3528b8bdb0e}\index{Keyboard8x8@{Keyboard8x8}!get\_char\_at@{get\_char\_at}}
+\index{get\_char\_at@{get\_char\_at}!Keyboard8x8@{Keyboard8x8}}
+\doxysubsubsection{\texorpdfstring{get\_char\_at()}{get\_char\_at()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1keyboard8x8_1_1_keyboard8x8_a280dee5a77814fd4b4d6e3528b8bdb0e} 
+get\+\_\+char\+\_\+at (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{row}{, }\item[{}]{col}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Получить символ по координатам\end{DoxyVerb}
+ Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=240pt]{classmodules_1_1io_1_1keyboard8x8_1_1_keyboard8x8_a280dee5a77814fd4b4d6e3528b8bdb0e_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1keyboard8x8_1_1_keyboard8x8_aec846d0e51f21a83da9ab30d5d5cacd5}\index{Keyboard8x8@{Keyboard8x8}!get\_state@{get\_state}}
+\index{get\_state@{get\_state}!Keyboard8x8@{Keyboard8x8}}
+\doxysubsubsection{\texorpdfstring{get\_state()}{get\_state()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1keyboard8x8_1_1_keyboard8x8_aec846d0e51f21a83da9ab30d5d5cacd5} 
+get\+\_\+state (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Состояние для отладки и окна устройства\end{DoxyVerb}
+ Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=342pt]{classmodules_1_1io_1_1keyboard8x8_1_1_keyboard8x8_aec846d0e51f21a83da9ab30d5d5cacd5_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1keyboard8x8_1_1_keyboard8x8_a4a76e62e39f9d27833b1bd7daa92eb15}\index{Keyboard8x8@{Keyboard8x8}!press\_key@{press\_key}}
+\index{press\_key@{press\_key}!Keyboard8x8@{Keyboard8x8}}
+\doxysubsubsection{\texorpdfstring{press\_key()}{press\_key()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1keyboard8x8_1_1_keyboard8x8_a4a76e62e39f9d27833b1bd7daa92eb15} 
+press\+\_\+key (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{row}{, }\item[{}]{col}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Нажать клавишу\end{DoxyVerb}
+ Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1keyboard8x8_1_1_keyboard8x8_a4a76e62e39f9d27833b1bd7daa92eb15_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1keyboard8x8_1_1_keyboard8x8_a1b00b2e211463e77270de9b841421c23}\index{Keyboard8x8@{Keyboard8x8}!release\_all@{release\_all}}
+\index{release\_all@{release\_all}!Keyboard8x8@{Keyboard8x8}}
+\doxysubsubsection{\texorpdfstring{release\_all()}{release\_all()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1keyboard8x8_1_1_keyboard8x8_a1b00b2e211463e77270de9b841421c23} 
+release\+\_\+all (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Отпустить все клавиши\end{DoxyVerb}
+ Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1keyboard8x8_1_1_keyboard8x8_a1b00b2e211463e77270de9b841421c23_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1keyboard8x8_1_1_keyboard8x8_aada7802104d9b2b925391d0221dbd43e}\index{Keyboard8x8@{Keyboard8x8}!release\_key@{release\_key}}
+\index{release\_key@{release\_key}!Keyboard8x8@{Keyboard8x8}}
+\doxysubsubsection{\texorpdfstring{release\_key()}{release\_key()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1keyboard8x8_1_1_keyboard8x8_aada7802104d9b2b925391d0221dbd43e} 
+release\+\_\+key (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{row}{, }\item[{}]{col}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Отпустить клавишу\end{DoxyVerb}
+ Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1keyboard8x8_1_1_keyboard8x8_aada7802104d9b2b925391d0221dbd43e_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1keyboard8x8_1_1_keyboard8x8_aad5d553b1f65815c7b708083e1992331}\index{Keyboard8x8@{Keyboard8x8}!scan\_row@{scan\_row}}
+\index{scan\_row@{scan\_row}!Keyboard8x8@{Keyboard8x8}}
+\doxysubsubsection{\texorpdfstring{scan\_row()}{scan\_row()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1keyboard8x8_1_1_keyboard8x8_aad5d553b1f65815c7b708083e1992331} 
+scan\+\_\+row (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{row}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Сканировать строку матрицы.
+
+Возвращает байт: бит=0 — клавиша нажата, бит=1 — отпущена.
+\end{DoxyVerb}
+ Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1keyboard8x8_1_1_keyboard8x8_aad5d553b1f65815c7b708083e1992331_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Field Documentation}
+\Hypertarget{classmodules_1_1io_1_1keyboard8x8_1_1_keyboard8x8_a2622c5187e7663c76a5ae6aee492136f}\index{Keyboard8x8@{Keyboard8x8}!\_input\_port@{\_input\_port}}
+\index{\_input\_port@{\_input\_port}!Keyboard8x8@{Keyboard8x8}}
+\doxysubsubsection{\texorpdfstring{\_input\_port}{\_input\_port}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1keyboard8x8_1_1_keyboard8x8_a2622c5187e7663c76a5ae6aee492136f} 
+\+\_\+input\+\_\+port = 1\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classmodules_1_1io_1_1keyboard8x8_1_1_keyboard8x8_acaa3f83e2ab51e3578d46dc2220e879a}\index{Keyboard8x8@{Keyboard8x8}!\_output\_port@{\_output\_port}}
+\index{\_output\_port@{\_output\_port}!Keyboard8x8@{Keyboard8x8}}
+\doxysubsubsection{\texorpdfstring{\_output\_port}{\_output\_port}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1keyboard8x8_1_1_keyboard8x8_acaa3f83e2ab51e3578d46dc2220e879a} 
+\+\_\+output\+\_\+port = 0\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classmodules_1_1io_1_1keyboard8x8_1_1_keyboard8x8_a7afb98168b6e39640756e33981db4434}\index{Keyboard8x8@{Keyboard8x8}!\_ppi@{\_ppi}}
+\index{\_ppi@{\_ppi}!Keyboard8x8@{Keyboard8x8}}
+\doxysubsubsection{\texorpdfstring{\_ppi}{\_ppi}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1keyboard8x8_1_1_keyboard8x8_a7afb98168b6e39640756e33981db4434} 
+\+\_\+ppi = None\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classmodules_1_1io_1_1keyboard8x8_1_1_keyboard8x8_aa4d3d7d7047086ca2547737909c4e968}\index{Keyboard8x8@{Keyboard8x8}!base\_port@{base\_port}}
+\index{base\_port@{base\_port}!Keyboard8x8@{Keyboard8x8}}
+\doxysubsubsection{\texorpdfstring{base\_port}{base\_port}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1keyboard8x8_1_1_keyboard8x8_aa4d3d7d7047086ca2547737909c4e968} 
+int base\+\_\+port = -\/1}
+
+\Hypertarget{classmodules_1_1io_1_1keyboard8x8_1_1_keyboard8x8_ab1c71ea67aedbe0a4693720e04a8e8d7}\index{Keyboard8x8@{Keyboard8x8}!current\_row@{current\_row}}
+\index{current\_row@{current\_row}!Keyboard8x8@{Keyboard8x8}}
+\doxysubsubsection{\texorpdfstring{current\_row}{current\_row}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1keyboard8x8_1_1_keyboard8x8_ab1c71ea67aedbe0a4693720e04a8e8d7} 
+current\+\_\+row = 0}
+
+\Hypertarget{classmodules_1_1io_1_1keyboard8x8_1_1_keyboard8x8_a221d8a1194209d62293364b50d1f2ac7}\index{Keyboard8x8@{Keyboard8x8}!keymap@{keymap}}
+\index{keymap@{keymap}!Keyboard8x8@{Keyboard8x8}}
+\doxysubsubsection{\texorpdfstring{keymap}{keymap}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1keyboard8x8_1_1_keyboard8x8_a221d8a1194209d62293364b50d1f2ac7} 
+keymap = dict(\mbox{\hyperlink{namespacemodules_1_1io_1_1keyboard8x8_a5625f08a20fc9b32e5500ebe4e54a7b7}{RADIO86\+RK\+\_\+\+KEYMAP}})}
+
+\Hypertarget{classmodules_1_1io_1_1keyboard8x8_1_1_keyboard8x8_a3015773c74de04633e98923b57da3143}\index{Keyboard8x8@{Keyboard8x8}!matrix@{matrix}}
+\index{matrix@{matrix}!Keyboard8x8@{Keyboard8x8}}
+\doxysubsubsection{\texorpdfstring{matrix}{matrix}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1keyboard8x8_1_1_keyboard8x8_a3015773c74de04633e98923b57da3143} 
+list matrix = \mbox{[}\mbox{[}False\mbox{]} \texorpdfstring{$\ast$}{*} 8 for \+\_\+ in range(8)\mbox{]}}
+
+\Hypertarget{classmodules_1_1io_1_1keyboard8x8_1_1_keyboard8x8_ab74e6bf80237ddc4109968cedc58c151}\index{Keyboard8x8@{Keyboard8x8}!name@{name}}
+\index{name@{name}!Keyboard8x8@{Keyboard8x8}}
+\doxysubsubsection{\texorpdfstring{name}{name}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1keyboard8x8_1_1_keyboard8x8_ab74e6bf80237ddc4109968cedc58c151} 
+name = name}
+
+\Hypertarget{classmodules_1_1io_1_1keyboard8x8_1_1_keyboard8x8_a7158210990a0beccaa81283d2d87c619}\index{Keyboard8x8@{Keyboard8x8}!shift\_active@{shift\_active}}
+\index{shift\_active@{shift\_active}!Keyboard8x8@{Keyboard8x8}}
+\doxysubsubsection{\texorpdfstring{shift\_active}{shift\_active}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1keyboard8x8_1_1_keyboard8x8_a7158210990a0beccaa81283d2d87c619} 
+shift\+\_\+active = False}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+modules/io/\mbox{\hyperlink{keyboard8x8_8py}{keyboard8x8.\+py}}\end{DoxyCompactItemize}

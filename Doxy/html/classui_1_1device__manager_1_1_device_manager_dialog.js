@@ -1,0 +1,27 @@
+var classui_1_1device__manager_1_1_device_manager_dialog =
+[
+    [ "__init__", "classui_1_1device__manager_1_1_device_manager_dialog.html#a70b37b6abeaea20282c2192554680dc8", null ],
+    [ "_init_ui", "classui_1_1device__manager_1_1_device_manager_dialog.html#a9751c15069af123bed4a56bae2d9c024", null ],
+    [ "_on_item_double_clicked", "classui_1_1device__manager_1_1_device_manager_dialog.html#a434e8edd4d359d76cd2e8a6b99c988df", null ],
+    [ "_open_device_window", "classui_1_1device__manager_1_1_device_manager_dialog.html#a8c27502c32b609376a4d1de965475cd2", null ],
+    [ "_open_selected", "classui_1_1device__manager_1_1_device_manager_dialog.html#a7154086b67fcda81b1f5de6b47bd463a", null ],
+    [ "_toggle_always_on_top", "classui_1_1device__manager_1_1_device_manager_dialog.html#ab0d5ce3193550eae9327f87048570be1", null ],
+    [ "close_all_windows", "classui_1_1device__manager_1_1_device_manager_dialog.html#a870d5867581d7444fbc0bdde63626328", null ],
+    [ "closeEvent", "classui_1_1device__manager_1_1_device_manager_dialog.html#a8e9b7cd2c3eee7e04e02325d4125daee", null ],
+    [ "on_profile_changed", "classui_1_1device__manager_1_1_device_manager_dialog.html#af0fdde3d03d2ccbc51d71c6585191954", null ],
+    [ "refresh_devices", "classui_1_1device__manager_1_1_device_manager_dialog.html#a3f6f34e8569fddda77989de0e7a44720", null ],
+    [ "_always_on_top", "classui_1_1device__manager_1_1_device_manager_dialog.html#a0552c60288f8b81e4712d92404eeb7b7", null ],
+    [ "_main_window", "classui_1_1device__manager_1_1_device_manager_dialog.html#a6daeb94860b5f392b76f4620eebcaa94", null ],
+    [ "_on_item_double_clicked", "classui_1_1device__manager_1_1_device_manager_dialog.html#a503cc000e23d1b4398a3cdd3858577d0", null ],
+    [ "_open_selected", "classui_1_1device__manager_1_1_device_manager_dialog.html#ab281989ebafa4f7422c7aa3056a192ca", null ],
+    [ "_toggle_always_on_top", "classui_1_1device__manager_1_1_device_manager_dialog.html#abe3038c958181c590fe3bf53a9709e44", null ],
+    [ "btn_close_all", "classui_1_1device__manager_1_1_device_manager_dialog.html#ac735990bde66d81627ffe3507fdd911c", null ],
+    [ "btn_open", "classui_1_1device__manager_1_1_device_manager_dialog.html#a6a98348e0d4423fe8e5324ba09395c19", null ],
+    [ "btn_refresh", "classui_1_1device__manager_1_1_device_manager_dialog.html#a0292659d0d8fe56e4419ee0f6905e144", null ],
+    [ "chk_always_on_top", "classui_1_1device__manager_1_1_device_manager_dialog.html#abe69114c2d9e79583b272ac822802b4f", null ],
+    [ "close_all_windows", "classui_1_1device__manager_1_1_device_manager_dialog.html#a7a41fd6f3a65d5a55632b8ed2a8f090b", null ],
+    [ "device_list", "classui_1_1device__manager_1_1_device_manager_dialog.html#ad51af242450d8cac6da0be22b358b52e", null ],
+    [ "device_windows", "classui_1_1device__manager_1_1_device_manager_dialog.html#a4091a35c492b44149b64622895986bbb", null ],
+    [ "refresh_devices", "classui_1_1device__manager_1_1_device_manager_dialog.html#a6ef37363a0775b20723482f68532af18", null ],
+    [ "system", "classui_1_1device__manager_1_1_device_manager_dialog.html#ac4ca86dead4518ac4fd6e30172db3d9e", null ]
+];

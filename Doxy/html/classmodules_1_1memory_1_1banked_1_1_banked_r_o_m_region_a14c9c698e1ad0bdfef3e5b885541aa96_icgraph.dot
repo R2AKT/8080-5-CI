@@ -1,0 +1,15 @@
+digraph "select_bank"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="RL";
+  Node1 [id="Node000001",label="select_bank",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="io_write",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classmodules_1_1memory_1_1banked_1_1_banked_r_o_m_region.html#a595dbc61f56666a111e6eeb684b370ca",tooltip=" "];
+  Node1 -> Node3 [id="edge2_Node000001_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="write",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classmodules_1_1memory_1_1banked_1_1_banked_r_o_m_region.html#afe713dd4164248c237f57830a0d64a98",tooltip=" "];
+  Node3 -> Node4 [id="edge3_Node000003_Node000004",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="modules.memory.memory\l_bus.MemoryBus.write_word",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classmodules_1_1memory_1_1memory__bus_1_1_memory_bus.html#a97b94d34058c23d8ca079ac2b2532010",tooltip=" "];
+}

@@ -1,0 +1,202 @@
+\doxysection{Bit\+Indicator Class Reference}
+\hypertarget{classui_1_1gpio__widget_1_1_bit_indicator}{}\label{classui_1_1gpio__widget_1_1_bit_indicator}\index{BitIndicator@{BitIndicator}}
+
+
+Inheritance diagram for Bit\+Indicator\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=146pt]{classui_1_1gpio__widget_1_1_bit_indicator__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Bit\+Indicator\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=146pt]{classui_1_1gpio__widget_1_1_bit_indicator__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classui_1_1gpio__widget_1_1_bit_indicator_a459aa754524a1a4683fc210556ef2a37}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, \mbox{\hyperlink{classui_1_1gpio__widget_1_1_bit_indicator_ae722507ef92a970ca91871688e0e391e}{bit\+\_\+num}}, parent=None)
+\item 
+\mbox{\hyperlink{classui_1_1gpio__widget_1_1_bit_indicator_a85b2c09860caa31ecba00954ad2d3901}{set\+\_\+mode}} (self, mode)
+\item 
+\mbox{\hyperlink{classui_1_1gpio__widget_1_1_bit_indicator_a83f391bbf486b1fa07ef1ca9b1acde7e}{set\+\_\+led}} (self, state)
+\item 
+\mbox{\hyperlink{classui_1_1gpio__widget_1_1_bit_indicator_a9e5213cf64c0c05afe8a6613286cc070}{set\+\_\+checkbox}} (self, state)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classui_1_1gpio__widget_1_1_bit_indicator_ae722507ef92a970ca91871688e0e391e}{bit\+\_\+num}} = bit\+\_\+num
+\item 
+\mbox{\hyperlink{classui_1_1gpio__widget_1_1_bit_indicator_ab34bf266a47b98d6e2f2ae92d000f48f}{on\+\_\+toggle}} = None
+\item 
+\mbox{\hyperlink{classui_1_1gpio__widget_1_1_bit_indicator_a9109701c3de11ac33b79bf6ff097c638}{led}} = QLabel()
+\item 
+\mbox{\hyperlink{classui_1_1gpio__widget_1_1_bit_indicator_a890a174e6c974f8e7d08374e1589c28d}{chk}} = QCheck\+Box()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+str \mbox{\hyperlink{classui_1_1gpio__widget_1_1_bit_indicator_a74fa2581c2f96f75d4352f4ab87581ca}{MODE\+\_\+\+OUTPUT}} = \textquotesingle{}output\textquotesingle{}
+\item 
+str \mbox{\hyperlink{classui_1_1gpio__widget_1_1_bit_indicator_a3d648dfad6e30f57cc254db9e6713cbb}{MODE\+\_\+\+INPUT}} = \textquotesingle{}input\textquotesingle{}
+\item 
+str \mbox{\hyperlink{classui_1_1gpio__widget_1_1_bit_indicator_ab202aef9a76dca0a91a8d5d9dac4438d}{MODE\+\_\+\+BIDIR}} = \textquotesingle{}bidir\textquotesingle{}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classui_1_1gpio__widget_1_1_bit_indicator_ae998e47f19fa9e1d5487992d1d66df11}{\+\_\+update\+\_\+led}} (self, state)
+\item 
+\mbox{\hyperlink{classui_1_1gpio__widget_1_1_bit_indicator_a51e9da4d51b0e4fe607be8609e168fb2}{\+\_\+on\+\_\+toggled}} (self, checked)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classui_1_1gpio__widget_1_1_bit_indicator_a5398abd807af88267d2771477d226ece}{\+\_\+on\+\_\+toggled}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Один бит: индикатор (выход) + чекбокс (вход)\end{DoxyVerb}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classui_1_1gpio__widget_1_1_bit_indicator_a459aa754524a1a4683fc210556ef2a37}\index{BitIndicator@{BitIndicator}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!BitIndicator@{BitIndicator}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \label{classui_1_1gpio__widget_1_1_bit_indicator_a459aa754524a1a4683fc210556ef2a37} 
+\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{bit\+\_\+num}{, }\item[{}]{parent}{ = {\ttfamily None}}\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=130pt]{classui_1_1gpio__widget_1_1_bit_indicator_a459aa754524a1a4683fc210556ef2a37_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=130pt]{classui_1_1gpio__widget_1_1_bit_indicator_a459aa754524a1a4683fc210556ef2a37_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classui_1_1gpio__widget_1_1_bit_indicator_a51e9da4d51b0e4fe607be8609e168fb2}\index{BitIndicator@{BitIndicator}!\_on\_toggled@{\_on\_toggled}}
+\index{\_on\_toggled@{\_on\_toggled}!BitIndicator@{BitIndicator}}
+\doxysubsubsection{\texorpdfstring{\_on\_toggled()}{\_on\_toggled()}}
+{\footnotesize\ttfamily \label{classui_1_1gpio__widget_1_1_bit_indicator_a51e9da4d51b0e4fe607be8609e168fb2} 
+\+\_\+on\+\_\+toggled (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{checked}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classui_1_1gpio__widget_1_1_bit_indicator_ae998e47f19fa9e1d5487992d1d66df11}\index{BitIndicator@{BitIndicator}!\_update\_led@{\_update\_led}}
+\index{\_update\_led@{\_update\_led}!BitIndicator@{BitIndicator}}
+\doxysubsubsection{\texorpdfstring{\_update\_led()}{\_update\_led()}}
+{\footnotesize\ttfamily \label{classui_1_1gpio__widget_1_1_bit_indicator_ae998e47f19fa9e1d5487992d1d66df11} 
+\+\_\+update\+\_\+led (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{state}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=232pt]{classui_1_1gpio__widget_1_1_bit_indicator_ae998e47f19fa9e1d5487992d1d66df11_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classui_1_1gpio__widget_1_1_bit_indicator_a9e5213cf64c0c05afe8a6613286cc070}\index{BitIndicator@{BitIndicator}!set\_checkbox@{set\_checkbox}}
+\index{set\_checkbox@{set\_checkbox}!BitIndicator@{BitIndicator}}
+\doxysubsubsection{\texorpdfstring{set\_checkbox()}{set\_checkbox()}}
+{\footnotesize\ttfamily \label{classui_1_1gpio__widget_1_1_bit_indicator_a9e5213cf64c0c05afe8a6613286cc070} 
+set\+\_\+checkbox (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{state}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Установить чекбокс (внешний сигнал) без генерации события\end{DoxyVerb}
+ \Hypertarget{classui_1_1gpio__widget_1_1_bit_indicator_a83f391bbf486b1fa07ef1ca9b1acde7e}\index{BitIndicator@{BitIndicator}!set\_led@{set\_led}}
+\index{set\_led@{set\_led}!BitIndicator@{BitIndicator}}
+\doxysubsubsection{\texorpdfstring{set\_led()}{set\_led()}}
+{\footnotesize\ttfamily \label{classui_1_1gpio__widget_1_1_bit_indicator_a83f391bbf486b1fa07ef1ca9b1acde7e} 
+set\+\_\+led (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{state}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Установить индикатор (выходной регистр)\end{DoxyVerb}
+ Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=232pt]{classui_1_1gpio__widget_1_1_bit_indicator_a83f391bbf486b1fa07ef1ca9b1acde7e_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classui_1_1gpio__widget_1_1_bit_indicator_a85b2c09860caa31ecba00954ad2d3901}\index{BitIndicator@{BitIndicator}!set\_mode@{set\_mode}}
+\index{set\_mode@{set\_mode}!BitIndicator@{BitIndicator}}
+\doxysubsubsection{\texorpdfstring{set\_mode()}{set\_mode()}}
+{\footnotesize\ttfamily \label{classui_1_1gpio__widget_1_1_bit_indicator_a85b2c09860caa31ecba00954ad2d3901} 
+set\+\_\+mode (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{mode}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Установить режим отображения\end{DoxyVerb}
+ 
+
+\doxysubsection{Field Documentation}
+\Hypertarget{classui_1_1gpio__widget_1_1_bit_indicator_a5398abd807af88267d2771477d226ece}\index{BitIndicator@{BitIndicator}!\_on\_toggled@{\_on\_toggled}}
+\index{\_on\_toggled@{\_on\_toggled}!BitIndicator@{BitIndicator}}
+\doxysubsubsection{\texorpdfstring{\_on\_toggled}{\_on\_toggled}}
+{\footnotesize\ttfamily \label{classui_1_1gpio__widget_1_1_bit_indicator_a5398abd807af88267d2771477d226ece} 
+\+\_\+on\+\_\+toggled\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classui_1_1gpio__widget_1_1_bit_indicator_ae722507ef92a970ca91871688e0e391e}\index{BitIndicator@{BitIndicator}!bit\_num@{bit\_num}}
+\index{bit\_num@{bit\_num}!BitIndicator@{BitIndicator}}
+\doxysubsubsection{\texorpdfstring{bit\_num}{bit\_num}}
+{\footnotesize\ttfamily \label{classui_1_1gpio__widget_1_1_bit_indicator_ae722507ef92a970ca91871688e0e391e} 
+bit\+\_\+num = bit\+\_\+num}
+
+\Hypertarget{classui_1_1gpio__widget_1_1_bit_indicator_a890a174e6c974f8e7d08374e1589c28d}\index{BitIndicator@{BitIndicator}!chk@{chk}}
+\index{chk@{chk}!BitIndicator@{BitIndicator}}
+\doxysubsubsection{\texorpdfstring{chk}{chk}}
+{\footnotesize\ttfamily \label{classui_1_1gpio__widget_1_1_bit_indicator_a890a174e6c974f8e7d08374e1589c28d} 
+chk = QCheck\+Box()}
+
+\Hypertarget{classui_1_1gpio__widget_1_1_bit_indicator_a9109701c3de11ac33b79bf6ff097c638}\index{BitIndicator@{BitIndicator}!led@{led}}
+\index{led@{led}!BitIndicator@{BitIndicator}}
+\doxysubsubsection{\texorpdfstring{led}{led}}
+{\footnotesize\ttfamily \label{classui_1_1gpio__widget_1_1_bit_indicator_a9109701c3de11ac33b79bf6ff097c638} 
+led = QLabel()}
+
+\Hypertarget{classui_1_1gpio__widget_1_1_bit_indicator_ab202aef9a76dca0a91a8d5d9dac4438d}\index{BitIndicator@{BitIndicator}!MODE\_BIDIR@{MODE\_BIDIR}}
+\index{MODE\_BIDIR@{MODE\_BIDIR}!BitIndicator@{BitIndicator}}
+\doxysubsubsection{\texorpdfstring{MODE\_BIDIR}{MODE\_BIDIR}}
+{\footnotesize\ttfamily \label{classui_1_1gpio__widget_1_1_bit_indicator_ab202aef9a76dca0a91a8d5d9dac4438d} 
+str MODE\+\_\+\+BIDIR = \textquotesingle{}bidir\textquotesingle{}\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classui_1_1gpio__widget_1_1_bit_indicator_a3d648dfad6e30f57cc254db9e6713cbb}\index{BitIndicator@{BitIndicator}!MODE\_INPUT@{MODE\_INPUT}}
+\index{MODE\_INPUT@{MODE\_INPUT}!BitIndicator@{BitIndicator}}
+\doxysubsubsection{\texorpdfstring{MODE\_INPUT}{MODE\_INPUT}}
+{\footnotesize\ttfamily \label{classui_1_1gpio__widget_1_1_bit_indicator_a3d648dfad6e30f57cc254db9e6713cbb} 
+str MODE\+\_\+\+INPUT = \textquotesingle{}input\textquotesingle{}\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classui_1_1gpio__widget_1_1_bit_indicator_a74fa2581c2f96f75d4352f4ab87581ca}\index{BitIndicator@{BitIndicator}!MODE\_OUTPUT@{MODE\_OUTPUT}}
+\index{MODE\_OUTPUT@{MODE\_OUTPUT}!BitIndicator@{BitIndicator}}
+\doxysubsubsection{\texorpdfstring{MODE\_OUTPUT}{MODE\_OUTPUT}}
+{\footnotesize\ttfamily \label{classui_1_1gpio__widget_1_1_bit_indicator_a74fa2581c2f96f75d4352f4ab87581ca} 
+MODE\+\_\+\+OUTPUT = \textquotesingle{}output\textquotesingle{}\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classui_1_1gpio__widget_1_1_bit_indicator_ab34bf266a47b98d6e2f2ae92d000f48f}\index{BitIndicator@{BitIndicator}!on\_toggle@{on\_toggle}}
+\index{on\_toggle@{on\_toggle}!BitIndicator@{BitIndicator}}
+\doxysubsubsection{\texorpdfstring{on\_toggle}{on\_toggle}}
+{\footnotesize\ttfamily \label{classui_1_1gpio__widget_1_1_bit_indicator_ab34bf266a47b98d6e2f2ae92d000f48f} 
+on\+\_\+toggle = None}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+ui/\mbox{\hyperlink{gpio__widget_8py}{gpio\+\_\+widget.\+py}}\end{DoxyCompactItemize}

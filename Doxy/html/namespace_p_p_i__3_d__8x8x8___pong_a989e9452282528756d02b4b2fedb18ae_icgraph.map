@@ -1,0 +1,8 @@
+<map id="is_on_paddle" name="is_on_paddle">
+<area shape="rect" id="Node000001" title=" " alt="" coords="287,29,384,56"/>
+<area shape="rect" id="Node000002" href="$namespace_p_p_i__3_d__8x8x8___pong.html#a81219d612b6dad42ce28aed34ed32d0a" title=" " alt="" coords="140,29,239,56"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="272,45,239,45,239,40,272,40"/>
+<area shape="rect" id="Node000003" href="$namespace_p_p_i__3_d__8x8x8___pong.html#add153c28222d9a2594a84ff87c5ff659" title=" " alt="" coords="5,29,92,56"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="124,45,92,45,92,40,124,40"/>
+<area shape="poly" id="edge3_Node000003_Node000003" title=" " alt="" coords="72,16,64,10,48,8,34,10,27,14,25,20,29,28,24,30,19,21,22,11,32,5,49,3,66,5,75,12"/>
+</map>

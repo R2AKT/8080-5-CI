@@ -1,0 +1,6 @@
+<map id="tick" name="tick">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,29,48,56"/>
+<area shape="poly" id="edge2_Node000001_Node000001" title=" " alt="" coords="8,30,6,20,8,11,15,5,27,3,39,5,45,12,42,16,36,10,26,8,17,10,12,14,11,20,13,28"/>
+<area shape="rect" id="Node000002" href="$namespace_p_p_i__3_d__8x8x8___tetris.html#a6039be1bda1fa83c9804d7549e5672be" title=" " alt="" coords="96,29,153,56"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="48,40,80,40,80,45,48,45"/>
+</map>
