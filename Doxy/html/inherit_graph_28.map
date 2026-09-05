@@ -1,5 +1,7 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" title=" " alt="" coords="5,5,97,32"/>
-<area shape="rect" id="Node000001" href="$classi8080___c_i_1_1_hex_table_view.html" title=" " alt="" coords="145,5,250,32"/>
-<area shape="poly" id="edge39_Node000000_Node000001" title=" " alt="" coords="112,16,144,16,144,21,112,21"/>
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,31,75,57"/>
+<area shape="rect" id="Node000001" href="$classi8080___c_i_1_1_bus_worker.html" title=" " alt="" coords="133,5,218,32"/>
+<area shape="poly" id="edge37_Node000000_Node000001" title=" " alt="" coords="90,32,132,24,133,29,91,37"/>
+<area shape="rect" id="Node000002" href="$classi8080__emulator_1_1_i8080_emulator.html" title=" " alt="" coords="123,56,228,83"/>
+<area shape="poly" id="edge38_Node000000_Node000002" title=" " alt="" coords="90,51,123,57,122,62,89,56"/>
 </map>

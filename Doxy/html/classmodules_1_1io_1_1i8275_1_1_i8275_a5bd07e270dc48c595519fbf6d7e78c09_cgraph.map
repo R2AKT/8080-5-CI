@@ -1,9 +1,0 @@
-<map id="modules.io.i8275.I8275.io_read" name="modules.io.i8275.I8275.io_read">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,80,207,107"/>
-<area shape="rect" id="Node000002" href="$classmodules_1_1io_1_1i8251_1_1_i8251.html#a912c386de02419e4f348fde9fcfc6b62" title=" " alt="" coords="255,5,414,48"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="154,77,244,50,245,55,155,82"/>
-<area shape="rect" id="Node000003" href="$classmodules_1_1io_1_1i8257_1_1_i8257.html#a9f2102cbcefac30b8a1cbc841e188b96" title=" " alt="" coords="255,72,414,115"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="207,91,239,91,239,96,207,96"/>
-<area shape="rect" id="Node000004" href="$classmodules_1_1io_1_1i8275_1_1_i8275.html#a5e97de929d6b5b7729b3570b7097fb07" title=" " alt="" coords="255,139,414,181"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="155,105,245,131,244,136,154,110"/>
-</map>

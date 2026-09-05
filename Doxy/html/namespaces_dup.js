@@ -11,6 +11,13 @@ var namespaces_dup =
       [ "test_text", "namespacecrt__font__test.html#aa48ff40f132c3a42c82e36b6f09114c9", null ],
       [ "total", "namespacecrt__font__test.html#a2c1a52cd37ed38e861bba51c47c1802a", null ]
     ] ],
+    [ "discrete_crt_font_test", "namespacediscrete__crt__font__test.html", [
+      [ "bus", "namespacediscrete__crt__font__test.html#a411bd59fecc82fdfda0e5c9d7da7447f", null ],
+      [ "codes", "namespacediscrete__crt__font__test.html#a001b2cd780738ad61250bf4b63f00965", null ],
+      [ "dev", "namespacediscrete__crt__font__test.html#ac43812121e594f158520698ba706118f", null ],
+      [ "test_text", "namespacediscrete__crt__font__test.html#aa48ff40f132c3a42c82e36b6f09114c9", null ],
+      [ "total", "namespacediscrete__crt__font__test.html#a2c1a52cd37ed38e861bba51c47c1802a", null ]
+    ] ],
     [ "display_test", "namespacedisplay__test.html", [
       [ "dump_char_bitmap", "namespacedisplay__test.html#ab753d8cc0093d400858516547cbe2a0c", null ],
       [ "find_device", "namespacedisplay__test.html#a4997dc348c6819e81ad17c82d8936b7b", null ],

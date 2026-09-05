@@ -2,7 +2,7 @@ var searchData=
 [
   ['undo_0',['undo',['../classi8080___c_i_1_1_main_window.html#a9dd5c52f46b6d1783e5377523eab9933',1,'i8080_CI::MainWindow']]],
   ['unhold_5fbus_1',['unhold_bus',['../classi8080___c_i_1_1_automation_a_p_i.html#a8da5cbf46b0c4f020735370966c69985',1,'i8080_CI::AutomationAPI']]],
-  ['unicode_5fto_5fkoi7_2',['unicode_to_koi7',['../classmodules_1_1io_1_1i8275_1_1_i8275.html#a61fa52a577456af4863f55931bedea54',1,'modules::io::i8275::I8275']]],
+  ['unicode_5fto_5fkoi7_2',['unicode_to_koi7',['../classmodules_1_1io_1_1discrete__video_1_1_discrete_video.html#a61fa52a577456af4863f55931bedea54',1,'modules.io.discrete_video.DiscreteVideo.unicode_to_koi7()'],['../classmodules_1_1io_1_1i8275_1_1_i8275.html#a61fa52a577456af4863f55931bedea54',1,'modules.io.i8275.I8275.unicode_to_koi7()']]],
   ['unregister_5ffrom_5fbus_3',['unregister_from_bus',['../classmodules_1_1io_1_1iodevice_1_1_i_o_device.html#ae398dd02b228a3d3a33f84ce6d000e89',1,'modules::io::iodevice::IODevice']]],
   ['unregister_5fio_4',['unregister_io',['../classmodules_1_1memory_1_1memory__bus_1_1_memory_bus.html#ac4b899add69d06199bd582796f7dfb16',1,'modules::memory::memory_bus::MemoryBus']]],
   ['unregister_5fmemory_5',['unregister_memory',['../classmodules_1_1memory_1_1memory__bus_1_1_memory_bus.html#a0333795e0c743723578a0f43aeaa4fac',1,'modules::memory::memory_bus::MemoryBus']]],

@@ -1,0 +1,20 @@
+\doxysection{modules.\+io.\+discrete\+\_\+video Namespace Reference}
+\hypertarget{namespacemodules_1_1io_1_1discrete__video}{}\label{namespacemodules_1_1io_1_1discrete__video}\index{modules.io.discrete\_video@{modules.io.discrete\_video}}
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classmodules_1_1io_1_1discrete__video_1_1_discrete_video}{Discrete\+Video}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}DiscreteVideo — видеоконтроллер на дискретной логике.
+Для Микро-80 и других машин без программируемого CRT-контроллера.
+
+Принцип работы:
+- Видеопамять находится в RAM (не в устройстве)
+- Устройство читает видеопамять из шины при обновлении
+- Знакогенератор преобразует коды символов в пиксели
+- Не занимает портов ввода-вывода (как Keyboard8x8)
+\end{DoxyVerb}
+ 

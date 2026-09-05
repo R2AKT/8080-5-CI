@@ -1,0 +1,26 @@
+var classmodules_1_1io_1_1discrete__video_1_1_discrete_video =
+[
+    [ "__init__", "classmodules_1_1io_1_1discrete__video_1_1_discrete_video.html#ad39a9587b044072a321c647d034f1df8", null ],
+    [ "connect_to_bus", "classmodules_1_1io_1_1discrete__video_1_1_discrete_video.html#ae563e5b6b2cff283ffcdde8e674f929f", null ],
+    [ "get_display_text", "classmodules_1_1io_1_1discrete__video_1_1_discrete_video.html#aab7b1dc5a6dd0d35f6f81956eedc0285", null ],
+    [ "get_state", "classmodules_1_1io_1_1discrete__video_1_1_discrete_video.html#aec846d0e51f21a83da9ab30d5d5cacd5", null ],
+    [ "load_font_from_file", "classmodules_1_1io_1_1discrete__video_1_1_discrete_video.html#a543bf0863d767a3cd1df5af430fb572c", null ],
+    [ "refresh_from_memory", "classmodules_1_1io_1_1discrete__video_1_1_discrete_video.html#ac8ffeaa18b89b12309a6c35dc0625b6c", null ],
+    [ "set_character", "classmodules_1_1io_1_1discrete__video_1_1_discrete_video.html#a5a86183f614412b6527610be132e7d1a", null ],
+    [ "unicode_to_koi7", "classmodules_1_1io_1_1discrete__video_1_1_discrete_video.html#a61fa52a577456af4863f55931bedea54", null ],
+    [ "attr_addr", "classmodules_1_1io_1_1discrete__video_1_1_discrete_video.html#a8a2a71cf650338d7d19b7afa9453b441", null ],
+    [ "base_port", "classmodules_1_1io_1_1discrete__video_1_1_discrete_video.html#aa4d3d7d7047086ca2547737909c4e968", null ],
+    [ "char_gen", "classmodules_1_1io_1_1discrete__video_1_1_discrete_video.html#a2aa2fc16ff03056fa2689820e3fac863", null ],
+    [ "char_height", "classmodules_1_1io_1_1discrete__video_1_1_discrete_video.html#aad9fc72f645f6c2f5affb21349199a53", null ],
+    [ "char_width", "classmodules_1_1io_1_1discrete__video_1_1_discrete_video.html#a8f065c6155e148b24fc7de6a09ac03c8", null ],
+    [ "chars_per_line", "classmodules_1_1io_1_1discrete__video_1_1_discrete_video.html#a883b80460b3531b10e6440b0ee977bbf", null ],
+    [ "cursor_enabled", "classmodules_1_1io_1_1discrete__video_1_1_discrete_video.html#a7de39cdfa744eee9c4fa07e93bbd0d59", null ],
+    [ "cursor_x", "classmodules_1_1io_1_1discrete__video_1_1_discrete_video.html#a1ced84253abfbe73f3dddecc6c04e6dd", null ],
+    [ "cursor_y", "classmodules_1_1io_1_1discrete__video_1_1_discrete_video.html#a74697fe945d4edc7482c382f1082539b", null ],
+    [ "display_buffer", "classmodules_1_1io_1_1discrete__video_1_1_discrete_video.html#a5d1dfdc6602b8fb655bbb1917995163b", null ],
+    [ "display_enabled", "classmodules_1_1io_1_1discrete__video_1_1_discrete_video.html#a1acef89cb8c79a0010a8fb2622f59fca", null ],
+    [ "lines_per_screen", "classmodules_1_1io_1_1discrete__video_1_1_discrete_video.html#a32eeaf0e8d7fd005a5f483530b8c42b3", null ],
+    [ "memory_bus", "classmodules_1_1io_1_1discrete__video_1_1_discrete_video.html#a39e104289804845ff2995af878959ead", null ],
+    [ "name", "classmodules_1_1io_1_1discrete__video_1_1_discrete_video.html#ab74e6bf80237ddc4109968cedc58c151", null ],
+    [ "video_addr", "classmodules_1_1io_1_1discrete__video_1_1_discrete_video.html#a074b4190199127b28fb63df07cb5370c", null ]
+];

@@ -24,6 +24,9 @@ The program supports **Russian and English** interface languages and **light/dar
 <img src="8080-5 CI_app_trace.png">
 <img src="8080-5 CI_app_device.png">
 
+***Micro-80***
+<img src="8080-5 CI_app_Micro-80.png">
+
 **8080-5-CI Module**
 
 <img src="8080-5 CI_top.png">

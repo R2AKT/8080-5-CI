@@ -178,6 +178,16 @@ class ComputerSystem:
                     port_z = dev_config.get("port_z", 2)
                     cube.connect_to_ppi(ppi, port_x, port_y, port_z)
 
+        # === Подключаем дискретное видео к шине памяти ===
+        for dev_config in self.config.devices:
+            dev_type = dev_config.get("type", "")
+            dev_name = dev_config.get("name", "")
+            
+            if dev_type == "discrete_video":
+                device = self.devices.get(dev_name)
+                if device:
+                    device.connect_to_bus(self.bus)
+
     def _apply_device_params(self, device, config):
         """Применение дополнительных параметров устройства"""
         # Подключение образа диска (для CFIDE, CH376S)

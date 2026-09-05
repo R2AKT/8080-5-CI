@@ -1,7 +1,0 @@
-<map id="ui.display_widgets.TFTWidget.refresh" name="ui.display_widgets.TFTWidget.refresh">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,47,247,73"/>
-<area shape="rect" id="Node000002" href="$classui_1_1display__widgets_1_1_l_c_d_widget.html#add6c79a6ec5c63971e6ae7113f0f6dd6" title=" " alt="" coords="295,5,499,48"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="240,43,279,38,279,44,240,49"/>
-<area shape="rect" id="Node000003" href="$classui_1_1display__widgets_1_1_t_f_t_widget.html#a5d0278e161aaef5e71579ed3c468173c" title=" " alt="" coords="296,72,498,115"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="240,71,281,76,280,82,240,77"/>
-</map>

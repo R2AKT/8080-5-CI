@@ -1,7 +1,0 @@
-<map id="modules.io.i8272.I8272._read_fifo" name="modules.io.i8272.I8272._read_fifo">
-<area shape="rect" id="Node000001" title=" " alt="" coords="255,23,414,65"/>
-<area shape="rect" id="Node000002" href="$classmodules_1_1io_1_1i8272_1_1_i8272.html#afda36a32c748828c475090e47d5c78fe" title=" " alt="" coords="5,5,207,32"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="239,36,207,33,208,27,239,31"/>
-<area shape="rect" id="Node000003" href="$classmodules_1_1io_1_1i8279_1_1_i8279.html#a8ab5e6b1c2ac1cc7e03d9192383db3cd" title=" " alt="" coords="5,56,207,83"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="239,57,208,61,207,55,239,52"/>
-</map>

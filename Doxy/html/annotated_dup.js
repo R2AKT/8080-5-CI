@@ -44,6 +44,9 @@ var annotated_dup =
         [ "cube3d", "namespacemodules_1_1io_1_1cube3d.html", [
           [ "Cube3D", "classmodules_1_1io_1_1cube3d_1_1_cube3_d.html", "classmodules_1_1io_1_1cube3d_1_1_cube3_d" ]
         ] ],
+        [ "discrete_video", "namespacemodules_1_1io_1_1discrete__video.html", [
+          [ "DiscreteVideo", "classmodules_1_1io_1_1discrete__video_1_1_discrete_video.html", "classmodules_1_1io_1_1discrete__video_1_1_discrete_video" ]
+        ] ],
         [ "i16550", "namespacemodules_1_1io_1_1i16550.html", [
           [ "I16550", "classmodules_1_1io_1_1i16550_1_1_i16550.html", "classmodules_1_1io_1_1i16550_1_1_i16550" ]
         ] ],

@@ -1,7 +1,11 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" title=" " alt="" coords="5,31,74,57"/>
-<area shape="rect" id="Node000001" href="$classi8080___c_i_1_1_search_dialog.html" title=" " alt="" coords="147,5,246,32"/>
-<area shape="poly" id="edge33_Node000000_Node000001" title=" " alt="" coords="89,33,146,24,147,29,89,39"/>
-<area shape="rect" id="Node000002" href="$classui_1_1device__manager_1_1_device_manager_dialog.html" title=" " alt="" coords="122,56,271,83"/>
-<area shape="poly" id="edge34_Node000000_Node000002" title=" " alt="" coords="90,49,122,55,121,60,89,55"/>
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,81,152,108"/>
+<area shape="rect" id="Node000001" href="$classi8080___c_i_1_1_breakpoint_model.html" title=" " alt="" coords="200,5,318,32"/>
+<area shape="poly" id="edge29_Node000000_Node000001" title=" " alt="" coords="125,72,224,30,226,35,127,77"/>
+<area shape="rect" id="Node000002" href="$classi8080___c_i_1_1_hex_model.html" title=" " alt="" coords="219,56,299,83"/>
+<area shape="poly" id="edge30_Node000000_Node000002" title=" " alt="" coords="167,80,218,72,219,78,168,85"/>
+<area shape="rect" id="Node000003" href="$classi8080___c_i_1_1_trace_model.html" title=" " alt="" coords="214,107,304,133"/>
+<area shape="poly" id="edge31_Node000000_Node000003" title=" " alt="" coords="167,104,214,111,213,116,167,110"/>
+<area shape="rect" id="Node000004" href="$classi8080___c_i_1_1_watch_model.html" title=" " alt="" coords="212,157,306,184"/>
+<area shape="poly" id="edge32_Node000000_Node000004" title=" " alt="" coords="127,112,226,154,224,159,125,117"/>
 </map>

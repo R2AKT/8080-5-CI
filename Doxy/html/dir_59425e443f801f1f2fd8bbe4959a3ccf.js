@@ -1,6 +1,7 @@
 var dir_59425e443f801f1f2fd8bbe4959a3ccf =
 [
     [ "crt_font_test.py", "crt__font__test_8py.html", "crt__font__test_8py" ],
+    [ "discrete_crt_font_test.py", "discrete__crt__font__test_8py.html", "discrete__crt__font__test_8py" ],
     [ "display_test.py", "display__test_8py.html", "display__test_8py" ],
     [ "font_test.py", "font__test_8py.html", "font__test_8py" ],
     [ "kbd_test.py", "kbd__test_8py.html", "kbd__test_8py" ],

@@ -5,6 +5,7 @@ var namespacemodules_1_1io =
     [ "ch376s", "namespacemodules_1_1io_1_1ch376s.html", "namespacemodules_1_1io_1_1ch376s" ],
     [ "chargen", "namespacemodules_1_1io_1_1chargen.html", null ],
     [ "cube3d", "namespacemodules_1_1io_1_1cube3d.html", "namespacemodules_1_1io_1_1cube3d" ],
+    [ "discrete_video", "namespacemodules_1_1io_1_1discrete__video.html", "namespacemodules_1_1io_1_1discrete__video" ],
     [ "i16550", "namespacemodules_1_1io_1_1i16550.html", "namespacemodules_1_1io_1_1i16550" ],
     [ "i512vi1", "namespacemodules_1_1io_1_1i512vi1.html", "namespacemodules_1_1io_1_1i512vi1" ],
     [ "i8251", "namespacemodules_1_1io_1_1i8251.html", "namespacemodules_1_1io_1_1i8251" ],

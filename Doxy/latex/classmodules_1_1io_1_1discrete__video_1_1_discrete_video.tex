@@ -1,0 +1,258 @@
+\doxysection{Discrete\+Video Class Reference}
+\hypertarget{classmodules_1_1io_1_1discrete__video_1_1_discrete_video}{}\label{classmodules_1_1io_1_1discrete__video_1_1_discrete_video}\index{DiscreteVideo@{DiscreteVideo}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1discrete__video_1_1_discrete_video_ad39a9587b044072a321c647d034f1df8}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, \mbox{\hyperlink{classmodules_1_1io_1_1discrete__video_1_1_discrete_video_ab74e6bf80237ddc4109968cedc58c151}{name}}="{}Discrete Video"{})
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1discrete__video_1_1_discrete_video_a61fa52a577456af4863f55931bedea54}{unicode\+\_\+to\+\_\+koi7}} (cls, text)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1discrete__video_1_1_discrete_video_ae563e5b6b2cff283ffcdde8e674f929f}{connect\+\_\+to\+\_\+bus}} (self, bus)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1discrete__video_1_1_discrete_video_ac8ffeaa18b89b12309a6c35dc0625b6c}{refresh\+\_\+from\+\_\+memory}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1discrete__video_1_1_discrete_video_a543bf0863d767a3cd1df5af430fb572c}{load\+\_\+font\+\_\+from\+\_\+file}} (self, path, \mbox{\hyperlink{classmodules_1_1io_1_1discrete__video_1_1_discrete_video_a8f065c6155e148b24fc7de6a09ac03c8}{char\+\_\+width}}=6, num\+\_\+chars=128, invert=False, bit\+\_\+reverse=False)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1discrete__video_1_1_discrete_video_aab7b1dc5a6dd0d35f6f81956eedc0285}{get\+\_\+display\+\_\+text}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1discrete__video_1_1_discrete_video_a5a86183f614412b6527610be132e7d1a}{set\+\_\+character}} (self, x, y, char, attr=0x00)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1discrete__video_1_1_discrete_video_aec846d0e51f21a83da9ab30d5d5cacd5}{get\+\_\+state}} (self)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1discrete__video_1_1_discrete_video_ab74e6bf80237ddc4109968cedc58c151}{name}} = name
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1discrete__video_1_1_discrete_video_aa4d3d7d7047086ca2547737909c4e968}{base\+\_\+port}} = -\/1
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1discrete__video_1_1_discrete_video_a883b80460b3531b10e6440b0ee977bbf}{chars\+\_\+per\+\_\+line}} = 64
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1discrete__video_1_1_discrete_video_a32eeaf0e8d7fd005a5f483530b8c42b3}{lines\+\_\+per\+\_\+screen}} = 32
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1discrete__video_1_1_discrete_video_a8f065c6155e148b24fc7de6a09ac03c8}{char\+\_\+width}} = 6
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1discrete__video_1_1_discrete_video_aad9fc72f645f6c2f5affb21349199a53}{char\+\_\+height}} = 8
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1discrete__video_1_1_discrete_video_a074b4190199127b28fb63df07cb5370c}{video\+\_\+addr}} = 0x\+E800
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1discrete__video_1_1_discrete_video_a8a2a71cf650338d7d19b7afa9453b441}{attr\+\_\+addr}} = 0x\+E000
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1discrete__video_1_1_discrete_video_a1ced84253abfbe73f3dddecc6c04e6dd}{cursor\+\_\+x}} = 0
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1discrete__video_1_1_discrete_video_a74697fe945d4edc7482c382f1082539b}{cursor\+\_\+y}} = 0
+\item 
+bool \mbox{\hyperlink{classmodules_1_1io_1_1discrete__video_1_1_discrete_video_a7de39cdfa744eee9c4fa07e93bbd0d59}{cursor\+\_\+enabled}} = False
+\item 
+dict \mbox{\hyperlink{classmodules_1_1io_1_1discrete__video_1_1_discrete_video_a5d1dfdc6602b8fb655bbb1917995163b}{display\+\_\+buffer}} = \{\}
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1discrete__video_1_1_discrete_video_a39e104289804845ff2995af878959ead}{memory\+\_\+bus}} = None
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1discrete__video_1_1_discrete_video_a2aa2fc16ff03056fa2689820e3fac863}{char\+\_\+gen}} = Char\+Generator()
+\item 
+bool \mbox{\hyperlink{classmodules_1_1io_1_1discrete__video_1_1_discrete_video_a1acef89cb8c79a0010a8fb2622f59fca}{display\+\_\+enabled}} = True
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+dict \mbox{\hyperlink{classmodules_1_1io_1_1discrete__video_1_1_discrete_video_a5919c0724580644728ad14457eab71f5}{KOI7\+\_\+\+TO\+\_\+\+UNICODE}}
+\item 
+dict \mbox{\hyperlink{classmodules_1_1io_1_1discrete__video_1_1_discrete_video_aff8ae70641fafa5324e2e474c98f3da2}{UNICODE\+\_\+\+TO\+\_\+\+KOI7}} = \{v\+: k for k, v in KOI7\+\_\+\+TO\+\_\+\+UNICODE.\+items()\}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Видеоконтроллер на дискретной логике\end{DoxyVerb}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classmodules_1_1io_1_1discrete__video_1_1_discrete_video_ad39a9587b044072a321c647d034f1df8}\index{DiscreteVideo@{DiscreteVideo}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!DiscreteVideo@{DiscreteVideo}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1discrete__video_1_1_discrete_video_ad39a9587b044072a321c647d034f1df8} 
+\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{name}{ = {\ttfamily "{}Discrete~Video"{}}}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classmodules_1_1io_1_1discrete__video_1_1_discrete_video_ae563e5b6b2cff283ffcdde8e674f929f}\index{DiscreteVideo@{DiscreteVideo}!connect\_to\_bus@{connect\_to\_bus}}
+\index{connect\_to\_bus@{connect\_to\_bus}!DiscreteVideo@{DiscreteVideo}}
+\doxysubsubsection{\texorpdfstring{connect\_to\_bus()}{connect\_to\_bus()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1discrete__video_1_1_discrete_video_ae563e5b6b2cff283ffcdde8e674f929f} 
+connect\+\_\+to\+\_\+bus (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{bus}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Подключить к шине памяти\end{DoxyVerb}
+ \Hypertarget{classmodules_1_1io_1_1discrete__video_1_1_discrete_video_aab7b1dc5a6dd0d35f6f81956eedc0285}\index{DiscreteVideo@{DiscreteVideo}!get\_display\_text@{get\_display\_text}}
+\index{get\_display\_text@{get\_display\_text}!DiscreteVideo@{DiscreteVideo}}
+\doxysubsubsection{\texorpdfstring{get\_display\_text()}{get\_display\_text()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1discrete__video_1_1_discrete_video_aab7b1dc5a6dd0d35f6f81956eedc0285} 
+get\+\_\+display\+\_\+text (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Получить текст дисплея (с КОИ-7 кириллицей)\end{DoxyVerb}
+ Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodules_1_1io_1_1discrete__video_1_1_discrete_video_aab7b1dc5a6dd0d35f6f81956eedc0285_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1discrete__video_1_1_discrete_video_aec846d0e51f21a83da9ab30d5d5cacd5}\index{DiscreteVideo@{DiscreteVideo}!get\_state@{get\_state}}
+\index{get\_state@{get\_state}!DiscreteVideo@{DiscreteVideo}}
+\doxysubsubsection{\texorpdfstring{get\_state()}{get\_state()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1discrete__video_1_1_discrete_video_aec846d0e51f21a83da9ab30d5d5cacd5} 
+get\+\_\+state (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Состояние для отладки\end{DoxyVerb}
+ \Hypertarget{classmodules_1_1io_1_1discrete__video_1_1_discrete_video_a543bf0863d767a3cd1df5af430fb572c}\index{DiscreteVideo@{DiscreteVideo}!load\_font\_from\_file@{load\_font\_from\_file}}
+\index{load\_font\_from\_file@{load\_font\_from\_file}!DiscreteVideo@{DiscreteVideo}}
+\doxysubsubsection{\texorpdfstring{load\_font\_from\_file()}{load\_font\_from\_file()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1discrete__video_1_1_discrete_video_a543bf0863d767a3cd1df5af430fb572c} 
+load\+\_\+font\+\_\+from\+\_\+file (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{path}{, }\item[{}]{char\+\_\+width}{ = {\ttfamily 6}, }\item[{}]{num\+\_\+chars}{ = {\ttfamily 128}, }\item[{}]{invert}{ = {\ttfamily False}, }\item[{}]{bit\+\_\+reverse}{ = {\ttfamily False}}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Загрузить шрифт знакогенератора из файла\end{DoxyVerb}
+ \Hypertarget{classmodules_1_1io_1_1discrete__video_1_1_discrete_video_ac8ffeaa18b89b12309a6c35dc0625b6c}\index{DiscreteVideo@{DiscreteVideo}!refresh\_from\_memory@{refresh\_from\_memory}}
+\index{refresh\_from\_memory@{refresh\_from\_memory}!DiscreteVideo@{DiscreteVideo}}
+\doxysubsubsection{\texorpdfstring{refresh\_from\_memory()}{refresh\_from\_memory()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1discrete__video_1_1_discrete_video_ac8ffeaa18b89b12309a6c35dc0625b6c} 
+refresh\+\_\+from\+\_\+memory (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Обновить буфер отображения из видеопамяти.
+Вызывается из виджета при автообновлении.
+\end{DoxyVerb}
+ \Hypertarget{classmodules_1_1io_1_1discrete__video_1_1_discrete_video_a5a86183f614412b6527610be132e7d1a}\index{DiscreteVideo@{DiscreteVideo}!set\_character@{set\_character}}
+\index{set\_character@{set\_character}!DiscreteVideo@{DiscreteVideo}}
+\doxysubsubsection{\texorpdfstring{set\_character()}{set\_character()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1discrete__video_1_1_discrete_video_a5a86183f614412b6527610be132e7d1a} 
+set\+\_\+character (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{x}{, }\item[{}]{y}{, }\item[{}]{char}{, }\item[{}]{attr}{ = {\ttfamily 0x00}}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Установить символ в буфер (для тестов)\end{DoxyVerb}
+ \Hypertarget{classmodules_1_1io_1_1discrete__video_1_1_discrete_video_a61fa52a577456af4863f55931bedea54}\index{DiscreteVideo@{DiscreteVideo}!unicode\_to\_koi7@{unicode\_to\_koi7}}
+\index{unicode\_to\_koi7@{unicode\_to\_koi7}!DiscreteVideo@{DiscreteVideo}}
+\doxysubsubsection{\texorpdfstring{unicode\_to\_koi7()}{unicode\_to\_koi7()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1discrete__video_1_1_discrete_video_a61fa52a577456af4863f55931bedea54} 
+unicode\+\_\+to\+\_\+koi7 (\begin{DoxyParamCaption}\item[{}]{cls}{, }\item[{}]{text}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Преобразовать текст из Unicode в коды KOI-7\end{DoxyVerb}
+ 
+
+\doxysubsection{Field Documentation}
+\Hypertarget{classmodules_1_1io_1_1discrete__video_1_1_discrete_video_a8a2a71cf650338d7d19b7afa9453b441}\index{DiscreteVideo@{DiscreteVideo}!attr\_addr@{attr\_addr}}
+\index{attr\_addr@{attr\_addr}!DiscreteVideo@{DiscreteVideo}}
+\doxysubsubsection{\texorpdfstring{attr\_addr}{attr\_addr}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1discrete__video_1_1_discrete_video_a8a2a71cf650338d7d19b7afa9453b441} 
+int attr\+\_\+addr = 0x\+E000}
+
+\Hypertarget{classmodules_1_1io_1_1discrete__video_1_1_discrete_video_aa4d3d7d7047086ca2547737909c4e968}\index{DiscreteVideo@{DiscreteVideo}!base\_port@{base\_port}}
+\index{base\_port@{base\_port}!DiscreteVideo@{DiscreteVideo}}
+\doxysubsubsection{\texorpdfstring{base\_port}{base\_port}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1discrete__video_1_1_discrete_video_aa4d3d7d7047086ca2547737909c4e968} 
+int base\+\_\+port = -\/1}
+
+\Hypertarget{classmodules_1_1io_1_1discrete__video_1_1_discrete_video_a2aa2fc16ff03056fa2689820e3fac863}\index{DiscreteVideo@{DiscreteVideo}!char\_gen@{char\_gen}}
+\index{char\_gen@{char\_gen}!DiscreteVideo@{DiscreteVideo}}
+\doxysubsubsection{\texorpdfstring{char\_gen}{char\_gen}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1discrete__video_1_1_discrete_video_a2aa2fc16ff03056fa2689820e3fac863} 
+char\+\_\+gen = Char\+Generator()}
+
+\Hypertarget{classmodules_1_1io_1_1discrete__video_1_1_discrete_video_aad9fc72f645f6c2f5affb21349199a53}\index{DiscreteVideo@{DiscreteVideo}!char\_height@{char\_height}}
+\index{char\_height@{char\_height}!DiscreteVideo@{DiscreteVideo}}
+\doxysubsubsection{\texorpdfstring{char\_height}{char\_height}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1discrete__video_1_1_discrete_video_aad9fc72f645f6c2f5affb21349199a53} 
+char\+\_\+height = 8}
+
+\Hypertarget{classmodules_1_1io_1_1discrete__video_1_1_discrete_video_a8f065c6155e148b24fc7de6a09ac03c8}\index{DiscreteVideo@{DiscreteVideo}!char\_width@{char\_width}}
+\index{char\_width@{char\_width}!DiscreteVideo@{DiscreteVideo}}
+\doxysubsubsection{\texorpdfstring{char\_width}{char\_width}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1discrete__video_1_1_discrete_video_a8f065c6155e148b24fc7de6a09ac03c8} 
+char\+\_\+width = 6}
+
+\Hypertarget{classmodules_1_1io_1_1discrete__video_1_1_discrete_video_a883b80460b3531b10e6440b0ee977bbf}\index{DiscreteVideo@{DiscreteVideo}!chars\_per\_line@{chars\_per\_line}}
+\index{chars\_per\_line@{chars\_per\_line}!DiscreteVideo@{DiscreteVideo}}
+\doxysubsubsection{\texorpdfstring{chars\_per\_line}{chars\_per\_line}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1discrete__video_1_1_discrete_video_a883b80460b3531b10e6440b0ee977bbf} 
+chars\+\_\+per\+\_\+line = 64}
+
+\Hypertarget{classmodules_1_1io_1_1discrete__video_1_1_discrete_video_a7de39cdfa744eee9c4fa07e93bbd0d59}\index{DiscreteVideo@{DiscreteVideo}!cursor\_enabled@{cursor\_enabled}}
+\index{cursor\_enabled@{cursor\_enabled}!DiscreteVideo@{DiscreteVideo}}
+\doxysubsubsection{\texorpdfstring{cursor\_enabled}{cursor\_enabled}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1discrete__video_1_1_discrete_video_a7de39cdfa744eee9c4fa07e93bbd0d59} 
+bool cursor\+\_\+enabled = False}
+
+\Hypertarget{classmodules_1_1io_1_1discrete__video_1_1_discrete_video_a1ced84253abfbe73f3dddecc6c04e6dd}\index{DiscreteVideo@{DiscreteVideo}!cursor\_x@{cursor\_x}}
+\index{cursor\_x@{cursor\_x}!DiscreteVideo@{DiscreteVideo}}
+\doxysubsubsection{\texorpdfstring{cursor\_x}{cursor\_x}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1discrete__video_1_1_discrete_video_a1ced84253abfbe73f3dddecc6c04e6dd} 
+int cursor\+\_\+x = 0}
+
+\Hypertarget{classmodules_1_1io_1_1discrete__video_1_1_discrete_video_a74697fe945d4edc7482c382f1082539b}\index{DiscreteVideo@{DiscreteVideo}!cursor\_y@{cursor\_y}}
+\index{cursor\_y@{cursor\_y}!DiscreteVideo@{DiscreteVideo}}
+\doxysubsubsection{\texorpdfstring{cursor\_y}{cursor\_y}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1discrete__video_1_1_discrete_video_a74697fe945d4edc7482c382f1082539b} 
+int cursor\+\_\+y = 0}
+
+\Hypertarget{classmodules_1_1io_1_1discrete__video_1_1_discrete_video_a5d1dfdc6602b8fb655bbb1917995163b}\index{DiscreteVideo@{DiscreteVideo}!display\_buffer@{display\_buffer}}
+\index{display\_buffer@{display\_buffer}!DiscreteVideo@{DiscreteVideo}}
+\doxysubsubsection{\texorpdfstring{display\_buffer}{display\_buffer}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1discrete__video_1_1_discrete_video_a5d1dfdc6602b8fb655bbb1917995163b} 
+dict display\+\_\+buffer = \{\}}
+
+\Hypertarget{classmodules_1_1io_1_1discrete__video_1_1_discrete_video_a1acef89cb8c79a0010a8fb2622f59fca}\index{DiscreteVideo@{DiscreteVideo}!display\_enabled@{display\_enabled}}
+\index{display\_enabled@{display\_enabled}!DiscreteVideo@{DiscreteVideo}}
+\doxysubsubsection{\texorpdfstring{display\_enabled}{display\_enabled}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1discrete__video_1_1_discrete_video_a1acef89cb8c79a0010a8fb2622f59fca} 
+display\+\_\+enabled = True}
+
+\Hypertarget{classmodules_1_1io_1_1discrete__video_1_1_discrete_video_a5919c0724580644728ad14457eab71f5}\index{DiscreteVideo@{DiscreteVideo}!KOI7\_TO\_UNICODE@{KOI7\_TO\_UNICODE}}
+\index{KOI7\_TO\_UNICODE@{KOI7\_TO\_UNICODE}!DiscreteVideo@{DiscreteVideo}}
+\doxysubsubsection{\texorpdfstring{KOI7\_TO\_UNICODE}{KOI7\_TO\_UNICODE}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1discrete__video_1_1_discrete_video_a5919c0724580644728ad14457eab71f5} 
+dict KOI7\+\_\+\+TO\+\_\+\+UNICODE\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ 0x60:\ \textcolor{stringliteral}{'Ю'},\ 0x61:\ \textcolor{stringliteral}{'А'},\ 0x62:\ \textcolor{stringliteral}{'Б'},\ 0x63:\ \textcolor{stringliteral}{'Ц'},\ 0x64:\ \textcolor{stringliteral}{'Д'},\ 0x65:\ \textcolor{stringliteral}{'Е'},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ 0x66:\ \textcolor{stringliteral}{'Ф'},\ 0x67:\ \textcolor{stringliteral}{'Г'},\ 0x68:\ \textcolor{stringliteral}{'Х'},\ 0x69:\ \textcolor{stringliteral}{'И'},\ 0x6A:\ \textcolor{stringliteral}{'Й'},\ 0x6B:\ \textcolor{stringliteral}{'К'},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ 0x6C:\ \textcolor{stringliteral}{'Л'},\ 0x6D:\ \textcolor{stringliteral}{'М'},\ 0x6E:\ \textcolor{stringliteral}{'Н'},\ 0x6F:\ \textcolor{stringliteral}{'О'},\ 0x70:\ \textcolor{stringliteral}{'П'},\ 0x71:\ \textcolor{stringliteral}{'Я'},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ 0x72:\ \textcolor{stringliteral}{'Р'},\ 0x73:\ \textcolor{stringliteral}{'С'},\ 0x74:\ \textcolor{stringliteral}{'Т'},\ 0x75:\ \textcolor{stringliteral}{'У'},\ 0x76:\ \textcolor{stringliteral}{'Ж'},\ 0x77:\ \textcolor{stringliteral}{'В'},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ 0x78:\ \textcolor{stringliteral}{'Ь'},\ 0x79:\ \textcolor{stringliteral}{'Ы'},\ 0x7A:\ \textcolor{stringliteral}{'З'},\ 0x7B:\ \textcolor{stringliteral}{'Ш'},\ 0x7C:\ \textcolor{stringliteral}{'Э'},\ 0x7D:\ \textcolor{stringliteral}{'Щ'},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ 0x7E:\ \textcolor{stringliteral}{'Ч'},\ 0x7F:\ \textcolor{stringliteral}{'Ъ'},}
+\DoxyCodeLine{\ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{classmodules_1_1io_1_1discrete__video_1_1_discrete_video_a32eeaf0e8d7fd005a5f483530b8c42b3}\index{DiscreteVideo@{DiscreteVideo}!lines\_per\_screen@{lines\_per\_screen}}
+\index{lines\_per\_screen@{lines\_per\_screen}!DiscreteVideo@{DiscreteVideo}}
+\doxysubsubsection{\texorpdfstring{lines\_per\_screen}{lines\_per\_screen}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1discrete__video_1_1_discrete_video_a32eeaf0e8d7fd005a5f483530b8c42b3} 
+lines\+\_\+per\+\_\+screen = 32}
+
+\Hypertarget{classmodules_1_1io_1_1discrete__video_1_1_discrete_video_a39e104289804845ff2995af878959ead}\index{DiscreteVideo@{DiscreteVideo}!memory\_bus@{memory\_bus}}
+\index{memory\_bus@{memory\_bus}!DiscreteVideo@{DiscreteVideo}}
+\doxysubsubsection{\texorpdfstring{memory\_bus}{memory\_bus}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1discrete__video_1_1_discrete_video_a39e104289804845ff2995af878959ead} 
+memory\+\_\+bus = None}
+
+\Hypertarget{classmodules_1_1io_1_1discrete__video_1_1_discrete_video_ab74e6bf80237ddc4109968cedc58c151}\index{DiscreteVideo@{DiscreteVideo}!name@{name}}
+\index{name@{name}!DiscreteVideo@{DiscreteVideo}}
+\doxysubsubsection{\texorpdfstring{name}{name}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1discrete__video_1_1_discrete_video_ab74e6bf80237ddc4109968cedc58c151} 
+name = name}
+
+\Hypertarget{classmodules_1_1io_1_1discrete__video_1_1_discrete_video_aff8ae70641fafa5324e2e474c98f3da2}\index{DiscreteVideo@{DiscreteVideo}!UNICODE\_TO\_KOI7@{UNICODE\_TO\_KOI7}}
+\index{UNICODE\_TO\_KOI7@{UNICODE\_TO\_KOI7}!DiscreteVideo@{DiscreteVideo}}
+\doxysubsubsection{\texorpdfstring{UNICODE\_TO\_KOI7}{UNICODE\_TO\_KOI7}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1discrete__video_1_1_discrete_video_aff8ae70641fafa5324e2e474c98f3da2} 
+dict UNICODE\+\_\+\+TO\+\_\+\+KOI7 = \{v\+: k for k, v in KOI7\+\_\+\+TO\+\_\+\+UNICODE.\+items()\}\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classmodules_1_1io_1_1discrete__video_1_1_discrete_video_a074b4190199127b28fb63df07cb5370c}\index{DiscreteVideo@{DiscreteVideo}!video\_addr@{video\_addr}}
+\index{video\_addr@{video\_addr}!DiscreteVideo@{DiscreteVideo}}
+\doxysubsubsection{\texorpdfstring{video\_addr}{video\_addr}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1discrete__video_1_1_discrete_video_a074b4190199127b28fb63df07cb5370c} 
+int video\+\_\+addr = 0x\+E800}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+modules/io/\mbox{\hyperlink{discrete__video_8py}{discrete\+\_\+video.\+py}}\end{DoxyCompactItemize}

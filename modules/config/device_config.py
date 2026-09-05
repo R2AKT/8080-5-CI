@@ -203,6 +203,7 @@ class DeviceFactory:
         "keyboard8x8": 0,   # Клавиатура: не занимает порты (подключается к 8255)
         "keyboard8279": 0,  # Клавиатура (подключается через 8279)
         "cube3d": 0,        # Куб 8×8×8: не занимает порты (подключается к 8255)
+        "discrete_video": 0,  # Дискретное видео: не занимает порты
     }
 
     @classmethod
@@ -217,13 +218,35 @@ class DeviceFactory:
         name = dev_config.get("name", dev_type)
         base_port = dev_config.get("base_port", 0)
 
-        # Ленивый импорт для избежания циклических зависимостей
         device = cls._create_instance(dev_type, base_port, name)
 
-        # === Применение параметров для i8275/i8276 из профиля ===
+        # === Параметры для 8275/8276 (ВГ75) ===
         if device is not None and dev_type in ("i8275", "i8276"):
             if "video_addr" in dev_config:
                 device.display_buffer_addr = dev_config["video_addr"]
+            if "chars_per_line" in dev_config:
+                device.chars_per_line = dev_config["chars_per_line"]
+            if "lines_per_screen" in dev_config:
+                device.lines_per_screen = dev_config["lines_per_screen"]
+            if "char_height" in dev_config:
+                device.char_height = dev_config["char_height"]
+
+        # === Параметры для дискретного видео (Микро-80) ===
+        if device is not None and dev_type == "discrete_video":
+            if "video_addr" in dev_config:
+                device.video_addr = dev_config["video_addr"]
+            if "attr_addr" in dev_config:
+                device.attr_addr = dev_config["attr_addr"]
+            if "chars_per_line" in dev_config:
+                device.chars_per_line = dev_config["chars_per_line"]
+            if "lines_per_screen" in dev_config:
+                device.lines_per_screen = dev_config["lines_per_screen"]
+            if "char_height" in dev_config:
+                device.char_height = dev_config["char_height"]
+
+        # === ОБЩИЙ блок загрузки знакогенератора ===
+        # Теперь охватывает и 8275/8276, и discrete_video
+        if device is not None and dev_type in ("i8275", "i8276", "discrete_video"):
             if "char_width" in dev_config:
                 device.char_width = dev_config["char_width"]
             if "chargen_file" in dev_config:
@@ -237,13 +260,7 @@ class DeviceFactory:
                                           num_chars=num_chars,
                                           invert=invert,
                                           bit_reverse=bit_reverse)
-            if "chars_per_line" in dev_config:
-                device.chars_per_line = dev_config["chars_per_line"]
-            if "lines_per_screen" in dev_config:
-                device.lines_per_screen = dev_config["lines_per_screen"]
-            if "char_height" in dev_config:
-                device.char_height = dev_config["char_height"]
-
+                                          
         if device is None:
             return None
 
@@ -324,6 +341,9 @@ class DeviceFactory:
             elif dev_type == "cube3d":
                 from modules.io.cube3d import Cube3D
                 return Cube3D(name=name)
+            elif dev_type == "discrete_video":
+                from modules.io.discrete_video import DiscreteVideo
+                return DiscreteVideo(name=name)
             else:
                 return None
         except ImportError:

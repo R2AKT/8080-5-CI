@@ -5,9 +5,13 @@ digraph "Graphical Class Hierarchy"
   edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
   node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
   rankdir="LR";
-  Node0 [id="Node000000",label="QDialog",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
-  Node0 -> Node1 [id="edge33_Node000000_Node000001",dir="back",color="steelblue1",style="solid",tooltip=" "];
-  Node1 [id="Node000001",label="SearchDialog",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classi8080___c_i_1_1_search_dialog.html",tooltip=" "];
-  Node0 -> Node2 [id="edge34_Node000000_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
-  Node2 [id="Node000002",label="DeviceManagerDialog",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classui_1_1device__manager_1_1_device_manager_dialog.html",tooltip=" "];
+  Node0 [id="Node000000",label="QAbstractTableModel",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
+  Node0 -> Node1 [id="edge29_Node000000_Node000001",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node1 [id="Node000001",label="BreakpointModel",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classi8080___c_i_1_1_breakpoint_model.html",tooltip=" "];
+  Node0 -> Node2 [id="edge30_Node000000_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="HexModel",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classi8080___c_i_1_1_hex_model.html",tooltip=" "];
+  Node0 -> Node3 [id="edge31_Node000000_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="TraceModel",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classi8080___c_i_1_1_trace_model.html",tooltip=" "];
+  Node0 -> Node4 [id="edge32_Node000000_Node000004",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="WatchModel",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classi8080___c_i_1_1_watch_model.html",tooltip=" "];
 }

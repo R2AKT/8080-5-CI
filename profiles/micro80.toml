@@ -1,4 +1,4 @@
-# Микро-80 (1982)
+# Микро-80 (1979) — предшественник Радио-86РК
 # Процессор: КР580ВМ80А @ 1.78 МГц
 # ОЗУ: 16 КБ (0000-3FFF)
 # ПЗУ: 2 КБ монитор (F800-FFFF)
@@ -6,7 +6,7 @@
 # В оригинале — дискретная логика, эмулируем через 8255
 
 [profiles.micro80]
-description = "Микро-80 (1982) — одноплатный микрокомпьютер"
+description = "Микро-80 (1979) — одноплатный микрокомпьютер, предшественник Радио-86РК"
 
 [profiles.micro80.system]
 name = "Микро-80"
@@ -41,3 +41,24 @@ ppi_device = "PPI"
 output_port = 0    # Порт A — выбор строки
 input_port = 1     # Порт B — чтение столбцов
 
+# Видеопамять (0xE000..0xEFFF)
+[[profiles.micro80.memory.regions]]
+type = "ram"
+start = 0xE000
+end = 0xEFFF
+name = "Video RAM"
+
+# Дискретное видео
+[[profiles.micro80.devices]]
+type = "discrete_video"
+name = "Video"
+video_addr = 0xE800       # Видеопамять символов
+attr_addr = 0xE000        # Видеопамять атрибутов/курсора
+chars_per_line = 64
+lines_per_screen = 32
+char_width = 6
+char_height = 8
+chargen_file = "roms/micro80_font.rom"	# опционально, иначе встроенный
+invert = true
+bit_reverse = true
+num_chars = 128

@@ -245,7 +245,8 @@ class CharGenerator:
                 data = f.read()
             expected_size = num_chars * height
             if len(data) < expected_size:
-                print(f"[CharGen] ⚠ Файл {path}: ожидалось {expected_size}, получено {len(data)}")
+                # print(f"[CharGen] ⚠ Файл {path}: ожидалось {expected_size}, получено {len(data)}")
+                # self.log(f"[CharGen] ⚠ Файл {path}: ожидалось {expected_size}, получено {len(data)}", 3000)
                 return False
             
             font = {}
@@ -266,11 +267,14 @@ class CharGenerator:
             self.fonts[height] = font
             self._cache.clear()
             self._char_width = width
-            print(f"[CharGen] ✅ Загружен шрифт {num_chars}×{width}×{height}, "
-                  f"invert={invert}, reverse={bit_reverse} из {path}")
+            # print(f"[CharGen] ✅ Загружен шрифт {num_chars}×{width}×{height}, "
+                  # f"invert={invert}, reverse={bit_reverse} из {path}")
+            # self.log(f"[CharGen] ✅ Загружен шрифт {num_chars}×{width}×{height}, "
+                  # f"invert={invert}, reverse={bit_reverse} из {path}")
             return True
         except Exception as e:
-            print(f"[CharGen] ⚠ Ошибка загрузки {path}: {e}")
+            # print(f"[CharGen] ⚠ Ошибка загрузки {path}: {e}")
+            # self.log(f"[CharGen] ⚠ Ошибка загрузки {path}: {e}")
             return False
     
     @staticmethod

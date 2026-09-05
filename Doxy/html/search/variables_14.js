@@ -4,7 +4,7 @@ var searchData=
   ['uart2_1',['uart2',['../namespacetest__i16550.html#a5f36fd1aed4cff0ee1d21dde1108d0ac',1,'test_i16550']]],
   ['undo_2',['undo',['../classi8080___c_i_1_1_main_window.html#ac123919cc647ce3156bb581b97e80417',1,'i8080_CI::MainWindow']]],
   ['undo_5fstack_3',['undo_stack',['../classi8080___c_i_1_1_main_window.html#a1534486d05072312928624afc89c8d51',1,'i8080_CI::MainWindow']]],
-  ['unicode_5fto_5fkoi7_4',['UNICODE_TO_KOI7',['../classmodules_1_1io_1_1i8275_1_1_i8275.html#aff8ae70641fafa5324e2e474c98f3da2',1,'modules::io::i8275::I8275']]],
+  ['unicode_5fto_5fkoi7_4',['UNICODE_TO_KOI7',['../classmodules_1_1io_1_1discrete__video_1_1_discrete_video.html#aff8ae70641fafa5324e2e474c98f3da2',1,'modules.io.discrete_video.DiscreteVideo.UNICODE_TO_KOI7'],['../classmodules_1_1io_1_1i8275_1_1_i8275.html#aff8ae70641fafa5324e2e474c98f3da2',1,'modules.io.i8275.I8275.UNICODE_TO_KOI7']]],
   ['unknown_5',['unknown',['../namespacetest__config.html#ac4bf32b8437be41aff6333570bb45edd',1,'test_config.unknown'],['../namespacetest__system.html#ac4bf32b8437be41aff6333570bb45edd',1,'test_system.unknown']]],
   ['update_5femulator_5fui_6',['update_emulator_ui',['../classi8080___c_i_1_1_main_window.html#a18950397fad62cbcb10457912af8460c',1,'i8080_CI::MainWindow']]],
   ['usart_7',['usart',['../namespacetest__i8251.html#afed06a862021ee8a7e96fe54250aa7a4',1,'test_i8251']]],

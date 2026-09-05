@@ -1,9 +1,0 @@
-<map id="modules.memory.banked.BankedROMRegion.select_bank" name="modules.memory.banked.BankedROMRegion.select_bank">
-<area shape="rect" id="Node000001" title=" " alt="" coords="506,39,720,81"/>
-<area shape="rect" id="Node000002" href="$classmodules_1_1memory_1_1banked_1_1_banked_r_o_m_region.html#afee05b89049ae3e4683e67b6b72c532a" title=" " alt="" coords="244,5,458,48"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="490,47,458,43,459,38,491,42"/>
-<area shape="rect" id="Node000003" href="$classmodules_1_1memory_1_1banked_1_1_banked_r_o_m_region.html#a86e01d9adb9f26747fe135bd9cdeb65e" title=" " alt="" coords="244,72,458,115"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="491,78,459,82,458,77,490,73"/>
-<area shape="rect" id="Node000004" href="$classmodules_1_1memory_1_1memory__bus_1_1_memory_bus.html#a81becd755ee77fbfa62c37259bb03aff" title=" " alt="" coords="5,72,196,115"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="228,96,196,96,196,91,228,91"/>
-</map>

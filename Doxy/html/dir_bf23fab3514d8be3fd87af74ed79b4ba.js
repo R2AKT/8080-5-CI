@@ -6,6 +6,7 @@ var dir_bf23fab3514d8be3fd87af74ed79b4ba =
     [ "ch376s.py", "ch376s_8py.html", "ch376s_8py" ],
     [ "chargen.py", "chargen_8py.html", null ],
     [ "cube3d.py", "cube3d_8py.html", "cube3d_8py" ],
+    [ "discrete_video.py", "discrete__video_8py.html", "discrete__video_8py" ],
     [ "i16550.py", "i16550_8py.html", "i16550_8py" ],
     [ "i512vi1.py", "i512vi1_8py.html", "i512vi1_8py" ],
     [ "i8251.py", "i8251_8py.html", "i8251_8py" ],

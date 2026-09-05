@@ -1,9 +1,0 @@
-<map id="modules.io.i8257.I8237.tick" name="modules.io.i8257.I8237.tick">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,29,186,56"/>
-<area shape="poly" id="edge4_Node000001_Node000001" title=" " alt="" coords="59,30,52,21,57,11,71,5,96,3,121,5,135,12,133,16,120,10,95,8,73,10,60,15,57,20,63,27"/>
-<area shape="rect" id="Node000002" href="$classmodules_1_1io_1_1i8257_1_1_i8257.html#aa488f8ee7595b30885efb5b50c6e429d" title=" " alt="" coords="441,21,600,64"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="186,37,234,36,393,36,425,37,425,42,393,41,234,41,186,42"/>
-<area shape="rect" id="Node000003" href="$classmodules_1_1io_1_1i8257_1_1_i8237.html#aa1ddbbf98410f2cfaf51bd7f246af561" title=" " alt="" coords="234,51,393,93"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="187,52,219,57,218,62,186,57"/>
-<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="393,58,425,53,426,59,394,63"/>
-</map>

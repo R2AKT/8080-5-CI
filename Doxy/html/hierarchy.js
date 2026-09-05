@@ -8,6 +8,7 @@ var hierarchy =
     [ "Cube3D", "classmodules_1_1io_1_1cube3d_1_1_cube3_d.html", null ],
     [ "DeviceConfig", "classmodules_1_1config_1_1device__config_1_1_device_config.html", null ],
     [ "DeviceFactory", "classmodules_1_1config_1_1device__config_1_1_device_factory.html", null ],
+    [ "DiscreteVideo", "classmodules_1_1io_1_1discrete__video_1_1_discrete_video.html", null ],
     [ "I8080Disassembler", "classi8080___c_i_1_1_i8080_disassembler.html", null ],
     [ "I8253Channel", "classmodules_1_1io_1_1i8253_1_1_i8253_channel.html", null ],
     [ "I8272FDD", "classmodules_1_1io_1_1i8272_1_1_i8272_f_d_d.html", null ],

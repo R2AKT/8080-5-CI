@@ -5,5 +5,5 @@ digraph "Graphical Class Hierarchy"
   edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
   node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
   rankdir="LR";
-  Node0 [id="Node000000",label="MockSystem",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classtest__integration__full_1_1_mock_system.html",tooltip=" "];
+  Node0 [id="Node000000",label="MockCPU",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classtest__wait__signals_1_1_mock_c_p_u.html",tooltip=" "];
 }
