@@ -6,26 +6,36 @@
 # Клавиатура: матрица через порт
 
 [profiles.specialist]
-description = "Специалист (1987) — графический микрокомпьютер"
+description = "Специалист (1987) — графический одноплатник"
 
 [profiles.specialist.system]
 name = "Специалист"
 cpu = "i8080"
 clock_mhz = 1.78
 
-# ОЗУ 16 КБ
+# ОЗУ
 [[profiles.specialist.memory.regions]]
 type = "ram"
 start = 0x0000
-end = 0x3FFF
-name = "RAM 16KB"
+end = 0xBFFF
+name = "RAM"
 
 # Видеопамять (в ОЗУ, 256×256 моно = 8 КБ)
 [[profiles.specialist.memory.regions]]
 type = "ram"
-start = 0x4000
-end = 0x5FFF
-name = "Video RAM 8KB"
+start = 0xC000
+end = 0xDFFF
+name = "Video RAM"
+
+# Графический контроллер
+[[profiles.specialist.devices]]
+type = "bitmap_video"
+name = "Video"
+video_addr = 0xC000      # адрес видеопамяти (уточнить)
+width = 384
+height = 256
+planes = 1               # монохром
+bit0_left = true         # порядок битов (уточнить)
 
 # ПЗУ монитора 2 КБ
 [[profiles.specialist.memory.regions]]
@@ -33,7 +43,7 @@ type = "rom"
 start = 0xF800
 end = 0xFFFF
 name = "Monitor ROM"
-# file = "roms/specialist_monitor.bin"
+#file = "roms/specialist_monitor.bin"
 
 # 8255 для клавиатуры
 [[profiles.specialist.devices]]

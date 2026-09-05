@@ -135,12 +135,11 @@ class ComputerSystem:
                 # Применяем дополнительные параметры
                 self._apply_device_params(device, dev_config)
 
-        # Виджет клавиатуры
-        # === Подключаем клавиатуру к 8255 ===
+        # === Подключаем устройства ===
         for dev_config in self.config.devices:
             dev_type = dev_config.get("type", "")
             dev_name = dev_config.get("name", "")
-            
+            # === Виджет клавиатуры ===
             if dev_type == "keyboard8x8":
                 ppi_name = dev_config.get("ppi_device", "PPI")
                 ppi = self.devices.get(ppi_name)
@@ -149,7 +148,7 @@ class ComputerSystem:
                     output_port = dev_config.get("output_port", 0)
                     input_port = dev_config.get("input_port", 1)
                     kbd.connect_to_ppi(ppi, output_port, input_port)
-            
+            # === Контроллер клавиатуры ===
             if dev_type == "keyboard8279":
                 i8279_name = dev_config.get("i8279_device", "KBD")
                 i8279 = self.devices.get(i8279_name)
@@ -157,17 +156,13 @@ class ComputerSystem:
                 if i8279 and kbd:
                     kbd.connect_to_8279(i8279)
             
-            # Подключаем чтение видеопамяти для CRT-контроллеров
+            # === Подключаем чтение видеопамяти для CRT-контроллеров ===
             if dev_type in ("i8275", "i8276"):
                 device = self.devices.get(dev_name)
                 if device:
                     device.on_dma_read = lambda addr: self.bus.read(addr)
             
-        # === Подключаем виртуальные устройства к 8255 ===
-        for dev_config in self.config.devices:
-            dev_type = dev_config.get("type", "")
-            dev_name = dev_config.get("name", "")
-            
+            # === Подключаем виртуальные устройства к 8255 ===
             if dev_type == "cube3d":
                 ppi_name = dev_config.get("ppi_device", "PPI")
                 ppi = self.devices.get(ppi_name)
@@ -178,12 +173,14 @@ class ComputerSystem:
                     port_z = dev_config.get("port_z", 2)
                     cube.connect_to_ppi(ppi, port_x, port_y, port_z)
 
-        # === Подключаем дискретное видео к шине памяти ===
-        for dev_config in self.config.devices:
-            dev_type = dev_config.get("type", "")
-            dev_name = dev_config.get("name", "")
-            
+            # === Подключаем дискретное видео к шине памяти ===
             if dev_type == "discrete_video":
+                device = self.devices.get(dev_name)
+                if device:
+                    device.connect_to_bus(self.bus)
+
+            # === Подключаем графическое видео к шине памяти ===
+            if dev_type == "bitmap_video":
                 device = self.devices.get(dev_name)
                 if device:
                     device.connect_to_bus(self.bus)

@@ -26,6 +26,8 @@ The program supports **Russian and English** interface languages and **light/dar
 
 ***Micro-80***
 <img src="8080-5 CI_app_Micro-80.png">
+***Specialist***
+<img src="8080-5 CI_app_Specialist.png">
 
 **8080-5-CI Module**
 

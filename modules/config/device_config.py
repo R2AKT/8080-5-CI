@@ -181,29 +181,30 @@ class DeviceFactory:
 
     # Размер портов для каждого типа устройства
     PORT_COUNTS = {
-        "i8251": 2,         # USART: Data + Control
-        "i8253": 4,         # PIT: 3 канала + Control
-        "i8255": 4,         # PPI: порты A, B, C, Control
-        "i8237": 16,        # DMA: 16 портов
-        "i8257": 16,        # DMA: 16 портов
-        "i8259": 2,         # PIC: 2 порт
-        "i8259a": 2,        # PIC: 2 порта
-        "i8272": 4,         # FDC: 4 порта
-        "i8275": 2,         # CRT: 2 порта
-        "i8276": 2,         # CRT: 2 порта
-        "i8279": 2,         # Клавиатура/дисплей: 2 порта
-        "am9511": 2,        # APU: Data + Command
-        "i512vi1": 2,       # RTC: Address + Data
-        "i16550": 8,        # UART: 8 регистров
-        "ch376s": 2,        # USB: Data + Command
-        "cf_ide": 8,        # CF IDE: 8 портов
-        "lcd1602": 2,       # LCD: Data + Control
-        "lcd2004": 2,       # LCD: Data + Control
-        "tft8080": 2,       # TFT: 2 порта
-        "keyboard8x8": 0,   # Клавиатура: не занимает порты (подключается к 8255)
-        "keyboard8279": 0,  # Клавиатура (подключается через 8279)
-        "cube3d": 0,        # Куб 8×8×8: не занимает порты (подключается к 8255)
-        "discrete_video": 0,  # Дискретное видео: не занимает порты
+        "i8251": 2,             # USART: Data + Control
+        "i8253": 4,             # PIT: 3 канала + Control
+        "i8255": 4,             # PPI: порты A, B, C, Control
+        "i8237": 16,            # DMA: 16 портов
+        "i8257": 16,            # DMA: 16 портов
+        "i8259": 2,             # PIC: 2 порт
+        "i8259a": 2,            # PIC: 2 порта
+        "i8272": 4,             # FDC: 4 порта
+        "i8275": 2,             # CRT: 2 порта
+        "i8276": 2,             # CRT: 2 порта
+        "i8279": 2,             # Клавиатура/дисплей: 2 порта
+        "am9511": 2,            # APU: Data + Command
+        "i512vi1": 2,           # RTC: Address + Data
+        "i16550": 8,            # UART: 8 регистров
+        "ch376s": 2,            # USB: Data + Command
+        "cf_ide": 8,            # CF IDE: 8 портов
+        "lcd1602": 2,           # LCD: Data + Control
+        "lcd2004": 2,           # LCD: Data + Control
+        "tft8080": 2,           # TFT: 2 порта
+        "keyboard8x8": 0,       # Клавиатура: не занимает порты (подключается к 8255)
+        "keyboard8279": 0,      # Клавиатура (подключается через 8279)
+        "cube3d": 0,            # Куб 8×8×8: не занимает порты (подключается к 8255)
+        "discrete_video": 0,    # Дискретное видео: не занимает порты
+        "bitmap_video": 0,      # Графика: не занимает порты
     }
 
     @classmethod
@@ -243,6 +244,19 @@ class DeviceFactory:
                 device.lines_per_screen = dev_config["lines_per_screen"]
             if "char_height" in dev_config:
                 device.char_height = dev_config["char_height"]
+
+        # === Параметры для графического видео (Специалист) ===
+        if device is not None and dev_type == "bitmap_video":
+            if "video_addr" in dev_config:
+                device.video_addr = dev_config["video_addr"]
+            if "width" in dev_config:
+                device.width = dev_config["width"]
+            if "height" in dev_config:
+                device.height = dev_config["height"]
+            if "planes" in dev_config:
+                device.planes = dev_config["planes"]
+            if "bit0_left" in dev_config:
+                device.bit0_left = dev_config["bit0_left"]
 
         # === ОБЩИЙ блок загрузки знакогенератора ===
         # Теперь охватывает и 8275/8276, и discrete_video
@@ -344,6 +358,9 @@ class DeviceFactory:
             elif dev_type == "discrete_video":
                 from modules.io.discrete_video import DiscreteVideo
                 return DiscreteVideo(name=name)
+            elif dev_type == "bitmap_video":
+                from modules.io.bitmap_video import BitmapVideo
+                return BitmapVideo(name=name)
             else:
                 return None
         except ImportError:

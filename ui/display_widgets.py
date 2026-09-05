@@ -300,6 +300,63 @@ class CRTWidget(QWidget):
             p.fillRect(cx, cy, ch_w*s, s, QColor(0x33,0xFF,0x33))
 
 # =============================================
+# BitmapVideo (графика)
+# =============================================
+class GraphicsWidget(QWidget):
+    """Виджет для графических машин (битмап, без знакогенератора)"""
+
+    def __init__(self, device, parent=None):
+        super().__init__(parent)
+        self.device = device
+        self.scale = 2  # Масштаб отображения
+        self._recalc_size()
+
+    def _recalc_size(self):
+        w = getattr(self.device, 'width', 256)
+        h = getattr(self.device, 'height', 256)
+        self.setFixedSize(w * self.scale + 20, h * self.scale + 20)
+
+    def refresh(self):
+        self._recalc_size()
+        self.update()
+
+    def paintEvent(self, event):
+        p = QPainter(self)
+        p.fillRect(self.rect(), Qt.black)
+
+        dev = self.device
+        w = dev.width
+        h = dev.height
+        s = self.scale
+
+        if dev.memory_bus is None:
+            return
+
+        # Читаем кадр целиком и рисуем пиксели
+        frame = dev.get_frame_bytes()
+        bpl = dev.bytes_per_line()
+
+        # Цвета (монохром: зелёный на чёрном, как ЭЛТ)
+        fg = QColor(0x33, 0xFF, 0x33)
+        bg = QColor(0x00, 0x00, 0x00)
+
+        for y in range(h):
+            row_offset = y * bpl
+            for byte_idx in range(bpl):
+                byte = frame[row_offset + byte_idx]
+                if byte == 0:
+                    continue  # Пустой байт — пропускаем
+                for bit_pos in range(8):
+                    if dev.bit0_left:
+                        on = (byte >> bit_pos) & 1
+                        x = byte_idx * 8 + bit_pos
+                    else:
+                        on = (byte >> (7 - bit_pos)) & 1
+                        x = byte_idx * 8 + bit_pos
+                    if on and x < w:
+                        p.fillRect(10 + x * s, 10 + y * s, s, s, fg)
+
+# =============================================
 # ФАБРИКА ВИДЖЕТОВ
 # =============================================
 def create_display_widget(device):
@@ -312,4 +369,6 @@ def create_display_widget(device):
         return TFTWidget(device)
     elif cls_name in ('I8275', 'I8276', 'DiscreteVideo'):
         return CRTWidget(device)
+    elif cls_name == 'BitmapVideo':
+        return GraphicsWidget(device)
     return None
