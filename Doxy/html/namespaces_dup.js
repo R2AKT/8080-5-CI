@@ -1,5 +1,16 @@
 var namespaces_dup =
 [
+    [ "crt_font_test", "namespacecrt__font__test.html", [
+      [ "addr", "namespacecrt__font__test.html#a747b15002d6c51d71476d634ae9ff1b2", null ],
+      [ "bus", "namespacecrt__font__test.html#a411bd59fecc82fdfda0e5c9d7da7447f", null ],
+      [ "codes", "namespacecrt__font__test.html#a001b2cd780738ad61250bf4b63f00965", null ],
+      [ "dev", "namespacecrt__font__test.html#ac43812121e594f158520698ba706118f", null ],
+      [ "display_enabled", "namespacecrt__font__test.html#a1acef89cb8c79a0010a8fb2622f59fca", null ],
+      [ "first_line", "namespacecrt__font__test.html#aea3f770caa502faeb4e730f58135d9bf", null ],
+      [ "lines", "namespacecrt__font__test.html#a22ea78f101680108434cb132f12afa0a", null ],
+      [ "test_text", "namespacecrt__font__test.html#aa48ff40f132c3a42c82e36b6f09114c9", null ],
+      [ "total", "namespacecrt__font__test.html#a2c1a52cd37ed38e861bba51c47c1802a", null ]
+    ] ],
     [ "display_test", "namespacedisplay__test.html", [
       [ "dump_char_bitmap", "namespacedisplay__test.html#ab753d8cc0093d400858516547cbe2a0c", null ],
       [ "find_device", "namespacedisplay__test.html#a4997dc348c6819e81ad17c82d8936b7b", null ],
@@ -13,6 +24,15 @@ var namespaces_dup =
       [ "passed", "namespacedisplay__test.html#ac20c470393e7f02d83cd68981f43dbfe", null ],
       [ "results", "namespacedisplay__test.html#a522d66350809ba22223cfce7e32a1ed9", null ],
       [ "total", "namespacedisplay__test.html#a2c1a52cd37ed38e861bba51c47c1802a", null ]
+    ] ],
+    [ "font_test", "namespacefont__test.html", [
+      [ "attr", "namespacefont__test.html#a710acfac10f0042826d2d6d9c213ae7b", null ],
+      [ "bitmap", "namespacefont__test.html#a39e596963cd17e69c87b9803ad962460", null ],
+      [ "char", "namespacefont__test.html#a335bb7fc67438e21069ec7ed0de2343c", null ],
+      [ "dev", "namespacefont__test.html#ac43812121e594f158520698ba706118f", null ],
+      [ "has_pixels", "namespacefont__test.html#a388bb6d3ee358da4d584f6fd2b9a4d14", null ],
+      [ "line", "namespacefont__test.html#a7c1cf6ab2139deefa01336152feba123", null ],
+      [ "status", "namespacefont__test.html#a5d355e12a3760c9fbf55e40ae6704217", null ]
     ] ],
     [ "i8080_CI", "namespacei8080___c_i.html", "namespacei8080___c_i" ],
     [ "i8080_emulator", "namespacei8080__emulator.html", "namespacei8080__emulator" ],

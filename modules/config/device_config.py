@@ -211,14 +211,38 @@ class DeviceFactory:
         return cls.PORT_COUNTS.get(device_type, 2)
 
     @classmethod
-    def create_device(cls, device_config, memory_bus=None):
+    def create_device(cls, dev_config, memory_bus=None):
         """Создать устройство из конфигурации"""
-        dev_type = device_config.get("type", "")
-        name = device_config.get("name", dev_type)
-        base_port = device_config.get("base_port", 0)
+        dev_type = dev_config.get("type", "")
+        name = dev_config.get("name", dev_type)
+        base_port = dev_config.get("base_port", 0)
 
         # Ленивый импорт для избежания циклических зависимостей
         device = cls._create_instance(dev_type, base_port, name)
+
+        # === Применение параметров для i8275/i8276 из профиля ===
+        if device is not None and dev_type in ("i8275", "i8276"):
+            if "video_addr" in dev_config:
+                device.display_buffer_addr = dev_config["video_addr"]
+            if "char_width" in dev_config:
+                device.char_width = dev_config["char_width"]
+            if "chargen_file" in dev_config:
+                chargen_path = dev_config["chargen_file"]
+                char_width = dev_config.get("char_width", 8)
+                num_chars = dev_config.get("num_chars", 256)
+                invert = dev_config.get("invert", False)
+                bit_reverse = dev_config.get("bit_reverse", False)
+                device.load_font_from_file(chargen_path,
+                                          char_width=char_width,
+                                          num_chars=num_chars,
+                                          invert=invert,
+                                          bit_reverse=bit_reverse)
+            if "chars_per_line" in dev_config:
+                device.chars_per_line = dev_config["chars_per_line"]
+            if "lines_per_screen" in dev_config:
+                device.lines_per_screen = dev_config["lines_per_screen"]
+            if "char_height" in dev_config:
+                device.char_height = dev_config["char_height"]
 
         if device is None:
             return None

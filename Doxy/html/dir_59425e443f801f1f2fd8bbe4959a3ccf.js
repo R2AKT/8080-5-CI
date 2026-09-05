@@ -1,6 +1,8 @@
 var dir_59425e443f801f1f2fd8bbe4959a3ccf =
 [
+    [ "crt_font_test.py", "crt__font__test_8py.html", "crt__font__test_8py" ],
     [ "display_test.py", "display__test_8py.html", "display__test_8py" ],
+    [ "font_test.py", "font__test_8py.html", "font__test_8py" ],
     [ "kbd_test.py", "kbd__test_8py.html", "kbd__test_8py" ],
     [ "PPI_3D_8x8x8_Flame.py", "_p_p_i__3_d__8x8x8___flame_8py.html", "_p_p_i__3_d__8x8x8___flame_8py" ],
     [ "PPI_3D_8x8x8_Girl.py", "_p_p_i__3_d__8x8x8___girl_8py.html", "_p_p_i__3_d__8x8x8___girl_8py" ],

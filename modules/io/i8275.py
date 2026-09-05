@@ -66,6 +66,7 @@ class I8275(IODevice):
         from .chargen import CharGenerator
         self.char_gen = CharGenerator()
         self.font_data = dict(self.char_gen.fonts[8])  # По умолчанию 8×8
+        self.char_width = 8  # ← ДОБАВЛЕНО: ширина символа (6 для Радио-86РК)
         
         # Callback прерывания: on_irq(active)
         self.on_irq = None
@@ -341,6 +342,16 @@ class I8275(IODevice):
     # =============================================
     # УТИЛИТЫ ДЛЯ GUI
     # =============================================
+    # Таблица КОИ-7 набор 2 → Unicode (кириллица)
+    KOI7_TO_UNICODE = {
+        0x60: 'Ю', 0x61: 'А', 0x62: 'Б', 0x63: 'Ц', 0x64: 'Д', 0x65: 'Е',
+        0x66: 'Ф', 0x67: 'Г', 0x68: 'Х', 0x69: 'И', 0x6A: 'Й', 0x6B: 'К',
+        0x6C: 'Л', 0x6D: 'М', 0x6E: 'Н', 0x6F: 'О', 0x70: 'П', 0x71: 'Я',
+        0x72: 'Р', 0x73: 'С', 0x74: 'Т', 0x75: 'У', 0x76: 'Ж', 0x77: 'В',
+        0x78: 'Ь', 0x79: 'Ы', 0x7A: 'З', 0x7B: 'Ш', 0x7C: 'Э', 0x7D: 'Щ',
+        0x7E: 'Ч', 0x7F: 'Ъ',
+    }
+
     def get_display_text(self):
         """Получить текст дисплея для отображения в GUI"""
         lines = []
@@ -350,7 +361,10 @@ class I8275(IODevice):
                 idx = y * self.chars_per_line + x
                 if idx in self.display_buffer:
                     char, attr = self.display_buffer[idx]
-                    if 32 <= char <= 126:
+                    # КОИ-7 кириллица
+                    if char in self.KOI7_TO_UNICODE:
+                        line += self.KOI7_TO_UNICODE[char]
+                    elif 32 <= char <= 126:
                         line += chr(char)
                     else:
                         line += "."
@@ -358,6 +372,27 @@ class I8275(IODevice):
                     line += " "
             lines.append(line)
         return lines
+
+    # Обратная таблица: Unicode → KOI-7 (генерируется автоматически)
+    UNICODE_TO_KOI7 = {v: k for k, v in KOI7_TO_UNICODE.items()}
+
+    @classmethod
+    def unicode_to_koi7(cls, text):
+        """Преобразовать текст из Unicode в коды KOI-7.
+        
+        Используется для записи русского текста в видеопамять.
+        """
+        codes = []
+        for ch in text:
+            if ch in cls.UNICODE_TO_KOI7:
+                codes.append(cls.UNICODE_TO_KOI7[ch])
+            elif 32 <= ord(ch) <= 126:
+                # ASCII символы (цифры, знаки препинания, латиница)
+                codes.append(ord(ch))
+            else:
+                # Неизвестный символ — заменяем на '?'
+                codes.append(0x3F)
+        return codes
 
     def set_character(self, x, y, char, attr=0x00):
         """Установить символ в буфер отображения (для тестов/GUI)"""
@@ -393,9 +428,18 @@ class I8275(IODevice):
             "status": f"0x{self._get_status():02X}",
         }
 
-    def load_font_from_file(self, path):
-        """Загрузить шрифт знакогенератора из raw-файла."""
-        return self.char_gen.load_from_file(path)
+    def load_font_from_file(self, path, char_width=8, num_chars=256,
+                            invert=False, bit_reverse=False):
+        """Загрузить шрифт знакогенератора из raw-файла.
+        
+        Для Радио-86РК: char_width=6, invert=True, bit_reverse=True
+        """
+        self.char_width = char_width
+        return self.char_gen.load_from_file(path, height=8,
+                                            width=char_width,
+                                            num_chars=num_chars,
+                                            invert=invert,
+                                            bit_reverse=bit_reverse)
 
     def get_char_bitmap(self, code):
         """Код символа → пиксельная карта (через знакогенератор)."""

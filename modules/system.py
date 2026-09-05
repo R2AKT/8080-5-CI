@@ -156,7 +156,13 @@ class ComputerSystem:
                 kbd = self.devices.get(dev_name)
                 if i8279 and kbd:
                     kbd.connect_to_8279(i8279)
-        
+            
+            # Подключаем чтение видеопамяти для CRT-контроллеров
+            if dev_type in ("i8275", "i8276"):
+                device = self.devices.get(dev_name)
+                if device:
+                    device.on_dma_read = lambda addr: self.bus.read(addr)
+            
         # === Подключаем виртуальные устройства к 8255 ===
         for dev_config in self.config.devices:
             dev_type = dev_config.get("type", "")

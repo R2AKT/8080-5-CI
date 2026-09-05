@@ -225,43 +225,68 @@ class CharGenerator:
         self._cache[key] = glyph
         return glyph
     
-    def load_from_file(self, path, height=8):
+    def load_from_file(self, path, height=8, width=8, num_chars=256,
+                       invert=False, bit_reverse=False):
         """Загрузить шрифт из файла.
-        
-        Формат: 256 глифов × height байт = 256 × height байт всего.
-        Например, для 8×8: 256 × 8 = 2048 байт.
-        Для 8×14: 256 × 14 = 3584 байта.
         
         Args:
             path: путь к файлу шрифта
-            height: высота глифов в файле (8 или 14)
+            height: высота глифа в строках (обычно 8)
+            width: ширина глифа в пикселях (6 или 8)
+            num_chars: количество символов (128 или 256)
+            invert: инвертировать биты (0=пиксель, 1=фон)
+            bit_reverse: реверс битов (бит 5=левый -> бит 0=левый)
             
-        Returns:
-            True при успехе, False при ошибке
+        Результат хранится в формате: бит 0 = левый пиксель
+        (совместимо с виджетом CRTWidget).
         """
         try:
             with open(path, 'rb') as f:
                 data = f.read()
-            
-            expected_size = 256 * height
+            expected_size = num_chars * height
             if len(data) < expected_size:
+                print(f"[CharGen] ⚠ Файл {path}: ожидалось {expected_size}, получено {len(data)}")
                 return False
             
             font = {}
-            for c in range(256):
+            for c in range(num_chars):
                 start = c * height
-                end = start + height
-                font[c] = list(data[start:end])
+                glyph = []
+                for row in range(height):
+                    byte = data[start + row]
+                    # Инверсия (для Радио-86РК: 0=пиксель, 1=фон)
+                    if invert:
+                        byte = (~byte) & 0xFF
+                    # Реверс битов (бит 5=левый -> бит 0=левый)
+                    if bit_reverse:
+                        byte = self._reverse_bits(byte, width)
+                    glyph.append(byte)
+                font[c] = glyph
             
             self.fonts[height] = font
             self._cache.clear()
+            self._char_width = width
+            print(f"[CharGen] ✅ Загружен шрифт {num_chars}×{width}×{height}, "
+                  f"invert={invert}, reverse={bit_reverse} из {path}")
             return True
-        except Exception:
+        except Exception as e:
+            print(f"[CharGen] ⚠ Ошибка загрузки {path}: {e}")
             return False
     
+    @staticmethod
+    def _reverse_bits(byte, width):
+        """Реверс младших 'width' битов байта.
+        Пример: бит 5=левый -> бит 0=левый (для формат виджета).
+        """
+        result = 0
+        for i in range(width):
+            if byte & (1 << i):
+                result |= (1 << (width - 1 - i))
+        return result
+    
     def get_char_width(self):
-        """Ширина символа в пикселях"""
-        return 8
+        """Ширина символа в пикселях (6 или 8)"""
+        return getattr(self, '_char_width', 8)
 
 # Глобальный экземпляр знакогенератора
 _char_generator = None

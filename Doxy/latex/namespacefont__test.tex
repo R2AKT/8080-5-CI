@@ -1,0 +1,68 @@
+\doxysection{font\+\_\+test Namespace Reference}
+\hypertarget{namespacefont__test}{}\label{namespacefont__test}\index{font\_test@{font\_test}}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespacefont__test_ac43812121e594f158520698ba706118f}{dev}} = None
+\item 
+\mbox{\hyperlink{namespacefont__test_a335bb7fc67438e21069ec7ed0de2343c}{char}}
+\item 
+\mbox{\hyperlink{namespacefont__test_a710acfac10f0042826d2d6d9c213ae7b}{attr}}
+\item 
+\mbox{\hyperlink{namespacefont__test_a39e596963cd17e69c87b9803ad962460}{bitmap}} = dev.\+char\+\_\+gen.\+get\+\_\+bitmap(\mbox{\hyperlink{namespacefont__test_a335bb7fc67438e21069ec7ed0de2343c}{char}}, 8)
+\item 
+\mbox{\hyperlink{namespacefont__test_a388bb6d3ee358da4d584f6fd2b9a4d14}{has\+\_\+pixels}} = any(b != 0 for b in \mbox{\hyperlink{namespacefont__test_a39e596963cd17e69c87b9803ad962460}{bitmap}})
+\item 
+str \mbox{\hyperlink{namespacefont__test_a5d355e12a3760c9fbf55e40ae6704217}{status}} = "{}✅"{} if \mbox{\hyperlink{namespacefont__test_a388bb6d3ee358da4d584f6fd2b9a4d14}{has\+\_\+pixels}} else "{}❌ пустой"{}
+\item 
+str \mbox{\hyperlink{namespacefont__test_a7c1cf6ab2139deefa01336152feba123}{line}} = \textquotesingle{}\textquotesingle{}.join(\textquotesingle{}\#\textquotesingle{} if row \& (0x01 $<$$<$ b) else \textquotesingle{}.\textquotesingle{} for b in range(6))
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Диагностика: что в видеопамяти и как отображается\end{DoxyVerb}
+ 
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{namespacefont__test_a710acfac10f0042826d2d6d9c213ae7b}\index{font\_test@{font\_test}!attr@{attr}}
+\index{attr@{attr}!font\_test@{font\_test}}
+\doxysubsubsection{\texorpdfstring{attr}{attr}}
+{\footnotesize\ttfamily \label{namespacefont__test_a710acfac10f0042826d2d6d9c213ae7b} 
+attr}
+
+\Hypertarget{namespacefont__test_a39e596963cd17e69c87b9803ad962460}\index{font\_test@{font\_test}!bitmap@{bitmap}}
+\index{bitmap@{bitmap}!font\_test@{font\_test}}
+\doxysubsubsection{\texorpdfstring{bitmap}{bitmap}}
+{\footnotesize\ttfamily \label{namespacefont__test_a39e596963cd17e69c87b9803ad962460} 
+bitmap = dev.\+char\+\_\+gen.\+get\+\_\+bitmap(\mbox{\hyperlink{namespacefont__test_a335bb7fc67438e21069ec7ed0de2343c}{char}}, 8)}
+
+\Hypertarget{namespacefont__test_a335bb7fc67438e21069ec7ed0de2343c}\index{font\_test@{font\_test}!char@{char}}
+\index{char@{char}!font\_test@{font\_test}}
+\doxysubsubsection{\texorpdfstring{char}{char}}
+{\footnotesize\ttfamily \label{namespacefont__test_a335bb7fc67438e21069ec7ed0de2343c} 
+char}
+
+\Hypertarget{namespacefont__test_ac43812121e594f158520698ba706118f}\index{font\_test@{font\_test}!dev@{dev}}
+\index{dev@{dev}!font\_test@{font\_test}}
+\doxysubsubsection{\texorpdfstring{dev}{dev}}
+{\footnotesize\ttfamily \label{namespacefont__test_ac43812121e594f158520698ba706118f} 
+dev = None}
+
+\Hypertarget{namespacefont__test_a388bb6d3ee358da4d584f6fd2b9a4d14}\index{font\_test@{font\_test}!has\_pixels@{has\_pixels}}
+\index{has\_pixels@{has\_pixels}!font\_test@{font\_test}}
+\doxysubsubsection{\texorpdfstring{has\_pixels}{has\_pixels}}
+{\footnotesize\ttfamily \label{namespacefont__test_a388bb6d3ee358da4d584f6fd2b9a4d14} 
+has\+\_\+pixels = any(b != 0 for b in \mbox{\hyperlink{namespacefont__test_a39e596963cd17e69c87b9803ad962460}{bitmap}})}
+
+\Hypertarget{namespacefont__test_a7c1cf6ab2139deefa01336152feba123}\index{font\_test@{font\_test}!line@{line}}
+\index{line@{line}!font\_test@{font\_test}}
+\doxysubsubsection{\texorpdfstring{line}{line}}
+{\footnotesize\ttfamily \label{namespacefont__test_a7c1cf6ab2139deefa01336152feba123} 
+str line = \textquotesingle{}\textquotesingle{}.join(\textquotesingle{}\#\textquotesingle{} if row \& (0x01 $<$$<$ b) else \textquotesingle{}.\textquotesingle{} for b in range(6))}
+
+\Hypertarget{namespacefont__test_a5d355e12a3760c9fbf55e40ae6704217}\index{font\_test@{font\_test}!status@{status}}
+\index{status@{status}!font\_test@{font\_test}}
+\doxysubsubsection{\texorpdfstring{status}{status}}
+{\footnotesize\ttfamily \label{namespacefont__test_a5d355e12a3760c9fbf55e40ae6704217} 
+str status = "{}✅"{} if \mbox{\hyperlink{namespacefont__test_a388bb6d3ee358da4d584f6fd2b9a4d14}{has\+\_\+pixels}} else "{}❌ пустой"{}}
+

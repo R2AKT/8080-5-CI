@@ -17,5 +17,6 @@ var searchData=
   ['keyboard_5fwidget_2epy_14',['keyboard_widget.py',['../keyboard__widget_8py.html',1,'']]],
   ['keyboardwidget_15',['KeyboardWidget',['../classui_1_1keyboard__widget_1_1_keyboard_widget.html',1,'ui::keyboard_widget']]],
   ['keymap_16',['keymap',['../classmodules_1_1io_1_1keyboard8279__adapter_1_1_keyboard8279_adapter.html#a221d8a1194209d62293364b50d1f2ac7',1,'modules.io.keyboard8279_adapter.Keyboard8279Adapter.keymap'],['../classmodules_1_1io_1_1keyboard8x8_1_1_keyboard8x8.html#a221d8a1194209d62293364b50d1f2ac7',1,'modules.io.keyboard8x8.Keyboard8x8.keymap']]],
-  ['keypressevent_17',['keyPressEvent',['../classui_1_1cube3d__widget_1_1_cube3_d_widget.html#a696eab5a4fa439c62e62525d716742e2',1,'ui::cube3d_widget::Cube3DWidget']]]
+  ['keypressevent_17',['keyPressEvent',['../classui_1_1cube3d__widget_1_1_cube3_d_widget.html#a696eab5a4fa439c62e62525d716742e2',1,'ui::cube3d_widget::Cube3DWidget']]],
+  ['koi7_5fto_5funicode_18',['KOI7_TO_UNICODE',['../classmodules_1_1io_1_1i8275_1_1_i8275.html#a5919c0724580644728ad14457eab71f5',1,'modules::io::i8275::I8275']]]
 ];

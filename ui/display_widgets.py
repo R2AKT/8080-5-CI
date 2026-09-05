@@ -167,11 +167,11 @@ class CRTWidget(QWidget):
         cols = getattr(self.device, 'chars_per_line', 80)
         rows = getattr(self.device, 'lines_per_screen', 16)
         ch_h = getattr(self.device, 'char_height', 8)
-        self.setFixedSize(cols*8*self.scale, rows*ch_h*self.scale)
+        ch_w = getattr(self.device, 'char_width', 8)
+        self.setFixedSize(cols*ch_w*self.scale, rows*ch_h*self.scale)
         dev_type = type(self.device).__name__
-        
         if dev_type == "I8275":
-            self.char_cell_height = 8   # Фиксированная высота знакоместа
+            self.char_cell_height = 8
             self.display_scale_v = max(1, getattr(self.device, 'char_height', 8) // 8)
         else:
             self.char_cell_height = getattr(self.device, 'char_height', 8)
@@ -192,9 +192,10 @@ class CRTWidget(QWidget):
         cols = dev.chars_per_line
         rows = dev.lines_per_screen
         ch_h = getattr(dev, 'char_height', 8)
+        ch_w = getattr(dev, 'char_width', 8)  # ← ширина символа
         s = self.scale
-        cg = dev.char_gen                      # ← знакогенератор устройства
-
+        cg = dev.char_gen
+        
         for y in range(rows):
             for x in range(cols):
                 off = y*cols + x
@@ -204,50 +205,34 @@ class CRTWidget(QWidget):
                 elif hasattr(dev, 'video_ram'):
                     entry = dev.video_ram.get(off)
                 code, attr = (entry if entry else (0x20, 0))
-
                 fg = QColor(0x66,0xFF,0x66) if (attr & self.ATTR_BRIGHT) else QColor(0x33,0xFF,0x33)
                 bg = QColor(0,0,0)
                 if attr & self.ATTR_INVERSE:
                     fg, bg = bg, fg
                 if (attr & self.ATTR_BLINK) and not self.blink_state:
-                    fg = bg                    # мигание: "выключаем" пиксели
-
-                cx, cy = x*8*s, y*ch_h*s
-                p.fillRect(cx, cy, 8*s, ch_h*s, bg)
+                    fg = bg
                 
+                ch_w = getattr(dev, 'char_width', 8)  # ← Ширина знакоместа
+                cx, cy = x*ch_w*s, y*ch_h*s
+                p.fillRect(cx, cy, ch_w*s, ch_h*s, bg)
                 if type(dev).__name__ == "I8275":
-                    bm = cg.get_bitmap(code, 8)  # Всегда 8 строк для знакоместа
+                    bm = cg.get_bitmap(code, 8)
                     for r in range(8):
                         bits = bm[r]
                         if (attr & self.ATTR_UNDERLINE) and r == 7:
-                            bits = 0xFF
+                            bits = (1 << ch_w) - 1  # Подчёркивание по ширине
                         if bits == 0:
                             continue
-                        for b in range(8):
-                            if bits & (0x01 << b):  # ← тот же порядок битов, что для 8276
-                                # Масштабируем по вертикали
+                        for b in range(ch_w):  # ← По ширине знакоместа
+                            if bits & (0x01 << b):
                                 for vs in range(self.display_scale_v):
                                     p.fillRect(cx + b*s, cy + (r * self.display_scale_v + vs)*s, s, s, fg)
-                else:
-                    bm = cg.get_bitmap(code, ch_h) # ← код → пиксели через знакогенератор
-                    for r in range(ch_h):
-                        bits = bm[r]
-                        if (attr & self.ATTR_UNDERLINE) and r == ch_h-1:
-                            bits = 0xFF
-                        if bits == 0:
-                            continue
-                        # for b in range(8):
-                            # if bits & (0x80 >> b):
-                                # p.fillRect(cx+b*s, cy+r*s, s, s, fg)
-                        for b in range(8):
-                            if bits & (0x01 << b):
-                                p.fillRect(cx + b*s, cy + r*s, s, s, fg)
-
-        # Курсор (если есть)
+        
+        # Курсор
         if getattr(dev, 'cursor_enabled', False):
-            cx = dev.cursor_x*8*s
+            cx = dev.cursor_x*ch_w*s
             cy = dev.cursor_y*ch_h*s + (ch_h-1)*s
-            p.fillRect(cx, cy, 8*s, s, QColor(0x33,0xFF,0x33))
+            p.fillRect(cx, cy, ch_w*s, s, QColor(0x33,0xFF,0x33))
 
 # =============================================
 # ФАБРИКА ВИДЖЕТОВ
