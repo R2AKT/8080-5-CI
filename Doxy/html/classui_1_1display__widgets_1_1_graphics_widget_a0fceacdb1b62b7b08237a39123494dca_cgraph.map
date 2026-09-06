@@ -1,0 +1,11 @@
+<map id="refresh" name="refresh">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,101,67,128"/>
+<area shape="rect" id="Node000002" href="$classui_1_1display__widgets_1_1_c_r_t_widget.html#a12240a078f1920cbb5782aff5ce240f5" title=" " alt="" coords="115,5,319,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="52,99,80,78,113,58,125,52,128,57,116,62,83,82,55,103"/>
+<area shape="rect" id="Node000003" href="$classui_1_1display__widgets_1_1_graphics_widget.html#a12240a078f1920cbb5782aff5ce240f5" title=" " alt="" coords="170,72,264,99"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="67,107,154,93,155,98,68,112"/>
+<area shape="rect" id="Node000004" href="$classui_1_1display__widgets_1_1_l_c_d_widget.html#a12240a078f1920cbb5782aff5ce240f5" title=" " alt="" coords="115,123,319,165"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="68,117,99,122,99,127,67,122"/>
+<area shape="rect" id="Node000005" href="$classui_1_1display__widgets_1_1_t_f_t_widget.html#a12240a078f1920cbb5782aff5ce240f5" title=" " alt="" coords="116,189,318,232"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="53,126,81,151,116,175,127,180,124,185,113,180,77,155,49,130"/>
+</map>

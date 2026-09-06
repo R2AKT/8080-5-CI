@@ -1,0 +1,7 @@
+<map id="draw_rect" name="draw_rect">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,84,32"/>
+<area shape="rect" id="Node000002" href="$namespacebitmap__crt__test.html#a3c79551b1884d14dc95d18c101971847" title=" " alt="" coords="132,5,208,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="84,16,116,16,116,21,84,21"/>
+<area shape="rect" id="Node000003" href="$namespacebitmap__crt__test.html#a2a6a57274e3dbdce8f4bde51f0d8a99a" title=" " alt="" coords="256,5,329,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="209,16,240,16,240,21,209,21"/>
+</map>

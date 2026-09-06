@@ -334,29 +334,30 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">=  {</div>
-<div class="line">        <span class="stringliteral">&quot;i8251&quot;</span>: 2,         <span class="comment"># USART: Data + Control</span></div>
-<div class="line">        <span class="stringliteral">&quot;i8253&quot;</span>: 4,         <span class="comment"># PIT: 3 канала + Control</span></div>
-<div class="line">        <span class="stringliteral">&quot;i8255&quot;</span>: 4,         <span class="comment"># PPI: порты A, B, C, Control</span></div>
-<div class="line">        <span class="stringliteral">&quot;i8237&quot;</span>: 16,        <span class="comment"># DMA: 16 портов</span></div>
-<div class="line">        <span class="stringliteral">&quot;i8257&quot;</span>: 16,        <span class="comment"># DMA: 16 портов</span></div>
-<div class="line">        <span class="stringliteral">&quot;i8259&quot;</span>: 2,         <span class="comment"># PIC: 2 порт</span></div>
-<div class="line">        <span class="stringliteral">&quot;i8259a&quot;</span>: 2,        <span class="comment"># PIC: 2 порта</span></div>
-<div class="line">        <span class="stringliteral">&quot;i8272&quot;</span>: 4,         <span class="comment"># FDC: 4 порта</span></div>
-<div class="line">        <span class="stringliteral">&quot;i8275&quot;</span>: 2,         <span class="comment"># CRT: 2 порта</span></div>
-<div class="line">        <span class="stringliteral">&quot;i8276&quot;</span>: 2,         <span class="comment"># CRT: 2 порта</span></div>
-<div class="line">        <span class="stringliteral">&quot;i8279&quot;</span>: 2,         <span class="comment"># Клавиатура/дисплей: 2 порта</span></div>
-<div class="line">        <span class="stringliteral">&quot;am9511&quot;</span>: 2,        <span class="comment"># APU: Data + Command</span></div>
-<div class="line">        <span class="stringliteral">&quot;i512vi1&quot;</span>: 2,       <span class="comment"># RTC: Address + Data</span></div>
-<div class="line">        <span class="stringliteral">&quot;i16550&quot;</span>: 8,        <span class="comment"># UART: 8 регистров</span></div>
-<div class="line">        <span class="stringliteral">&quot;ch376s&quot;</span>: 2,        <span class="comment"># USB: Data + Command</span></div>
-<div class="line">        <span class="stringliteral">&quot;cf_ide&quot;</span>: 8,        <span class="comment"># CF IDE: 8 портов</span></div>
-<div class="line">        <span class="stringliteral">&quot;lcd1602&quot;</span>: 2,       <span class="comment"># LCD: Data + Control</span></div>
-<div class="line">        <span class="stringliteral">&quot;lcd2004&quot;</span>: 2,       <span class="comment"># LCD: Data + Control</span></div>
-<div class="line">        <span class="stringliteral">&quot;tft8080&quot;</span>: 2,       <span class="comment"># TFT: 2 порта</span></div>
-<div class="line">        <span class="stringliteral">&quot;keyboard8x8&quot;</span>: 0,   <span class="comment"># Клавиатура: не занимает порты (подключается к 8255)</span></div>
-<div class="line">        <span class="stringliteral">&quot;keyboard8279&quot;</span>: 0,  <span class="comment"># Клавиатура (подключается через 8279)</span></div>
-<div class="line">        <span class="stringliteral">&quot;cube3d&quot;</span>: 0,        <span class="comment"># Куб 8×8×8: не занимает порты (подключается к 8255)</span></div>
-<div class="line">        <span class="stringliteral">&quot;discrete_video&quot;</span>: 0,  <span class="comment"># Дискретное видео: не занимает порты</span></div>
+<div class="line">        <span class="stringliteral">&quot;i8251&quot;</span>: 2,             <span class="comment"># USART: Data + Control</span></div>
+<div class="line">        <span class="stringliteral">&quot;i8253&quot;</span>: 4,             <span class="comment"># PIT: 3 канала + Control</span></div>
+<div class="line">        <span class="stringliteral">&quot;i8255&quot;</span>: 4,             <span class="comment"># PPI: порты A, B, C, Control</span></div>
+<div class="line">        <span class="stringliteral">&quot;i8237&quot;</span>: 16,            <span class="comment"># DMA: 16 портов</span></div>
+<div class="line">        <span class="stringliteral">&quot;i8257&quot;</span>: 16,            <span class="comment"># DMA: 16 портов</span></div>
+<div class="line">        <span class="stringliteral">&quot;i8259&quot;</span>: 2,             <span class="comment"># PIC: 2 порт</span></div>
+<div class="line">        <span class="stringliteral">&quot;i8259a&quot;</span>: 2,            <span class="comment"># PIC: 2 порта</span></div>
+<div class="line">        <span class="stringliteral">&quot;i8272&quot;</span>: 4,             <span class="comment"># FDC: 4 порта</span></div>
+<div class="line">        <span class="stringliteral">&quot;i8275&quot;</span>: 2,             <span class="comment"># CRT: 2 порта</span></div>
+<div class="line">        <span class="stringliteral">&quot;i8276&quot;</span>: 2,             <span class="comment"># CRT: 2 порта</span></div>
+<div class="line">        <span class="stringliteral">&quot;i8279&quot;</span>: 2,             <span class="comment"># Клавиатура/дисплей: 2 порта</span></div>
+<div class="line">        <span class="stringliteral">&quot;am9511&quot;</span>: 2,            <span class="comment"># APU: Data + Command</span></div>
+<div class="line">        <span class="stringliteral">&quot;i512vi1&quot;</span>: 2,           <span class="comment"># RTC: Address + Data</span></div>
+<div class="line">        <span class="stringliteral">&quot;i16550&quot;</span>: 8,            <span class="comment"># UART: 8 регистров</span></div>
+<div class="line">        <span class="stringliteral">&quot;ch376s&quot;</span>: 2,            <span class="comment"># USB: Data + Command</span></div>
+<div class="line">        <span class="stringliteral">&quot;cf_ide&quot;</span>: 8,            <span class="comment"># CF IDE: 8 портов</span></div>
+<div class="line">        <span class="stringliteral">&quot;lcd1602&quot;</span>: 2,           <span class="comment"># LCD: Data + Control</span></div>
+<div class="line">        <span class="stringliteral">&quot;lcd2004&quot;</span>: 2,           <span class="comment"># LCD: Data + Control</span></div>
+<div class="line">        <span class="stringliteral">&quot;tft8080&quot;</span>: 2,           <span class="comment"># TFT: 2 порта</span></div>
+<div class="line">        <span class="stringliteral">&quot;keyboard8x8&quot;</span>: 0,       <span class="comment"># Клавиатура: не занимает порты (подключается к 8255)</span></div>
+<div class="line">        <span class="stringliteral">&quot;keyboard8279&quot;</span>: 0,      <span class="comment"># Клавиатура (подключается через 8279)</span></div>
+<div class="line">        <span class="stringliteral">&quot;cube3d&quot;</span>: 0,            <span class="comment"># Куб 8×8×8: не занимает порты (подключается к 8255)</span></div>
+<div class="line">        <span class="stringliteral">&quot;discrete_video&quot;</span>: 0,    <span class="comment"># Дискретное видео: не занимает порты</span></div>
+<div class="line">        <span class="stringliteral">&quot;bitmap_video&quot;</span>: 0,      <span class="comment"># Графика: не занимает порты</span></div>
 <div class="line">    }</div>
 </div><!-- fragment -->
 </div>

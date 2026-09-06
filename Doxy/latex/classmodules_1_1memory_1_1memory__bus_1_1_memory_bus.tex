@@ -25,6 +25,12 @@
 \item 
 \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_a595dbc61f56666a111e6eeb684b370ca}{io\+\_\+write}} (self, port, value)
 \item 
+\mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_a37fa644a3b9029bd4d4b6fd65d915407}{add\+\_\+mmio\+\_\+region}} (self, region)
+\item 
+\mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_a354bd931bf220e563ae051a4cd29a7e3}{build\+\_\+mmio\+\_\+index}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_a878394995835cefd67310881aa1fb20d}{clear\+\_\+mmio}} (self)
+\item 
 \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_aecbc052233262275fc20a8ee8dfb8a47}{reset}} (self)
 \item 
 \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_adf0dfbff2fe4f237c8636034ac753ada}{get\+\_\+memory\+\_\+map}} (self)
@@ -44,6 +50,10 @@ list \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_a31b9
 \begin{DoxyCompactItemize}
 \item 
 int \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_a5303940c5be49380b097f1564ccdb6c4}{\+\_\+unmapped\+\_\+read}} = 0x\+FF
+\item 
+list \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_a5283323a1924a7591fd5d878b64c9264}{\+\_\+mmio\+\_\+regions}} = \mbox{[}$\,$\mbox{]}
+\item 
+dict \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_ad4e2116bc202f9b73fa85c240f7103a3}{\+\_\+mmio\+\_\+index}} = \{\}
 \end{DoxyCompactItemize}
 
 
@@ -63,7 +73,30 @@ int \mbox{\hyperlink{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_a53039
 
 
 \doxysubsection{Member Function Documentation}
-\Hypertarget{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_adf0dfbff2fe4f237c8636034ac753ada}\index{MemoryBus@{MemoryBus}!get\_memory\_map@{get\_memory\_map}}
+\Hypertarget{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_a37fa644a3b9029bd4d4b6fd65d915407}\index{MemoryBus@{MemoryBus}!add\_mmio\_region@{add\_mmio\_region}}
+\index{add\_mmio\_region@{add\_mmio\_region}!MemoryBus@{MemoryBus}}
+\doxysubsubsection{\texorpdfstring{add\_mmio\_region()}{add\_mmio\_region()}}
+{\footnotesize\ttfamily \label{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_a37fa644a3b9029bd4d4b6fd65d915407} 
+add\+\_\+mmio\+\_\+region (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{region}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Добавить MMIO-регион\end{DoxyVerb}
+ \Hypertarget{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_a354bd931bf220e563ae051a4cd29a7e3}\index{MemoryBus@{MemoryBus}!build\_mmio\_index@{build\_mmio\_index}}
+\index{build\_mmio\_index@{build\_mmio\_index}!MemoryBus@{MemoryBus}}
+\doxysubsubsection{\texorpdfstring{build\_mmio\_index()}{build\_mmio\_index()}}
+{\footnotesize\ttfamily \label{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_a354bd931bf220e563ae051a4cd29a7e3} 
+build\+\_\+mmio\+\_\+index (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Построить плоский индекс для O(1)-доступа.
+Вызывается после связывания устройств с регионами.
+\end{DoxyVerb}
+ \Hypertarget{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_a878394995835cefd67310881aa1fb20d}\index{MemoryBus@{MemoryBus}!clear\_mmio@{clear\_mmio}}
+\index{clear\_mmio@{clear\_mmio}!MemoryBus@{MemoryBus}}
+\doxysubsubsection{\texorpdfstring{clear\_mmio()}{clear\_mmio()}}
+{\footnotesize\ttfamily \label{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_a878394995835cefd67310881aa1fb20d} 
+clear\+\_\+mmio (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Очистить все MMIO-маппинги\end{DoxyVerb}
+ \Hypertarget{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_adf0dfbff2fe4f237c8636034ac753ada}\index{MemoryBus@{MemoryBus}!get\_memory\_map@{get\_memory\_map}}
 \index{get\_memory\_map@{get\_memory\_map}!MemoryBus@{MemoryBus}}
 \doxysubsubsection{\texorpdfstring{get\_memory\_map()}{get\_memory\_map()}}
 {\footnotesize\ttfamily \label{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_adf0dfbff2fe4f237c8636034ac753ada} 
@@ -222,6 +255,18 @@ write\+\_\+word (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{addr}{, }\
 
 
 \doxysubsection{Field Documentation}
+\Hypertarget{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_ad4e2116bc202f9b73fa85c240f7103a3}\index{MemoryBus@{MemoryBus}!\_mmio\_index@{\_mmio\_index}}
+\index{\_mmio\_index@{\_mmio\_index}!MemoryBus@{MemoryBus}}
+\doxysubsubsection{\texorpdfstring{\_mmio\_index}{\_mmio\_index}}
+{\footnotesize\ttfamily \label{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_ad4e2116bc202f9b73fa85c240f7103a3} 
+dict \+\_\+mmio\+\_\+index = \{\}\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_a5283323a1924a7591fd5d878b64c9264}\index{MemoryBus@{MemoryBus}!\_mmio\_regions@{\_mmio\_regions}}
+\index{\_mmio\_regions@{\_mmio\_regions}!MemoryBus@{MemoryBus}}
+\doxysubsubsection{\texorpdfstring{\_mmio\_regions}{\_mmio\_regions}}
+{\footnotesize\ttfamily \label{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_a5283323a1924a7591fd5d878b64c9264} 
+list \+\_\+mmio\+\_\+regions = \mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [protected]}}
+
 \Hypertarget{classmodules_1_1memory_1_1memory__bus_1_1_memory_bus_a5303940c5be49380b097f1564ccdb6c4}\index{MemoryBus@{MemoryBus}!\_unmapped\_read@{\_unmapped\_read}}
 \index{\_unmapped\_read@{\_unmapped\_read}!MemoryBus@{MemoryBus}}
 \doxysubsubsection{\texorpdfstring{\_unmapped\_read}{\_unmapped\_read}}

@@ -1,6 +1,9 @@
 var classmodules_1_1memory_1_1memory__bus_1_1_memory_bus =
 [
     [ "__init__", "classmodules_1_1memory_1_1memory__bus_1_1_memory_bus.html#a6ee169e0862ad8fcd49a103a71bfe783", null ],
+    [ "add_mmio_region", "classmodules_1_1memory_1_1memory__bus_1_1_memory_bus.html#a37fa644a3b9029bd4d4b6fd65d915407", null ],
+    [ "build_mmio_index", "classmodules_1_1memory_1_1memory__bus_1_1_memory_bus.html#a354bd931bf220e563ae051a4cd29a7e3", null ],
+    [ "clear_mmio", "classmodules_1_1memory_1_1memory__bus_1_1_memory_bus.html#a878394995835cefd67310881aa1fb20d", null ],
     [ "get_memory_map", "classmodules_1_1memory_1_1memory__bus_1_1_memory_bus.html#adf0dfbff2fe4f237c8636034ac753ada", null ],
     [ "io_read", "classmodules_1_1memory_1_1memory__bus_1_1_memory_bus.html#a910e9e4f508b9b59d2717144319495e0", null ],
     [ "io_write", "classmodules_1_1memory_1_1memory__bus_1_1_memory_bus.html#a595dbc61f56666a111e6eeb684b370ca", null ],
@@ -13,6 +16,8 @@ var classmodules_1_1memory_1_1memory__bus_1_1_memory_bus =
     [ "unregister_memory", "classmodules_1_1memory_1_1memory__bus_1_1_memory_bus.html#a0333795e0c743723578a0f43aeaa4fac", null ],
     [ "write", "classmodules_1_1memory_1_1memory__bus_1_1_memory_bus.html#afe713dd4164248c237f57830a0d64a98", null ],
     [ "write_word", "classmodules_1_1memory_1_1memory__bus_1_1_memory_bus.html#a97b94d34058c23d8ca079ac2b2532010", null ],
+    [ "_mmio_index", "classmodules_1_1memory_1_1memory__bus_1_1_memory_bus.html#ad4e2116bc202f9b73fa85c240f7103a3", null ],
+    [ "_mmio_regions", "classmodules_1_1memory_1_1memory__bus_1_1_memory_bus.html#a5283323a1924a7591fd5d878b64c9264", null ],
     [ "_unmapped_read", "classmodules_1_1memory_1_1memory__bus_1_1_memory_bus.html#a5303940c5be49380b097f1564ccdb6c4", null ],
     [ "io_devices", "classmodules_1_1memory_1_1memory__bus_1_1_memory_bus.html#adf387133f807c865a8be0c3d7a9f70e4", null ],
     [ "io_range_devices", "classmodules_1_1memory_1_1memory__bus_1_1_memory_bus.html#a31b9af983b20ca4417fe6f7eb60fcf60", null ],

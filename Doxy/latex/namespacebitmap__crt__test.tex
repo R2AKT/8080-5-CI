@@ -1,0 +1,290 @@
+\doxysection{bitmap\+\_\+crt\+\_\+test Namespace Reference}
+\hypertarget{namespacebitmap__crt__test}{}\label{namespacebitmap__crt__test}\index{bitmap\_crt\_test@{bitmap\_crt\_test}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespacebitmap__crt__test_a2a6a57274e3dbdce8f4bde51f0d8a99a}{set\+\_\+pixel}} (\mbox{\hyperlink{namespacebitmap__crt__test_a9336ebf25087d91c818ee6e9ec29f8c1}{x}}, \mbox{\hyperlink{namespacebitmap__crt__test_a0a2f84ed7838f07779ae24c5a9086d33}{y}}, on=True)
+\item 
+\mbox{\hyperlink{namespacebitmap__crt__test_abe4dfe974413db0749ae0cf0dadb91b0}{clear\+\_\+screen}} ()
+\item 
+\mbox{\hyperlink{namespacebitmap__crt__test_a3c79551b1884d14dc95d18c101971847}{draw\+\_\+line}} (x0, y0, x1, y1)
+\item 
+\mbox{\hyperlink{namespacebitmap__crt__test_a5371d2c6b485db0a47ec241570204b06}{draw\+\_\+rect}} (\mbox{\hyperlink{namespacebitmap__crt__test_a9336ebf25087d91c818ee6e9ec29f8c1}{x}}, \mbox{\hyperlink{namespacebitmap__crt__test_a0a2f84ed7838f07779ae24c5a9086d33}{y}}, w, h)
+\item 
+\mbox{\hyperlink{namespacebitmap__crt__test_a19529cc1a4207268113a6e633f66d68a}{draw\+\_\+triangle}} (x0, y0, x1, y1, x2, y2)
+\item 
+\mbox{\hyperlink{namespacebitmap__crt__test_afcdc125d5346fd9a81fe09635a0ee84b}{draw\+\_\+circle}} (cx, cy, r)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespacebitmap__crt__test_ac43812121e594f158520698ba706118f}{dev}} = None
+\item 
+\mbox{\hyperlink{namespacebitmap__crt__test_a411bd59fecc82fdfda0e5c9d7da7447f}{bus}} = api.\+system.\+bus
+\item 
+\mbox{\hyperlink{namespacebitmap__crt__test_a0a9b52fb6605edc74fd7d5359f34477e}{W}} = dev.\+width
+\item 
+\mbox{\hyperlink{namespacebitmap__crt__test_afaafc315b95987fc2b071bcd8f698b81}{H}} = dev.\+height
+\item 
+\mbox{\hyperlink{namespacebitmap__crt__test_a48891e9d474048982d9a46c20f24a8bb}{bpl}} = dev.\+bytes\+\_\+per\+\_\+line()
+\item 
+\mbox{\hyperlink{namespacebitmap__crt__test_ace33c47b79be058c9070ccab641d41df}{ADDR}} = dev.\+video\+\_\+addr
+\item 
+\mbox{\hyperlink{namespacebitmap__crt__test_a43da92c2d9247855c7aa0f8847a8b8d6}{BIT0\+\_\+\+LEFT}} = dev.\+bit0\+\_\+left
+\item 
+\mbox{\hyperlink{namespacebitmap__crt__test_a0a2f84ed7838f07779ae24c5a9086d33}{y}} = int(125 + 20 \texorpdfstring{$\ast$}{*} math.\+sin((\mbox{\hyperlink{namespacebitmap__crt__test_a9336ebf25087d91c818ee6e9ec29f8c1}{x}}-\/20) \texorpdfstring{$\ast$}{*} 2 \texorpdfstring{$\ast$}{*} math.\+pi / 68))
+\item 
+\mbox{\hyperlink{namespacebitmap__crt__test_a19e15767be7d532926a26ed405244a25}{y\+\_\+top}}
+\item 
+\mbox{\hyperlink{namespacebitmap__crt__test_a24e8655facd0a1dcc3cea6e987382816}{y\+\_\+bot}}
+\item 
+\mbox{\hyperlink{namespacebitmap__crt__test_a7bf7bb97f47ddff4363c79517bb55363}{period}}
+\item 
+\mbox{\hyperlink{namespacebitmap__crt__test_a9336ebf25087d91c818ee6e9ec29f8c1}{x}} = \mbox{\hyperlink{namespacebitmap__crt__test_a5839cde3b42ab1620272a202a477c140}{seg\+\_\+end}}
+\item 
+\mbox{\hyperlink{namespacebitmap__crt__test_acf4d33ee4cff36f69b924471174dcb11}{level}} = 1 -\/ level
+\item 
+\mbox{\hyperlink{namespacebitmap__crt__test_a5839cde3b42ab1620272a202a477c140}{seg\+\_\+end}} = min(\mbox{\hyperlink{namespacebitmap__crt__test_a9336ebf25087d91c818ee6e9ec29f8c1}{x}} + \mbox{\hyperlink{namespacebitmap__crt__test_a7bf7bb97f47ddff4363c79517bb55363}{period}}//2, 364)
+\item 
+\mbox{\hyperlink{namespacebitmap__crt__test_a1e6ad1c740fdd6c5ff0cde2bc8afb4c8}{y\+\_\+base}}
+\item 
+\mbox{\hyperlink{namespacebitmap__crt__test_aa9e70201fd4fbc2a8f36753112a26338}{amp}}
+\item 
+tuple \mbox{\hyperlink{namespacebitmap__crt__test_a695230607bc3e8ccde8944c10eb54839}{phase}} = (\mbox{\hyperlink{namespacebitmap__crt__test_a9336ebf25087d91c818ee6e9ec29f8c1}{x}} -\/ 20) \% \mbox{\hyperlink{namespacebitmap__crt__test_a7bf7bb97f47ddff4363c79517bb55363}{period}}
+\item 
+int \mbox{\hyperlink{namespacebitmap__crt__test_a2a771705598aca040e4d2cf0df9d4e5c}{half}} = \mbox{\hyperlink{namespacebitmap__crt__test_a7bf7bb97f47ddff4363c79517bb55363}{period}} // 2
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Тест Специалиста 384×256: геометрические фигуры (монохром)\end{DoxyVerb}
+ 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespacebitmap__crt__test_abe4dfe974413db0749ae0cf0dadb91b0}\index{bitmap\_crt\_test@{bitmap\_crt\_test}!clear\_screen@{clear\_screen}}
+\index{clear\_screen@{clear\_screen}!bitmap\_crt\_test@{bitmap\_crt\_test}}
+\doxysubsubsection{\texorpdfstring{clear\_screen()}{clear\_screen()}}
+{\footnotesize\ttfamily \label{namespacebitmap__crt__test_abe4dfe974413db0749ae0cf0dadb91b0} 
+clear\+\_\+screen (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=253pt]{namespacebitmap__crt__test_abe4dfe974413db0749ae0cf0dadb91b0_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{namespacebitmap__crt__test_afcdc125d5346fd9a81fe09635a0ee84b}\index{bitmap\_crt\_test@{bitmap\_crt\_test}!draw\_circle@{draw\_circle}}
+\index{draw\_circle@{draw\_circle}!bitmap\_crt\_test@{bitmap\_crt\_test}}
+\doxysubsubsection{\texorpdfstring{draw\_circle()}{draw\_circle()}}
+{\footnotesize\ttfamily \label{namespacebitmap__crt__test_afcdc125d5346fd9a81fe09635a0ee84b} 
+draw\+\_\+circle (\begin{DoxyParamCaption}\item[{}]{cx}{, }\item[{}]{cy}{, }\item[{}]{r}{}\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespacebitmap__crt__test_afcdc125d5346fd9a81fe09635a0ee84b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=146pt]{namespacebitmap__crt__test_afcdc125d5346fd9a81fe09635a0ee84b_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{namespacebitmap__crt__test_a3c79551b1884d14dc95d18c101971847}\index{bitmap\_crt\_test@{bitmap\_crt\_test}!draw\_line@{draw\_line}}
+\index{draw\_line@{draw\_line}!bitmap\_crt\_test@{bitmap\_crt\_test}}
+\doxysubsubsection{\texorpdfstring{draw\_line()}{draw\_line()}}
+{\footnotesize\ttfamily \label{namespacebitmap__crt__test_a3c79551b1884d14dc95d18c101971847} 
+draw\+\_\+line (\begin{DoxyParamCaption}\item[{}]{x0}{, }\item[{}]{y0}{, }\item[{}]{x1}{, }\item[{}]{y1}{}\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=228pt]{namespacebitmap__crt__test_a3c79551b1884d14dc95d18c101971847_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=349pt]{namespacebitmap__crt__test_a3c79551b1884d14dc95d18c101971847_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{namespacebitmap__crt__test_a5371d2c6b485db0a47ec241570204b06}\index{bitmap\_crt\_test@{bitmap\_crt\_test}!draw\_rect@{draw\_rect}}
+\index{draw\_rect@{draw\_rect}!bitmap\_crt\_test@{bitmap\_crt\_test}}
+\doxysubsubsection{\texorpdfstring{draw\_rect()}{draw\_rect()}}
+{\footnotesize\ttfamily \label{namespacebitmap__crt__test_a5371d2c6b485db0a47ec241570204b06} 
+draw\+\_\+rect (\begin{DoxyParamCaption}\item[{}]{x}{, }\item[{}]{y}{, }\item[{}]{w}{, }\item[{}]{h}{}\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=323pt]{namespacebitmap__crt__test_a5371d2c6b485db0a47ec241570204b06_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=240pt]{namespacebitmap__crt__test_a5371d2c6b485db0a47ec241570204b06_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{namespacebitmap__crt__test_a19529cc1a4207268113a6e633f66d68a}\index{bitmap\_crt\_test@{bitmap\_crt\_test}!draw\_triangle@{draw\_triangle}}
+\index{draw\_triangle@{draw\_triangle}!bitmap\_crt\_test@{bitmap\_crt\_test}}
+\doxysubsubsection{\texorpdfstring{draw\_triangle()}{draw\_triangle()}}
+{\footnotesize\ttfamily \label{namespacebitmap__crt__test_a19529cc1a4207268113a6e633f66d68a} 
+draw\+\_\+triangle (\begin{DoxyParamCaption}\item[{}]{x0}{, }\item[{}]{y0}{, }\item[{}]{x1}{, }\item[{}]{y1}{, }\item[{}]{x2}{, }\item[{}]{y2}{}\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=338pt]{namespacebitmap__crt__test_a19529cc1a4207268113a6e633f66d68a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=255pt]{namespacebitmap__crt__test_a19529cc1a4207268113a6e633f66d68a_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{namespacebitmap__crt__test_a2a6a57274e3dbdce8f4bde51f0d8a99a}\index{bitmap\_crt\_test@{bitmap\_crt\_test}!set\_pixel@{set\_pixel}}
+\index{set\_pixel@{set\_pixel}!bitmap\_crt\_test@{bitmap\_crt\_test}}
+\doxysubsubsection{\texorpdfstring{set\_pixel()}{set\_pixel()}}
+{\footnotesize\ttfamily \label{namespacebitmap__crt__test_a2a6a57274e3dbdce8f4bde51f0d8a99a} 
+set\+\_\+pixel (\begin{DoxyParamCaption}\item[{}]{x}{, }\item[{}]{y}{, }\item[{}]{on}{ = {\ttfamily True}}\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespacebitmap__crt__test_a2a6a57274e3dbdce8f4bde51f0d8a99a_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{namespacebitmap__crt__test_ace33c47b79be058c9070ccab641d41df}\index{bitmap\_crt\_test@{bitmap\_crt\_test}!ADDR@{ADDR}}
+\index{ADDR@{ADDR}!bitmap\_crt\_test@{bitmap\_crt\_test}}
+\doxysubsubsection{\texorpdfstring{ADDR}{ADDR}}
+{\footnotesize\ttfamily \label{namespacebitmap__crt__test_ace33c47b79be058c9070ccab641d41df} 
+ADDR = dev.\+video\+\_\+addr}
+
+\Hypertarget{namespacebitmap__crt__test_aa9e70201fd4fbc2a8f36753112a26338}\index{bitmap\_crt\_test@{bitmap\_crt\_test}!amp@{amp}}
+\index{amp@{amp}!bitmap\_crt\_test@{bitmap\_crt\_test}}
+\doxysubsubsection{\texorpdfstring{amp}{amp}}
+{\footnotesize\ttfamily \label{namespacebitmap__crt__test_aa9e70201fd4fbc2a8f36753112a26338} 
+amp}
+
+\Hypertarget{namespacebitmap__crt__test_a43da92c2d9247855c7aa0f8847a8b8d6}\index{bitmap\_crt\_test@{bitmap\_crt\_test}!BIT0\_LEFT@{BIT0\_LEFT}}
+\index{BIT0\_LEFT@{BIT0\_LEFT}!bitmap\_crt\_test@{bitmap\_crt\_test}}
+\doxysubsubsection{\texorpdfstring{BIT0\_LEFT}{BIT0\_LEFT}}
+{\footnotesize\ttfamily \label{namespacebitmap__crt__test_a43da92c2d9247855c7aa0f8847a8b8d6} 
+BIT0\+\_\+\+LEFT = dev.\+bit0\+\_\+left}
+
+\Hypertarget{namespacebitmap__crt__test_a48891e9d474048982d9a46c20f24a8bb}\index{bitmap\_crt\_test@{bitmap\_crt\_test}!bpl@{bpl}}
+\index{bpl@{bpl}!bitmap\_crt\_test@{bitmap\_crt\_test}}
+\doxysubsubsection{\texorpdfstring{bpl}{bpl}}
+{\footnotesize\ttfamily \label{namespacebitmap__crt__test_a48891e9d474048982d9a46c20f24a8bb} 
+bpl = dev.\+bytes\+\_\+per\+\_\+line()}
+
+\Hypertarget{namespacebitmap__crt__test_a411bd59fecc82fdfda0e5c9d7da7447f}\index{bitmap\_crt\_test@{bitmap\_crt\_test}!bus@{bus}}
+\index{bus@{bus}!bitmap\_crt\_test@{bitmap\_crt\_test}}
+\doxysubsubsection{\texorpdfstring{bus}{bus}}
+{\footnotesize\ttfamily \label{namespacebitmap__crt__test_a411bd59fecc82fdfda0e5c9d7da7447f} 
+bus = api.\+system.\+bus}
+
+\Hypertarget{namespacebitmap__crt__test_ac43812121e594f158520698ba706118f}\index{bitmap\_crt\_test@{bitmap\_crt\_test}!dev@{dev}}
+\index{dev@{dev}!bitmap\_crt\_test@{bitmap\_crt\_test}}
+\doxysubsubsection{\texorpdfstring{dev}{dev}}
+{\footnotesize\ttfamily \label{namespacebitmap__crt__test_ac43812121e594f158520698ba706118f} 
+dev = None}
+
+\Hypertarget{namespacebitmap__crt__test_afaafc315b95987fc2b071bcd8f698b81}\index{bitmap\_crt\_test@{bitmap\_crt\_test}!H@{H}}
+\index{H@{H}!bitmap\_crt\_test@{bitmap\_crt\_test}}
+\doxysubsubsection{\texorpdfstring{H}{H}}
+{\footnotesize\ttfamily \label{namespacebitmap__crt__test_afaafc315b95987fc2b071bcd8f698b81} 
+H = dev.\+height}
+
+\Hypertarget{namespacebitmap__crt__test_a2a771705598aca040e4d2cf0df9d4e5c}\index{bitmap\_crt\_test@{bitmap\_crt\_test}!half@{half}}
+\index{half@{half}!bitmap\_crt\_test@{bitmap\_crt\_test}}
+\doxysubsubsection{\texorpdfstring{half}{half}}
+{\footnotesize\ttfamily \label{namespacebitmap__crt__test_a2a771705598aca040e4d2cf0df9d4e5c} 
+int half = \mbox{\hyperlink{namespacebitmap__crt__test_a7bf7bb97f47ddff4363c79517bb55363}{period}} // 2}
+
+\Hypertarget{namespacebitmap__crt__test_acf4d33ee4cff36f69b924471174dcb11}\index{bitmap\_crt\_test@{bitmap\_crt\_test}!level@{level}}
+\index{level@{level}!bitmap\_crt\_test@{bitmap\_crt\_test}}
+\doxysubsubsection{\texorpdfstring{level}{level}}
+{\footnotesize\ttfamily \label{namespacebitmap__crt__test_acf4d33ee4cff36f69b924471174dcb11} 
+int level = 1 -\/ level}
+
+\Hypertarget{namespacebitmap__crt__test_a7bf7bb97f47ddff4363c79517bb55363}\index{bitmap\_crt\_test@{bitmap\_crt\_test}!period@{period}}
+\index{period@{period}!bitmap\_crt\_test@{bitmap\_crt\_test}}
+\doxysubsubsection{\texorpdfstring{period}{period}}
+{\footnotesize\ttfamily \label{namespacebitmap__crt__test_a7bf7bb97f47ddff4363c79517bb55363} 
+period}
+
+\Hypertarget{namespacebitmap__crt__test_a695230607bc3e8ccde8944c10eb54839}\index{bitmap\_crt\_test@{bitmap\_crt\_test}!phase@{phase}}
+\index{phase@{phase}!bitmap\_crt\_test@{bitmap\_crt\_test}}
+\doxysubsubsection{\texorpdfstring{phase}{phase}}
+{\footnotesize\ttfamily \label{namespacebitmap__crt__test_a695230607bc3e8ccde8944c10eb54839} 
+tuple phase = (\mbox{\hyperlink{namespacebitmap__crt__test_a9336ebf25087d91c818ee6e9ec29f8c1}{x}} -\/ 20) \% \mbox{\hyperlink{namespacebitmap__crt__test_a7bf7bb97f47ddff4363c79517bb55363}{period}}}
+
+\Hypertarget{namespacebitmap__crt__test_a5839cde3b42ab1620272a202a477c140}\index{bitmap\_crt\_test@{bitmap\_crt\_test}!seg\_end@{seg\_end}}
+\index{seg\_end@{seg\_end}!bitmap\_crt\_test@{bitmap\_crt\_test}}
+\doxysubsubsection{\texorpdfstring{seg\_end}{seg\_end}}
+{\footnotesize\ttfamily \label{namespacebitmap__crt__test_a5839cde3b42ab1620272a202a477c140} 
+seg\+\_\+end = min(\mbox{\hyperlink{namespacebitmap__crt__test_a9336ebf25087d91c818ee6e9ec29f8c1}{x}} + \mbox{\hyperlink{namespacebitmap__crt__test_a7bf7bb97f47ddff4363c79517bb55363}{period}}//2, 364)}
+
+\Hypertarget{namespacebitmap__crt__test_a0a9b52fb6605edc74fd7d5359f34477e}\index{bitmap\_crt\_test@{bitmap\_crt\_test}!W@{W}}
+\index{W@{W}!bitmap\_crt\_test@{bitmap\_crt\_test}}
+\doxysubsubsection{\texorpdfstring{W}{W}}
+{\footnotesize\ttfamily \label{namespacebitmap__crt__test_a0a9b52fb6605edc74fd7d5359f34477e} 
+W = dev.\+width}
+
+\Hypertarget{namespacebitmap__crt__test_a9336ebf25087d91c818ee6e9ec29f8c1}\index{bitmap\_crt\_test@{bitmap\_crt\_test}!x@{x}}
+\index{x@{x}!bitmap\_crt\_test@{bitmap\_crt\_test}}
+\doxysubsubsection{\texorpdfstring{x}{x}}
+{\footnotesize\ttfamily \label{namespacebitmap__crt__test_a9336ebf25087d91c818ee6e9ec29f8c1} 
+x = \mbox{\hyperlink{namespacebitmap__crt__test_a5839cde3b42ab1620272a202a477c140}{seg\+\_\+end}}}
+
+\Hypertarget{namespacebitmap__crt__test_a0a2f84ed7838f07779ae24c5a9086d33}\index{bitmap\_crt\_test@{bitmap\_crt\_test}!y@{y}}
+\index{y@{y}!bitmap\_crt\_test@{bitmap\_crt\_test}}
+\doxysubsubsection{\texorpdfstring{y}{y}}
+{\footnotesize\ttfamily \label{namespacebitmap__crt__test_a0a2f84ed7838f07779ae24c5a9086d33} 
+int y = int(125 + 20 \texorpdfstring{$\ast$}{*} math.\+sin((\mbox{\hyperlink{namespacebitmap__crt__test_a9336ebf25087d91c818ee6e9ec29f8c1}{x}}-\/20) \texorpdfstring{$\ast$}{*} 2 \texorpdfstring{$\ast$}{*} math.\+pi / 68))}
+
+\Hypertarget{namespacebitmap__crt__test_a1e6ad1c740fdd6c5ff0cde2bc8afb4c8}\index{bitmap\_crt\_test@{bitmap\_crt\_test}!y\_base@{y\_base}}
+\index{y\_base@{y\_base}!bitmap\_crt\_test@{bitmap\_crt\_test}}
+\doxysubsubsection{\texorpdfstring{y\_base}{y\_base}}
+{\footnotesize\ttfamily \label{namespacebitmap__crt__test_a1e6ad1c740fdd6c5ff0cde2bc8afb4c8} 
+y\+\_\+base}
+
+\Hypertarget{namespacebitmap__crt__test_a24e8655facd0a1dcc3cea6e987382816}\index{bitmap\_crt\_test@{bitmap\_crt\_test}!y\_bot@{y\_bot}}
+\index{y\_bot@{y\_bot}!bitmap\_crt\_test@{bitmap\_crt\_test}}
+\doxysubsubsection{\texorpdfstring{y\_bot}{y\_bot}}
+{\footnotesize\ttfamily \label{namespacebitmap__crt__test_a24e8655facd0a1dcc3cea6e987382816} 
+y\+\_\+bot}
+
+\Hypertarget{namespacebitmap__crt__test_a19e15767be7d532926a26ed405244a25}\index{bitmap\_crt\_test@{bitmap\_crt\_test}!y\_top@{y\_top}}
+\index{y\_top@{y\_top}!bitmap\_crt\_test@{bitmap\_crt\_test}}
+\doxysubsubsection{\texorpdfstring{y\_top}{y\_top}}
+{\footnotesize\ttfamily \label{namespacebitmap__crt__test_a19e15767be7d532926a26ed405244a25} 
+y\+\_\+top}
+

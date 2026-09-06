@@ -24,8 +24,12 @@ var searchData=
   ['download_21',['download',['../classi8080___c_i_1_1_automation_a_p_i.html#aa9bbef676c292cec62fcdc30c7f5dc71',1,'i8080_CI::AutomationAPI']]],
   ['download_5fall_22',['download_all',['../classi8080___c_i_1_1_automation_a_p_i.html#a42ae25ae5bfcf5f2377d04ee12b26a53',1,'i8080_CI::AutomationAPI']]],
   ['draw_5farrows_23',['draw_arrows',['../classi8080___c_i_1_1_disasm_view.html#a9101d3538628a8a34625a9896d2791b5',1,'i8080_CI::DisasmView']]],
-  ['draw_5fframe_24',['draw_frame',['../namespace_p_p_i__3_d__8x8x8___heat.html#a41ed82eb8d1ed8ed9da871c33cff2013',1,'PPI_3D_8x8x8_Heat']]],
-  ['draw_5fpaddle_25',['draw_paddle',['../namespace_p_p_i__3_d__8x8x8___pong.html#afcd7cf1082c10f1b831c2cdfcacdfb62',1,'PPI_3D_8x8x8_Pong']]],
-  ['drop_5fy_26',['drop_y',['../class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d.html#a1ca394242419a74e12a5785bb9b98e0c',1,'PPI_3D_8x8x8_Tetris::Tetris3D']]],
-  ['dump_5fchar_5fbitmap_27',['dump_char_bitmap',['../namespacedisplay__test.html#ab753d8cc0093d400858516547cbe2a0c',1,'display_test']]]
+  ['draw_5fcircle_24',['draw_circle',['../namespacebitmap__crt__test.html#afcdc125d5346fd9a81fe09635a0ee84b',1,'bitmap_crt_test']]],
+  ['draw_5fframe_25',['draw_frame',['../namespace_p_p_i__3_d__8x8x8___heat.html#a41ed82eb8d1ed8ed9da871c33cff2013',1,'PPI_3D_8x8x8_Heat']]],
+  ['draw_5fline_26',['draw_line',['../namespacebitmap__crt__test.html#a3c79551b1884d14dc95d18c101971847',1,'bitmap_crt_test']]],
+  ['draw_5fpaddle_27',['draw_paddle',['../namespace_p_p_i__3_d__8x8x8___pong.html#afcd7cf1082c10f1b831c2cdfcacdfb62',1,'PPI_3D_8x8x8_Pong']]],
+  ['draw_5frect_28',['draw_rect',['../namespacebitmap__crt__test.html#a5371d2c6b485db0a47ec241570204b06',1,'bitmap_crt_test']]],
+  ['draw_5ftriangle_29',['draw_triangle',['../namespacebitmap__crt__test.html#a19529cc1a4207268113a6e633f66d68a',1,'bitmap_crt_test']]],
+  ['drop_5fy_30',['drop_y',['../class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d.html#a1ca394242419a74e12a5785bb9b98e0c',1,'PPI_3D_8x8x8_Tetris::Tetris3D']]],
+  ['dump_5fchar_5fbitmap_31',['dump_char_bitmap',['../namespacedisplay__test.html#ab753d8cc0093d400858516547cbe2a0c',1,'display_test']]]
 ];

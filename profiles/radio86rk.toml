@@ -55,3 +55,18 @@ invert = true
 bit_reverse = true
 num_chars = 256
 shift_bits = 0
+
+# === MMIO: регистры ВГ75 через память ===
+[[profiles.radio86rk.memory.regions]]
+type = "mmio"
+name = "VG75_regs"
+device = "CRT"
+
+# Маппинг: адреса памяти → порты 8275
+[[profiles.radio86rk.memory.regions.mappings]]
+addr = 0xC000
+port = 0x08        # Порт 0: Status (чтение) / P1 (запись)
+
+[[profiles.radio86rk.memory.regions.mappings]]
+addr = 0xC001
+port = 0x09        # Порт 1: Command (чтение) / P2/Command (запись)

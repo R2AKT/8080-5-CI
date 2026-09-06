@@ -8,5 +8,8 @@ var searchData=
   ['bp_5fsave_5fpreset_5',['bp_save_preset',['../classi8080___c_i_1_1_main_window.html#aafa3b340b47102d75e19a910d1183453',1,'i8080_CI::MainWindow']]],
   ['bp_5ftoggle_5fenabled_6',['bp_toggle_enabled',['../classi8080___c_i_1_1_main_window.html#a375aac342aad9b227824d176f62d05d0',1,'i8080_CI::MainWindow']]],
   ['build_5fheart_5flayers_7',['build_heart_layers',['../namespace_p_p_i__3_d__8x8x8___heat.html#aefce87854c100b578c7dd9d1a98d4ae9',1,'PPI_3D_8x8x8_Heat']]],
-  ['bytes_5fto_5fvalue_8',['bytes_to_value',['../classi8080___c_i_1_1_main_window.html#acb313f8bd5202759766f78254fa607e5',1,'i8080_CI::MainWindow']]]
+  ['build_5findex_8',['build_index',['../classmodules_1_1memory_1_1mmio_1_1_m_m_i_o_region.html#afff8d6c1fa283ec655d108611c31181c',1,'modules::memory::mmio::MMIORegion']]],
+  ['build_5fmmio_5findex_9',['build_mmio_index',['../classmodules_1_1memory_1_1memory__bus_1_1_memory_bus.html#a354bd931bf220e563ae051a4cd29a7e3',1,'modules::memory::memory_bus::MemoryBus']]],
+  ['bytes_5fper_5fline_10',['bytes_per_line',['../classmodules_1_1io_1_1bitmap__video_1_1_bitmap_video.html#a2543ef77d25228e522619668b1e7eec0',1,'modules::io::bitmap_video::BitmapVideo']]],
+  ['bytes_5fto_5fvalue_11',['bytes_to_value',['../classi8080___c_i_1_1_main_window.html#acb313f8bd5202759766f78254fa607e5',1,'i8080_CI::MainWindow']]]
 ];

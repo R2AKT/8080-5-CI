@@ -185,6 +185,33 @@ class ComputerSystem:
                 if device:
                     device.connect_to_bus(self.bus)
 
+        # === Обработка регионов памяти ===
+        from modules.memory.mmio import MMIORegion
+
+        for mem_config in self.config.memory_regions:
+            region = DeviceFactory.create_memory_region(mem_config)
+            if region is None:
+                continue
+
+            if isinstance(region, MMIORegion):
+                # MMIO-регионы — отдельный список
+                self.bus.add_mmio_region(region)
+            # else:
+                # # Обычные регионы
+                # self.bus.add_region(region)
+
+        # === Связывание устройств с MMIO-регионами ===
+        for region in self.bus._mmio_regions:
+            device_name = region._device_name
+            device = self.devices.get(device_name)
+            if device is not None:
+                region.device = device
+            else:
+                print(f"⚠ MMIO-регион '{region.name}': устройство '{device_name}' не найдено")
+
+        # Построить плоский индекс
+        self.bus.build_mmio_index()
+
     def _apply_device_params(self, device, config):
         """Применение дополнительных параметров устройства"""
         # Подключение образа диска (для CFIDE, CH376S)

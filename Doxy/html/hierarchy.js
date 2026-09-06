@@ -2,6 +2,7 @@ var hierarchy =
 [
     [ "_SafeAccessor", "classi8080__emulator_1_1___safe_accessor.html", null ],
     [ "AutomationAPI", "classi8080___c_i_1_1_automation_a_p_i.html", null ],
+    [ "BitmapVideo", "classmodules_1_1io_1_1bitmap__video_1_1_bitmap_video.html", null ],
     [ "CH376SDiskImage", "classmodules_1_1io_1_1ch376s_1_1_c_h376_s_disk_image.html", null ],
     [ "CH376SFile", "classmodules_1_1io_1_1ch376s_1_1_c_h376_s_file.html", null ],
     [ "ComputerSystem", "classmodules_1_1system_1_1_computer_system.html", null ],
@@ -53,6 +54,7 @@ var hierarchy =
       [ "ShadowROMRegion", "classmodules_1_1memory_1_1shadow_1_1_shadow_r_o_m_region.html", null ],
       [ "TestRAM", "classtest__memory__bus_1_1_test_r_a_m.html", null ]
     ] ],
+    [ "MMIORegion", "classmodules_1_1memory_1_1mmio_1_1_m_m_i_o_region.html", null ],
     [ "MockCPU", "classtest__integration__full_1_1_mock_c_p_u.html", null ],
     [ "MockCPU", "classtest__wait__cf__ide_1_1_mock_c_p_u.html", null ],
     [ "MockCPU", "classtest__wait__signals_1_1_mock_c_p_u.html", null ],
@@ -85,6 +87,7 @@ var hierarchy =
       [ "Cube3DWidget", "classui_1_1cube3d__widget_1_1_cube3_d_widget.html", null ],
       [ "DeviceWindow", "classui_1_1device__window_1_1_device_window.html", null ],
       [ "CRTWidget", "classui_1_1display__widgets_1_1_c_r_t_widget.html", null ],
+      [ "GraphicsWidget", "classui_1_1display__widgets_1_1_graphics_widget.html", null ],
       [ "LCDWidget", "classui_1_1display__widgets_1_1_l_c_d_widget.html", null ],
       [ "TFTWidget", "classui_1_1display__widgets_1_1_t_f_t_widget.html", null ],
       [ "BitIndicator", "classui_1_1gpio__widget_1_1_bit_indicator.html", null ],

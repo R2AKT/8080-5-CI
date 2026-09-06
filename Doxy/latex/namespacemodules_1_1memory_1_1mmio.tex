@@ -1,0 +1,21 @@
+\doxysection{modules.\+memory.\+mmio Namespace Reference}
+\hypertarget{namespacemodules_1_1memory_1_1mmio}{}\label{namespacemodules_1_1memory_1_1mmio}\index{modules.memory.mmio@{modules.memory.mmio}}
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classmodules_1_1memory_1_1mmio_1_1_m_m_i_o_region}{MMIORegion}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}MMIORegion — регион памяти, отражающий обращения в порты устройства.
+Вариант Д: конфигурация через регионы + плоский индекс для O(1)-доступа.
+
+Поддерживает:
+- Одиночные маппинги: адрес памяти → порт устройства
+- Диапазоны: последовательные адреса → последовательные порты
+- Нелинейные маппинги: разрозненные адреса → одно устройство
+
+Устройства НЕ меняются — они продолжают работать через io_read/io_write.
+\end{DoxyVerb}
+ 

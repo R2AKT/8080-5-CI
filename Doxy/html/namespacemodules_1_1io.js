@@ -1,6 +1,7 @@
 var namespacemodules_1_1io =
 [
     [ "am9511", "namespacemodules_1_1io_1_1am9511.html", "namespacemodules_1_1io_1_1am9511" ],
+    [ "bitmap_video", "namespacemodules_1_1io_1_1bitmap__video.html", "namespacemodules_1_1io_1_1bitmap__video" ],
     [ "cf_ide", "namespacemodules_1_1io_1_1cf__ide.html", "namespacemodules_1_1io_1_1cf__ide" ],
     [ "ch376s", "namespacemodules_1_1io_1_1ch376s.html", "namespacemodules_1_1io_1_1ch376s" ],
     [ "chargen", "namespacemodules_1_1io_1_1chargen.html", null ],

@@ -1,0 +1,7 @@
+<map id="draw_triangle" name="draw_triangle">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,104,32"/>
+<area shape="rect" id="Node000002" href="$namespacebitmap__crt__test.html#a3c79551b1884d14dc95d18c101971847" title=" " alt="" coords="152,5,228,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="104,16,136,16,136,21,104,21"/>
+<area shape="rect" id="Node000003" href="$namespacebitmap__crt__test.html#a2a6a57274e3dbdce8f4bde51f0d8a99a" title=" " alt="" coords="276,5,349,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="229,16,260,16,260,21,229,21"/>
+</map>

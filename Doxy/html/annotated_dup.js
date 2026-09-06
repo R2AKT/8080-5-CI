@@ -33,6 +33,9 @@ var annotated_dup =
         [ "am9511", "namespacemodules_1_1io_1_1am9511.html", [
           [ "AM9511", "classmodules_1_1io_1_1am9511_1_1_a_m9511.html", "classmodules_1_1io_1_1am9511_1_1_a_m9511" ]
         ] ],
+        [ "bitmap_video", "namespacemodules_1_1io_1_1bitmap__video.html", [
+          [ "BitmapVideo", "classmodules_1_1io_1_1bitmap__video_1_1_bitmap_video.html", "classmodules_1_1io_1_1bitmap__video_1_1_bitmap_video" ]
+        ] ],
         [ "cf_ide", "namespacemodules_1_1io_1_1cf__ide.html", [
           [ "CFIDE", "classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e.html", "classmodules_1_1io_1_1cf__ide_1_1_c_f_i_d_e" ]
         ] ],
@@ -115,6 +118,9 @@ var annotated_dup =
           [ "RAMRegion", "classmodules_1_1memory_1_1memory__bus_1_1_r_a_m_region.html", "classmodules_1_1memory_1_1memory__bus_1_1_r_a_m_region" ],
           [ "ROMRegion", "classmodules_1_1memory_1_1memory__bus_1_1_r_o_m_region.html", "classmodules_1_1memory_1_1memory__bus_1_1_r_o_m_region" ]
         ] ],
+        [ "mmio", "namespacemodules_1_1memory_1_1mmio.html", [
+          [ "MMIORegion", "classmodules_1_1memory_1_1mmio_1_1_m_m_i_o_region.html", "classmodules_1_1memory_1_1mmio_1_1_m_m_i_o_region" ]
+        ] ],
         [ "paged", "namespacemodules_1_1memory_1_1paged.html", [
           [ "PagedRegion", "classmodules_1_1memory_1_1paged_1_1_paged_region.html", "classmodules_1_1memory_1_1paged_1_1_paged_region" ]
         ] ],
@@ -160,6 +166,7 @@ var annotated_dup =
       ] ],
       [ "display_widgets", "namespaceui_1_1display__widgets.html", [
         [ "CRTWidget", "classui_1_1display__widgets_1_1_c_r_t_widget.html", "classui_1_1display__widgets_1_1_c_r_t_widget" ],
+        [ "GraphicsWidget", "classui_1_1display__widgets_1_1_graphics_widget.html", "classui_1_1display__widgets_1_1_graphics_widget" ],
         [ "LCDWidget", "classui_1_1display__widgets_1_1_l_c_d_widget.html", "classui_1_1display__widgets_1_1_l_c_d_widget" ],
         [ "TFTWidget", "classui_1_1display__widgets_1_1_t_f_t_widget.html", "classui_1_1display__widgets_1_1_t_f_t_widget" ]
       ] ],

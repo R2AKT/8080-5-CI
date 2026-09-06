@@ -436,6 +436,29 @@ class DeviceFactory:
             num_physical_pages = mem_config.get("num_physical_pages", 16)
             base_port = mem_config.get("base_port", 0x00)
             return SegmentedPagedRegion(start, end, segment_size, num_physical_pages, base_port, name=name)
+        # === НОВАЯ ВЕТКА: MMIO ===
+        elif mem_type == "mmio":
+            from modules.memory.mmio import MMIORegion
+            region = MMIORegion(device=None, name=name)
+            region.set_device_name(mem_config.get("device", ""))
+
+            # Одиночные маппинги
+            for m in mem_config.get("mappings", []):
+                addr = m.get("addr")
+                port = m.get("port")
+                if addr is not None and port is not None:
+                    region.add_mapping(addr, port)
+
+            # Диапазоны
+            for r in mem_config.get("ranges", []):
+                start_addr = r.get("start_addr")
+                start_port = r.get("start_port")
+                count = r.get("count", 1)
+                if start_addr is not None and start_port is not None:
+                    region.add_range(start_addr, start_port, count)
+
+            return region
+
         else:
             return None
 

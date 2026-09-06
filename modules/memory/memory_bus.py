@@ -30,6 +30,9 @@ class MemoryBus:
         self.io_devices = {}
         self.io_range_devices = []
         self._unmapped_read = 0xFF
+        # === Memory-Mapped IO ===
+        self._mmio_regions = []   # Список MMIO-регионов
+        self._mmio_index = {}     # Плоский индекс {адрес: (устройство, порт)}
 
     # =============================================
     # РЕГИСТРАЦИЯ МОДУЛЕЙ
@@ -59,6 +62,11 @@ class MemoryBus:
     def read(self, addr):
         """Чтение байта из памяти"""
         addr &= 0xFFFF
+        # === MMIO: приоритет над обычной памятью ===
+        entry = self._mmio_index.get(addr)
+        if entry is not None:
+            device, port = entry
+            return device.io_read(port)
         # Ленивый импорт для избежания NameError и циклического импорта
         from .shadow import ShadowROMRegion
         # Уведомляем ShadowROM о чтении адресов, НЕ принадлежащих ROM
@@ -74,6 +82,12 @@ class MemoryBus:
     def write(self, addr, value):
         """Запись байта в память"""
         addr &= 0xFFFF
+        # === MMIO: приоритет над обычной памятью ===
+        entry = self._mmio_index.get(addr)
+        if entry is not None:
+            device, port = entry
+            device.io_write(port, value)
+            return
         # Ленивый импорт для избежания NameError и циклического импорта
         from .shadow import ShadowROMRegion
         # Уведомляем ShadowROM о записи адресов, НЕ принадлежащих ROM
@@ -132,6 +146,30 @@ class MemoryBus:
         if port in self.io_devices:
             self.io_devices[port].io_write(port, value)
     
+    # =============================================
+    # Memory-Mapped IO
+    # =============================================
+    def add_mmio_region(self, region):
+        """Добавить MMIO-регион"""
+        self._mmio_regions.append(region)
+
+    def build_mmio_index(self):
+        """Построить плоский индекс для O(1)-доступа.
+        Вызывается после связывания устройств с регионами.
+        """
+        self._mmio_index.clear()
+        for region in self._mmio_regions:
+            if region.device is None:
+                continue
+            port_index = region.build_index()
+            for addr, port in port_index.items():
+                self._mmio_index[addr] = (region.device, port)
+
+    def clear_mmio(self):
+        """Очистить все MMIO-маппинги"""
+        self._mmio_regions.clear()
+        self._mmio_index.clear()
+
     # =============================================
     # УТИЛИТЫ
     # =============================================

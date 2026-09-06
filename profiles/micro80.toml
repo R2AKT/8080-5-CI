@@ -31,7 +31,7 @@ file = "roms/micro80_monitor.bin"
 # 8255 для клавиатуры/дисплея
 [[profiles.micro80.devices]]
 type = "i8255"
-name = "PPI Keyboard/Display"
+name = "PPI"
 base_port = 0x00
 
 [[profiles.micro80.devices]]

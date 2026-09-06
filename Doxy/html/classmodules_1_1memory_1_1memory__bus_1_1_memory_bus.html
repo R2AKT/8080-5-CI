@@ -134,6 +134,12 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a910e9e4f508b9b59d2717144319495e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a595dbc61f56666a111e6eeb684b370ca" id="r_a595dbc61f56666a111e6eeb684b370ca"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a595dbc61f56666a111e6eeb684b370ca">io_write</a> (self, port, value)</td></tr>
 <tr class="separator:a595dbc61f56666a111e6eeb684b370ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37fa644a3b9029bd4d4b6fd65d915407" id="r_a37fa644a3b9029bd4d4b6fd65d915407"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a37fa644a3b9029bd4d4b6fd65d915407">add_mmio_region</a> (self, region)</td></tr>
+<tr class="separator:a37fa644a3b9029bd4d4b6fd65d915407"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a354bd931bf220e563ae051a4cd29a7e3" id="r_a354bd931bf220e563ae051a4cd29a7e3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a354bd931bf220e563ae051a4cd29a7e3">build_mmio_index</a> (self)</td></tr>
+<tr class="separator:a354bd931bf220e563ae051a4cd29a7e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a878394995835cefd67310881aa1fb20d" id="r_a878394995835cefd67310881aa1fb20d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a878394995835cefd67310881aa1fb20d">clear_mmio</a> (self)</td></tr>
+<tr class="separator:a878394995835cefd67310881aa1fb20d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aecbc052233262275fc20a8ee8dfb8a47" id="r_aecbc052233262275fc20a8ee8dfb8a47"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aecbc052233262275fc20a8ee8dfb8a47">reset</a> (self)</td></tr>
 <tr class="separator:aecbc052233262275fc20a8ee8dfb8a47"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adf0dfbff2fe4f237c8636034ac753ada" id="r_adf0dfbff2fe4f237c8636034ac753ada"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adf0dfbff2fe4f237c8636034ac753ada">get_memory_map</a> (self)</td></tr>
@@ -154,6 +160,10 @@ Data Fields</h2></td></tr>
 Protected Attributes</h2></td></tr>
 <tr class="memitem:a5303940c5be49380b097f1564ccdb6c4" id="r_a5303940c5be49380b097f1564ccdb6c4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5303940c5be49380b097f1564ccdb6c4">_unmapped_read</a> = 0xFF</td></tr>
 <tr class="separator:a5303940c5be49380b097f1564ccdb6c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5283323a1924a7591fd5d878b64c9264" id="r_a5283323a1924a7591fd5d878b64c9264"><td class="memItemLeft" align="right" valign="top">list&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5283323a1924a7591fd5d878b64c9264">_mmio_regions</a> = []</td></tr>
+<tr class="separator:a5283323a1924a7591fd5d878b64c9264"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4e2116bc202f9b73fa85c240f7103a3" id="r_ad4e2116bc202f9b73fa85c240f7103a3"><td class="memItemLeft" align="right" valign="top">dict&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad4e2116bc202f9b73fa85c240f7103a3">_mmio_index</a> = {}</td></tr>
+<tr class="separator:ad4e2116bc202f9b73fa85c240f7103a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><pre class="fragment">Шина памяти и IO.
@@ -181,6 +191,63 @@ Protected Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a37fa644a3b9029bd4d4b6fd65d915407" name="a37fa644a3b9029bd4d4b6fd65d915407"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a37fa644a3b9029bd4d4b6fd65d915407">&#9670;&#160;</a></span>add_mmio_region()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">add_mmio_region </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>region</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Добавить MMIO-регион</pre> 
+</div>
+</div>
+<a id="a354bd931bf220e563ae051a4cd29a7e3" name="a354bd931bf220e563ae051a4cd29a7e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a354bd931bf220e563ae051a4cd29a7e3">&#9670;&#160;</a></span>build_mmio_index()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">build_mmio_index </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Построить плоский индекс для O(1)-доступа.
+Вызывается после связывания устройств с регионами.
+</pre> 
+</div>
+</div>
+<a id="a878394995835cefd67310881aa1fb20d" name="a878394995835cefd67310881aa1fb20d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a878394995835cefd67310881aa1fb20d">&#9670;&#160;</a></span>clear_mmio()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">clear_mmio </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Очистить все MMIO-маппинги</pre> 
+</div>
+</div>
 <a id="adf0dfbff2fe4f237c8636034ac753ada" name="adf0dfbff2fe4f237c8636034ac753ada"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#adf0dfbff2fe4f237c8636034ac753ada">&#9670;&#160;</a></span>get_memory_map()</h2>
 
@@ -558,6 +625,50 @@ Here is the call graph for this function:</div>
 </div>
 </div>
 <h2 class="groupheader">Field Documentation</h2>
+<a id="ad4e2116bc202f9b73fa85c240f7103a3" name="ad4e2116bc202f9b73fa85c240f7103a3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4e2116bc202f9b73fa85c240f7103a3">&#9670;&#160;</a></span>_mmio_index</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">dict _mmio_index = {}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5283323a1924a7591fd5d878b64c9264" name="a5283323a1924a7591fd5d878b64c9264"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5283323a1924a7591fd5d878b64c9264">&#9670;&#160;</a></span>_mmio_regions</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">list _mmio_regions = []</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a5303940c5be49380b097f1564ccdb6c4" name="a5303940c5be49380b097f1564ccdb6c4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5303940c5be49380b097f1564ccdb6c4">&#9670;&#160;</a></span>_unmapped_read</h2>
 

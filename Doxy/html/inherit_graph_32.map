@@ -1,3 +1,25 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" href="$class_p_p_i__3_d__8x8x8___tetris_1_1_tetris3_d.html" title=" " alt="" coords="5,5,76,32"/>
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,259,78,285"/>
+<area shape="rect" id="Node000001" href="$classi8080___c_i_1_1_disasm_view.html" title=" " alt="" coords="150,5,246,32"/>
+<area shape="poly" id="edge40_Node000000_Node000001" title=" " alt="" coords="43,243,50,199,64,146,88,91,104,65,124,42,148,27,151,31,127,46,109,68,93,93,69,147,55,200,48,244"/>
+<area shape="rect" id="Node000002" href="$classui_1_1cube3d__widget_1_1_cube3_d_widget.html" title=" " alt="" coords="143,56,253,83"/>
+<area shape="poly" id="edge41_Node000000_Node000002" title=" " alt="" coords="46,243,56,209,72,169,94,128,124,93,141,81,144,85,127,97,98,131,77,171,61,211,51,244"/>
+<area shape="rect" id="Node000003" href="$classui_1_1device__window_1_1_device_window.html" title=" " alt="" coords="143,107,252,133"/>
+<area shape="poly" id="edge42_Node000000_Node000003" title=" " alt="" coords="52,243,80,193,100,166,124,143,144,132,146,136,127,147,104,170,85,196,57,246"/>
+<area shape="rect" id="Node000004" href="$classui_1_1display__widgets_1_1_c_r_t_widget.html" title=" " alt="" coords="153,157,242,184"/>
+<area shape="poly" id="edge43_Node000000_Node000004" title=" " alt="" coords="63,246,91,219,124,194,151,181,154,186,127,198,94,223,66,249"/>
+<area shape="rect" id="Node000005" href="$classui_1_1display__widgets_1_1_graphics_widget.html" title=" " alt="" coords="141,208,255,235"/>
+<area shape="poly" id="edge44_Node000000_Node000005" title=" " alt="" coords="92,253,153,233,155,238,93,258"/>
+<area shape="rect" id="Node000006" href="$classui_1_1display__widgets_1_1_l_c_d_widget.html" title=" " alt="" coords="153,259,242,285"/>
+<area shape="poly" id="edge45_Node000000_Node000006" title=" " alt="" coords="93,269,153,269,153,275,93,275"/>
+<area shape="rect" id="Node000007" href="$classui_1_1display__widgets_1_1_t_f_t_widget.html" title=" " alt="" coords="155,309,241,336"/>
+<area shape="poly" id="edge46_Node000000_Node000007" title=" " alt="" coords="93,286,155,306,153,311,92,291"/>
+<area shape="rect" id="Node000008" href="$classui_1_1gpio__widget_1_1_bit_indicator.html" title=" " alt="" coords="154,360,242,387"/>
+<area shape="poly" id="edge47_Node000000_Node000008" title=" " alt="" coords="66,295,94,321,127,346,155,359,153,364,124,350,91,325,63,298"/>
+<area shape="rect" id="Node000009" href="$classui_1_1gpio__widget_1_1_g_p_i_o8255_widget.html" title=" " alt="" coords="136,411,260,437"/>
+<area shape="poly" id="edge48_Node000000_Node000009" title=" " alt="" coords="57,298,85,348,104,374,127,397,146,408,144,412,124,401,100,378,80,351,52,301"/>
+<area shape="rect" id="Node000010" href="$classui_1_1keyboard__widget_1_1_keyboard_widget.html" title=" " alt="" coords="139,461,256,488"/>
+<area shape="poly" id="edge49_Node000000_Node000010" title=" " alt="" coords="51,300,61,333,77,373,98,413,127,447,144,459,141,463,124,451,94,416,72,375,56,335,46,301"/>
+<area shape="rect" id="Node000011" href="$classui_1_1serial__terminal_1_1_serial_terminal_widget.html" title=" " alt="" coords="126,512,270,539"/>
+<area shape="poly" id="edge50_Node000000_Node000011" title=" " alt="" coords="48,300,55,344,69,397,93,451,109,476,127,498,143,509,140,514,124,502,104,479,88,453,64,398,50,345,43,301"/>
 </map>

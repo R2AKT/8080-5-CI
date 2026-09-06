@@ -110,29 +110,30 @@ dict PORT\+\_\+\+COUNTS\hspace{0.3cm}{\ttfamily [static]}}
 {\bfseries Initial value\+:}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{=\ \ \{}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}i8251"{}}:\ 2,\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ USART:\ Data\ +\ Control}}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}i8253"{}}:\ 4,\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ PIT:\ 3\ канала\ +\ Control}}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}i8255"{}}:\ 4,\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ PPI:\ порты\ A,\ B,\ C,\ Control}}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}i8237"{}}:\ 16,\ \ \ \ \ \ \ \ \textcolor{comment}{\#\ DMA:\ 16\ портов}}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}i8257"{}}:\ 16,\ \ \ \ \ \ \ \ \textcolor{comment}{\#\ DMA:\ 16\ портов}}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}i8259"{}}:\ 2,\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ PIC:\ 2\ порт}}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}i8259a"{}}:\ 2,\ \ \ \ \ \ \ \ \textcolor{comment}{\#\ PIC:\ 2\ порта}}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}i8272"{}}:\ 4,\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ FDC:\ 4\ порта}}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}i8275"{}}:\ 2,\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ CRT:\ 2\ порта}}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}i8276"{}}:\ 2,\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ CRT:\ 2\ порта}}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}i8279"{}}:\ 2,\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Клавиатура/дисплей:\ 2\ порта}}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}am9511"{}}:\ 2,\ \ \ \ \ \ \ \ \textcolor{comment}{\#\ APU:\ Data\ +\ Command}}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}i512vi1"{}}:\ 2,\ \ \ \ \ \ \ \textcolor{comment}{\#\ RTC:\ Address\ +\ Data}}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}i16550"{}}:\ 8,\ \ \ \ \ \ \ \ \textcolor{comment}{\#\ UART:\ 8\ регистров}}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}ch376s"{}}:\ 2,\ \ \ \ \ \ \ \ \textcolor{comment}{\#\ USB:\ Data\ +\ Command}}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}cf\_ide"{}}:\ 8,\ \ \ \ \ \ \ \ \textcolor{comment}{\#\ CF\ IDE:\ 8\ портов}}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}lcd1602"{}}:\ 2,\ \ \ \ \ \ \ \textcolor{comment}{\#\ LCD:\ Data\ +\ Control}}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}lcd2004"{}}:\ 2,\ \ \ \ \ \ \ \textcolor{comment}{\#\ LCD:\ Data\ +\ Control}}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}tft8080"{}}:\ 2,\ \ \ \ \ \ \ \textcolor{comment}{\#\ TFT:\ 2\ порта}}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}keyboard8x8"{}}:\ 0,\ \ \ \textcolor{comment}{\#\ Клавиатура:\ не\ занимает\ порты\ (подключается\ к\ 8255)}}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}keyboard8279"{}}:\ 0,\ \ \textcolor{comment}{\#\ Клавиатура\ (подключается\ через\ 8279)}}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}cube3d"{}}:\ 0,\ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Куб\ 8×8×8:\ не\ занимает\ порты\ (подключается\ к\ 8255)}}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}discrete\_video"{}}:\ 0,\ \ \textcolor{comment}{\#\ Дискретное\ видео:\ не\ занимает\ порты}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}i8251"{}}:\ 2,\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ USART:\ Data\ +\ Control}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}i8253"{}}:\ 4,\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ PIT:\ 3\ канала\ +\ Control}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}i8255"{}}:\ 4,\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ PPI:\ порты\ A,\ B,\ C,\ Control}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}i8237"{}}:\ 16,\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ DMA:\ 16\ портов}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}i8257"{}}:\ 16,\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ DMA:\ 16\ портов}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}i8259"{}}:\ 2,\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ PIC:\ 2\ порт}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}i8259a"{}}:\ 2,\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ PIC:\ 2\ порта}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}i8272"{}}:\ 4,\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ FDC:\ 4\ порта}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}i8275"{}}:\ 2,\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ CRT:\ 2\ порта}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}i8276"{}}:\ 2,\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ CRT:\ 2\ порта}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}i8279"{}}:\ 2,\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Клавиатура/дисплей:\ 2\ порта}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}am9511"{}}:\ 2,\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ APU:\ Data\ +\ Command}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}i512vi1"{}}:\ 2,\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ RTC:\ Address\ +\ Data}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}i16550"{}}:\ 8,\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ UART:\ 8\ регистров}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}ch376s"{}}:\ 2,\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ USB:\ Data\ +\ Command}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}cf\_ide"{}}:\ 8,\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ CF\ IDE:\ 8\ портов}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}lcd1602"{}}:\ 2,\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ LCD:\ Data\ +\ Control}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}lcd2004"{}}:\ 2,\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ LCD:\ Data\ +\ Control}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}tft8080"{}}:\ 2,\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ TFT:\ 2\ порта}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}keyboard8x8"{}}:\ 0,\ \ \ \ \ \ \ \textcolor{comment}{\#\ Клавиатура:\ не\ занимает\ порты\ (подключается\ к\ 8255)}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}keyboard8279"{}}:\ 0,\ \ \ \ \ \ \textcolor{comment}{\#\ Клавиатура\ (подключается\ через\ 8279)}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}cube3d"{}}:\ 0,\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Куб\ 8×8×8:\ не\ занимает\ порты\ (подключается\ к\ 8255)}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}discrete\_video"{}}:\ 0,\ \ \ \ \textcolor{comment}{\#\ Дискретное\ видео:\ не\ занимает\ порты}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}bitmap\_video"{}}:\ 0,\ \ \ \ \ \ \textcolor{comment}{\#\ Графика:\ не\ занимает\ порты}}
 \DoxyCodeLine{\ \ \ \ \}}
 
 \end{DoxyCode}

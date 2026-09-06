@@ -5,9 +5,12 @@ var searchData=
   ['add_5fbreakpoint_2',['add_breakpoint',['../classi8080__emulator_1_1_i8080_emulator.html#a50e894ab9c4219db72ec4e92be16fea1',1,'i8080_emulator::I8080Emulator']]],
   ['add_5fbreakpoint_5fdialog_3',['add_breakpoint_dialog',['../classi8080___c_i_1_1_main_window.html#a296886e1fdac0cb28de623a516d1be56',1,'i8080_CI::MainWindow']]],
   ['add_5fdevice_4',['add_device',['../classtest__integration__full_1_1_mock_system.html#a4fbe9060b29f81d242880cab94bdaf0d',1,'test_integration_full::MockSystem']]],
-  ['add_5fspin_5',['add_spin',['../namespace_p_p_i__3_d__8x8x8___pong.html#a314561e7300bbbd4873adb40a89c8f36',1,'PPI_3D_8x8x8_Pong']]],
-  ['add_5fwatch_6',['add_watch',['../classi8080___c_i_1_1_watch_model.html#a1f455076658975e0de338bd40c746ccd',1,'i8080_CI::WatchModel']]],
-  ['all_5frotations_7',['all_rotations',['../namespace_p_p_i__3_d__8x8x8___tetris.html#abf5ce97e0f7c35943e2c924b348ce195',1,'PPI_3D_8x8x8_Tetris']]],
-  ['append_5ftext_8',['append_text',['../classui_1_1serial__terminal_1_1_serial_terminal_widget.html#a0d0dc1bd17933021a7c20e13022cce63',1,'ui::serial_terminal::SerialTerminalWidget']]],
-  ['auto_5fdisasm_9',['auto_disasm',['../classi8080___c_i_1_1_main_window.html#aff5229a2379088052678772975ad34b9',1,'i8080_CI::MainWindow']]]
+  ['add_5fmapping_5',['add_mapping',['../classmodules_1_1memory_1_1mmio_1_1_m_m_i_o_region.html#a638dc58e0bb4963955a1952231e2b170',1,'modules::memory::mmio::MMIORegion']]],
+  ['add_5fmmio_5fregion_6',['add_mmio_region',['../classmodules_1_1memory_1_1memory__bus_1_1_memory_bus.html#a37fa644a3b9029bd4d4b6fd65d915407',1,'modules::memory::memory_bus::MemoryBus']]],
+  ['add_5frange_7',['add_range',['../classmodules_1_1memory_1_1mmio_1_1_m_m_i_o_region.html#a410fbccac25789236e41fde2766097d1',1,'modules::memory::mmio::MMIORegion']]],
+  ['add_5fspin_8',['add_spin',['../namespace_p_p_i__3_d__8x8x8___pong.html#a314561e7300bbbd4873adb40a89c8f36',1,'PPI_3D_8x8x8_Pong']]],
+  ['add_5fwatch_9',['add_watch',['../classi8080___c_i_1_1_watch_model.html#a1f455076658975e0de338bd40c746ccd',1,'i8080_CI::WatchModel']]],
+  ['all_5frotations_10',['all_rotations',['../namespace_p_p_i__3_d__8x8x8___tetris.html#abf5ce97e0f7c35943e2c924b348ce195',1,'PPI_3D_8x8x8_Tetris']]],
+  ['append_5ftext_11',['append_text',['../classui_1_1serial__terminal_1_1_serial_terminal_widget.html#a0d0dc1bd17933021a7c20e13022cce63',1,'ui::serial_terminal::SerialTerminalWidget']]],
+  ['auto_5fdisasm_12',['auto_disasm',['../classi8080___c_i_1_1_main_window.html#aff5229a2379088052678772975ad34b9',1,'i8080_CI::MainWindow']]]
 ];

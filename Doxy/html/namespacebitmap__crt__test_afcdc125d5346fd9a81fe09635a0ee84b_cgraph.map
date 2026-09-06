@@ -1,0 +1,16 @@
+<map id="draw_circle" name="draw_circle">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,81,93,108"/>
+<area shape="poly" id="edge2_Node000001_Node000001" title=" " alt="" coords="24,82,20,73,23,63,33,57,49,55,66,57,75,64,72,68,64,62,49,60,35,62,27,66,25,72,29,80"/>
+<area shape="rect" id="Node000002" href="$namespacebitmap__crt__test.html#abe4dfe974413db0749ae0cf0dadb91b0" title=" " alt="" coords="142,5,238,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="73,78,139,42,147,37,150,42,142,46,76,83"/>
+<area shape="rect" id="Node000003" href="$namespacebitmap__crt__test.html#a5371d2c6b485db0a47ec241570204b06" title=" " alt="" coords="151,56,229,83"/>
+<area shape="poly" id="edge3_Node000001_Node000003" title=" " alt="" coords="93,84,135,76,136,82,94,89"/>
+<area shape="rect" id="Node000005" href="$namespacebitmap__crt__test.html#a2a6a57274e3dbdce8f4bde51f0d8a99a" title=" " alt="" coords="411,132,485,159"/>
+<area shape="poly" id="edge8_Node000001_Node000005" title=" " alt="" coords="70,106,102,127,141,143,209,155,278,158,342,156,396,150,396,156,343,161,278,163,209,160,140,148,100,131,67,111"/>
+<area shape="rect" id="Node000006" href="$namespacebitmap__crt__test.html#a19529cc1a4207268113a6e633f66d68a" title=" " alt="" coords="141,107,239,133"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="94,100,126,106,125,111,93,105"/>
+<area shape="rect" id="Node000004" href="$namespacebitmap__crt__test.html#a3c79551b1884d14dc95d18c101971847" title=" " alt="" coords="287,107,363,133"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="229,81,274,98,272,103,227,86"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="364,125,397,132,396,137,363,130"/>
+<area shape="poly" id="edge7_Node000006_Node000004" title=" " alt="" coords="239,117,272,117,272,123,239,123"/>
+</map>

@@ -1,0 +1,213 @@
+\doxysection{Bitmap\+Video Class Reference}
+\hypertarget{classmodules_1_1io_1_1bitmap__video_1_1_bitmap_video}{}\label{classmodules_1_1io_1_1bitmap__video_1_1_bitmap_video}\index{BitmapVideo@{BitmapVideo}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1bitmap__video_1_1_bitmap_video_aab14f0295f3bf1efe09bd06253a93326}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, \mbox{\hyperlink{classmodules_1_1io_1_1bitmap__video_1_1_bitmap_video_ab74e6bf80237ddc4109968cedc58c151}{name}}="{}Bitmap Video"{})
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1bitmap__video_1_1_bitmap_video_ae563e5b6b2cff283ffcdde8e674f929f}{connect\+\_\+to\+\_\+bus}} (self, bus)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1bitmap__video_1_1_bitmap_video_a2543ef77d25228e522619668b1e7eec0}{bytes\+\_\+per\+\_\+line}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1bitmap__video_1_1_bitmap_video_ac936f46faee33b342b41443dcd1c44ee}{read\+\_\+video\+\_\+byte}} (self, offset)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1bitmap__video_1_1_bitmap_video_a102d9576c9f58e851525c5ccc69bb1f1}{get\+\_\+pixel}} (self, x, y)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1bitmap__video_1_1_bitmap_video_a144db6d76bcf37f9f4c56391ce89bb97}{get\+\_\+frame\+\_\+bytes}} (self)
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1bitmap__video_1_1_bitmap_video_aec846d0e51f21a83da9ab30d5d5cacd5}{get\+\_\+state}} (self)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1bitmap__video_1_1_bitmap_video_ab74e6bf80237ddc4109968cedc58c151}{name}} = name
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1bitmap__video_1_1_bitmap_video_aa4d3d7d7047086ca2547737909c4e968}{base\+\_\+port}} = -\/1
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1bitmap__video_1_1_bitmap_video_a5558ace5433f9aabbf0a0ec059900d94}{width}} = 256
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1bitmap__video_1_1_bitmap_video_a509290c21d570ff479c1b9d9b1fe8810}{height}} = 256
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1bitmap__video_1_1_bitmap_video_ab98811ce54cf3b61ad0f05e26435e99e}{planes}} = 1
+\item 
+int \mbox{\hyperlink{classmodules_1_1io_1_1bitmap__video_1_1_bitmap_video_a074b4190199127b28fb63df07cb5370c}{video\+\_\+addr}} = 0x\+C000
+\item 
+bool \mbox{\hyperlink{classmodules_1_1io_1_1bitmap__video_1_1_bitmap_video_adb9f0560725a300b3f11e0e97ca04c22}{bit0\+\_\+left}} = True
+\item 
+\mbox{\hyperlink{classmodules_1_1io_1_1bitmap__video_1_1_bitmap_video_a39e104289804845ff2995af878959ead}{memory\+\_\+bus}} = None
+\item 
+bool \mbox{\hyperlink{classmodules_1_1io_1_1bitmap__video_1_1_bitmap_video_a1acef89cb8c79a0010a8fb2622f59fca}{display\+\_\+enabled}} = True
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+dict \mbox{\hyperlink{classmodules_1_1io_1_1bitmap__video_1_1_bitmap_video_a29d6e153766c8db4613df2a69b500cb1}{\+\_\+frame\+\_\+cache}} = \{\}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Графический видеоконтроллер (битмап)\end{DoxyVerb}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classmodules_1_1io_1_1bitmap__video_1_1_bitmap_video_aab14f0295f3bf1efe09bd06253a93326}\index{BitmapVideo@{BitmapVideo}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!BitmapVideo@{BitmapVideo}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1bitmap__video_1_1_bitmap_video_aab14f0295f3bf1efe09bd06253a93326} 
+\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{name}{ = {\ttfamily "{}Bitmap~Video"{}}}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classmodules_1_1io_1_1bitmap__video_1_1_bitmap_video_a2543ef77d25228e522619668b1e7eec0}\index{BitmapVideo@{BitmapVideo}!bytes\_per\_line@{bytes\_per\_line}}
+\index{bytes\_per\_line@{bytes\_per\_line}!BitmapVideo@{BitmapVideo}}
+\doxysubsubsection{\texorpdfstring{bytes\_per\_line()}{bytes\_per\_line()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1bitmap__video_1_1_bitmap_video_a2543ef77d25228e522619668b1e7eec0} 
+bytes\+\_\+per\+\_\+line (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Байт в одной строке\end{DoxyVerb}
+ Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=284pt]{classmodules_1_1io_1_1bitmap__video_1_1_bitmap_video_a2543ef77d25228e522619668b1e7eec0_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1bitmap__video_1_1_bitmap_video_ae563e5b6b2cff283ffcdde8e674f929f}\index{BitmapVideo@{BitmapVideo}!connect\_to\_bus@{connect\_to\_bus}}
+\index{connect\_to\_bus@{connect\_to\_bus}!BitmapVideo@{BitmapVideo}}
+\doxysubsubsection{\texorpdfstring{connect\_to\_bus()}{connect\_to\_bus()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1bitmap__video_1_1_bitmap_video_ae563e5b6b2cff283ffcdde8e674f929f} 
+connect\+\_\+to\+\_\+bus (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{bus}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Подключить к шине памяти\end{DoxyVerb}
+ \Hypertarget{classmodules_1_1io_1_1bitmap__video_1_1_bitmap_video_a144db6d76bcf37f9f4c56391ce89bb97}\index{BitmapVideo@{BitmapVideo}!get\_frame\_bytes@{get\_frame\_bytes}}
+\index{get\_frame\_bytes@{get\_frame\_bytes}!BitmapVideo@{BitmapVideo}}
+\doxysubsubsection{\texorpdfstring{get\_frame\_bytes()}{get\_frame\_bytes()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1bitmap__video_1_1_bitmap_video_a144db6d76bcf37f9f4c56391ce89bb97} 
+get\+\_\+frame\+\_\+bytes (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Прочитать весь кадр как список байт (для виджета).\end{DoxyVerb}
+ Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=292pt]{classmodules_1_1io_1_1bitmap__video_1_1_bitmap_video_a144db6d76bcf37f9f4c56391ce89bb97_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1bitmap__video_1_1_bitmap_video_a102d9576c9f58e851525c5ccc69bb1f1}\index{BitmapVideo@{BitmapVideo}!get\_pixel@{get\_pixel}}
+\index{get\_pixel@{get\_pixel}!BitmapVideo@{BitmapVideo}}
+\doxysubsubsection{\texorpdfstring{get\_pixel()}{get\_pixel()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1bitmap__video_1_1_bitmap_video_a102d9576c9f58e851525c5ccc69bb1f1} 
+get\+\_\+pixel (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{x}{, }\item[{}]{y}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Прочитать пиксель (для монохрома, 1 плоскость).
+Возвращает 0 или 1.
+\end{DoxyVerb}
+ Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=258pt]{classmodules_1_1io_1_1bitmap__video_1_1_bitmap_video_a102d9576c9f58e851525c5ccc69bb1f1_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1bitmap__video_1_1_bitmap_video_aec846d0e51f21a83da9ab30d5d5cacd5}\index{BitmapVideo@{BitmapVideo}!get\_state@{get\_state}}
+\index{get\_state@{get\_state}!BitmapVideo@{BitmapVideo}}
+\doxysubsubsection{\texorpdfstring{get\_state()}{get\_state()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1bitmap__video_1_1_bitmap_video_aec846d0e51f21a83da9ab30d5d5cacd5} 
+get\+\_\+state (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Состояние для отладки\end{DoxyVerb}
+ Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=252pt]{classmodules_1_1io_1_1bitmap__video_1_1_bitmap_video_aec846d0e51f21a83da9ab30d5d5cacd5_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmodules_1_1io_1_1bitmap__video_1_1_bitmap_video_ac936f46faee33b342b41443dcd1c44ee}\index{BitmapVideo@{BitmapVideo}!read\_video\_byte@{read\_video\_byte}}
+\index{read\_video\_byte@{read\_video\_byte}!BitmapVideo@{BitmapVideo}}
+\doxysubsubsection{\texorpdfstring{read\_video\_byte()}{read\_video\_byte()}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1bitmap__video_1_1_bitmap_video_ac936f46faee33b342b41443dcd1c44ee} 
+read\+\_\+video\+\_\+byte (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{offset}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Прочитать байт из видеопамяти\end{DoxyVerb}
+ Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=292pt]{classmodules_1_1io_1_1bitmap__video_1_1_bitmap_video_ac936f46faee33b342b41443dcd1c44ee_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Field Documentation}
+\Hypertarget{classmodules_1_1io_1_1bitmap__video_1_1_bitmap_video_a29d6e153766c8db4613df2a69b500cb1}\index{BitmapVideo@{BitmapVideo}!\_frame\_cache@{\_frame\_cache}}
+\index{\_frame\_cache@{\_frame\_cache}!BitmapVideo@{BitmapVideo}}
+\doxysubsubsection{\texorpdfstring{\_frame\_cache}{\_frame\_cache}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1bitmap__video_1_1_bitmap_video_a29d6e153766c8db4613df2a69b500cb1} 
+dict \+\_\+frame\+\_\+cache = \{\}\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classmodules_1_1io_1_1bitmap__video_1_1_bitmap_video_aa4d3d7d7047086ca2547737909c4e968}\index{BitmapVideo@{BitmapVideo}!base\_port@{base\_port}}
+\index{base\_port@{base\_port}!BitmapVideo@{BitmapVideo}}
+\doxysubsubsection{\texorpdfstring{base\_port}{base\_port}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1bitmap__video_1_1_bitmap_video_aa4d3d7d7047086ca2547737909c4e968} 
+int base\+\_\+port = -\/1}
+
+\Hypertarget{classmodules_1_1io_1_1bitmap__video_1_1_bitmap_video_adb9f0560725a300b3f11e0e97ca04c22}\index{BitmapVideo@{BitmapVideo}!bit0\_left@{bit0\_left}}
+\index{bit0\_left@{bit0\_left}!BitmapVideo@{BitmapVideo}}
+\doxysubsubsection{\texorpdfstring{bit0\_left}{bit0\_left}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1bitmap__video_1_1_bitmap_video_adb9f0560725a300b3f11e0e97ca04c22} 
+bit0\+\_\+left = True}
+
+\Hypertarget{classmodules_1_1io_1_1bitmap__video_1_1_bitmap_video_a1acef89cb8c79a0010a8fb2622f59fca}\index{BitmapVideo@{BitmapVideo}!display\_enabled@{display\_enabled}}
+\index{display\_enabled@{display\_enabled}!BitmapVideo@{BitmapVideo}}
+\doxysubsubsection{\texorpdfstring{display\_enabled}{display\_enabled}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1bitmap__video_1_1_bitmap_video_a1acef89cb8c79a0010a8fb2622f59fca} 
+display\+\_\+enabled = True}
+
+\Hypertarget{classmodules_1_1io_1_1bitmap__video_1_1_bitmap_video_a509290c21d570ff479c1b9d9b1fe8810}\index{BitmapVideo@{BitmapVideo}!height@{height}}
+\index{height@{height}!BitmapVideo@{BitmapVideo}}
+\doxysubsubsection{\texorpdfstring{height}{height}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1bitmap__video_1_1_bitmap_video_a509290c21d570ff479c1b9d9b1fe8810} 
+height = 256}
+
+\Hypertarget{classmodules_1_1io_1_1bitmap__video_1_1_bitmap_video_a39e104289804845ff2995af878959ead}\index{BitmapVideo@{BitmapVideo}!memory\_bus@{memory\_bus}}
+\index{memory\_bus@{memory\_bus}!BitmapVideo@{BitmapVideo}}
+\doxysubsubsection{\texorpdfstring{memory\_bus}{memory\_bus}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1bitmap__video_1_1_bitmap_video_a39e104289804845ff2995af878959ead} 
+memory\+\_\+bus = None}
+
+\Hypertarget{classmodules_1_1io_1_1bitmap__video_1_1_bitmap_video_ab74e6bf80237ddc4109968cedc58c151}\index{BitmapVideo@{BitmapVideo}!name@{name}}
+\index{name@{name}!BitmapVideo@{BitmapVideo}}
+\doxysubsubsection{\texorpdfstring{name}{name}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1bitmap__video_1_1_bitmap_video_ab74e6bf80237ddc4109968cedc58c151} 
+name = name}
+
+\Hypertarget{classmodules_1_1io_1_1bitmap__video_1_1_bitmap_video_ab98811ce54cf3b61ad0f05e26435e99e}\index{BitmapVideo@{BitmapVideo}!planes@{planes}}
+\index{planes@{planes}!BitmapVideo@{BitmapVideo}}
+\doxysubsubsection{\texorpdfstring{planes}{planes}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1bitmap__video_1_1_bitmap_video_ab98811ce54cf3b61ad0f05e26435e99e} 
+planes = 1}
+
+\Hypertarget{classmodules_1_1io_1_1bitmap__video_1_1_bitmap_video_a074b4190199127b28fb63df07cb5370c}\index{BitmapVideo@{BitmapVideo}!video\_addr@{video\_addr}}
+\index{video\_addr@{video\_addr}!BitmapVideo@{BitmapVideo}}
+\doxysubsubsection{\texorpdfstring{video\_addr}{video\_addr}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1bitmap__video_1_1_bitmap_video_a074b4190199127b28fb63df07cb5370c} 
+int video\+\_\+addr = 0x\+C000}
+
+\Hypertarget{classmodules_1_1io_1_1bitmap__video_1_1_bitmap_video_a5558ace5433f9aabbf0a0ec059900d94}\index{BitmapVideo@{BitmapVideo}!width@{width}}
+\index{width@{width}!BitmapVideo@{BitmapVideo}}
+\doxysubsubsection{\texorpdfstring{width}{width}}
+{\footnotesize\ttfamily \label{classmodules_1_1io_1_1bitmap__video_1_1_bitmap_video_a5558ace5433f9aabbf0a0ec059900d94} 
+width = 256}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+modules/io/\mbox{\hyperlink{bitmap__video_8py}{bitmap\+\_\+video.\+py}}\end{DoxyCompactItemize}
